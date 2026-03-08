@@ -302,7 +302,136 @@ nav{position:fixed;top:0;left:0;right:0;z-index:1000;height:52px;background:rgba
 .cart-checkout{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;padding:16px;background:#25d366;border:none;border-radius:14px;color:#fff;font-size:15px;font-weight:700;cursor:pointer;transition:all .3s;text-decoration:none;}
 .cart-checkout:hover{background:#1da851;transform:scale(1.01);}
 
-/* ═══ TOAST ═══ */
+/* ═══ FORGEOS VERSION BADGE ═══ */
+.forgeos-badge{
+  display:inline-flex;flex-direction:column;gap:2px;
+  padding:5px 13px 5px 10px;
+  background:rgba(255,255,255,.04);
+  border:1px solid rgba(255,255,255,.1);
+  border-radius:20px;
+  backdrop-filter:blur(12px);
+  position:relative;overflow:hidden;
+  transition:border-color .3s,background .3s;
+  cursor:default;
+  white-space:nowrap;
+}
+.forgeos-badge::before{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(135deg,rgba(212,175,55,.06) 0%,rgba(191,90,242,.04) 50%,rgba(59,130,246,.04) 100%);
+  opacity:0;transition:opacity .4s;
+}
+.forgeos-badge:hover{border-color:rgba(212,175,55,.35);background:rgba(255,255,255,.06);}
+.forgeos-badge:hover::before{opacity:1;}
+.fos-top{display:flex;align-items:center;gap:5px;}
+.fos-dot{width:5px;height:5px;border-radius:50%;background:#22c55e;flex-shrink:0;animation:lp 2s ease infinite;}
+.fos-ver{font-size:11px;font-weight:700;letter-spacing:.3px;color:#e8e8ef;font-family:'Inter',-apple-system,sans-serif;}
+.fos-ver em{font-style:normal;background:linear-gradient(90deg,#d4af37,#f0d060);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+.fos-next{display:flex;align-items:center;gap:5px;font-size:9.5px;color:#606068;letter-spacing:.2px;font-weight:400;}
+.fos-pill{
+  display:inline-flex;align-items:center;
+  padding:1.5px 6px;
+  background:linear-gradient(90deg,rgba(212,175,55,.18),rgba(191,90,242,.14));
+  border:1px solid rgba(212,175,55,.35);
+  border-radius:8px;font-size:8.5px;font-weight:700;
+  letter-spacing:.6px;text-transform:uppercase;
+  color:#d4af37;line-height:1.4;
+  white-space:nowrap;
+}
+/* Compact version for footer */
+.forgeos-footer{
+  display:flex;align-items:center;gap:8px;flex-wrap:wrap;
+  padding:8px 14px;
+  background:rgba(255,255,255,.03);
+  border:1px solid rgba(255,255,255,.08);
+  border-radius:14px;
+  position:relative;overflow:hidden;
+}
+.forgeos-footer::after{
+  content:'';position:absolute;top:0;left:-100%;right:100%;height:1px;
+  background:linear-gradient(90deg,transparent,rgba(212,175,55,.4),transparent);
+  animation:footerSweep 4s linear infinite;
+}
+@keyframes footerSweep{0%{left:-100%;right:100%;}100%{left:100%;right:-100%;}}
+.fof-left{display:flex;align-items:center;gap:6px;}
+.fof-dot{width:6px;height:6px;border-radius:50%;background:#22c55e;animation:lp 2s ease infinite;flex-shrink:0;}
+.fof-text{font-size:11px;color:#888;font-weight:500;letter-spacing:.2px;}
+.fof-text strong{color:#c8c8d0;font-weight:700;}
+.fof-text em{font-style:normal;background:linear-gradient(90deg,#d4af37,#f0d060);-webkit-background-clip:text;-webkit-text-fill-color:transparent;font-weight:700;}
+.fof-sep{width:1px;height:14px;background:rgba(255,255,255,.12);flex-shrink:0;}
+.fof-next{font-size:10.5px;color:#555;display:flex;align-items:center;gap:5px;flex-wrap:wrap;}
+.fof-pill{
+  display:inline-flex;align-items:center;gap:3px;
+  padding:2px 7px;
+  background:linear-gradient(90deg,rgba(212,175,55,.12),rgba(191,90,242,.1));
+  border:1px solid rgba(212,175,55,.3);border-radius:8px;
+  font-size:8px;font-weight:800;letter-spacing:.8px;text-transform:uppercase;color:#d4af37;
+}
+.fof-pill::before{content:'';width:4px;height:4px;border-radius:50%;background:#d4af37;animation:lp 1.5s ease infinite;}
+@media(max-width:768px){
+  .forgeos-badge{display:none;}  /* hide nav badge on mobile — footer only */
+  .forgeos-footer{justify-content:center;text-align:center;}
+  .fof-sep{display:none;}
+}
+
+/* ═══ NAV OS LINK ═══ */
+.nav-os{color:#a78bfa!important;font-weight:600!important;position:relative;}
+.nav-os::after{content:'';position:absolute;bottom:-2px;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,#a78bfa,transparent);opacity:0;transition:opacity .2s;}
+.nav-os:hover::after{opacity:1;}
+
+/* ═══ FLOATING OS PILL ═══ */
+.os-float-pill{position:fixed;bottom:152px;left:50%;transform:translateX(-50%);z-index:495;display:flex;align-items:center;gap:9px;background:rgba(5,3,18,.94);border:1px solid rgba(167,139,250,.45);border-radius:60px;padding:10px 18px;font-size:13px;font-weight:600;color:#c4b5fd;box-shadow:0 6px 32px rgba(167,139,250,.2),inset 0 1px 0 rgba(255,255,255,.06);backdrop-filter:blur(20px);cursor:pointer;white-space:nowrap;max-width:92vw;animation:osFloat 5s ease infinite;}
+.os-float-pill:hover{border-color:rgba(167,139,250,.7);box-shadow:0 10px 40px rgba(167,139,250,.35);}
+@keyframes osFloat{0%,100%{transform:translateX(-50%) translateY(0);}50%{transform:translateX(-50%) translateY(-4px);}}
+.os-fp-dot{width:7px;height:7px;border-radius:50%;background:#22c55e;flex-shrink:0;animation:lp 2s ease infinite;box-shadow:0 0 6px rgba(34,197,94,.6);}
+.os-fp-ver{font-size:11px;color:#7c6fad;background:rgba(167,139,250,.12);border:1px solid rgba(167,139,250,.25);border-radius:10px;padding:2px 8px;}
+@media(max-width:600px){.os-float-pill{font-size:11px;padding:8px 13px;bottom:144px;}.os-fp-ver,.os-fp-arrow{display:none;}}
+
+/* ═══ OS MODAL OVERLAY ═══ */
+.os-overlay{position:fixed;inset:0;background:rgba(0,0,0,.75);z-index:3100;display:none;backdrop-filter:blur(6px);}
+.os-overlay.open{display:block;}
+
+/* ═══ OS MODAL ═══ */
+.os-modal{position:fixed;top:50%;left:50%;transform:translate(-50%,-46%) scale(.96);z-index:3200;width:min(580px,94vw);max-height:88vh;overflow-y:auto;background:linear-gradient(160deg,#07050f 0%,#0d0a1e 40%,#060410 100%);border:1px solid rgba(167,139,250,.35);border-radius:26px;padding:36px 32px 30px;box-shadow:0 40px 100px rgba(0,0,0,.8),0 0 60px rgba(167,139,250,.1),inset 0 1px 0 rgba(255,255,255,.07);opacity:0;pointer-events:none;transition:all .38s cubic-bezier(.34,1.28,.64,1);}
+.os-modal.open{opacity:1;pointer-events:all;transform:translate(-50%,-50%) scale(1);}
+.os-modal-close{position:absolute;top:18px;right:18px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);color:#888;width:32px;height:32px;border-radius:50%;cursor:pointer;font-size:14px;display:flex;align-items:center;justify-content:center;transition:all .2s;}
+.os-modal-close:hover{color:#fff;background:rgba(255,255,255,.12);}
+.os-modal-label{display:inline-flex;align-items:center;gap:8px;background:rgba(167,139,250,.1);border:1px solid rgba(167,139,250,.3);border-radius:30px;padding:6px 16px;font-size:10px;font-weight:800;letter-spacing:2.5px;text-transform:uppercase;color:#a78bfa;margin-bottom:24px;}
+.os-modal-dot{width:6px;height:6px;border-radius:50%;background:#22c55e;animation:lp 2s ease infinite;flex-shrink:0;}
+.os-version-block{display:flex;align-items:center;justify-content:space-between;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);border-radius:18px;padding:22px 24px;margin-bottom:16px;}
+.os-vb-tag{font-size:9px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:#606068;margin-bottom:6px;}
+.os-vb-ver{font-size:26px;font-weight:900;letter-spacing:-.5px;color:#e8e8ef;margin-bottom:6px;}
+.os-vb-num{background:linear-gradient(90deg,#c8c8d8,#fff);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+.os-vb-status{display:flex;align-items:center;gap:7px;font-size:12px;color:#4ade80;font-weight:600;}
+.os-vb-dot{width:7px;height:7px;border-radius:50%;background:#22c55e;animation:lp 2s ease infinite;display:inline-block;flex-shrink:0;box-shadow:0 0 8px rgba(34,197,94,.7);}
+.os-vb-icon{font-size:42px;opacity:.2;}
+.os-update-arrow{display:flex;align-items:center;gap:12px;margin:4px 0 16px;}
+.os-ua-line{flex:1;height:1px;background:linear-gradient(90deg,transparent,rgba(167,139,250,.3),transparent);}
+.os-ua-badge{font-size:9px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:#7c6fad;background:rgba(167,139,250,.08);border:1px solid rgba(167,139,250,.2);border-radius:20px;padding:4px 12px;white-space:nowrap;}
+.os-next-block{background:linear-gradient(135deg,rgba(167,139,250,.06) 0%,rgba(212,175,55,.04) 100%);border:1px solid rgba(167,139,250,.25);border-radius:18px;padding:22px 24px;margin-bottom:20px;}
+.os-nb-top{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;margin-bottom:18px;}
+.os-nb-tag{font-size:9px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:#a78bfa;margin-bottom:6px;}
+.os-nb-ver{font-size:30px;font-weight:900;letter-spacing:-.8px;color:#fff;margin-bottom:6px;}
+.os-nb-num{background:linear-gradient(90deg,#a78bfa,#d4af37);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+.os-nb-date{font-size:13px;color:#888;}
+.os-nb-date strong{color:#c4b5fd;font-weight:700;}
+.os-nb-pill{white-space:nowrap;display:flex;align-items:center;gap:5px;padding:6px 14px;background:linear-gradient(90deg,rgba(167,139,250,.15),rgba(212,175,55,.12));border:1px solid rgba(167,139,250,.35);border-radius:20px;font-size:11px;font-weight:700;color:#c4b5fd;flex-shrink:0;}
+.os-countdown{display:flex;align-items:center;justify-content:center;gap:6px;margin-bottom:20px;padding:14px;background:rgba(0,0,0,.3);border-radius:14px;border:1px solid rgba(167,139,250,.12);}
+.os-cd-block{display:flex;flex-direction:column;align-items:center;gap:3px;min-width:48px;}
+.os-cd-num{font-size:28px;font-weight:900;letter-spacing:-1px;background:linear-gradient(135deg,#c4b5fd,#a78bfa);-webkit-background-clip:text;-webkit-text-fill-color:transparent;font-variant-numeric:tabular-nums;}
+.os-cd-lbl{font-size:9px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:#4a4060;}
+.os-cd-sep{font-size:22px;font-weight:900;color:rgba(167,139,250,.3);margin-bottom:14px;}
+.os-wn-title{font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#606068;margin-bottom:12px;}
+.os-wn-list{display:flex;flex-direction:column;gap:8px;}
+.os-wn-item{display:flex;align-items:center;gap:12px;font-size:13px;color:#b8b8c2;}
+.os-wn-icon{width:30px;height:30px;border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0;}
+.os-modal-cta{border-top:1px solid rgba(255,255,255,.07);padding-top:20px;text-align:center;}
+.os-modal-note{font-size:12px;color:#4a4860;margin-bottom:14px;line-height:1.5;}
+.os-modal-btn{display:inline-flex;align-items:center;gap:10px;padding:13px 28px;background:linear-gradient(135deg,#7c3aed,#5b21b6);border:1px solid rgba(167,139,250,.4);border-radius:24px;color:#fff;font-size:14px;font-weight:700;text-decoration:none;transition:all .3s;box-shadow:0 8px 24px rgba(124,58,237,.3);}
+.os-modal-btn:hover{transform:scale(1.04);box-shadow:0 12px 36px rgba(124,58,237,.5);}
+.os-modal::-webkit-scrollbar{width:4px;}
+.os-modal::-webkit-scrollbar-track{background:transparent;}
+.os-modal::-webkit-scrollbar-thumb{background:rgba(167,139,250,.3);border-radius:2px;}
+
 .toast{position:fixed;bottom:100px;right:32px;z-index:3000;background:#111;border:1px solid rgba(255,255,255,.15);border-radius:14px;padding:14px 20px;font-size:13px;color:#fff;box-shadow:0 10px 40px rgba(0,0,0,.5);transform:translateY(20px);opacity:0;transition:all .4s;display:flex;align-items:center;gap:10px;max-width:300px;}
 .toast.show{transform:translateY(0);opacity:1;}
 
@@ -386,6 +515,7 @@ footer{background:#070707;border-top:1px solid rgba(255,255,255,.15);padding:60p
     <li><a onclick="go('compare')" id="nl-compare" class="nav-gold">⚡ Compare</a></li>
     <li><a onclick="go('support')" id="nl-support">Support</a></li>
     <li><a onclick="go('faq')" id="nl-faq">FAQ</a></li>
+    <li><a onclick="openOsModal()" class="nav-os" id="nl-os">🖥️ OS Update</a></li>
     <li><a href="https://whatsapp.com/channel/0029VbCfQIoG8l59dsuLPv1Q" target="_blank" class="nav-fire">🔥 New Launch</a></li>
   </ul>
   <div style="display:flex;gap:10px;align-items:center;">
@@ -421,7 +551,19 @@ footer{background:#070707;border-top:1px solid rgba(255,255,255,.15);padding:60p
   <a onclick="go('compare');closeMob()" style="color:#d4af37;font-weight:700;">⚡ Compare Plans</a>
   <a onclick="go('support');closeMob()">🛠️ Support</a>
   <a onclick="go('faq');closeMob()">❓ FAQ</a>
+  <a onclick="openOsModal();closeMob();" style="color:#a78bfa;font-weight:700;">🖥️ OS Update</a>
   <a href="https://whatsapp.com/channel/0029VbCfQIoG8l59dsuLPv1Q" target="_blank" style="color:#ff8c00;font-weight:700;">🔥 New Software Coming — Join Broadcast!</a>
+  <!-- ForgeOS version in mobile nav -->
+  <div style="margin:14px 16px 4px;padding:10px 14px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);border-radius:14px;display:flex;flex-direction:column;gap:4px;">
+    <div style="display:flex;align-items:center;gap:6px;">
+      <span style="width:6px;height:6px;border-radius:50%;background:#22c55e;display:inline-block;animation:lp 2s ease infinite;flex-shrink:0;"></span>
+      <span style="font-size:11px;font-weight:700;color:#c8c8d0;letter-spacing:.2px;">⚡ ForgeOS <span style="background:linear-gradient(90deg,#d4af37,#f0d060);-webkit-background-clip:text;-webkit-text-fill-color:transparent;">1.99</span></span>
+    </div>
+    <div style="font-size:10px;color:#555;display:flex;align-items:center;gap:6px;flex-wrap:wrap;padding-left:12px;">
+      Next: ForgeOS 2 — March 10
+      <span style="display:inline-flex;align-items:center;gap:3px;padding:1.5px 7px;background:linear-gradient(90deg,rgba(212,175,55,.12),rgba(191,90,242,.1));border:1px solid rgba(212,175,55,.3);border-radius:8px;font-size:8px;font-weight:800;letter-spacing:.8px;text-transform:uppercase;color:#d4af37;">Coming Soon</span>
+    </div>
+  </div>
 </div>
 
 <!-- ═══════════════ PAGE: HOME ═══════════════ -->
@@ -1115,6 +1257,21 @@ footer{background:#070707;border-top:1px solid rgba(255,255,255,.15);padding:60p
     </div>
     <div class="foot-bottom">
       <p class="foot-copy">© 2025 Forge Software. All rights reserved. · Made in India 🇮🇳</p>
+
+      <!-- ForgeOS Footer Badge -->
+      <div class="forgeos-footer">
+        <div class="fof-left">
+          <span class="fof-dot"></span>
+          <span class="fof-text"><strong>ForgeOS <em>1.99</em></strong></span>
+        </div>
+        <div class="fof-sep"></div>
+        <div class="fof-next">
+          <span style="color:#444;">Next update:</span>
+          <span style="color:#888;font-size:10.5px;">ForgeOS 2 — March 10</span>
+          <span class="fof-pill">Coming Soon</span>
+        </div>
+      </div>
+
       <p style="font-size:12px;color:#606068;text-align:center;">Designed &amp; Built by <span style="color:#d4af37;font-weight:700;">Farman</span> — Owner of Forge Software ⚡</p>
       <a href="https://wa.me/919697430658" target="_blank" class="foot-wp">💬 9697430658</a>
     </div>
@@ -1127,6 +1284,89 @@ footer{background:#070707;border-top:1px solid rgba(255,255,255,.15);padding:60p
   <span>New AI Software Coming!</span>
   <span style="font-size:11px;color:#b8b8c2;font-weight:400;">Join Broadcast →</span>
   <button class="hype-close" onclick="event.stopPropagation();document.getElementById('hype-pill').style.display='none'">✕</button>
+</div>
+
+<!-- FLOATING OS UPDATE PILL (shows on all pages) -->
+<div class="os-float-pill" id="os-float-pill" onclick="openOsModal()">
+  <span class="os-fp-dot"></span>
+  <span class="os-fp-label">🖥️ <strong>OS Update</strong></span>
+  <span class="os-fp-ver">v1.99 → v2</span>
+  <span class="os-fp-arrow">→</span>
+  <button class="hype-close" onclick="event.stopPropagation();document.getElementById('os-float-pill').style.display='none'">✕</button>
+</div>
+
+<!-- OS UPDATE MODAL OVERLAY -->
+<div class="os-overlay" id="os-overlay" onclick="closeOsModal()"></div>
+<div class="os-modal" id="os-modal">
+  <!-- Close button -->
+  <button class="os-modal-close" onclick="closeOsModal()">✕</button>
+
+  <!-- Top label -->
+  <div class="os-modal-label">
+    <span class="os-modal-dot"></span>
+    🖥️ WEBSITE SYSTEM — FORGEOS
+  </div>
+
+  <!-- Current version block -->
+  <div class="os-version-block">
+    <div class="os-vb-left">
+      <div class="os-vb-tag">WEBSITE CURRENTLY RUNNING ON</div>
+      <div class="os-vb-ver">ForgeOS <span class="os-vb-num">1.99</span></div>
+      <div class="os-vb-status">
+        <span class="os-vb-dot"></span> All Systems Live &amp; Stable
+      </div>
+    </div>
+    <div class="os-vb-icon">⚡</div>
+  </div>
+
+  <!-- Divider with arrow -->
+  <div class="os-update-arrow">
+    <div class="os-ua-line"></div>
+    <div class="os-ua-badge">NEXT UPDATE</div>
+    <div class="os-ua-line"></div>
+  </div>
+
+  <!-- Upcoming version block -->
+  <div class="os-next-block">
+    <div class="os-nb-top">
+      <div>
+        <div class="os-nb-tag">COMING SOON</div>
+        <div class="os-nb-ver">ForgeOS <span class="os-nb-num">2.0</span></div>
+        <div class="os-nb-date">📅 Releasing — <strong>March 10, 2026</strong></div>
+      </div>
+      <div class="os-nb-pill">🔜 Coming Soon</div>
+    </div>
+
+    <!-- Countdown timer -->
+    <div class="os-countdown" id="os-countdown">
+      <div class="os-cd-block"><span class="os-cd-num" id="cd-days">--</span><span class="os-cd-lbl">Days</span></div>
+      <div class="os-cd-sep">:</div>
+      <div class="os-cd-block"><span class="os-cd-num" id="cd-hours">--</span><span class="os-cd-lbl">Hours</span></div>
+      <div class="os-cd-sep">:</div>
+      <div class="os-cd-block"><span class="os-cd-num" id="cd-mins">--</span><span class="os-cd-lbl">Mins</span></div>
+      <div class="os-cd-sep">:</div>
+      <div class="os-cd-block"><span class="os-cd-num" id="cd-secs">--</span><span class="os-cd-lbl">Secs</span></div>
+    </div>
+
+    <!-- What's new -->
+    <div class="os-whats-new">
+      <div class="os-wn-title">What's Changing in ForgeOS 2</div>
+      <div class="os-wn-list">
+        <div class="os-wn-item"><span class="os-wn-icon" style="background:rgba(212,175,55,.15);color:#d4af37;">⚡</span><div><strong style="color:#e8e8ef;display:block;margin-bottom:2px;">Smarter AI Brain</strong><span style="font-size:12px;color:#606068;">More accurate, context-aware replies — handles tricky questions better than before</span></div></div>
+        <div class="os-wn-item"><span class="os-wn-icon" style="background:rgba(59,130,246,.12);color:#60a5fa;">🛡️</span><div><strong style="color:#e8e8ef;display:block;margin-bottom:2px;">Secure WhatsApp Checkout</strong><span style="font-size:12px;color:#606068;">Fixed &amp; improved — WhatsApp redirect at checkout and buy buttons is now more secure and reliable</span></div></div>
+        <div class="os-wn-item"><span class="os-wn-icon" style="background:rgba(34,197,94,.12);color:#4ade80;">🎨</span><div><strong style="color:#e8e8ef;display:block;margin-bottom:2px;">UI / UX Improvements</strong><span style="font-size:12px;color:#606068;">Website redesigned — smoother experience, cleaner layout, better on mobile</span></div></div>
+        <div class="os-wn-item"><span class="os-wn-icon" style="background:rgba(249,115,22,.12);color:#fb923c;">🔥</span><div><strong style="color:#e8e8ef;display:block;margin-bottom:2px;">New Powerful Product Launching</strong><span style="font-size:12px;color:#606068;">A brand new AI tool is dropping with this update — bigger than anything Forge has built before</span></div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bottom CTA -->
+  <div class="os-modal-cta">
+    <p class="os-modal-note">🔒 ForgeOS 2 is a website update — all improvements go live automatically. No action needed from customers.</p>
+    <a href="https://whatsapp.com/channel/0029VbCfQIoG8l59dsuLPv1Q" target="_blank" class="os-modal-btn">
+      <span>📢</span> Join Broadcast for Launch Updates
+    </a>
+  </div>
 </div>
 
 <!-- CART BUTTON -->
@@ -2548,6 +2788,46 @@ function tFaq(el){
   document.querySelectorAll('.faq-item').forEach(i=>i.classList.remove('open'));
   if(!isOpen)item.classList.add('open');
 }
+
+// ═══ OS UPDATE MODAL ═══
+function openOsModal(){
+  document.getElementById('os-overlay').classList.add('open');
+  document.getElementById('os-modal').classList.add('open');
+  document.body.style.overflow='hidden';
+  startOsCountdown();
+}
+function closeOsModal(){
+  document.getElementById('os-overlay').classList.remove('open');
+  document.getElementById('os-modal').classList.remove('open');
+  document.body.style.overflow='';
+  clearInterval(osCountdownTimer);
+}
+let osCountdownTimer=null;
+function startOsCountdown(){
+  clearInterval(osCountdownTimer);
+  const target=new Date('2026-03-10T00:00:00+05:30').getTime();
+  function tick(){
+    const now=Date.now();
+    const diff=target-now;
+    if(diff<=0){
+      ['cd-days','cd-hours','cd-mins','cd-secs'].forEach(id=>{const e=document.getElementById(id);if(e)e.textContent='00';});
+      clearInterval(osCountdownTimer);return;
+    }
+    const days=Math.floor(diff/(1000*60*60*24));
+    const hours=Math.floor((diff%(1000*60*60*24))/(1000*60*60));
+    const mins=Math.floor((diff%(1000*60*60))/(1000*60));
+    const secs=Math.floor((diff%(1000*60))/1000);
+    const pad=n=>String(n).padStart(2,'0');
+    const d=document.getElementById('cd-days');if(d)d.textContent=pad(days);
+    const h=document.getElementById('cd-hours');if(h)h.textContent=pad(hours);
+    const m=document.getElementById('cd-mins');if(m)m.textContent=pad(mins);
+    const s=document.getElementById('cd-secs');if(s)s.textContent=pad(secs);
+  }
+  tick();
+  osCountdownTimer=setInterval(tick,1000);
+}
+// Close on Escape key
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeOsModal();});
 
 // ═══ TOAST ═══
 function showToast(icon,msg){

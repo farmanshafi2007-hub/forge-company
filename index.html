@@ -207,6 +207,9 @@ nav{position:fixed;top:0;left:0;right:0;z-index:1000;height:52px;background:rgba
 .plan-feats li{font-size:13px;color:#b8b8c2;padding:8px 0;border-bottom:1px solid rgba(255,255,255,.06);display:flex;align-items:flex-start;gap:10px;line-height:1.4;}
 .plan-feats li:last-child{border-bottom:none;}
 .plan-cta{display:block;width:100%;padding:14px;border-radius:14px;font-size:14px;font-weight:700;text-align:center;cursor:pointer;transition:all .3s;text-decoration:none;}
+.tally-btn{position:relative;overflow:hidden;letter-spacing:.3px;}
+.tally-btn::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,255,255,.07) 0%,transparent 60%);opacity:0;transition:opacity .25s;pointer-events:none;}
+.tally-btn:hover::after{opacity:1;}
 .cta-gold{background:#d4af37;color:#000;border:none;}.cta-gold:hover{background:#f0d060;transform:scale(1.02);}
 .cta-outline{background:transparent;color:#fff;border:1px solid rgba(255,255,255,.3);}.cta-outline:hover{background:rgba(255,255,255,.07);}
 .lbl-agent{display:inline-block;font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:3px 10px;border-radius:20px;margin-bottom:8px;background:rgba(96,165,250,.1);color:#60a5fa;border:1px solid rgba(96,165,250,.25);}
@@ -367,24 +370,198 @@ nav{position:fixed;top:0;left:0;right:0;z-index:1000;height:52px;background:rgba
   font-size:8px;font-weight:800;letter-spacing:.8px;text-transform:uppercase;color:#d4af37;
 }
 .fof-pill::before{content:'';width:4px;height:4px;border-radius:50%;background:#d4af37;animation:lp 1.5s ease infinite;}
-@media(max-width:768px){
-  .forgeos-badge{display:none;}  /* hide nav badge on mobile — footer only */
-  .forgeos-footer{justify-content:center;text-align:center;}
-  .fof-sep{display:none;}
-}
-
 /* ═══ NAV OS LINK ═══ */
 .nav-os{color:#a78bfa!important;font-weight:600!important;position:relative;}
 .nav-os::after{content:'';position:absolute;bottom:-2px;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,#a78bfa,transparent);opacity:0;transition:opacity .2s;}
 .nav-os:hover::after{opacity:1;}
 
-/* ═══ FLOATING OS PILL ═══ */
-.os-float-pill{position:fixed;bottom:152px;left:50%;transform:translateX(-50%);z-index:495;display:flex;align-items:center;gap:9px;background:rgba(5,3,18,.94);border:1px solid rgba(167,139,250,.45);border-radius:60px;padding:10px 18px;font-size:13px;font-weight:600;color:#c4b5fd;box-shadow:0 6px 32px rgba(167,139,250,.2),inset 0 1px 0 rgba(255,255,255,.06);backdrop-filter:blur(20px);cursor:pointer;white-space:nowrap;max-width:92vw;animation:osFloat 5s ease infinite;}
-.os-float-pill:hover{border-color:rgba(167,139,250,.7);box-shadow:0 10px 40px rgba(167,139,250,.35);}
-@keyframes osFloat{0%,100%{transform:translateX(-50%) translateY(0);}50%{transform:translateX(-50%) translateY(-4px);}}
-.os-fp-dot{width:7px;height:7px;border-radius:50%;background:#22c55e;flex-shrink:0;animation:lp 2s ease infinite;box-shadow:0 0 6px rgba(34,197,94,.6);}
-.os-fp-ver{font-size:11px;color:#7c6fad;background:rgba(167,139,250,.12);border:1px solid rgba(167,139,250,.25);border-radius:10px;padding:2px 8px;}
-@media(max-width:600px){.os-float-pill{font-size:11px;padding:8px 13px;bottom:144px;}.os-fp-ver,.os-fp-arrow{display:none;}}
+/* ═══ COMBINED STATUS BAR (replaces two floating pills) ═══ */
+.status-bar{
+  position:fixed;
+  bottom:24px;
+  left:50%;
+  transform:translateX(-50%);
+  z-index:496;
+  display:inline-flex;
+  align-items:center;
+  gap:0;
+  background:rgba(6,5,16,.92);
+  border:1px solid rgba(255,255,255,.13);
+  border-radius:40px;
+  overflow:hidden;
+  backdrop-filter:blur(24px) saturate(180%);
+  box-shadow:0 8px 40px rgba(0,0,0,.5),inset 0 1px 0 rgba(255,255,255,.07);
+  white-space:nowrap;
+  max-width:calc(100vw - 32px);
+  animation:sbFloat 6s ease infinite;
+}
+@keyframes sbFloat{0%,100%{transform:translateX(-50%) translateY(0);}50%{transform:translateX(-50%) translateY(-4px);}}
+.sb-os,.sb-bc{
+  display:flex;align-items:center;gap:7px;
+  padding:10px 16px;
+  cursor:pointer;
+  transition:background .2s;
+  flex-shrink:0;
+}
+.sb-os:hover{background:rgba(167,139,250,.08);}
+.sb-bc:hover{background:rgba(255,130,0,.08);}
+.sb-dot{width:6px;height:6px;border-radius:50%;flex-shrink:0;animation:lp 2s ease infinite;}
+.sb-dot-green{background:#22c55e;box-shadow:0 0 6px rgba(34,197,94,.7);}
+.sb-dot-orange{background:#ff8c00;box-shadow:0 0 6px rgba(255,140,0,.7);}
+.sb-icon{font-size:14px;line-height:1;flex-shrink:0;}
+.sb-text{font-size:12px;color:#e8e8ef;font-weight:600;letter-spacing:.1px;}
+.sb-text strong{font-weight:800;}
+.sb-sep{color:rgba(255,255,255,.2);font-size:11px;}
+.sb-sub{font-size:11px;color:#606068;font-weight:400;}
+.sb-divider{width:1px;height:28px;background:rgba(255,255,255,.1);flex-shrink:0;}
+.sb-close{
+  background:none;border:none;
+  color:rgba(255,255,255,.3);
+  font-size:12px;cursor:pointer;
+  padding:10px 14px 10px 8px;
+  line-height:1;flex-shrink:0;
+  transition:color .2s;
+}
+.sb-close:hover{color:rgba(255,255,255,.7);}
+@media(max-width:420px){
+  .sb-sep,.sb-sub{display:none;}
+  .sb-os,.sb-bc{padding:9px 12px;gap:5px;}
+  .sb-text{font-size:11px;}
+  .sb-icon{font-size:13px;}
+}
+
+/* ═══ COMPREHENSIVE MOBILE RESPONSIVE ═══ */
+
+/* -- Base fluid type -- */
+html{font-size:16px;-webkit-text-size-adjust:100%;}
+*{box-sizing:border-box;}
+img,canvas,video{max-width:100%;}
+
+/* -- Sections -- */
+.section{padding:clamp(50px,8vw,100px) clamp(16px,4vw,48px);}
+
+/* -- Hero -- */
+.hero{padding:clamp(90px,15vw,160px) clamp(16px,5vw,60px) clamp(60px,10vw,100px);}
+.hero-title{font-size:clamp(32px,8vw,96px)!important;}
+.hero-sub{font-size:clamp(13px,2.5vw,18px)!important;max-width:min(560px,90vw);}
+.hero-eyebrow{font-size:clamp(10px,2vw,13px)!important;}
+
+/* -- Nav -- */
+nav{height:52px;}
+.nav-logo{font-size:clamp(15px,3vw,20px);}
+
+/* -- Stat cards -- */
+.stat-card .snum{font-size:clamp(24px,5vw,38px);}
+
+/* -- Section titles -- */
+.stitle{font-size:clamp(24px,5vw,52px)!important;}
+.ssub{font-size:clamp(13px,2vw,17px)!important;}
+.eyebrow{font-size:clamp(9px,1.8vw,11px)!important;}
+
+/* -- Pricing cards -- */
+.plan-card{padding:clamp(22px,4vw,36px);}
+.plan-price{font-size:clamp(32px,6vw,46px);}
+
+/* -- Feature grid -- */
+.feat{padding:clamp(20px,3vw,36px);}
+.feat-title{font-size:clamp(14px,2vw,16px);}
+
+/* -- bc section -- */
+.bc-title{font-size:clamp(22px,5vw,56px)!important;}
+.bc-sub{font-size:clamp(13px,2vw,17px)!important;}
+
+/* -- Compare page -- */
+.three-col{grid-template-columns:1fr!important;}
+
+/* -- Timeline steps -- */
+@media(max-width:640px){
+  .timeline-step{grid-template-columns:1fr;}
+  .tl-left,.tl-right{text-align:left;}
+  .tl-dot,.tl-empty{display:none;}
+  .tl-content{padding:0 0 0 16px;border-left:2px solid rgba(212,175,55,.3);}
+  .tl-title{font-size:17px;}
+}
+
+/* -- OS countdown on small screens -- */
+@media(max-width:400px){
+  .os-cd-num{font-size:20px;}
+  .os-cd-block{min-width:36px;}
+  .os-modal{padding:24px 18px 20px;}
+  .os-nb-top{flex-direction:column;}
+  .os-nb-pill{align-self:flex-start;}
+}
+
+/* -- Broadcast card -- */
+@media(max-width:600px){
+  .bc-card > div{grid-template-columns:1fr!important;}
+  .bc-card > div > div:last-child{display:none;}
+}
+
+/* -- Footer -- */
+@media(max-width:768px){
+  .forgeos-badge{display:none;}
+  .forgeos-footer{justify-content:center;text-align:center;flex-direction:column;gap:6px;}
+  .fof-sep{display:none;}
+  .foot-top{grid-template-columns:1fr;}
+  .foot-bottom{flex-direction:column;text-align:center;}
+  .cart-sidebar{width:100%;right:-100%;}
+  .cart-sidebar.open{right:0;}
+}
+
+/* -- Stats grid -- */
+@media(max-width:600px){
+  .stats-inner{grid-template-columns:repeat(2,1fr);}
+}
+@media(max-width:340px){
+  .stats-inner{grid-template-columns:1fr;}
+}
+
+/* -- Product cards -- */
+@media(max-width:500px){
+  .pcard-header,.pcard-foot{padding-left:20px;padding-right:20px;}
+  .pvisual{margin:0 20px;}
+  .pname{font-size:21px;}
+}
+
+/* -- Toast position on mobile -- */
+@media(max-width:500px){
+  .toast{right:12px;left:12px;max-width:none;bottom:80px;}
+}
+
+/* -- Pricing plans grid -- */
+@media(max-width:700px){
+  .plans-grid{grid-template-columns:1fr!important;}
+}
+
+/* -- Support grid -- */
+@media(max-width:500px){
+  .support-grid{grid-template-columns:1fr;}
+}
+
+/* -- BC teasers -- */
+@media(max-width:500px){
+  .bc-teasers{grid-template-columns:1fr;}
+}
+
+/* -- Testimonials -- */
+@media(max-width:500px){
+  .testi-card{padding:20px;}
+  .testi-text{font-size:13px;}
+}
+
+/* -- OS modal full screen on tiny phones -- */
+@media(max-width:400px){
+  .os-modal{width:98vw;border-radius:16px;padding:20px 14px 18px;}
+}
+
+/* -- Fix emoji icons not scaling -- */
+.feat-icon,.sc-icon,.picon{font-size:clamp(22px,4vw,34px);}
+
+/* -- Nav OS link hidden on very small -- */
+@media(max-width:860px){
+  #nl-os{display:none;}
+}
+
 
 /* ═══ OS MODAL OVERLAY ═══ */
 .os-overlay{position:fixed;inset:0;background:rgba(0,0,0,.75);z-index:3100;display:none;backdrop-filter:blur(6px);}
@@ -456,15 +633,10 @@ footer{background:#070707;border-top:1px solid rgba(255,255,255,.15);padding:60p
 @keyframes typing{0%{width:0}50%{width:100%}100%{width:100%}}
 @keyframes blink{from,to{border-color:transparent}50%{border-color:#4ade80;}}
 
-/* ═══ MOBILE ═══ */
+/* ═══ MOBILE (consolidated above) ═══ */
 @media(max-width:768px){
   nav{padding:0 16px;}.nav-links{display:none;}.mob-btn{display:block;}
-  .stats-inner{grid-template-columns:repeat(2,1fr);}
-  .foot-top{grid-template-columns:1fr;}.foot-bottom{flex-direction:column;text-align:center;}
-  .cart-sidebar{width:100%;right:-100%;}.cart-sidebar.open{right:0;}
   .hero-title{letter-spacing:-2px;}
-  .three-col{grid-template-columns:1fr!important;}
-  .hype-pill{font-size:11px;padding:9px 14px;}
   .live-clock{display:none;}
 }
 
@@ -557,7 +729,7 @@ footer{background:#070707;border-top:1px solid rgba(255,255,255,.15);padding:60p
   <div style="margin:14px 16px 4px;padding:10px 14px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);border-radius:14px;display:flex;flex-direction:column;gap:4px;">
     <div style="display:flex;align-items:center;gap:6px;">
       <span style="width:6px;height:6px;border-radius:50%;background:#22c55e;display:inline-block;animation:lp 2s ease infinite;flex-shrink:0;"></span>
-      <span style="font-size:11px;font-weight:700;color:#c8c8d0;letter-spacing:.2px;">⚡ ForgeOS <span style="background:linear-gradient(90deg,#d4af37,#f0d060);-webkit-background-clip:text;-webkit-text-fill-color:transparent;">1.10</span></span>
+      <span style="font-size:11px;font-weight:700;color:#c8c8d0;letter-spacing:.2px;">⚡ ForgeOS <span style="background:linear-gradient(90deg,#d4af37,#f0d060);-webkit-background-clip:text;-webkit-text-fill-color:transparent;">1.20</span></span>
     </div>
     <div style="font-size:10px;color:#555;display:flex;align-items:center;gap:6px;flex-wrap:wrap;padding-left:12px;">
       Next: ForgeOS 2 — March 15
@@ -955,7 +1127,7 @@ footer{background:#070707;border-top:1px solid rgba(255,255,255,.15);padding:60p
           <li><span>✅</span>Fake order reduction</li><li><span>✅</span>Stores up to 5 products in AI memory</li>
           <li><span>✅</span>Trained with your business knowledge</li><li><span>⚠️</span>3–5 AI brain updates (limited)</li>
         </ul>
-        <a class="plan-cta cta-outline" href="#" onclick="addToCart('Agent X','Basic',999);return false;">Add to Cart</a>
+        <a class="plan-cta cta-outline tally-btn" href="https://tally.so/r/ODPLbY?plan=AgentXBasic" target="_blank" onclick="tallyOpen('AgentXBasic');return false;">Get Started →</a>
       </div>
       <div class="plan-card feat-card fade-up" style="transition-delay:.1s">
         <div class="plan-badge">Most Popular</div>
@@ -967,7 +1139,7 @@ footer{background:#070707;border-top:1px solid rgba(255,255,255,.15);padding:60p
           <li><span>✅</span>Custom AI theme & branding</li><li><span>✅</span>Advanced conversation for better sales</li>
           <li><span>✅</span>Better lead conversion system</li><li><span>✅</span>Priority Forge support</li>
         </ul>
-        <a class="plan-cta cta-gold" href="#" onclick="addToCart('Agent X','Pro',4999);return false;">Add to Cart</a>
+        <a class="plan-cta cta-gold tally-btn" href="https://tally.so/r/ODPLbY?plan=AgentXPro" target="_blank" onclick="tallyOpen('AgentXPro');return false;">Get Started →</a>
       </div>
       <div class="plan-card fade-up" style="transition-delay:.2s">
         <p class="tier elite">Elite</p><span class="lbl-agent">Agent X</span>
@@ -978,7 +1150,7 @@ footer{background:#070707;border-top:1px solid rgba(255,255,255,.15);padding:60p
           <li><span>✅</span>Smart AI negotiations with customers</li><li><span>✅</span>Advanced AI conversation intelligence</li>
           <li><span>✅</span>24/7 Forge premium support</li><li><span>✅</span>Add new skills to AI brain</li>
         </ul>
-        <a class="plan-cta cta-outline" href="#" onclick="addToCart('Agent X','Elite',5999);return false;">Add to Cart</a>
+        <a class="plan-cta cta-outline tally-btn" href="https://tally.so/r/ODPLbY?plan=AgentXElite" target="_blank" onclick="tallyOpen('AgentXElite');return false;">Get Started →</a>
       </div>
     </div>
     <div id="plans-booking" class="plans-grid" style="display:none">
@@ -991,7 +1163,7 @@ footer{background:#070707;border-top:1px solid rgba(255,255,255,.15);padding:60p
           <li><span>✅</span>Salons, clinics, tutors & more</li><li><span>✅</span>Simple clean booking theme</li>
           <li><span>⚠️</span>Post-purchase changes: ₹500/week</li>
         </ul>
-        <a class="plan-cta cta-outline" href="#" onclick="addToCart('Smart Booking','Basic',1999);return false;">Add to Cart</a>
+        <a class="plan-cta cta-outline tally-btn" href="https://tally.so/r/ODPLbY?plan=SmartAppointmentBasic" target="_blank" onclick="tallyOpen('SmartAppointmentBasic');return false;">Get Started →</a>
       </div>
       <div class="plan-card feat-card fade-up" style="transition-delay:.1s">
         <div class="plan-badge">Best Value</div>
@@ -1003,7 +1175,7 @@ footer{background:#070707;border-top:1px solid rgba(255,255,255,.15);padding:60p
           <li><span>✅</span>All customizations free forever</li><li><span>✅</span>Advanced AI conversations</li>
           <li><span>✅</span>Priority Forge support</li>
         </ul>
-        <a class="plan-cta cta-gold" href="#" onclick="addToCart('Smart Booking','Pro',4999);return false;">Add to Cart</a>
+        <a class="plan-cta cta-gold tally-btn" href="https://tally.so/r/ODPLbY?plan=SmartAppointmentPro" target="_blank" onclick="tallyOpen('SmartAppointmentPro');return false;">Get Started →</a>
       </div>
     </div>
     <div class="fade-up" style="max-width:700px;margin:50px auto 0;text-align:center;background:#0d0d0d;border:1px solid rgba(255,255,255,.28);border-radius:20px;padding:36px;">
@@ -1058,7 +1230,7 @@ footer{background:#070707;border-top:1px solid rgba(255,255,255,.15);padding:60p
             <div class="cfi"><span class="cfi-icon" style="background:rgba(34,197,94,.12);color:#4ade80;">🧠</span><span>Up to 5 products in AI memory</span></div>
             <div class="cfi"><span class="cfi-icon" style="background:rgba(251,191,36,.12);color:#fbbf24;">⚠️</span><span>3–5 limited AI brain updates</span></div>
             <div style="margin-top:8px;padding:10px 14px;background:rgba(34,197,94,.07);border:1px solid rgba(34,197,94,.2);border-radius:12px;display:flex;align-items:center;gap:8px;"><span>♾️</span><span style="font-size:12px;font-weight:700;color:#4ade80;">Lifetime — Pay Once, Forever</span></div>
-            <a href="#" onclick="addToCart('Agent X','Basic',999);return false;" style="display:block;padding:12px;background:transparent;border:1px solid rgba(34,197,94,.4);border-radius:12px;color:#4ade80;font-size:13px;font-weight:700;text-align:center;text-decoration:none;transition:background .2s;" onmouseenter="this.style.background='rgba(34,197,94,.1)'" onmouseleave="this.style.background='transparent'">Add to Cart →</a>
+            <a href="https://tally.so/r/ODPLbY?plan=AgentXBasic" target="_blank" onclick="tallyOpen('AgentXBasic')" style="display:block;padding:12px;background:transparent;border:1px solid rgba(34,197,94,.4);border-radius:12px;color:#4ade80;font-size:13px;font-weight:700;text-align:center;text-decoration:none;transition:background .2s;" onmouseenter="this.style.background='rgba(34,197,94,.1)'" onmouseleave="this.style.background='transparent'">Get Started →</a>
           </div>
         </div>
         <!-- PRO -->
@@ -1082,7 +1254,7 @@ footer{background:#070707;border-top:1px solid rgba(255,255,255,.15);padding:60p
             <div class="cfi"><span class="cfi-icon" style="background:rgba(212,175,55,.12);color:#d4af37;">📈</span><span>Better lead conversion system</span></div>
             <div class="cfi"><span class="cfi-icon" style="background:rgba(212,175,55,.12);color:#d4af37;">🛡️</span><span>Priority Forge support</span></div>
             <div style="margin-top:8px;padding:10px 14px;background:rgba(212,175,55,.07);border:1px solid rgba(212,175,55,.22);border-radius:12px;display:flex;align-items:center;gap:8px;"><span>♾️</span><span style="font-size:12px;font-weight:700;color:#d4af37;">Lifetime — Pay Once, Forever</span></div>
-            <a href="#" onclick="addToCart('Agent X','Pro',4999);return false;" style="display:block;padding:12px;background:linear-gradient(135deg,#d4af37,#f0d060);border:none;border-radius:12px;color:#000;font-size:13px;font-weight:800;text-align:center;text-decoration:none;transition:opacity .2s;" onmouseenter="this.style.opacity='.88'" onmouseleave="this.style.opacity='1'">Add to Cart →</a>
+            <a href="https://tally.so/r/ODPLbY?plan=AgentXPro" target="_blank" onclick="tallyOpen('AgentXPro')" style="display:block;padding:12px;background:linear-gradient(135deg,#d4af37,#f0d060);border:none;border-radius:12px;color:#000;font-size:13px;font-weight:800;text-align:center;text-decoration:none;transition:opacity .2s;" onmouseenter="this.style.opacity='.88'" onmouseleave="this.style.opacity='1'">Get Started →</a>
           </div>
         </div>
         <!-- ELITE -->
@@ -1105,7 +1277,7 @@ footer{background:#070707;border-top:1px solid rgba(255,255,255,.15);padding:60p
             <div class="cfi"><span class="cfi-icon" style="background:rgba(191,90,242,.12);color:#bf5af2;">📊</span><span>Best for high-volume businesses</span></div>
             <div class="cfi"><span class="cfi-icon" style="background:rgba(191,90,242,.12);color:#bf5af2;">🛡️</span><span>24/7 Forge premium support</span></div>
             <div style="margin-top:8px;padding:10px 14px;background:rgba(191,90,242,.07);border:1px solid rgba(191,90,242,.22);border-radius:12px;display:flex;align-items:center;gap:8px;"><span>♾️</span><span style="font-size:12px;font-weight:700;color:#bf5af2;">Lifetime — Pay Once, Forever</span></div>
-            <a href="#" onclick="addToCart('Agent X','Elite',5999);return false;" style="display:block;padding:12px;background:transparent;border:1px solid rgba(191,90,242,.4);border-radius:12px;color:#bf5af2;font-size:13px;font-weight:700;text-align:center;text-decoration:none;transition:background .2s;" onmouseenter="this.style.background='rgba(191,90,242,.1)'" onmouseleave="this.style.background='transparent'">Add to Cart →</a>
+            <a href="https://tally.so/r/ODPLbY?plan=AgentXElite" target="_blank" onclick="tallyOpen('AgentXElite')" style="display:block;padding:12px;background:transparent;border:1px solid rgba(191,90,242,.4);border-radius:12px;color:#bf5af2;font-size:13px;font-weight:700;text-align:center;text-decoration:none;transition:background .2s;" onmouseenter="this.style.background='rgba(191,90,242,.1)'" onmouseleave="this.style.background='transparent'">Get Started →</a>
           </div>
         </div>
       </div><!-- /three-col -->
@@ -1133,7 +1305,7 @@ footer{background:#070707;border-top:1px solid rgba(255,255,255,.15);padding:60p
             <div class="cfi"><span class="cfi-icon" style="background:rgba(34,197,94,.12);color:#4ade80;">🗓️</span><span>Date &amp; time slot booking</span></div>
             <div class="cfi"><span class="cfi-icon" style="background:rgba(34,197,94,.12);color:#4ade80;">📋</span><span>Up to 4–5 service types</span></div>
             <div class="cfi"><span class="cfi-icon" style="background:rgba(251,191,36,.12);color:#fbbf24;">⚠️</span><span>Post-purchase changes: ₹500/week</span></div>
-            <a href="#" onclick="addToCart('Smart Booking','Basic',1999);return false;" style="display:block;margin-top:8px;padding:12px;background:transparent;border:1px solid rgba(34,197,94,.4);border-radius:12px;color:#4ade80;font-size:13px;font-weight:700;text-align:center;text-decoration:none;" onmouseenter="this.style.background='rgba(34,197,94,.1)'" onmouseleave="this.style.background='transparent'">Add to Cart →</a>
+            <a href="https://tally.so/r/ODPLbY?plan=SmartAppointmentBasic" target="_blank" onclick="tallyOpen('SmartAppointmentBasic')" style="display:block;margin-top:8px;padding:12px;background:transparent;border:1px solid rgba(34,197,94,.4);border-radius:12px;color:#4ade80;font-size:13px;font-weight:700;text-align:center;text-decoration:none;" onmouseenter="this.style.background='rgba(34,197,94,.1)'" onmouseleave="this.style.background='transparent'">Get Started →</a>
           </div>
         </div>
         <div class="cmp-card" style="background:#0a0a0a;border:1px solid rgba(212,175,55,.55);box-shadow:0 0 30px rgba(212,175,55,.07);" onmouseenter="this.style.boxShadow='0 28px 60px rgba(212,175,55,.14)'" onmouseleave="this.style.boxShadow='0 0 30px rgba(212,175,55,.07)'">
@@ -1149,7 +1321,7 @@ footer{background:#070707;border-top:1px solid rgba(255,255,255,.15);padding:60p
             <div class="cfi"><span class="cfi-icon" style="background:rgba(212,175,55,.12);color:#d4af37;">🎨</span><span>Custom booking page design</span></div>
             <div class="cfi"><span class="cfi-icon" style="background:rgba(212,175,55,.12);color:#d4af37;">🔄</span><span>Unlimited free changes</span></div>
             <div class="cfi"><span class="cfi-icon" style="background:rgba(212,175,55,.12);color:#d4af37;">🛡️</span><span>Priority Forge support</span></div>
-            <a href="#" onclick="addToCart('Smart Booking','Pro',4999);return false;" style="display:block;margin-top:8px;padding:12px;background:linear-gradient(135deg,#d4af37,#f0d060);border:none;border-radius:12px;color:#000;font-size:13px;font-weight:800;text-align:center;text-decoration:none;" onmouseenter="this.style.opacity='.88'" onmouseleave="this.style.opacity='1'">Add to Cart →</a>
+            <a href="https://tally.so/r/ODPLbY?plan=SmartAppointmentPro" target="_blank" onclick="tallyOpen('SmartAppointmentPro')" style="display:block;margin-top:8px;padding:12px;background:linear-gradient(135deg,#d4af37,#f0d060);border:none;border-radius:12px;color:#000;font-size:13px;font-weight:800;text-align:center;text-decoration:none;" onmouseenter="this.style.opacity='.88'" onmouseleave="this.style.opacity='1'">Get Started →</a>
           </div>
         </div>
       </div>
@@ -1217,7 +1389,7 @@ footer{background:#070707;border-top:1px solid rgba(255,255,255,.15);padding:60p
       <div class="faq-item"><div class="faq-q" onclick="tFaq(this)"><span>What does "AI brain update" mean?</span><span class="faq-icon">+</span></div><div class="faq-a">An AI brain update means we add new knowledge — new products, new pricing, new policies, new capabilities. Basic plan gets 3–5 updates. Pro and Elite get unlimited — call us anytime.</div></div>
       <div class="faq-item"><div class="faq-q" onclick="tFaq(this)"><span>How fast does Agent X reply to customers?</span><span class="faq-icon">+</span></div><div class="faq-a">Within 2–5 seconds of a customer's message — 24/7, 365 days a year. No delays, no breaks, no days off. Even at 3am on a Sunday.</div></div>
       <div class="faq-item"><div class="faq-q" onclick="tFaq(this)"><span>Who is Smart Booking Software for?</span><span class="faq-icon">+</span></div><div class="faq-a">Any appointment-based business — hair salons, beauty parlors, clinics, doctors, tutors, fitness trainers, dental offices, massage centers, and more. Customers chat with the AI to book their slot.</div></div>
-      <div class="faq-item"><div class="faq-q" onclick="tFaq(this)"><span>How do I buy a plan?</span><span class="faq-icon">+</span></div><div class="faq-a">Click "Add to Cart" on any plan, then "Buy via WhatsApp" in your cart. Our team confirms your order, takes payment, and begins AI setup. Smooth and quick.</div></div>
+      <div class="faq-item"><div class="faq-q" onclick="tFaq(this)"><span>How do I buy a plan?</span><span class="faq-icon">+</span></div><div class="faq-a">Click "Get Started" on any plan — it opens a quick setup form. Fill in your business details, and our team will contact you to confirm your order, take payment, and begin AI setup. Smooth and quick.</div></div>
       <div class="faq-item"><div class="faq-q" onclick="tFaq(this)"><span>Can I upgrade from Basic to Pro or Elite later?</span><span class="faq-icon">+</span></div><div class="faq-a">Yes! Upgrade anytime by paying the difference. Contact us on WhatsApp — existing AI training data is preserved and we add the new features on top.</div></div>
       <div class="faq-item"><div class="faq-q" onclick="tFaq(this)"><span>What if my business changes — can the AI be updated?</span><span class="faq-icon">+</span></div><div class="faq-a">Absolutely. Pro and Elite holders get unlimited AI brain updates. Basic plan gets 3–5. After that, upgrade or pay a small fee for additional updates.</div></div>
       <div class="faq-item"><div class="faq-q" onclick="tFaq(this)"><span>Does Agent X really reduce fake or spam orders?</span><span class="faq-icon">+</span></div><div class="faq-a">Yes. The AI asks qualifying questions to filter out low-intent conversations. It only redirects customers to WhatsApp when they've shown genuine purchase intent — saving real time.</div></div>
@@ -1262,7 +1434,7 @@ footer{background:#070707;border-top:1px solid rgba(255,255,255,.15);padding:60p
       <div class="forgeos-footer">
         <div class="fof-left">
           <span class="fof-dot"></span>
-          <span class="fof-text"><strong>ForgeOS <em>1.10</em></strong></span>
+          <span class="fof-text"><strong>ForgeOS <em>1.20</em></strong></span>
         </div>
         <div class="fof-sep"></div>
         <div class="fof-next">
@@ -1278,21 +1450,28 @@ footer{background:#070707;border-top:1px solid rgba(255,255,255,.15);padding:60p
   </div>
 </footer>
 
-<!-- FLOATING HYPE PILL (shows on all pages) -->
-<div class="hype-pill" id="hype-pill" onclick="window.open('https://whatsapp.com/channel/0029VbCfQIoG8l59dsuLPv1Q','_blank')">
-  <span class="fire-shake" style="font-size:18px;">🔥</span>
-  <span>New AI Software Coming!</span>
-  <span style="font-size:11px;color:#b8b8c2;font-weight:400;">Join Broadcast →</span>
-  <button class="hype-close" onclick="event.stopPropagation();document.getElementById('hype-pill').style.display='none'">✕</button>
-</div>
-
-<!-- FLOATING OS UPDATE PILL (shows on all pages) -->
-<div class="os-float-pill" id="os-float-pill" onclick="openOsModal()">
-  <span class="os-fp-dot"></span>
-  <span class="os-fp-label">🖥️ <strong>OS Update</strong></span>
-  <span class="os-fp-ver">v1.10 → v2</span>
-  <span class="os-fp-arrow">→</span>
-  <button class="hype-close" onclick="event.stopPropagation();document.getElementById('os-float-pill').style.display='none'">✕</button>
+<!-- COMBINED FLOATING STATUS BAR (shows on all pages) -->
+<div class="status-bar" id="status-bar">
+  <!-- OS Update side -->
+  <div class="sb-os" onclick="openOsModal()" title="OS Update info">
+    <span class="sb-dot sb-dot-green"></span>
+    <span class="sb-icon">🖥️</span>
+    <span class="sb-text"><strong>OS 1.20</strong></span>
+    <span class="sb-sep">·</span>
+    <span class="sb-sub">v2 Mar 15</span>
+  </div>
+  <!-- Divider -->
+  <div class="sb-divider"></div>
+  <!-- Broadcast side -->
+  <div class="sb-bc" onclick="window.open('https://whatsapp.com/channel/0029VbCfQIoG8l59dsuLPv1Q','_blank')" title="Join Broadcast">
+    <span class="sb-dot sb-dot-orange"></span>
+    <span class="sb-icon">🔥</span>
+    <span class="sb-text"><strong>New Launch</strong></span>
+    <span class="sb-sep">·</span>
+    <span class="sb-sub">Join →</span>
+  </div>
+  <!-- Close -->
+  <button class="sb-close" onclick="event.stopPropagation();document.getElementById('status-bar').style.display='none'" aria-label="Close">✕</button>
 </div>
 
 <!-- OS UPDATE MODAL OVERLAY -->
@@ -1311,11 +1490,11 @@ footer{background:#070707;border-top:1px solid rgba(255,255,255,.15);padding:60p
   <div class="os-version-block">
     <div class="os-vb-left">
       <div class="os-vb-tag">WEBSITE CURRENTLY RUNNING ON</div>
-      <div class="os-vb-ver">ForgeOS <span class="os-vb-num">1.10</span></div>
+      <div class="os-vb-ver">ForgeOS <span class="os-vb-num">1.20</span></div>
       <div class="os-vb-status">
         <span class="os-vb-dot"></span> All Systems Live &amp; Stable
       </div>
-      <div style="margin-top:10px;font-size:10px;color:#3a3650;letter-spacing:.3px;">Last update: <span style="color:#4a4468;">ForgeOS 1.99 — deployed 12:36 · 9/3/25</span></div>
+      <div style="margin-top:10px;font-size:10px;color:#3a3650;letter-spacing:.3px;">Last update: <span style="color:#4a4468;">ForgeOS 1.10 — deployed 09/03/26</span></div>
     </div>
     <div class="os-vb-icon">⚡</div>
   </div>
@@ -1984,7 +2163,7 @@ function startEarth(){
     mountains.forEach(([x1,y1,x2,y2])=>{
       const mg=ctx.createLinearGradient(cx+x1*r,cy+y1*r,cx+x2*r,cy+y2*r);
       mg.addColorStop(0,'rgba(80,100,60,.0)');mg.addColorStop(.4,'rgba(60,80,40,.15)');mg.addColorStop(1,'rgba(80,100,60,.0)');
-      ctx.beginPath();ctx.ellipse((cx+cx+x1*r+cx+x2*r)/3,cy+(y1+y2)/2*r,r*.12,r*.04,Math.atan2(y2-y1,x2-x1),0,Math.PI*2);
+      ctx.beginPath();ctx.ellipse(cx+(x1+x2)/2*r,cy+(y1+y2)/2*r,r*.12,r*.04,Math.atan2(y2-y1,x2-x1),0,Math.PI*2);
       ctx.fillStyle=mg;ctx.fill();
     });
 
@@ -2814,6 +2993,22 @@ function startOsCountdown(){
 }
 // Close on Escape key
 document.addEventListener('keydown',e=>{if(e.key==='Escape')closeOsModal();});
+
+// ═══ TALLY FORM — PLAN SELECTION ═══
+const TALLY_BASE='https://tally.so/r/ODPLbY';
+const TALLY_PLANS={
+  AgentXBasic:      {label:'Agent X — Basic',     price:'₹999'},
+  AgentXPro:        {label:'Agent X — Pro',        price:'₹4,999'},
+  AgentXElite:      {label:'Agent X — Elite',      price:'₹5,999'},
+  SmartAppointmentBasic:{label:'Smart Booking — Basic', price:'₹1,999'},
+  SmartAppointmentPro:  {label:'Smart Booking — Pro',   price:'₹4,999'},
+};
+function tallyOpen(planKey){
+  const url=`${TALLY_BASE}?plan=${encodeURIComponent(planKey)}`;
+  window.open(url,'_blank','noopener,noreferrer');
+  const info=TALLY_PLANS[planKey]||{};
+  showToast('📋',`Opening setup form for ${info.label||planKey}`);
+}
 
 // ═══ TOAST ═══
 function showToast(icon,msg){

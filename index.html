@@ -247,40 +247,53 @@ body.nav-open{overflow:hidden;}
 
 
 /* ═══ PRODUCT CARDS ═══ */
-.product-card{background:#0d0d0d;border:2px solid #ffffff;border-radius:22px;overflow:hidden;transition:all .4s cubic-bezier(.25,.46,.45,.94);cursor:pointer;}
-.product-card:hover{border-color:#ffffff;transform:translateY(-8px);box-shadow:0 32px 70px rgba(0,0,0,.6),0 0 50px rgba(212,175,55,.07);}
+.product-card{background:rgba(13,13,13,0.92);border:2px solid rgba(255,255,255,.7);border-radius:22px;overflow:hidden;transition:all .4s cubic-bezier(.25,.46,.45,.94);cursor:pointer;backdrop-filter:blur(8px);}
+.product-card:hover{border-color:#ffffff;transform:translateY(-8px);box-shadow:0 32px 70px rgba(0,0,0,.5),0 0 50px rgba(212,175,55,.1);}
 .pcard-header{padding:36px 36px 0;}
-.picon{width:52px;height:52px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:26px;margin-bottom:20px;}
-.picon-agent{background:linear-gradient(135deg,#0a0a20,#0d1a30);border:1px solid rgba(59,130,246,.4);}
-.picon-booking{background:linear-gradient(135deg,#0a200a,#0d2a0d);border:1px solid rgba(34,197,94,.4);}
+.picon{width:58px;height:58px;border-radius:16px;display:flex;align-items:center;justify-content:center;font-size:28px;margin-bottom:20px;filter:drop-shadow(0 4px 12px rgba(0,0,0,.4));}
+.picon-agent{background:linear-gradient(135deg,#0033cc,#0066ff,#38bdf8);border:1.5px solid rgba(96,165,250,.7);box-shadow:0 6px 28px rgba(56,189,248,.5);}
+.picon-booking{background:linear-gradient(135deg,#006622,#00aa44,#4ade80);border:1.5px solid rgba(74,222,128,.7);box-shadow:0 6px 28px rgba(74,222,128,.5);}
 .ptag{display:inline-block;padding:4px 12px;border-radius:20px;font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;margin-bottom:12px;}
-.tag-ai{background:rgba(59,130,246,.12);color:#60a5fa;border:1px solid rgba(96,165,250,.28);}
-.tag-book{background:rgba(34,197,94,.12);color:#4ade80;border:1px solid rgba(74,222,128,.28);}
+.tag-ai{background:rgba(59,130,246,.22);color:#93c5fd;border:1px solid rgba(147,197,253,.5);}
+.tag-book{background:rgba(34,197,94,.22);color:#86efac;border:1px solid rgba(134,239,172,.5);}
 .pname{font-size:26px;font-weight:800;letter-spacing:-.8px;margin-bottom:10px;color:#fff;}
-.ptagline{font-size:14px;color:#b8b8c2;line-height:1.55;font-weight:300;margin-bottom:24px;}
+.ptagline{font-size:14px;color:#c8c8d5;line-height:1.55;font-weight:300;margin-bottom:24px;}
 .pvisual{height:160px;margin:0 36px;border-radius:14px;overflow:hidden;position:relative;display:flex;align-items:center;justify-content:center;}
 .pvisual-agent{background:linear-gradient(135deg,#000428,#004e92);}
 .pvisual-book{background:linear-gradient(135deg,#0f2027,#203a43,#2c5364);}
-.vbadge{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.18);border-radius:10px;padding:10px 18px;font-size:12px;color:#fff;backdrop-filter:blur(10px);}
+.vbadge{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.22);border-radius:10px;padding:10px 18px;font-size:12px;color:#fff;backdrop-filter:blur(10px);}
 .pcard-foot{padding:22px 36px 36px;}
 .price-row{display:flex;align-items:baseline;gap:8px;margin-bottom:6px;}
-.price-from{font-size:12px;color:#606068;}
+.price-from{font-size:12px;color:#808090;}
 .price-amt{font-size:30px;font-weight:800;letter-spacing:-1px;color:#fff;}
-.price-life{font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#22c55e;background:rgba(34,197,94,.12);padding:3px 8px;border-radius:20px;border:1px solid rgba(34,197,94,.25);}
+.price-life{font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#4ade80;background:rgba(34,197,94,.18);padding:3px 8px;border-radius:20px;border:1px solid rgba(74,222,128,.4);}
 .plan-chips{display:flex;gap:7px;margin-top:16px;flex-wrap:wrap;}
-.chip{padding:5px 13px;border-radius:20px;font-size:12px;font-weight:500;cursor:pointer;transition:all .2s;border:1px solid rgba(255,255,255,.22);background:transparent;color:#b8b8c2;}
+.chip{padding:5px 13px;border-radius:20px;font-size:12px;font-weight:500;cursor:pointer;transition:all .2s;border:1px solid rgba(255,255,255,.28);background:transparent;color:#d0d0e0;}
 .chip:hover,.chip.active{background:#fff;color:#000;border-color:#fff;}
-.view-btn{display:block;width:100%;margin-top:18px;background:transparent;border:1px solid rgba(255,255,255,.25);color:#fff;padding:11px;border-radius:12px;font-size:13px;font-weight:500;cursor:pointer;transition:all .3s;text-align:center;text-decoration:none;}
-.view-btn:hover{background:rgba(255,255,255,.07);border-color:rgba(255,255,255,.45);}
+.view-btn{display:block;width:100%;margin-top:18px;background:transparent;border:1px solid rgba(255,255,255,.3);color:#fff;padding:11px;border-radius:12px;font-size:13px;font-weight:500;cursor:pointer;transition:all .3s;text-align:center;text-decoration:none;}
+.view-btn:hover{background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.55);}
+
+/* ── MOBILE ECLIPSE VIEWPORT ── */
+#eclipse-peek{display:none;width:100%;height:220px;position:relative;overflow:hidden;margin-bottom:0;}
+#eclipse-peek canvas{position:absolute;top:-52px;left:0;width:100vw;height:calc(100vh);pointer-events:none;}
+@media(max-width:768px){
+  #eclipse-peek{display:block;}
+  /* On mobile, cards become glass so eclipse shows through */
+  .product-card{
+    background:rgba(8,8,14,0.72)!important;
+    backdrop-filter:blur(12px) saturate(140%)!important;
+    border-color:rgba(255,255,255,.55)!important;
+  }
+}
 
 /* ═══ FEATURES GRID ═══ */
 .features-grid{max-width:1100px;margin:60px auto 0;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(250px,100%),1fr));gap:2px;}
 .feat{background:#0d0d0d;padding:36px;transition:background .3s;border:2px solid #ffffff;}
 .feat:hover{background:#161616;}
-.feat:hover .feat-icon{transform:scale(1.15);}
-.feat-icon{font-size:34px;margin-bottom:16px;display:block;transition:transform .3s;}
+.feat:hover .feat-icon{transform:scale(1.18);}
+.feat-icon{font-size:36px;margin-bottom:16px;display:block;transition:transform .3s;filter:drop-shadow(0 0 10px rgba(255,200,80,.5)) drop-shadow(0 4px 8px rgba(0,0,0,.4));}
 .feat-title{font-size:16px;font-weight:700;margin-bottom:8px;color:#fff;}
-.feat-desc{font-size:13px;color:#b8b8c2;line-height:1.65;font-weight:300;}
+.feat-desc{font-size:13px;color:#c0c0cc;line-height:1.65;font-weight:300;}
 /* round corners */
 .feat:first-child{border-radius:20px 0 0 0;}.feat:nth-child(3){border-radius:0 20px 0 0;}
 .feat:nth-child(4){border-radius:0 0 0 20px;}.feat:last-child{border-radius:0 0 20px 0;}
@@ -801,6 +814,16 @@ nav{height:52px;}
 
 /* -- Fix emoji icons not scaling -- */
 .feat-icon,.sc-icon,.picon{font-size:clamp(22px,4vw,34px);}
+/* ── GLOBAL ICON GLOW BOOST ── */
+.sc-icon{filter:drop-shadow(0 2px 6px rgba(0,0,0,.5)) brightness(1.15)!important;}
+.sc-icon-wrap{transition:transform .3s,box-shadow .3s;}
+.support-card:hover .sc-icon-wrap{transform:scale(1.08);}
+/* Capabilities grid icons */
+.caps-grid [style*="font-size:28px"]{filter:drop-shadow(0 0 10px rgba(255,180,60,.6)) drop-shadow(0 3px 6px rgba(0,0,0,.5));}
+/* Home how-it-works + timeline icons */
+.step-num,.hiw-icon{filter:drop-shadow(0 0 12px rgba(212,175,55,.5));}
+/* General emoji icon boost */
+.fire-shake{filter:drop-shadow(0 0 12px rgba(255,120,0,.8)) drop-shadow(0 4px 8px rgba(0,0,0,.4))!important;}
 
 /* -- Nav OS link hidden on very small -- */
 @media(max-width:860px){
@@ -1627,6 +1650,17 @@ footer{background:#070707;border-top:1px solid rgba(255,255,255,.15);padding:60p
 <!-- ═══════════════ PAGE: PRODUCTS ═══════════════ -->
 <div class="page" id="page-products" style="overflow-x:hidden;">
   <canvas id="planet-canvas" style="position:fixed;top:0;left:0;width:100vw;height:100vh;pointer-events:none;z-index:0;will-change:transform;"></canvas>
+
+  <!-- MOBILE ECLIPSE PEEK: shows eclipse above cards on phone -->
+  <div id="eclipse-peek">
+    <div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;z-index:2;pointer-events:none;">
+      <p style="font-size:11px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:rgba(255,220,160,.7);margin:0 0 4px;">Total Solar Eclipse</p>
+      <p style="font-size:10px;color:rgba(200,200,220,.4);margin:0;letter-spacing:1px;">Products Page · Live Animation</p>
+    </div>
+    <!-- Gradient fade bottom so cards blend in -->
+    <div style="position:absolute;bottom:0;left:0;right:0;height:80px;background:linear-gradient(to bottom,transparent,rgba(4,4,12,1));z-index:3;pointer-events:none;"></div>
+  </div>
+
   <div style="padding-top:52px;position:relative;z-index:2;"></div>
   <section class="section" style="background:transparent;position:relative;z-index:2;">
     <div class="center fade-up">
@@ -1696,12 +1730,12 @@ footer{background:#070707;border-top:1px solid rgba(255,255,255,.15);padding:60p
     <div style="max-width:1100px;margin:50px auto 0;">
       <div class="center fade-up" style="margin-bottom:40px;"><p class="eyebrow">Inside Every Plan</p><h2 class="stitle">Core Capabilities</h2></div>
       <div class="caps-grid fade-up">
-        <div style="background:#0d0d0d;border:1px solid rgba(255,255,255,.28);border-radius:18px;padding:28px;transition:all .3s;" onmouseenter="this.style.borderColor='rgba(212,175,55,.5)'" onmouseleave="this.style.borderColor='rgba(255,255,255,.28)'"><div style="font-size:28px;margin-bottom:14px;">🤝</div><h4 style="font-size:16px;font-weight:700;margin-bottom:8px;color:#fff;">Smart Deal Closing</h4><p style="font-size:13px;color:#b8b8c2;line-height:1.6;">Handles objections, answers questions, guides customers toward buying — fully automated.</p></div>
-        <div style="background:#0d0d0d;border:1px solid rgba(255,255,255,.28);border-radius:18px;padding:28px;transition:all .3s;" onmouseenter="this.style.borderColor='rgba(212,175,55,.5)'" onmouseleave="this.style.borderColor='rgba(255,255,255,.28)'"><div style="font-size:28px;margin-bottom:14px;">📦</div><h4 style="font-size:16px;font-weight:700;margin-bottom:8px;color:#fff;">Product Memory</h4><p style="font-size:13px;color:#b8b8c2;line-height:1.6;">AI remembers all products, prices, and details — explains them clearly to every customer.</p></div>
-        <div style="background:#0d0d0d;border:1px solid rgba(255,255,255,.28);border-radius:18px;padding:28px;transition:all .3s;" onmouseenter="this.style.borderColor='rgba(212,175,55,.5)'" onmouseleave="this.style.borderColor='rgba(255,255,255,.28)'"><div style="font-size:28px;margin-bottom:14px;">🔄</div><h4 style="font-size:16px;font-weight:700;margin-bottom:8px;color:#fff;">Easy AI Updates</h4><p style="font-size:13px;color:#b8b8c2;line-height:1.6;">New product? Changed price? Contact us — we update your AI's brain so it stays current.</p></div>
-        <div style="background:#0d0d0d;border:1px solid rgba(255,255,255,.28);border-radius:18px;padding:28px;transition:all .3s;" onmouseenter="this.style.borderColor='rgba(212,175,55,.5)'" onmouseleave="this.style.borderColor='rgba(255,255,255,.28)'"><div style="font-size:28px;margin-bottom:14px;">📱</div><h4 style="font-size:16px;font-weight:700;margin-bottom:8px;color:#fff;">WhatsApp Native</h4><p style="font-size:13px;color:#b8b8c2;line-height:1.6;">Works on WhatsApp — where most Indian customers already are.</p></div>
-        <div style="background:#0d0d0d;border:1px solid rgba(255,255,255,.28);border-radius:18px;padding:28px;transition:all .3s;" onmouseenter="this.style.borderColor='rgba(212,175,55,.5)'" onmouseleave="this.style.borderColor='rgba(255,255,255,.28)'"><div style="font-size:28px;margin-bottom:14px;">🗓️</div><h4 style="font-size:16px;font-weight:700;margin-bottom:8px;color:#fff;">Appointment Booking</h4><p style="font-size:13px;color:#b8b8c2;line-height:1.6;">Customers choose service, date, and time by chatting — AI books it instantly.</p></div>
-        <div style="background:#0d0d0d;border:1px solid rgba(255,255,255,.28);border-radius:18px;padding:28px;transition:all .3s;" onmouseenter="this.style.borderColor='rgba(212,175,55,.5)'" onmouseleave="this.style.borderColor='rgba(255,255,255,.28)'"><div style="font-size:28px;margin-bottom:14px;">♾️</div><h4 style="font-size:16px;font-weight:700;margin-bottom:8px;color:#fff;">Lifetime — No Bills</h4><p style="font-size:13px;color:#b8b8c2;line-height:1.6;">Pay once. Use forever. No subscription, no renewal, no hidden charges.</p></div>
+        <div style="background:#0d0d0d;border:1px solid rgba(255,255,255,.18);border-radius:18px;padding:28px;transition:all .3s;" onmouseenter="this.style.borderColor='rgba(212,175,55,.5)'" onmouseleave="this.style.borderColor='rgba(255,255,255,.18)'"><div style="width:48px;height:48px;border-radius:14px;background:linear-gradient(135deg,#d97706,#fbbf24);box-shadow:0 6px 22px rgba(251,191,36,.5);display:flex;align-items:center;justify-content:center;font-size:24px;margin-bottom:14px;">🤝</div><h4 style="font-size:16px;font-weight:700;margin-bottom:8px;color:#fff;">Smart Deal Closing</h4><p style="font-size:13px;color:#c0c0cc;line-height:1.6;">Handles objections, answers questions, guides customers toward buying — fully automated.</p></div>
+        <div style="background:#0d0d0d;border:1px solid rgba(255,255,255,.18);border-radius:18px;padding:28px;transition:all .3s;" onmouseenter="this.style.borderColor='rgba(212,175,55,.5)'" onmouseleave="this.style.borderColor='rgba(255,255,255,.18)'"><div style="width:48px;height:48px;border-radius:14px;background:linear-gradient(135deg,#0066ff,#38bdf8);box-shadow:0 6px 22px rgba(56,189,248,.5);display:flex;align-items:center;justify-content:center;font-size:24px;margin-bottom:14px;">📦</div><h4 style="font-size:16px;font-weight:700;margin-bottom:8px;color:#fff;">Product Memory</h4><p style="font-size:13px;color:#c0c0cc;line-height:1.6;">AI remembers all products, prices, and details — explains them clearly to every customer.</p></div>
+        <div style="background:#0d0d0d;border:1px solid rgba(255,255,255,.18);border-radius:18px;padding:28px;transition:all .3s;" onmouseenter="this.style.borderColor='rgba(212,175,55,.5)'" onmouseleave="this.style.borderColor='rgba(255,255,255,.18)'"><div style="width:48px;height:48px;border-radius:14px;background:linear-gradient(135deg,#7c3aed,#c084fc);box-shadow:0 6px 22px rgba(192,132,252,.5);display:flex;align-items:center;justify-content:center;font-size:24px;margin-bottom:14px;">🔄</div><h4 style="font-size:16px;font-weight:700;margin-bottom:8px;color:#fff;">Easy AI Updates</h4><p style="font-size:13px;color:#c0c0cc;line-height:1.6;">New product? Changed price? Contact us — we update your AI's brain so it stays current.</p></div>
+        <div style="background:#0d0d0d;border:1px solid rgba(255,255,255,.18);border-radius:18px;padding:28px;transition:all .3s;" onmouseenter="this.style.borderColor='rgba(212,175,55,.5)'" onmouseleave="this.style.borderColor='rgba(255,255,255,.18)'"><div style="width:48px;height:48px;border-radius:14px;background:linear-gradient(135deg,#00c853,#1de94b);box-shadow:0 6px 22px rgba(0,200,83,.5);display:flex;align-items:center;justify-content:center;font-size:24px;margin-bottom:14px;">📱</div><h4 style="font-size:16px;font-weight:700;margin-bottom:8px;color:#fff;">WhatsApp Native</h4><p style="font-size:13px;color:#c0c0cc;line-height:1.6;">Works on WhatsApp — where most Indian customers already are.</p></div>
+        <div style="background:#0d0d0d;border:1px solid rgba(255,255,255,.18);border-radius:18px;padding:28px;transition:all .3s;" onmouseenter="this.style.borderColor='rgba(212,175,55,.5)'" onmouseleave="this.style.borderColor='rgba(255,255,255,.18)'"><div style="width:48px;height:48px;border-radius:14px;background:linear-gradient(135deg,#0891b2,#22d3ee);box-shadow:0 6px 22px rgba(34,211,238,.5);display:flex;align-items:center;justify-content:center;font-size:24px;margin-bottom:14px;">🗓️</div><h4 style="font-size:16px;font-weight:700;margin-bottom:8px;color:#fff;">Appointment Booking</h4><p style="font-size:13px;color:#c0c0cc;line-height:1.6;">Customers choose service, date, and time by chatting — AI books it instantly.</p></div>
+        <div style="background:#0d0d0d;border:1px solid rgba(255,255,255,.18);border-radius:18px;padding:28px;transition:all .3s;" onmouseenter="this.style.borderColor='rgba(212,175,55,.5)'" onmouseleave="this.style.borderColor='rgba(255,255,255,.18)'"><div style="width:48px;height:48px;border-radius:14px;background:linear-gradient(135deg,#dc2626,#f87171);box-shadow:0 6px 22px rgba(248,113,113,.5);display:flex;align-items:center;justify-content:center;font-size:24px;margin-bottom:14px;">♾️</div><h4 style="font-size:16px;font-weight:700;margin-bottom:8px;color:#fff;">Lifetime — No Bills</h4><p style="font-size:13px;color:#c0c0cc;line-height:1.6;">Pay once. Use forever. No subscription, no renewal, no hidden charges.</p></div>
       </div>
     </div>
   </section>

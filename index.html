@@ -321,14 +321,52 @@ body.nav-open{overflow:hidden;}
 .cmp-card:hover{transform:translateY(-8px);}
 
 /* ═══ SUPPORT ═══ */
-.support-grid{max-width:900px;margin:50px auto 0;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(240px,100%),1fr));gap:20px;}
-.support-card{background:#0d0d0d;border:2px solid #ffffff;border-radius:18px;padding:28px;transition:all .3s;}
-.support-card:hover{border-color:#ffffff;background:#161616;transform:translateY(-4px);box-shadow:0 16px 40px rgba(0,0,0,.4);}
-.sc-icon{font-size:28px;margin-bottom:14px;}
-.sc-title{font-size:16px;font-weight:700;margin-bottom:8px;color:#fff;}
-.sc-desc{font-size:13px;color:#b8b8c2;line-height:1.55;}
-.sc-link{display:inline-flex;align-items:center;gap:6px;margin-top:14px;font-size:13px;color:#d4af37;text-decoration:none;font-weight:600;transition:gap .2s;cursor:pointer;}
-.sc-link:hover{gap:10px;}
+.support-grid{max-width:960px;margin:50px auto 0;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(260px,100%),1fr));gap:22px;}
+.support-card{background:linear-gradient(145deg,#0e0e0e,#141414);border:1.5px solid rgba(255,255,255,.12);border-radius:22px;padding:28px 26px 26px;transition:all .38s cubic-bezier(.25,.46,.45,.94);position:relative;overflow:hidden;}
+.support-card::before{content:'';position:absolute;inset:0;border-radius:22px;opacity:0;transition:opacity .3s;pointer-events:none;}
+.support-card:hover{transform:translateY(-6px);box-shadow:0 22px 55px rgba(0,0,0,.5);}
+/* Per-card accent colors on hover border + glow */
+.support-card.sc-whatsapp{border-color:rgba(37,211,102,.25);}
+.support-card.sc-whatsapp::before{background:radial-gradient(ellipse at top left,rgba(37,211,102,.07),transparent 70%);}
+.support-card.sc-whatsapp:hover{border-color:rgba(37,211,102,.6);box-shadow:0 22px 55px rgba(37,211,102,.12);}
+.support-card.sc-ai{border-color:rgba(59,130,246,.25);}
+.support-card.sc-ai::before{background:radial-gradient(ellipse at top left,rgba(59,130,246,.07),transparent 70%);}
+.support-card.sc-ai:hover{border-color:rgba(59,130,246,.6);box-shadow:0 22px 55px rgba(59,130,246,.12);}
+.support-card.sc-complaint{border-color:rgba(249,115,22,.25);}
+.support-card.sc-complaint::before{background:radial-gradient(ellipse at top left,rgba(249,115,22,.07),transparent 70%);}
+.support-card.sc-complaint:hover{border-color:rgba(249,115,22,.6);box-shadow:0 22px 55px rgba(249,115,22,.12);}
+.support-card.sc-feature{border-color:rgba(191,90,242,.25);}
+.support-card.sc-feature::before{background:radial-gradient(ellipse at top left,rgba(191,90,242,.07),transparent 70%);}
+.support-card.sc-feature:hover{border-color:rgba(191,90,242,.6);box-shadow:0 22px 55px rgba(191,90,242,.12);}
+.support-card.sc-call{border-color:rgba(220,38,38,.25);}
+.support-card.sc-call::before{background:radial-gradient(ellipse at top left,rgba(220,38,38,.07),transparent 70%);}
+.support-card.sc-call:hover{border-color:rgba(220,38,38,.55);box-shadow:0 22px 55px rgba(220,38,38,.14);}
+.support-card.sc-setup{border-color:rgba(234,179,8,.25);}
+.support-card.sc-setup::before{background:radial-gradient(ellipse at top left,rgba(234,179,8,.07),transparent 70%);}
+.support-card.sc-setup:hover{border-color:rgba(234,179,8,.6);box-shadow:0 22px 55px rgba(234,179,8,.12);}
+.support-card:hover::before{opacity:1;}
+/* Icon badge */
+.sc-icon-wrap{width:52px;height:52px;border-radius:14px;display:flex;align-items:center;justify-content:center;margin-bottom:18px;font-size:24px;position:relative;flex-shrink:0;}
+.sc-icon-wrap::after{content:'';position:absolute;inset:-1px;border-radius:15px;opacity:.4;}
+/* WhatsApp — vivid green */
+.sc-icon-wrap.ico-wa{background:linear-gradient(135deg,#00c853,#1de94b);box-shadow:0 6px 24px rgba(0,200,83,.45);}
+/* AI Brain — vivid electric blue */
+.sc-icon-wrap.ico-ai{background:linear-gradient(135deg,#0066ff,#38bdf8);box-shadow:0 6px 24px rgba(56,189,248,.45);}
+/* Complaint — vivid orange */
+.sc-icon-wrap.ico-complaint{background:linear-gradient(135deg,#ff6a00,#ff9500);box-shadow:0 6px 24px rgba(255,106,0,.45);}
+/* Feature — vivid purple */
+.sc-icon-wrap.ico-feature{background:linear-gradient(135deg,#9333ea,#d946ef);box-shadow:0 6px 24px rgba(217,70,239,.45);}
+/* Call — Apple-red phone (from AppleCare+ logo) */
+.sc-icon-wrap.ico-call{background:linear-gradient(135deg,#ff0000,#e8001a);box-shadow:0 6px 24px rgba(232,0,26,.55);}
+/* Setup — vivid gold/yellow */
+.sc-icon-wrap.ico-setup{background:linear-gradient(135deg,#f59e0b,#fde047);box-shadow:0 6px 24px rgba(245,158,11,.45);}
+.sc-icon{font-size:26px;line-height:1;filter:drop-shadow(0 2px 4px rgba(0,0,0,.3));}
+.sc-title{font-size:15px;font-weight:800;margin-bottom:7px;color:#f0f0f5;letter-spacing:-.2px;}
+.sc-desc{font-size:12.5px;color:#9090a0;line-height:1.6;}
+.sc-link{display:inline-flex;align-items:center;gap:6px;margin-top:14px;font-size:13px;font-weight:700;text-decoration:none;transition:gap .2s,opacity .2s;cursor:pointer;}
+.sc-link:hover{gap:10px;opacity:.85;}
+.sc-link.lnk-green{color:#4ade80;}.sc-link.lnk-blue{color:#60b4ff;}.sc-link.lnk-orange{color:#fb923c;}
+.sc-link.lnk-purple{color:#d87afa;}.sc-link.lnk-red{color:#f87171;}.sc-link.lnk-gold{color:#fcd34d;}
 
 /* ═══ FAQ ═══ */
 .faq-wrap{max-width:700px;margin:50px auto 0;}
@@ -1916,12 +1954,42 @@ footer{background:#070707;border-top:1px solid rgba(255,255,255,.15);padding:60p
     <div id="support-clouds"></div>
     <div class="center fade-up"><p class="eyebrow">Support & Questions</p><h2 class="stitle">We're Here to Help<br>Your Business Win</h2><p class="ssub">Complaints, updates, requests — reach Forge anytime via WhatsApp.</p></div>
     <div class="support-grid">
-      <div class="support-card fade-up"><div class="sc-icon">💬</div><h4 class="sc-title">WhatsApp Support</h4><p class="sc-desc">Fastest way to reach us. Message for setup, questions, or any help needed.</p><a href="https://wa.me/919697430658" target="_blank" class="sc-link">Chat on WhatsApp →</a></div>
-      <div class="support-card fade-up" style="transition-delay:.1s"><div class="sc-icon">🛠️</div><h4 class="sc-title">AI Brain Updates</h4><p class="sc-desc">Pro & Elite holders get unlimited updates. Contact us and we handle everything.</p><a href="https://wa.me/919697430658?text=I%20want%20to%20update%20my%20AI%20brain" target="_blank" class="sc-link">Request Update →</a></div>
-      <div class="support-card fade-up" style="transition-delay:.2s"><div class="sc-icon">📋</div><h4 class="sc-title">Complaints & Feedback</h4><p class="sc-desc">Something not working? We resolve issues fast — no delays or runaround.</p><a href="https://wa.me/919697430658?text=I%20have%20a%20complaint" target="_blank" class="sc-link">Submit Complaint →</a></div>
-      <div class="support-card fade-up" style="transition-delay:.3s"><div class="sc-icon">🚀</div><h4 class="sc-title">New Feature Requests</h4><p class="sc-desc">Pro and Elite users can request new AI capabilities — we'll build it in.</p><a href="https://wa.me/919697430658?text=I%20want%20to%20add%20new%20feature" target="_blank" class="sc-link">Request Feature →</a></div>
-      <div class="support-card fade-up" style="transition-delay:.4s"><div class="sc-icon">📞</div><h4 class="sc-title">Call Us Directly</h4><p class="sc-desc">For urgent matters call or WhatsApp us at +91 96974 30658.</p><a href="tel:+919697430658" class="sc-link">Call Now →</a></div>
-      <div class="support-card fade-up" style="transition-delay:.5s"><div class="sc-icon">⚙️</div><h4 class="sc-title">Setup Assistance</h4><p class="sc-desc">Just purchased? Contact us and we start training your AI immediately.</p><a href="https://wa.me/919697430658?text=I%20just%20purchased%20and%20need%20setup" target="_blank" class="sc-link">Start Setup →</a></div>
+      <div class="support-card sc-whatsapp fade-up">
+        <div class="sc-icon-wrap ico-wa"><span class="sc-icon">💬</span></div>
+        <h4 class="sc-title">WhatsApp Support</h4>
+        <p class="sc-desc">Fastest way to reach us. Message for setup, questions, or any help needed.</p>
+        <a href="https://wa.me/919697430658" target="_blank" class="sc-link lnk-green">Chat on WhatsApp →</a>
+      </div>
+      <div class="support-card sc-ai fade-up" style="transition-delay:.08s">
+        <div class="sc-icon-wrap ico-ai"><span class="sc-icon">🛠️</span></div>
+        <h4 class="sc-title">AI Brain Updates</h4>
+        <p class="sc-desc">Pro &amp; Elite holders get unlimited updates. Contact us and we handle everything.</p>
+        <a href="https://wa.me/919697430658?text=I%20want%20to%20update%20my%20AI%20brain" target="_blank" class="sc-link lnk-blue">Request Update →</a>
+      </div>
+      <div class="support-card sc-complaint fade-up" style="transition-delay:.16s">
+        <div class="sc-icon-wrap ico-complaint"><span class="sc-icon">📋</span></div>
+        <h4 class="sc-title">Complaints &amp; Feedback</h4>
+        <p class="sc-desc">Something not working? We resolve issues fast — no delays or runaround.</p>
+        <a href="https://wa.me/919697430658?text=I%20have%20a%20complaint" target="_blank" class="sc-link lnk-orange">Submit Complaint →</a>
+      </div>
+      <div class="support-card sc-feature fade-up" style="transition-delay:.24s">
+        <div class="sc-icon-wrap ico-feature"><span class="sc-icon">🚀</span></div>
+        <h4 class="sc-title">New Feature Requests</h4>
+        <p class="sc-desc">Pro and Elite users can request new AI capabilities — we'll build it in.</p>
+        <a href="https://wa.me/919697430658?text=I%20want%20to%20add%20new%20feature" target="_blank" class="sc-link lnk-purple">Request Feature →</a>
+      </div>
+      <div class="support-card sc-call fade-up" style="transition-delay:.32s">
+        <div class="sc-icon-wrap ico-call"><span class="sc-icon">📞</span></div>
+        <h4 class="sc-title">Call Us Directly</h4>
+        <p class="sc-desc">For urgent matters call or WhatsApp us at +91 96974 30658.</p>
+        <a href="tel:+919697430658" class="sc-link lnk-red">Call Now →</a>
+      </div>
+      <div class="support-card sc-setup fade-up" style="transition-delay:.40s">
+        <div class="sc-icon-wrap ico-setup"><span class="sc-icon">⚙️</span></div>
+        <h4 class="sc-title">Setup Assistance</h4>
+        <p class="sc-desc">Just purchased? Contact us and we start training your AI immediately.</p>
+        <a href="https://wa.me/919697430658?text=I%20just%20purchased%20and%20need%20setup" target="_blank" class="sc-link lnk-gold">Start Setup →</a>
+      </div>
     </div>
 
     <!-- BROADCAST MINI CARD ON SUPPORT PAGE -->
@@ -3133,7 +3201,7 @@ function startEarth(){
 function stopEarth(){if(earthStop){earthStop();earthStop=null;}const c=document.getElementById('earth-canvas');if(c)c.getContext('2d').clearRect(0,0,c.width,c.height);}
 
 // ═══════════════════════════════════════════════════════
-// 8K ULTRA-REALISTIC SOLAR SYSTEM — PRODUCTS PAGE
+// TOTAL SOLAR ECLIPSE + ULTRA-HD SOLAR SYSTEM — PRODUCTS
 // ═══════════════════════════════════════════════════════
 let planetStop=null,planetAF=null;
 function startPlanetBg(){
@@ -3145,350 +3213,766 @@ function startPlanetBg(){
   function resize(){W=canvas.width=window.innerWidth;H=canvas.height=window.innerHeight;}
   resize();window.addEventListener('resize',resize);
   let alive=true,T=0;
+  const mob=()=>W<768;
 
-  // ── DEEP SPACE STARS — adaptive count ──
-  const isMob=()=>window.innerWidth<768;
+  // ── STARS (spectral, 5 layers) ──
+  const SPEC=[[160,180,255],[200,215,255],[240,245,255],[255,245,180],[255,210,120],[255,150,80]];
   const stars=[];
-  for(let i=0;i<(isMob()?180:500);i++){
-    const col=Math.random()>.8?[200,215,255]:Math.random()>.6?[255,240,210]:[255,255,255];
-    stars.push({
-      x:Math.random(),y:Math.random(),
-      r:Math.random()*1.4+.1,
-      baseA:Math.random()*.7+.15,
-      tw:Math.random()*Math.PI*2,
-      twS:Math.random()*.02+.005,
-      col,
-      flare:Math.random()>.88
+  const SC=mob()?220:600;
+  for(let i=0;i<SC;i++){
+    const col=SPEC[Math.floor(Math.random()*SPEC.length)];
+    stars.push({x:Math.random(),y:Math.random(),
+      r:Math.random()*1.3+.1,
+      baseA:Math.random()*.7+.12,
+      tw:Math.random()*Math.PI*2,twS:Math.random()*.018+.004,
+      col,flare:Math.random()>.9});
+  }
+
+  // ── 8K SOLAR ECLIPSE STATE MACHINE ──
+  const ECLIPSE={
+    phase:0,       // 0=approach, 1=totality, 2=recede, 3=gap
+    t:0,
+    durations:[480,720,480,420],
+    moonOffset:0,
+    progress:0,
+    coverageCache:0,
+  };
+
+  // ── CORONA RAYS — 8K: 80 rays, 5 families, organic variation ──
+  const coronaRays=[];
+  const NUM_RAYS=mob()?32:80;
+  const RAY_FAMILIES=[
+    {lenBase:1.2,lenVar:.8,widBase:.028,bright:.75,type:'streamer'},// long streamers
+    {lenBase:.65,lenVar:.5,widBase:.018,bright:.55,type:'plume'},   // mid plumes
+    {lenBase:.4, lenVar:.3,widBase:.012,bright:.40,type:'spike'},   // short spikes
+    {lenBase:1.8,lenVar:.6,widBase:.010,bright:.35,type:'helmet'},  // helmet streamer
+    {lenBase:.3, lenVar:.2,widBase:.008,bright:.25,type:'fine'},    // fine structure
+  ];
+  for(let i=0;i<NUM_RAYS;i++){
+    const fam=RAY_FAMILIES[i%RAY_FAMILIES.length];
+    const ang=i/NUM_RAYS*Math.PI*2+(Math.random()-.5)*.22;
+    coronaRays.push({
+      ang, fam:fam.type,
+      len:fam.lenBase+Math.random()*fam.lenVar,
+      width:fam.widBase*(0.7+Math.random()*.6),
+      bright:fam.bright*(0.7+Math.random()*.6),
+      wiggle:Math.random()*Math.PI*2,
+      wigSpd:Math.random()*.009+.002,
+      taper:Math.random()*.6+.3,
+      twist:Math.random()*.15-.075,// slight angular twist along ray
+      segs:mob()?6:10,// segments per ray for curvature
+      col:Math.random()>.7?[255,240,200]:Math.random()>.5?[255,220,170]:[255,200,140],
     });
   }
 
-  // ── PLANET DEFINITIONS — mobile-safe positions ──
+  // ── SOLAR PROMINENCES — 8K: 12 arcs with physics ──
+  const prominences=[];
+  const NUM_PROM=mob()?6:12;
+  for(let i=0;i<NUM_PROM;i++){
+    const isFilament=Math.random()>.6;
+    prominences.push({
+      baseAng:i/NUM_PROM*Math.PI*2+(Math.random()-.5)*.5,
+      height:Math.random()*.85+.25,
+      width:Math.random()*.45+.15,
+      phase:Math.random()*Math.PI*2,
+      spd:Math.random()*.006+.002,
+      turbulence:Math.random()*.04+.01,
+      col:isFilament?
+        [255,60+Math.random()*40|0,15]:// deep red
+        [255,130+Math.random()*80|0,40],// orange-pink
+      isFilament,
+      twist:Math.random()*.3-.15,
+    });
+  }
+
+  // ── BAILY'S BEADS — 28 varied brightness ──
+  const beads=[];
+  for(let i=0;i<28;i++){
+    beads.push({
+      ang:i/28*Math.PI*2,
+      bright:Math.random()>.45?Math.random()*.9+.1:0,
+      size:Math.random()*.9+.25,
+      col:Math.random()>.6?[255,255,220]:[255,240,180],
+    });
+  }
+
+  // ── SOLAR WIND PARTICLES — 8K: 140 particles with velocity ──
+  const windParts=[];
+  for(let i=0;i<(mob()?55:140);i++){
+    windParts.push({
+      ang:Math.random()*Math.PI*2,
+      r:Math.random()*.5+.3,
+      speed:Math.random()*.005+.0008,
+      size:Math.random()*1.6+.3,
+      alpha:Math.random()*.55+.12,
+      col:Math.random()>.5?[255,225,110]:Math.random()>.5?[255,160,70]:[255,120,50],
+      trail:Math.random()>.5,// some particles leave trails
+    });
+  }
+
+  // ── SOLAR SPICULES — thin jets on chromosphere ──
+  const spicules=[];
+  for(let i=0;i<(mob()?20:48);i++){
+    spicules.push({
+      ang:Math.random()*Math.PI*2,
+      height:Math.random()*.12+.04,
+      width:Math.random()*.003+.001,
+      phase:Math.random()*Math.PI*2,
+      spd:Math.random()*.04+.02,
+    });
+  }
+
+  // ── SOLAR FLARES — occasional eruptions ──
+  const flares=[];
+  let flareTimer=0;
+  function spawnFlare(sunX,sunY,sunR){
+    const ang=Math.random()*Math.PI*2;
+    flares.push({
+      ang, x:sunX+Math.cos(ang)*sunR, y:sunY+Math.sin(ang)*sunR,
+      life:1, decay:Math.random()*.015+.008,
+      maxH:sunR*(Math.random()*.8+.4),
+      phase:Math.random()*Math.PI*2,
+      col:[255,Math.random()*80+40|0,10],
+    });
+  }
+
+  // ── PLANETS: ultra-HD, corners ──
   const planets=[
-    // Big gas giant — left side (pushed further in on mobile to avoid ring overflow)
-    {
-      id:'saturn',
-      cx:()=>isMob()?Math.max(W*.28,W*.22):W*.12, cy:()=>isMob()?H*.52:H*.52,
-      r:()=>isMob()?Math.min(W,H)*.11:Math.min(W,H)*.16,
-      rot:0, rotSpd:.0006,
-      rings:true,
+    {id:'saturn',
+      cx:()=>mob()?W*.15:W*.08, cy:()=>mob()?H*.82:H*.78,
+      r:()=>Math.min(W,H)*(mob()?.08:.13),
+      rot:0,rotSpd:.0004,rings:true,
       bands:[
-        {y:-.7,h:.18,col:'rgba(210,185,140,.9)'},
-        {y:-.52,h:.22,col:'rgba(195,168,120,.85)'},
-        {y:-.3,h:.28,col:'rgba(230,205,160,.9)'},
-        {y:-.02,h:.26,col:'rgba(215,188,138,.88)'},
-        {y:.24,h:.24,col:'rgba(200,175,128,.85)'},
-        {y:.48,h:.22,col:'rgba(185,162,118,.8)'},
-        {y:.7,h:.18,col:'rgba(170,148,108,.75)'},
+        {y:-.68,h:.16,col:'rgba(218,193,148,.92)'},
+        {y:-.52,h:.20,col:'rgba(200,172,128,.88)'},
+        {y:-.32,h:.26,col:'rgba(235,210,165,.92)'},
+        {y:-.06,h:.24,col:'rgba(220,194,144,.90)'},
+        {y:.18,h:.22,col:'rgba(205,180,135,.87)'},
+        {y:.40,h:.20,col:'rgba(190,165,122,.83)'},
+        {y:.60,h:.18,col:'rgba(175,152,112,.78)'},
       ],
-      atmosphere:'rgba(240,215,160,.25)',
-      specular:{x:-.3,y:-.35,r:.22,a:.35},
-      shadow:{x:.28,y:.1,a:.55},
-    },
-    // Medium blue planet — top right (smaller on mobile)
-    {
-      id:'neptune',
-      cx:()=>isMob()?W*.8:W*.82, cy:()=>isMob()?H*.18:H*.22,
-      r:()=>isMob()?Math.min(W,H)*.07:Math.min(W,H)*.095,
-      rot:0, rotSpd:.0012,
+      atmosphere:'rgba(245,220,165,.28)',
+      specular:{x:-.32,y:-.38,r:.20,a:.38},
+      shadow:{x:.30,y:.08,a:.58}},
+    {id:'neptune',
+      cx:()=>mob()?W*.88:W*.93, cy:()=>mob()?H*.15:H*.18,
+      r:()=>Math.min(W,H)*(mob()?.055:.08),
+      rot:0,rotSpd:.0010,rings:false,
       bands:[
-        {y:-.75,h:.2,col:'rgba(40,80,180,.9)'},
-        {y:-.55,h:.25,col:'rgba(30,65,200,.88)'},
-        {y:-.3,h:.3,col:'rgba(20,50,220,.9)'},
-        {y:0,h:.28,col:'rgba(25,55,205,.88)'},
-        {y:.28,h:.25,col:'rgba(35,70,185,.85)'},
-        {y:.53,h:.22,col:'rgba(45,85,165,.8)'},
-        {y:.75,h:.2,col:'rgba(55,95,145,.75)'},
+        {y:-.72,h:.18,col:'rgba(35,75,185,.92)'},
+        {y:-.54,h:.22,col:'rgba(25,60,205,.90)'},
+        {y:-.32,h:.28,col:'rgba(18,48,225,.92)'},
+        {y:-.04,h:.26,col:'rgba(22,53,210,.90)'},
+        {y:.22,h:.22,col:'rgba(32,68,190,.87)'},
+        {y:.44,h:.20,col:'rgba(42,82,170,.83)'},
+        {y:.64,h:.18,col:'rgba(52,92,150,.78)'},
       ],
-      atmosphere:'rgba(80,130,255,.3)',
-      specular:{x:-.35,y:-.4,r:.25,a:.4},
-      shadow:{x:.3,y:.12,a:.6},
-    },
-    // Small lava/rocky planet — bottom right (hidden on very small screens)
-    {
-      id:'lava',
-      cx:()=>W*.88, cy:()=>H*.78,
-      r:()=>Math.min(W,H)*.055,
-      rot:0, rotSpd:.002,
-      hidden:()=>W<400,
+      atmosphere:'rgba(85,140,255,.32)',
+      specular:{x:-.38,y:-.42,r:.22,a:.42},
+      shadow:{x:.32,y:.10,a:.62}},
+    {id:'lava',
+      cx:()=>W*.93, cy:()=>H*.82,
+      r:()=>Math.min(W,H)*(mob()?.04:.052),
+      rot:0,rotSpd:.0018,rings:false,
+      hidden:()=>W<380,
       bands:[
-        {y:-.7,h:.2,col:'rgba(180,50,20,.9)'},
-        {y:-.5,h:.25,col:'rgba(200,80,15,.9)'},
-        {y:-.25,h:.3,col:'rgba(220,100,10,.88)'},
-        {y:.05,h:.28,col:'rgba(205,85,18,.88)'},
-        {y:.33,h:.22,col:'rgba(185,60,22,.85)'},
-        {y:.55,h:.2,col:'rgba(160,45,25,.8)'},
-        {y:.75,h:.18,col:'rgba(140,35,20,.75)'},
+        {y:-.68,h:.18,col:'rgba(185,52,18,.92)'},
+        {y:-.50,h:.22,col:'rgba(205,82,14,.90)'},
+        {y:-.28,h:.28,col:'rgba(225,102,8,.90)'},
+        {y:.00,h:.26,col:'rgba(210,88,16,.88)'},
+        {y:.26,h:.20,col:'rgba(190,62,20,.85)'},
+        {y:.46,h:.18,col:'rgba(165,48,24,.80)'},
+        {y:.64,h:.16,col:'rgba(142,36,20,.75)'},
       ],
-      atmosphere:'rgba(255,80,0,.28)',
-      specular:{x:-.32,y:-.38,r:.22,a:.45},
-      shadow:{x:.32,y:.1,a:.65},
-      lavaGlow:true,
-    },
-    // Medium green-teal planet — center top area (hidden on mobile to reduce clutter)
-    {
-      id:'alien',
-      cx:()=>W*.58, cy:()=>H*.12,
-      r:()=>Math.min(W,H)*.065,
-      rot:0, rotSpd:.0015,
-      hidden:()=>W<600,
+      atmosphere:'rgba(255,85,0,.30)',
+      specular:{x:-.34,y:-.40,r:.20,a:.48},
+      shadow:{x:.34,y:.08,a:.68},
+      lavaGlow:true},
+    {id:'alien',
+      cx:()=>W*.05, cy:()=>H*.12,
+      r:()=>Math.min(W,H)*(mob()?.045:.06),
+      rot:0,rotSpd:.0013,rings:false,
+      hidden:()=>W<500,
       bands:[
-        {y:-.7,h:.2,col:'rgba(30,120,100,.9)'},
-        {y:-.5,h:.25,col:'rgba(20,150,110,.88)'},
-        {y:-.25,h:.3,col:'rgba(15,170,120,.9)'},
-        {y:.05,h:.28,col:'rgba(25,155,108,.88)'},
-        {y:.33,h:.22,col:'rgba(35,130,95,.85)'},
-        {y:.55,h:.2,col:'rgba(45,108,80,.8)'},
-        {y:.75,h:.18,col:'rgba(55,88,65,.75)'},
+        {y:-.68,h:.18,col:'rgba(28,118,98,.92)'},
+        {y:-.50,h:.22,col:'rgba(18,148,108,.90)'},
+        {y:-.28,h:.28,col:'rgba(14,168,118,.92)'},
+        {y:.00,h:.26,col:'rgba(22,153,106,.90)'},
+        {y:.26,h:.20,col:'rgba(32,128,92,.87)'},
+        {y:.46,h:.18,col:'rgba(42,106,78,.82)'},
+        {y:.64,h:.16,col:'rgba(52,86,62,.76)'},
       ],
-      atmosphere:'rgba(0,200,150,.22)',
-      specular:{x:-.3,y:-.35,r:.2,a:.38},
-      shadow:{x:.3,y:.1,a:.55},
-    },
+      atmosphere:'rgba(0,210,155,.24)',
+      specular:{x:-.32,y:-.36,r:.18,a:.40},
+      shadow:{x:.30,y:.08,a:.58}},
   ];
 
+  // ── HELPER: parse band base color ──
+  function getBandBase(bands){
+    const m=bands[Math.floor(bands.length/2)].col.match(/rgba\((\d+),(\d+),(\d+)/);
+    return m?[+m[1],+m[2],+m[3]]:[128,128,128];
+  }
+
+  // ── DRAW PLANET ──
   function drawPlanet(p){
-    // Skip hidden planets (e.g. on narrow mobile screens)
-    if(p.hidden && p.hidden())return;
+    if(p.hidden&&p.hidden())return;
     const cx=p.cx(),cy=p.cy(),r=p.r();
     p.rot+=p.rotSpd;
+    // Cull if off-screen
+    const edgeR=r*(p.rings?2.6:1.15);
+    if(cx+edgeR<0||cx-edgeR>W||cy+edgeR<0||cy-edgeR>H)return;
 
-    // Clamp planet so it never bleeds off canvas edges
-    const safeR=r*(p.rings?2.8:1.1);
-    if(cx-safeR>W||cx+safeR<0||cy-r*1.4>H||cy+r*1.4<0)return;
+    // Atmosphere halo
+    const haloR=r*1.4;
+    const hG=ctx.createRadialGradient(cx,cy,r*.85,cx,cy,haloR);
+    hG.addColorStop(0,p.atmosphere.replace(',',',').replace(/[\d.]+\)$/,'.0)'));
+    hG.addColorStop(.3,p.atmosphere);
+    hG.addColorStop(1,'rgba(0,0,0,0)');
+    ctx.beginPath();ctx.arc(cx,cy,haloR,0,Math.PI*2);ctx.fillStyle=hG;ctx.fill();
 
-    // ── OUTER ATMOSPHERE HALO ──
-    const haloR=r*1.35;
-    const haloG=ctx.createRadialGradient(cx,cy,r*.9,cx,cy,haloR);
-    haloG.addColorStop(0,p.atmosphere.replace(')',',0.18)').replace('rgba(','rgba('));
-    haloG.addColorStop(.4,p.atmosphere);
-    haloG.addColorStop(1,'rgba(0,0,0,0)');
-    ctx.beginPath();ctx.arc(cx,cy,haloR,0,Math.PI*2);
-    ctx.fillStyle=haloG;ctx.fill();
+    // Back rings
+    if(p.rings)drawRings(cx,cy,r,false);
 
-    // Saturn rings — behind planet
-    if(p.rings){
-      drawSaturnRings(cx,cy,r,false);
-    }
+    // Sphere clip
+    ctx.save();ctx.beginPath();ctx.arc(cx,cy,r,0,Math.PI*2);ctx.clip();
 
-    // ── PLANET SPHERE ──
-    ctx.save();
-    ctx.beginPath();ctx.arc(cx,cy,r,0,Math.PI*2);ctx.clip();
-
-    // Base sphere gradient
-    const baseG=ctx.createRadialGradient(cx-r*.25,cy-r*.3,0,cx,cy,r);
-    const [br,bg,bb]=getBandBaseColor(p.bands);
-    baseG.addColorStop(0,`rgba(${Math.min(br+50,255)},${Math.min(bg+50,255)},${Math.min(bb+50,255)},1)`);
-    baseG.addColorStop(.5,`rgba(${br},${bg},${bb},1)`);
-    baseG.addColorStop(1,`rgba(${Math.max(br-60,0)},${Math.max(bg-60,0)},${Math.max(bb-60,0)},1)`);
+    // Base radial gradient
+    const [br,bg,bb]=getBandBase(p.bands);
+    const baseG=ctx.createRadialGradient(cx-r*.28,cy-r*.32,0,cx+r*.1,cy+r*.1,r*1.2);
+    baseG.addColorStop(0,`rgba(${Math.min(br+55,255)},${Math.min(bg+55,255)},${Math.min(bb+55,255)},1)`);
+    baseG.addColorStop(.45,`rgba(${br},${bg},${bb},1)`);
+    baseG.addColorStop(1,`rgba(${Math.max(br-70,0)},${Math.max(bg-70,0)},${Math.max(bb-70,0)},1)`);
     ctx.fillStyle=baseG;ctx.fillRect(cx-r,cy-r,r*2,r*2);
 
-    // Atmospheric bands — adaptive step size for performance
-    const step=W<768?8:4;
-    const warpAmt=r*.012;
+    // Atmospheric bands with wave warp
+    const step=mob()?7:3;
+    const warp=r*.014;
     p.bands.forEach(b=>{
-      const bandY=cy+b.y*r;
-      const bandH=b.h*r*2;
-      ctx.beginPath();
-      ctx.moveTo(cx-r,bandY);
+      const by=cy+b.y*r, bh=b.h*r*2;
+      ctx.beginPath();ctx.moveTo(cx-r,by);
       for(let x=cx-r;x<=cx+r;x+=step){
         const nx=(x-cx)/r;
-        const wy=bandY+Math.sin(nx*3.5+p.rot*8)*warpAmt+Math.sin(nx*7+p.rot*5)*warpAmt*.5;
+        const wy=by+Math.sin(nx*3.2+p.rot*7)*warp+Math.sin(nx*6.8+p.rot*4.5)*warp*.4;
         ctx.lineTo(x,wy);
       }
-      ctx.lineTo(cx+r,bandY+bandH);
+      ctx.lineTo(cx+r,by+bh);
       for(let x=cx+r;x>=cx-r;x-=step){
         const nx=(x-cx)/r;
-        const wy=bandY+bandH+Math.sin(nx*3.5+p.rot*8+1)*warpAmt;
-        ctx.lineTo(x,wy);
+        ctx.lineTo(x,by+bh+Math.sin(nx*3.2+p.rot*7+1.2)*warp*.6);
       }
-      ctx.closePath();
-      ctx.fillStyle=b.col;ctx.fill();
+      ctx.closePath();ctx.fillStyle=b.col;ctx.fill();
     });
 
-    // Storm spot for gas giants
+    // Storm spot
     if(p.id==='saturn'||p.id==='neptune'){
-      const sx=cx+r*.22,sy=cy-r*.08;
-      const sR=r*.1;
-      const stG=ctx.createRadialGradient(sx,sy,0,sx,sy,sR);
-      stG.addColorStop(0,p.id==='saturn'?'rgba(200,155,110,.7)':'rgba(60,100,230,.8)');
-      stG.addColorStop(.5,'rgba(255,255,255,.1)');
-      stG.addColorStop(1,'rgba(0,0,0,0)');
-      ctx.beginPath();ctx.ellipse(sx,sy,sR,sR*.55,p.rot*2,0,Math.PI*2);
-      ctx.fillStyle=stG;ctx.fill();
+      const sx=cx+r*.25,sy=cy-r*.1;const sR=r*.09;
+      const sG=ctx.createRadialGradient(sx,sy,0,sx,sy,sR);
+      sG.addColorStop(0,p.id==='saturn'?'rgba(205,158,112,.72)':'rgba(55,95,235,.82)');
+      sG.addColorStop(.5,'rgba(255,255,255,.08)');sG.addColorStop(1,'rgba(0,0,0,0)');
+      ctx.beginPath();ctx.ellipse(sx,sy,sR,sR*.52,p.rot*2,0,Math.PI*2);ctx.fillStyle=sG;ctx.fill();
     }
 
-    // Lava planet glow cracks
+    // Lava glow cracks
     if(p.lavaGlow){
-      for(let i=0;i<5;i++){
-        const ang=i/5*Math.PI*2+p.rot;
-        const lx=cx+Math.cos(ang)*r*.4,ly=cy+Math.sin(ang)*r*.4;
-        const lgG=ctx.createRadialGradient(lx,ly,0,lx,ly,r*.18);
-        lgG.addColorStop(0,'rgba(255,200,50,.6)');
-        lgG.addColorStop(.5,'rgba(255,80,0,.2)');
-        lgG.addColorStop(1,'rgba(0,0,0,0)');
-        ctx.beginPath();ctx.arc(lx,ly,r*.18,0,Math.PI*2);ctx.fillStyle=lgG;ctx.fill();
+      for(let i=0;i<6;i++){
+        const a=i/6*Math.PI*2+p.rot;
+        const lx=cx+Math.cos(a)*r*.38,ly=cy+Math.sin(a)*r*.38;
+        const lG=ctx.createRadialGradient(lx,ly,0,lx,ly,r*.16);
+        lG.addColorStop(0,'rgba(255,210,50,.65)');lG.addColorStop(.5,'rgba(255,80,0,.22)');lG.addColorStop(1,'rgba(0,0,0,0)');
+        ctx.beginPath();ctx.arc(lx,ly,r*.16,0,Math.PI*2);ctx.fillStyle=lG;ctx.fill();
       }
     }
 
-    // ── SHADOW / DARK SIDE ──
-    const shadX=cx+p.shadow.x*r, shadY=cy+p.shadow.y*r;
-    const shadowG=ctx.createRadialGradient(shadX,shadY,r*.1,shadX,shadY,r*1.8);
-    shadowG.addColorStop(0,'rgba(0,0,0,0)');
-    shadowG.addColorStop(.55,'rgba(0,0,0,0)');
-    shadowG.addColorStop(.75,`rgba(0,0,0,${p.shadow.a*.4})`);
-    shadowG.addColorStop(1,`rgba(0,0,0,${p.shadow.a})`);
-    ctx.fillStyle=shadowG;ctx.fillRect(cx-r,cy-r,r*2,r*2);
+    // Shadow (dark side)
+    const [sx2,sy2]=[cx+p.shadow.x*r,cy+p.shadow.y*r];
+    const shdG=ctx.createRadialGradient(sx2,sy2,r*.05,sx2,sy2,r*1.85);
+    shdG.addColorStop(0,'rgba(0,0,0,0)');shdG.addColorStop(.5,'rgba(0,0,0,0)');
+    shdG.addColorStop(.72,`rgba(0,0,0,${p.shadow.a*.38})`);shdG.addColorStop(1,`rgba(0,0,0,${p.shadow.a})`);
+    ctx.fillStyle=shdG;ctx.fillRect(cx-r,cy-r,r*2,r*2);
 
-    // ── SPECULAR HIGHLIGHT ──
-    const spX=cx+p.specular.x*r,spY=cy+p.specular.y*r;
-    const spG=ctx.createRadialGradient(spX,spY,0,spX,spY,p.specular.r*r*2);
+    // Specular highlight
+    const [spx,spy]=[cx+p.specular.x*r,cy+p.specular.y*r];
+    const spG=ctx.createRadialGradient(spx-r*.08,spy-r*.08,0,spx,spy,p.specular.r*r*2.2);
     spG.addColorStop(0,`rgba(255,255,255,${p.specular.a})`);
-    spG.addColorStop(.3,`rgba(255,255,255,${p.specular.a*.4})`);
+    spG.addColorStop(.25,`rgba(255,255,255,${p.specular.a*.5})`);
     spG.addColorStop(1,'rgba(255,255,255,0)');
     ctx.fillStyle=spG;ctx.fillRect(cx-r,cy-r,r*2,r*2);
 
-    // ── LIMB DARKENING EDGE ──
-    const limbG=ctx.createRadialGradient(cx,cy,r*.75,cx,cy,r);
-    limbG.addColorStop(0,'rgba(0,0,0,0)');
-    limbG.addColorStop(.7,'rgba(0,0,0,.08)');
-    limbG.addColorStop(1,'rgba(0,0,0,.45)');
-    ctx.fillStyle=limbG;ctx.fillRect(cx-r,cy-r,r*2,r*2);
+    // Limb darkening
+    const lG=ctx.createRadialGradient(cx,cy,r*.7,cx,cy,r);
+    lG.addColorStop(0,'rgba(0,0,0,0)');lG.addColorStop(.65,'rgba(0,0,0,.07)');lG.addColorStop(1,'rgba(0,0,0,.52)');
+    ctx.fillStyle=lG;ctx.fillRect(cx-r,cy-r,r*2,r*2);
 
-    ctx.restore(); // end sphere clip
+    ctx.restore();
 
-    // Saturn rings — in front of planet bottom
-    if(p.rings){
-      drawSaturnRings(cx,cy,r,true);
-    }
+    // Front rings
+    if(p.rings)drawRings(cx,cy,r,true);
 
-    // Thin atmosphere rim
+    // Atmosphere rim glow
+    ctx.save();
     ctx.beginPath();ctx.arc(cx,cy,r,0,Math.PI*2);
-    ctx.strokeStyle=p.atmosphere;ctx.lineWidth=r*.06;
-    ctx.shadowColor=p.atmosphere;ctx.shadowBlur=r*.18;
+    ctx.strokeStyle=p.atmosphere;ctx.lineWidth=r*.07;
+    ctx.shadowColor=p.atmosphere;ctx.shadowBlur=r*.22;
     ctx.stroke();ctx.shadowBlur=0;
+    ctx.restore();
   }
 
-  function drawSaturnRings(cx,cy,r,frontHalf){
-    const mob=W<768;
-    const maxRingR=mob?1.85:2.01; // smaller rings on mobile
-    const ringW=r*(mob?2.0:2.4);
-    const ringH=ringW*.26;
-    // Hard clamp — don't draw if rings would bleed badly
-    if(cx-ringW>W||cx+ringW<0)return;
+  // ── DRAW SATURN RINGS (HD with gradient fills) ──
+  function drawRings(cx,cy,r,front){
+    const m=mob();
+    const maxR=m?1.82:2.0;
     ctx.save();
-    // Clip strictly to canvas bounds
     ctx.beginPath();ctx.rect(0,0,W,H);ctx.clip();
-    if(frontHalf){
-      ctx.beginPath();ctx.rect(cx-ringW*1.1,cy,ringW*2.2,ringH+2);ctx.clip();
-    } else {
-      ctx.beginPath();ctx.rect(cx-ringW*1.1,cy-ringH-2,ringW*2.2,ringH+2);ctx.clip();
-    }
-    const ringCols=[
-      {r:1.15,w:.07,col:'rgba(200,180,140,.12)'},
-      {r:1.24,w:.13,col:'rgba(210,190,155,.52)'},
-      {r:1.38,w:.055,col:'rgba(180,160,120,.18)'},
-      {r:1.44,w:.16,col:'rgba(220,200,160,.62)'},
-      {r:mob?1.55:1.6,w:.11,col:'rgba(190,170,130,.42)'},
-      {r:mob?1.64:1.71,w:.075,col:'rgba(170,150,115,.28)'},
-      {r:mob?1.70:1.79,w:.16,col:'rgba(205,185,145,.48)'},
-      {r:mob?1.80:1.95,w:.055,col:'rgba(160,140,105,.18)'},
-      {r:mob?1.85:2.01,w:.09,col:'rgba(185,165,125,.32)'},
-    ].filter(rg=>rg.r<=maxRingR+.05);
-    ringCols.forEach(rg=>{
-      ctx.beginPath();
-      ctx.ellipse(cx,cy,r*rg.r,r*rg.r*.26,0,0,Math.PI*2);
-      ctx.strokeStyle=rg.col;ctx.lineWidth=r*rg.w;ctx.stroke();
+    if(front){ctx.beginPath();ctx.rect(cx-r*2.2,cy,r*4.4,r*.6);ctx.clip();}
+    else{ctx.beginPath();ctx.rect(cx-r*2.2,cy-r*.6,r*4.4,r*.6);ctx.clip();}
+    const rings=[
+      {inner:1.14,outer:1.22,col:'rgba(195,175,135,.15)'},
+      {inner:1.22,outer:1.40,col:'rgba(215,195,155,.55)'},
+      {inner:1.40,outer:1.47,col:'rgba(175,155,115,.20)'},
+      {inner:1.47,outer:1.65,col:'rgba(225,205,162,.65)'},
+      {inner:1.65,outer:m?1.72:1.78,col:'rgba(188,168,128,.44)'},
+      {inner:m?1.72:1.78,outer:m?1.78:1.86,col:'rgba(168,148,110,.30)'},
+      {inner:m?1.78:1.86,outer:maxR,col:'rgba(202,182,142,.50)'},
+    ].filter(rg=>rg.inner<=maxR);
+    rings.forEach(rg=>{
+      // Use gradient fill between inner and outer ellipse for realism
+      const avgR=(rg.inner+rg.outer)/2;
+      const ry=avgR*.27;
+      ctx.beginPath();ctx.ellipse(cx,cy,r*rg.outer,r*rg.outer*ry/avgR,0,0,Math.PI*2);
+      ctx.ellipse(cx,cy,r*rg.inner,r*rg.inner*ry/avgR,0,0,Math.PI*2,true);
+      ctx.fillStyle=rg.col;ctx.fill('evenodd');
     });
     ctx.restore();
   }
 
-  function getBandBaseColor(bands){
-    const mid=bands[Math.floor(bands.length/2)].col;
-    const m=mid.match(/rgba\((\d+),(\d+),(\d+)/);
-    return m?[parseInt(m[1]),parseInt(m[2]),parseInt(m[3])]:[128,128,128];
+  // ── SOLAR ECLIPSE ENGINE — 8K ULTRA ──
+  function getSunPos(){
+    const sx=W*.5, sy=H*(mob()?.36:.42);
+    const sr=Math.min(W,H)*(mob()?.115:.175);
+    return{sx,sy,sr};
+  }
+
+  function advanceEclipse(){
+    const dur=ECLIPSE.durations[ECLIPSE.phase];
+    ECLIPSE.t++;
+    if(ECLIPSE.t>=dur){ECLIPSE.t=0;ECLIPSE.phase=(ECLIPSE.phase+1)%4;}
+    const t=ECLIPSE.t,d=dur;
+    // Smooth easing via smoothstep
+    const ease=x=>x*x*(3-2*x);
+    if(ECLIPSE.phase===0){
+      ECLIPSE.moonOffset=1-ease(t/d)*1.98;
+      ECLIPSE.progress=0;
+    }else if(ECLIPSE.phase===1){
+      ECLIPSE.moonOffset=0;
+      ECLIPSE.progress=Math.sin(Math.PI*t/d);
+    }else if(ECLIPSE.phase===2){
+      ECLIPSE.moonOffset=-(1-ease(t/d)*1.98);
+      ECLIPSE.progress=0;
+    }else{
+      ECLIPSE.moonOffset=2.2;
+      ECLIPSE.progress=0;
+    }
+    ECLIPSE.coverageCache=Math.max(0,1-Math.abs(ECLIPSE.moonOffset)*1.05);
+  }
+
+  function drawEclipse(){
+    const{sx,sy,sr}=getSunPos();
+    const coverage=ECLIPSE.coverageCache;
+    const mx=sx+ECLIPSE.moonOffset*sr*1.01, my=sy;
+    const mr=sr*0.9915;
+
+    // ── 8K VOLUMETRIC OUTER CORONA (5 layers) ──
+    if(coverage>.08){
+      const cA=Math.min(coverage*1.35,1);
+      // Layer 1: Outermost K-corona (white-light)
+      [[sr*5.5,'rgba(255,248,230,.018)'],[sr*4.0,'rgba(255,242,215,.032)'],[sr*3.0,'rgba(255,235,195,.055)'],[sr*2.1,'rgba(255,225,175,.095)'],[sr*1.55,'rgba(255,215,155,.16)']].forEach(([rad,col])=>{
+        const cG=ctx.createRadialGradient(sx,sy,sr*.92,sx,sy,rad);
+        const base=col.replace(/[\d.]+\)$/,`${parseFloat(col.match(/[\d.]+\)$/)[0])*cA})`);
+        cG.addColorStop(0,base);cG.addColorStop(1,'rgba(0,0,0,0)');
+        ctx.beginPath();ctx.arc(sx,sy,rad,0,Math.PI*2);ctx.fillStyle=cG;ctx.fill();
+      });
+      // Polar plumes — brighter at poles
+      [Math.PI*.5,Math.PI*1.5].forEach(poleAng=>{
+        const pG=ctx.createRadialGradient(
+          sx+Math.cos(poleAng)*sr,sy+Math.sin(poleAng)*sr,0,
+          sx+Math.cos(poleAng)*sr*2,sy+Math.sin(poleAng)*sr*2,sr*2);
+        pG.addColorStop(0,`rgba(255,245,220,${cA*.1})`);pG.addColorStop(1,'rgba(0,0,0,0)');
+        ctx.beginPath();ctx.ellipse(sx+Math.cos(poleAng)*sr*1.5,sy+Math.sin(poleAng)*sr*1.5,sr*.6,sr*1.8,poleAng,0,Math.PI*2);
+        ctx.fillStyle=pG;ctx.fill();
+      });
+    }
+
+    // ── 8K CORONA RAYS — curved, tapering streamers ──
+    if(coverage>.1){
+      const cA=Math.min(coverage*1.3,1);
+      coronaRays.forEach(ray=>{
+        ray.wiggle+=ray.wigSpd;
+        const[rc,gc,bc]=ray.col;
+        const baseAng=ray.ang+Math.sin(ray.wiggle)*.05+ray.twist*Math.sin(ray.wiggle*.3);
+        const innerR=sr*(coverage>.7?1.01:.97);
+        const outerR=sr*(1+ray.len*(0.6+cA*.7));
+        const totalBright=ray.bright*cA;
+        if(totalBright<.02)return;
+
+        // Draw ray as curved path with segs segments
+        const segs=ray.segs;
+        ctx.beginPath();
+        let prevX=sx+Math.cos(baseAng)*innerR, prevY=sy+Math.sin(baseAng)*innerR;
+        ctx.moveTo(prevX,prevY);
+        for(let s=1;s<=segs;s++){
+          const tf=s/segs;
+          const angOff=(ray.ang+ray.twist*tf)+Math.sin(ray.wiggle+tf*2)*.04;
+          const r2=innerR+(outerR-innerR)*tf;
+          const nx=sx+Math.cos(angOff)*r2, ny=sy+Math.sin(angOff)*r2;
+          ctx.lineTo(nx,ny);
+        }
+        const endX=sx+Math.cos(baseAng+ray.twist)*outerR;
+        const endY=sy+Math.sin(baseAng+ray.twist)*outerR;
+        const rayGrad=ctx.createLinearGradient(prevX,prevY,endX,endY);
+        rayGrad.addColorStop(0,`rgba(${rc},${gc},${bc},${totalBright*.9})`);
+        rayGrad.addColorStop(.35,`rgba(${rc},${gc},${bc},${totalBright*.6})`);
+        rayGrad.addColorStop(.7,`rgba(${rc},${gc},${bc},${totalBright*.25})`);
+        rayGrad.addColorStop(1,`rgba(${rc},${gc},${bc},0)`);
+        const baseW=sr*ray.width*(1.2+cA*.4);
+        ctx.strokeStyle=rayGrad;
+        ctx.lineWidth=Math.max(baseW*(mob()?.7:1),0.4);
+        ctx.lineCap='round';ctx.lineJoin='round';ctx.stroke();
+      });
+    }
+
+    // ── SOLAR PROMINENCES — 8K magnetic plasma arcs ──
+    prominences.forEach(prom=>{
+      prom.phase+=prom.spd;
+      const visA=coverage>.06?Math.min(coverage*1.6,1)*0.82:0;
+      if(visA<.04)return;
+      const[pr,pg,pb]=prom.col;
+      const ang=prom.baseAng+Math.sin(prom.phase*.6)*prom.turbulence*3;
+      const h=sr*prom.height*(0.88+0.12*Math.sin(prom.phase));
+      const spread=sr*prom.width;
+      // Base points on limb
+      const p0x=sx+Math.cos(ang-spread*.5)*sr*.97, p0y=sy+Math.sin(ang-spread*.5)*sr*.97;
+      const p3x=sx+Math.cos(ang+spread*.5)*sr*.97, p3y=sy+Math.sin(ang+spread*.5)*sr*.97;
+      // Control points (arch apex)
+      const apexAng=ang+prom.twist;
+      const cp1x=sx+Math.cos(apexAng-spread*.3)*(sr+h*.7), cp1y=sy+Math.sin(apexAng-spread*.3)*(sr+h*.7);
+      const cp2x=sx+Math.cos(apexAng+spread*.3)*(sr+h*.7), cp2y=sy+Math.sin(apexAng+spread*.3)*(sr+h*.7);
+
+      ctx.save();
+      // Clip to outside moon disc
+      ctx.beginPath();ctx.arc(sx,sy,W+H,0,Math.PI*2);ctx.arc(mx,my,mr+1,0,Math.PI*2,true);ctx.clip('evenodd');
+
+      // Thick glow pass
+      ctx.beginPath();ctx.moveTo(p0x,p0y);ctx.bezierCurveTo(cp1x,cp1y,cp2x,cp2y,p3x,p3y);
+      ctx.strokeStyle=`rgba(${pr},${pg},${pb},${visA*.3})`;ctx.lineWidth=sr*.14;ctx.lineCap='round';
+      ctx.shadowColor=`rgba(${pr},${pg},${pb},.6)`;ctx.shadowBlur=sr*.18;ctx.stroke();ctx.shadowBlur=0;
+      // Medium pass
+      ctx.beginPath();ctx.moveTo(p0x,p0y);ctx.bezierCurveTo(cp1x,cp1y,cp2x,cp2y,p3x,p3y);
+      ctx.strokeStyle=`rgba(${pr},${pg},${pb},${visA*.7})`;ctx.lineWidth=sr*.06;ctx.stroke();
+      // Bright core
+      ctx.beginPath();ctx.moveTo(p0x,p0y);ctx.bezierCurveTo(cp1x,cp1y,cp2x,cp2y,p3x,p3y);
+      ctx.strokeStyle=`rgba(255,220,200,${visA*.4})`;ctx.lineWidth=sr*.018;ctx.stroke();
+      ctx.restore();
+    });
+
+    // ── SOLAR SPICULES (chromosphere jets) ──
+    if(coverage>.35){
+      const spA=Math.min(coverage-.35,1)*.6;
+      spicules.forEach(sp=>{
+        sp.phase+=sp.spd;
+        const h=sr*sp.height*(0.7+0.3*Math.sin(sp.phase));
+        const x0=sx+Math.cos(sp.ang)*sr*.99, y0=sy+Math.sin(sp.ang)*sr*.99;
+        const x1=sx+Math.cos(sp.ang)*(sr*.99+h), y1=sy+Math.sin(sp.ang)*(sr*.99+h);
+        ctx.save();
+        ctx.beginPath();ctx.arc(sx,sy,W+H,0,Math.PI*2);ctx.arc(mx,my,mr+1,0,Math.PI*2,true);ctx.clip('evenodd');
+        const spG=ctx.createLinearGradient(x0,y0,x1,y1);
+        spG.addColorStop(0,`rgba(255,120,60,${spA*.7})`);spG.addColorStop(.6,`rgba(255,60,30,${spA*.4})`);spG.addColorStop(1,'rgba(255,40,10,0)');
+        ctx.beginPath();ctx.moveTo(x0,y0);ctx.lineTo(x1,y1);
+        ctx.strokeStyle=spG;ctx.lineWidth=Math.max(sr*sp.width,0.5);ctx.lineCap='round';ctx.stroke();
+        ctx.restore();
+      });
+    }
+
+    // ── SUN DISC ──
+    ctx.save();
+    if(coverage<.98){
+      ctx.beginPath();ctx.arc(sx,sy,W+H,0,Math.PI*2);ctx.arc(mx,my,mr,0,Math.PI*2,true);ctx.clip('evenodd');
+      // 8K Photosphere — 6-stop radial
+      const sunG=ctx.createRadialGradient(sx-sr*.18,sy-sr*.18,0,sx,sy,sr);
+      sunG.addColorStop(0,'rgba(255,255,235,1)');sunG.addColorStop(.18,'rgba(255,252,190,1)');sunG.addColorStop(.42,'rgba(255,225,100,1)');
+      sunG.addColorStop(.65,'rgba(255,180,38,1)');sunG.addColorStop(.84,'rgba(245,115,15,1)');sunG.addColorStop(1,'rgba(195,55,8,1)');
+      ctx.beginPath();ctx.arc(sx,sy,sr,0,Math.PI*2);ctx.fillStyle=sunG;ctx.fill();
+      // Granulation — 55 convection cells
+      const gran=mob()?22:55;
+      for(let i=0;i<gran;i++){
+        const ga=Math.random()*Math.PI*2, gr=Math.random()*sr*.82;
+        const gx=sx+Math.cos(ga)*gr, gy=sy+Math.sin(ga)*gr;
+        const gsz=sr*(Math.random()*.055+.018);
+        const gG=ctx.createRadialGradient(gx-gsz*.3,gy-gsz*.3,0,gx,gy,gsz);
+        gG.addColorStop(0,'rgba(255,255,200,.22)');gG.addColorStop(.5,'rgba(255,220,100,.08)');gG.addColorStop(1,'rgba(255,180,50,0)');
+        ctx.beginPath();ctx.arc(gx,gy,gsz,0,Math.PI*2);ctx.fillStyle=gG;ctx.fill();
+      }
+      // Sunspot pair
+      [[-.28,-.18,.055],[-.18,-.08,.038]].forEach(([ox,oy,oR])=>{
+        const spx=sx+ox*sr, spy=sy+oy*sr;
+        const spG2=ctx.createRadialGradient(spx,spy,0,spx,spy,oR*sr);
+        spG2.addColorStop(0,'rgba(40,15,5,.75)');spG2.addColorStop(.5,'rgba(80,30,10,.45)');spG2.addColorStop(1,'rgba(120,50,20,0)');
+        ctx.beginPath();ctx.arc(spx,spy,oR*sr,0,Math.PI*2);ctx.fillStyle=spG2;ctx.fill();
+      });
+      // Limb darkening on photosphere
+      const ldG=ctx.createRadialGradient(sx,sy,sr*.55,sx,sy,sr);
+      ldG.addColorStop(0,'rgba(0,0,0,0)');ldG.addColorStop(.6,'rgba(0,0,0,.04)');ldG.addColorStop(.82,'rgba(0,0,0,.18)');ldG.addColorStop(1,'rgba(0,0,0,.42)');
+      ctx.beginPath();ctx.arc(sx,sy,sr,0,Math.PI*2);ctx.fillStyle=ldG;ctx.fill();
+      // Outer glow corona hint
+      const soG=ctx.createRadialGradient(sx,sy,sr*.88,sx,sy,sr*1.28);
+      soG.addColorStop(0,'rgba(255,200,50,.38)');soG.addColorStop(.5,'rgba(255,150,20,.14)');soG.addColorStop(1,'rgba(255,100,0,0)');
+      ctx.beginPath();ctx.arc(sx,sy,sr*1.28,0,Math.PI*2);ctx.fillStyle=soG;ctx.fill();
+    }
+    ctx.restore();
+
+    // ── MOON DISC — 8K surface detail ──
+    ctx.save();
+    const moonBase=ctx.createRadialGradient(mx-mr*.22,my-mr*.25,0,mx,my,mr);
+    moonBase.addColorStop(0,'rgba(14,12,26,1)');moonBase.addColorStop(.5,'rgba(7,6,16,1)');moonBase.addColorStop(.88,'rgba(4,3,11,1)');moonBase.addColorStop(1,'rgba(2,1,7,1)');
+    ctx.beginPath();ctx.arc(mx,my,mr,0,Math.PI*2);ctx.fillStyle=moonBase;ctx.fill();
+    // 24 craters + maria
+    const craterData=mob()?12:24;
+    for(let i=0;i<craterData;i++){
+      const ca=Math.random()*Math.PI*2, cd=Math.random()*mr*.88;
+      const cx2=mx+Math.cos(ca)*cd, cy2=my+Math.sin(ca)*cd;
+      const cR=mr*(Math.random()*.12+.03);
+      const cG2=ctx.createRadialGradient(cx2,cy2,0,cx2,cy2,cR);
+      cG2.addColorStop(0,'rgba(22,20,38,.18)');cG2.addColorStop(.7,'rgba(12,10,22,.08)');cG2.addColorStop(1,'rgba(0,0,0,0)');
+      ctx.beginPath();ctx.arc(cx2,cy2,cR,0,Math.PI*2);ctx.fillStyle=cG2;ctx.fill();
+    }
+    // Refracted solar light on limb (red-orange arc)
+    if(coverage>.25){
+      const limbA=Math.min(coverage,.9)*.55;
+      const mlG=ctx.createRadialGradient(mx,my,mr*.88,mx,my,mr*1.09);
+      mlG.addColorStop(0,'rgba(255,120,20,0)');mlG.addColorStop(.45,`rgba(255,90,15,${limbA*.45})`);mlG.addColorStop(.78,`rgba(255,55,8,${limbA*.8})`);mlG.addColorStop(1,`rgba(200,30,5,${limbA})`);
+      ctx.beginPath();ctx.arc(mx,my,mr*1.09,0,Math.PI*2);ctx.fillStyle=mlG;ctx.fill();
+      // Inner thin blue refraction ring
+      const blueRing=ctx.createRadialGradient(mx,my,mr*.95,mx,my,mr*1.02);
+      blueRing.addColorStop(0,'rgba(80,140,255,0)');blueRing.addColorStop(.6,`rgba(80,140,255,${limbA*.25})`);blueRing.addColorStop(1,'rgba(60,100,220,0)');
+      ctx.beginPath();ctx.arc(mx,my,mr*1.02,0,Math.PI*2);ctx.fillStyle=blueRing;ctx.fill();
+    }
+    ctx.restore();
+
+    // ── DIAMOND RING 8K ──
+    if(ECLIPSE.phase===1){
+      const prog=ECLIPSE.t/ECLIPSE.durations[1];
+      const isDiamond=(prog<.14||prog>.86);
+      if(isDiamond){
+        const side=prog<.14?1:-1;
+        const dA=(prog<.14?prog/.14:(1-prog)/.14);
+        ctx.save();
+        // 8K Chromosphere ring — 3 layers
+        [[sr*1.06,'rgba(255,20,55,',.70],[sr*1.04,'rgba(255,45,35,',.55],[sr*1.025,'rgba(255,70,20,',.38]].forEach(([rad,col,mult])=>{
+          const cRG=ctx.createRadialGradient(sx,sy,sr*.94,sx,sy,rad);
+          cRG.addColorStop(0,col+`${dA*mult})`);cRG.addColorStop(1,col+'0)');
+          ctx.beginPath();ctx.arc(sx,sy,rad,0,Math.PI*2);ctx.fillStyle=cRG;ctx.fill();
+        });
+        // Diamond bead — 3 layers
+        const dbAng=side*Math.PI*.5;
+        const dbX=sx+Math.cos(dbAng)*sr*.97, dbY=sy+Math.sin(dbAng)*sr*.97;
+        [[sr*.22,'rgba(255,255,240,'],[sr*.14,'rgba(255,252,210,'],[sr*.07,'rgba(255,255,255,']].forEach(([rad,col],ii)=>{
+          const dG=ctx.createRadialGradient(dbX-rad*.2,dbY-rad*.2,0,dbX,dbY,rad);
+          dG.addColorStop(0,col+`${dA*(1-ii*.25)})`);dG.addColorStop(.4,col+`${dA*(0.5-ii*.15)})`);dG.addColorStop(1,col+'0)');
+          ctx.beginPath();ctx.arc(dbX,dbY,rad,0,Math.PI*2);ctx.fillStyle=dG;ctx.fill();
+        });
+        // 8-spike diffraction from diamond
+        for(let sp=0;sp<8;sp++){
+          const spA=sp*Math.PI*.25;
+          const spLen=sr*(.22+dA*.45+(sp%2===0?.12:0));
+          const spG2=ctx.createLinearGradient(dbX,dbY,dbX+Math.cos(spA)*spLen,dbY+Math.sin(spA)*spLen);
+          spG2.addColorStop(0,`rgba(255,255,210,${dA*.7})`);spG2.addColorStop(1,'rgba(255,230,150,0)');
+          ctx.beginPath();ctx.moveTo(dbX,dbY);ctx.lineTo(dbX+Math.cos(spA)*spLen,dbY+Math.sin(spA)*spLen);
+          ctx.strokeStyle=spG2;ctx.lineWidth=sp%2===0?1.1:.55;ctx.stroke();
+        }
+        ctx.restore();
+      }
+    }
+
+    // ── BAILY'S BEADS — 8K ──
+    if(coverage>.42&&coverage<.99&&ECLIPSE.phase!==3){
+      const beadA=Math.max(0,(1-Math.abs(ECLIPSE.moonOffset)*1.45))*0.75;
+      if(beadA>.01){
+        beads.forEach(b=>{
+          if(b.bright<.08)return;
+          const bx=mx+Math.cos(b.ang)*mr, by=my+Math.sin(b.ang)*mr;
+          const dist=Math.sqrt((bx-sx)**2+(by-sy)**2);
+          if(dist<sr*.8||dist>sr*1.2)return;
+          const[br2,bg2,bb2]=b.col;
+          // 3-layer bead glow
+          [[sr*.1*b.size,.38],[sr*.055*b.size,.7],[sr*.025*b.size,1]].forEach(([bRad,bMult])=>{
+            const bG2=ctx.createRadialGradient(bx,by,0,bx,by,bRad);
+            bG2.addColorStop(0,`rgba(${br2},${bg2},${bb2},${b.bright*beadA*bMult})`);
+            bG2.addColorStop(1,`rgba(${br2},${bg2},${bb2},0)`);
+            ctx.beginPath();ctx.arc(bx,by,bRad,0,Math.PI*2);ctx.fillStyle=bG2;ctx.fill();
+          });
+        });
+      }
+    }
+
+    // ── CHROMOSPHERE — 8K 3-layer ──
+    if(ECLIPSE.phase===1&&ECLIPSE.progress>.18){
+      const cA2=Math.min(ECLIPSE.progress-.18,1)*.82;
+      ctx.save();
+      [[sr*1.032,'rgba(255,22,58,',.88],[sr*1.022,'rgba(255,40,28,',.65],[sr*1.012,'rgba(255,80,15,',.42]].forEach(([rad,col,mult])=>{
+        const chromoG2=ctx.createRadialGradient(sx,sy,sr*.965,sx,sy,rad);
+        chromoG2.addColorStop(0,col+`${cA2*mult})`);chromoG2.addColorStop(.6,col+`${cA2*mult*.4})`);chromoG2.addColorStop(1,col+'0)');
+        ctx.beginPath();ctx.arc(sx,sy,rad,0,Math.PI*2);ctx.fillStyle=chromoG2;ctx.fill();
+      });
+      ctx.restore();
+    }
+
+    // ── SOLAR WIND PARTICLES — 8K ──
+    windParts.forEach(wp=>{
+      wp.ang+=wp.speed;
+      const{sx:wsx,sy:wsy,sr:wsr}=getSunPos();
+      const wPhase=(T*wp.speed*14)%3.0;
+      const wd=wsr*(wp.r+wPhase);
+      const wx=wsx+Math.cos(wp.ang)*wd, wy=wsy+Math.sin(wp.ang)*wd;
+      const wA=wp.alpha*(coverage>.15?Math.min(coverage*1.1,1):.0)*Math.max(0,1-wPhase/3);
+      if(wA<.01)return;
+      const[wr,wg,wb]=wp.col;
+      if(wp.trail&&wPhase>.3){
+        // Draw trailing line behind particle
+        const tx=wsx+Math.cos(wp.ang)*(wd-wsr*.2), ty=wsy+Math.sin(wp.ang)*(wd-wsr*.2);
+        const trG=ctx.createLinearGradient(tx,ty,wx,wy);
+        trG.addColorStop(0,`rgba(${wr},${wg},${wb},0)`);trG.addColorStop(1,`rgba(${wr},${wg},${wb},${wA*.6})`);
+        ctx.beginPath();ctx.moveTo(tx,ty);ctx.lineTo(wx,wy);ctx.strokeStyle=trG;ctx.lineWidth=wp.size*.7;ctx.stroke();
+      }
+      ctx.beginPath();ctx.arc(wx,wy,wp.size,0,Math.PI*2);
+      ctx.fillStyle=`rgba(${wr},${wg},${wb},${wA})`;ctx.fill();
+    });
+
+    // ── SOLAR FLARES ──
+    flareTimer++;
+    if(flareTimer>280+Math.random()*400&&coverage>.2){
+      flareTimer=0;
+      const{sx:fsx,sy:fsy,sr:fsr}=getSunPos();
+      spawnFlare(fsx,fsy,fsr);
+    }
+    for(let i=flares.length-1;i>=0;i--){
+      const fl=flares[i];
+      fl.life-=fl.decay;
+      if(fl.life<=0){flares.splice(i,1);continue;}
+      const fh=fl.maxH*fl.life;
+      const fx0=fl.x, fy0=fl.y;
+      const fx1=fl.x+Math.cos(fl.ang+.4)*fh*.7, fy1=fl.y+Math.sin(fl.ang+.4)*fh*.7;
+      const fx2=fl.x+Math.cos(fl.ang)*fh, fy2=fl.y+Math.sin(fl.ang)*fh;
+      const[fr,fg,fb]=fl.col;
+      ctx.save();
+      ctx.beginPath();ctx.arc(sx,sy,W+H,0,Math.PI*2);ctx.arc(mx,my,mr+1,0,Math.PI*2,true);ctx.clip('evenodd');
+      ctx.beginPath();ctx.moveTo(fx0,fy0);ctx.quadraticCurveTo(fx1,fy1,fx2,fy2);
+      ctx.strokeStyle=`rgba(${fr},${fg},${fb},${fl.life*.8})`;ctx.lineWidth=sr*.05;
+      ctx.shadowColor=`rgba(${fr},${fg},${fb},.9)`;ctx.shadowBlur=sr*.15;ctx.stroke();ctx.shadowBlur=0;
+      ctx.beginPath();ctx.moveTo(fx0,fy0);ctx.quadraticCurveTo(fx1,fy1,fx2,fy2);
+      ctx.strokeStyle=`rgba(255,230,180,${fl.life*.4})`;ctx.lineWidth=sr*.015;ctx.stroke();
+      ctx.restore();
+    }
+
+    // ── AMBIENT DARKENING ──
+    if(ECLIPSE.phase===1){
+      const ambA=ECLIPSE.progress*.42;
+      ctx.fillStyle=`rgba(0,0,18,${ambA})`;ctx.fillRect(0,0,W,H);
+      // Stars become visible during totality
+      if(ECLIPSE.progress>.5){
+        const stA=(ECLIPSE.progress-.5)*2*.6;
+        ctx.fillStyle=`rgba(200,215,255,${stA*.08})`;ctx.fillRect(0,0,W,H);
+      }
+    }
   }
 
   // ── SHOOTING STARS ──
   const shoots=[];let shootT=0;
   function spawnShoot(){
-    shoots.push({x:Math.random()*W*.7,y:Math.random()*H*.4,
-      vx:6+Math.random()*8,vy:2+Math.random()*4,
-      life:1,decay:.022+Math.random()*.02,alpha:.6+Math.random()*.4,len:80+Math.random()*100});
+    shoots.push({
+      x:Math.random()*W*.8,y:Math.random()*H*.45,
+      vx:5+Math.random()*9,vy:2+Math.random()*4,
+      life:1,decay:.02+Math.random()*.018,
+      alpha:.6+Math.random()*.4,len:70+Math.random()*110,
+      col:Math.random()>.6?[255,255,240]:[200,215,255]
+    });
   }
 
+  // ── NEBULAE (background glow clouds) ──
+  const nebulae=[
+    {x:.22,y:.42,rx:.42,ry:.24,col:'rgba(55,18,95,.07)'},
+    {x:.70,y:.52,rx:.35,ry:.20,col:'rgba(12,38,95,.06)'},
+    {x:.50,y:.25,rx:.55,ry:.28,col:'rgba(95,28,55,.05)'},
+    {x:.15,y:.68,rx:.28,ry:.18,col:'rgba(10,55,75,.05)'},
+    {x:.82,y:.75,rx:.24,ry:.16,col:'rgba(40,10,70,.05)'},
+  ];
+
+  // ── MAIN RENDER LOOP ──
   function frame(){
     if(!alive)return;
     T++;
+    advanceEclipse();
 
-    // ── DEEP SPACE BG ──
-    const bgG=ctx.createLinearGradient(0,0,W,H);
-    bgG.addColorStop(0,'#010108');bgG.addColorStop(.5,'#02010d');bgG.addColorStop(1,'#000006');
+    // Deep space background
+    const bgG=ctx.createRadialGradient(W*.5,H*.45,0,W*.5,H*.5,Math.max(W,H)*.9);
+    bgG.addColorStop(0,'rgba(4,3,14,1)');bgG.addColorStop(.4,'rgba(2,1,10,1)');bgG.addColorStop(1,'rgba(0,0,5,1)');
     ctx.fillStyle=bgG;ctx.fillRect(0,0,W,H);
 
-    // Nebula clouds
-    const nebulas=[
-      {x:.25,y:.45,rx:.38,ry:.22,col:'rgba(60,20,100,.06)'},
-      {x:.72,y:.55,rx:.32,ry:.18,col:'rgba(15,40,100,.05)'},
-      {x:.5,y:.3,rx:.5,ry:.25,col:'rgba(100,30,60,.04)'},
-    ];
-    nebulas.forEach(n=>{
+    // Nebulae
+    nebulae.forEach(n=>{
       const ng=ctx.createRadialGradient(n.x*W,n.y*H,0,n.x*W,n.y*H,n.rx*W);
       ng.addColorStop(0,n.col);ng.addColorStop(1,'rgba(0,0,0,0)');
       ctx.beginPath();ctx.ellipse(n.x*W,n.y*H,n.rx*W,n.ry*H,0,0,Math.PI*2);
       ctx.fillStyle=ng;ctx.fill();
     });
 
-    // ── STARS ──
+    // Stars (twinkling, spectral)
     stars.forEach(s=>{
       s.tw+=s.twS;
-      const alpha=s.baseA*(.55+.45*Math.sin(s.tw));
-      const [r2,g2,b2]=s.col;
+      const alpha=s.baseA*(.52+.48*Math.sin(s.tw));
+      const[r,g,b]=s.col;
       const px=s.x*W,py=s.y*H;
       ctx.beginPath();ctx.arc(px,py,s.r,0,Math.PI*2);
-      ctx.fillStyle=`rgba(${r2},${g2},${b2},${alpha})`;ctx.fill();
+      ctx.fillStyle=`rgba(${r},${g},${b},${alpha})`;ctx.fill();
       if(s.flare){
-        const fl=s.r*5*(0.6+0.4*Math.sin(s.tw));
-        ctx.strokeStyle=`rgba(${r2},${g2},${b2},${alpha*.5})`;ctx.lineWidth=.7;
-        ctx.beginPath();ctx.moveTo(px-fl,py);ctx.lineTo(px+fl,py);ctx.stroke();
-        ctx.beginPath();ctx.moveTo(px,py-fl);ctx.lineTo(px,py+fl);ctx.stroke();
-        ctx.strokeStyle=`rgba(${r2},${g2},${b2},${alpha*.2})`;ctx.lineWidth=.4;
-        const fd=fl*.65;
-        ctx.beginPath();ctx.moveTo(px-fd,py-fd);ctx.lineTo(px+fd,py+fd);ctx.stroke();
-        ctx.beginPath();ctx.moveTo(px+fd,py-fd);ctx.lineTo(px-fd,py+fd);ctx.stroke();
+        const fl=s.r*(4+2*Math.sin(s.tw));
+        for(let sp=0;sp<4;sp++){
+          const a2=sp*Math.PI*.5;
+          ctx.beginPath();ctx.moveTo(px+Math.cos(a2+Math.PI)*fl,py+Math.sin(a2+Math.PI)*fl);
+          ctx.lineTo(px+Math.cos(a2)*fl,py+Math.sin(a2)*fl);
+          ctx.strokeStyle=`rgba(${r},${g},${b},${alpha*.45})`;ctx.lineWidth=.55;ctx.stroke();
+        }
+        const fg=ctx.createRadialGradient(px,py,0,px,py,s.r*5);
+        fg.addColorStop(0,`rgba(${r},${g},${b},${alpha*.4})`);fg.addColorStop(1,'rgba(0,0,0,0)');
+        ctx.beginPath();ctx.arc(px,py,s.r*5,0,Math.PI*2);ctx.fillStyle=fg;ctx.fill();
       }
     });
 
-    // ── DISTANT SUN GLOW (top-left corner) ──
-    const sunG=ctx.createRadialGradient(0,0,0,0,0,W*.45);
-    sunG.addColorStop(0,'rgba(255,240,180,.14)');
-    sunG.addColorStop(.25,'rgba(255,200,100,.07)');
-    sunG.addColorStop(.6,'rgba(255,160,50,.03)');
-    sunG.addColorStop(1,'rgba(0,0,0,0)');
-    ctx.fillStyle=sunG;ctx.fillRect(0,0,W*1.0,H*.8);
-
-    // ── DRAW ALL PLANETS ──
+    // Corner planets
     planets.forEach(p=>drawPlanet(p));
 
-    // ── SHOOTING STARS ──
+    // Eclipse (center)
+    drawEclipse();
+
+    // Shooting stars
     shootT++;
-    if(shootT>200+Math.random()*300){shootT=0;spawnShoot();}
+    if(shootT>240+Math.random()*320){shootT=0;spawnShoot();}
     for(let i=shoots.length-1;i>=0;i--){
       const sh=shoots[i];
-      const tailG=ctx.createLinearGradient(sh.x-sh.vx*(sh.len/sh.vx),sh.y-sh.vy*(sh.len/sh.vx),sh.x,sh.y);
-      tailG.addColorStop(0,'rgba(255,255,200,0)');
-      tailG.addColorStop(.6,`rgba(255,255,220,${sh.life*sh.alpha*.3})`);
-      tailG.addColorStop(1,`rgba(255,255,255,${sh.life*sh.alpha*.9})`);
-      ctx.beginPath();
-      ctx.moveTo(sh.x-sh.vx*(sh.len/sh.vx),sh.y-sh.vy*(sh.len/sh.vx));
-      ctx.lineTo(sh.x,sh.y);
-      ctx.strokeStyle=tailG;ctx.lineWidth=1.4;ctx.stroke();
-      // Head
-      const hG=ctx.createRadialGradient(sh.x,sh.y,0,sh.x,sh.y,4);
-      hG.addColorStop(0,`rgba(255,255,240,${sh.life*sh.alpha})`);
-      hG.addColorStop(1,'rgba(255,255,200,0)');
-      ctx.beginPath();ctx.arc(sh.x,sh.y,4,0,Math.PI*2);ctx.fillStyle=hG;ctx.fill();
+      const[r,g,b]=sh.col;
+      const spd=Math.sqrt(sh.vx*sh.vx+sh.vy*sh.vy);
+      [[sh.len,sh.vx/spd,sh.vy/spd,2.5,.12],[sh.len*.6,sh.vx/spd,sh.vy/spd,1.2,.35],[sh.len*.3,sh.vx/spd,sh.vy/spd,.7,.75]].forEach(([tl,,,,ta])=>{
+        const tx=sh.x-sh.vx*(tl/spd),ty=sh.y-sh.vy*(tl/spd);
+        const tg=ctx.createLinearGradient(tx,ty,sh.x,sh.y);
+        tg.addColorStop(0,`rgba(${r},${g},${b},0)`);
+        tg.addColorStop(.7,`rgba(${r},${g},${b},${sh.life*ta*.4})`);
+        tg.addColorStop(1,`rgba(255,255,255,${sh.life*ta})`);
+        ctx.beginPath();ctx.moveTo(tx,ty);ctx.lineTo(sh.x,sh.y);
+        ctx.strokeStyle=tg;ctx.lineWidth=tl==sh.len?2.5:tl==sh.len*.6?1.2:.7;ctx.lineCap='round';ctx.stroke();
+      });
+      const hg=ctx.createRadialGradient(sh.x,sh.y,0,sh.x,sh.y,4);
+      hg.addColorStop(0,`rgba(255,255,220,${sh.life})`);hg.addColorStop(1,'rgba(255,200,100,0)');
+      ctx.beginPath();ctx.arc(sh.x,sh.y,4,0,Math.PI*2);ctx.fillStyle=hg;ctx.fill();
       sh.x+=sh.vx;sh.y+=sh.vy;sh.life-=sh.decay;
-      if(sh.life<=0||sh.x>W||sh.y>H)shoots.splice(i,1);
+      if(sh.life<=0||sh.x>W+50||sh.y>H+50)shoots.splice(i,1);
     }
 
     planetAF=requestAnimationFrame(frame);

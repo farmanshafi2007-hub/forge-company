@@ -7,23 +7,25 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;700;800&display=swap');
+        /* Premium Tech Font Upgrade */
+        @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&display=swap');
         
         :root {
-            /* Brighter, more vibrant neon red */
+            /* Vibrant neon red for high contrast */
             --brand-primary: #FF0033;
             --brand-hover: #FF3355;
-            --brand-glow: rgba(255, 0, 51, 0.6);
+            --brand-glow: rgba(255, 0, 51, 0.7);
         }
 
         html, body { 
-            font-family: 'Rubik', sans-serif; 
-            background-color: #030303; 
+            font-family: 'Outfit', sans-serif; 
+            background-color: #020202; 
             color: #ffffff;
             overflow-x: hidden;
             width: 100%;
             max-width: 100vw;
             position: relative;
+            letter-spacing: 0.01em;
         }
 
         /* Ambient Background Details */
@@ -31,7 +33,7 @@
             background-image: 
                 linear-gradient(to right, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
                 linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
-            background-size: 30px 30px;
+            background-size: 40px 40px;
             position: absolute;
             inset: 0;
             z-index: 0;
@@ -44,10 +46,11 @@
             height: 600px;
             background: radial-gradient(circle, var(--brand-glow) 0%, transparent 60%);
             border-radius: 50%;
-            filter: blur(100px);
-            opacity: 0.15;
+            filter: blur(120px);
+            opacity: 0.2;
             pointer-events: none;
             z-index: 0;
+            mix-blend-mode: screen;
         }
 
         /* Clipped Corners (Top-Right & Bottom-Left) */
@@ -62,11 +65,11 @@
 
         /* Advanced Liquid Glass Widget with details */
         .liquid-glass {
-            background: linear-gradient(135deg, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0.02) 100%);
-            backdrop-filter: blur(40px) saturate(200%);
-            -webkit-backdrop-filter: blur(40px) saturate(200%);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.2), 0 10px 40px rgba(0, 0, 0, 0.8);
+            background: linear-gradient(135deg, rgba(255,255,255,0.06) 0%, rgba(255,255,255,0.01) 100%);
+            backdrop-filter: blur(30px) saturate(180%);
+            -webkit-backdrop-filter: blur(30px) saturate(180%);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.3), 0 15px 40px rgba(0, 0, 0, 0.9);
             position: relative;
         }
 
@@ -80,9 +83,9 @@
 
         /* Standard Glass Cards with Hover Details */
         .glass-card {
-            background: linear-gradient(145deg, rgba(20,20,20,0.9) 0%, rgba(5,5,5,0.95) 100%);
-            border: 1px solid rgba(255,255,255,0.08);
-            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            background: linear-gradient(145deg, rgba(15,15,15,0.85) 0%, rgba(5,5,5,0.95) 100%);
+            border: 1px solid rgba(255,255,255,0.05);
+            transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
             position: relative;
         }
         
@@ -92,26 +95,27 @@
             inset: 0;
             border: 1px solid var(--brand-primary);
             opacity: 0;
-            transition: opacity 0.4s ease;
+            transition: opacity 0.5s ease;
             pointer-events: none;
             clip-path: polygon(24px 0%, 100% 0%, 100% calc(100% - 24px), calc(100% - 24px) 100%, 0% 100%, 0% 24px);
         }
 
         .glass-card:hover {
-            transform: translateY(-5px);
-            background: linear-gradient(145deg, rgba(30,30,30,0.95) 0%, rgba(10,10,10,0.98) 100%);
-            filter: drop-shadow(0 15px 30px rgba(255, 0, 51, 0.15));
+            transform: translateY(-8px);
+            background: linear-gradient(145deg, rgba(25,25,25,0.95) 0%, rgba(10,10,10,0.98) 100%);
+            filter: drop-shadow(0 20px 40px rgba(255, 0, 51, 0.2));
+            border-color: rgba(255,0,51,0.3);
         }
 
         .glass-card:hover::after {
-            opacity: 0.3;
+            opacity: 0.5;
         }
 
         /* Scroll Reveal */
         .reveal {
             opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+            transform: translateY(40px);
+            transition: all 0.9s cubic-bezier(0.16, 1, 0.3, 1);
         }
         .reveal.active {
             opacity: 1;
@@ -124,50 +128,54 @@
         .border-brand { border-color: var(--brand-primary); }
         .hover-bg-brand:hover { 
             background-color: var(--brand-hover); 
-            filter: drop-shadow(0 0 15px var(--brand-glow));
+            filter: drop-shadow(0 0 20px var(--brand-glow));
         }
 
         /* Bright Icon Glow Effects */
         .icon-glow-brand {
-            filter: drop-shadow(0 0 15px rgba(255, 0, 51, 0.9)) brightness(1.4);
+            filter: drop-shadow(0 0 15px rgba(255, 0, 51, 1)) brightness(1.5);
         }
         .icon-glow-white {
-            filter: drop-shadow(0 0 12px rgba(255, 255, 255, 0.8)) brightness(1.3);
+            filter: drop-shadow(0 0 12px rgba(255, 255, 255, 0.9)) brightness(1.4);
         }
         .icon-glow-gold {
-            filter: drop-shadow(0 0 12px rgba(255, 223, 0, 0.9)) brightness(1.3);
+            filter: drop-shadow(0 0 12px rgba(255, 223, 0, 1)) brightness(1.4);
         }
 
-        /* Text Detailing */
+        /* Premium Text Detailing */
         .text-shadow-glow {
-            text-shadow: 0 0 30px rgba(255, 0, 51, 0.5), 0 4px 10px rgba(0,0,0,0.8);
+            text-shadow: 0 0 40px rgba(255, 0, 51, 0.6), 0 4px 15px rgba(0,0,0,0.9);
+        }
+        
+        .heading-tight {
+            letter-spacing: -0.04em;
         }
     </style>
 </head>
-<body class="antialiased selection:bg-[#FF0033] selection:text-white">
+<body class="antialiased selection:bg-[#FF0033] selection:text-white relative">
 
     <!-- Premium Top Announcement Bar -->
-    <div class="fixed top-0 left-0 w-full h-[40px] z-[60] bg-gradient-to-r from-[#000000] via-[#2a0505] to-[#000000] border-b border-[#FF0033]/40 flex justify-center items-center gap-2 md:gap-3 px-4 shadow-[0_4px_25px_rgba(255,0,51,0.2)]">
-        <i data-lucide="badge-dollar-sign" class="w-4 h-4 text-[#FFDF00] icon-glow-gold"></i>
-        <p class="text-[10px] sm:text-xs md:text-sm font-bold text-gray-200 uppercase tracking-widest">
+    <div class="fixed top-0 left-0 w-full h-[40px] z-[60] bg-gradient-to-r from-[#000000] via-[#1f0303] to-[#000000] border-b border-[#FF0033]/50 flex justify-center items-center gap-2 md:gap-3 px-4 shadow-[0_4px_30px_rgba(255,0,51,0.25)]">
+        <i data-lucide="badge-dollar-sign" class="w-3 h-3 sm:w-4 sm:h-4 text-[#FFDF00] icon-glow-gold shrink-0"></i>
+        <p class="text-[9px] sm:text-xs md:text-sm font-bold text-gray-200 uppercase tracking-[0.2em] text-center truncate">
             <span class="text-[#FFDF00] drop-shadow-md brightness-110">$2000 Generated</span> by Farman's team in the last year
         </p>
     </div>
 
     <!-- Header -->
-    <header class="fixed top-[40px] w-full z-50 bg-black/70 backdrop-blur-lg border-b border-white/10 shadow-[0_10px_30px_rgba(0,0,0,0.5)]">
-        <nav class="max-w-7xl mx-auto px-6 md:px-16 py-4 flex justify-between items-center w-full relative">
+    <header class="fixed top-[40px] w-full z-[50] bg-black/70 backdrop-blur-xl border-b border-white/10 shadow-[0_10px_40px_rgba(0,0,0,0.6)] transition-all">
+        <nav class="max-w-7xl mx-auto px-5 md:px-16 py-4 flex justify-between items-center w-full relative">
             <!-- Details: Accent Line -->
-            <div class="absolute bottom-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-[#FF0033]/30 to-transparent"></div>
+            <div class="absolute bottom-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-[#FF0033]/50 to-transparent"></div>
             
             <!-- Logo -->
-            <div class="text-xl sm:text-2xl font-black tracking-tight text-white flex items-center gap-3 shrink-0">
-                <i data-lucide="hexagon" class="text-white w-6 h-6 sm:w-7 sm:h-7 icon-glow-white"></i>
-                <span class="uppercase drop-shadow-lg">FORGE<span class="text-brand">SOFTWARE</span></span>
+            <div class="text-lg sm:text-2xl font-black tracking-tighter text-white flex items-center gap-2 sm:gap-3 shrink-0">
+                <i data-lucide="hexagon" class="text-white w-5 h-5 sm:w-7 sm:h-7 icon-glow-white shrink-0"></i>
+                <span class="uppercase drop-shadow-xl">FORGE<span class="text-brand">SOFTWARE</span></span>
             </div>
 
             <!-- Desktop Nav -->
-            <div class="hidden md:flex space-x-10 text-sm font-bold tracking-widest uppercase text-gray-300">
+            <div class="hidden md:flex space-x-12 text-sm font-bold tracking-[0.15em] uppercase text-gray-300">
                 <a href="#" class="hover:text-white hover:text-shadow-glow transition-all">Home</a>
                 <a href="#about" class="hover:text-white hover:text-shadow-glow transition-all">Solutions</a>
                 <a href="#contact" class="hover:text-white hover:text-shadow-glow transition-all">Contact Us</a>
@@ -175,265 +183,279 @@
 
             <!-- CTA & Mobile Toggle -->
             <div class="flex items-center gap-4 shrink-0">
-                <a href="tel:9697430658" class="hidden sm:flex bg-brand hover-bg-brand text-white px-7 py-2.5 text-sm font-bold tracking-wider uppercase transition-all items-center gap-2 clip-button border border-white/20">
+                <a href="tel:9697430658" class="hidden sm:flex bg-brand hover-bg-brand text-white px-6 sm:px-8 py-2.5 text-xs sm:text-sm font-bold tracking-[0.15em] uppercase transition-all items-center gap-2 clip-button border border-white/30">
                     Contact Us
                 </a>
-                <button id="mobileMenuBtn" class="md:hidden text-white p-1 focus:outline-none block">
-                    <i data-lucide="menu" class="w-7 h-7 icon-glow-white"></i>
+                <button id="mobileMenuBtn" class="md:hidden text-white p-1 focus:outline-none block relative z-[60]">
+                    <i data-lucide="menu" class="w-8 h-8 icon-glow-white"></i>
                 </button>
             </div>
         </nav>
-
-        <!-- Mobile Nav Menu -->
-        <div id="mobileMenu" class="hidden absolute top-full left-0 w-full bg-[#050505]/98 backdrop-blur-2xl border-b border-brand/30 py-6 px-8 flex-col space-y-6 shadow-[0_20px_40px_rgba(0,0,0,0.8)] z-40 text-left">
-            <a href="#" class="mobile-link text-gray-200 hover:text-white font-bold text-lg tracking-widest uppercase">Home</a>
-            <a href="#about" class="mobile-link text-gray-200 hover:text-white font-bold text-lg tracking-widest uppercase">Solutions</a>
-            <a href="#contact" class="mobile-link text-gray-200 hover:text-white font-bold text-lg tracking-widest uppercase">Contact Us</a>
-            <a href="tel:9697430658" class="bg-brand text-white px-8 py-4 font-bold clip-button w-fit mt-4 uppercase tracking-wider shadow-[0_0_15px_rgba(255,0,51,0.5)]">Contact Us</a>
-        </div>
     </header>
 
+    <!-- Mobile Nav Menu (Fixed full screen overlay to prevent clipping) -->
+    <div id="mobileMenu" class="fixed inset-0 top-[40px] bg-[#020202]/98 backdrop-blur-3xl z-[45] hidden flex-col items-center justify-center space-y-8 px-6 transition-all duration-300">
+        <a href="#" class="mobile-link text-gray-200 hover:text-white font-black text-2xl tracking-[0.2em] uppercase">Home</a>
+        <a href="#about" class="mobile-link text-gray-200 hover:text-white font-black text-2xl tracking-[0.2em] uppercase">Solutions</a>
+        <a href="#contact" class="mobile-link text-gray-200 hover:text-white font-black text-2xl tracking-[0.2em] uppercase">Contact Us</a>
+        <div class="h-[1px] w-1/2 bg-white/10 my-4"></div>
+        <a href="tel:9697430658" class="bg-brand text-white px-10 py-5 font-black clip-button text-lg uppercase tracking-[0.2em] shadow-[0_0_25px_rgba(255,0,51,0.6)] text-center w-full max-w-xs">Call Now</a>
+    </div>
+
     <!-- Main Hero Section -->
-    <section class="relative w-full h-[100dvh] min-h-[650px] overflow-hidden bg-black pt-[40px]">
+    <section class="relative w-full min-h-[100dvh] flex flex-col justify-center overflow-hidden bg-black pt-[100px] md:pt-[120px] pb-10">
         
-        <!-- Background Video (Now properly set to z-0 so it's visible) -->
+        <!-- Background Video - Made more visible -->
         <video 
+            id="bgVideo"
             src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260227_042027_c4b2f2ea-1c7c-4d6e-9e3d-81a78063703f.mp4" 
             autoplay 
             loop 
             muted 
             playsinline 
-            class="absolute inset-0 w-full h-full object-cover z-0 opacity-50 md:opacity-100">
+            class="absolute inset-0 w-full h-full object-cover object-center z-0 opacity-80 md:opacity-100 mix-blend-lighten">
         </video>
 
-        <!-- Detailed Overlay Gradient (Over Video) -->
-        <div class="absolute inset-0 z-[1] bg-gradient-to-r from-black via-black/80 to-transparent pointer-events-none"></div>
+        <!-- Dynamic Overlay Gradient (Ensures car/video on the right remains visible) -->
+        <div class="absolute inset-0 z-[1] bg-gradient-to-b md:bg-gradient-to-r from-black/95 via-black/40 md:via-black/50 to-transparent pointer-events-none"></div>
+        
+        <!-- Subtle Ambient Glow -->
         <div class="ambient-glow top-[10%] left-[-10%] z-[1]"></div>
 
-        <!-- Main Content -->
-        <div class="absolute top-[25%] md:top-[30%] left-6 md:left-16 z-10 w-full max-w-5xl pr-6">
-            <div class="flex items-center gap-3 mb-4 opacity-80">
-                <div class="h-[2px] w-12 bg-brand shadow-[0_0_10px_rgba(255,0,51,0.8)]"></div>
-                <span class="text-brand font-bold uppercase tracking-widest text-sm text-shadow-glow">Next-Level Automation</span>
+        <!-- Main Content (Flex Layout to prevent overlapping on mobile) -->
+        <div class="relative z-10 flex flex-col justify-between flex-grow w-full max-w-7xl mx-auto px-5 md:px-16">
+            
+            <!-- Top Text Container -->
+            <div class="w-full max-w-4xl mt-10 md:mt-20 drop-shadow-2xl">
+                <div class="flex items-center gap-3 mb-4 opacity-90">
+                    <div class="h-[2px] w-8 sm:w-12 bg-brand shadow-[0_0_15px_rgba(255,0,51,0.9)]"></div>
+                    <span class="text-brand font-bold uppercase tracking-[0.2em] text-xs sm:text-sm text-shadow-glow">Next-Level Automation</span>
+                </div>
+                
+                <h1 class="text-white uppercase font-black text-[2.5rem] sm:text-5xl md:text-6xl lg:text-[80px] leading-[1] mb-5 sm:mb-6 drop-shadow-[0_10px_20px_rgba(0,0,0,0.8)] heading-tight">
+                    Premium Websites & <br/>
+                    <span class="text-brand text-shadow-glow">Lethal AI Agents</span>
+                </h1>
+                
+                <p class="text-gray-300 text-sm sm:text-base md:text-xl font-medium mb-8 sm:mb-10 max-w-2xl leading-relaxed drop-shadow-[0_5px_10px_rgba(0,0,0,0.8)] border-l-2 border-brand/80 pl-4">
+                    We build high-end custom websites and deploy AI agents that kill and replace your entire sales team, closing deals much better, faster, and 24/7.
+                </p>
+                
+                <div class="flex flex-col sm:flex-row gap-4 sm:items-center">
+                    <a href="#contact" class="inline-flex justify-center clip-button bg-brand hover-bg-brand text-white font-black uppercase tracking-[0.15em] py-4 px-8 sm:px-10 text-sm sm:text-lg transition-all shadow-[0_0_40px_rgba(255,0,51,0.5)] border border-white/20 text-center">
+                        Get Started
+                    </a>
+                    <a href="#about" class="inline-flex justify-center text-white font-bold uppercase tracking-[0.15em] text-xs sm:text-sm items-center gap-2 hover:text-brand transition-colors py-4 px-4 drop-shadow-lg">
+                        View Systems <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                    </a>
+                </div>
             </div>
-            <h1 class="text-white uppercase font-black text-[42px] sm:text-[48px] md:text-[72px] leading-[1.05] mb-6 drop-shadow-2xl" style="letter-spacing: -0.02em;">
-                Premium Websites & <br class="hidden md:block"/>
-                <span class="text-brand text-shadow-glow">Lethal AI Agents</span>
-            </h1>
-            <p class="text-gray-300 text-sm sm:text-base md:text-xl font-medium mb-10 max-w-2xl leading-relaxed drop-shadow-lg border-l-2 border-white/20 pl-4">
-                We build high-end custom websites and deploy AI agents that kill and replace your entire sales team, closing deals much better, faster, and 24/7.
-            </p>
-            <div class="flex gap-4 items-center">
-                <a href="#contact" class="inline-block clip-button bg-brand hover-bg-brand text-white font-black uppercase tracking-widest py-4 px-10 text-lg transition-all shadow-[0_0_30px_rgba(255,0,51,0.4)] border border-white/10">
-                    Get Started
-                </a>
-                <a href="#about" class="hidden sm:flex text-white font-bold uppercase tracking-widest text-sm items-center gap-2 hover:text-brand transition-colors">
-                    View Systems <i data-lucide="arrow-right" class="w-4 h-4"></i>
-                </a>
-            </div>
-        </div>
 
-        <!-- Liquid Glass Consultation Widget (Bottom-Left) -->
-        <div class="absolute bottom-8 left-6 md:bottom-16 md:left-16 liquid-glass p-6 md:p-8 w-[calc(100%-3rem)] md:w-auto md:min-w-[380px] z-10">
-            <div class="absolute top-0 right-0 w-20 h-20 bg-brand/20 blur-2xl rounded-full"></div>
-            <h3 class="text-white font-bold text-base sm:text-lg md:text-xl mb-5 tracking-wide">Book a Free Meeting<br/><span class="text-gray-400 text-sm font-medium">with Farman's Team</span></h3>
-            <a href="tel:9697430658" class="clip-button bg-white hover:bg-gray-200 text-black font-black uppercase tracking-wider py-4 px-6 flex items-center justify-center gap-3 transition-colors w-full shadow-lg">
-                <i data-lucide="phone" class="w-5 h-5"></i> Secure Your Spot
-            </a>
+            <!-- Liquid Glass Consultation Widget -->
+            <div class="w-full sm:w-auto self-start mt-16 sm:mt-24 mb-6">
+                <div class="liquid-glass p-6 md:p-8 w-full max-w-md sm:min-w-[400px]">
+                    <div class="absolute top-0 right-0 w-24 h-24 bg-brand/30 blur-3xl rounded-full"></div>
+                    <h3 class="text-white font-black text-lg md:text-xl mb-4 sm:mb-5 tracking-wide leading-tight">Book a Free Meeting<br/><span class="text-gray-400 text-sm font-semibold uppercase tracking-widest mt-1 block">with Farman's Team</span></h3>
+                    <a href="tel:9697430658" class="clip-button bg-white hover:bg-gray-200 text-black font-black uppercase tracking-[0.15em] py-4 px-6 flex items-center justify-center gap-3 transition-colors w-full shadow-2xl text-sm sm:text-base">
+                        <i data-lucide="phone" class="w-5 h-5"></i> Secure Your Spot
+                    </a>
+                </div>
+            </div>
+            
         </div>
     </section>
 
     <!-- Services Section -->
-    <section id="about" class="py-24 px-6 md:px-16 relative bg-[#030303]">
+    <section id="about" class="py-16 md:py-28 px-5 md:px-16 relative bg-[#020202]">
         <div class="cyber-grid"></div>
-        <div class="ambient-glow top-[20%] right-[-5%]"></div>
+        <div class="ambient-glow top-[20%] right-[-5%] w-[800px] h-[800px]"></div>
         
         <div class="max-w-7xl mx-auto relative z-10">
-            <div class="mb-20 reveal flex flex-col md:flex-row md:items-end justify-between gap-6">
+            <div class="mb-12 md:mb-20 reveal flex flex-col lg:flex-row lg:items-end justify-between gap-6">
                 <div>
-                    <div class="flex items-center gap-3 mb-2">
+                    <div class="flex items-center gap-3 mb-3">
                         <i data-lucide="zap" class="w-5 h-5 text-brand icon-glow-brand"></i>
-                        <span class="text-brand font-bold uppercase tracking-widest text-xs">Infrastructure</span>
+                        <span class="text-brand font-bold uppercase tracking-[0.2em] text-xs">Infrastructure</span>
                     </div>
-                    <h2 class="text-4xl md:text-6xl font-black uppercase tracking-tight text-shadow-glow" style="letter-spacing: -0.03em;">Next-Gen Digital <br/> Systems</h2>
+                    <h2 class="text-4xl sm:text-5xl md:text-[64px] font-black uppercase heading-tight text-shadow-glow leading-[1]">Next-Gen Digital <br class="hidden md:block"/> Systems</h2>
                 </div>
-                <p class="text-gray-400 text-lg max-w-md md:text-right border-l-2 md:border-l-0 md:border-r-2 border-brand/50 pl-4 md:pr-4 md:pl-0">
+                <p class="text-gray-400 text-sm sm:text-lg max-w-md lg:text-right border-l-2 lg:border-l-0 lg:border-r-2 border-brand/60 pl-4 lg:pr-4 lg:pl-0 font-medium">
                     End-to-end web infrastructure and AI automation engineered for massive scalability.
                 </p>
             </div>
             
-            <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-8">
+            <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
                 <!-- Service 1 -->
-                <div class="glass-card clip-card p-10 reveal border-t border-brand/70 group">
-                    <div class="absolute top-4 right-4 text-white/5 font-black text-6xl pointer-events-none transition-all group-hover:text-brand/10">01</div>
-                    <i data-lucide="layout" class="w-12 h-12 text-brand mb-8 icon-glow-brand transform transition-transform group-hover:scale-110"></i>
-                    <h3 class="text-2xl font-black mb-4 text-white uppercase tracking-tight">Premium Websites</h3>
-                    <p class="text-gray-400 text-sm leading-relaxed font-medium">High-converting, bespoke websites designed to establish absolute authority in your industry and capture high-value leads with striking visuals.</p>
+                <div class="glass-card clip-card p-8 md:p-12 reveal border-t border-brand/70 group">
+                    <div class="absolute top-4 right-4 text-white/5 font-black text-5xl md:text-7xl pointer-events-none transition-all group-hover:text-brand/10">01</div>
+                    <i data-lucide="layout" class="w-12 h-12 md:w-14 md:h-14 text-brand mb-6 md:mb-8 icon-glow-brand transform transition-transform duration-500 group-hover:scale-110 group-hover:rotate-3"></i>
+                    <h3 class="text-xl md:text-2xl font-black mb-3 md:mb-4 text-white uppercase tracking-tight">Premium Websites</h3>
+                    <p class="text-gray-400 text-xs sm:text-sm leading-relaxed font-medium">High-converting, bespoke websites designed to establish absolute authority in your industry and capture high-value leads with striking visuals.</p>
                 </div>
                 <!-- Service 2 -->
-                <div class="glass-card clip-card p-10 reveal border-t border-brand/70 group" style="transition-delay: 100ms;">
-                    <div class="absolute top-4 right-4 text-white/5 font-black text-6xl pointer-events-none transition-all group-hover:text-brand/10">02</div>
-                    <i data-lucide="bot" class="w-12 h-12 text-brand mb-8 icon-glow-brand transform transition-transform group-hover:scale-110"></i>
-                    <h3 class="text-2xl font-black mb-4 text-white uppercase tracking-tight">AI Sales Agents</h3>
-                    <p class="text-gray-400 text-sm leading-relaxed font-medium">Lethal AI agents that completely replace human error, engaging your leads 24/7 and closing deals with superhuman accuracy and speed.</p>
+                <div class="glass-card clip-card p-8 md:p-12 reveal border-t border-brand/70 group" style="transition-delay: 100ms;">
+                    <div class="absolute top-4 right-4 text-white/5 font-black text-5xl md:text-7xl pointer-events-none transition-all group-hover:text-brand/10">02</div>
+                    <i data-lucide="bot" class="w-12 h-12 md:w-14 md:h-14 text-brand mb-6 md:mb-8 icon-glow-brand transform transition-transform duration-500 group-hover:scale-110 group-hover:rotate-3"></i>
+                    <h3 class="text-xl md:text-2xl font-black mb-3 md:mb-4 text-white uppercase tracking-tight">AI Sales Agents</h3>
+                    <p class="text-gray-400 text-xs sm:text-sm leading-relaxed font-medium">Lethal AI agents that completely replace human error, engaging your leads 24/7 and closing deals with superhuman accuracy and speed.</p>
                 </div>
                 <!-- Service 3 -->
-                <div class="glass-card clip-card p-10 reveal border-t border-brand/70 group" style="transition-delay: 200ms;">
-                    <div class="absolute top-4 right-4 text-white/5 font-black text-6xl pointer-events-none transition-all group-hover:text-brand/10">03</div>
-                    <i data-lucide="cpu" class="w-12 h-12 text-brand mb-8 icon-glow-brand transform transition-transform group-hover:scale-110"></i>
-                    <h3 class="text-2xl font-black mb-4 text-white uppercase tracking-tight">Automated Pipelines</h3>
-                    <p class="text-gray-400 text-sm leading-relaxed font-medium">Complete end-to-end backend automation of your client acquisition process so your business can scale massively without hiring.</p>
+                <div class="glass-card clip-card p-8 md:p-12 reveal border-t border-brand/70 group" style="transition-delay: 200ms;">
+                    <div class="absolute top-4 right-4 text-white/5 font-black text-5xl md:text-7xl pointer-events-none transition-all group-hover:text-brand/10">03</div>
+                    <i data-lucide="cpu" class="w-12 h-12 md:w-14 md:h-14 text-brand mb-6 md:mb-8 icon-glow-brand transform transition-transform duration-500 group-hover:scale-110 group-hover:rotate-3"></i>
+                    <h3 class="text-xl md:text-2xl font-black mb-3 md:mb-4 text-white uppercase tracking-tight">Automated Pipelines</h3>
+                    <p class="text-gray-400 text-xs sm:text-sm leading-relaxed font-medium">Complete end-to-end backend automation of your client acquisition process so your business can scale massively without hiring.</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Process Section -->
-    <section id="process" class="py-24 px-6 md:px-16 bg-[#0a0a0a] border-y border-white/10 relative overflow-hidden">
-        <div class="ambient-glow top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] w-[800px] h-[300px] opacity-10"></div>
+    <section id="process" class="py-16 md:py-28 px-5 md:px-16 bg-[#080808] border-y border-white/5 relative overflow-hidden">
+        <div class="ambient-glow top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] w-[1000px] h-[400px] opacity-10"></div>
         <div class="max-w-7xl mx-auto reveal relative z-10">
-            <div class="text-center mb-20">
-                <h2 class="text-4xl md:text-6xl font-black mb-4 uppercase tracking-tight text-shadow-glow" style="letter-spacing: -0.03em;">How We Forge It</h2>
-                <p class="text-brand font-bold tracking-widest uppercase text-sm">A streamlined operation without the headache.</p>
+            <div class="text-center mb-16 md:mb-24">
+                <h2 class="text-4xl sm:text-5xl md:text-[64px] font-black mb-3 md:mb-4 uppercase heading-tight text-shadow-glow leading-[1]">How We Forge It</h2>
+                <p class="text-brand font-bold tracking-[0.2em] uppercase text-xs md:text-sm">A streamlined operation without the headache.</p>
             </div>
             
-            <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-10 relative">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-12 relative">
                 <!-- Connecting Line Detail -->
-                <div class="hidden lg:block absolute top-8 left-[10%] right-[10%] h-[2px] bg-gradient-to-r from-brand/10 via-brand/50 to-brand/10 z-0"></div>
+                <div class="hidden lg:block absolute top-[2.5rem] left-[10%] right-[10%] h-[2px] bg-gradient-to-r from-brand/10 via-brand/60 to-brand/10 z-0 shadow-[0_0_15px_rgba(255,0,51,0.5)]"></div>
                 
-                <div class="text-left relative z-10 bg-[#0a0a0a] p-4 rounded-lg">
-                    <div class="w-16 h-16 bg-black border-2 border-brand/50 flex items-center justify-center text-brand font-black text-2xl mb-6 shadow-[0_0_15px_rgba(255,0,51,0.3)] clip-button">01</div>
-                    <h4 class="text-xl font-black mb-3 text-white uppercase tracking-tight">Call Us</h4>
-                    <p class="text-sm text-gray-400 font-medium">Reach out directly to discuss your business goals and identify current systemic bottlenecks.</p>
+                <div class="text-left relative z-10 p-5 rounded-lg text-center sm:text-left bg-[#050505] border border-white/5 shadow-xl hover:border-brand/30 transition-colors">
+                    <div class="w-14 h-14 md:w-20 md:h-20 bg-black border-2 border-brand/50 flex items-center justify-center text-brand font-black text-2xl md:text-3xl mb-5 md:mb-8 shadow-[0_0_20px_rgba(255,0,51,0.4)] clip-button mx-auto sm:mx-0">01</div>
+                    <h4 class="text-lg md:text-2xl font-black mb-2 md:mb-3 text-white uppercase tracking-tight">Call Us</h4>
+                    <p class="text-xs md:text-sm text-gray-400 font-medium leading-relaxed">Reach out directly to discuss your business goals and identify current systemic bottlenecks.</p>
                 </div>
-                <div class="text-left relative z-10 bg-[#0a0a0a] p-4 rounded-lg">
-                    <div class="w-16 h-16 bg-black border-2 border-white/20 flex items-center justify-center text-white font-black text-2xl mb-6 clip-button">02</div>
-                    <h4 class="text-xl font-black mb-3 text-white uppercase tracking-tight">Share Needs</h4>
-                    <p class="text-sm text-gray-400 font-medium">Map out your sales process so we can pinpoint exactly where AI will maximize deal flow.</p>
+                <div class="text-left relative z-10 p-5 rounded-lg text-center sm:text-left bg-[#050505] border border-white/5 shadow-xl hover:border-brand/30 transition-colors">
+                    <div class="w-14 h-14 md:w-20 md:h-20 bg-black border-2 border-white/20 flex items-center justify-center text-white font-black text-2xl md:text-3xl mb-5 md:mb-8 clip-button mx-auto sm:mx-0">02</div>
+                    <h4 class="text-lg md:text-2xl font-black mb-2 md:mb-3 text-white uppercase tracking-tight">Share Needs</h4>
+                    <p class="text-xs md:text-sm text-gray-400 font-medium leading-relaxed">Map out your sales process so we can pinpoint exactly where AI will maximize deal flow.</p>
                 </div>
-                <div class="text-left relative z-10 bg-[#0a0a0a] p-4 rounded-lg">
-                    <div class="w-16 h-16 bg-black border-2 border-white/20 flex items-center justify-center text-white font-black text-2xl mb-6 clip-button">03</div>
-                    <h4 class="text-xl font-black mb-3 text-white uppercase tracking-tight">Get Quote</h4>
-                    <p class="text-sm text-gray-400 font-medium">We design the ultimate custom web and AI blueprint and initiate building immediately.</p>
+                <div class="text-left relative z-10 p-5 rounded-lg text-center sm:text-left bg-[#050505] border border-white/5 shadow-xl hover:border-brand/30 transition-colors">
+                    <div class="w-14 h-14 md:w-20 md:h-20 bg-black border-2 border-white/20 flex items-center justify-center text-white font-black text-2xl md:text-3xl mb-5 md:mb-8 clip-button mx-auto sm:mx-0">03</div>
+                    <h4 class="text-lg md:text-2xl font-black mb-2 md:mb-3 text-white uppercase tracking-tight">Get Quote</h4>
+                    <p class="text-xs md:text-sm text-gray-400 font-medium leading-relaxed">We design the ultimate custom web and AI blueprint and initiate building immediately.</p>
                 </div>
-                <div class="text-left relative z-10 bg-[#0a0a0a] p-4 rounded-lg">
-                    <div class="w-16 h-16 bg-brand border-2 border-brand flex items-center justify-center text-white font-black text-2xl mb-6 shadow-[0_0_20px_rgba(255,0,51,0.6)] clip-button">04</div>
-                    <h4 class="text-xl font-black mb-3 text-brand uppercase tracking-tight text-shadow-glow">Deployed</h4>
-                    <p class="text-sm text-gray-300 font-medium">Your premium site and lethal AI agents launch, automating your sales instantly.</p>
+                <div class="text-left relative z-10 p-5 rounded-lg text-center sm:text-left bg-[#050505] border border-brand/30 shadow-[0_10px_30px_rgba(255,0,51,0.1)]">
+                    <div class="w-14 h-14 md:w-20 md:h-20 bg-brand border-2 border-brand flex items-center justify-center text-white font-black text-2xl md:text-3xl mb-5 md:mb-8 shadow-[0_0_30px_rgba(255,0,51,0.8)] clip-button mx-auto sm:mx-0">04</div>
+                    <h4 class="text-lg md:text-2xl font-black mb-2 md:mb-3 text-brand uppercase tracking-tight text-shadow-glow">Deployed</h4>
+                    <p class="text-xs md:text-sm text-gray-300 font-medium leading-relaxed">Your premium site and lethal AI agents launch, automating your sales instantly.</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Plans Section -->
-    <section id="plans" class="py-24 px-6 md:px-16 relative bg-[#030303]">
-        <div class="cyber-grid opacity-50"></div>
+    <section id="plans" class="py-16 md:py-28 px-5 md:px-16 relative bg-[#020202]">
+        <div class="cyber-grid opacity-60"></div>
         
-        <div class="max-w-7xl mx-auto text-center mb-20 reveal relative z-10">
-            <h2 class="text-4xl md:text-6xl font-black mb-4 uppercase tracking-tight text-shadow-glow" style="letter-spacing: -0.03em;">Investment Plans</h2>
-            <p class="text-gray-400 text-lg font-medium">Select a custom digital package designed to dominate your market.</p>
+        <div class="max-w-7xl mx-auto text-center mb-16 md:mb-24 reveal relative z-10">
+            <h2 class="text-4xl sm:text-5xl md:text-[64px] font-black mb-3 md:mb-4 uppercase heading-tight text-shadow-glow leading-[1]">Investment Plans</h2>
+            <p class="text-gray-400 text-sm md:text-lg font-medium tracking-wide">Select a custom digital package designed to dominate your market.</p>
         </div>
         
-        <div class="grid lg:grid-cols-3 gap-8 max-w-6xl mx-auto items-center relative z-10">
+        <div class="grid lg:grid-cols-3 gap-8 md:gap-10 max-w-6xl mx-auto items-center relative z-10">
             
             <!-- Standard -->
-            <div class="glass-card clip-card p-10 reveal border-t border-white/20">
-                <h3 class="text-2xl font-black mb-2 text-white uppercase tracking-tight">Starter Build</h3>
-                <p class="text-gray-400 text-sm mb-8 font-medium">Perfect for establishing a premium digital footprint.</p>
-                <div class="h-[1px] w-full bg-white/10 mb-8"></div>
-                <ul class="space-y-5 mb-10 text-left">
-                    <li class="flex items-center text-sm text-gray-200 font-medium"><i data-lucide="check" class="w-5 h-5 mr-3 text-white opacity-50"></i> Premium Single-Page Site</li>
-                    <li class="flex items-center text-sm text-gray-200 font-medium"><i data-lucide="check" class="w-5 h-5 mr-3 text-white opacity-50"></i> Basic AI Lead Capture</li>
-                    <li class="flex items-center text-sm text-gray-200 font-medium"><i data-lucide="check" class="w-5 h-5 mr-3 text-white opacity-50"></i> Mobile Responsive Design</li>
+            <div class="glass-card clip-card p-8 sm:p-12 reveal border-t border-white/20">
+                <h3 class="text-2xl md:text-3xl font-black mb-2 text-white uppercase tracking-tight">Starter Build</h3>
+                <p class="text-gray-400 text-xs md:text-sm mb-6 md:mb-8 font-medium tracking-wide">Perfect for establishing a premium digital footprint.</p>
+                <div class="h-[1px] w-full bg-white/10 mb-6 md:mb-8"></div>
+                <ul class="space-y-4 md:space-y-6 mb-8 md:mb-12 text-left">
+                    <li class="flex items-center text-xs sm:text-sm text-gray-200 font-medium"><i data-lucide="check" class="w-4 h-4 md:w-5 md:h-5 mr-3 text-white opacity-40 shrink-0"></i> Premium Single-Page Site</li>
+                    <li class="flex items-center text-xs sm:text-sm text-gray-200 font-medium"><i data-lucide="check" class="w-4 h-4 md:w-5 md:h-5 mr-3 text-white opacity-40 shrink-0"></i> Basic AI Lead Capture</li>
+                    <li class="flex items-center text-xs sm:text-sm text-gray-200 font-medium"><i data-lucide="check" class="w-4 h-4 md:w-5 md:h-5 mr-3 text-white opacity-40 shrink-0"></i> Mobile Responsive Design</li>
                 </ul>
-                <button onclick="openModal()" class="w-full py-4 bg-white/5 hover:bg-white/10 border border-white/20 text-white clip-button font-bold uppercase tracking-widest transition-all">Get Pricing</button>
+                <button onclick="openModal()" class="w-full py-4 md:py-5 bg-white/5 hover:bg-white/10 border border-white/20 text-white clip-button font-bold text-xs md:text-sm uppercase tracking-[0.2em] transition-all">Get Pricing</button>
             </div>
 
             <!-- Priority (Highlighted) -->
             <div class="relative reveal z-20 lg:-my-8">
-                <div class="absolute inset-0 bg-brand blur-[50px] opacity-20 pointer-events-none"></div>
-                <div class="glass-card clip-card p-12 border-2 border-brand relative bg-[#080202] shadow-[0_0_40px_rgba(255,0,51,0.25)]">
-                    <div class="absolute top-0 right-0 bg-brand text-white px-5 py-2 text-xs font-black uppercase tracking-widest shadow-[0_0_10px_rgba(255,0,51,0.8)]">Most Popular</div>
+                <div class="absolute inset-0 bg-brand blur-[40px] md:blur-[70px] opacity-20 pointer-events-none"></div>
+                <div class="glass-card clip-card p-10 sm:p-14 border-2 border-brand relative bg-[#050000] shadow-[0_0_40px_rgba(255,0,51,0.3)]">
+                    <div class="absolute top-0 right-0 bg-brand text-white px-4 md:px-6 py-2 md:py-3 text-[10px] md:text-xs font-black uppercase tracking-[0.2em] shadow-[0_0_15px_rgba(255,0,51,0.9)]">Most Popular</div>
                     
-                    <i data-lucide="flame" class="w-10 h-10 text-brand mb-4 icon-glow-brand"></i>
-                    <h3 class="text-3xl font-black mb-2 text-white uppercase tracking-tight">Growth AI System</h3>
-                    <p class="text-brand text-sm mb-8 font-bold tracking-wide">Engineered to replace your entire sales team.</p>
+                    <i data-lucide="flame" class="w-10 h-10 md:w-12 md:h-12 text-brand mb-4 md:mb-5 icon-glow-brand"></i>
+                    <h3 class="text-3xl md:text-4xl font-black mb-2 text-white uppercase tracking-tight">Growth AI System</h3>
+                    <p class="text-brand text-xs md:text-sm mb-6 md:mb-8 font-bold tracking-[0.1em] uppercase text-shadow-glow">Engineered to replace your sales team.</p>
                     
-                    <div class="h-[1px] w-full bg-gradient-to-r from-transparent via-brand/50 to-transparent mb-8"></div>
+                    <div class="h-[1px] w-full bg-gradient-to-r from-transparent via-brand/60 to-transparent mb-6 md:mb-8"></div>
                     
-                    <ul class="space-y-5 mb-10 text-left">
-                        <li class="flex items-center text-sm text-white font-medium"><i data-lucide="zap" class="w-5 h-5 mr-3 text-brand icon-glow-brand"></i> Up to 5 Premium Custom Pages</li>
-                        <li class="flex items-center text-sm text-white font-medium"><i data-lucide="bot" class="w-5 h-5 mr-3 text-brand icon-glow-brand"></i> Lethal AI Closer Agent</li>
-                        <li class="flex items-center text-sm text-white font-medium"><i data-lucide="clock" class="w-5 h-5 mr-3 text-brand icon-glow-brand"></i> 24/7 Automated Deal Closing</li>
-                        <li class="flex items-center text-sm text-white font-medium"><i data-lucide="database" class="w-5 h-5 mr-3 text-brand icon-glow-brand"></i> CRM Integration & Sync</li>
+                    <ul class="space-y-5 md:space-y-6 mb-8 md:mb-12 text-left">
+                        <li class="flex items-center text-xs sm:text-sm text-white font-medium"><i data-lucide="zap" class="w-4 h-4 md:w-5 md:h-5 mr-3 text-brand icon-glow-brand shrink-0"></i> Up to 5 Premium Custom Pages</li>
+                        <li class="flex items-center text-xs sm:text-sm text-white font-medium"><i data-lucide="bot" class="w-4 h-4 md:w-5 md:h-5 mr-3 text-brand icon-glow-brand shrink-0"></i> Lethal AI Closer Agent</li>
+                        <li class="flex items-center text-xs sm:text-sm text-white font-medium"><i data-lucide="clock" class="w-4 h-4 md:w-5 md:h-5 mr-3 text-brand icon-glow-brand shrink-0"></i> 24/7 Automated Deal Closing</li>
+                        <li class="flex items-center text-xs sm:text-sm text-white font-medium"><i data-lucide="database" class="w-4 h-4 md:w-5 md:h-5 mr-3 text-brand icon-glow-brand shrink-0"></i> CRM Integration & Sync</li>
                     </ul>
-                    <button onclick="openModal()" class="w-full py-5 bg-brand hover-bg-brand text-white clip-button font-black text-lg uppercase tracking-widest transition-all shadow-[0_0_20px_rgba(255,0,51,0.5)] border border-white/20">Get Custom Quote</button>
+                    <button onclick="openModal()" class="w-full py-5 md:py-6 bg-brand hover-bg-brand text-white clip-button font-black text-sm md:text-lg uppercase tracking-[0.2em] transition-all shadow-[0_0_30px_rgba(255,0,51,0.6)] border border-white/30">Get Custom Quote</button>
                 </div>
             </div>
 
             <!-- Enterprise -->
-            <div class="glass-card clip-card p-10 reveal border-t border-white/20">
-                <h3 class="text-2xl font-black mb-2 text-white uppercase tracking-tight">Enterprise Takeover</h3>
-                <p class="text-gray-400 text-sm mb-8 font-medium">Full-service digital and AI automation.</p>
-                <div class="h-[1px] w-full bg-white/10 mb-8"></div>
-                <ul class="space-y-5 mb-10 text-left">
-                    <li class="flex items-center text-sm text-gray-200 font-medium"><i data-lucide="check" class="w-5 h-5 mr-3 text-white opacity-50"></i> Unlimited Custom Web Pages</li>
-                    <li class="flex items-center text-sm text-gray-200 font-medium"><i data-lucide="check" class="w-5 h-5 mr-3 text-white opacity-50"></i> Voice & Text AI Closers</li>
-                    <li class="flex items-center text-sm text-gray-200 font-medium"><i data-lucide="check" class="w-5 h-5 mr-3 text-white opacity-50"></i> Complete Pipeline Automation</li>
+            <div class="glass-card clip-card p-8 sm:p-12 reveal border-t border-white/20">
+                <h3 class="text-2xl md:text-3xl font-black mb-2 text-white uppercase tracking-tight">Enterprise Takeover</h3>
+                <p class="text-gray-400 text-xs md:text-sm mb-6 md:mb-8 font-medium tracking-wide">Full-service digital and AI automation.</p>
+                <div class="h-[1px] w-full bg-white/10 mb-6 md:mb-8"></div>
+                <ul class="space-y-4 md:space-y-6 mb-8 md:mb-12 text-left">
+                    <li class="flex items-center text-xs sm:text-sm text-gray-200 font-medium"><i data-lucide="check" class="w-4 h-4 md:w-5 md:h-5 mr-3 text-white opacity-40 shrink-0"></i> Unlimited Custom Web Pages</li>
+                    <li class="flex items-center text-xs sm:text-sm text-gray-200 font-medium"><i data-lucide="check" class="w-4 h-4 md:w-5 md:h-5 mr-3 text-white opacity-40 shrink-0"></i> Voice & Text AI Closers</li>
+                    <li class="flex items-center text-xs sm:text-sm text-gray-200 font-medium"><i data-lucide="check" class="w-4 h-4 md:w-5 md:h-5 mr-3 text-white opacity-40 shrink-0"></i> Complete Pipeline Automation</li>
                 </ul>
-                <button onclick="openModal()" class="w-full py-4 bg-white/5 hover:bg-white/10 border border-white/20 text-white clip-button font-bold uppercase tracking-widest transition-all">Get Pricing</button>
+                <button onclick="openModal()" class="w-full py-4 md:py-5 bg-white/5 hover:bg-white/10 border border-white/20 text-white clip-button font-bold text-xs md:text-sm uppercase tracking-[0.2em] transition-all">Get Pricing</button>
             </div>
             
         </div>
     </section>
 
     <!-- Call to Action -->
-    <section id="contact" class="py-24 px-6 md:px-16 relative bg-[#000000]">
-        <div class="ambient-glow top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] w-[600px] h-[600px] opacity-20"></div>
+    <section id="contact" class="py-16 md:py-28 px-5 md:px-16 relative bg-[#000000]">
+        <div class="ambient-glow top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] w-[400px] md:w-[800px] h-[400px] md:h-[800px] opacity-25 mix-blend-screen"></div>
         
-        <div class="max-w-4xl mx-auto glass-card clip-card p-10 sm:p-16 text-center reveal border-t-2 border-brand/60 relative z-10 shadow-[0_20px_50px_rgba(255,0,51,0.15)]">
-            <div class="w-20 h-20 bg-brand/10 border border-brand/50 flex items-center justify-center mx-auto mb-10 clip-button shadow-[0_0_30px_rgba(255,0,51,0.3)]">
-                <i data-lucide="cpu" class="w-10 h-10 text-brand icon-glow-brand"></i>
+        <div class="max-w-4xl mx-auto glass-card clip-card p-10 sm:p-20 text-center reveal border-t-2 border-brand/60 relative z-10 shadow-[0_30px_60px_rgba(255,0,51,0.2)]">
+            <div class="w-20 h-20 md:w-24 md:h-24 bg-brand/10 border border-brand/50 flex items-center justify-center mx-auto mb-8 md:mb-12 clip-button shadow-[0_0_40px_rgba(255,0,51,0.4)]">
+                <i data-lucide="cpu" class="w-10 h-10 md:w-12 md:h-12 text-brand icon-glow-brand"></i>
             </div>
-            <h2 class="text-4xl sm:text-6xl font-black mb-6 uppercase tracking-tight text-shadow-glow" style="letter-spacing: -0.03em;">Ready to Automate?</h2>
-            <p class="text-gray-300 mb-12 text-lg max-w-xl mx-auto font-medium leading-relaxed">Book a free meeting with Farman's Team directly to discuss your custom website and AI integration.</p>
+            <h2 class="text-4xl sm:text-5xl md:text-7xl font-black mb-5 md:mb-6 uppercase heading-tight text-shadow-glow leading-[1]">Ready to Automate?</h2>
+            <p class="text-gray-300 mb-10 md:mb-14 text-sm md:text-xl max-w-2xl mx-auto font-medium leading-relaxed tracking-wide">Book a free meeting with Farman's Team directly to discuss your custom website and AI integration.</p>
             
-            <div class="flex flex-col sm:flex-row items-center justify-center gap-6 w-full max-w-md mx-auto">
-                <a href="tel:9697430658" class="bg-brand hover-bg-brand text-white w-full py-5 clip-button font-black text-xl uppercase tracking-widest transition-all flex justify-center items-center gap-3 shadow-[0_0_30px_rgba(255,0,51,0.5)] border border-white/20">
-                    <i data-lucide="phone-call" class="w-6 h-6"></i> Book a Call
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-4 md:gap-6 w-full max-w-md mx-auto">
+                <a href="tel:9697430658" class="bg-brand hover-bg-brand text-white w-full py-5 md:py-6 clip-button font-black text-sm md:text-xl uppercase tracking-[0.2em] transition-all flex justify-center items-center gap-3 shadow-[0_0_40px_rgba(255,0,51,0.6)] border border-white/30">
+                    <i data-lucide="phone-call" class="w-5 h-5 md:w-7 md:h-7"></i> Book a Call
                 </a>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="py-12 px-6 border-t border-white/10 bg-[#030303] text-center mt-4 relative z-10">
+    <footer class="py-12 md:py-16 px-5 border-t border-white/5 bg-[#020202] text-center mt-4 relative z-10">
         <div class="max-w-7xl mx-auto">
-            <div class="text-2xl font-black tracking-tight text-white flex items-center justify-center gap-3 mb-6">
-                <i data-lucide="hexagon" class="text-brand w-7 h-7 icon-glow-brand"></i>
+            <div class="text-2xl md:text-3xl font-black tracking-tighter text-white flex items-center justify-center gap-2 md:gap-3 mb-6 md:mb-8">
+                <i data-lucide="hexagon" class="text-brand w-6 h-6 md:w-8 md:h-8 icon-glow-brand"></i>
                 <span class="uppercase">FORGE<span class="text-brand">SOFTWARE</span></span>
             </div>
-            <div class="h-[1px] w-24 bg-brand/30 mx-auto mb-6"></div>
-            <p class="text-gray-500 text-xs sm:text-sm uppercase tracking-[0.2em] font-bold">All rights reserved to Forge Software</p>
+            <div class="h-[1px] w-20 md:w-32 bg-brand/40 mx-auto mb-6 md:mb-8 shadow-[0_0_10px_rgba(255,0,51,0.5)]"></div>
+            <p class="text-gray-500 text-[10px] md:text-sm uppercase tracking-[0.3em] font-bold">All rights reserved to Forge Software</p>
         </div>
     </footer>
 
     <!-- Pricing Modal -->
-    <div id="priceModal" class="fixed inset-0 bg-black/95 z-[100] hidden items-center justify-center p-6 backdrop-blur-2xl transition-opacity duration-300 opacity-0">
-        <div class="cyber-grid opacity-30"></div>
-        <div class="glass-card clip-card max-w-sm w-full p-12 text-center transform scale-95 transition-transform duration-300 relative border-t-2 border-brand/80 shadow-[0_0_50px_rgba(255,0,51,0.2)]" id="modalContent">
-            <button onclick="closeModal()" class="absolute top-6 right-6 text-gray-500 hover:text-white transition-colors bg-white/5 p-2 clip-button">
-                <i data-lucide="x" class="w-5 h-5"></i>
+    <div id="priceModal" class="fixed inset-0 bg-black/98 z-[100] hidden items-center justify-center p-4 sm:p-6 backdrop-blur-3xl transition-opacity duration-300 opacity-0">
+        <div class="cyber-grid opacity-40"></div>
+        <div class="glass-card clip-card max-w-md w-full p-10 md:p-14 text-center transform scale-95 transition-transform duration-300 relative border-t-2 border-brand/80 shadow-[0_0_60px_rgba(255,0,51,0.3)]" id="modalContent">
+            <button onclick="closeModal()" class="absolute top-4 right-4 md:top-6 md:right-6 text-gray-500 hover:text-white transition-colors bg-white/5 p-3 clip-button hover:bg-brand/20">
+                <i data-lucide="x" class="w-4 h-4 md:w-5 md:h-5"></i>
             </button>
             
-            <div class="w-20 h-20 mx-auto bg-brand/10 border border-brand/30 flex items-center justify-center mb-8 clip-button shadow-[0_0_20px_rgba(255,0,51,0.3)]">
-                <i data-lucide="phone-forwarded" class="w-10 h-10 text-brand icon-glow-brand"></i>
+            <div class="w-20 h-20 md:w-24 md:h-24 mx-auto bg-brand/10 border border-brand/30 flex items-center justify-center mb-6 md:mb-8 clip-button shadow-[0_0_30px_rgba(255,0,51,0.4)]">
+                <i data-lucide="phone-forwarded" class="w-10 h-10 md:w-12 md:h-12 text-brand icon-glow-brand"></i>
             </div>
             
-            <h3 class="text-3xl font-black mb-4 text-white uppercase tracking-tight text-shadow-glow">Let's Discuss</h3>
-            <p class="text-gray-400 mb-10 text-sm font-medium leading-relaxed">Call us directly to schedule a free meeting with Farman's Team instantly.</p>
-            <a href="tel:9697430658" class="flex items-center justify-center gap-3 w-full bg-brand hover-bg-brand py-5 clip-button font-black text-white text-lg uppercase tracking-widest transition-all shadow-[0_0_25px_rgba(255,0,51,0.4)] border border-white/20">
-                <i data-lucide="phone" class="w-6 h-6"></i> Call Now
+            <h3 class="text-3xl md:text-4xl font-black mb-3 md:mb-4 text-white uppercase heading-tight text-shadow-glow">Let's Discuss</h3>
+            <p class="text-gray-400 mb-8 md:mb-10 text-xs md:text-sm font-medium leading-relaxed tracking-wide">Call us directly to schedule a free meeting with Farman's Team instantly.</p>
+            <a href="tel:9697430658" class="flex items-center justify-center gap-2 md:gap-3 w-full bg-brand hover-bg-brand py-5 md:py-6 clip-button font-black text-white text-sm md:text-lg uppercase tracking-[0.2em] transition-all shadow-[0_0_35px_rgba(255,0,51,0.5)] border border-white/20">
+                <i data-lucide="phone" class="w-5 h-5 md:w-6 md:h-6"></i> Call Now
             </a>
         </div>
     </div>
@@ -441,28 +463,54 @@
     <script>
         lucide.createIcons();
         
+        // Video Mobile Autoplay Fallback script
+        document.addEventListener('DOMContentLoaded', () => {
+            const video = document.getElementById('bgVideo');
+            if (video) {
+                // Force play on load
+                video.play().catch(e => {
+                    // If blocked by browser policy, play on first user interaction (scroll or touch)
+                    const playVideo = () => {
+                        video.play();
+                        document.body.removeEventListener('touchstart', playVideo);
+                        document.body.removeEventListener('scroll', playVideo);
+                    };
+                    document.body.addEventListener('touchstart', playVideo, { once: true });
+                    document.body.addEventListener('scroll', playVideo, { once: true });
+                });
+            }
+        });
+        
         // Mobile Menu Logic
         const mobileMenuBtn = document.getElementById('mobileMenuBtn');
         const mobileMenu = document.getElementById('mobileMenu');
         const mobileLinks = document.querySelectorAll('.mobile-link');
+        let isMenuOpen = false;
 
         mobileMenuBtn.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
-            mobileMenu.classList.toggle('flex');
+            isMenuOpen = !isMenuOpen;
             
-            if (mobileMenu.classList.contains('hidden')) {
-                mobileMenuBtn.innerHTML = '<i data-lucide="menu" class="w-7 h-7 icon-glow-white"></i>';
+            if (isMenuOpen) {
+                mobileMenu.classList.remove('hidden');
+                mobileMenu.classList.add('flex');
+                mobileMenuBtn.innerHTML = '<i data-lucide="x" class="w-8 h-8 text-brand icon-glow-brand"></i>';
+                document.body.style.overflow = 'hidden'; // Prevent background scroll
             } else {
-                mobileMenuBtn.innerHTML = '<i data-lucide="x" class="w-7 h-7 text-brand icon-glow-brand"></i>';
+                mobileMenu.classList.add('hidden');
+                mobileMenu.classList.remove('flex');
+                mobileMenuBtn.innerHTML = '<i data-lucide="menu" class="w-8 h-8 icon-glow-white"></i>';
+                document.body.style.overflow = ''; // Restore background scroll
             }
             lucide.createIcons();
         });
 
         mobileLinks.forEach(link => {
             link.addEventListener('click', () => {
+                isMenuOpen = false;
                 mobileMenu.classList.add('hidden');
                 mobileMenu.classList.remove('flex');
-                mobileMenuBtn.innerHTML = '<i data-lucide="menu" class="w-7 h-7 icon-glow-white"></i>';
+                mobileMenuBtn.innerHTML = '<i data-lucide="menu" class="w-8 h-8 icon-glow-white"></i>';
+                document.body.style.overflow = '';
                 lucide.createIcons();
             });
         });
@@ -474,7 +522,7 @@
         function openModal() {
             modal.classList.remove('hidden');
             modal.classList.add('flex');
-            // Small delay to allow display:flex to apply before animating opacity
+            document.body.style.overflow = 'hidden';
             setTimeout(() => {
                 modal.classList.remove('opacity-0');
                 modalContent.classList.remove('scale-95');
@@ -486,6 +534,7 @@
             modal.classList.add('opacity-0');
             modalContent.classList.remove('scale-100');
             modalContent.classList.add('scale-95');
+            document.body.style.overflow = '';
             setTimeout(() => {
                 modal.classList.add('hidden');
                 modal.classList.remove('flex');

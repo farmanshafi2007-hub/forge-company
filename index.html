@@ -195,19 +195,20 @@
 
     <!-- Main Hero Section -->
     <section class="relative w-full h-[100dvh] min-h-[650px] overflow-hidden bg-black pt-[40px]">
-        <!-- Detailed Overlay Gradient -->
-        <div class="absolute inset-0 z-0 bg-gradient-to-r from-black via-black/80 to-transparent"></div>
-        <div class="ambient-glow top-[10%] left-[-10%]"></div>
         
-        <!-- Background Video -->
+        <!-- Background Video (Now properly set to z-0 so it's visible) -->
         <video 
             src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260227_042027_c4b2f2ea-1c7c-4d6e-9e3d-81a78063703f.mp4" 
             autoplay 
             loop 
             muted 
             playsinline 
-            class="absolute inset-0 w-full h-full object-cover z-[-1] opacity-60 md:opacity-100 mix-blend-screen">
+            class="absolute inset-0 w-full h-full object-cover z-0 opacity-50 md:opacity-100">
         </video>
+
+        <!-- Detailed Overlay Gradient (Over Video) -->
+        <div class="absolute inset-0 z-[1] bg-gradient-to-r from-black via-black/80 to-transparent pointer-events-none"></div>
+        <div class="ambient-glow top-[10%] left-[-10%] z-[1]"></div>
 
         <!-- Main Content -->
         <div class="absolute top-[25%] md:top-[30%] left-6 md:left-16 z-10 w-full max-w-5xl pr-6">
@@ -413,7 +414,6 @@
                 <span class="uppercase">FORGE<span class="text-brand">SOFTWARE</span></span>
             </div>
             <div class="h-[1px] w-24 bg-brand/30 mx-auto mb-6"></div>
-            <!-- Updated strictly as requested -->
             <p class="text-gray-500 text-xs sm:text-sm uppercase tracking-[0.2em] font-bold">All rights reserved to Forge Software</p>
         </div>
     </footer>

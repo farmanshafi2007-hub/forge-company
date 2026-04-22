@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Forge Software | Premium Websites & AI Agents</title>
+    <title>Forge Software | Web & AI Agents</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
     <style>
         /* Premium Tech Font Upgrade */
-        @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Readex+Pro:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700;800;900&display=swap');
         /* Orbis Theme Fonts for Careers Section */
         @import url('https://fonts.googleapis.com/css2?family=Anton&family=Condiment&display=swap');
         
@@ -20,21 +20,34 @@
         }
 
         html, body { 
-            font-family: 'Outfit', sans-serif; 
-            background-color: #020202; 
+            font-family: 'Readex Pro', system-ui, -apple-system, sans-serif; 
+            background-color: #000; 
             color: #ffffff;
             overflow-x: hidden;
             width: 100%;
             max-width: 100vw;
             position: relative;
             letter-spacing: 0.01em;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            height: 100%;
+        }
+
+        #root {
+            height: 100%;
+        }
+
+        /* Hero Title styles updated for Forge */
+        .hero-title {
+            letter-spacing: -0.02em;
+            line-height: 1.05;
         }
 
         /* Premium Custom Scrollbar */
         ::-webkit-scrollbar { width: 8px; }
         ::-webkit-scrollbar-track { background: #050505; }
         ::-webkit-scrollbar-thumb { background: #222; border-radius: 4px; border: 2px solid #050505; }
-        ::-webkit-scrollbar-thumb:hover { background: var(--brand-primary); }
+        ::-webkit-scrollbar-thumb:hover { background: #fff; }
 
         /* Orbis Font Classes */
         .font-anton { font-family: 'Anton', sans-serif; }
@@ -54,7 +67,6 @@
 
         .ambient-glow {
             position: absolute;
-            /* Optimized: Replaced expensive CSS blur with a naturally soft radial gradient */
             background: radial-gradient(50% 50% at 50% 50%, var(--brand-glow) 0%, transparent 100%);
             opacity: 0.3;
             pointer-events: none;
@@ -214,119 +226,88 @@
         }
     </style>
 </head>
-<body class="antialiased selection:bg-[#FF0033] selection:text-white relative">
+<body class="antialiased selection:bg-white selection:text-black relative">
 
-    <!-- Premium Top Announcement Bar -->
-    <div class="fixed top-0 left-0 w-full h-[40px] z-[60] bg-gradient-to-r from-[#000000] via-[#1f0303] to-[#000000] border-b border-[#FF0033]/50 flex justify-center items-center gap-2 md:gap-3 px-4 shadow-[0_4px_30px_rgba(255,0,51,0.25)]">
-        <i data-lucide="badge-dollar-sign" class="w-3 h-3 sm:w-4 sm:h-4 text-[#FFDF00] icon-glow-gold shrink-0"></i>
-        <p class="text-[9px] sm:text-xs md:text-sm font-bold text-gray-200 uppercase tracking-[0.2em] text-center truncate">
-            <span class="text-[#FFDF00] drop-shadow-md brightness-110">$2000 Generated</span> by Farman's team last year
-        </p>
-    </div>
+    <!-- Forge Software Navbar -->
+    <nav class="absolute top-0 left-0 right-0 z-20 px-6 md:px-10 pt-6 flex items-center justify-between gap-4">
+        <!-- Left pill -->
+        <div class="flex items-center gap-2 bg-neutral-900/90 backdrop-blur rounded-full pl-4 pr-6 py-3">
+            <i data-lucide="hexagon" class="text-brand w-5 h-5 icon-glow-brand"></i>
+            <span class="text-white text-sm font-bold tracking-widest uppercase">FORGESOFTWARE</span>
+        </div>
 
-    <!-- Header -->
-    <header class="fixed top-[40px] w-full z-[50] bg-black/80 backdrop-blur-xl border-b border-white/10 shadow-[0_10px_40px_rgba(0,0,0,0.6)] transition-all">
-        <nav class="max-w-7xl mx-auto px-5 md:px-16 py-4 flex justify-between items-center w-full relative">
-            <!-- Details: Accent Line -->
-            <div class="absolute bottom-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-[#FF0033]/50 to-transparent"></div>
+        <!-- Center pill -->
+        <div class="hidden md:flex items-center gap-1 bg-neutral-900/90 backdrop-blur rounded-full px-3 py-2">
+            <a href="#home" class="text-neutral-300 hover:text-white transition-colors text-sm px-5 py-2 rounded-full uppercase tracking-wide font-medium">Home</a>
+            <a href="#about" class="text-neutral-300 hover:text-white transition-colors text-sm px-5 py-2 rounded-full uppercase tracking-wide font-medium">Solutions</a>
+            <a href="#careers" class="text-neutral-300 hover:text-white transition-colors text-sm px-5 py-2 rounded-full uppercase tracking-wide font-medium">Careers</a>
+            <a href="#contact" class="text-neutral-300 hover:text-white transition-colors text-sm px-5 py-2 rounded-full uppercase tracking-wide font-medium">Contact</a>
+        </div>
+
+        <!-- Right button -->
+        <div class="flex items-center gap-2">
+            <a href="tel:9697430658" class="hidden sm:flex items-center gap-2 bg-white text-black text-sm font-bold tracking-wide rounded-full px-6 py-3 hover:bg-neutral-200 transition-colors uppercase">
+                <i data-lucide="phone" class="w-4 h-4"></i> Call Us
+            </a>
             
-            <!-- Logo -->
-            <div class="text-lg sm:text-2xl font-black tracking-tighter text-white flex items-center gap-2 sm:gap-3 shrink-0">
-                <i data-lucide="hexagon" class="text-white w-5 h-5 sm:w-7 sm:h-7 icon-glow-white shrink-0"></i>
-                <span class="uppercase drop-shadow-xl">FORGE<span class="text-brand">SOFTWARE</span></span>
-            </div>
-
-            <!-- Desktop Nav (Multi-Colored & Premium Careers) -->
-            <div class="hidden md:flex items-center space-x-10 text-sm font-bold tracking-[0.15em] uppercase">
-                <a href="#home" class="text-white hover:text-blue-400 hover:text-shadow-glow transition-all">Home</a>
-                <a href="#about" class="text-white hover:text-emerald-400 hover:text-shadow-glow transition-all">Solutions</a>
-                <a href="#careers" class="text-transparent bg-clip-text bg-gradient-to-r from-amber-200 via-yellow-400 to-amber-500 hover:scale-105 font-black hover:drop-shadow-[0_0_10px_rgba(251,191,36,0.6)] transition-all flex items-center gap-1">Careers <i data-lucide="sparkles" class="inline w-3 h-3 text-yellow-400"></i></a>
-                <a href="#contact" class="text-white hover:text-[#FF0033] hover:text-shadow-glow transition-all">Contact</a>
-            </div>
-
-            <!-- CTA & Mobile Toggle -->
-            <div class="flex items-center gap-4 shrink-0">
-                <a href="tel:9697430658" class="hidden sm:flex bg-brand hover-bg-brand text-white px-6 sm:px-8 py-2.5 text-xs sm:text-sm font-bold tracking-[0.15em] uppercase transition-all items-center gap-2 clip-button border border-white/30 smooth-hover">
-                    Call Us
-                </a>
-                <button id="mobileMenuBtn" class="md:hidden text-white p-1 focus:outline-none block relative z-[60] smooth-hover" aria-label="Toggle Menu">
-                    <i data-lucide="menu" class="w-8 h-8 icon-glow-white"></i>
-                </button>
-            </div>
-        </nav>
-    </header>
+            <button id="mobileMenuBtn" class="md:hidden text-white p-3 focus:outline-none block relative z-[60] bg-neutral-900/90 backdrop-blur rounded-full smooth-hover" aria-label="Toggle Menu">
+                <i data-lucide="menu" class="w-5 h-5"></i>
+            </button>
+        </div>
+    </nav>
 
     <!-- Mobile Nav Menu -->
-    <div id="mobileMenu" class="fixed inset-0 top-[40px] bg-[#020202]/98 backdrop-blur-3xl z-[45] hidden flex-col items-center justify-center space-y-8 px-6 transition-all duration-300">
-        <a href="#home" class="mobile-link text-blue-400 hover:text-blue-300 smooth-hover font-black text-xl tracking-[0.2em] uppercase text-center w-full">Home</a>
-        <a href="#about" class="mobile-link text-emerald-400 hover:text-emerald-300 smooth-hover font-black text-xl tracking-[0.2em] uppercase text-center w-full">Solutions</a>
-        <a href="#careers" class="mobile-link text-transparent bg-clip-text bg-gradient-to-r from-amber-200 via-yellow-400 to-amber-500 smooth-hover font-black text-2xl tracking-[0.2em] uppercase drop-shadow-[0_0_15px_rgba(251,191,36,0.3)] flex items-center justify-center gap-2 w-full">
-            Careers <i data-lucide="sparkles" class="w-5 h-5 text-yellow-400"></i>
-        </a>
-        <a href="#contact" class="mobile-link text-[#FF0033] hover:text-[#FF3355] smooth-hover font-black text-xl tracking-[0.2em] uppercase text-center w-full">Contact</a>
+    <div id="mobileMenu" class="fixed inset-0 top-[80px] bg-[#020202]/98 backdrop-blur-3xl z-[45] hidden flex-col items-center justify-center space-y-8 px-6 transition-all duration-300">
+        <a href="#home" class="mobile-link text-white hover:text-neutral-300 smooth-hover font-medium text-2xl tracking-widest uppercase text-center w-full">Home</a>
+        <a href="#about" class="mobile-link text-white hover:text-neutral-300 smooth-hover font-medium text-2xl tracking-widest uppercase text-center w-full">Solutions</a>
+        <a href="#careers" class="mobile-link text-white hover:text-neutral-300 smooth-hover font-medium text-2xl tracking-widest uppercase text-center w-full">Careers</a>
+        <a href="#contact" class="mobile-link text-white hover:text-neutral-300 smooth-hover font-medium text-2xl tracking-widest uppercase text-center w-full">Contact</a>
         
         <div class="h-[1px] w-1/2 bg-white/10 my-4"></div>
-        <a href="tel:9697430658" class="bg-brand text-white px-10 py-4 font-black clip-button text-base uppercase tracking-[0.2em] shadow-[0_0_25px_rgba(255,0,51,0.6)] text-center w-full max-w-[250px] smooth-hover">Call Now</a>
+        <a href="tel:9697430658" class="mobile-link bg-white text-black px-10 py-4 rounded-full font-bold text-xl uppercase tracking-wider text-center flex justify-center items-center gap-2 w-full max-w-[250px] hover:bg-neutral-200 transition-colors">
+            <i data-lucide="phone" class="w-5 h-5"></i> Call Us
+        </a>
     </div>
 
-    <!-- Main Hero Section -->
-    <section id="home" class="relative w-full min-h-[100dvh] flex flex-col justify-center overflow-hidden bg-black pt-[100px] md:pt-[120px] pb-10">
+    <!-- Forge Software Main Hero Section -->
+    <section id="home" class="relative h-screen w-full overflow-hidden bg-black">
         
-        <!-- Background Video - Fully visible -->
+        <!-- Background Video - Made fully visible without heavy black gradient blur -->
         <video 
-            id="bgVideo"
-            src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260227_042027_c4b2f2ea-1c7c-4d6e-9e3d-81a78063703f.mp4" 
-            autoplay 
-            loop 
-            muted 
-            playsinline 
-            class="absolute inset-0 w-full h-full object-cover object-center z-0 opacity-100">
+            class="absolute inset-0 w-full h-full object-cover opacity-90" 
+            autoPlay loop muted playsInline 
+            src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260418_063509_7d167302-4fd4-480b-8260-18ab572333d4.mp4">
         </video>
 
-        <!-- Dynamic Overlay Gradient (Lightened to ensure video pops while text remains readable) -->
-        <div class="absolute inset-0 z-[1] bg-gradient-to-b md:bg-gradient-to-r from-black/70 via-transparent md:via-black/20 to-transparent pointer-events-none"></div>
-        
-        <div class="ambient-glow top-[10%] w-[600px] md:w-[800px] h-[600px] md:h-[800px] left-[-10%] z-[1]"></div>
+        <!-- Very subtle overlay just to ensure text remains readable over the video -->
+        <div class="absolute inset-0 bg-black/20 pointer-events-none"></div>
 
-        <!-- Main Content -->
-        <div class="relative z-10 flex flex-col justify-between flex-grow w-full max-w-7xl mx-auto px-5 md:px-16">
+        <!-- Foreground Content Wrapper - Centered and Arranged Layout -->
+        <div class="relative h-full w-full flex flex-col items-center justify-center text-center px-6 pt-20">
             
-            <div class="w-full max-w-3xl mt-8 md:mt-20 drop-shadow-2xl">
-                <div class="flex items-center gap-3 mb-4 opacity-90">
-                    <div class="h-[2px] w-8 sm:w-12 bg-brand shadow-[0_0_15px_rgba(255,0,51,0.9)]"></div>
-                    <span class="text-brand font-bold uppercase tracking-[0.2em] text-[10px] sm:text-xs text-shadow-glow">Grow Your Business</span>
-                </div>
-                
-                <h1 class="bg-gradient-to-br from-white to-gray-400 bg-clip-text text-transparent uppercase font-black text-4xl sm:text-5xl md:text-6xl lg:text-[70px] leading-[1.05] mb-4 sm:mb-6 drop-shadow-[0_10px_20px_rgba(0,0,0,0.8)] heading-tight">
-                    Premium Websites & <br/>
-                    <span class="text-brand text-shadow-glow">AI Agents</span>
-                </h1>
-                
-                <p class="text-gray-300 text-sm md:text-lg font-medium mb-8 max-w-xl leading-relaxed drop-shadow-[0_5px_10px_rgba(0,0,0,0.8)] border-l-2 border-brand/80 pl-4">
-                    We build high-end websites and deploy AI agents that automate your sales and close deals 24/7.
-                </p>
-                
-                <div class="flex flex-col sm:flex-row gap-4 sm:items-center">
-                    <a href="#contact" class="inline-flex justify-center clip-button bg-brand hover-bg-brand text-white font-black uppercase tracking-[0.15em] py-3.5 sm:py-4 px-8 text-sm transition-all shadow-[0_0_30px_rgba(255,0,51,0.5)] border border-white/20 text-center smooth-hover">
-                        Get Started
-                    </a>
-                    <a href="#about" class="inline-flex justify-center text-white font-bold uppercase tracking-[0.15em] text-[10px] sm:text-xs items-center gap-2 hover:text-brand transition-colors py-3 px-4 drop-shadow-lg smooth-hover">
-                        View Systems <i data-lucide="arrow-right" class="w-4 h-4"></i>
-                    </a>
-                </div>
+            <!-- Subtitle -->
+            <span class="text-brand font-bold tracking-[0.2em] uppercase text-xs md:text-sm mb-4 md:mb-6 animate-pulse">Grow Your Business</span>
+            
+            <!-- Main Title -->
+            <h1 class="font-black text-5xl sm:text-6xl md:text-[80px] lg:text-[100px] text-white uppercase tracking-tighter leading-[0.95] mb-6 md:mb-8 text-shadow-glow drop-shadow-xl">
+                Premium Websites &<br />AI Agents
+            </h1>
+
+            <!-- Description -->
+            <p class="text-gray-100 text-sm sm:text-base md:text-lg max-w-2xl font-medium leading-relaxed mb-10 md:mb-12 drop-shadow-md">
+                We build high-end websites and deploy AI agents that automate your sales and close deals 24/7.
+            </p>
+
+            <!-- Buttons -->
+            <div class="flex flex-col sm:flex-row items-center gap-4 sm:gap-6">
+                <a href="#plans" class="bg-brand hover-bg-brand text-white w-full sm:w-auto px-8 py-4 md:px-10 md:py-5 clip-button font-black text-xs md:text-sm uppercase tracking-[0.2em] transition-all shadow-[0_0_25px_rgba(255,0,51,0.5)] border border-white/30 flex justify-center items-center smooth-hover">
+                    Get Started
+                </a>
+                <a href="#about" class="bg-white/10 hover:bg-white/20 backdrop-blur-md text-white w-full sm:w-auto px-8 py-4 md:px-10 md:py-5 clip-button font-bold text-xs md:text-sm uppercase tracking-[0.2em] transition-all border border-white/30 flex justify-center items-center smooth-hover">
+                    View Systems
+                </a>
             </div>
 
-            <!-- Liquid Glass Consultation Widget -->
-            <div class="w-full sm:w-auto self-start mt-12 sm:mt-24 mb-6">
-                <div class="liquid-glass p-5 md:p-6 w-full max-w-sm sm:min-w-[350px] smooth-hover">
-                    <div class="absolute top-0 right-0 w-20 h-20 bg-brand/30 blur-3xl rounded-full"></div>
-                    <h3 class="text-white font-black text-base md:text-lg mb-4 tracking-wide leading-tight">Book a Free Call<br/><span class="text-gray-400 text-xs font-semibold uppercase tracking-widest mt-1 block">With Our Team</span></h3>
-                    <a href="tel:9697430658" class="clip-button bg-white hover:bg-gray-200 text-black font-black uppercase tracking-[0.15em] py-3.5 px-6 flex items-center justify-center gap-3 transition-colors w-full shadow-xl text-xs sm:text-sm">
-                        <i data-lucide="phone" class="w-4 h-4"></i> Secure Spot
-                    </a>
-                </div>
-            </div>
-            
         </div>
     </section>
 
@@ -597,7 +578,7 @@
 
     <!-- Call to Action -->
     <section id="contact" class="py-16 md:py-24 px-5 md:px-16 relative bg-[#000000]">
-        <!-- Orbis Orbis Orbis Soft Ambient Glow with gradient, no CSS blur needed -->
+        <!-- Orbis Soft Ambient Glow with gradient, no CSS blur needed -->
         <div class="absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] w-[400px] md:w-[600px] h-[400px] md:h-[600px] pointer-events-none opacity-30 z-0 bg-[radial-gradient(circle,var(--brand-glow)_0%,rgba(255,0,51,0)_70%)] rounded-full"></div>
         
         <div class="max-w-3xl mx-auto glass-card clip-card p-8 sm:p-14 md:p-16 text-center reveal border-t-2 border-brand/60 relative z-10 shadow-[0_20px_40px_rgba(255,0,51,0.15)] smooth-hover">
@@ -704,12 +685,12 @@
             if (isMenuOpen) {
                 mobileMenu.classList.remove('hidden');
                 mobileMenu.classList.add('flex');
-                mobileMenuBtn.innerHTML = '<i data-lucide="x" class="w-8 h-8 text-brand icon-glow-brand"></i>';
+                mobileMenuBtn.innerHTML = '<i data-lucide="x" class="w-5 h-5"></i>';
                 document.body.style.overflow = 'hidden'; // Prevent background scroll
             } else {
                 mobileMenu.classList.add('hidden');
                 mobileMenu.classList.remove('flex');
-                mobileMenuBtn.innerHTML = '<i data-lucide="menu" class="w-8 h-8 icon-glow-white"></i>';
+                mobileMenuBtn.innerHTML = '<i data-lucide="menu" class="w-5 h-5"></i>';
                 document.body.style.overflow = ''; // Restore background scroll
             }
             lucide.createIcons();
@@ -720,7 +701,7 @@
                 isMenuOpen = false;
                 mobileMenu.classList.add('hidden');
                 mobileMenu.classList.remove('flex');
-                mobileMenuBtn.innerHTML = '<i data-lucide="menu" class="w-8 h-8 icon-glow-white"></i>';
+                mobileMenuBtn.innerHTML = '<i data-lucide="menu" class="w-5 h-5"></i>';
                 document.body.style.overflow = '';
                 lucide.createIcons();
             });

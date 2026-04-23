@@ -22,6 +22,8 @@
         @import url('https://fonts.googleapis.com/css2?family=Readex+Pro:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700;800;900&display=swap');
         /* Premium Inter Font for Careers Section */
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+        /* Elegant Serif Font for Pricing Section */
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap');
         /* Calligraphy Fonts for Menu */
         @import url('https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Dancing+Script:wght@600;700&family=Great+Vibes&family=Pacifico&family=Satisfy&display=swap');
         
@@ -51,6 +53,7 @@
         }
 
         .font-inter { font-family: 'Inter', sans-serif; }
+        .font-serif { font-family: 'Playfair Display', Georgia, serif; }
 
         /* Hero Title styles updated for Forge */
         .hero-title {
@@ -406,65 +409,229 @@
         </div>
     </section>
 
-    <!-- Plans Section -->
-    <section id="plans" class="py-12 sm:py-16 md:py-24 px-4 sm:px-6 md:px-16 relative bg-[#020202]">
-        <div class="cyber-grid opacity-60"></div>
-        
-        <div class="max-w-7xl mx-auto text-center mb-10 sm:mb-12 md:mb-20 reveal relative z-10">
-            <h2 class="text-2xl sm:text-4xl md:text-5xl font-black mb-2 md:mb-3 uppercase heading-tight text-shadow-glow leading-[1]">Pricing Plans</h2>
-            <p class="text-gray-400 text-[10px] sm:text-xs md:text-sm font-medium tracking-wide">Dominate your market.</p>
-        </div>
-        
-        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 md:gap-8 max-w-sm sm:max-w-xl lg:max-w-5xl mx-auto items-center relative z-10">
-            
-            <!-- Standard -->
-            <div class="glass-card clip-card p-6 sm:p-10 reveal border-t border-white/20 w-full">
-                <h3 class="text-lg sm:text-xl md:text-2xl font-black mb-1 text-white uppercase tracking-tight">Starter</h3>
-                <p class="text-gray-400 text-[10px] sm:text-[11px] md:text-xs mb-4 sm:mb-5 md:mb-6 font-medium tracking-wide">Premium footprint.</p>
-                <div class="h-[1px] w-full bg-white/10 mb-4 sm:mb-5 md:mb-6"></div>
-                <ul class="space-y-3 md:space-y-4 mb-6 md:mb-10 text-left">
-                    <li class="flex items-center text-[10px] sm:text-[11px] md:text-xs text-gray-200 font-medium"><i data-lucide="check" class="w-3 h-3 md:w-4 md:h-4 mr-2 md:mr-3 text-white opacity-40 shrink-0"></i> Single-Page Site</li>
-                    <li class="flex items-center text-[10px] sm:text-[11px] md:text-xs text-gray-200 font-medium"><i data-lucide="check" class="w-3 h-3 md:w-4 md:h-4 mr-2 md:mr-3 text-white opacity-40 shrink-0"></i> Basic Lead Capture</li>
-                    <li class="flex items-center text-[10px] sm:text-[11px] md:text-xs text-gray-200 font-medium"><i data-lucide="check" class="w-3 h-3 md:w-4 md:h-4 mr-2 md:mr-3 text-white opacity-40 shrink-0"></i> Mobile Responsive</li>
-                </ul>
-                <button onclick="openModal()" class="w-full py-3 md:py-4 bg-white/5 hover:bg-white/10 border border-white/20 text-white clip-button font-bold text-[9px] sm:text-[10px] md:text-xs uppercase tracking-[0.2em] transition-all smooth-hover">Get Pricing</button>
-            </div>
-
-            <!-- Priority (Highlighted) -->
-            <div class="relative reveal z-20 lg:-my-6 w-full">
-                <div class="absolute inset-0 bg-brand blur-[30px] md:blur-[50px] opacity-20 pointer-events-none"></div>
-                <div class="glass-card clip-card p-6 sm:p-8 md:p-12 border-2 border-brand relative bg-[#050000] shadow-[0_0_30px_rgba(255,0,51,0.2)]">
-                    <div class="absolute top-0 right-0 bg-brand text-white px-3 md:px-5 py-1.5 md:py-2 text-[8px] sm:text-[9px] md:text-[10px] font-black uppercase tracking-[0.2em] shadow-[0_0_10px_rgba(255,0,51,0.8)]">Most Popular</div>
-                    
-                    <i data-lucide="flame" class="w-6 h-6 sm:w-8 sm:h-8 md:w-10 md:h-10 text-brand mb-3 md:mb-4 icon-glow-brand"></i>
-                    <h3 class="text-xl sm:text-2xl md:text-3xl font-black mb-1 text-white uppercase tracking-tight">Growth AI</h3>
-                    <p class="text-brand text-[10px] sm:text-[11px] md:text-xs mb-4 sm:mb-5 md:mb-6 font-bold tracking-[0.1em] uppercase text-shadow-glow">Replace your sales team.</p>
-                    
-                    <div class="h-[1px] w-full bg-gradient-to-r from-transparent via-brand/60 to-transparent mb-4 sm:mb-5 md:mb-6"></div>
-                    
-                    <ul class="space-y-3 sm:space-y-4 md:space-y-5 mb-6 md:mb-10 text-left">
-                        <li class="flex items-center text-[11px] sm:text-xs md:text-sm text-white font-medium"><i data-lucide="zap" class="w-3 h-3 sm:w-4 sm:h-4 mr-2 text-brand icon-glow-brand shrink-0"></i> Up to 5 Custom Pages</li>
-                        <li class="flex items-center text-[11px] sm:text-xs md:text-sm text-white font-medium"><i data-lucide="bot" class="w-3 h-3 sm:w-4 sm:h-4 mr-2 text-brand icon-glow-brand shrink-0"></i> AI Closer Agent</li>
-                        <li class="flex items-center text-[11px] sm:text-xs md:text-sm text-white font-medium"><i data-lucide="clock" class="w-3 h-3 sm:w-4 sm:h-4 mr-2 text-brand icon-glow-brand shrink-0"></i> 24/7 Deal Closing</li>
-                        <li class="flex items-center text-[11px] sm:text-xs md:text-sm text-white font-medium"><i data-lucide="database" class="w-3 h-3 sm:w-4 sm:h-4 mr-2 text-brand icon-glow-brand shrink-0"></i> CRM Integration</li>
-                    </ul>
-                    <button onclick="openModal()" class="w-full py-3 sm:py-4 md:py-5 bg-brand hover:bg-brand text-white clip-button font-black text-[10px] sm:text-xs md:text-sm uppercase tracking-[0.2em] transition-all shadow-[0_0_20px_rgba(255,0,51,0.5)] border border-white/30 smooth-hover">Get Quote</button>
+    <!-- Elegant Pricing Section (Light Theme) -->
+    <section id="plans" class="w-full min-h-screen bg-[#FAF9F6] py-20 px-4 md:px-8 font-sans selection:bg-purple-100 selection:text-purple-900 relative z-10 text-left">
+        <div class="max-w-7xl mx-auto">
+            <!-- Header Section -->
+            <div class="text-center mb-20 space-y-6 reveal">
+                <div class="inline-flex items-center gap-2 text-sm font-medium text-[#65a30d]">
+                    <span class="flex items-center justify-center w-4 h-4 rounded-full border border-[#65a30d]">
+                        <i data-lucide="dollar-sign" class="w-2.5 h-2.5"></i>
+                    </span>
+                    Flexible plans
                 </div>
+                
+                <h2 class="font-serif text-5xl md:text-7xl text-[#1a1a1a] leading-[1.1] max-w-4xl mx-auto tracking-tight">
+                    Choose the plan <br class="hidden sm:block" />
+                    that <span class="text-[#A020F0] italic px-1 font-serif">best fits</span> your <br class="hidden sm:block" />
+                    needs
+                </h2>
             </div>
 
-            <!-- Enterprise -->
-            <div class="glass-card clip-card p-6 sm:p-10 reveal border-t border-white/20 w-full">
-                <h3 class="text-lg sm:text-xl md:text-2xl font-black mb-1 text-white uppercase tracking-tight">Enterprise</h3>
-                <p class="text-gray-400 text-[10px] sm:text-[11px] md:text-xs mb-4 sm:mb-5 md:mb-6 font-medium tracking-wide">Full-service automation.</p>
-                <div class="h-[1px] w-full bg-white/10 mb-4 sm:mb-5 md:mb-6"></div>
-                <ul class="space-y-3 md:space-y-4 mb-6 md:mb-10 text-left">
-                    <li class="flex items-center text-[10px] sm:text-[11px] md:text-xs text-gray-200 font-medium"><i data-lucide="check" class="w-3 h-3 md:w-4 md:h-4 mr-2 md:mr-3 text-white opacity-40 shrink-0"></i> Unlimited Pages</li>
-                    <li class="flex items-center text-[10px] sm:text-[11px] md:text-xs text-gray-200 font-medium"><i data-lucide="check" class="w-3 h-3 md:w-4 md:h-4 mr-2 md:mr-3 text-white opacity-40 shrink-0"></i> Voice & Text AI</li>
-                    <li class="flex items-center text-[10px] sm:text-[11px] md:text-xs text-gray-200 font-medium"><i data-lucide="check" class="w-3 h-3 md:w-4 md:h-4 mr-2 md:mr-3 text-white opacity-40 shrink-0"></i> Pipeline Automation</li>
-                </ul>
-                <button onclick="openModal()" class="w-full py-3 md:py-4 bg-white/5 hover:bg-white/10 border border-white/20 text-white clip-button font-bold text-[9px] sm:text-[10px] md:text-xs uppercase tracking-[0.2em] transition-all smooth-hover">Get Pricing</button>
+            <!-- Pricing Cards Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-7xl mx-auto reveal">
+                
+                <!-- Starter Plan -->
+                <div class="relative flex flex-col bg-white border border-gray-200 rounded-lg overflow-hidden transition-all duration-300 hover:shadow-lg hover:border-gray-300 text-left group">
+                    <!-- Subtle Top Gradient -->
+                    <div class="absolute top-0 left-0 right-0 h-32 bg-gradient-to-b from-blue-50/80 via-blue-50/30 to-transparent opacity-60 pointer-events-none"></div>
+
+                    <div class="relative p-8 flex flex-col h-full">
+                        <!-- Icon -->
+                        <div class="mb-6 text-blue-500 transition-transform group-hover:scale-110 group-hover:rotate-3 origin-left">
+                            <i data-lucide="layout" class="w-7 h-7" stroke-width="1.5"></i>
+                        </div>
+
+                        <!-- Header Info -->
+                        <div class="mb-8">
+                            <h3 class="font-serif text-3xl text-[#1a1a1a] mb-2 font-normal">Starter</h3>
+                            <p class="text-gray-500 text-sm">Establish a premium digital footprint</p>
+                        </div>
+
+                        <!-- Price -->
+                        <div class="mb-8 flex items-baseline gap-2 flex-wrap">
+                            <span class="text-2xl font-medium text-[#1a1a1a]">Custom Quote</span>
+                            <span class="text-gray-500 text-sm ml-auto">Based on requirements</span>
+                        </div>
+
+                        <!-- Action Button -->
+                        <button onclick="openModal()" class="w-full py-3 px-6 rounded text-sm font-medium transition-colors mb-10 flex items-center justify-center gap-2 bg-[#4a4a4a] hover:bg-[#333333] text-white focus:outline-none">
+                            Get started
+                        </button>
+
+                        <!-- Features List -->
+                        <div class="mt-auto">
+                            <p class="text-xs font-semibold tracking-wider uppercase mb-6 text-blue-600">
+                                CORE FUNCTIONALITY
+                            </p>
+                            <ul class="space-y-4">
+                                <li class="flex items-start gap-3 text-sm text-gray-700">
+                                    <i data-lucide="check" class="w-4 h-4 shrink-0 mt-0.5 text-blue-600"></i>
+                                    <span class="leading-snug">Premium Single-Page Site</span>
+                                </li>
+                                <li class="flex items-start gap-3 text-sm text-gray-700">
+                                    <i data-lucide="check" class="w-4 h-4 shrink-0 mt-0.5 text-blue-600"></i>
+                                    <span class="leading-snug">Basic Lead Capture Form</span>
+                                </li>
+                                <li class="flex items-start gap-3 text-sm text-gray-700">
+                                    <i data-lucide="check" class="w-4 h-4 shrink-0 mt-0.5 text-blue-600"></i>
+                                    <span class="leading-snug">Mobile Responsive Design</span>
+                                </li>
+                                <li class="flex items-start gap-3 text-sm text-gray-700">
+                                    <i data-lucide="check" class="w-4 h-4 shrink-0 mt-0.5 text-blue-600"></i>
+                                    <span class="leading-snug">SEO Optimization Basics</span>
+                                </li>
+                                <li class="flex items-start gap-3 text-sm text-gray-700">
+                                    <i data-lucide="check" class="w-4 h-4 shrink-0 mt-0.5 text-blue-600"></i>
+                                    <span class="leading-snug">Free Hosting & Subdomain</span>
+                                </li>
+                                <li class="flex items-start gap-3 text-sm text-gray-700">
+                                    <i data-lucide="check" class="w-4 h-4 shrink-0 mt-0.5 text-blue-600"></i>
+                                    <span class="leading-snug">1 Revision Included</span>
+                                </li>
+                            </ul>
+                        </div>
+                        
+                        <!-- Standard Plan Footnote -->
+                        <div class="mt-8 pt-6 border-t border-gray-100 text-center">
+                            <p class="text-xs text-gray-400">
+                                Fast delivery within 1-2 weeks.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Growth Plan (Most Popular) -->
+                <div class="relative flex flex-col bg-white border border-gray-200 rounded-lg overflow-hidden transition-all duration-300 hover:shadow-lg hover:border-gray-300 text-left group md:-my-4 md:shadow-md">
+                    <!-- Subtle Top Gradient -->
+                    <div class="absolute top-0 left-0 right-0 h-32 bg-gradient-to-b from-lime-50/80 via-lime-50/30 to-transparent opacity-60 pointer-events-none"></div>
+                    
+                    <!-- Most Popular Badge -->
+                    <div class="absolute top-6 right-6 bg-[#d9f99d] text-[#3f6212] text-xs font-medium px-3 py-1 rounded-full z-10">
+                        Most Popular
+                    </div>
+
+                    <div class="relative p-8 flex flex-col h-full">
+                        <!-- Icon -->
+                        <div class="mb-6 text-lime-600 transition-transform group-hover:scale-110 group-hover:rotate-3 origin-left">
+                            <i data-lucide="bot" class="w-7 h-7" stroke-width="1.5"></i>
+                        </div>
+
+                        <!-- Header Info -->
+                        <div class="mb-8">
+                            <h3 class="font-serif text-3xl text-[#1a1a1a] mb-2 font-normal">Growth AI</h3>
+                            <p class="text-gray-500 text-sm">Replace your sales team with AI</p>
+                        </div>
+
+                        <!-- Price -->
+                        <div class="mb-8 flex items-baseline gap-2 flex-wrap">
+                            <span class="text-2xl font-medium text-[#1a1a1a]">Custom Quote</span>
+                        </div>
+
+                        <!-- Action Button -->
+                        <button onclick="openModal()" class="w-full py-3 px-6 rounded text-sm font-medium transition-colors mb-10 flex items-center justify-center gap-2 bg-[#4a4a4a] hover:bg-[#333333] text-white focus:outline-none">
+                            Get started
+                        </button>
+
+                        <!-- Features List -->
+                        <div class="mt-auto">
+                            <p class="text-xs font-semibold tracking-wider uppercase mb-6 text-lime-700">
+                                EVERYTHING IN STARTER, PLUS:
+                            </p>
+                            <ul class="space-y-4">
+                                <li class="flex items-start gap-3 text-sm text-gray-700">
+                                    <i data-lucide="check" class="w-4 h-4 shrink-0 mt-0.5 text-lime-600"></i>
+                                    <span class="leading-snug">Up to 5 Custom Web Pages</span>
+                                </li>
+                                <li class="flex items-start gap-3 text-sm text-gray-700">
+                                    <i data-lucide="check" class="w-4 h-4 shrink-0 mt-0.5 text-lime-600"></i>
+                                    <span class="leading-snug">Intelligent AI Closer Agent</span>
+                                </li>
+                                <li class="flex items-start gap-3 text-sm text-gray-700">
+                                    <i data-lucide="check" class="w-4 h-4 shrink-0 mt-0.5 text-lime-600"></i>
+                                    <span class="leading-snug">24/7 Deal Closing & Chat</span>
+                                </li>
+                                <li class="flex items-start gap-3 text-sm text-gray-700">
+                                    <i data-lucide="check" class="w-4 h-4 shrink-0 mt-0.5 text-lime-600"></i>
+                                    <span class="leading-snug">Seamless CRM Integration</span>
+                                </li>
+                                <li class="flex items-start gap-3 text-sm text-gray-700">
+                                    <i data-lucide="check" class="w-4 h-4 shrink-0 mt-0.5 text-lime-600"></i>
+                                    <span class="leading-snug">Automated Email Follow-ups</span>
+                                </li>
+                                <li class="flex items-start gap-3 text-sm text-gray-700">
+                                    <i data-lucide="check" class="w-4 h-4 shrink-0 mt-0.5 text-lime-600"></i>
+                                    <span class="leading-snug">Priority Email Support</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Enterprise Plan -->
+                <div class="relative flex flex-col bg-white border border-gray-200 rounded-lg overflow-hidden transition-all duration-300 hover:shadow-lg hover:border-gray-300 text-left group">
+                    <!-- Subtle Top Gradient -->
+                    <div class="absolute top-0 left-0 right-0 h-32 bg-gradient-to-b from-fuchsia-50/80 via-fuchsia-50/30 to-transparent opacity-60 pointer-events-none"></div>
+
+                    <div class="relative p-8 flex flex-col h-full">
+                        <!-- Icon -->
+                        <div class="mb-6 text-fuchsia-600 transition-transform group-hover:scale-110 group-hover:rotate-3 origin-left">
+                            <i data-lucide="building-2" class="w-7 h-7" stroke-width="1.5"></i>
+                        </div>
+
+                        <!-- Header Info -->
+                        <div class="mb-8">
+                            <h3 class="font-serif text-3xl text-[#1a1a1a] mb-2 font-normal">Enterprise</h3>
+                            <p class="text-gray-500 text-sm">Full-service automation & control</p>
+                        </div>
+
+                        <!-- Price -->
+                        <div class="mb-8 flex items-baseline gap-2 flex-wrap">
+                            <span class="text-2xl font-medium text-[#1a1a1a]">Custom Quote</span>
+                        </div>
+
+                        <!-- Action Button -->
+                        <button onclick="openModal()" class="w-full py-3 px-6 rounded text-sm font-medium transition-colors mb-10 flex items-center justify-center gap-2 bg-[#f5f5f5] hover:bg-[#e5e5e5] text-[#1a1a1a] border border-gray-200 focus:outline-none">
+                            Contact sales
+                            <i data-lucide="arrow-right" class="w-4 h-4 transition-transform group-hover:translate-x-1"></i>
+                        </button>
+
+                        <!-- Features List -->
+                        <div class="mt-auto">
+                            <p class="text-xs font-semibold tracking-wider uppercase mb-6 text-fuchsia-700">
+                                EVERYTHING IN GROWTH, PLUS:
+                            </p>
+                            <ul class="space-y-4">
+                                <li class="flex items-start gap-3 text-sm text-gray-700">
+                                    <i data-lucide="check" class="w-4 h-4 shrink-0 mt-0.5 text-fuchsia-600"></i>
+                                    <span class="leading-snug">Unlimited Custom Pages</span>
+                                </li>
+                                <li class="flex items-start gap-3 text-sm text-gray-700">
+                                    <i data-lucide="check" class="w-4 h-4 shrink-0 mt-0.5 text-fuchsia-600"></i>
+                                    <span class="leading-snug">Voice & Text AI Agents</span>
+                                </li>
+                                <li class="flex items-start gap-3 text-sm text-gray-700">
+                                    <i data-lucide="check" class="w-4 h-4 shrink-0 mt-0.5 text-fuchsia-600"></i>
+                                    <span class="leading-snug">Complex Pipeline Automation</span>
+                                </li>
+                                <li class="flex items-start gap-3 text-sm text-gray-700">
+                                    <i data-lucide="check" class="w-4 h-4 shrink-0 mt-0.5 text-fuchsia-600"></i>
+                                    <span class="leading-snug">Custom API Integrations</span>
+                                </li>
+                                <li class="flex items-start gap-3 text-sm text-gray-700">
+                                    <i data-lucide="check" class="w-4 h-4 shrink-0 mt-0.5 text-fuchsia-600"></i>
+                                    <span class="leading-snug">Dedicated Account Manager</span>
+                                </li>
+                                <li class="flex items-start gap-3 text-sm text-gray-700">
+                                    <i data-lucide="check" class="w-4 h-4 shrink-0 mt-0.5 text-fuchsia-600"></i>
+                                    <span class="leading-snug">Custom SLA & MSA</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
             </div>
-            
         </div>
     </section>
 

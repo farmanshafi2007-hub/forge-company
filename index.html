@@ -6,6 +6,17 @@
     <title>Forge Software | Web & AI Agents</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <!-- ES Module Import Map for Three.js -->
+    <script type="importmap">
+        {
+            "imports": {
+                "three": "https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.js",
+                "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.170.0/examples/jsm/"
+            }
+        }
+    </script>
+
     <style>
         /* Premium Tech Font Upgrade */
         @import url('https://fonts.googleapis.com/css2?family=Readex+Pro:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700;800;900&display=swap');
@@ -214,6 +225,87 @@
         @keyframes menuFadeUp {
             to { opacity: 1; transform: translateY(0); }
         }
+
+        /* Custom 3D Depth Menu Button */
+        .menu-depth-wrapper {
+            width: 44px;
+            height: 44px;
+            background: linear-gradient(145deg, #2a2a2a, #111);
+            border-radius: 12px;
+            box-shadow: 
+                4px 4px 10px rgba(0,0,0,0.8), 
+                -2px -2px 8px rgba(255,255,255,0.05),
+                inset 1px 1px 2px rgba(255,255,255,0.15),
+                inset -1px -1px 4px rgba(0,0,0,0.5);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 5px;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            border: 1px solid rgba(255, 0, 51, 0.15);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        /* Metallic sheen sweep effect */
+        .menu-depth-wrapper::before {
+            content: '';
+            position: absolute;
+            top: 0; left: -100%;
+            width: 50%; height: 100%;
+            background: linear-gradient(to right, transparent, rgba(255,255,255,0.1), transparent);
+            transform: skewX(-20deg);
+            transition: 0.5s;
+        }
+        
+        .menu-depth-wrapper:hover::before {
+            left: 150%;
+        }
+
+        .menu-depth-wrapper:hover {
+            border-color: rgba(255, 0, 51, 0.6);
+            box-shadow: 
+                0 0 15px rgba(255, 0, 51, 0.3),
+                4px 4px 10px rgba(0,0,0,0.9), 
+                -1px -1px 6px rgba(255,255,255,0.08);
+            transform: translateY(-2px);
+        }
+
+        .menu-depth-wrapper:active {
+            transform: translateY(1px);
+            box-shadow: 
+                inset 3px 3px 6px rgba(0,0,0,0.9), 
+                inset -2px -2px 5px rgba(255,255,255,0.05);
+        }
+
+        /* 3D Hamburger Lines */
+        .hamburger-line {
+            width: 20px;
+            height: 2px;
+            background: linear-gradient(90deg, #e0e0e0, #999);
+            border-radius: 2px;
+            box-shadow: 0 2px 3px rgba(0,0,0,0.8);
+            transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            transform-origin: center;
+        }
+
+        /* Open state styles - Transforms to glowing X */
+        .menu-depth-wrapper.open .hamburger-line:nth-child(1) {
+            transform: translateY(7px) rotate(45deg);
+            background: linear-gradient(90deg, #FF3355, #FF0033);
+            box-shadow: 0 0 8px var(--brand-primary);
+        }
+        .menu-depth-wrapper.open .hamburger-line:nth-child(2) {
+            opacity: 0;
+            transform: scaleX(0);
+        }
+        .menu-depth-wrapper.open .hamburger-line:nth-child(3) {
+            transform: translateY(-7px) rotate(-45deg);
+            background: linear-gradient(90deg, #FF3355, #FF0033);
+            box-shadow: 0 0 8px var(--brand-primary);
+        }
     </style>
 </head>
 <body class="antialiased selection:bg-white selection:text-black relative">
@@ -235,11 +327,11 @@
 
         <!-- Center pill (Desktop Menu) -->
         <div class="hidden lg:flex items-center gap-4 bg-neutral-900/90 backdrop-blur rounded-full px-6 py-2 shadow-lg border border-white/5">
-            <a href="#home" class="nav-item-1 hover-glow-1 transition-all text-xl px-2 py-1 hover:scale-110 inline-block">Home</a>
-            <a href="#about" class="nav-item-2 hover-glow-2 transition-all text-2xl px-2 py-1 hover:scale-110 inline-block mt-1">Solutions</a>
-            <a href="#careers" class="nav-item-3 hover-glow-3 transition-all text-3xl px-2 py-1 hover:scale-110 inline-block">Careers</a>
-            <a href="#contact" class="nav-item-4 hover-glow-4 transition-all text-2xl px-2 py-1 hover:scale-110 inline-block">Contact</a>
-            <button onclick="openTerms()" class="nav-item-5 hover-glow-5 transition-all text-2xl px-2 py-1 hover:scale-110 inline-block mt-1">Terms</button>
+            <a href="#home" class="nav-item-1 hover-glow-1 transition-all text-lg px-2 py-1 hover:scale-110 inline-block">Home</a>
+            <a href="#about" class="nav-item-2 hover-glow-2 transition-all text-xl px-2 py-1 hover:scale-110 inline-block mt-1">Solutions</a>
+            <a href="#careers" class="nav-item-3 hover-glow-3 transition-all text-2xl px-2 py-1 hover:scale-110 inline-block">Careers</a>
+            <a href="#contact" class="nav-item-4 hover-glow-4 transition-all text-xl px-2 py-1 hover:scale-110 inline-block">Contact</a>
+            <button onclick="openTerms()" class="nav-item-5 hover-glow-5 transition-all text-xl px-2 py-1 hover:scale-110 inline-block mt-1">Terms</button>
         </div>
 
         <!-- Right button -->
@@ -248,19 +340,21 @@
                 <i data-lucide="phone" class="w-4 h-4"></i> Call Us
             </a>
             
-            <button id="mobileMenuBtn" class="lg:hidden text-white p-2.5 sm:p-3 focus:outline-none block relative z-[60] bg-neutral-900/90 backdrop-blur rounded-full smooth-hover shadow-lg border border-white/5" aria-label="Toggle Menu">
-                <i data-lucide="menu" class="w-4 h-4 sm:w-5 sm:h-5"></i>
+            <button id="mobileMenuBtn" class="lg:hidden focus:outline-none block relative z-[60] menu-depth-wrapper" aria-label="Toggle Menu">
+                <div class="hamburger-line"></div>
+                <div class="hamburger-line"></div>
+                <div class="hamburger-line"></div>
             </button>
         </div>
     </nav>
 
     <!-- Mobile Nav Menu -->
     <div id="mobileMenu" class="fixed inset-0 top-[90px] sm:top-[96px] bg-[#020202]/98 backdrop-blur-3xl z-[45] hidden flex-col items-center justify-center space-y-8 sm:space-y-10 px-6 transition-all duration-300 overflow-y-auto pb-10">
-        <a href="#home" class="mobile-link nav-item-1 hover-glow-1 smooth-hover text-5xl sm:text-6xl text-center w-full transition-all">Home</a>
-        <a href="#about" class="mobile-link nav-item-2 hover-glow-2 smooth-hover text-5xl sm:text-6xl text-center w-full transition-all">Solutions</a>
-        <a href="#careers" class="mobile-link nav-item-3 hover-glow-3 smooth-hover text-6xl sm:text-7xl text-center w-full transition-all">Careers</a>
-        <a href="#contact" class="mobile-link nav-item-4 hover-glow-4 smooth-hover text-5xl sm:text-6xl text-center w-full transition-all">Contact</a>
-        <button onclick="openTerms(); document.getElementById('mobileMenuBtn').click();" class="nav-item-5 hover-glow-5 smooth-hover text-5xl sm:text-6xl text-center w-full transition-all focus:outline-none">Terms & Conditions</button>
+        <a href="#home" class="mobile-link nav-item-1 hover-glow-1 smooth-hover text-3xl sm:text-4xl text-center w-full transition-all">Home</a>
+        <a href="#about" class="mobile-link nav-item-2 hover-glow-2 smooth-hover text-4xl sm:text-5xl text-center w-full transition-all">Solutions</a>
+        <a href="#careers" class="mobile-link nav-item-3 hover-glow-3 smooth-hover text-4xl sm:text-5xl text-center w-full transition-all">Careers</a>
+        <a href="#contact" class="mobile-link nav-item-4 hover-glow-4 smooth-hover text-4xl sm:text-5xl text-center w-full transition-all">Contact</a>
+        <button onclick="openTerms(); document.getElementById('mobileMenuBtn').click();" class="nav-item-5 hover-glow-5 smooth-hover text-3xl sm:text-4xl text-center w-full transition-all focus:outline-none">Terms & Conditions</button>
         
         <div class="h-[1px] w-1/2 bg-white/10 my-4 sm:my-6"></div>
         <a href="tel:9697430658" class="mobile-link bg-white text-black px-8 sm:px-10 py-3 sm:py-4 rounded-full font-bold text-lg sm:text-xl uppercase tracking-wider text-center flex justify-center items-center gap-2 w-full max-w-[250px] hover:bg-neutral-200 transition-colors shadow-[0_0_20px_rgba(255,255,255,0.3)]">
@@ -308,10 +402,14 @@
         </div>
     </section>
 
-    <!-- Services Section -->
-    <section id="about" class="py-12 sm:py-16 md:py-24 px-4 sm:px-6 md:px-16 relative bg-[#020202]">
-        <div class="cyber-grid"></div>
-        <div class="ambient-glow top-[20%] right-[-5%] w-[300px] sm:w-[600px] h-[300px] sm:h-[600px]"></div>
+    <!-- Services Section with 3D Ballpit Background -->
+    <section id="about" class="py-12 sm:py-16 md:py-24 px-4 sm:px-6 md:px-16 relative bg-[#020202] overflow-hidden">
+        
+        <!-- 3D Ballpit Canvas Container -->
+        <div id="ballpit-canvas-container" class="absolute inset-0 w-full h-full z-0 opacity-60 pointer-events-none"></div>
+        
+        <div class="cyber-grid pointer-events-none"></div>
+        <div class="ambient-glow top-[20%] right-[-5%] w-[300px] sm:w-[600px] h-[300px] sm:h-[600px] pointer-events-none"></div>
         
         <div class="max-w-7xl mx-auto relative z-10">
             <div class="mb-10 md:mb-16 reveal flex flex-col lg:flex-row lg:items-end justify-between gap-4 sm:gap-5">
@@ -795,12 +893,12 @@
             if (isMenuOpen) {
                 mobileMenu.classList.remove('hidden');
                 mobileMenu.classList.add('flex');
-                mobileMenuBtn.innerHTML = '<i data-lucide="x" class="w-4 h-4 sm:w-5 sm:h-5"></i>';
+                mobileMenuBtn.classList.add('open');
                 document.body.style.overflow = 'hidden'; // Prevent background scroll
             } else {
                 mobileMenu.classList.add('hidden');
                 mobileMenu.classList.remove('flex');
-                mobileMenuBtn.innerHTML = '<i data-lucide="menu" class="w-4 h-4 sm:w-5 sm:h-5"></i>';
+                mobileMenuBtn.classList.remove('open');
                 document.body.style.overflow = ''; // Restore background scroll
             }
             lucide.createIcons();
@@ -811,7 +909,7 @@
                 isMenuOpen = false;
                 mobileMenu.classList.add('hidden');
                 mobileMenu.classList.remove('flex');
-                mobileMenuBtn.innerHTML = '<i data-lucide="menu" class="w-4 h-4 sm:w-5 sm:h-5"></i>';
+                mobileMenuBtn.classList.remove('open');
                 document.body.style.overflow = '';
                 lucide.createIcons();
             });
@@ -892,6 +990,327 @@
 
             reveals.forEach(reveal => revealOnScroll.observe(reveal));
         });
+    </script>
+
+    <!-- 3D Ballpit Background Script - Embedded Native Vanilla JS Port -->
+    <script type="module">
+        import * as THREE from 'three';
+        import { RoomEnvironment } from 'three/addons/environments/RoomEnvironment.js';
+
+        // Custom Material for Subsurface Scattering-like effect
+        class PhysicalScatteringMaterial extends THREE.MeshPhysicalMaterial {
+            constructor(params) {
+                super(params);
+                this.uniforms = {
+                    thicknessDistortion: { value: 0.1 },
+                    thicknessAmbient: { value: 0 },
+                    thicknessAttenuation: { value: 0.1 },
+                    thicknessPower: { value: 2 },
+                    thicknessScale: { value: 10 }
+                };
+                this.defines = { USE_UV: '' };
+                this.onBeforeCompile = (shader) => {
+                    Object.assign(shader.uniforms, this.uniforms);
+                    shader.fragmentShader = `
+                        uniform float thicknessPower;
+                        uniform float thicknessScale;
+                        uniform float thicknessDistortion;
+                        uniform float thicknessAmbient;
+                        uniform float thicknessAttenuation;
+                        ${shader.fragmentShader}
+                    `;
+                    
+                    shader.fragmentShader = shader.fragmentShader.replace(
+                        'void main() {',
+                        `
+                        void RE_Direct_Scattering(const in IncidentLight directLight, const in vec2 uv, const in vec3 geometryPosition, const in vec3 geometryNormal, const in vec3 geometryViewDir, const in vec3 geometryClearcoatNormal, inout ReflectedLight reflectedLight) {
+                            vec3 scatteringHalf = normalize(directLight.direction + (geometryNormal * thicknessDistortion));
+                            float scatteringDot = pow(clamp(dot(geometryViewDir, -scatteringHalf), 0.0, 1.0), thicknessPower) * thicknessScale;
+                            #ifdef USE_COLOR
+                                vec3 scatteringIllu = (scatteringDot + thicknessAmbient) * vColor;
+                            #else
+                                vec3 scatteringIllu = (scatteringDot + thicknessAmbient) * diffuse;
+                            #endif
+                            reflectedLight.directDiffuse += scatteringIllu * thicknessAttenuation * directLight.color;
+                        }
+                        void main() {
+                        `
+                    );
+
+                    const lightsChunk = THREE.ShaderChunk.lights_fragment_begin.replaceAll(
+                        'RE_Direct( directLight, geometryPosition, geometryNormal, geometryViewDir, geometryClearcoatNormal, material, reflectedLight );',
+                        `
+                            RE_Direct( directLight, geometryPosition, geometryNormal, geometryViewDir, geometryClearcoatNormal, material, reflectedLight );
+                            RE_Direct_Scattering(directLight, vUv, geometryPosition, geometryNormal, geometryViewDir, geometryClearcoatNormal, reflectedLight);
+                        `
+                    );
+                    shader.fragmentShader = shader.fragmentShader.replace('#include <lights_fragment_begin>', lightsChunk);
+                };
+            }
+        }
+
+        // Physics Engine
+        class PhysicsWorld {
+            constructor(config) {
+                this.config = config;
+                const count = config.count || 200;
+                this.positionData = new Float32Array(3 * count).fill(0);
+                this.velocityData = new Float32Array(3 * count).fill(0);
+                this.sizeData = new Float32Array(count).fill(1);
+                this.center = new THREE.Vector3();
+                this.initialize();
+            }
+
+            initialize() {
+                const count = this.config.count || 200;
+                const maxX = this.config.maxX || 5;
+                const maxY = this.config.maxY || 5;
+                const maxZ = this.config.maxZ || 2;
+                const minSize = this.config.minSize || 0.5;
+                const maxSize = this.config.maxSize || 1;
+
+                for (let i = 0; i < count; i++) {
+                    const idx = 3 * i;
+                    this.positionData[idx] = THREE.MathUtils.randFloatSpread(2 * maxX);
+                    this.positionData[idx + 1] = THREE.MathUtils.randFloatSpread(2 * maxY);
+                    this.positionData[idx + 2] = THREE.MathUtils.randFloatSpread(2 * maxZ);
+                    this.sizeData[i] = THREE.MathUtils.randFloat(minSize, maxSize);
+                }
+            }
+
+            update(delta) {
+                const count = this.config.count || 200;
+                const gravity = this.config.gravity ?? 0.5;
+                const friction = this.config.friction ?? 0.9975;
+                const wallBounce = this.config.wallBounce ?? 0.95;
+                const maxVelocity = this.config.maxVelocity ?? 0.15;
+                const maxX = this.config.maxX || 5;
+                const maxY = this.config.maxY || 5;
+                const maxZ = this.config.maxZ || 2;
+                const followCursor = this.config.followCursor ?? true;
+
+                let startIdx = 0;
+                if (followCursor) {
+                    startIdx = 1;
+                    const firstPos = new THREE.Vector3().fromArray(this.positionData, 0);
+                    firstPos.lerp(this.center, 0.1).toArray(this.positionData, 0);
+                    new THREE.Vector3(0, 0, 0).toArray(this.velocityData, 0);
+                }
+
+                for (let i = startIdx; i < count; i++) {
+                    const base = 3 * i;
+                    const pos = new THREE.Vector3().fromArray(this.positionData, base);
+                    const vel = new THREE.Vector3().fromArray(this.velocityData, base);
+                    const radius = this.sizeData[i];
+
+                    vel.y -= delta * gravity * radius;
+                    vel.multiplyScalar(friction);
+                    vel.clampLength(0, maxVelocity);
+                    pos.add(vel);
+
+                    for (let j = i + 1; j < count; j++) {
+                        const otherBase = 3 * j;
+                        const otherPos = new THREE.Vector3().fromArray(this.positionData, otherBase);
+                        const diff = new THREE.Vector3().copy(otherPos).sub(pos);
+                        const dist = diff.length();
+                        const sumRadius = radius + this.sizeData[j];
+
+                        if (dist < sumRadius) {
+                            const overlap = sumRadius - dist;
+                            const correction = diff.normalize().multiplyScalar(0.5 * overlap);
+                            pos.sub(correction);
+                            otherPos.add(correction);
+                            
+                            const relVel = new THREE.Vector3().fromArray(this.velocityData, otherBase).sub(vel);
+                            const impulse = correction.clone().multiplyScalar(relVel.dot(correction.normalize()));
+                            vel.add(impulse);
+                            
+                            otherPos.toArray(this.positionData, otherBase);
+                        }
+                    }
+
+                    if (followCursor) {
+                        const followerPos = new THREE.Vector3().fromArray(this.positionData, 0);
+                        const diff = new THREE.Vector3().copy(followerPos).sub(pos);
+                        const d = diff.length();
+                        const sumRadius = radius + this.sizeData[0];
+                        if (d < sumRadius) {
+                            const correction = diff.normalize().multiplyScalar(sumRadius - d);
+                            pos.sub(correction);
+                            vel.sub(correction.multiplyScalar(0.2));
+                        }
+                    }
+
+                    if (Math.abs(pos.x) + radius > maxX) {
+                        pos.x = Math.sign(pos.x) * (maxX - radius);
+                        vel.x *= -wallBounce;
+                    }
+                    if (pos.y - radius < -maxY) {
+                        pos.y = -maxY + radius;
+                        vel.y *= -wallBounce;
+                    } else if (gravity === 0 && pos.y + radius > maxY) {
+                         pos.y = maxY - radius;
+                         vel.y *= -wallBounce;
+                    }
+                    if (Math.abs(pos.z) + radius > maxZ) {
+                        pos.z = Math.sign(pos.z) * (maxZ - radius);
+                        vel.z *= -wallBounce;
+                    }
+
+                    pos.toArray(this.positionData, base);
+                    vel.toArray(this.velocityData, base);
+                }
+            }
+        }
+
+        // Initialize Ballpit Background Function
+        function initBallpit() {
+            const container = document.getElementById('ballpit-canvas-container');
+            if (!container) return;
+
+            const canvas = document.createElement('canvas');
+            canvas.className = "block w-full h-full outline-none";
+            container.appendChild(canvas);
+
+            // Settings to match Forge branding
+            const count = 150;
+            const colors = ['#FF0033', '#111111', '#222222', '#050505'];
+            const ambientColor = '#ffffff';
+            const ambientIntensity = 1;
+            const lightIntensity = 200;
+            const minSize = 0.5;
+            const maxSize = 1;
+            const gravity = 0.4;
+            const friction = 0.998;
+            const wallBounce = 0.95;
+            const maxVelocity = 0.15;
+            const followCursor = true;
+
+            const renderer = new THREE.WebGLRenderer({
+                canvas,
+                antialias: true,
+                alpha: true,
+                powerPreference: 'high-performance'
+            });
+            renderer.outputColorSpace = THREE.SRGBColorSpace;
+            renderer.toneMapping = THREE.ACESFilmicToneMapping;
+            renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+
+            const scene = new THREE.Scene();
+            const roomEnv = new RoomEnvironment();
+            const pmrem = new THREE.PMREMGenerator(renderer);
+            const envTexture = pmrem.fromScene(roomEnv).texture;
+
+            const camera = new THREE.PerspectiveCamera(35, 1, 0.1, 1000);
+            camera.position.z = 20;
+
+            const geometry = new THREE.SphereGeometry(1, 32, 32);
+            const material = new PhysicalScatteringMaterial({
+                envMap: envTexture,
+                metalness: 0.5,
+                roughness: 0.5,
+                clearcoat: 1,
+                clearcoatRoughness: 0.15
+            });
+
+            const imesh = new THREE.InstancedMesh(geometry, material, count);
+            scene.add(imesh);
+
+            const ambient = new THREE.AmbientLight(ambientColor, ambientIntensity);
+            scene.add(ambient);
+
+            const pointLight = new THREE.PointLight(colors[0], lightIntensity);
+            scene.add(pointLight);
+
+            const config = {
+                count, minSize, maxSize, gravity, friction, wallBounce, 
+                maxVelocity, followCursor, maxX: 5, maxY: 5, maxZ: 2
+            };
+            const physics = new PhysicsWorld(config);
+
+            const threeColors = colors.map(c => new THREE.Color(c));
+            for (let i = 0; i < count; i++) {
+                const color = threeColors[i % threeColors.length];
+                imesh.setColorAt(i, color);
+            }
+            imesh.instanceColor.needsUpdate = true;
+
+            const raycaster = new THREE.Raycaster();
+            const plane = new THREE.Plane(new THREE.Vector3(0, 0, 1), 0);
+            const intersection = new THREE.Vector3();
+            const pointer = new THREE.Vector2();
+
+            const updatePointer = (e) => {
+                const x = e.touches ? e.touches[0].clientX : e.clientX;
+                const y = e.touches ? e.touches[0].clientY : e.clientY;
+                const rect = container.getBoundingClientRect();
+                
+                pointer.x = ((x - rect.left) / rect.width) * 2 - 1;
+                pointer.y = -((y - rect.top) / rect.height) * 2 + 1;
+                
+                raycaster.setFromCamera(pointer, camera);
+                raycaster.ray.intersectPlane(plane, intersection);
+                physics.center.copy(intersection);
+            };
+
+            window.addEventListener('mousemove', updatePointer);
+            window.addEventListener('touchstart', updatePointer, {passive: true});
+            window.addEventListener('touchmove', updatePointer, {passive: true});
+
+            const resize = () => {
+                const w = container.offsetWidth;
+                const h = container.offsetHeight;
+                renderer.setSize(w, h);
+                camera.aspect = w / h;
+                camera.updateProjectionMatrix();
+
+                const fovRad = (camera.fov * Math.PI) / 180;
+                const wHeight = 2 * Math.tan(fovRad / 2) * camera.position.z;
+                const wWidth = wHeight * camera.aspect;
+                physics.config.maxX = wWidth / 2;
+                physics.config.maxY = wHeight / 2;
+            };
+            
+            const resizeObserver = new ResizeObserver(resize);
+            resizeObserver.observe(container);
+            resize();
+
+            const clock = new THREE.Clock();
+            const dummy = new THREE.Object3D();
+
+            const animate = () => {
+                const delta = clock.getDelta();
+                physics.update(Math.min(delta, 0.1));
+
+                for (let i = 0; i < count; i++) {
+                    dummy.position.fromArray(physics.positionData, i * 3);
+                    const s = physics.sizeData[i];
+                    
+                    if (i === 0 && !followCursor) {
+                        dummy.scale.setScalar(0);
+                    } else {
+                        dummy.scale.setScalar(s);
+                    }
+                    
+                    dummy.updateMatrix();
+                    imesh.setMatrixAt(i, dummy.matrix);
+                    
+                    if (i === 0) pointLight.position.copy(dummy.position);
+                }
+                imesh.instanceMatrix.needsUpdate = true;
+
+                renderer.render(scene, camera);
+                requestAnimationFrame(animate);
+            };
+            animate();
+        }
+
+        // Initialize when DOM is ready
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initBallpit);
+        } else {
+            initBallpit();
+        }
     </script>
 </body>
 </html>

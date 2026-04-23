@@ -11,6 +11,8 @@
         @import url('https://fonts.googleapis.com/css2?family=Readex+Pro:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700;800;900&display=swap');
         /* Premium Inter Font for Careers Section */
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+        /* Calligraphy Fonts for Menu */
+        @import url('https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Dancing+Script:wght@600;700&family=Great+Vibes&family=Pacifico&family=Satisfy&display=swap');
         
         :root {
             /* Vibrant neon red for high contrast */
@@ -181,6 +183,37 @@
             opacity: 1;
             transition: max-height 0.5s ease-in-out, opacity 0.5s ease-in-out;
         }
+
+        /* Menu UI/UX Upgrades */
+        .nav-item-1 { font-family: 'Pacifico', cursive; color: #00f3ff; }
+        .nav-item-2 { font-family: 'Dancing Script', cursive; color: #d473ff; }
+        .nav-item-3 { font-family: 'Caveat', cursive; color: #FF0033; }
+        .nav-item-4 { font-family: 'Satisfy', cursive; color: #FFD700; }
+        .nav-item-5 { font-family: 'Great Vibes', cursive; color: #00ff66; }
+
+        .hover-glow-1:hover { filter: drop-shadow(0 0 12px rgba(0, 243, 255, 0.9)); color: #fff; }
+        .hover-glow-2:hover { filter: drop-shadow(0 0 12px rgba(212, 115, 255, 0.9)); color: #fff; }
+        .hover-glow-3:hover { filter: drop-shadow(0 0 12px rgba(255, 0, 51, 0.9)); color: #fff; }
+        .hover-glow-4:hover { filter: drop-shadow(0 0 12px rgba(255, 215, 0, 0.9)); color: #fff; }
+        .hover-glow-5:hover { filter: drop-shadow(0 0 12px rgba(0, 255, 102, 0.9)); color: #fff; }
+
+        /* Staggered entry animation for Mobile Menu */
+        #mobileMenu.flex > * {
+            animation: menuFadeUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        #mobileMenu.flex > *:nth-child(1) { animation-delay: 0.1s; }
+        #mobileMenu.flex > *:nth-child(2) { animation-delay: 0.15s; }
+        #mobileMenu.flex > *:nth-child(3) { animation-delay: 0.2s; }
+        #mobileMenu.flex > *:nth-child(4) { animation-delay: 0.25s; }
+        #mobileMenu.flex > *:nth-child(5) { animation-delay: 0.3s; }
+        #mobileMenu.flex > *:nth-child(6) { animation-delay: 0.4s; }
+        #mobileMenu.flex > *:nth-child(7) { animation-delay: 0.45s; }
+
+        @keyframes menuFadeUp {
+            to { opacity: 1; transform: translateY(0); }
+        }
     </style>
 </head>
 <body class="antialiased selection:bg-white selection:text-black relative">
@@ -201,12 +234,12 @@
         </div>
 
         <!-- Center pill (Desktop Menu) -->
-        <div class="hidden lg:flex items-center gap-1 bg-neutral-900/90 backdrop-blur rounded-full px-3 py-2 shadow-lg border border-white/5">
-            <a href="#home" class="text-neutral-300 hover:text-white transition-colors text-sm px-4 xl:px-5 py-2 rounded-full uppercase tracking-wide font-medium">Home</a>
-            <a href="#about" class="text-neutral-300 hover:text-white transition-colors text-sm px-4 xl:px-5 py-2 rounded-full uppercase tracking-wide font-medium">Solutions</a>
-            <a href="#careers" class="text-neutral-300 hover:text-white transition-colors text-sm px-4 xl:px-5 py-2 rounded-full uppercase tracking-wide font-medium">Careers</a>
-            <a href="#contact" class="text-neutral-300 hover:text-white transition-colors text-sm px-4 xl:px-5 py-2 rounded-full uppercase tracking-wide font-medium">Contact</a>
-            <button onclick="openTerms()" class="text-neutral-300 hover:text-white transition-colors text-sm px-4 xl:px-5 py-2 rounded-full uppercase tracking-wide font-medium text-left">Terms</button>
+        <div class="hidden lg:flex items-center gap-4 bg-neutral-900/90 backdrop-blur rounded-full px-6 py-2 shadow-lg border border-white/5">
+            <a href="#home" class="nav-item-1 hover-glow-1 transition-all text-xl px-2 py-1 hover:scale-110 inline-block">Home</a>
+            <a href="#about" class="nav-item-2 hover-glow-2 transition-all text-2xl px-2 py-1 hover:scale-110 inline-block mt-1">Solutions</a>
+            <a href="#careers" class="nav-item-3 hover-glow-3 transition-all text-3xl px-2 py-1 hover:scale-110 inline-block">Careers</a>
+            <a href="#contact" class="nav-item-4 hover-glow-4 transition-all text-2xl px-2 py-1 hover:scale-110 inline-block">Contact</a>
+            <button onclick="openTerms()" class="nav-item-5 hover-glow-5 transition-all text-2xl px-2 py-1 hover:scale-110 inline-block mt-1">Terms</button>
         </div>
 
         <!-- Right button -->
@@ -222,15 +255,15 @@
     </nav>
 
     <!-- Mobile Nav Menu -->
-    <div id="mobileMenu" class="fixed inset-0 top-[90px] sm:top-[96px] bg-[#020202]/98 backdrop-blur-3xl z-[45] hidden flex-col items-center justify-center space-y-6 sm:space-y-8 px-6 transition-all duration-300 overflow-y-auto pb-10">
-        <a href="#home" class="mobile-link text-white hover:text-neutral-300 smooth-hover font-medium text-xl sm:text-2xl tracking-widest uppercase text-center w-full">Home</a>
-        <a href="#about" class="mobile-link text-white hover:text-neutral-300 smooth-hover font-medium text-xl sm:text-2xl tracking-widest uppercase text-center w-full">Solutions</a>
-        <a href="#careers" class="mobile-link text-white hover:text-neutral-300 smooth-hover font-medium text-xl sm:text-2xl tracking-widest uppercase text-center w-full">Careers</a>
-        <a href="#contact" class="mobile-link text-white hover:text-neutral-300 smooth-hover font-medium text-xl sm:text-2xl tracking-widest uppercase text-center w-full">Contact</a>
-        <button onclick="openTerms(); document.getElementById('mobileMenuBtn').click();" class="text-white hover:text-neutral-300 smooth-hover font-medium text-xl sm:text-2xl tracking-widest uppercase text-center w-full focus:outline-none">Terms & Conditions</button>
+    <div id="mobileMenu" class="fixed inset-0 top-[90px] sm:top-[96px] bg-[#020202]/98 backdrop-blur-3xl z-[45] hidden flex-col items-center justify-center space-y-8 sm:space-y-10 px-6 transition-all duration-300 overflow-y-auto pb-10">
+        <a href="#home" class="mobile-link nav-item-1 hover-glow-1 smooth-hover text-5xl sm:text-6xl text-center w-full transition-all">Home</a>
+        <a href="#about" class="mobile-link nav-item-2 hover-glow-2 smooth-hover text-5xl sm:text-6xl text-center w-full transition-all">Solutions</a>
+        <a href="#careers" class="mobile-link nav-item-3 hover-glow-3 smooth-hover text-6xl sm:text-7xl text-center w-full transition-all">Careers</a>
+        <a href="#contact" class="mobile-link nav-item-4 hover-glow-4 smooth-hover text-5xl sm:text-6xl text-center w-full transition-all">Contact</a>
+        <button onclick="openTerms(); document.getElementById('mobileMenuBtn').click();" class="nav-item-5 hover-glow-5 smooth-hover text-5xl sm:text-6xl text-center w-full transition-all focus:outline-none">Terms & Conditions</button>
         
-        <div class="h-[1px] w-1/2 bg-white/10 my-2 sm:my-4"></div>
-        <a href="tel:9697430658" class="mobile-link bg-white text-black px-8 sm:px-10 py-3 sm:py-4 rounded-full font-bold text-lg sm:text-xl uppercase tracking-wider text-center flex justify-center items-center gap-2 w-full max-w-[250px] hover:bg-neutral-200 transition-colors shadow-xl">
+        <div class="h-[1px] w-1/2 bg-white/10 my-4 sm:my-6"></div>
+        <a href="tel:9697430658" class="mobile-link bg-white text-black px-8 sm:px-10 py-3 sm:py-4 rounded-full font-bold text-lg sm:text-xl uppercase tracking-wider text-center flex justify-center items-center gap-2 w-full max-w-[250px] hover:bg-neutral-200 transition-colors shadow-[0_0_20px_rgba(255,255,255,0.3)]">
             <i data-lucide="phone" class="w-5 h-5"></i> Call Us
         </a>
     </div>
@@ -399,7 +432,7 @@
                         <li class="flex items-center text-[11px] sm:text-xs md:text-sm text-white font-medium"><i data-lucide="clock" class="w-3 h-3 sm:w-4 sm:h-4 mr-2 text-brand icon-glow-brand shrink-0"></i> 24/7 Deal Closing</li>
                         <li class="flex items-center text-[11px] sm:text-xs md:text-sm text-white font-medium"><i data-lucide="database" class="w-3 h-3 sm:w-4 sm:h-4 mr-2 text-brand icon-glow-brand shrink-0"></i> CRM Integration</li>
                     </ul>
-                    <button onclick="openModal()" class="w-full py-3 sm:py-4 md:py-5 bg-brand hover-bg-brand text-white clip-button font-black text-[10px] sm:text-xs md:text-sm uppercase tracking-[0.2em] transition-all shadow-[0_0_20px_rgba(255,0,51,0.5)] border border-white/30 smooth-hover">Get Quote</button>
+                    <button onclick="openModal()" class="w-full py-3 sm:py-4 md:py-5 bg-brand hover:bg-brand text-white clip-button font-black text-[10px] sm:text-xs md:text-sm uppercase tracking-[0.2em] transition-all shadow-[0_0_20px_rgba(255,0,51,0.5)] border border-white/30 smooth-hover">Get Quote</button>
                 </div>
             </div>
 

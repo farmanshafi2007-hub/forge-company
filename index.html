@@ -285,8 +285,10 @@
         <a href="#about" class="mobile-link nav-item-2 hover-glow-2 smooth-hover text-4xl sm:text-5xl text-center w-full transition-all">Solutions</a>
         <a href="#careers" class="mobile-link nav-item-3 hover-glow-3 smooth-hover text-4xl sm:text-5xl text-center w-full transition-all">Careers</a>
         <a href="#contact" class="mobile-link nav-item-4 hover-glow-4 smooth-hover text-4xl sm:text-5xl text-center w-full transition-all">Contact</a>
-        <button onclick="openTerms(); document.getElementById('mobileMenuBtn').click();" class="nav-item-5 hover-glow-5 smooth-hover text-3xl sm:text-4xl text-center w-full transition-all focus:outline-none">Terms & Conditions</button>
-        <button onclick="openEmployeeModal(); document.getElementById('mobileMenuBtn').click();" class="nav-item-6 hover-glow-6 smooth-hover text-3xl sm:text-4xl text-center w-full transition-all focus:outline-none uppercase tracking-wide">Employee ID</button>
+        
+        <!-- Swapped click order here to prevent overflow scroll bugs when opening modals from mobile menu -->
+        <button onclick="document.getElementById('mobileMenuBtn').click(); openTerms();" class="nav-item-5 hover-glow-5 smooth-hover text-3xl sm:text-4xl text-center w-full transition-all focus:outline-none">Terms & Conditions</button>
+        <button onclick="document.getElementById('mobileMenuBtn').click(); openEmployeeModal();" class="nav-item-6 hover-glow-6 smooth-hover text-3xl sm:text-4xl text-center w-full transition-all focus:outline-none uppercase tracking-wide">Employee ID</button>
         
         <div class="h-[1px] w-1/2 bg-white/10 my-2 sm:my-4"></div>
         <a href="tel:9697430658" class="mobile-link bg-white text-black px-8 sm:px-10 py-3 sm:py-4 rounded-full font-bold text-lg sm:text-xl uppercase tracking-wider text-center flex justify-center items-center gap-2 w-full max-w-[250px] hover:bg-neutral-200 transition-colors shadow-[0_0_20px_rgba(255,255,255,0.3)]">
@@ -677,13 +679,13 @@
                 
                 <div class="group transition-all duration-300 bg-white/80 backdrop-blur-xl border border-white/50 shadow-xl rounded-2xl overflow-hidden hover:shadow-2xl">
                     
-                    <!-- Clickable Row -->
-                    <div onclick="toggleJobDetails()" id="job-header" class="cursor-pointer flex flex-col md:flex-row md:items-center justify-between p-5 sm:p-6 md:p-8 gap-3 sm:gap-4 relative hover:bg-white/95 transition-colors duration-300">
+                    <!-- Clickable Row (Updated for dynamic relative toggling) -->
+                    <div onclick="toggleJobDetails(this)" class="cursor-pointer flex flex-col md:flex-row md:items-center justify-between p-5 sm:p-6 md:p-8 gap-3 sm:gap-4 relative hover:bg-white/95 transition-colors duration-300">
                         
                         <!-- Left Column (Title, Dept, Date) -->
                         <div class="flex-1 md:w-5/12">
                             <h3 class="font-semibold text-xl sm:text-2xl md:text-3xl text-[#202A36] tracking-tight mb-1 sm:mb-2 flex items-center gap-2">
-                                Sales Partner <i data-lucide="chevron-right" id="job-chevron-side" class="w-4 h-4 md:w-5 md:h-5 text-gray-400 transition-transform duration-300 hidden md:inline-block"></i>
+                                Sales Partner <i data-lucide="chevron-right" class="w-4 h-4 md:w-5 md:h-5 text-gray-400 transition-transform duration-300 hidden md:inline-block"></i>
                             </h3>
                             <p class="text-gray-600 text-[10px] sm:text-xs md:text-sm font-medium tracking-wide">Sales and Business Development</p>
                             <p class="text-gray-500 text-[9px] sm:text-[10px] md:text-xs tracking-wider mt-1">22 Apr 2026</p>
@@ -697,13 +699,13 @@
                         <!-- Right Column (Icons) -->
                         <div class="absolute top-4 sm:top-5 right-4 sm:right-5 md:static md:w-2/12 flex items-center justify-end gap-4 md:gap-6 md:pt-1">
                             <div class="w-6 h-6 sm:w-8 sm:h-8 flex items-center justify-center rounded-full bg-gray-100 group-hover:bg-gray-200 transition-colors border border-gray-200 shadow-sm">
-                                <i data-lucide="plus" id="job-icon-plus" class="w-3 h-3 sm:w-4 sm:h-4 text-[#202A36] transition-transform duration-300"></i>
+                                <i data-lucide="plus" class="w-3 h-3 sm:w-4 sm:h-4 text-[#202A36] transition-transform duration-300"></i>
                             </div>
                         </div>
                     </div>
 
                     <!-- Hidden Collapsible Details -->
-                    <div id="job-details" class="accordion-content px-4 sm:px-6 md:px-8 bg-white/95 border-t border-gray-100">
+                    <div class="accordion-content px-4 sm:px-6 md:px-8 bg-white/95 border-t border-gray-100">
                         
                         <div class="py-6 sm:py-8 md:py-10">
                             
@@ -1020,32 +1022,32 @@
                         // If blocked by browser policy, play on first user interaction (scroll or touch)
                         const playVideo = () => {
                             video.play();
-                            document.body.removeEventListener('touchstart', playVideo);
-                            document.body.removeEventListener('scroll', playVideo);
+                            window.removeEventListener('touchstart', playVideo);
+                            window.removeEventListener('scroll', playVideo);
                         };
-                        document.body.addEventListener('touchstart', playVideo, { once: true });
-                        document.body.addEventListener('scroll', playVideo, { once: true });
+                        window.addEventListener('touchstart', playVideo, { once: true });
+                        window.addEventListener('scroll', playVideo, { once: true });
                     });
                 }
             });
         });
         
-        // Careers Accordion Toggle (Apple Style with Smooth Animation)
-        function toggleJobDetails() {
-            const details = document.getElementById('job-details');
-            const iconPlus = document.getElementById('job-icon-plus');
-            const chevronSide = document.getElementById('job-chevron-side');
+        // Careers Accordion Toggle (Apple Style with Smooth Animation, Relative Traversal)
+        function toggleJobDetails(element) {
+            const details = element.nextElementSibling;
+            const iconPlus = element.querySelector('.lucide-plus') || element.querySelector('[data-lucide="plus"]');
+            const chevronSide = element.querySelector('.lucide-chevron-right') || element.querySelector('[data-lucide="chevron-right"]');
             
             if (!details.classList.contains('expanded')) {
                 // Open it
                 details.classList.add('expanded');
-                iconPlus.classList.add('rotate-45');
-                chevronSide.classList.add('rotate-90');
+                if(iconPlus) iconPlus.classList.add('rotate-45');
+                if(chevronSide) chevronSide.classList.add('rotate-90');
             } else {
                 // Close it
                 details.classList.remove('expanded');
-                iconPlus.classList.remove('rotate-45');
-                chevronSide.classList.remove('rotate-90');
+                if(iconPlus) iconPlus.classList.remove('rotate-45');
+                if(chevronSide) chevronSide.classList.remove('rotate-90');
             }
         }
 
@@ -1201,7 +1203,6 @@
                         empDetailsContainer.classList.remove('opacity-0', 'translate-y-4');
                     }, 50);
                     
-                    lucide.createIcons(); // Ensure newly visible icons render
                 }, 300); // Wait for fade out
                 
             } else {

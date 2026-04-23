@@ -226,86 +226,6 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* Custom 3D Depth Menu Button */
-        .menu-depth-wrapper {
-            width: 44px;
-            height: 44px;
-            background: linear-gradient(145deg, #2a2a2a, #111);
-            border-radius: 12px;
-            box-shadow: 
-                4px 4px 10px rgba(0,0,0,0.8), 
-                -2px -2px 8px rgba(255,255,255,0.05),
-                inset 1px 1px 2px rgba(255,255,255,0.15),
-                inset -1px -1px 4px rgba(0,0,0,0.5);
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            gap: 5px;
-            cursor: pointer;
-            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-            border: 1px solid rgba(255, 0, 51, 0.15);
-            position: relative;
-            overflow: hidden;
-        }
-        
-        /* Metallic sheen sweep effect */
-        .menu-depth-wrapper::before {
-            content: '';
-            position: absolute;
-            top: 0; left: -100%;
-            width: 50%; height: 100%;
-            background: linear-gradient(to right, transparent, rgba(255,255,255,0.1), transparent);
-            transform: skewX(-20deg);
-            transition: 0.5s;
-        }
-        
-        .menu-depth-wrapper:hover::before {
-            left: 150%;
-        }
-
-        .menu-depth-wrapper:hover {
-            border-color: rgba(255, 0, 51, 0.6);
-            box-shadow: 
-                0 0 15px rgba(255, 0, 51, 0.3),
-                4px 4px 10px rgba(0,0,0,0.9), 
-                -1px -1px 6px rgba(255,255,255,0.08);
-            transform: translateY(-2px);
-        }
-
-        .menu-depth-wrapper:active {
-            transform: translateY(1px);
-            box-shadow: 
-                inset 3px 3px 6px rgba(0,0,0,0.9), 
-                inset -2px -2px 5px rgba(255,255,255,0.05);
-        }
-
-        /* 3D Hamburger Lines */
-        .hamburger-line {
-            width: 20px;
-            height: 2px;
-            background: linear-gradient(90deg, #e0e0e0, #999);
-            border-radius: 2px;
-            box-shadow: 0 2px 3px rgba(0,0,0,0.8);
-            transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-            transform-origin: center;
-        }
-
-        /* Open state styles - Transforms to glowing X */
-        .menu-depth-wrapper.open .hamburger-line:nth-child(1) {
-            transform: translateY(7px) rotate(45deg);
-            background: linear-gradient(90deg, #FF3355, #FF0033);
-            box-shadow: 0 0 8px var(--brand-primary);
-        }
-        .menu-depth-wrapper.open .hamburger-line:nth-child(2) {
-            opacity: 0;
-            transform: scaleX(0);
-        }
-        .menu-depth-wrapper.open .hamburger-line:nth-child(3) {
-            transform: translateY(-7px) rotate(-45deg);
-            background: linear-gradient(90deg, #FF3355, #FF0033);
-            box-shadow: 0 0 8px var(--brand-primary);
-        }
     </style>
 </head>
 <body class="antialiased selection:bg-white selection:text-black relative">
@@ -340,10 +260,8 @@
                 <i data-lucide="phone" class="w-4 h-4"></i> Call Us
             </a>
             
-            <button id="mobileMenuBtn" class="lg:hidden focus:outline-none block relative z-[60] menu-depth-wrapper" aria-label="Toggle Menu">
-                <div class="hamburger-line"></div>
-                <div class="hamburger-line"></div>
-                <div class="hamburger-line"></div>
+            <button id="mobileMenuBtn" class="lg:hidden text-white p-2.5 bg-neutral-900/90 backdrop-blur rounded-full border border-white/5 shadow-lg focus:outline-none block relative z-[60] transition-transform hover:scale-105 active:scale-95" aria-label="Toggle Menu">
+                <i data-lucide="menu" class="w-5 h-5"></i>
             </button>
         </div>
     </nav>
@@ -377,7 +295,7 @@
         <div class="relative h-full w-full flex flex-col items-center justify-center text-center px-4 sm:px-6 pt-20 sm:pt-24">
             
             <!-- Subtitle -->
-            <span class="text-brand font-black tracking-[0.2em] uppercase text-[10px] sm:text-xs md:text-sm mb-3 sm:mb-4 md:mb-6 animate-pulse text-solid-shadow">Grow Your Business</span>
+            <span class="text-brand font-black tracking-[0.2em] uppercase text-[10px] sm:text-xs md:text-sm mb-3 sm:mb-4 md:mb-6 animate-pulse text-solid-shadow">Accelerate Growth</span>
             
             <!-- Main Title - Responsive text sizes to prevent clipping on mobile -->
             <h1 class="font-black text-4xl sm:text-6xl md:text-[80px] lg:text-[100px] text-white uppercase tracking-tighter leading-[1.1] md:leading-[0.95] mb-4 sm:mb-6 md:mb-8 text-solid-shadow max-w-full">
@@ -386,7 +304,7 @@
 
             <!-- Description -->
             <p class="text-gray-100 text-xs sm:text-sm md:text-base lg:text-lg max-w-2xl font-bold leading-relaxed mb-8 sm:mb-10 md:mb-12 text-solid-shadow px-2 sm:px-0">
-                We build high-end websites and deploy AI agents that automate your sales and close deals 24/7.
+                High-end websites. Smart AI agents. 24/7 sales automation.
             </p>
 
             <!-- Buttons -->
@@ -421,7 +339,7 @@
                     <h2 class="text-2xl sm:text-4xl md:text-5xl font-black uppercase heading-tight text-shadow-glow leading-[1]">Digital <br class="hidden lg:block"/> Systems</h2>
                 </div>
                 <p class="text-gray-400 text-[11px] sm:text-sm md:text-base max-w-sm lg:text-right border-l-2 lg:border-l-0 lg:border-r-2 border-brand/60 pl-3 sm:pl-4 lg:pr-4 lg:pl-0 font-medium">
-                    Web and AI infrastructure designed to scale your business effortlessly.
+                    Infrastructure designed to scale.
                 </p>
             </div>
             
@@ -431,21 +349,21 @@
                     <div class="absolute top-4 right-4 text-white/5 font-black text-3xl sm:text-4xl md:text-6xl pointer-events-none transition-all group-hover:text-brand/10">01</div>
                     <i data-lucide="layout" class="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 text-brand mb-4 sm:mb-5 md:mb-6 icon-glow-brand transform transition-transform duration-500 group-hover:scale-110 group-hover:rotate-3"></i>
                     <h3 class="text-base sm:text-lg md:text-xl font-black mb-2 md:mb-3 text-white uppercase tracking-tight">Premium Websites</h3>
-                    <p class="text-gray-400 text-[10px] sm:text-xs md:text-sm leading-relaxed font-medium">High-converting websites designed to capture leads and establish your authority.</p>
+                    <p class="text-gray-400 text-[10px] sm:text-xs md:text-sm leading-relaxed font-medium">Capture leads. Establish authority.</p>
                 </div>
                 <!-- Service 2 -->
                 <div class="glass-card clip-card p-5 sm:p-6 md:p-10 reveal border-t border-brand/70 group" style="transition-delay: 100ms;">
                     <div class="absolute top-4 right-4 text-white/5 font-black text-3xl sm:text-4xl md:text-6xl pointer-events-none transition-all group-hover:text-brand/10">02</div>
                     <i data-lucide="bot" class="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 text-brand mb-4 sm:mb-5 md:mb-6 icon-glow-brand transform transition-transform duration-500 group-hover:scale-110 group-hover:rotate-3"></i>
                     <h3 class="text-base sm:text-lg md:text-xl font-black mb-2 md:mb-3 text-white uppercase tracking-tight">AI Sales Agents</h3>
-                    <p class="text-gray-400 text-[10px] sm:text-xs md:text-sm leading-relaxed font-medium">Smart AI agents that engage your leads 24/7 and close deals without human effort.</p>
+                    <p class="text-gray-400 text-[10px] sm:text-xs md:text-sm leading-relaxed font-medium">Engage and close 24/7. Zero human effort.</p>
                 </div>
                 <!-- Service 3 -->
                 <div class="glass-card clip-card p-5 sm:p-6 md:p-10 reveal border-t border-brand/70 group" style="transition-delay: 200ms;">
                     <div class="absolute top-4 right-4 text-white/5 font-black text-3xl sm:text-4xl md:text-6xl pointer-events-none transition-all group-hover:text-brand/10">03</div>
                     <i data-lucide="cpu" class="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 text-brand mb-4 sm:mb-5 md:mb-6 icon-glow-brand transform transition-transform duration-500 group-hover:scale-110 group-hover:rotate-3"></i>
                     <h3 class="text-base sm:text-lg md:text-xl font-black mb-2 md:mb-3 text-white uppercase tracking-tight">Automated Pipelines</h3>
-                    <p class="text-gray-400 text-[10px] sm:text-xs md:text-sm leading-relaxed font-medium">End-to-end automation of your client acquisition process so you can grow without hiring.</p>
+                    <p class="text-gray-400 text-[10px] sm:text-xs md:text-sm leading-relaxed font-medium">End-to-end automation. Grow without hiring.</p>
                 </div>
             </div>
         </div>
@@ -467,22 +385,22 @@
                 <div class="text-center sm:text-left relative z-10 p-5 rounded-lg bg-[#050505] border border-white/5 shadow-lg smooth-hover hover:border-brand/30">
                     <div class="w-10 h-10 sm:w-12 sm:h-12 md:w-16 md:h-16 bg-black border-2 border-brand/50 flex items-center justify-center text-brand font-black text-lg sm:text-xl md:text-2xl mb-3 sm:mb-4 md:mb-6 shadow-[0_0_15px_rgba(255,0,51,0.3)] clip-button mx-auto sm:mx-0">01</div>
                     <h4 class="text-sm sm:text-base md:text-lg font-black mb-1 md:mb-2 text-white uppercase tracking-tight">Call Us</h4>
-                    <p class="text-[10px] sm:text-[11px] md:text-xs text-gray-400 font-medium leading-relaxed">Reach out directly to discuss your business goals.</p>
+                    <p class="text-[10px] sm:text-[11px] md:text-xs text-gray-400 font-medium leading-relaxed">Discuss your goals.</p>
                 </div>
                 <div class="text-center sm:text-left relative z-10 p-5 rounded-lg bg-[#050505] border border-white/5 shadow-lg smooth-hover hover:border-brand/30">
                     <div class="w-10 h-10 sm:w-12 sm:h-12 md:w-16 md:h-16 bg-black border-2 border-white/20 flex items-center justify-center text-white font-black text-lg sm:text-xl md:text-2xl mb-3 sm:mb-4 md:mb-6 clip-button mx-auto sm:mx-0">02</div>
                     <h4 class="text-sm sm:text-base md:text-lg font-black mb-1 md:mb-2 text-white uppercase tracking-tight">Share Needs</h4>
-                    <p class="text-[10px] sm:text-[11px] md:text-xs text-gray-400 font-medium leading-relaxed">Tell us your process so we know where AI helps most.</p>
+                    <p class="text-[10px] sm:text-[11px] md:text-xs text-gray-400 font-medium leading-relaxed">Tell us your process.</p>
                 </div>
                 <div class="text-center sm:text-left relative z-10 p-5 rounded-lg bg-[#050505] border border-white/5 shadow-lg smooth-hover hover:border-brand/30">
                     <div class="w-10 h-10 sm:w-12 sm:h-12 md:w-16 md:h-16 bg-black border-2 border-white/20 flex items-center justify-center text-white font-black text-lg sm:text-xl md:text-2xl mb-3 sm:mb-4 md:mb-6 clip-button mx-auto sm:mx-0">03</div>
                     <h4 class="text-sm sm:text-base md:text-lg font-black mb-1 md:mb-2 text-white uppercase tracking-tight">Get Quote</h4>
-                    <p class="text-[10px] sm:text-[11px] md:text-xs text-gray-400 font-medium leading-relaxed">We design a custom plan and begin building immediately.</p>
+                    <p class="text-[10px] sm:text-[11px] md:text-xs text-gray-400 font-medium leading-relaxed">We design and build.</p>
                 </div>
                 <div class="text-center sm:text-left relative z-10 p-5 rounded-lg bg-[#050505] border border-brand/30 shadow-[0_5px_20px_rgba(255,0,51,0.1)] smooth-hover hover:border-brand/50">
                     <div class="w-10 h-10 sm:w-12 sm:h-12 md:w-16 md:h-16 bg-brand border-2 border-brand flex items-center justify-center text-white font-black text-lg sm:text-xl md:text-2xl mb-3 sm:mb-4 md:mb-6 shadow-[0_0_20px_rgba(255,0,51,0.6)] clip-button mx-auto sm:mx-0">04</div>
                     <h4 class="text-sm sm:text-base md:text-lg font-black mb-1 md:mb-2 text-brand uppercase tracking-tight text-shadow-glow">Launch</h4>
-                    <p class="text-[10px] sm:text-[11px] md:text-xs text-gray-300 font-medium leading-relaxed">Your website and AI launch to start generating sales.</p>
+                    <p class="text-[10px] sm:text-[11px] md:text-xs text-gray-300 font-medium leading-relaxed">Start generating sales.</p>
                 </div>
             </div>
         </div>
@@ -494,7 +412,7 @@
         
         <div class="max-w-7xl mx-auto text-center mb-10 sm:mb-12 md:mb-20 reveal relative z-10">
             <h2 class="text-2xl sm:text-4xl md:text-5xl font-black mb-2 md:mb-3 uppercase heading-tight text-shadow-glow leading-[1]">Pricing Plans</h2>
-            <p class="text-gray-400 text-[10px] sm:text-xs md:text-sm font-medium tracking-wide">Choose a package to dominate your market.</p>
+            <p class="text-gray-400 text-[10px] sm:text-xs md:text-sm font-medium tracking-wide">Dominate your market.</p>
         </div>
         
         <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 md:gap-8 max-w-sm sm:max-w-xl lg:max-w-5xl mx-auto items-center relative z-10">
@@ -502,7 +420,7 @@
             <!-- Standard -->
             <div class="glass-card clip-card p-6 sm:p-10 reveal border-t border-white/20 w-full">
                 <h3 class="text-lg sm:text-xl md:text-2xl font-black mb-1 text-white uppercase tracking-tight">Starter</h3>
-                <p class="text-gray-400 text-[10px] sm:text-[11px] md:text-xs mb-4 sm:mb-5 md:mb-6 font-medium tracking-wide">Establish a premium footprint.</p>
+                <p class="text-gray-400 text-[10px] sm:text-[11px] md:text-xs mb-4 sm:mb-5 md:mb-6 font-medium tracking-wide">Premium footprint.</p>
                 <div class="h-[1px] w-full bg-white/10 mb-4 sm:mb-5 md:mb-6"></div>
                 <ul class="space-y-3 md:space-y-4 mb-6 md:mb-10 text-left">
                     <li class="flex items-center text-[10px] sm:text-[11px] md:text-xs text-gray-200 font-medium"><i data-lucide="check" class="w-3 h-3 md:w-4 md:h-4 mr-2 md:mr-3 text-white opacity-40 shrink-0"></i> Single-Page Site</li>
@@ -573,7 +491,7 @@
             </div>
             
             <p class="text-sm sm:text-lg md:text-xl text-gray-700 font-medium mb-8 sm:mb-12 max-w-2xl mt-4 sm:mt-6 drop-shadow-[0_0_10px_rgba(255,255,255,0.9)] px-2">
-                Your dedication deserves recognition. Join our elite team.
+                Join our elite team.
             </p>
 
             <!-- Light Theme Job Accordion -->
@@ -619,7 +537,7 @@
                                     </div>
                                     <div class="text-left">
                                         <h4 class="font-semibold text-[#202A36] text-base sm:text-lg uppercase tracking-tight mb-0 sm:mb-1">1. Find Clients</h4>
-                                        <p class="text-gray-600 text-[10px] sm:text-[11px] md:text-xs leading-relaxed">Locate local shops that need a website.</p>
+                                        <p class="text-gray-600 text-[10px] sm:text-[11px] md:text-xs leading-relaxed">Locate local shops.</p>
                                     </div>
                                 </div>
                                 
@@ -629,7 +547,7 @@
                                     </div>
                                     <div class="text-left">
                                         <h4 class="font-semibold text-[#202A36] text-base sm:text-lg uppercase tracking-tight mb-0 sm:mb-1">2. Connect</h4>
-                                        <p class="text-gray-600 text-[10px] sm:text-[11px] md:text-xs leading-relaxed">Call or message them. Pass details.</p>
+                                        <p class="text-gray-600 text-[10px] sm:text-[11px] md:text-xs leading-relaxed">Call or message them.</p>
                                     </div>
                                 </div>
                                 
@@ -673,7 +591,7 @@
                 <i data-lucide="cpu" class="w-6 h-6 sm:w-8 sm:h-8 md:w-10 md:h-10 text-brand icon-glow-brand"></i>
             </div>
             <h2 class="text-2xl sm:text-3xl md:text-5xl font-black mb-2 sm:mb-3 md:mb-4 uppercase heading-tight text-shadow-glow leading-[1]">Ready to Start?</h2>
-            <p class="text-gray-300 mb-6 sm:mb-8 md:mb-10 text-[11px] sm:text-sm md:text-base max-w-xl mx-auto font-medium leading-relaxed tracking-wide px-2">Book a free meeting with our team to discuss your project.</p>
+            <p class="text-gray-300 mb-6 sm:mb-8 md:mb-10 text-[11px] sm:text-sm md:text-base max-w-xl mx-auto font-medium leading-relaxed tracking-wide px-2">Book a free meeting.</p>
             
             <div class="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 w-full max-w-xs sm:max-w-sm mx-auto">
                 <a href="tel:9697430658" class="bg-brand hover-bg-brand text-white w-full py-3 sm:py-4 md:py-5 clip-button font-black text-[10px] sm:text-xs md:text-sm uppercase tracking-[0.2em] transition-all flex justify-center items-center gap-2 shadow-[0_0_30px_rgba(255,0,51,0.5)] border border-white/30">
@@ -732,8 +650,7 @@
             </div>
             
             <div class="flex-1 overflow-y-auto pr-2 md:pr-6 space-y-4 sm:space-y-6 text-left text-gray-300 text-[10px] sm:text-[11px] md:text-sm font-medium leading-relaxed custom-scrollbar relative z-0">
-                <p class="text-white italic">Last updated: 22 April 2026</p>
-                <p>Welcome to Forge Softwares ("Forge", "we", "our", or "us"). These Terms explain how you can use our services. By using our services, you agree to these terms.</p>
+                <p class="text-white italic">Welcome to Forge Softwares. By using our services, you agree to these terms.</p>
                 
                 <h4 class="text-white font-bold text-xs sm:text-sm md:text-lg mt-3 sm:mt-4 mb-1 sm:mb-2 uppercase tracking-wide text-shadow-glow border-l-2 border-brand pl-2 sm:pl-3">1. Services We Provide</h4>
                 <p>Forge Softwares offers:</p>
@@ -893,12 +810,12 @@
             if (isMenuOpen) {
                 mobileMenu.classList.remove('hidden');
                 mobileMenu.classList.add('flex');
-                mobileMenuBtn.classList.add('open');
+                mobileMenuBtn.innerHTML = '<i data-lucide="x" class="w-5 h-5"></i>';
                 document.body.style.overflow = 'hidden'; // Prevent background scroll
             } else {
                 mobileMenu.classList.add('hidden');
                 mobileMenu.classList.remove('flex');
-                mobileMenuBtn.classList.remove('open');
+                mobileMenuBtn.innerHTML = '<i data-lucide="menu" class="w-5 h-5"></i>';
                 document.body.style.overflow = ''; // Restore background scroll
             }
             lucide.createIcons();
@@ -909,7 +826,7 @@
                 isMenuOpen = false;
                 mobileMenu.classList.add('hidden');
                 mobileMenu.classList.remove('flex');
-                mobileMenuBtn.classList.remove('open');
+                mobileMenuBtn.innerHTML = '<i data-lucide="menu" class="w-5 h-5"></i>';
                 document.body.style.overflow = '';
                 lucide.createIcons();
             });

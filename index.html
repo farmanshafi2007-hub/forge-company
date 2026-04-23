@@ -794,69 +794,75 @@
         </div>
     </footer>
 
-    <!-- Employee Verification Modal -->
-    <div id="employeeModal" class="fixed inset-0 bg-black/98 z-[120] hidden items-center justify-center p-4 sm:p-6 backdrop-blur-md transition-opacity duration-300 opacity-0">
-        <div class="cyber-grid opacity-40"></div>
-        <div class="glass-card clip-card max-w-sm w-full p-6 sm:p-8 md:p-10 text-center transform scale-95 transition-transform duration-300 relative border-t-2 border-brand/80 shadow-[0_0_50px_rgba(255,0,51,0.3)]" id="employeeContent">
-            <button onclick="closeEmployeeModal()" class="absolute top-3 right-3 sm:top-4 sm:right-4 md:top-6 md:right-6 text-gray-500 hover:text-white transition-colors bg-white/5 p-2 md:p-3 clip-button hover:bg-brand/20 z-10">
-                <i data-lucide="x" class="w-4 h-4 md:w-5 md:h-5"></i>
+    <!-- Employee Verification Modal (ULTRA MINIMAL REDESIGN with Multi-Profile) -->
+    <div id="employeeModal" class="fixed inset-0 bg-black/90 backdrop-blur-sm z-[120] hidden items-center justify-center p-4 transition-opacity duration-500 opacity-0">
+        <!-- Clean, Minimal Dark Card -->
+        <div class="bg-[#0f0f0f] border border-white/10 rounded-2xl max-w-sm w-full p-8 md:p-10 text-center transform scale-95 transition-transform duration-500 relative shadow-2xl" id="employeeContent">
+            
+            <button onclick="closeEmployeeModal()" class="absolute top-4 right-4 text-gray-500 hover:text-white transition-colors p-2 rounded-full hover:bg-white/5 z-10">
+                <i data-lucide="x" class="w-5 h-5"></i>
             </button>
             
             <!-- Input Form State -->
-            <div id="empFormContainer" class="flex flex-col items-center transition-all duration-300">
-                <div class="w-12 h-12 sm:w-14 sm:h-14 mx-auto bg-brand/10 border border-brand/30 flex items-center justify-center mb-4 clip-button shadow-[0_0_25px_rgba(255,0,51,0.4)]">
-                    <i data-lucide="badge" class="w-6 h-6 sm:w-7 sm:h-7 text-brand icon-glow-brand"></i>
+            <div id="empFormContainer" class="flex flex-col items-center transition-all duration-300 w-full">
+                <div class="mb-8 w-full">
+                    <div class="w-12 h-12 rounded-full bg-white/5 flex items-center justify-center mx-auto mb-4 border border-white/10">
+                        <i data-lucide="user-check" class="w-5 h-5 text-gray-300"></i>
+                    </div>
+                    <h3 class="text-xl font-light tracking-tight text-white mb-1">Employee Verification</h3>
+                    <p class="text-xs text-gray-500 uppercase tracking-widest font-semibold">Enter your ID</p>
                 </div>
                 
-                <h3 class="text-xl sm:text-2xl font-black mb-1 text-white uppercase heading-tight text-shadow-glow">Employee Verification</h3>
-                <p class="text-gray-400 mb-6 text-xs sm:text-sm font-medium tracking-wide">Enter your 4-digit Employee ID</p>
-                
-                <input type="text" id="empIdInput" maxlength="4" placeholder="----" class="w-32 text-center text-2xl sm:text-3xl font-black bg-black/50 border-2 border-transparent text-white rounded-lg py-3 focus:outline-none focus:border-brand transition-colors mb-2 tracking-widest placeholder:text-gray-700" oninput="this.value = this.value.replace(/[^0-9]/g, ''); document.getElementById('empIdError').classList.add('opacity-0'); this.classList.remove('border-red-500');">
+                <input type="text" id="empIdInput" placeholder="ID" maxlength="6" class="w-full max-w-[220px] text-center text-lg font-mono bg-transparent border-b border-white/20 text-white py-2 focus:outline-none focus:border-white transition-colors mb-2 tracking-widest placeholder:text-gray-700" oninput="document.getElementById('empIdError').classList.add('opacity-0'); this.classList.remove('border-red-500/50', 'text-red-400');">
                 
                 <!-- Error text container to maintain layout spacing -->
-                <p id="empIdError" class="text-red-500 text-sm font-bold opacity-0 transition-opacity mb-5 h-5">Invalid Employee ID</p>
+                <p id="empIdError" class="text-red-400 text-[10px] font-medium tracking-wide uppercase opacity-0 transition-opacity mb-8 h-4">Invalid ID</p>
                 
-                <button onclick="verifyEmployee()" class="w-full bg-brand hover-bg-brand py-3 sm:py-4 clip-button font-black text-white text-xs sm:text-sm uppercase tracking-[0.2em] transition-all shadow-[0_0_30px_rgba(255,0,51,0.5)] border border-white/20 smooth-hover">
+                <button onclick="verifyEmployee()" class="bg-white text-black hover:bg-gray-200 px-8 py-3 rounded-full text-xs font-bold uppercase tracking-widest transition-all w-full max-w-[220px]">
                     Verify
                 </button>
             </div>
 
-            <!-- Verified Details State (Hidden initially) -->
-            <div id="empDetailsContainer" class="hidden flex-col items-center w-full transition-all duration-500 opacity-0 transform translate-y-4">
-                <h3 class="text-xl sm:text-2xl font-black mb-6 text-white uppercase heading-tight text-shadow-glow">Verified Profile</h3>
-
-                <!-- Clean Card Layout -->
-                <div class="bg-white rounded-xl p-5 sm:p-6 w-full text-left shadow-lg relative overflow-hidden">
-                    <!-- Top accent line -->
-                    <div class="absolute top-0 left-0 w-full h-1 bg-brand"></div>
-
-                    <div class="flex items-center gap-4 mb-4 pb-4 border-b border-gray-100">
-                        <div class="w-12 h-12 rounded-full bg-gray-100 flex items-center justify-center border border-gray-200">
-                            <i data-lucide="user" class="w-6 h-6 text-gray-600"></i>
-                        </div>
-                        <div>
-                            <h4 class="text-xl font-black text-gray-900 tracking-tight">Owais</h4>
-                            <p class="text-xs sm:text-sm font-bold text-brand uppercase tracking-wider">Sales Representative</p>
-                        </div>
+            <!-- Verified Details State (Ultra Minimal Dynamic Profile) -->
+            <div id="empDetailsContainer" class="hidden flex-col items-center w-full transition-all duration-700 opacity-0 transform translate-y-4">
+                
+                <div class="w-full flex flex-col items-center pt-2">
+                    
+                    <!-- Header with Name & Badge -->
+                    <div class="flex items-center justify-center gap-2 mb-2 w-full">
+                        <h2 id="empProfileName" class="text-4xl sm:text-5xl font-black text-white tracking-tight leading-none text-center">Name</h2>
+                        <i id="empProfileBadge" data-lucide="badge-check" class="w-5 h-5 sm:w-6 sm:h-6 text-blue-400 hidden"></i>
                     </div>
 
-                    <div class="space-y-3">
+                    <!-- Roles Subtitle -->
+                    <p id="empProfileRoles" class="text-[11px] sm:text-xs text-gray-400 font-medium tracking-wider mb-8 uppercase text-center w-full">
+                        Role
+                    </p>
+
+                    <!-- Clean Data Rows -->
+                    <div class="w-full space-y-4 pt-6 border-t border-white/5 text-left">
                         <div class="flex justify-between items-center">
-                            <span class="text-xs font-semibold text-gray-500 uppercase tracking-wider">Emp ID</span>
-                            <span class="text-sm font-bold text-gray-900">6478</span>
+                            <span class="text-[10px] text-gray-500 uppercase tracking-widest font-semibold">Company</span>
+                            <span class="text-xs text-gray-300 font-medium">Forge Softwares</span>
                         </div>
                         <div class="flex justify-between items-center">
-                            <span class="text-xs font-semibold text-gray-500 uppercase tracking-wider">Company</span>
-                            <span class="text-sm font-bold text-gray-900">Forge Softwares</span>
+                            <span class="text-[10px] text-gray-500 uppercase tracking-widest font-semibold">Employee ID</span>
+                            <span id="empProfileId" class="text-xs text-gray-400 font-mono tracking-wider">ID</span>
                         </div>
-                        <div class="flex justify-between items-center pt-2">
-                            <span class="text-xs font-semibold text-gray-500 uppercase tracking-wider">Status</span>
-                            <span class="px-3 py-1 bg-green-100 border border-green-200 text-green-700 text-[10px] sm:text-xs font-bold uppercase rounded-full tracking-wider shadow-sm">Active</span>
+                        <div class="flex justify-between items-center">
+                            <span class="text-[10px] text-gray-500 uppercase tracking-widest font-semibold">Status</span>
+                            <div class="flex items-center gap-2">
+                                <span class="w-1.5 h-1.5 rounded-full bg-green-500 shadow-[0_0_8px_rgba(34,197,94,0.6)]"></span>
+                                <span class="text-xs text-gray-300 font-medium">Active</span>
+                            </div>
                         </div>
                     </div>
                 </div>
                 
-                <button onclick="resetEmployeeModal()" class="mt-6 text-xs sm:text-sm text-gray-400 hover:text-white transition-colors underline underline-offset-4 decoration-white/20 hover:decoration-white font-medium">Back to Search</button>
+                <!-- Sign out / Back button -->
+                <button onclick="resetEmployeeModal()" class="mt-10 text-[10px] text-gray-500 hover:text-white transition-colors uppercase tracking-[0.2em] font-semibold flex items-center gap-1">
+                    <i data-lucide="log-out" class="w-3 h-3"></i> Logout
+                </button>
             </div>
         </div>
     </div>
@@ -1116,7 +1122,7 @@
         function closeTerms() { closeGenericModal(termsModal, termsContent); }
         termsModal.addEventListener('click', function(e) { if (e.target === termsModal) closeTerms(); });
 
-        // ------------------ Employee ID Verification Logic ------------------ //
+        // ------------------ Minimal Employee ID Dynamic Multi-Profile Logic ------------------ //
         const employeeModal = document.getElementById('employeeModal');
         const employeeContent = document.getElementById('employeeContent');
         const empFormContainer = document.getElementById('empFormContainer');
@@ -1127,7 +1133,6 @@
         function openEmployeeModal() {
             resetEmployeeModal(); // Reset state every time it's opened
             openGenericModal(employeeModal, employeeContent);
-            // Auto focus input on modal open
             setTimeout(() => empIdInput.focus(), 100);
         }
 
@@ -1136,36 +1141,81 @@
         }
 
         function verifyEmployee() {
-            const id = empIdInput.value;
+            // Trim whitespace and convert to lowercase for flexible matching
+            const id = empIdInput.value.trim().toLowerCase();
             
-            if (id === "6478") {
+            // Hardcoded Employee Database
+            const profiles = {
+                "6478": {
+                    name: "Owais",
+                    roles: "Sales Representative",
+                    id: "6478",
+                    isCEO: false
+                },
+                "2019": {
+                    name: "Farman",
+                    roles: "CEO <span class='mx-1.5 opacity-30'>•</span> Founder <span class='mx-1.5 opacity-30'>•</span> Head of Dev",
+                    id: "2019",
+                    isCEO: true
+                }
+            };
+            
+            if (profiles[id]) {
+                const profile = profiles[id];
+                
                 // Success Case
                 empIdError.classList.add('opacity-0');
-                empIdInput.classList.remove('border-red-500');
+                empIdInput.classList.remove('border-red-500/50', 'text-red-400');
                 
-                // Hide Form
-                empFormContainer.classList.add('hidden');
-                empFormContainer.classList.remove('flex');
+                // Populate DOM Profile Fields
+                const nameEl = document.getElementById('empProfileName');
+                const badgeEl = document.getElementById('empProfileBadge');
                 
-                // Show Details cleanly
-                empDetailsContainer.classList.remove('hidden');
-                empDetailsContainer.classList.add('flex');
+                nameEl.textContent = profile.name;
+                document.getElementById('empProfileRoles').innerHTML = profile.roles;
+                document.getElementById('empProfileId').textContent = profile.id;
+                
+                // Apply specific design logic based on role priority
+                if (profile.isCEO) {
+                    badgeEl.classList.remove('hidden');
+                    nameEl.className = "text-4xl sm:text-5xl font-black text-white tracking-tight leading-none text-center";
+                } else {
+                    badgeEl.classList.add('hidden');
+                    nameEl.className = "text-3xl sm:text-4xl font-bold text-white tracking-tight leading-none text-center";
+                }
+                
+                // Smoothly fade out the form
+                empFormContainer.style.opacity = '0';
+                
                 setTimeout(() => {
-                    empDetailsContainer.classList.remove('opacity-0', 'translate-y-4');
-                }, 50);
+                    // Hide Form completely
+                    empFormContainer.classList.add('hidden');
+                    empFormContainer.classList.remove('flex');
+                    empFormContainer.style.opacity = '1'; // reset for next time
+                    
+                    // Show Details cleanly
+                    empDetailsContainer.classList.remove('hidden');
+                    empDetailsContainer.classList.add('flex');
+                    
+                    setTimeout(() => {
+                        empDetailsContainer.classList.remove('opacity-0', 'translate-y-4');
+                    }, 50);
+                    
+                    lucide.createIcons(); // Ensure newly visible icons render
+                }, 300); // Wait for fade out
                 
-                lucide.createIcons(); // Ensure newly visible icons render
             } else {
-                // Error Case
+                // Error Case - Subtle UI feedback
                 empIdError.classList.remove('opacity-0');
-                empIdInput.classList.add('border-red-500');
-                // Removed the setTimeout here, so the error visually resolves smoothly when user edits the input instead of vanishing disjointedly.
+                empIdInput.classList.add('border-red-500/50', 'text-red-400');
+                empIdInput.value = ''; // clear input to look clean
+                empIdInput.focus();
             }
         }
 
         function resetEmployeeModal() {
             empIdInput.value = '';
-            empIdInput.classList.remove('border-red-500');
+            empIdInput.classList.remove('border-red-500/50', 'text-red-400');
             empIdError.classList.add('opacity-0');
             
             empDetailsContainer.classList.add('hidden', 'opacity-0', 'translate-y-4');

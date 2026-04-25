@@ -4,10 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Forge Software | Web & AI Agents</title>
+    
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6651904672008274" crossorigin="anonymous"></script>
+
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
     
-    <!-- ES Module Import Map for Three.js -->
     <script type="importmap">
         {
             "imports": {
@@ -242,22 +244,18 @@
 </head>
 <body class="antialiased selection:bg-white selection:text-black relative">
 
-    <!-- Top Branding Banner -->
     <div class="absolute top-0 left-0 right-0 z-50 bg-[#020202] border-b border-white/5 py-2 flex items-center justify-center">
         <span class="text-[9px] md:text-[10px] font-mono uppercase tracking-[0.3em] text-gray-400 text-center px-2">
             Owned by <span class="text-white font-bold drop-shadow-[0_0_8px_rgba(255,255,255,0.4)] tracking-[0.4em]">farman.co</span>
         </span>
     </div>
 
-    <!-- Forge Software Navbar -->
     <nav class="absolute top-9 left-0 right-0 z-[55] px-4 sm:px-6 md:px-10 pt-4 flex items-center justify-between gap-2 sm:gap-4">
-        <!-- Left pill -->
         <div class="flex items-center gap-2 bg-neutral-900/90 backdrop-blur rounded-full pl-3 sm:pl-4 pr-4 sm:pr-6 py-2.5 sm:py-3 shadow-lg border border-white/5">
             <i data-lucide="hexagon" class="text-brand w-4 h-4 sm:w-5 sm:h-5 icon-glow-brand"></i>
             <span class="text-white text-xs sm:text-sm font-bold tracking-widest uppercase">FORGESOFTWARE</span>
         </div>
 
-        <!-- Center pill (Desktop Menu) -->
         <div class="hidden lg:flex items-center gap-4 bg-neutral-900/90 backdrop-blur rounded-full px-6 py-2 shadow-lg border border-white/5">
             <a href="#home" class="nav-item-1 hover-glow-1 transition-all text-lg px-2 py-1 hover:scale-110 inline-block">Home</a>
             <a href="#about" class="nav-item-2 hover-glow-2 transition-all text-xl px-2 py-1 hover:scale-110 inline-block mt-1">Solutions</a>
@@ -267,7 +265,6 @@
             <button onclick="openEmployeeModal()" class="nav-item-6 hover-glow-6 transition-all text-lg px-2 py-1 hover:scale-110 inline-block tracking-wide">Employee ID</button>
         </div>
 
-        <!-- Right button -->
         <div class="flex items-center gap-2">
             <a href="tel:9697430658" class="hidden md:flex items-center gap-2 bg-white text-black text-xs sm:text-sm font-bold tracking-wide rounded-full px-5 sm:px-6 py-2.5 sm:py-3 hover:bg-neutral-200 transition-colors uppercase shadow-lg whitespace-nowrap">
                 <i data-lucide="phone" class="w-4 h-4"></i> Call Us
@@ -279,14 +276,12 @@
         </div>
     </nav>
 
-    <!-- Mobile Nav Menu -->
     <div id="mobileMenu" class="fixed inset-0 top-[90px] sm:top-[96px] bg-[#020202]/98 backdrop-blur-3xl z-[45] hidden flex-col items-center justify-center space-y-6 sm:space-y-8 px-6 transition-all duration-300 overflow-y-auto pb-10">
         <a href="#home" class="mobile-link nav-item-1 hover-glow-1 smooth-hover text-3xl sm:text-4xl text-center w-full transition-all">Home</a>
         <a href="#about" class="mobile-link nav-item-2 hover-glow-2 smooth-hover text-4xl sm:text-5xl text-center w-full transition-all">Solutions</a>
         <a href="#careers" class="mobile-link nav-item-3 hover-glow-3 smooth-hover text-4xl sm:text-5xl text-center w-full transition-all">Careers</a>
         <a href="#contact" class="mobile-link nav-item-4 hover-glow-4 smooth-hover text-4xl sm:text-5xl text-center w-full transition-all">Contact</a>
         
-        <!-- Swapped click order here to prevent overflow scroll bugs when opening modals from mobile menu -->
         <button onclick="document.getElementById('mobileMenuBtn').click(); openTerms();" class="nav-item-5 hover-glow-5 smooth-hover text-3xl sm:text-4xl text-center w-full transition-all focus:outline-none">Terms & Conditions</button>
         <button onclick="document.getElementById('mobileMenuBtn').click(); openEmployeeModal();" class="nav-item-6 hover-glow-6 smooth-hover text-3xl sm:text-4xl text-center w-full transition-all focus:outline-none uppercase tracking-wide">Employee ID</button>
         
@@ -296,10 +291,8 @@
         </a>
     </div>
 
-    <!-- Forge Software Main Hero Section -->
     <section id="home" class="relative min-h-[100dvh] w-full overflow-hidden bg-black">
         
-        <!-- Background Video - Made 100% fully visible with zero dark overlays, explicitly forcing filter-none to avoid blur -->
         <video 
             class="absolute inset-0 w-full h-full object-cover opacity-100 pointer-events-none filter-none" 
             autoplay loop muted playsinline preload="auto"
@@ -307,23 +300,18 @@
             <source src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260418_063509_7d167302-4fd4-480b-8260-18ab572333d4.mp4" type="video/mp4" />
         </video>
 
-        <!-- Foreground Content Wrapper - Centered and Arranged Layout -->
         <div class="relative h-full min-h-[100dvh] w-full flex flex-col items-center justify-center text-center px-4 sm:px-6 pt-20 sm:pt-24">
             
-            <!-- Subtitle -->
             <span class="text-brand font-black tracking-[0.2em] uppercase text-[10px] sm:text-xs md:text-sm mb-3 sm:mb-4 md:mb-6 animate-pulse text-solid-shadow">Accelerate Growth</span>
             
-            <!-- Main Title - Responsive text sizes to prevent clipping on mobile -->
             <h1 class="font-black text-4xl sm:text-6xl md:text-[80px] lg:text-[100px] text-white uppercase tracking-tighter leading-[1.1] md:leading-[0.95] mb-4 sm:mb-6 md:mb-8 text-solid-shadow max-w-full">
                 Premium Websites &<br class="hidden sm:block" /> AI Agents
             </h1>
 
-            <!-- Description -->
             <p class="text-gray-100 text-xs sm:text-sm md:text-base lg:text-lg max-w-2xl font-bold leading-relaxed mb-8 sm:mb-10 md:mb-12 text-solid-shadow px-2 sm:px-0">
                 High-end websites. Smart AI agents. 24/7 sales automation.
             </p>
 
-            <!-- Buttons -->
             <div class="flex flex-col sm:flex-row items-center gap-3 sm:gap-4 md:gap-6 w-full sm:w-auto max-w-xs sm:max-w-none">
                 <a href="#plans" class="bg-brand hover-bg-brand text-white w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-4 md:px-10 md:py-5 clip-button font-black text-[10px] sm:text-xs md:text-sm uppercase tracking-[0.2em] transition-all shadow-[0_0_25px_rgba(255,0,51,0.5)] border border-white/30 flex justify-center items-center smooth-hover backdrop-blur-sm">
                     Get Started
@@ -336,10 +324,8 @@
         </div>
     </section>
 
-    <!-- Services Section with 3D Ballpit Background -->
     <section id="about" class="py-12 sm:py-16 md:py-24 px-4 sm:px-6 md:px-16 relative bg-[#020202] overflow-hidden">
         
-        <!-- 3D Ballpit Canvas Container -->
         <div id="ballpit-canvas-container" class="absolute inset-0 w-full h-full z-0 opacity-60 pointer-events-none"></div>
         
         <div class="cyber-grid pointer-events-none"></div>
@@ -360,21 +346,18 @@
             </div>
             
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5 md:gap-6">
-                <!-- Service 1 -->
                 <div class="glass-card clip-card p-5 sm:p-6 md:p-10 reveal border-t border-brand/70 group">
                     <div class="absolute top-4 right-4 text-white/5 font-black text-3xl sm:text-4xl md:text-6xl pointer-events-none transition-all group-hover:text-brand/10">01</div>
                     <i data-lucide="layout" class="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 text-brand mb-4 sm:mb-5 md:mb-6 icon-glow-brand transform transition-transform duration-500 group-hover:scale-110 group-hover:rotate-3"></i>
                     <h3 class="text-base sm:text-lg md:text-xl font-black mb-2 md:mb-3 text-white uppercase tracking-tight">Premium Websites</h3>
                     <p class="text-gray-400 text-[10px] sm:text-xs md:text-sm leading-relaxed font-medium">Capture leads. Establish authority.</p>
                 </div>
-                <!-- Service 2 -->
                 <div class="glass-card clip-card p-5 sm:p-6 md:p-10 reveal border-t border-brand/70 group" style="transition-delay: 100ms;">
                     <div class="absolute top-4 right-4 text-white/5 font-black text-3xl sm:text-4xl md:text-6xl pointer-events-none transition-all group-hover:text-brand/10">02</div>
                     <i data-lucide="bot" class="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 text-brand mb-4 sm:mb-5 md:mb-6 icon-glow-brand transform transition-transform duration-500 group-hover:scale-110 group-hover:rotate-3"></i>
                     <h3 class="text-base sm:text-lg md:text-xl font-black mb-2 md:mb-3 text-white uppercase tracking-tight">AI Sales Agents</h3>
                     <p class="text-gray-400 text-[10px] sm:text-xs md:text-sm leading-relaxed font-medium">Engage and close 24/7. Zero human effort.</p>
                 </div>
-                <!-- Service 3 -->
                 <div class="glass-card clip-card p-5 sm:p-6 md:p-10 reveal border-t border-brand/70 group" style="transition-delay: 200ms;">
                     <div class="absolute top-4 right-4 text-white/5 font-black text-3xl sm:text-4xl md:text-6xl pointer-events-none transition-all group-hover:text-brand/10">03</div>
                     <i data-lucide="cpu" class="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 text-brand mb-4 sm:mb-5 md:mb-6 icon-glow-brand transform transition-transform duration-500 group-hover:scale-110 group-hover:rotate-3"></i>
@@ -385,7 +368,6 @@
         </div>
     </section>
 
-    <!-- Process Section -->
     <section id="process" class="py-12 sm:py-16 md:py-24 px-4 sm:px-6 md:px-16 bg-[#080808] border-y border-white/5 relative overflow-hidden">
         <div class="ambient-glow top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] w-[300px] sm:w-[800px] h-[150px] sm:h-[300px] opacity-10"></div>
         <div class="max-w-7xl mx-auto reveal relative z-10">
@@ -395,7 +377,6 @@
             </div>
             
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 md:gap-10 relative">
-                <!-- Connecting Line Detail -->
                 <div class="hidden lg:block absolute top-[2.5rem] left-[10%] right-[10%] h-[2px] bg-gradient-to-r from-brand/10 via-brand/60 to-brand/10 z-0 shadow-[0_0_10px_rgba(255,0,51,0.4)]"></div>
                 
                 <div class="text-center sm:text-left relative z-10 p-5 rounded-lg bg-[#050505] border border-white/5 shadow-lg smooth-hover hover:border-brand/30">
@@ -422,10 +403,8 @@
         </div>
     </section>
 
-    <!-- Elegant Pricing Section (Light Theme) -->
     <section id="plans" class="w-full min-h-screen bg-[#FAF9F6] py-20 px-4 md:px-8 font-sans selection:bg-purple-100 selection:text-purple-900 relative z-10 text-left">
         <div class="max-w-7xl mx-auto">
-            <!-- Header Section -->
             <div class="text-center mb-20 space-y-6 reveal">
                 <div class="inline-flex items-center gap-2 text-sm font-medium text-[#65a30d]">
                     <span class="flex items-center justify-center w-4 h-4 rounded-full border border-[#65a30d]">
@@ -441,38 +420,30 @@
                 </h2>
             </div>
 
-            <!-- Pricing Cards Grid -->
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-7xl mx-auto reveal">
                 
-                <!-- Starter Plan -->
                 <div class="relative flex flex-col bg-white border border-gray-200 rounded-lg overflow-hidden transition-all duration-300 hover:shadow-lg hover:border-gray-300 text-left group">
-                    <!-- Subtle Top Gradient -->
                     <div class="absolute top-0 left-0 right-0 h-32 bg-gradient-to-b from-blue-50/80 via-blue-50/30 to-transparent opacity-60 pointer-events-none"></div>
 
                     <div class="relative p-8 flex flex-col h-full">
-                        <!-- Icon -->
                         <div class="mb-6 text-blue-500 transition-transform group-hover:scale-110 group-hover:rotate-3 origin-left">
                             <i data-lucide="layout" class="w-7 h-7" stroke-width="1.5"></i>
                         </div>
 
-                        <!-- Header Info -->
                         <div class="mb-8">
                             <h3 class="font-serif text-3xl text-[#1a1a1a] mb-2 font-normal">Starter</h3>
                             <p class="text-gray-500 text-sm">Establish a premium digital footprint</p>
                         </div>
 
-                        <!-- Price -->
                         <div class="mb-8 flex items-baseline gap-2 flex-wrap">
                             <span class="text-2xl font-medium text-[#1a1a1a]">Custom Quote</span>
                             <span class="text-gray-500 text-sm ml-auto">Based on requirements</span>
                         </div>
 
-                        <!-- Action Button -->
                         <button onclick="openModal()" class="w-full py-3 px-6 rounded text-sm font-medium transition-colors mb-10 flex items-center justify-center gap-2 bg-[#4a4a4a] hover:bg-[#333333] text-white focus:outline-none">
                             Get started
                         </button>
 
-                        <!-- Features List -->
                         <div class="mt-auto">
                             <p class="text-xs font-semibold tracking-wider uppercase mb-6 text-blue-600">
                                 CORE FUNCTIONALITY
@@ -505,7 +476,6 @@
                             </ul>
                         </div>
                         
-                        <!-- Standard Plan Footnote -->
                         <div class="mt-8 pt-6 border-t border-gray-100 text-center">
                             <p class="text-xs text-gray-400">
                                 Fast delivery within 1-2 weeks.
@@ -514,39 +484,31 @@
                     </div>
                 </div>
 
-                <!-- Growth Plan (Most Popular) -->
                 <div class="relative flex flex-col bg-white border border-gray-200 rounded-lg overflow-hidden transition-all duration-300 hover:shadow-lg hover:border-gray-300 text-left group md:-my-4 md:shadow-md">
-                    <!-- Subtle Top Gradient -->
                     <div class="absolute top-0 left-0 right-0 h-32 bg-gradient-to-b from-lime-50/80 via-lime-50/30 to-transparent opacity-60 pointer-events-none"></div>
                     
-                    <!-- Most Popular Badge -->
                     <div class="absolute top-6 right-6 bg-[#d9f99d] text-[#3f6212] text-xs font-medium px-3 py-1 rounded-full z-10">
                         Most Popular
                     </div>
 
                     <div class="relative p-8 flex flex-col h-full">
-                        <!-- Icon -->
                         <div class="mb-6 text-lime-600 transition-transform group-hover:scale-110 group-hover:rotate-3 origin-left">
                             <i data-lucide="bot" class="w-7 h-7" stroke-width="1.5"></i>
                         </div>
 
-                        <!-- Header Info -->
                         <div class="mb-8">
                             <h3 class="font-serif text-3xl text-[#1a1a1a] mb-2 font-normal">Growth AI</h3>
                             <p class="text-gray-500 text-sm">Replace your sales team with AI</p>
                         </div>
 
-                        <!-- Price -->
                         <div class="mb-8 flex items-baseline gap-2 flex-wrap">
                             <span class="text-2xl font-medium text-[#1a1a1a]">Custom Quote</span>
                         </div>
 
-                        <!-- Action Button -->
                         <button onclick="openModal()" class="w-full py-3 px-6 rounded text-sm font-medium transition-colors mb-10 flex items-center justify-center gap-2 bg-[#4a4a4a] hover:bg-[#333333] text-white focus:outline-none">
                             Get started
                         </button>
 
-                        <!-- Features List -->
                         <div class="mt-auto">
                             <p class="text-xs font-semibold tracking-wider uppercase mb-6 text-lime-700">
                                 EVERYTHING IN STARTER, PLUS:
@@ -581,35 +543,28 @@
                     </div>
                 </div>
 
-                <!-- Enterprise Plan -->
                 <div class="relative flex flex-col bg-white border border-gray-200 rounded-lg overflow-hidden transition-all duration-300 hover:shadow-lg hover:border-gray-300 text-left group">
-                    <!-- Subtle Top Gradient -->
                     <div class="absolute top-0 left-0 right-0 h-32 bg-gradient-to-b from-fuchsia-50/80 via-fuchsia-50/30 to-transparent opacity-60 pointer-events-none"></div>
 
                     <div class="relative p-8 flex flex-col h-full">
-                        <!-- Icon -->
                         <div class="mb-6 text-fuchsia-600 transition-transform group-hover:scale-110 group-hover:rotate-3 origin-left">
                             <i data-lucide="building-2" class="w-7 h-7" stroke-width="1.5"></i>
                         </div>
 
-                        <!-- Header Info -->
                         <div class="mb-8">
                             <h3 class="font-serif text-3xl text-[#1a1a1a] mb-2 font-normal">Enterprise</h3>
                             <p class="text-gray-500 text-sm">Full-service automation & control</p>
                         </div>
 
-                        <!-- Price -->
                         <div class="mb-8 flex items-baseline gap-2 flex-wrap">
                             <span class="text-2xl font-medium text-[#1a1a1a]">Custom Quote</span>
                         </div>
 
-                        <!-- Action Button -->
                         <button onclick="openModal()" class="w-full py-3 px-6 rounded text-sm font-medium transition-colors mb-10 flex items-center justify-center gap-2 bg-[#f5f5f5] hover:bg-[#e5e5e5] text-[#1a1a1a] border border-gray-200 focus:outline-none">
                             Contact sales
                             <i data-lucide="arrow-right" class="w-4 h-4 transition-transform group-hover:translate-x-1"></i>
                         </button>
 
-                        <!-- Features List -->
                         <div class="mt-auto">
                             <p class="text-xs font-semibold tracking-wider uppercase mb-6 text-fuchsia-700">
                                 EVERYTHING IN GROWTH, PLUS:
@@ -648,10 +603,8 @@
         </div>
     </section>
 
-    <!-- THEMED Careers Section - SkyElite Premium Jet Theme -->
     <section id="careers" class="relative min-h-screen w-full overflow-hidden bg-gray-50 font-inter flex flex-col justify-center py-16 sm:py-20 pb-24 sm:pb-32">
         
-        <!-- Video Background - 100% visible, absolutely no black overlays or blur filters -->
         <video 
             class="absolute inset-0 w-full h-full object-cover z-0 pointer-events-none opacity-100 filter-none" 
             autoplay loop muted playsinline preload="auto"
@@ -659,10 +612,8 @@
             <source src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260328_091828_e240eb17-6edc-4129-ad9d-98678e3fd238.mp4" type="video/mp4" />
         </video>
 
-        <!-- Main Content Wrapper -->
         <div class="relative z-10 flex flex-col items-center justify-center text-center px-4 sm:px-6 w-full max-w-7xl mx-auto pt-16 md:pt-24">
             
-            <!-- Hero Content -->
             <span class="text-xs sm:text-sm font-semibold text-gray-600 tracking-wider mb-3 sm:mb-4 uppercase drop-shadow-[0_0_8px_rgba(255,255,255,0.8)]">Careers At Forge</span>
             
             <div class="flex flex-col items-center">
@@ -674,15 +625,12 @@
                 Join our elite team.
             </p>
 
-            <!-- Light Theme Job Accordion -->
             <div class="w-full max-w-4xl mx-auto text-left reveal">
                 
                 <div class="group transition-all duration-300 bg-white/80 backdrop-blur-xl border border-white/50 shadow-xl rounded-2xl overflow-hidden hover:shadow-2xl">
                     
-                    <!-- Clickable Row (Updated for dynamic relative toggling) -->
                     <div onclick="toggleJobDetails(this)" class="cursor-pointer flex flex-col md:flex-row md:items-center justify-between p-5 sm:p-6 md:p-8 gap-3 sm:gap-4 relative hover:bg-white/95 transition-colors duration-300">
                         
-                        <!-- Left Column (Title, Dept, Date) -->
                         <div class="flex-1 md:w-5/12">
                             <h3 class="font-semibold text-xl sm:text-2xl md:text-3xl text-[#202A36] tracking-tight mb-1 sm:mb-2 flex items-center gap-2">
                                 Sales Partner <i data-lucide="chevron-right" class="w-4 h-4 md:w-5 md:h-5 text-gray-400 transition-transform duration-300 hidden md:inline-block"></i>
@@ -691,12 +639,10 @@
                             <p class="text-gray-500 text-[9px] sm:text-[10px] md:text-xs tracking-wider mt-1">22 Apr 2026</p>
                         </div>
                         
-                        <!-- Middle Column (Location) -->
                         <div class="flex-1 md:w-3/12 md:pt-1">
                             <p class="text-gray-600 text-[10px] sm:text-xs md:text-sm font-medium tracking-wide md:text-center">Remote / Work From Home</p>
                         </div>
                         
-                        <!-- Right Column (Icons) -->
                         <div class="absolute top-4 sm:top-5 right-4 sm:right-5 md:static md:w-2/12 flex items-center justify-end gap-4 md:gap-6 md:pt-1">
                             <div class="w-6 h-6 sm:w-8 sm:h-8 flex items-center justify-center rounded-full bg-gray-100 group-hover:bg-gray-200 transition-colors border border-gray-200 shadow-sm">
                                 <i data-lucide="plus" class="w-3 h-3 sm:w-4 sm:h-4 text-[#202A36] transition-transform duration-300"></i>
@@ -704,12 +650,10 @@
                         </div>
                     </div>
 
-                    <!-- Hidden Collapsible Details -->
                     <div class="accordion-content px-4 sm:px-6 md:px-8 bg-white/95 border-t border-gray-100">
                         
                         <div class="py-6 sm:py-8 md:py-10">
                             
-                            <!-- Compact Steps for Mobile -->
                             <div class="grid grid-cols-1 sm:grid-cols-3 gap-5 sm:gap-6 md:gap-8 mb-6 sm:mb-8 md:mb-10">
                                 <div class="flex flex-row sm:flex-col items-center sm:items-start gap-4 sm:gap-3 smooth-hover">
                                     <div class="w-10 h-10 shrink-0 bg-gray-100 flex items-center justify-center rounded-full border border-gray-200 shadow-sm">
@@ -742,7 +686,6 @@
                                 </div>
                             </div>
 
-                            <!-- CTA Banner inside Details -->
                             <div class="flex flex-col sm:flex-row items-center justify-between bg-gray-50 border border-gray-200 p-4 sm:p-5 md:p-6 rounded-2xl gap-4 sm:gap-5 shadow-inner">
                                 <div class="text-center sm:text-left">
                                     <h4 class="font-semibold text-[#202A36] text-xl sm:text-2xl md:text-3xl mb-1 tracking-tight">20% Commission</h4>
@@ -761,9 +704,7 @@
         </div>
     </section>
 
-    <!-- Call to Action -->
     <section id="contact" class="py-12 sm:py-16 md:py-24 px-4 sm:px-6 md:px-16 relative bg-[#000000]">
-        <!-- Orbis Soft Ambient Glow with gradient, no CSS blur needed -->
         <div class="absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] w-[300px] sm:w-[400px] md:w-[600px] h-[300px] sm:h-[400px] md:h-[600px] pointer-events-none opacity-30 z-0 bg-[radial-gradient(circle,var(--brand-glow)_0%,rgba(255,0,51,0)_70%)] rounded-full"></div>
         
         <div class="max-w-3xl mx-auto glass-card clip-card p-6 sm:p-8 md:p-16 text-center reveal border-t-2 border-brand/60 relative z-10 shadow-[0_20px_40px_rgba(255,0,51,0.15)] smooth-hover">
@@ -781,7 +722,6 @@
         </div>
     </section>
 
-    <!-- Footer -->
     <footer class="py-8 sm:py-10 md:py-12 px-4 sm:px-5 border-t border-white/5 bg-[#020202] text-center mt-4 relative z-10">
         <div class="max-w-7xl mx-auto">
             <div class="text-lg sm:text-xl md:text-2xl font-black tracking-tighter text-white flex items-center justify-center gap-2 mb-4 sm:mb-5 md:mb-6 smooth-hover cursor-pointer">
@@ -796,16 +736,13 @@
         </div>
     </footer>
 
-    <!-- Employee Verification Modal (ULTRA MINIMAL REDESIGN with Multi-Profile) -->
     <div id="employeeModal" class="fixed inset-0 bg-black/90 backdrop-blur-sm z-[120] hidden items-center justify-center p-4 transition-opacity duration-500 opacity-0">
-        <!-- Clean, Minimal Dark Card -->
         <div class="bg-[#0f0f0f] border border-white/10 rounded-2xl max-w-sm w-full p-8 md:p-10 text-center transform scale-95 transition-transform duration-500 relative shadow-2xl" id="employeeContent">
             
             <button onclick="closeEmployeeModal()" class="absolute top-4 right-4 text-gray-500 hover:text-white transition-colors p-2 rounded-full hover:bg-white/5 z-10">
                 <i data-lucide="x" class="w-5 h-5"></i>
             </button>
             
-            <!-- Input Form State -->
             <div id="empFormContainer" class="flex flex-col items-center transition-all duration-300 w-full">
                 <div class="mb-8 w-full">
                     <div class="w-12 h-12 rounded-full bg-white/5 flex items-center justify-center mx-auto mb-4 border border-white/10">
@@ -817,7 +754,6 @@
                 
                 <input type="text" id="empIdInput" placeholder="ID" maxlength="6" class="w-full max-w-[220px] text-center text-lg font-mono bg-transparent border-b border-white/20 text-white py-2 focus:outline-none focus:border-white transition-colors mb-2 tracking-widest placeholder:text-gray-700" oninput="document.getElementById('empIdError').classList.add('opacity-0'); this.classList.remove('border-red-500/50', 'text-red-400');">
                 
-                <!-- Error text container to maintain layout spacing -->
                 <p id="empIdError" class="text-red-400 text-[10px] font-medium tracking-wide uppercase opacity-0 transition-opacity mb-8 h-4">Invalid ID</p>
                 
                 <button onclick="verifyEmployee()" class="bg-white text-black hover:bg-gray-200 px-8 py-3 rounded-full text-xs font-bold uppercase tracking-widest transition-all w-full max-w-[220px]">
@@ -825,23 +761,19 @@
                 </button>
             </div>
 
-            <!-- Verified Details State (Ultra Minimal Dynamic Profile) -->
             <div id="empDetailsContainer" class="hidden flex-col items-center w-full transition-all duration-700 opacity-0 transform translate-y-4">
                 
                 <div class="w-full flex flex-col items-center pt-2">
                     
-                    <!-- Header with Name & Badge -->
                     <div class="flex items-center justify-center gap-2 mb-2 w-full">
                         <h2 id="empProfileName" class="text-4xl sm:text-5xl font-black text-white tracking-tight leading-none text-center">Name</h2>
                         <i id="empProfileBadge" data-lucide="badge-check" class="w-5 h-5 sm:w-6 sm:h-6 text-blue-400 hidden"></i>
                     </div>
 
-                    <!-- Roles Subtitle -->
                     <p id="empProfileRoles" class="text-[11px] sm:text-xs text-gray-400 font-medium tracking-wider mb-8 uppercase text-center w-full">
                         Role
                     </p>
 
-                    <!-- Clean Data Rows -->
                     <div class="w-full space-y-4 pt-6 border-t border-white/5 text-left">
                         <div class="flex justify-between items-center">
                             <span class="text-[10px] text-gray-500 uppercase tracking-widest font-semibold">Company</span>
@@ -861,7 +793,6 @@
                     </div>
                 </div>
                 
-                <!-- Sign out / Back button -->
                 <button onclick="resetEmployeeModal()" class="mt-10 text-[10px] text-gray-500 hover:text-white transition-colors uppercase tracking-[0.2em] font-semibold flex items-center gap-1">
                     <i data-lucide="log-out" class="w-3 h-3"></i> Logout
                 </button>
@@ -869,7 +800,6 @@
         </div>
     </div>
 
-    <!-- Pricing Modal -->
     <div id="priceModal" class="fixed inset-0 bg-black/98 z-[100] hidden items-center justify-center p-4 sm:p-6 backdrop-blur-md transition-opacity duration-300 opacity-0">
         <div class="cyber-grid opacity-40"></div>
         <div class="glass-card clip-card max-w-[90%] sm:max-w-sm md:max-w-md w-full p-6 sm:p-8 md:p-12 text-center transform scale-95 transition-transform duration-300 relative border-t-2 border-brand/80 shadow-[0_0_50px_rgba(255,0,51,0.3)]" id="modalContent">
@@ -889,7 +819,6 @@
         </div>
     </div>
 
-    <!-- Terms Modal -->
     <div id="termsModal" class="fixed inset-0 bg-black/98 z-[110] hidden items-center justify-center p-4 sm:p-6 backdrop-blur-md transition-opacity duration-300 opacity-0">
         <div class="cyber-grid opacity-40"></div>
         <div class="glass-card clip-card max-w-4xl w-full h-[85vh] p-5 sm:p-6 md:p-10 flex flex-col relative border-t-2 border-brand/80 shadow-[0_0_50px_rgba(255,0,51,0.3)] transform scale-95 transition-transform duration-300" id="termsContent">
@@ -1252,7 +1181,6 @@
         });
     </script>
 
-    <!-- 3D Ballpit Background Script - Embedded Native Vanilla JS Port -->
     <script type="module">
         import * as THREE from 'three';
         import { RoomEnvironment } from 'three/addons/environments/RoomEnvironment.js';

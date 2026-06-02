@@ -873,17 +873,17 @@
             <form onsubmit="handleEnquirySubmit(event)" class="space-y-6 text-left relative z-10">
                 <div>
                     <label class="text-[10px] font-black text-gray-600 uppercase tracking-widest ml-1 mb-2 block embossed-text">Operator Name</label>
-                    <input type="text" required class="w-full physical-recessed px-5 py-4 text-sm font-bold focus:outline-none placeholder-gray-500" placeholder="John Doe">
+                    <input type="text" name="name" required class="w-full physical-recessed px-5 py-4 text-sm font-bold focus:outline-none placeholder-gray-500" placeholder="John Doe">
                 </div>
                 
                 <div>
                     <label class="text-[10px] font-black text-gray-600 uppercase tracking-widest ml-1 mb-2 block embossed-text">Comm Channel (WhatsApp)</label>
-                    <input type="tel" required class="w-full physical-recessed px-5 py-4 text-sm font-bold focus:outline-none placeholder-gray-500" placeholder="+1 (555) 000-0000">
+                    <input type="tel" name="phone" required class="w-full physical-recessed px-5 py-4 text-sm font-bold focus:outline-none placeholder-gray-500" placeholder="+1 (555) 000-0000">
                 </div>
 
                 <div>
                     <label class="text-[10px] font-black text-gray-600 uppercase tracking-widest ml-1 mb-2 block embossed-text">Current Domain (Optional)</label>
-                    <input type="url" class="w-full physical-recessed px-5 py-4 text-sm font-bold focus:outline-none placeholder-gray-500" placeholder="https://yourcompany.com">
+                    <input type="url" name="website" class="w-full physical-recessed px-5 py-4 text-sm font-bold focus:outline-none placeholder-gray-500" placeholder="https://yourcompany.com">
                 </div>
                 
                 <button type="submit" class="w-full physical-btn-red py-5 font-black text-xs uppercase tracking-widest mt-6">
@@ -1408,30 +1408,58 @@
             }, 300);
         }
 
-        // Enquiry Form
+        // Enquiry Form Integration
         const enquiryModal = document.getElementById('enquiryModal');
         const enquiryContent = document.getElementById('enquiryContent');
         function openEnquiryModal() { openGenericModal(enquiryModal, enquiryContent); }
         function closeEnquiryModal() { closeGenericModal(enquiryModal, enquiryContent); }
         enquiryModal.addEventListener('click', function(e) { if (e.target === enquiryModal) closeEnquiryModal(); });
 
-        function handleEnquirySubmit(e) {
+        async function handleEnquirySubmit(e) {
             e.preventDefault();
             const btn = e.target.querySelector('button[type="submit"]');
             const originalText = btn.innerHTML;
             btn.innerHTML = 'PROCESSING DATA...';
-            
-            setTimeout(() => {
+
+            // Extract values
+            const formData = new FormData(e.target);
+            const data = {
+                name: formData.get('name'),
+                phone: formData.get('phone'),
+                website: formData.get('website') || ''
+            };
+
+            const url = "https://script.google.com/macros/s/AKfycbzK0V8AbooKYaBoVOqOe1iDgHXB5XOo8pGV0xPRuGmEMfzueVA3fBCTeEGFBZ8dlpHqzg/exec";
+
+            try {
+                // Perform the fetch request
+                await fetch(url, {
+                    method: "POST",
+                    mode: "no-cors",
+                    headers: {
+                        "Content-Type": "application/x-www-form-urlencoded"
+                    },
+                    body: new URLSearchParams(data)
+                });
+
+                // Update UI upon successful fetch dispatch
                 btn.innerHTML = 'DATA TRANSMITTED';
                 btn.classList.replace('physical-btn-red', 'physical-btn');
-                
+
                 setTimeout(() => {
                     closeEnquiryModal();
                     e.target.reset();
                     btn.innerHTML = originalText;
                     btn.classList.replace('physical-btn', 'physical-btn-red');
                 }, 1500);
-            }, 1200);
+
+            } catch (error) {
+                console.error("Failed to Send", error);
+                btn.innerHTML = 'TRANSMISSION FAILED';
+                setTimeout(() => {
+                    btn.innerHTML = originalText;
+                }, 2000);
+            }
         }
 
         // Terms Modal

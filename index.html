@@ -57,6 +57,26 @@
             word-wrap: break-word;
         }
 
+        /* --- ENHANCED GLOBAL SCROLLBARS FOR TACTILE FEEL --- */
+        ::-webkit-scrollbar {
+            width: 16px;
+            height: 16px;
+        }
+        ::-webkit-scrollbar-track { 
+            background: var(--plastic-base); 
+            border-left: 1px solid #b4b9c4; 
+            box-shadow: inset 2px 0 6px rgba(0,0,0,0.08);
+        }
+        ::-webkit-scrollbar-thumb { 
+            background: linear-gradient(90deg, #f0f2f5, #d1d5db); 
+            border: 3px solid var(--plastic-base);
+            border-radius: 10px; 
+            box-shadow: inset 1px 1px 2px rgba(255,255,255,1), 0 2px 4px rgba(0,0,0,0.15);
+        }
+        ::-webkit-scrollbar-thumb:hover { 
+            background: linear-gradient(90deg, #e2e4e9, #9ca3af); 
+        }
+
         /* --- HYPER-REALISTIC MINIMAL SKEUOMORPHIC UI COMPONENTS --- */
 
         /* Raised Physical Hardware Panel with Micro-Texture */
@@ -67,10 +87,10 @@
                 linear-gradient(135deg, rgba(255,255,255,0.95) 0%, rgba(226,228,233,0.8) 40%, rgba(190,195,206,0.9) 100%),
                 url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='1.5' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.05'/%3E%3C/svg%3E");
             border-radius: 20px;
-            border-top: 1px solid #ffffff;
-            border-left: 1px solid #ffffff;
-            border-bottom: 1px solid #b4b9c4;
-            border-right: 1px solid #b4b9c4;
+            border-top: 1.5px solid #ffffff;
+            border-left: 1.5px solid #ffffff;
+            border-bottom: 1.5px solid #b4b9c4;
+            border-right: 1.5px solid #b4b9c4;
             box-shadow: 
                 inset 1px 1px 3px rgba(255,255,255,0.9),
                 inset -2px -2px 6px rgba(0,0,0,0.1),
@@ -461,7 +481,7 @@
     <div class="texture-overlay"></div>
 
     <!-- Physical Status Bar -->
-    <div class="fixed top-0 left-0 right-0 z-50 bg-[#d6d9e0] border-b-2 border-[#a3a8b5] shadow-[0_2px_8px_rgba(0,0,0,0.1)] py-1.5 flex items-center justify-center">
+    <div class="fixed top-0 left-0 right-0 z-50 bg-[#d6d9e0] border-b-[1.5px] border-[#a3a8b5] shadow-[0_2px_8px_rgba(0,0,0,0.1)] py-1.5 flex items-center justify-center">
         <span class="text-[10px] font-black uppercase tracking-widest text-gray-500 etched-text">
             System Owned by <span class="text-gray-800">farman.co</span>
         </span>
@@ -539,7 +559,7 @@
     </section>
 
     <!-- Playground / Chat Section -->
-    <section id="ai-playground" class="py-20 md:py-28 px-4 relative border-t-2 border-gray-400 border-b-2">
+    <section id="ai-playground" class="py-20 md:py-28 px-4 relative border-t-2 border-gray-400 border-b-[1.5px] shadow-[0_5px_15px_rgba(0,0,0,0.05)]">
         <div class="max-w-4xl mx-auto text-center mb-12 reveal">
             <h2 class="text-3xl md:text-4xl lg:text-5xl font-black uppercase tracking-tight etched-text leading-tight mb-4">
                 Try it yourself. <br class="hidden sm:block" />Ask our AI agent to book a meeting right now.
@@ -555,7 +575,7 @@
             <div class="screw screw-br"></div>
 
             <!-- Screen Bezel -->
-            <div class="bg-gray-700 p-4 rounded-xl shadow-[inset_4px_4px_10px_rgba(0,0,0,0.8)] border border-gray-600 relative overflow-hidden">
+            <div class="bg-gray-700 p-4 rounded-xl shadow-[inset_6px_6px_15px_rgba(0,0,0,0.9),inset_-2px_-2px_5px_rgba(255,255,255,0.1)] border border-gray-600 relative overflow-hidden">
                 <!-- LCD Screen -->
                 <div class="lcd-screen rounded-lg p-4 sm:p-6 h-[400px] flex flex-col relative z-10">
                     
@@ -615,7 +635,7 @@
                 <div>
                     <h2 class="text-4xl sm:text-5xl md:text-6xl font-black uppercase etched-text leading-[1] mb-2">Digital <br class="hidden lg:block"/> Systems</h2>
                 </div>
-                <p class="text-gray-600 text-sm md:text-base max-w-md lg:text-right border-l-2 lg:border-l-0 lg:border-r-2 border-gray-400 pl-4 lg:pr-6 lg:pl-0 font-bold leading-relaxed embossed-text">
+                <p class="text-gray-600 text-sm md:text-base max-w-md lg:text-right border-l-2 lg:border-l-0 lg:border-r-[1.5px] border-[#a3a8b5] pl-4 lg:pr-6 lg:pl-0 font-bold leading-relaxed embossed-text">
                     Engineered for absolute conversion. We replace manual outreach with high-end, intelligent automation.
                 </p>
             </div>
@@ -683,7 +703,7 @@
                 <div class="screw screw-bl"></div>
                 <div class="screw screw-br"></div>
 
-                <div class="bg-gray-700 p-4 sm:p-6 rounded-xl shadow-[inset_4px_4px_10px_rgba(0,0,0,0.8)] border border-gray-600 relative overflow-hidden">
+                <div class="bg-gray-700 p-4 sm:p-6 rounded-xl shadow-[inset_6px_6px_15px_rgba(0,0,0,0.9),inset_-2px_-2px_5px_rgba(255,255,255,0.1)] border border-gray-600 relative overflow-hidden">
                     <div class="lcd-screen rounded-lg p-6 sm:p-10 flex flex-col items-center justify-center text-center relative z-10 min-h-[300px] border-4 border-[#4b5563]">
                         <div class="absolute top-4 left-4 flex items-center gap-2">
                             <div class="led-indicator led-green animate-pulse w-3 h-3"></div>
@@ -702,9 +722,9 @@
     </section>
 
     <!-- Pricing Section -->
-    <section id="pricing" class="py-24 md:py-32 px-4 md:px-8 border-t-2 border-gray-400">
+    <section id="pricing" class="py-24 md:py-32 px-4 md:px-8 border-t-2 border-gray-400 bg-gradient-to-b from-[var(--plastic-base)] to-[var(--plastic-light)]">
         <div class="max-w-7xl mx-auto">
-            <div class="text-center mb-20 space-y-4 reveal">
+            <div class="text-center mb-16 md:mb-24 space-y-4 reveal">
                 <div class="inline-flex items-center gap-3 text-xs font-black text-gray-600 tracking-widest uppercase">
                     <span class="flex items-center justify-center w-8 h-8 rounded-full physical-recessed">
                         <i data-lucide="zap" class="w-4 h-4 text-gray-700"></i>
@@ -718,112 +738,116 @@
                 </h2>
             </div>
 
-            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 items-center reveal">
+            <!-- FIX: Added items-stretch and lg:py-6 to ensure boxes are identical height and do not overlap elements above/below -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10 items-stretch lg:py-6 reveal">
                 
                 <!-- Starter Tier -->
-                <div class="physical-panel p-6 sm:p-8 md:p-10 flex flex-col h-full relative z-0">
+                <div class="physical-panel p-6 sm:p-8 md:p-10 flex flex-col h-full relative z-10 transition-transform duration-300 hover:-translate-y-2 hover:shadow-[0_15px_30px_rgba(150,156,173,0.6)] w-full">
                     <div class="screw screw-tl"></div>
                     <div class="screw screw-br"></div>
                     <div class="mb-8 text-gray-700">
                         <div class="physical-recessed inline-block p-4 mb-4"><i data-lucide="layout" class="w-6 h-6" stroke-width="2"></i></div>
                         <h3 class="text-2xl lg:text-3xl font-black uppercase tracking-tight mb-2 etched-text">Starter</h3>
-                        <p class="text-gray-600 text-xs leading-relaxed font-bold">Establish a premium digital footprint</p>
+                        <p class="text-gray-600 text-xs leading-relaxed font-bold break-words">Establish a premium digital footprint</p>
                     </div>
                     
                     <div class="mb-10 text-3xl lg:text-4xl font-black text-gray-800 etched-text">₹2,500</div>
                     
-                    <button onclick="openEnquiryModal()" class="physical-btn w-full py-4 px-4 text-xs font-black uppercase tracking-widest mb-10">
+                    <button onclick="openEnquiryModal()" class="physical-btn w-full py-4 px-4 text-xs font-black uppercase tracking-widest mb-10 flex items-center justify-center">
                         Request a Quote
                     </button>
                     
+                    <!-- FIX: Added flex-1 to push the feature list safely to bottom evenly -->
                     <div class="physical-recessed p-5 sm:p-6 flex-1 mt-auto">
                         <p class="text-[10px] font-black tracking-widest uppercase mb-6 text-gray-500">CORE FUNCTIONALITY</p>
                         <ul class="space-y-4">
                             <li class="flex items-start gap-3 text-xs text-gray-800 font-black">
                                 <i data-lucide="check-square" class="w-4 h-4 mt-0.5 text-gray-600 shrink-0"></i>
-                                <span class="break-words">Single-page Landing Page (No AI)</span>
+                                <span class="break-words leading-tight">Single-page Landing Page (No AI)</span>
                             </li>
                             <li class="flex items-start gap-3 text-xs text-gray-800 font-black">
                                 <i data-lucide="check-square" class="w-4 h-4 mt-0.5 text-gray-600 shrink-0"></i>
-                                <span class="break-words">Basic Lead Capture Form</span>
+                                <span class="break-words leading-tight">Basic Lead Capture Form</span>
                             </li>
                             <li class="flex items-start gap-3 text-xs text-gray-800 font-black">
                                 <i data-lucide="check-square" class="w-4 h-4 mt-0.5 text-gray-600 shrink-0"></i>
-                                <span class="break-words">Flawless Mobile Responsiveness</span>
+                                <span class="break-words leading-tight">Flawless Mobile Responsiveness</span>
                             </li>
                             <li class="flex items-start gap-3 text-xs text-gray-800 font-black">
                                 <i data-lucide="check-square" class="w-4 h-4 mt-0.5 text-gray-600 shrink-0"></i>
-                                <span class="break-words">Foundational SEO Setup</span>
+                                <span class="break-words leading-tight">Foundational SEO Setup</span>
                             </li>
                         </ul>
                     </div>
                 </div>
 
                 <!-- Pro Tier (Highlighted) -->
-                <div class="physical-panel p-6 sm:p-8 md:p-12 flex flex-col h-full lg:-my-6 border-gray-400 border-2 relative z-10 shadow-[0_20px_50px_rgba(0,0,0,0.25)] bg-gradient-to-br from-[#f8f9fa] to-[#d6d9e0]">
+                <!-- FIX: Swapped overlapping -my-6 hack for a cleaner flex layout with scale transform (lg:scale-105) to prevent structural UI cracks -->
+                <div class="physical-panel p-6 sm:p-8 md:p-12 flex flex-col h-full border-t-[1.5px] border-l-[1.5px] border-r-[1px] border-r-[#8b92a5] border-b-[8px] border-b-[#8b92a5] border-white relative z-20 shadow-[0_30px_60px_-15px_rgba(0,0,0,0.4),0_0_0_1px_rgba(200,205,215,0.8)] bg-gradient-to-br from-[#ffffff] to-[#e2e4e9] transform lg:scale-105 transition-transform duration-300 hover:-translate-y-2 w-full">
                     <div class="screw screw-tl"></div>
                     <div class="screw screw-tr"></div>
                     <div class="screw screw-bl"></div>
                     <div class="screw screw-br"></div>
 
                     <!-- Centered on mobile, Absolute on Desktop to avoid overlap -->
-                    <div class="mx-auto lg:absolute lg:top-6 lg:right-6 lg:mx-0 flex w-max items-center gap-2 physical-recessed px-3 py-1.5 rounded-lg mb-6 lg:mb-0">
-                        <div class="led-indicator animate-pulse w-3 h-3"></div>
-                        <span class="text-[9px] font-black text-gray-600 uppercase tracking-widest">Most Popular</span>
+                    <!-- FIX: Top coordinate offset safely to prevent pushing out of the container bounds -->
+                    <div class="mx-auto lg:absolute lg:-top-5 lg:right-8 lg:mx-0 flex w-max items-center gap-2 physical-recessed px-4 py-2 rounded-full mb-8 lg:mb-0 shadow-[0_5px_10px_rgba(0,0,0,0.15)] border-2 border-white">
+                        <div class="led-indicator led-green animate-pulse w-3 h-3"></div>
+                        <span class="text-[9px] font-black text-gray-700 uppercase tracking-widest etched-text">Most Popular</span>
                     </div>
 
                     <div class="mb-8 text-red-600 mt-2 md:mt-0">
-                        <div class="physical-recessed inline-block p-4 mb-4"><i data-lucide="bot" class="w-8 h-8" stroke-width="2"></i></div>
+                        <div class="physical-recessed inline-block p-4 mb-4 shadow-inner"><i data-lucide="bot" class="w-8 h-8" stroke-width="2"></i></div>
                         <h3 class="text-3xl lg:text-4xl text-gray-800 font-black uppercase tracking-tight mb-2 etched-text">Business Pro</h3>
-                        <p class="text-gray-600 text-xs leading-relaxed font-bold">Replace your sales team with an AI closer</p>
+                        <p class="text-gray-600 text-xs leading-relaxed font-bold break-words">Replace your sales team with an AI closer</p>
                     </div>
                     
                     <div class="mb-10 text-4xl lg:text-5xl font-black text-gray-800 etched-text">₹5,100</div>
                     
-                    <button onclick="openEnquiryModal()" class="physical-btn-red w-full py-5 px-4 text-xs font-black uppercase tracking-widest mb-10">
+                    <button onclick="openEnquiryModal()" class="physical-btn-red w-full py-5 px-4 text-xs font-black uppercase tracking-widest mb-10 flex items-center justify-center shadow-[0_15px_30px_-5px_rgba(153,27,27,0.7)]">
                         Start Your Project
                     </button>
                     
-                    <div class="physical-recessed p-6 flex-1 mt-auto bg-[#e5eadf]"> <!-- LCD tinted recess -->
+                    <div class="physical-recessed p-6 flex-1 mt-auto bg-[#e8ece3] shadow-[inset_4px_4px_12px_rgba(110,117,133,0.5),inset_-4px_-4px_12px_rgba(255,255,255,1)]"> 
                         <p class="text-[10px] font-black tracking-widest uppercase mb-6 text-gray-600">FULL AUTOMATION INCLUDES:</p>
                         <ul class="space-y-4">
                             <li class="flex items-start gap-3 text-xs text-gray-900 font-black">
                                 <i data-lucide="check-square" class="w-5 h-5 text-red-600 shrink-0"></i>
-                                <span class="break-words">Up to 5 Premium Pages</span>
+                                <span class="break-words leading-tight">Up to 5 Premium Pages</span>
                             </li>
                             <li class="flex items-start gap-3 text-xs text-gray-900 font-black">
                                 <i data-lucide="check-square" class="w-5 h-5 text-red-600 shrink-0"></i>
-                                <span class="break-words">Intelligent AI Sales Agent</span>
+                                <span class="break-words leading-tight">Intelligent AI Sales Agent</span>
                             </li>
                             <li class="flex items-start gap-3 text-xs text-gray-900 font-black">
                                 <i data-lucide="check-square" class="w-5 h-5 text-red-600 shrink-0"></i>
-                                <span class="break-words">24/7 Deal Closing & Live Chat</span>
+                                <span class="break-words leading-tight">24/7 Deal Closing & Live Chat</span>
                             </li>
                             <li class="flex items-start gap-3 text-xs text-gray-900 font-black">
                                 <i data-lucide="check-square" class="w-5 h-5 text-red-600 shrink-0"></i>
-                                <span class="break-words">Lifetime Edits & Changes</span>
+                                <span class="break-words leading-tight">Lifetime Edits & Changes</span>
                             </li>
                             <li class="flex items-start gap-3 text-xs text-gray-900 font-black">
                                 <i data-lucide="check-square" class="w-5 h-5 text-red-600 shrink-0"></i>
-                                <span class="break-words">Free Domain Included</span>
+                                <span class="break-words leading-tight">Free Domain Included</span>
                             </li>
                         </ul>
                     </div>
                 </div>
 
                 <!-- Enterprise Tier -->
-                <div class="physical-panel p-6 sm:p-8 md:p-10 flex flex-col h-full relative z-0">
+                <div class="physical-panel p-6 sm:p-8 md:p-10 flex flex-col h-full relative z-10 transition-transform duration-300 hover:-translate-y-2 hover:shadow-[0_15px_30px_rgba(150,156,173,0.6)] w-full">
                     <div class="screw screw-tl"></div>
                     <div class="screw screw-br"></div>
                     <div class="mb-8 text-gray-700">
                         <div class="physical-recessed inline-block p-4 mb-4"><i data-lucide="cpu" class="w-6 h-6" stroke-width="2"></i></div>
                         <h3 class="text-2xl lg:text-3xl font-black uppercase tracking-tight text-gray-800 mb-2 etched-text">Custom Build</h3>
-                        <p class="text-gray-600 text-xs leading-relaxed font-bold">Enterprise systems for complex needs</p>
+                        <p class="text-gray-600 text-xs leading-relaxed font-bold break-words">Enterprise systems for complex needs</p>
                     </div>
                     
                     <div class="mb-10 text-3xl lg:text-4xl font-black text-gray-800 etched-text">₹11,000+</div>
                     
-                    <button onclick="openEnquiryModal()" class="physical-btn w-full py-4 px-4 text-xs font-black uppercase tracking-widest mb-10">
+                    <button onclick="openEnquiryModal()" class="physical-btn w-full py-4 px-4 text-xs font-black uppercase tracking-widest mb-10 flex items-center justify-center">
                         Request a Quote
                     </button>
                     
@@ -832,19 +856,19 @@
                         <ul class="space-y-4">
                             <li class="flex items-start gap-3 text-xs text-gray-800 font-black">
                                 <i data-lucide="check-square" class="w-4 h-4 mt-0.5 text-gray-600 shrink-0"></i>
-                                <span class="break-words">Up to 10 Pages + Advanced AI</span>
+                                <span class="break-words leading-tight">Up to 10 Pages + Advanced AI</span>
                             </li>
                             <li class="flex items-start gap-3 text-xs text-gray-800 font-black">
                                 <i data-lucide="check-square" class="w-4 h-4 mt-0.5 text-gray-600 shrink-0"></i>
-                                <span class="break-words">Voice & Text AI Sales Agents</span>
+                                <span class="break-words leading-tight">Voice & Text AI Sales Agents</span>
                             </li>
                             <li class="flex items-start gap-3 text-xs text-gray-800 font-black">
                                 <i data-lucide="check-square" class="w-4 h-4 mt-0.5 text-gray-600 shrink-0"></i>
-                                <span class="break-words">Complex Pipeline Automation</span>
+                                <span class="break-words leading-tight">Complex Pipeline Automation</span>
                             </li>
                             <li class="flex items-start gap-3 text-xs text-gray-800 font-black">
                                 <i data-lucide="check-square" class="w-4 h-4 mt-0.5 text-gray-600 shrink-0"></i>
-                                <span class="break-words">Custom API Developments</span>
+                                <span class="break-words leading-tight">Custom API Developments</span>
                             </li>
                         </ul>
                     </div>
@@ -885,7 +909,7 @@
     </section>
 
     <!-- Footer -->
-    <footer class="py-12 md:py-20 px-4 sm:px-5 border-t-4 border-[#9ca3af] bg-[#d1d5db] text-center relative">
+    <footer class="py-12 md:py-20 px-4 sm:px-5 border-t-4 border-[#9ca3af] bg-[#d1d5db] text-center relative shadow-[0_-10px_20px_rgba(0,0,0,0.1)]">
         <div class="max-w-7xl mx-auto">
             <div class="text-xl md:text-3xl font-black tracking-tighter text-gray-800 flex items-center justify-center gap-4 mb-8 md:mb-10 cursor-pointer etched-text">
                 <div class="physical-recessed p-2 md:p-3 rounded-lg inline-flex items-center justify-center">
@@ -921,7 +945,8 @@
 
     <!-- Enquiry Modal -->
     <div id="enquiryModal" class="fixed inset-0 bg-gray-900/60 z-[150] hidden items-center justify-center p-4 sm:p-6 backdrop-blur-sm transition-opacity duration-300 opacity-0">
-        <div class="physical-panel max-w-md w-full p-6 sm:p-8 md:p-10 text-center transform scale-95 transition-transform duration-300 relative border-4 border-gray-400" id="enquiryContent">
+        <!-- FIX: Re-engineered with max-h-[90vh], overflow-y-auto to stop keyboard from crashing the button off-screen -->
+        <div class="physical-panel max-w-md w-full max-h-[90vh] overflow-y-auto custom-scrollbar p-6 sm:p-8 md:p-10 text-center transform scale-95 transition-transform duration-300 relative border-4 border-[#a3a8b5]" id="enquiryContent">
             
             <div class="screw screw-tl"></div>
             <div class="screw screw-tr"></div>
@@ -962,7 +987,8 @@
 
     <!-- Terms Modal -->
     <div id="termsModal" class="fixed inset-0 bg-gray-900/60 z-[110] hidden items-center justify-center p-3 sm:p-6 backdrop-blur-sm transition-opacity duration-300 opacity-0">
-        <div class="physical-panel max-w-4xl w-full h-[90vh] sm:h-[85vh] p-4 sm:p-8 md:p-10 flex flex-col relative border-4 border-gray-400 transform scale-95 transition-transform duration-300" id="termsContent">
+        <!-- FIX: Enforced max-h-[90vh] with overflow strictly internally -->
+        <div class="physical-panel max-w-4xl w-full max-h-[90vh] h-[90vh] sm:h-[85vh] p-4 sm:p-8 md:p-10 flex flex-col relative border-4 border-[#a3a8b5] transform scale-95 transition-transform duration-300" id="termsContent">
             
             <div class="screw screw-tl hidden sm:flex"></div>
             <div class="screw screw-tr hidden sm:flex"></div>
@@ -1188,7 +1214,8 @@
 
     <!-- Privacy Policy Modal -->
     <div id="privacyModal" class="fixed inset-0 bg-gray-900/60 z-[110] hidden items-center justify-center p-3 sm:p-6 backdrop-blur-sm transition-opacity duration-300 opacity-0">
-        <div class="physical-panel max-w-4xl w-full h-[90vh] sm:h-[85vh] p-4 sm:p-8 md:p-10 flex flex-col relative border-4 border-gray-400 transform scale-95 transition-transform duration-300" id="privacyContent">
+        <!-- FIX: Enforced max-h-[90vh] with overflow strictly internally -->
+        <div class="physical-panel max-w-4xl w-full max-h-[90vh] h-[90vh] sm:h-[85vh] p-4 sm:p-8 md:p-10 flex flex-col relative border-4 border-[#a3a8b5] transform scale-95 transition-transform duration-300" id="privacyContent">
             
             <div class="screw screw-tl hidden sm:flex"></div>
             <div class="screw screw-tr hidden sm:flex"></div>
@@ -1333,12 +1360,23 @@
 
         let terminalTriggered = false;
 
+        // FIX: Re-engineered function to safely append text nodes instead of vulnerable innerHTML strings to close XSS hole
         function typeText(element, text, speed, callback) {
             let i = 0;
             dataLed.classList.add('animate-pulse'); // Flash data LED while typing
+            
+            // Generate safe container
+            const textNode = document.createTextNode('');
+            const cursor = document.createElement('span');
+            cursor.className = 'cursor-blink';
+            
+            element.innerHTML = ''; // Clear container cleanly
+            element.appendChild(textNode);
+            element.appendChild(cursor);
+
             function type() {
                 if (i < text.length) {
-                    element.innerHTML += text.charAt(i);
+                    textNode.nodeValue += text.charAt(i); // Append safely without DOM string re-evaluation
                     i++;
                     terminalOutput.scrollTop = terminalOutput.scrollHeight;
                     setTimeout(type, speed);
@@ -1369,22 +1407,26 @@
                     content.className = 'leading-relaxed font-bold break-words';
                     
                     if (msg.type === 'agent') {
-                        content.innerHTML = '<span class="cursor-blink"></span>';
+                        const initialCursor = document.createElement('span');
+                        initialCursor.className = 'cursor-blink';
+                        content.appendChild(initialCursor);
                     }
 
                     block.appendChild(sender);
                     block.appendChild(content);
                     terminalOutput.appendChild(block);
 
-                    // Add typing effect
+                    // Add typing effect securely
                     typeText(content, msg.text, 25, () => {
-                        // remove cursor from previous lines
+                        // remove cursor from previous lines safely
                         const cursors = terminalOutput.querySelectorAll('.cursor-blink');
                         cursors.forEach(c => c.remove());
                         
-                        // Add final blinking cursor to the last message
+                        // Add final blinking cursor to the last message securely
                         if (index === terminalSequence.length - 1) {
-                            content.innerHTML += '<span class="cursor-blink"></span>';
+                            const finalCursor = document.createElement('span');
+                            finalCursor.className = 'cursor-blink';
+                            content.appendChild(finalCursor);
                         }
                     });
 
@@ -1433,15 +1475,19 @@
             document.body.style.overflow = 'hidden';
             setTimeout(() => {
                 modalElement.classList.remove('opacity-0');
-                contentElement.classList.remove('scale-95');
-                contentElement.classList.add('scale-100');
+                if (contentElement) {
+                    contentElement.classList.remove('scale-95');
+                    contentElement.classList.add('scale-100');
+                }
             }, 10);
         }
 
         function closeGenericModal(modalElement, contentElement) {
             modalElement.classList.add('opacity-0');
-            contentElement.classList.remove('scale-100');
-            contentElement.classList.add('scale-95');
+            if (contentElement) {
+                contentElement.classList.remove('scale-100');
+                contentElement.classList.add('scale-95');
+            }
             document.body.style.overflow = '';
             setTimeout(() => {
                 modalElement.classList.add('hidden');

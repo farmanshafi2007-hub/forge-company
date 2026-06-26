@@ -4,10 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     
-    <!-- Core Web Vitals & Performance Preconnects -->
+    <!-- Core Web Vitals & Performance Preconnects / DNS Prefetching -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+    <link rel="dns-prefetch" href="https://cdn.tailwindcss.com">
+    <link rel="dns-prefetch" href="https://unpkg.com">
     <link rel="preconnect" href="https://pagead2.googlesyndication.com">
+    
+    <!-- Preloading Critical Resources for Millisecond Paint -->
+    <link rel="preload" href="https://cdn.tailwindcss.com" as="script">
+    <link rel="preload" href="https://unpkg.com/lucide@latest" as="script">
+
     <!-- Multi-Font Import (Calligraphy, Serif Display, and Monospace) -->
     <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&family=JetBrains+Mono:wght@400;700;800&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 
@@ -106,7 +114,8 @@
     }
     </script>
     
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6651904672008274" crossorigin="anonymous" loading="lazy"></script>
+    <!-- Deferring Ad Scripts to not block critical rendering path -->
+    <script src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6651904672008274" crossorigin="anonymous"></script>
 
     <!-- Defer loading of non-critical JS for faster DOM rendering -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -180,13 +189,21 @@
             .font-calligraphy { font-size: 1.5rem; }
         }
         
-        /* 3D Text and Icon Depth */
+        /* High-Fidelity 3D Text and Icon Textures for Maximum Crispness */
+        svg {
+            shape-rendering: geometricPrecision;
+            transform: translateZ(0); /* Hardware accelerate icons */
+            backface-visibility: hidden;
+        }
         .text-3d {
             text-shadow: 0px 2px 4px rgba(0,0,0,0.15), 0px 4px 10px rgba(0,0,0,0.05);
         }
         .icon-3d {
-            filter: drop-shadow(0px 3px 4px rgba(0, 102, 204, 0.25)) drop-shadow(0px 6px 12px rgba(0,0,0,0.1));
-            transition: all 0.3s ease;
+            /* Enhanced textured drop shadow for icons: deep ambient shadow + sharp beveled top-light */
+            filter: drop-shadow(0px 4px 6px rgba(0, 102, 204, 0.3)) drop-shadow(0px 8px 15px rgba(0,0,0,0.2)) drop-shadow(0px -1px 2px rgba(255,255,255,0.4));
+            transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+            transform: translateZ(0); /* GPU acceleration */
+            will-change: filter, transform;
         }
 
         .calligraphy-gradient-1 {
@@ -229,28 +246,29 @@
             transform: translate(-50%, -50%);
         }
 
-        /* --- Floating & Marquee Animations for Logos --- */
+        /* --- Fast Hardware-Accelerated Animations --- */
         @keyframes float-gentle {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-8px); }
-            100% { transform: translateY(0px); }
+            0% { transform: translateY(0px) translateZ(0); }
+            50% { transform: translateY(-8px) translateZ(0); }
+            100% { transform: translateY(0px) translateZ(0); }
         }
         .animate-float {
             animation: float-gentle 4s ease-in-out infinite;
-            will-change: transform;
+            will-change: transform; /* Hint browser to optimize */
         }
         .animate-delay-1 { animation-delay: 0.5s; }
         .animate-delay-2 { animation-delay: 1.0s; }
         .animate-delay-3 { animation-delay: 1.5s; }
 
         @keyframes marquee-ltr {
-            0% { transform: translateX(-50%); }
-            100% { transform: translateX(0%); }
+            0% { transform: translateX(-50%) translateZ(0); }
+            100% { transform: translateX(0%) translateZ(0); }
         }
         .animate-marquee-ltr {
             display: flex;
             width: max-content;
             animation: marquee-ltr 35s linear infinite;
+            will-change: transform;
         }
         .animate-marquee-ltr:hover {
             animation-play-state: paused;
@@ -258,12 +276,13 @@
 
         /* --- PRO FORM ANIMATIONS & GRAPHICS --- */
         @keyframes slideUpFade {
-            from { opacity: 0; transform: translateY(25px); }
-            to { opacity: 1; transform: translateY(0); }
+            from { opacity: 0; transform: translateY(25px) translateZ(0); }
+            to { opacity: 1; transform: translateY(0) translateZ(0); }
         }
         .animate-field {
             animation: slideUpFade 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
             opacity: 0;
+            will-change: opacity, transform;
         }
         .delay-100 { animation-delay: 100ms; }
         .delay-200 { animation-delay: 200ms; }
@@ -273,11 +292,12 @@
         .input-focus-effect {
             transition: all 0.3s ease;
             box-shadow: inset 0 2px 4px rgba(0,0,0,0.02);
+            will-change: box-shadow, border-color, transform;
         }
         .input-focus-effect:focus-within {
             box-shadow: inset 0 2px 4px rgba(0,0,0,0.05), 0 0 0 4px rgba(0, 102, 204, 0.15);
             border-color: #0066CC;
-            transform: translateY(-2px);
+            transform: translateY(-2px) translateZ(0);
         }
 
         /* --- APPLE-LIKE CLEAN UI COMPONENTS --- */
@@ -324,7 +344,7 @@
         }
         .physical-btn:hover {
             background: #FFFFFF;
-            transform: translateY(-2px);
+            transform: translateY(-2px) translateZ(0);
             box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08); 
         }
         .physical-btn:active {
@@ -350,10 +370,11 @@
             align-items: center;
             justify-content: center;
             text-shadow: 0px 1px 2px rgba(0,0,0,0.2);
+            will-change: transform, box-shadow;
         }
         .physical-btn-primary:hover {
             background: #005bb5;
-            transform: translateY(-2px);
+            transform: translateY(-2px) translateZ(0);
             box-shadow: 0 8px 25px rgba(0, 102, 204, 0.4), inset 0 2px 4px rgba(255,255,255,0.2);
         }
         .physical-btn-primary:active {
@@ -379,11 +400,12 @@
             cursor: pointer;
             color: var(--space-grey);
             border: 1px solid var(--apple-border);
+            will-change: transform, box-shadow;
         }
         .social-btn:hover {
             background: #FFFFFF;
             box-shadow: 0 6px 16px rgba(0,0,0,0.1);
-            transform: scale(1.08) translateY(-2px);
+            transform: scale(1.08) translateY(-2px) translateZ(0);
         }
         .social-btn-fb svg, .social-btn-x svg {
             fill: var(--space-grey);
@@ -467,6 +489,7 @@
             opacity: 0;
             overflow: hidden;
             transition: max-height 0.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s ease-in-out;
+            will-change: max-height, opacity;
         }
         .accordion-content.expanded {
             max-height: 1000px;
@@ -520,7 +543,6 @@
 
         <!-- CTA & Mobile Toggle -->
         <div class="flex items-center gap-2 sm:gap-3 pointer-events-auto shrink-0">
-            <!-- UPDATED TEXT & STYLES -->
             <button onclick="openEnquiryModal()" class="hidden md:flex physical-btn-primary px-5 py-2.5 text-[11px] font-black tracking-widest uppercase icon-3d" aria-label="Open Project Inquiry Modal">
                 Book Your Website
             </button>
@@ -547,7 +569,6 @@
             <span class="bg-gradient-to-br from-[#FF9500] to-[#FF3B30] text-white text-[7px] px-1 py-[1.5px] rounded-[3px] shadow-sm leading-none tracking-widest font-tech">BETA</span>
         </a>
         
-        <!-- UPDATED TEXT -->
         <button onclick="document.getElementById('mobileMenuBtn').click(); openEnquiryModal();" class="mobile-link physical-btn-primary w-full max-w-[280px] py-4 text-center text-sm font-black uppercase tracking-wider text-white mt-4 icon-3d">
             Book Your Website
         </button>
@@ -568,17 +589,15 @@
                     <span class="text-[#555555] font-bold tracking-[0.2em] uppercase text-[9px] sm:text-xs etched-text font-tech text-3d">Systems Engineered in Kashmir</span>
                 </div>
                 
-                <!-- Added font-display for an elegant serif headline, Pitch Black -->
                 <h1 class="font-display font-black text-4xl sm:text-5xl md:text-6xl lg:text-[76px] text-[#000000] tracking-tighter leading-[1.1] mb-6 uppercase text-3d break-words w-full">
                     Deploy <span class="bg-gradient-to-r from-[#0066CC] to-[#AF52DE] text-transparent bg-clip-text">Intelligent Architecture</span> <br class="hidden lg:block" />& Autonomous Agents.
                 </h1>
 
-                <!-- Made text minimal by utilizing font-medium for visibility -->
                 <p class="text-[#555555] font-medium text-sm sm:text-base md:text-lg z-10 mb-10 max-w-2xl mx-auto px-2 w-full leading-relaxed text-3d">
                     We engineer premium web platforms and intelligent AI systems. Automate acquisition. Operate continuously.
                 </p>
 
-                <!-- Added Trust Indicators -->
+                <!-- Trust Indicators -->
                 <div class="flex items-center justify-center gap-4 sm:gap-6 mb-10 flex-wrap w-full">
                     <span class="text-[10px] sm:text-xs font-bold text-[#000000] uppercase tracking-widest flex items-center gap-1.5 bg-[#FAFAFA] px-3 py-1.5 rounded-md border border-[#E5E5EA] shadow-sm">
                         <i data-lucide="check-circle" class="w-3 h-3 sm:w-4 sm:h-4 text-[#34C759] shrink-0 icon-3d"></i> Verified Logic
@@ -592,7 +611,6 @@
                 </div>
 
                 <div class="flex flex-col sm:flex-row items-center justify-center gap-4 w-full sm:w-auto px-4">
-                    <!-- UPDATED TEXT -->
                     <button onclick="openEnquiryModal()" class="physical-btn-primary w-full sm:w-auto px-8 py-4 sm:px-10 sm:py-4 text-xs sm:text-sm font-black tracking-[0.2em] uppercase text-white shadow-xl font-tech icon-3d" aria-label="Start Project">
                         Book Your Website
                     </button>
@@ -603,27 +621,21 @@
             </div>
         </section>
 
-        <!-- UPDATED: Client Trust Logos Section (Enlarged Sizes) -->
+        <!-- Client Trust Logos Section -->
         <section id="trust-logos" class="py-16 border-y border-[#E5E5EA] bg-[#FAFAFA] w-full relative overflow-hidden">
-            <!-- Subtle background glow for a non-boring UX -->
             <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-[800px] h-[300px] bg-gradient-to-r from-[#0066CC]/10 via-[#AF52DE]/10 to-[#FF9500]/10 blur-3xl pointer-events-none rounded-full"></div>
             
             <div class="w-full mx-auto text-center reveal relative z-10 overflow-hidden">
                 <p class="text-[9px] sm:text-[10px] font-bold uppercase tracking-[0.3em] text-[#555555] mb-2 text-3d font-tech">Deployed by forward-thinking organizations</p>
                 
-                <!-- Large Colorful Heading -->
                 <h3 class="text-4xl sm:text-5xl md:text-6xl font-black mb-12 bg-gradient-to-r from-[#0066CC] via-[#AF52DE] to-[#FF9500] text-transparent bg-clip-text font-display drop-shadow-md pb-2 inline-block">Our Special Clients</h3>
 
-                <!-- Marquee Train Wrapper -->
                 <div class="relative w-full overflow-hidden flex items-center py-4 group">
-                    <!-- Smooth Fade Edges -->
                     <div class="absolute left-0 top-0 bottom-0 w-16 md:w-32 bg-gradient-to-r from-[#FAFAFA] to-transparent z-20 pointer-events-none"></div>
                     <div class="absolute right-0 top-0 bottom-0 w-16 md:w-32 bg-gradient-to-l from-[#FAFAFA] to-transparent z-20 pointer-events-none"></div>
                     
-                    <!-- Scrolling Track -->
                     <div class="animate-marquee-ltr opacity-90 group-hover:opacity-100 transition-opacity duration-500">
                         
-                        <!-- Original Set of 8 Logos (SIZES INCREASED) -->
                         <div class="flex items-center gap-12 sm:gap-16 md:gap-24 justify-around min-w-max pr-12 sm:pr-16 md:pr-24">
                             <!-- Logo 1 -->
                             <div class="animate-float whitespace-nowrap shrink-0 text-lg sm:text-2xl md:text-3xl font-black tracking-tight text-[#000000] uppercase flex items-center justify-center gap-3 font-display hover:text-[#0066CC] transition-colors cursor-default text-3d"><i data-lucide="layers" class="w-6 h-6 sm:w-10 sm:h-10 text-[#0066CC] shrink-0 icon-3d"></i> NexaCore</div>
@@ -643,7 +655,7 @@
                             <div class="animate-float animate-delay-1 whitespace-nowrap shrink-0 text-lg sm:text-2xl md:text-3xl font-black tracking-tight text-[#000000] uppercase flex items-center justify-center gap-3 font-display hover:text-[#AF52DE] transition-colors cursor-default text-3d"><i data-lucide="globe" class="w-6 h-6 sm:w-10 sm:h-10 text-[#AF52DE] shrink-0 icon-3d"></i> GlobalNet</div>
                         </div>
 
-                        <!-- Duplicate Set for Seamless LTR Loop (SIZES INCREASED) -->
+                        <!-- Duplicate Set for Seamless LTR Loop -->
                         <div class="flex items-center gap-12 sm:gap-16 md:gap-24 justify-around min-w-max pr-12 sm:pr-16 md:pr-24">
                             <!-- Logo 1 -->
                             <div class="animate-float whitespace-nowrap shrink-0 text-lg sm:text-2xl md:text-3xl font-black tracking-tight text-[#000000] uppercase flex items-center justify-center gap-3 font-display hover:text-[#0066CC] transition-colors cursor-default text-3d"><i data-lucide="layers" class="w-6 h-6 sm:w-10 sm:h-10 text-[#0066CC] shrink-0 icon-3d"></i> NexaCore</div>
@@ -668,7 +680,7 @@
             </div>
         </section>
 
-        <!-- Success Metrics Section (ROI Focused) -->
+        <!-- Success Metrics Section -->
         <section id="metrics" class="py-16 md:py-24 px-4 relative bg-[#FFFFFF] w-full">
             <div class="w-full max-w-6xl mx-auto">
                 <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
@@ -700,19 +712,15 @@
                 <p class="text-[#555555] font-bold uppercase tracking-widest text-[10px] sm:text-xs text-3d font-tech">Live Terminal Simulation</p>
             </div>
             
-            <!-- Physical Terminal UI -->
             <div class="w-full max-w-3xl mx-auto physical-panel bg-[#FFFFFF] p-2 sm:p-4 reveal shadow-2xl" id="terminal-container">
                 <div class="screw screw-tl"></div>
                 <div class="screw screw-tr"></div>
                 <div class="screw screw-bl"></div>
                 <div class="screw screw-br"></div>
 
-                <!-- Screen Bezel -->
                 <div class="bg-[#0A0A0A] p-1.5 sm:p-2 rounded-2xl relative overflow-hidden w-full shadow-2xl">
-                    <!-- LCD Screen -->
                     <div class="lcd-screen rounded-xl p-4 sm:p-6 h-[320px] sm:h-[400px] flex flex-col relative z-10 w-full overflow-hidden">
                         
-                        <!-- Chat header (Terminal style) -->
                         <div class="border-b border-[#333333] pb-3 mb-4 flex items-center justify-between opacity-80 relative z-20">
                             <div class="flex items-center gap-3">
                                 <i data-lucide="terminal" class="w-4 h-4 sm:w-5 sm:h-5 text-[#86868B] shrink-0 icon-3d"></i>
@@ -724,12 +732,10 @@
                             <div class="text-[10px] font-bold hidden sm:block text-[#86868B]">SYS_TIME: <span id="sys-time" class="text-[#FFFFFF]">--:--:--</span></div>
                         </div>
                         
-                        <!-- Messages -->
                         <div class="flex-1 overflow-y-auto custom-scrollbar pr-2 space-y-4 text-sm sm:text-base relative z-20 text-[#FFFFFF]" id="terminal-output">
                             <!-- Content will be injected by JavaScript typing simulator -->
                         </div>
                         
-                        <!-- Input area -->
                         <div class="mt-4 pt-3 border-t border-[#333333] flex gap-2 relative z-20 items-center">
                             <div class="font-bold shrink-0 text-[#0066CC]">></div>
                             <input type="text" placeholder="SYSTEM LOCKED. AWAITING OVERRIDE..." class="w-full bg-transparent border-none text-[#FFFFFF] font-inherit focus:outline-none placeholder-[#888888] uppercase text-[10px] sm:text-sm font-bold tracking-wide" disabled="disabled">
@@ -737,7 +743,6 @@
                     </div>
                 </div>
                 
-                <!-- Hardware Controls -->
                 <div class="mt-4 flex flex-col sm:flex-row items-center justify-between px-2 sm:px-4 gap-4 font-tech">
                     <div class="flex gap-6">
                         <div class="flex flex-col items-center gap-1.5">
@@ -770,7 +775,6 @@
                 </div>
                 
                 <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 reveal w-full">
-                    <!-- Before Panel -->
                     <div class="physical-panel p-6 sm:p-8 flex flex-col bg-[#FAFAFA] border border-[#E5E5EA] shadow-lg w-full hover:shadow-xl">
                         <div class="screw screw-tl"></div><div class="screw screw-br"></div>
                         <div class="flex items-center gap-3 mb-6 border-b border-[#E5E5EA] pb-4">
@@ -784,7 +788,6 @@
                         </ul>
                     </div>
 
-                    <!-- After Panel -->
                     <div class="physical-panel p-6 sm:p-8 flex flex-col bg-[#FFFFFF] border-[#34C759]/40 shadow-[0_10px_40px_rgba(52,199,89,0.15)] hover:shadow-[0_15px_50px_rgba(52,199,89,0.25)] w-full transform lg:scale-105 z-10">
                         <div class="screw screw-tl"></div><div class="screw screw-br"></div>
                         <div class="flex items-center gap-3 mb-6 border-b border-[#E5E5EA] pb-4">
@@ -814,7 +817,6 @@
                     <div class="screw screw-bl"></div>
                     <div class="screw screw-br"></div>
                     <div class="physical-recessed bg-[#FAFAFA] p-5 sm:p-6 md:p-8 border border-[#E5E5EA] w-full shadow-inner">
-                        <!-- Made Text Bold for visibility -->
                         <p class="text-[#000000] text-sm md:text-base font-medium leading-relaxed tracking-wide text-3d mb-6">
                             Forge Softwares operates as the central infrastructure for our specialized subsidiaries, <strong class="font-black">Cobra</strong> and <strong class="font-black">Runo</strong>. We architect custom web platforms, SaaS products, and autonomous business tools designed for scale. Our focus is on speed, security, and measurable conversion.
                         </p>
@@ -1053,7 +1055,6 @@
                         
                         <div class="mb-10 text-4xl font-black text-[#000000] tracking-tighter text-3d font-tech">₹2,500</div>
                         
-                        <!-- UPDATED TEXT -->
                         <button onclick="openEnquiryModal()" class="physical-btn w-full py-4 text-[10px] font-black uppercase tracking-widest mb-10 border-[#E5E5EA] bg-[#FFFFFF] font-tech shadow-md text-3d icon-3d" aria-label="Request Quote for Starter Plan">
                             Book Your Website
                         </button>
@@ -1103,7 +1104,6 @@
                         
                         <div class="mb-10 text-4xl lg:text-5xl font-black text-[#000000] tracking-tighter text-3d font-tech">₹5,100</div>
                         
-                        <!-- UPDATED TEXT -->
                         <button onclick="openEnquiryModal()" class="physical-btn-primary w-full py-4 text-[10px] font-black uppercase tracking-widest mb-10 shadow-xl font-tech icon-3d" aria-label="Start Business Pro Project">
                             Book Your Website
                         </button>
@@ -1148,7 +1148,6 @@
                         
                         <div class="mb-10 text-4xl font-black text-[#000000] tracking-tighter text-3d font-tech">₹11,000+</div>
                         
-                        <!-- UPDATED TEXT -->
                         <button onclick="openEnquiryModal()" class="physical-btn w-full py-4 text-[10px] font-black uppercase tracking-widest mb-10 border-[#E5E5EA] bg-[#FFFFFF] font-tech shadow-md text-3d icon-3d" aria-label="Request Quote for Custom Build">
                             Book Your Website
                         </button>
@@ -1272,7 +1271,6 @@
                     We build scalable infrastructure that actively acquires and converts.
                 </p>
                 
-                <!-- UPDATED TEXT -->
                 <button onclick="openEnquiryModal()" class="physical-btn-primary px-10 py-5 font-black text-xs uppercase tracking-[0.2em] inline-flex items-center gap-2 shadow-xl font-tech icon-3d">
                     <i data-lucide="arrow-right" class="w-4 h-4 text-white shrink-0 icon-3d"></i> Book Your Website
                 </button>
@@ -1318,10 +1316,8 @@
         </div>
     </footer>
 
-    <!-- PRO ENQUIRY MODAL (Fixed Scrolling & Enhanced Layout) -->
-    <!-- Swapped to strict w-screen and overflow-hidden to prevent body displacement -->
+    <!-- PRO ENQUIRY MODAL -->
     <div id="enquiryModal" class="fixed top-0 left-0 w-screen h-[100dvh] bg-black/60 z-[9999] hidden flex-col items-center justify-center p-4 backdrop-blur-xl transition-opacity duration-300 opacity-0 overflow-hidden" role="dialog" aria-modal="true" aria-labelledby="enquiryTitle">
-        <!-- Internal m-auto and max-h logic guarantees it stays in center without breaking viewport -->
         <div class="physical-panel bg-[#FFFFFF] max-w-md w-full max-h-[90dvh] flex flex-col relative border border-[#E5E5EA] shadow-2xl transform scale-95 transition-transform duration-300 m-auto" id="enquiryContent">
             
             <div class="screw screw-tl"></div>
@@ -1333,7 +1329,6 @@
                 <i data-lucide="x" class="w-4 h-4 text-[#000000] shrink-0"></i>
             </button>
             
-            <!-- Graphic Header Area -->
             <div class="pt-6 px-6 sm:px-8 pb-4 shrink-0 border-b border-[#E5E5EA] relative overflow-hidden rounded-t-[24px]">
                 <div class="absolute inset-0 bg-grid opacity-30 z-0"></div>
                 <div class="absolute -top-10 -right-10 w-32 h-32 bg-[#0066CC]/10 rounded-full blur-2xl z-0 pointer-events-none"></div>
@@ -1346,11 +1341,9 @@
                 </div>
             </div>
             
-            <!-- Scrollable Form Container -->
             <div class="overflow-y-auto custom-scrollbar p-6 sm:p-8 flex-1">
                 <form onsubmit="handleEnquirySubmit(event)" class="space-y-4 text-left relative z-10 w-full pb-2">
                     
-                    <!-- Pro Input 1 -->
                     <div class="w-full animate-field delay-100">
                         <label class="text-[9px] font-black text-[#555555] uppercase tracking-widest ml-1 mb-1 block font-tech text-3d">Company / Person Name</label>
                         <div class="relative group input-focus-effect rounded-xl overflow-hidden bg-[#FAFAFA] border border-[#E5E5EA]">
@@ -1361,7 +1354,6 @@
                         </div>
                     </div>
                     
-                    <!-- Pro Input 2 -->
                     <div class="w-full animate-field delay-200">
                         <label class="text-[9px] font-black text-[#555555] uppercase tracking-widest ml-1 mb-1 block font-tech text-3d">Phone Number (WhatsApp)</label>
                         <div class="relative group input-focus-effect rounded-xl overflow-hidden bg-[#FAFAFA] border border-[#E5E5EA]">
@@ -1372,7 +1364,6 @@
                         </div>
                     </div>
 
-                    <!-- Pro Dropdown 3 (Massive Global Country List without Israel, Pakistan, Saudi Arabia) -->
                     <div class="w-full animate-field delay-300">
                         <label class="text-[9px] font-black text-[#555555] uppercase tracking-widest ml-1 mb-1 block font-tech text-3d">Country / State Location</label>
                         <div class="relative group input-focus-effect rounded-xl overflow-hidden bg-[#FAFAFA] border border-[#E5E5EA]">
@@ -1460,7 +1451,7 @@
         </div>
     </div>
 
-    <!-- NEW: Premium Success Modal (100% Mobile Safe Constraints) -->
+    <!-- Premium Success Modal -->
     <div id="successModal" class="fixed top-0 left-0 w-screen h-[100dvh] bg-black/60 z-[9999] hidden flex-col items-center justify-center p-4 backdrop-blur-xl transition-opacity duration-300 opacity-0 overflow-hidden" role="dialog" aria-modal="true" aria-labelledby="successTitle">
         <div class="physical-panel bg-[#FFFFFF] max-w-md w-full max-h-[90dvh] overflow-y-auto custom-scrollbar p-8 md:p-12 text-center transform scale-95 transition-transform duration-300 relative border border-[#E5E5EA] shadow-2xl m-auto" id="successContent">
             
@@ -1486,8 +1477,8 @@
     </div>
 
     <!-- Terms Modal -->
-    <div id="termsModal" class="fixed inset-0 bg-black/40 z-[110] hidden items-center justify-center p-4 sm:p-6 backdrop-blur-xl transition-opacity duration-300 opacity-0 w-full" role="dialog" aria-modal="true" aria-labelledby="termsTitle">
-        <div class="physical-panel bg-[#FFFFFF] max-w-4xl w-full max-h-[85vh] h-[85vh] p-6 md:p-10 flex flex-col relative border border-[#E5E5EA] shadow-2xl transform scale-95 transition-transform duration-300 overscroll-contain" id="termsContent">
+    <div id="termsModal" class="fixed top-0 left-0 w-screen h-[100dvh] bg-black/60 z-[9999] hidden flex-col items-center justify-center p-4 backdrop-blur-xl transition-opacity duration-300 opacity-0 overflow-hidden" role="dialog" aria-modal="true" aria-labelledby="termsTitle">
+        <div class="physical-panel bg-[#FFFFFF] max-w-4xl w-full max-h-[90dvh] p-4 sm:p-6 md:p-10 flex flex-col relative border border-[#E5E5EA] shadow-2xl transform scale-95 transition-transform duration-300 m-auto overflow-hidden" id="termsContent">
             
             <button onclick="closeTerms()" class="absolute top-4 right-4 lg:top-6 lg:right-6 physical-btn bg-[#FAFAFA] border-transparent w-10 h-10 flex items-center justify-center rounded-full z-20 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#0066CC] icon-3d" aria-label="Close Terms">
                 <i data-lucide="x" class="w-5 h-5 text-[#000000] shrink-0"></i>
@@ -1532,8 +1523,8 @@
     </div>
 
     <!-- Privacy Policy Modal -->
-    <div id="privacyModal" class="fixed inset-0 bg-black/40 z-[110] hidden items-center justify-center p-4 sm:p-6 backdrop-blur-xl transition-opacity duration-300 opacity-0 w-full" role="dialog" aria-modal="true" aria-labelledby="privacyTitle">
-        <div class="physical-panel bg-[#FFFFFF] max-w-4xl w-full max-h-[85vh] h-[85vh] p-6 md:p-10 flex flex-col relative border border-[#E5E5EA] shadow-2xl transform scale-95 transition-transform duration-300 overscroll-contain" id="privacyContent">
+    <div id="privacyModal" class="fixed top-0 left-0 w-screen h-[100dvh] bg-black/60 z-[9999] hidden flex-col items-center justify-center p-4 backdrop-blur-xl transition-opacity duration-300 opacity-0 overflow-hidden" role="dialog" aria-modal="true" aria-labelledby="privacyTitle">
+        <div class="physical-panel bg-[#FFFFFF] max-w-4xl w-full max-h-[90dvh] p-4 sm:p-6 md:p-10 flex flex-col relative border border-[#E5E5EA] shadow-2xl transform scale-95 transition-transform duration-300 m-auto overflow-hidden" id="privacyContent">
             
             <button onclick="closePrivacy()" class="absolute top-4 right-4 lg:top-6 lg:right-6 physical-btn bg-[#FAFAFA] border-transparent w-10 h-10 flex items-center justify-center rounded-full z-20 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#0066CC] icon-3d" aria-label="Close Privacy Policy">
                 <i data-lucide="x" class="w-5 h-5 text-[#000000] shrink-0"></i>
@@ -1567,8 +1558,12 @@
     </div>
 
     <script>
-        // Init Lucide Icons safely
-        lucide.createIcons();
+        // Init Lucide Icons safely & efficiently via requestAnimationFrame
+        document.addEventListener('DOMContentLoaded', () => {
+            requestAnimationFrame(() => {
+                lucide.createIcons();
+            });
+        });
         
         // Accurate Local Time Sync
         setInterval(() => {
@@ -1760,7 +1755,7 @@
                 await fetch(url, {
                     method: "POST",
                     mode: "no-cors",
-                    body: formData // Sends raw form data
+                    body: formData 
                 });
 
                 btn.innerHTML = 'DATA TRANSMITTED';

@@ -206,20 +206,27 @@
             will-change: filter, transform;
         }
 
+        /* CSS Errors Fixed: Added standard compliance properties to gradients */
         .calligraphy-gradient-1 {
             background: linear-gradient(to right, #AF52DE, #FF9500);
             -webkit-background-clip: text;
+            background-clip: text;
             -webkit-text-fill-color: transparent;
+            color: transparent;
         }
         .calligraphy-gradient-2 {
             background: linear-gradient(to right, #0066CC, #34C759);
             -webkit-background-clip: text;
+            background-clip: text;
             -webkit-text-fill-color: transparent;
+            color: transparent;
         }
         .calligraphy-gradient-3 {
             background: linear-gradient(to right, #FF3B30, #AF52DE);
             -webkit-background-clip: text;
+            background-clip: text;
             -webkit-text-fill-color: transparent;
+            color: transparent;
         }
 
         /* --- MODERN AI BACKGROUND EFFECTS --- */
@@ -553,8 +560,8 @@
         </div>
     </nav>
 
-    <!-- Mobile Menu Overlay -->
-    <div id="mobileMenu" class="fixed inset-0 top-[85px] w-full bg-[#FFFFFF]/95 backdrop-blur-xl z-[45] hidden flex-col items-center justify-center space-y-4 px-4 overflow-y-auto overscroll-contain pb-8 border-t border-[#E5E5EA]" role="dialog" aria-modal="true">
+    <!-- Mobile Menu Overlay (FIXED: Scroll bleed & Blank layout issues) -->
+    <div id="mobileMenu" class="fixed top-0 left-0 w-screen h-[100dvh] pt-[100px] bg-[#FFFFFF]/95 backdrop-blur-xl z-[45] hidden flex-col items-center justify-start space-y-4 px-4 overflow-y-auto overscroll-contain pb-8" role="dialog" aria-modal="true">
         <a href="#home" class="mobile-link physical-btn w-full max-w-[280px] py-3 text-center text-sm font-bold uppercase tracking-wider shadow-none border-transparent hover:bg-[#FAFAFA]">Home</a>
         <a href="#what-we-do" class="mobile-link physical-btn w-full max-w-[280px] py-3 text-center text-sm font-bold uppercase tracking-wider shadow-none border-transparent hover:bg-[#FAFAFA]">Infrastructure</a>
         <a href="#services" class="mobile-link physical-btn w-full max-w-[280px] py-3 text-center text-sm font-bold uppercase tracking-wider shadow-none border-transparent hover:bg-[#FAFAFA]">Systems</a>
@@ -569,6 +576,7 @@
             <span class="bg-gradient-to-br from-[#FF9500] to-[#FF3B30] text-white text-[7px] px-1 py-[1.5px] rounded-[3px] shadow-sm leading-none tracking-widest font-tech">BETA</span>
         </a>
         
+        <!-- UPDATED TEXT -->
         <button onclick="document.getElementById('mobileMenuBtn').click(); openEnquiryModal();" class="mobile-link physical-btn-primary w-full max-w-[280px] py-4 text-center text-sm font-black uppercase tracking-wider text-white mt-4 icon-3d">
             Book Your Website
         </button>
@@ -1476,7 +1484,7 @@
         </div>
     </div>
 
-    <!-- Terms Modal -->
+    <!-- Terms Modal (Fixed Scrolling & Enhanced Layout) -->
     <div id="termsModal" class="fixed top-0 left-0 w-screen h-[100dvh] bg-black/60 z-[9999] hidden flex-col items-center justify-center p-4 backdrop-blur-xl transition-opacity duration-300 opacity-0 overflow-hidden" role="dialog" aria-modal="true" aria-labelledby="termsTitle">
         <div class="physical-panel bg-[#FFFFFF] max-w-4xl w-full max-h-[90dvh] p-4 sm:p-6 md:p-10 flex flex-col relative border border-[#E5E5EA] shadow-2xl transform scale-95 transition-transform duration-300 m-auto overflow-hidden" id="termsContent">
             
@@ -1522,7 +1530,7 @@
         </div>
     </div>
 
-    <!-- Privacy Policy Modal -->
+    <!-- Privacy Policy Modal (Fixed Scrolling & Enhanced Layout) -->
     <div id="privacyModal" class="fixed top-0 left-0 w-screen h-[100dvh] bg-black/60 z-[9999] hidden flex-col items-center justify-center p-4 backdrop-blur-xl transition-opacity duration-300 opacity-0 overflow-hidden" role="dialog" aria-modal="true" aria-labelledby="privacyTitle">
         <div class="physical-panel bg-[#FFFFFF] max-w-4xl w-full max-h-[90dvh] p-4 sm:p-6 md:p-10 flex flex-col relative border border-[#E5E5EA] shadow-2xl transform scale-95 transition-transform duration-300 m-auto overflow-hidden" id="privacyContent">
             
@@ -1673,12 +1681,17 @@
                 mobileMenu.classList.remove('hidden');
                 mobileMenu.classList.add('flex');
                 mobileMenuBtn.innerHTML = '<i data-lucide="x" class="w-4 h-4 sm:w-5 sm:h-5 text-[#000000] shrink-0 icon-3d"></i>';
+                
+                // Double Lock for iOS Safari
                 document.body.style.overflow = 'hidden';
+                document.documentElement.style.overflow = 'hidden';
             } else {
                 mobileMenu.classList.add('hidden');
                 mobileMenu.classList.remove('flex');
                 mobileMenuBtn.innerHTML = '<i data-lucide="menu" class="w-4 h-4 sm:w-5 sm:h-5 text-[#000000] shrink-0 icon-3d"></i>';
+                
                 document.body.style.overflow = '';
+                document.documentElement.style.overflow = '';
             }
             lucide.createIcons();
         }
@@ -1695,7 +1708,10 @@
         function openGenericModal(modalElement, contentElement) {
             modalElement.classList.remove('hidden');
             modalElement.classList.add('flex');
-            document.body.style.overflow = 'hidden'; // Prevent background scrolling
+            
+            // Double Lock Background Scrolling
+            document.body.style.overflow = 'hidden'; 
+            document.documentElement.style.overflow = 'hidden'; 
             
             // Allow display block to register before fading in
             requestAnimationFrame(() => {
@@ -1713,7 +1729,10 @@
                 contentElement.classList.remove('scale-100');
                 contentElement.classList.add('scale-95');
             }
+            
+            // Unlock Background Scrolling
             document.body.style.overflow = '';
+            document.documentElement.style.overflow = '';
             
             // Wait for fade out animation before setting display hidden
             setTimeout(() => {

@@ -8,7 +8,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preconnect" href="https://pagead2.googlesyndication.com">
-    <!-- NEW: Multi-Font Import (Calligraphy, Serif Display, and Monospace) -->
+    <!-- Multi-Font Import (Calligraphy, Serif Display, and Monospace) -->
     <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&family=JetBrains+Mono:wght@400;700;800&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 
     <!-- SEO & Search Engine Optimization Tags -->
@@ -114,12 +114,12 @@
 
     <style>
         :root {
-            /* The Minimalist Canvas - Increased Brightness base */
+            /* The Minimalist Canvas - Ultra Brightness & High Contrast */
             --apple-bg: #FFFFFF;
-            --surface-grey: #FAFAFA; /* Slightly brighter than F5F5F7 */
-            --space-grey: #1D1D1F;
-            --subtle-grey: #86868B;
-            --apple-border: rgba(0, 0, 0, 0.04); /* Softer border for cleaner look */
+            --surface-grey: #FCFCFD; 
+            --space-grey: #000000; /* Pure black for maximum 10000% contrast readability */
+            --subtle-grey: #555555; /* Darkened gray so text never vanishes */
+            --apple-border: rgba(0, 0, 0, 0.08); /* Slightly stronger border for depth */
             
             /* Accent Colors (Vibrant Pops) */
             --store-blue: #0066CC;
@@ -140,11 +140,13 @@
             -webkit-overflow-scrolling: touch; 
             overflow-wrap: break-word; 
             word-wrap: break-word;
+            /* Explicitly boosted brightness and contrast for entire document */
+            filter: brightness(1.08) contrast(1.15);
         }
 
         /* --- SLEEK MINIMAL SCROLLBARS --- */
         ::-webkit-scrollbar {
-            width: 6px; /* slightly thinner */
+            width: 6px; 
             height: 6px;
         }
         ::-webkit-scrollbar-track { 
@@ -159,7 +161,7 @@
             background: var(--subtle-grey); 
         }
 
-        /* --- NEW: Font Classes for Variety --- */
+        /* --- Font Classes for Variety & 3D Depth --- */
         .font-display {
             font-family: 'Playfair Display', serif;
         }
@@ -177,6 +179,16 @@
         @media (max-width: 640px) {
             .font-calligraphy { font-size: 1.5rem; }
         }
+        
+        /* 3D Text and Icon Depth */
+        .text-3d {
+            text-shadow: 0px 2px 4px rgba(0,0,0,0.15), 0px 4px 10px rgba(0,0,0,0.05);
+        }
+        .icon-3d {
+            filter: drop-shadow(0px 3px 4px rgba(0, 102, 204, 0.25)) drop-shadow(0px 6px 12px rgba(0,0,0,0.1));
+            transition: all 0.3s ease;
+        }
+
         .calligraphy-gradient-1 {
             background: linear-gradient(to right, #AF52DE, #FF9500);
             -webkit-background-clip: text;
@@ -196,8 +208,8 @@
         /* --- MODERN AI BACKGROUND EFFECTS --- */
         .bg-grid {
             background-size: 40px 40px;
-            background-image: linear-gradient(to right, rgba(0, 0, 0, 0.02) 1px, transparent 1px), 
-                              linear-gradient(to bottom, rgba(0, 0, 0, 0.02) 1px, transparent 1px);
+            background-image: linear-gradient(to right, rgba(0, 0, 0, 0.03) 1px, transparent 1px), 
+                              linear-gradient(to bottom, rgba(0, 0, 0, 0.03) 1px, transparent 1px);
             mask-image: linear-gradient(to bottom, black 40%, transparent 100%);
             -webkit-mask-image: linear-gradient(to bottom, black 40%, transparent 100%);
         }
@@ -207,7 +219,7 @@
             width: 100vw;
             max-width: 900px;
             height: 700px;
-            background: radial-gradient(circle, rgba(0,102,204,0.05) 0%, rgba(175,82,222,0.03) 40%, rgba(255,255,255,0) 70%);
+            background: radial-gradient(circle, rgba(0,102,204,0.08) 0%, rgba(175,82,222,0.06) 40%, rgba(255,255,255,0) 70%);
             border-radius: 50%;
             filter: blur(80px);
             z-index: 0;
@@ -217,7 +229,7 @@
             transform: translate(-50%, -50%);
         }
 
-        /* --- NEW: Floating Animations for Logos --- */
+        /* --- Floating & Marquee Animations for Logos --- */
         @keyframes float-gentle {
             0% { transform: translateY(0px); }
             50% { transform: translateY(-8px); }
@@ -231,18 +243,55 @@
         .animate-delay-2 { animation-delay: 1.0s; }
         .animate-delay-3 { animation-delay: 1.5s; }
 
+        @keyframes marquee-ltr {
+            0% { transform: translateX(-50%); }
+            100% { transform: translateX(0%); }
+        }
+        .animate-marquee-ltr {
+            display: flex;
+            width: max-content;
+            animation: marquee-ltr 35s linear infinite;
+        }
+        .animate-marquee-ltr:hover {
+            animation-play-state: paused;
+        }
+
+        /* --- PRO FORM ANIMATIONS & GRAPHICS --- */
+        @keyframes slideUpFade {
+            from { opacity: 0; transform: translateY(25px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-field {
+            animation: slideUpFade 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+            opacity: 0;
+        }
+        .delay-100 { animation-delay: 100ms; }
+        .delay-200 { animation-delay: 200ms; }
+        .delay-300 { animation-delay: 300ms; }
+        .delay-400 { animation-delay: 400ms; }
+
+        .input-focus-effect {
+            transition: all 0.3s ease;
+            box-shadow: inset 0 2px 4px rgba(0,0,0,0.02);
+        }
+        .input-focus-effect:focus-within {
+            box-shadow: inset 0 2px 4px rgba(0,0,0,0.05), 0 0 0 4px rgba(0, 102, 204, 0.15);
+            border-color: #0066CC;
+            transform: translateY(-2px);
+        }
+
         /* --- APPLE-LIKE CLEAN UI COMPONENTS --- */
 
         /* Smooth Floating Panels - Brightened & Minimalist */
         .physical-panel {
-            background-color: rgba(255, 255, 255, 0.95); /* Brightness improved */
+            background-color: rgba(255, 255, 255, 0.98); 
             border-radius: 24px;
             border: 1px solid var(--apple-border);
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02); /* Softer, brighter shadow */
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.05), 0 2px 10px rgba(0,0,0,0.02); /* Amplified depth */
             position: relative;
             max-width: 100%;
             transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-            backdrop-filter: blur(10px);
+            backdrop-filter: blur(12px);
         }
 
         /* Elements hidden strictly via CSS to preserve HTML structure */
@@ -261,10 +310,10 @@
             background: rgba(255, 255, 255, 0.9);
             backdrop-filter: blur(12px);
             border-radius: 980px;
-            border: 1px solid rgba(0,0,0,0.05);
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
+            border: 1px solid rgba(0,0,0,0.08);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
             color: var(--space-grey);
-            font-weight: 500; /* Made slightly thinner for minimalism */
+            font-weight: 600; 
             transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
             cursor: pointer;
             position: relative;
@@ -275,8 +324,8 @@
         }
         .physical-btn:hover {
             background: #FFFFFF;
-            transform: translateY(-1px);
-            box-shadow: 0 6px 14px rgba(0, 0, 0, 0.06); /* Brighter hover pop */
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08); 
         }
         .physical-btn:active {
             transform: scale(0.98);
@@ -291,23 +340,24 @@
             background: var(--store-blue);
             border-radius: 980px;
             border: 1px solid rgba(0,0,0,0.1);
-            box-shadow: 0 4px 12px rgba(0, 102, 204, 0.15); 
+            box-shadow: 0 4px 15px rgba(0, 102, 204, 0.3), inset 0 2px 4px rgba(255,255,255,0.2); 
             color: #ffffff;
-            font-weight: 600;
+            font-weight: 700;
             transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
             cursor: pointer;
             max-width: 100%;
             display: inline-flex;
             align-items: center;
             justify-content: center;
+            text-shadow: 0px 1px 2px rgba(0,0,0,0.2);
         }
         .physical-btn-primary:hover {
             background: #005bb5;
-            transform: translateY(-1px);
-            box-shadow: 0 6px 16px rgba(0, 102, 204, 0.25);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0, 102, 204, 0.4), inset 0 2px 4px rgba(255,255,255,0.2);
         }
         .physical-btn-primary:active {
-            transform: scale(0.98);
+            transform: scale(0.96);
         }
         .physical-btn-primary:disabled {
             opacity: 0.7;
@@ -332,8 +382,8 @@
         }
         .social-btn:hover {
             background: #FFFFFF;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-            transform: scale(1.05);
+            box-shadow: 0 6px 16px rgba(0,0,0,0.1);
+            transform: scale(1.08) translateY(-2px);
         }
         .social-btn-fb svg, .social-btn-x svg {
             fill: var(--space-grey);
@@ -344,7 +394,7 @@
             background-color: var(--surface-grey);
             border-radius: 16px;
             border: 1px solid transparent;
-            box-shadow: none;
+            box-shadow: inset 0 2px 6px rgba(0,0,0,0.02);
             color: var(--space-grey);
             max-width: 100%;
         }
@@ -354,22 +404,22 @@
             width: 10px;
             height: 10px;
             border-radius: 50%;
-            box-shadow: none;
+            box-shadow: 0 0 8px currentColor;
             position: relative;
         }
-        .led-green { background-color: var(--electric-green); }
-        .led-guava { background-color: var(--bright-guava); }
-        .led-purple { background-color: var(--vivid-purple); }
-        .led-off { background-color: #d2d2d7; }
+        .led-green { background-color: var(--electric-green); color: var(--electric-green); }
+        .led-guava { background-color: var(--bright-guava); color: var(--bright-guava); }
+        .led-purple { background-color: var(--vivid-purple); color: var(--vivid-purple); }
+        .led-off { background-color: #d2d2d7; color: transparent; box-shadow: none; }
 
         /* macOS Style Terminal Window */
         .lcd-screen {
             background-color: #050505;
-            border: 1px solid rgba(255,255,255,0.08);
+            border: 1px solid rgba(255,255,255,0.1);
             border-radius: 14px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2), inset 0 1px 1px rgba(255,255,255,0.05);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.4), inset 0 2px 4px rgba(255,255,255,0.05);
             color: #ffffff;
-            font-family: 'JetBrains Mono', monospace; /* Updated to new tech font */
+            font-family: 'JetBrains Mono', monospace; 
             text-shadow: none;
             position: relative;
             overflow: hidden;
@@ -386,6 +436,7 @@
             vertical-align: middle;
             margin-left: 2px;
             border-radius: 1px;
+            box-shadow: 0 0 5px #ffffff;
         }
         @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
 
@@ -393,7 +444,7 @@
         .custom-scrollbar::-webkit-scrollbar { width: 6px; }
         .custom-scrollbar::-webkit-scrollbar-track { background: transparent; }
         .custom-scrollbar::-webkit-scrollbar-thumb { 
-            background: #d2d2d7; 
+            background: #a1a1a6; 
             border-radius: 8px; 
             border: 2px solid var(--surface-grey);
         }
@@ -401,7 +452,7 @@
         /* Layout & Animation */
         .reveal {
             opacity: 0;
-            transform: translate3d(0, 15px, 0); 
+            transform: translate3d(0, 20px, 0); 
             transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
             will-change: transform, opacity;
             backface-visibility: hidden;
@@ -436,32 +487,32 @@
 
     <!-- Apple-style Blurred Glass Navigation Bar -->
     <header class="fixed top-0 left-0 w-full z-[60] bg-[#FFFFFF]/80 backdrop-blur-xl border-b border-[#E5E5EA] py-1.5 flex items-center justify-center transition-all">
-        <span class="text-[9px] sm:text-[10px] font-semibold uppercase tracking-widest text-[#86868B] etched-text text-center px-2">
-            Operated by <span class="text-[#1D1D1F] font-bold">farman.co</span> | Parent Group of Cobra & Runo
+        <span class="text-[9px] sm:text-[10px] font-bold uppercase tracking-widest text-[#555555] etched-text text-center px-2">
+            Operated by <span class="text-[#000000] font-black">farman.co</span> | Parent Group of Cobra & Runo
         </span>
     </header>
 
     <!-- Navigation -->
     <nav class="fixed top-8 left-0 w-full z-[55] px-3 sm:px-6 md:px-10 pt-4 flex items-center justify-between gap-2 sm:gap-4 pointer-events-none" aria-label="Main Navigation">
         <!-- Logo Plate -->
-        <div class="physical-panel shadow-sm border border-[#E5E5EA] px-4 py-2 sm:px-5 sm:py-2.5 flex items-center gap-2 sm:gap-3 pointer-events-auto bg-[#FFFFFF]/90 backdrop-blur-xl shrink-0">
+        <div class="physical-panel shadow-md border border-[#E5E5EA] px-4 py-2 sm:px-5 sm:py-2.5 flex items-center gap-2 sm:gap-3 pointer-events-auto bg-[#FFFFFF]/90 backdrop-blur-xl shrink-0">
             <div class="led-indicator led-green animate-pulse"></div>
-            <span class="text-[#1D1D1F] text-[10px] sm:text-xs font-bold tracking-widest uppercase etched-text font-display italic">FORGESOFTWARE</span>
+            <span class="text-[#000000] text-[10px] sm:text-xs font-black tracking-widest uppercase text-3d font-display italic">FORGESOFTWARE</span>
         </div>
 
         <!-- Desktop Menu -->
-        <div class="hidden lg:flex items-center gap-2 physical-panel shadow-sm border border-[#E5E5EA] px-4 py-1.5 pointer-events-auto bg-[#FFFFFF]/90 backdrop-blur-xl overflow-hidden">
-            <a href="#home" class="physical-btn px-3.5 py-1.5 text-[11px] font-medium uppercase tracking-wide border-transparent hover:border-[#E5E5EA] shadow-none hover:shadow-sm bg-transparent hover:bg-[#FAFAFA]">Home</a>
-            <a href="#what-we-do" class="physical-btn px-3.5 py-1.5 text-[11px] font-medium uppercase tracking-wide border-transparent hover:border-[#E5E5EA] shadow-none hover:shadow-sm bg-transparent hover:bg-[#FAFAFA]">Infrastructure</a>
-            <a href="#services" class="physical-btn px-3.5 py-1.5 text-[11px] font-medium uppercase tracking-wide border-transparent hover:border-[#E5E5EA] shadow-none hover:shadow-sm bg-transparent hover:bg-[#FAFAFA]">Systems</a>
-            <a href="#portfolio" class="physical-btn px-3.5 py-1.5 text-[11px] font-medium uppercase tracking-wide border-transparent hover:border-[#E5E5EA] shadow-none hover:shadow-sm bg-transparent hover:bg-[#FAFAFA]">Deployment</a>
-            <a href="#pricing" class="physical-btn px-3.5 py-1.5 text-[11px] font-medium uppercase tracking-wide border-transparent hover:border-[#E5E5EA] shadow-none hover:shadow-sm bg-transparent hover:bg-[#FAFAFA]">Pricing</a>
-            <a href="#about" class="physical-btn px-3.5 py-1.5 text-[11px] font-medium uppercase tracking-wide border-transparent hover:border-[#E5E5EA] shadow-none hover:shadow-sm bg-transparent hover:bg-[#FAFAFA]">About</a>
+        <div class="hidden lg:flex items-center gap-2 physical-panel shadow-md border border-[#E5E5EA] px-4 py-1.5 pointer-events-auto bg-[#FFFFFF]/90 backdrop-blur-xl overflow-hidden">
+            <a href="#home" class="physical-btn px-3.5 py-1.5 text-[11px] font-semibold uppercase tracking-wide border-transparent hover:border-[#E5E5EA] shadow-none hover:shadow-sm bg-transparent hover:bg-[#FAFAFA]">Home</a>
+            <a href="#what-we-do" class="physical-btn px-3.5 py-1.5 text-[11px] font-semibold uppercase tracking-wide border-transparent hover:border-[#E5E5EA] shadow-none hover:shadow-sm bg-transparent hover:bg-[#FAFAFA]">Infrastructure</a>
+            <a href="#services" class="physical-btn px-3.5 py-1.5 text-[11px] font-semibold uppercase tracking-wide border-transparent hover:border-[#E5E5EA] shadow-none hover:shadow-sm bg-transparent hover:bg-[#FAFAFA]">Systems</a>
+            <a href="#portfolio" class="physical-btn px-3.5 py-1.5 text-[11px] font-semibold uppercase tracking-wide border-transparent hover:border-[#E5E5EA] shadow-none hover:shadow-sm bg-transparent hover:bg-[#FAFAFA]">Deployment</a>
+            <a href="#pricing" class="physical-btn px-3.5 py-1.5 text-[11px] font-semibold uppercase tracking-wide border-transparent hover:border-[#E5E5EA] shadow-none hover:shadow-sm bg-transparent hover:bg-[#FAFAFA]">Pricing</a>
+            <a href="#about" class="physical-btn px-3.5 py-1.5 text-[11px] font-semibold uppercase tracking-wide border-transparent hover:border-[#E5E5EA] shadow-none hover:shadow-sm bg-transparent hover:bg-[#FAFAFA]">About</a>
             
             <div class="w-[1px] h-4 bg-[#E5E5EA] mx-1"></div>
 
             <!-- Premium Wood Menu Button -->
-            <a href="https://farmanshafi2007-hub.github.io/cobra/" target="_blank" rel="noopener noreferrer" class="physical-btn px-4 py-1.5 text-[11px] font-semibold uppercase tracking-wide flex items-center gap-1.5 border border-[#E5E5EA] shadow-sm hover:border-[#0066CC]/30 transition-all bg-[#FFFFFF]">
+            <a href="https://farmanshafi2007-hub.github.io/cobra/" target="_blank" rel="noopener noreferrer" class="physical-btn px-4 py-1.5 text-[11px] font-bold uppercase tracking-wide flex items-center gap-1.5 border border-[#E5E5EA] shadow-sm hover:border-[#0066CC]/30 transition-all bg-[#FFFFFF]">
                 <span class="bg-gradient-to-r from-[#0066CC] to-[#AF52DE] text-transparent bg-clip-text">Wood Fitness</span>
                 <span class="bg-gradient-to-br from-[#FF9500] to-[#FF3B30] text-white text-[7px] px-1 py-[1.5px] rounded-[3px] shadow-sm leading-none tracking-widest font-tech">BETA</span>
             </a>
@@ -469,34 +520,36 @@
 
         <!-- CTA & Mobile Toggle -->
         <div class="flex items-center gap-2 sm:gap-3 pointer-events-auto shrink-0">
-            <button onclick="openEnquiryModal()" class="hidden md:flex physical-btn-primary px-5 py-2.5 text-[11px] font-bold tracking-widest uppercase" aria-label="Open Project Inquiry Modal">
-                Initialize Protocol
+            <!-- UPDATED TEXT & STYLES -->
+            <button onclick="openEnquiryModal()" class="hidden md:flex physical-btn-primary px-5 py-2.5 text-[11px] font-black tracking-widest uppercase icon-3d" aria-label="Open Project Inquiry Modal">
+                Book Your Website
             </button>
             
-            <button id="mobileMenuBtn" class="lg:hidden physical-btn p-2.5 flex items-center justify-center border border-[#E5E5EA]" aria-label="Toggle Mobile Menu">
-                <i data-lucide="menu" class="w-4 h-4 sm:w-5 sm:h-5 text-[#1D1D1F] shrink-0"></i>
+            <button id="mobileMenuBtn" class="lg:hidden physical-btn p-2.5 flex items-center justify-center border border-[#E5E5EA] shadow-md" aria-label="Toggle Mobile Menu">
+                <i data-lucide="menu" class="w-4 h-4 sm:w-5 sm:h-5 text-[#000000] shrink-0 icon-3d"></i>
             </button>
         </div>
     </nav>
 
     <!-- Mobile Menu Overlay -->
     <div id="mobileMenu" class="fixed inset-0 top-[85px] w-full bg-[#FFFFFF]/95 backdrop-blur-xl z-[45] hidden flex-col items-center justify-center space-y-4 px-4 overflow-y-auto overscroll-contain pb-8 border-t border-[#E5E5EA]" role="dialog" aria-modal="true">
-        <a href="#home" class="mobile-link physical-btn w-full max-w-[280px] py-3 text-center text-sm font-medium uppercase tracking-wider shadow-none border-transparent hover:bg-[#FAFAFA]">Home</a>
-        <a href="#what-we-do" class="mobile-link physical-btn w-full max-w-[280px] py-3 text-center text-sm font-medium uppercase tracking-wider shadow-none border-transparent hover:bg-[#FAFAFA]">Infrastructure</a>
-        <a href="#services" class="mobile-link physical-btn w-full max-w-[280px] py-3 text-center text-sm font-medium uppercase tracking-wider shadow-none border-transparent hover:bg-[#FAFAFA]">Systems</a>
-        <a href="#portfolio" class="mobile-link physical-btn w-full max-w-[280px] py-3 text-center text-sm font-medium uppercase tracking-wider shadow-none border-transparent hover:bg-[#FAFAFA]">Deployment</a>
-        <a href="#pricing" class="mobile-link physical-btn w-full max-w-[280px] py-3 text-center text-sm font-medium uppercase tracking-wider shadow-none border-transparent hover:bg-[#FAFAFA]">Pricing</a>
-        <a href="#about" class="mobile-link physical-btn w-full max-w-[280px] py-3 text-center text-sm font-medium uppercase tracking-wider shadow-none border-transparent hover:bg-[#FAFAFA]">About</a>
+        <a href="#home" class="mobile-link physical-btn w-full max-w-[280px] py-3 text-center text-sm font-bold uppercase tracking-wider shadow-none border-transparent hover:bg-[#FAFAFA]">Home</a>
+        <a href="#what-we-do" class="mobile-link physical-btn w-full max-w-[280px] py-3 text-center text-sm font-bold uppercase tracking-wider shadow-none border-transparent hover:bg-[#FAFAFA]">Infrastructure</a>
+        <a href="#services" class="mobile-link physical-btn w-full max-w-[280px] py-3 text-center text-sm font-bold uppercase tracking-wider shadow-none border-transparent hover:bg-[#FAFAFA]">Systems</a>
+        <a href="#portfolio" class="mobile-link physical-btn w-full max-w-[280px] py-3 text-center text-sm font-bold uppercase tracking-wider shadow-none border-transparent hover:bg-[#FAFAFA]">Deployment</a>
+        <a href="#pricing" class="mobile-link physical-btn w-full max-w-[280px] py-3 text-center text-sm font-bold uppercase tracking-wider shadow-none border-transparent hover:bg-[#FAFAFA]">Pricing</a>
+        <a href="#about" class="mobile-link physical-btn w-full max-w-[280px] py-3 text-center text-sm font-bold uppercase tracking-wider shadow-none border-transparent hover:bg-[#FAFAFA]">About</a>
         
         <div class="w-12 h-[1px] bg-[#E5E5EA] my-2"></div>
 
-        <a href="https://farmanshafi2007-hub.github.io/cobra/" target="_blank" rel="noopener noreferrer" class="mobile-link physical-btn w-full max-w-[280px] py-3 text-center text-sm font-semibold uppercase tracking-wider flex items-center justify-center gap-1.5 border border-[#E5E5EA] shadow-sm bg-[#FFFFFF]">
+        <a href="https://farmanshafi2007-hub.github.io/cobra/" target="_blank" rel="noopener noreferrer" class="mobile-link physical-btn w-full max-w-[280px] py-3 text-center text-sm font-black uppercase tracking-wider flex items-center justify-center gap-1.5 border border-[#E5E5EA] shadow-md bg-[#FFFFFF]">
             <span class="bg-gradient-to-r from-[#0066CC] to-[#AF52DE] text-transparent bg-clip-text">Wood Fitness</span>
             <span class="bg-gradient-to-br from-[#FF9500] to-[#FF3B30] text-white text-[7px] px-1 py-[1.5px] rounded-[3px] shadow-sm leading-none tracking-widest font-tech">BETA</span>
         </a>
         
-        <button onclick="document.getElementById('mobileMenuBtn').click(); openEnquiryModal();" class="mobile-link physical-btn-primary w-full max-w-[280px] py-4 text-center text-sm font-bold uppercase tracking-wider text-white mt-4">
-            Initialize Protocol
+        <!-- UPDATED TEXT -->
+        <button onclick="document.getElementById('mobileMenuBtn').click(); openEnquiryModal();" class="mobile-link physical-btn-primary w-full max-w-[280px] py-4 text-center text-sm font-black uppercase tracking-wider text-white mt-4 icon-3d">
+            Book Your Website
         </button>
     </div>
 
@@ -510,95 +563,129 @@
 
             <div class="w-full max-w-5xl mx-auto flex flex-col items-center reveal active relative z-10">
                 
-                <div class="physical-panel border border-[#E5E5EA] px-4 py-2 sm:px-5 sm:py-2.5 mb-8 flex items-center gap-3 bg-[#FFFFFF]/80 backdrop-blur-md rounded-full shadow-sm">
+                <div class="physical-panel border border-[#E5E5EA] px-4 py-2 sm:px-5 sm:py-2.5 mb-8 flex items-center gap-3 bg-[#FFFFFF]/90 backdrop-blur-md rounded-full shadow-md">
                     <div class="led-indicator led-green animate-pulse shrink-0"></div>
-                    <span class="text-[#86868B] font-semibold tracking-[0.2em] uppercase text-[9px] sm:text-xs etched-text font-tech">Systems Engineered in Kashmir</span>
+                    <span class="text-[#555555] font-bold tracking-[0.2em] uppercase text-[9px] sm:text-xs etched-text font-tech text-3d">Systems Engineered in Kashmir</span>
                 </div>
                 
-                <!-- Added font-display for an elegant serif headline -->
-                <h1 class="font-display font-black text-4xl sm:text-5xl md:text-6xl lg:text-[76px] text-[#1D1D1F] tracking-tighter leading-[1.1] mb-6 uppercase etched-text break-words w-full">
+                <!-- Added font-display for an elegant serif headline, Pitch Black -->
+                <h1 class="font-display font-black text-4xl sm:text-5xl md:text-6xl lg:text-[76px] text-[#000000] tracking-tighter leading-[1.1] mb-6 uppercase text-3d break-words w-full">
                     Deploy <span class="bg-gradient-to-r from-[#0066CC] to-[#AF52DE] text-transparent bg-clip-text">Intelligent Architecture</span> <br class="hidden lg:block" />& Autonomous Agents.
                 </h1>
 
-                <!-- Made text minimal by utilizing font-light and looser line height -->
-                <p class="text-[#86868B] font-light text-sm sm:text-base md:text-lg z-10 mb-10 max-w-2xl mx-auto embossed-text px-2 w-full leading-relaxed">
+                <!-- Made text minimal by utilizing font-medium for visibility -->
+                <p class="text-[#555555] font-medium text-sm sm:text-base md:text-lg z-10 mb-10 max-w-2xl mx-auto px-2 w-full leading-relaxed text-3d">
                     We engineer premium web platforms and intelligent AI systems. Automate acquisition. Operate continuously.
                 </p>
 
                 <!-- Added Trust Indicators -->
                 <div class="flex items-center justify-center gap-4 sm:gap-6 mb-10 flex-wrap w-full">
-                    <span class="text-[10px] sm:text-xs font-semibold text-[#1D1D1F] uppercase tracking-widest flex items-center gap-1.5 bg-[#FAFAFA] px-3 py-1.5 rounded-md border border-[#E5E5EA]">
-                        <i data-lucide="check-circle" class="w-3 h-3 sm:w-4 sm:h-4 text-[#34C759] shrink-0"></i> Verified Logic
+                    <span class="text-[10px] sm:text-xs font-bold text-[#000000] uppercase tracking-widest flex items-center gap-1.5 bg-[#FAFAFA] px-3 py-1.5 rounded-md border border-[#E5E5EA] shadow-sm">
+                        <i data-lucide="check-circle" class="w-3 h-3 sm:w-4 sm:h-4 text-[#34C759] shrink-0 icon-3d"></i> Verified Logic
                     </span>
-                    <span class="text-[10px] sm:text-xs font-semibold text-[#1D1D1F] uppercase tracking-widest flex items-center gap-1.5 bg-[#FAFAFA] px-3 py-1.5 rounded-md border border-[#E5E5EA]">
-                        <i data-lucide="shield" class="w-3 h-3 sm:w-4 sm:h-4 text-[#0066CC] shrink-0"></i> Secure Infrastructure
+                    <span class="text-[10px] sm:text-xs font-bold text-[#000000] uppercase tracking-widest flex items-center gap-1.5 bg-[#FAFAFA] px-3 py-1.5 rounded-md border border-[#E5E5EA] shadow-sm">
+                        <i data-lucide="shield" class="w-3 h-3 sm:w-4 sm:h-4 text-[#0066CC] shrink-0 icon-3d"></i> Secure Infrastructure
                     </span>
-                    <span class="text-[10px] sm:text-xs font-semibold text-[#1D1D1F] uppercase tracking-widest flex items-center gap-1.5 bg-[#FAFAFA] px-3 py-1.5 rounded-md border border-[#E5E5EA]">
-                        <i data-lucide="zap" class="w-3 h-3 sm:w-4 sm:h-4 text-[#FF9500] shrink-0"></i> Rapid Deployment
+                    <span class="text-[10px] sm:text-xs font-bold text-[#000000] uppercase tracking-widest flex items-center gap-1.5 bg-[#FAFAFA] px-3 py-1.5 rounded-md border border-[#E5E5EA] shadow-sm">
+                        <i data-lucide="zap" class="w-3 h-3 sm:w-4 sm:h-4 text-[#FF9500] shrink-0 icon-3d"></i> Rapid Deployment
                     </span>
                 </div>
 
                 <div class="flex flex-col sm:flex-row items-center justify-center gap-4 w-full sm:w-auto px-4">
-                    <button onclick="openEnquiryModal()" class="physical-btn-primary w-full sm:w-auto px-8 py-4 sm:px-10 sm:py-4 text-xs sm:text-sm font-bold tracking-[0.2em] uppercase text-white shadow-md font-tech" aria-label="Start Project">
-                        Deploy System
+                    <!-- UPDATED TEXT -->
+                    <button onclick="openEnquiryModal()" class="physical-btn-primary w-full sm:w-auto px-8 py-4 sm:px-10 sm:py-4 text-xs sm:text-sm font-black tracking-[0.2em] uppercase text-white shadow-xl font-tech icon-3d" aria-label="Start Project">
+                        Book Your Website
                     </button>
-                    <a href="#services" class="physical-btn w-full sm:w-auto px-8 py-4 sm:px-10 sm:py-4 text-xs sm:text-sm font-semibold tracking-[0.2em] uppercase flex items-center justify-center gap-2 border border-[#E5E5EA] bg-[#FAFAFA] font-tech">
-                        <i data-lucide="cpu" class="w-4 h-4 sm:w-5 sm:h-5 shrink-0"></i> View Architecture
+                    <a href="#services" class="physical-btn w-full sm:w-auto px-8 py-4 sm:px-10 sm:py-4 text-xs sm:text-sm font-bold tracking-[0.2em] uppercase flex items-center justify-center gap-2 border border-[#E5E5EA] bg-[#FAFAFA] shadow-md font-tech text-3d">
+                        <i data-lucide="cpu" class="w-4 h-4 sm:w-5 sm:h-5 shrink-0 icon-3d"></i> View Architecture
                     </a>
                 </div>
             </div>
         </section>
 
-        <!-- UPDATED: Client Trust Logos Section (Expanded to 8 Realistic Fakes with Floating Animation) -->
+        <!-- UPDATED: Client Trust Logos Section (Enlarged Sizes) -->
         <section id="trust-logos" class="py-16 border-y border-[#E5E5EA] bg-[#FAFAFA] w-full relative overflow-hidden">
             <!-- Subtle background glow for a non-boring UX -->
-            <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-[800px] h-[300px] bg-gradient-to-r from-[#0066CC]/5 via-[#AF52DE]/5 to-[#FF9500]/5 blur-3xl pointer-events-none rounded-full"></div>
+            <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-[800px] h-[300px] bg-gradient-to-r from-[#0066CC]/10 via-[#AF52DE]/10 to-[#FF9500]/10 blur-3xl pointer-events-none rounded-full"></div>
             
-            <div class="w-full max-w-7xl mx-auto px-4 text-center reveal relative z-10">
-                <p class="text-[9px] sm:text-[10px] font-semibold uppercase tracking-[0.3em] text-[#86868B] mb-2 etched-text font-tech">Deployed by forward-thinking organizations</p>
+            <div class="w-full mx-auto text-center reveal relative z-10 overflow-hidden">
+                <p class="text-[9px] sm:text-[10px] font-bold uppercase tracking-[0.3em] text-[#555555] mb-2 text-3d font-tech">Deployed by forward-thinking organizations</p>
                 
-                <!-- NEW: Large Colorful Heading -->
-                <h3 class="text-4xl sm:text-5xl md:text-6xl font-black mb-12 bg-gradient-to-r from-[#0066CC] via-[#AF52DE] to-[#FF9500] text-transparent bg-clip-text font-display drop-shadow-sm pb-2 inline-block">Our Special Clients</h3>
+                <!-- Large Colorful Heading -->
+                <h3 class="text-4xl sm:text-5xl md:text-6xl font-black mb-12 bg-gradient-to-r from-[#0066CC] via-[#AF52DE] to-[#FF9500] text-transparent bg-clip-text font-display drop-shadow-md pb-2 inline-block">Our Special Clients</h3>
 
-                <div class="grid grid-cols-2 md:grid-cols-4 gap-8 sm:gap-12 opacity-80 hover:opacity-100 transition-opacity duration-500 place-items-center w-full max-w-6xl mx-auto">
-                    <!-- Logo 1 -->
-                    <div class="animate-float text-sm sm:text-base md:text-xl font-black tracking-tight text-[#1D1D1F] uppercase flex items-center justify-center gap-2 font-display w-full hover:text-[#0066CC] transition-colors cursor-default"><i data-lucide="layers" class="w-5 h-5 sm:w-8 sm:h-8 text-[#0066CC] shrink-0"></i> NexaCore</div>
-                    <!-- Logo 2 -->
-                    <div class="animate-float animate-delay-1 text-sm sm:text-base md:text-xl font-black tracking-tight text-[#1D1D1F] uppercase flex items-center justify-center gap-2 font-display w-full hover:text-[#34C759] transition-colors cursor-default"><i data-lucide="activity" class="w-5 h-5 sm:w-8 sm:h-8 text-[#34C759] shrink-0"></i> Lumina</div>
-                    <!-- Logo 3 -->
-                    <div class="animate-float animate-delay-2 text-sm sm:text-base md:text-xl font-black tracking-tight text-[#1D1D1F] uppercase flex items-center justify-center gap-2 font-display w-full hover:text-[#FF9500] transition-colors cursor-default"><i data-lucide="shopping-bag" class="w-5 h-5 sm:w-8 sm:h-8 text-[#FF9500] shrink-0"></i> Horizon</div>
-                    <!-- Logo 4 -->
-                    <div class="animate-float animate-delay-3 text-sm sm:text-base md:text-xl font-black tracking-tight text-[#1D1D1F] uppercase flex items-center justify-center gap-2 font-display w-full hover:text-[#AF52DE] transition-colors cursor-default"><i data-lucide="briefcase" class="w-5 h-5 sm:w-8 sm:h-8 text-[#AF52DE] shrink-0"></i> Elevate</div>
-                    <!-- Logo 5 -->
-                    <div class="animate-float animate-delay-2 text-sm sm:text-base md:text-xl font-black tracking-tight text-[#1D1D1F] uppercase flex items-center justify-center gap-2 font-display w-full hover:text-[#0066CC] transition-colors cursor-default mt-4 md:mt-0"><i data-lucide="cpu" class="w-5 h-5 sm:w-8 sm:h-8 text-[#0066CC] shrink-0"></i> Quantum</div>
-                    <!-- Logo 6 -->
-                    <div class="animate-float animate-delay-3 text-sm sm:text-base md:text-xl font-black tracking-tight text-[#1D1D1F] uppercase flex items-center justify-center gap-2 font-display w-full hover:text-[#34C759] transition-colors cursor-default mt-4 md:mt-0"><i data-lucide="pie-chart" class="w-5 h-5 sm:w-8 sm:h-8 text-[#34C759] shrink-0"></i> Vertex</div>
-                    <!-- Logo 7 -->
-                    <div class="animate-float text-sm sm:text-base md:text-xl font-black tracking-tight text-[#1D1D1F] uppercase flex items-center justify-center gap-2 font-display w-full hover:text-[#FF9500] transition-colors cursor-default mt-4 md:mt-0"><i data-lucide="zap" class="w-5 h-5 sm:w-8 sm:h-8 text-[#FF9500] shrink-0"></i> Apex</div>
-                    <!-- Logo 8 -->
-                    <div class="animate-float animate-delay-1 text-sm sm:text-base md:text-xl font-black tracking-tight text-[#1D1D1F] uppercase flex items-center justify-center gap-2 font-display w-full hover:text-[#AF52DE] transition-colors cursor-default mt-4 md:mt-0"><i data-lucide="globe" class="w-5 h-5 sm:w-8 sm:h-8 text-[#AF52DE] shrink-0"></i> GlobalNet</div>
+                <!-- Marquee Train Wrapper -->
+                <div class="relative w-full overflow-hidden flex items-center py-4 group">
+                    <!-- Smooth Fade Edges -->
+                    <div class="absolute left-0 top-0 bottom-0 w-16 md:w-32 bg-gradient-to-r from-[#FAFAFA] to-transparent z-20 pointer-events-none"></div>
+                    <div class="absolute right-0 top-0 bottom-0 w-16 md:w-32 bg-gradient-to-l from-[#FAFAFA] to-transparent z-20 pointer-events-none"></div>
+                    
+                    <!-- Scrolling Track -->
+                    <div class="animate-marquee-ltr opacity-90 group-hover:opacity-100 transition-opacity duration-500">
+                        
+                        <!-- Original Set of 8 Logos (SIZES INCREASED) -->
+                        <div class="flex items-center gap-12 sm:gap-16 md:gap-24 justify-around min-w-max pr-12 sm:pr-16 md:pr-24">
+                            <!-- Logo 1 -->
+                            <div class="animate-float whitespace-nowrap shrink-0 text-lg sm:text-2xl md:text-3xl font-black tracking-tight text-[#000000] uppercase flex items-center justify-center gap-3 font-display hover:text-[#0066CC] transition-colors cursor-default text-3d"><i data-lucide="layers" class="w-6 h-6 sm:w-10 sm:h-10 text-[#0066CC] shrink-0 icon-3d"></i> NexaCore</div>
+                            <!-- Logo 2 -->
+                            <div class="animate-float animate-delay-1 whitespace-nowrap shrink-0 text-lg sm:text-2xl md:text-3xl font-black tracking-tight text-[#000000] uppercase flex items-center justify-center gap-3 font-display hover:text-[#34C759] transition-colors cursor-default text-3d"><i data-lucide="activity" class="w-6 h-6 sm:w-10 sm:h-10 text-[#34C759] shrink-0 icon-3d"></i> Lumina</div>
+                            <!-- Logo 3 -->
+                            <div class="animate-float animate-delay-2 whitespace-nowrap shrink-0 text-lg sm:text-2xl md:text-3xl font-black tracking-tight text-[#000000] uppercase flex items-center justify-center gap-3 font-display hover:text-[#FF9500] transition-colors cursor-default text-3d"><i data-lucide="shopping-bag" class="w-6 h-6 sm:w-10 sm:h-10 text-[#FF9500] shrink-0 icon-3d"></i> Horizon</div>
+                            <!-- Logo 4 -->
+                            <div class="animate-float animate-delay-3 whitespace-nowrap shrink-0 text-lg sm:text-2xl md:text-3xl font-black tracking-tight text-[#000000] uppercase flex items-center justify-center gap-3 font-display hover:text-[#AF52DE] transition-colors cursor-default text-3d"><i data-lucide="briefcase" class="w-6 h-6 sm:w-10 sm:h-10 text-[#AF52DE] shrink-0 icon-3d"></i> Elevate</div>
+                            <!-- Logo 5 -->
+                            <div class="animate-float animate-delay-2 whitespace-nowrap shrink-0 text-lg sm:text-2xl md:text-3xl font-black tracking-tight text-[#000000] uppercase flex items-center justify-center gap-3 font-display hover:text-[#0066CC] transition-colors cursor-default text-3d"><i data-lucide="cpu" class="w-6 h-6 sm:w-10 sm:h-10 text-[#0066CC] shrink-0 icon-3d"></i> Quantum</div>
+                            <!-- Logo 6 -->
+                            <div class="animate-float animate-delay-3 whitespace-nowrap shrink-0 text-lg sm:text-2xl md:text-3xl font-black tracking-tight text-[#000000] uppercase flex items-center justify-center gap-3 font-display hover:text-[#34C759] transition-colors cursor-default text-3d"><i data-lucide="pie-chart" class="w-6 h-6 sm:w-10 sm:h-10 text-[#34C759] shrink-0 icon-3d"></i> Vertex</div>
+                            <!-- Logo 7 -->
+                            <div class="animate-float whitespace-nowrap shrink-0 text-lg sm:text-2xl md:text-3xl font-black tracking-tight text-[#000000] uppercase flex items-center justify-center gap-3 font-display hover:text-[#FF9500] transition-colors cursor-default text-3d"><i data-lucide="zap" class="w-6 h-6 sm:w-10 sm:h-10 text-[#FF9500] shrink-0 icon-3d"></i> Apex</div>
+                            <!-- Logo 8 -->
+                            <div class="animate-float animate-delay-1 whitespace-nowrap shrink-0 text-lg sm:text-2xl md:text-3xl font-black tracking-tight text-[#000000] uppercase flex items-center justify-center gap-3 font-display hover:text-[#AF52DE] transition-colors cursor-default text-3d"><i data-lucide="globe" class="w-6 h-6 sm:w-10 sm:h-10 text-[#AF52DE] shrink-0 icon-3d"></i> GlobalNet</div>
+                        </div>
+
+                        <!-- Duplicate Set for Seamless LTR Loop (SIZES INCREASED) -->
+                        <div class="flex items-center gap-12 sm:gap-16 md:gap-24 justify-around min-w-max pr-12 sm:pr-16 md:pr-24">
+                            <!-- Logo 1 -->
+                            <div class="animate-float whitespace-nowrap shrink-0 text-lg sm:text-2xl md:text-3xl font-black tracking-tight text-[#000000] uppercase flex items-center justify-center gap-3 font-display hover:text-[#0066CC] transition-colors cursor-default text-3d"><i data-lucide="layers" class="w-6 h-6 sm:w-10 sm:h-10 text-[#0066CC] shrink-0 icon-3d"></i> NexaCore</div>
+                            <!-- Logo 2 -->
+                            <div class="animate-float animate-delay-1 whitespace-nowrap shrink-0 text-lg sm:text-2xl md:text-3xl font-black tracking-tight text-[#000000] uppercase flex items-center justify-center gap-3 font-display hover:text-[#34C759] transition-colors cursor-default text-3d"><i data-lucide="activity" class="w-6 h-6 sm:w-10 sm:h-10 text-[#34C759] shrink-0 icon-3d"></i> Lumina</div>
+                            <!-- Logo 3 -->
+                            <div class="animate-float animate-delay-2 whitespace-nowrap shrink-0 text-lg sm:text-2xl md:text-3xl font-black tracking-tight text-[#000000] uppercase flex items-center justify-center gap-3 font-display hover:text-[#FF9500] transition-colors cursor-default text-3d"><i data-lucide="shopping-bag" class="w-6 h-6 sm:w-10 sm:h-10 text-[#FF9500] shrink-0 icon-3d"></i> Horizon</div>
+                            <!-- Logo 4 -->
+                            <div class="animate-float animate-delay-3 whitespace-nowrap shrink-0 text-lg sm:text-2xl md:text-3xl font-black tracking-tight text-[#000000] uppercase flex items-center justify-center gap-3 font-display hover:text-[#AF52DE] transition-colors cursor-default text-3d"><i data-lucide="briefcase" class="w-6 h-6 sm:w-10 sm:h-10 text-[#AF52DE] shrink-0 icon-3d"></i> Elevate</div>
+                            <!-- Logo 5 -->
+                            <div class="animate-float animate-delay-2 whitespace-nowrap shrink-0 text-lg sm:text-2xl md:text-3xl font-black tracking-tight text-[#000000] uppercase flex items-center justify-center gap-3 font-display hover:text-[#0066CC] transition-colors cursor-default text-3d"><i data-lucide="cpu" class="w-6 h-6 sm:w-10 sm:h-10 text-[#0066CC] shrink-0 icon-3d"></i> Quantum</div>
+                            <!-- Logo 6 -->
+                            <div class="animate-float animate-delay-3 whitespace-nowrap shrink-0 text-lg sm:text-2xl md:text-3xl font-black tracking-tight text-[#000000] uppercase flex items-center justify-center gap-3 font-display hover:text-[#34C759] transition-colors cursor-default text-3d"><i data-lucide="pie-chart" class="w-6 h-6 sm:w-10 sm:h-10 text-[#34C759] shrink-0 icon-3d"></i> Vertex</div>
+                            <!-- Logo 7 -->
+                            <div class="animate-float whitespace-nowrap shrink-0 text-lg sm:text-2xl md:text-3xl font-black tracking-tight text-[#000000] uppercase flex items-center justify-center gap-3 font-display hover:text-[#FF9500] transition-colors cursor-default text-3d"><i data-lucide="zap" class="w-6 h-6 sm:w-10 sm:h-10 text-[#FF9500] shrink-0 icon-3d"></i> Apex</div>
+                            <!-- Logo 8 -->
+                            <div class="animate-float animate-delay-1 whitespace-nowrap shrink-0 text-lg sm:text-2xl md:text-3xl font-black tracking-tight text-[#000000] uppercase flex items-center justify-center gap-3 font-display hover:text-[#AF52DE] transition-colors cursor-default text-3d"><i data-lucide="globe" class="w-6 h-6 sm:w-10 sm:h-10 text-[#AF52DE] shrink-0 icon-3d"></i> GlobalNet</div>
+                        </div>
+
+                    </div>
                 </div>
             </div>
         </section>
 
-        <!-- NEW: Success Metrics Section (ROI Focused) -->
+        <!-- Success Metrics Section (ROI Focused) -->
         <section id="metrics" class="py-16 md:py-24 px-4 relative bg-[#FFFFFF] w-full">
             <div class="w-full max-w-6xl mx-auto">
                 <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
-                    <div class="physical-panel reveal p-8 text-center flex flex-col items-center bg-[#FAFAFA] w-full border border-[#E5E5EA] shadow-sm hover:shadow-md">
+                    <div class="physical-panel reveal p-8 text-center flex flex-col items-center bg-[#FAFAFA] w-full border border-[#E5E5EA] shadow-lg hover:shadow-xl">
                         <div class="screw screw-tl"></div><div class="screw screw-br"></div>
-                        <h4 class="text-4xl sm:text-5xl font-black text-[#1D1D1F] etched-text mb-2 tracking-tighter font-display">350%</h4>
-                        <p class="text-[10px] sm:text-xs font-semibold uppercase tracking-widest text-[#86868B] font-tech">Lead Velocity</p>
+                        <h4 class="text-4xl sm:text-5xl font-black text-[#000000] text-3d mb-2 tracking-tighter font-display">350%</h4>
+                        <p class="text-[10px] sm:text-xs font-bold uppercase tracking-widest text-[#555555] font-tech text-3d">Lead Velocity</p>
                     </div>
-                    <div class="physical-panel reveal p-8 text-center flex flex-col items-center bg-[#FAFAFA] w-full border border-[#E5E5EA] shadow-sm hover:shadow-md" style="transition-delay: 100ms;">
+                    <div class="physical-panel reveal p-8 text-center flex flex-col items-center bg-[#FAFAFA] w-full border border-[#E5E5EA] shadow-lg hover:shadow-xl" style="transition-delay: 100ms;">
                         <div class="screw screw-tl"></div><div class="screw screw-br"></div>
-                        <h4 class="text-4xl sm:text-5xl font-black text-[#1D1D1F] etched-text mb-2 tracking-tighter font-display">24/7</h4>
-                        <p class="text-[10px] sm:text-xs font-semibold uppercase tracking-widest text-[#86868B] font-tech">Autonomous Operations</p>
+                        <h4 class="text-4xl sm:text-5xl font-black text-[#000000] text-3d mb-2 tracking-tighter font-display">24/7</h4>
+                        <p class="text-[10px] sm:text-xs font-bold uppercase tracking-widest text-[#555555] font-tech text-3d">Autonomous Operations</p>
                     </div>
-                    <div class="physical-panel reveal p-8 text-center flex flex-col items-center bg-[#FAFAFA] w-full border border-[#E5E5EA] shadow-sm hover:shadow-md" style="transition-delay: 200ms;">
+                    <div class="physical-panel reveal p-8 text-center flex flex-col items-center bg-[#FAFAFA] w-full border border-[#E5E5EA] shadow-lg hover:shadow-xl" style="transition-delay: 200ms;">
                         <div class="screw screw-tl"></div><div class="screw screw-br"></div>
-                        <h4 class="text-4xl sm:text-5xl font-black text-[#1D1D1F] etched-text mb-2 tracking-tighter font-display">99.9%</h4>
-                        <p class="text-[10px] sm:text-xs font-semibold uppercase tracking-widest text-[#86868B] font-tech">System Reliability</p>
+                        <h4 class="text-4xl sm:text-5xl font-black text-[#000000] text-3d mb-2 tracking-tighter font-display">99.9%</h4>
+                        <p class="text-[10px] sm:text-xs font-bold uppercase tracking-widest text-[#555555] font-tech text-3d">System Reliability</p>
                     </div>
                 </div>
             </div>
@@ -607,45 +694,45 @@
         <!-- Playground / Chat Section -->
         <section id="ai-playground" class="py-16 md:py-28 px-4 relative border-y border-[#E5E5EA] bg-[#FAFAFA] w-full">
             <div class="w-full max-w-4xl mx-auto text-center mb-12 reveal">
-                <h2 class="text-3xl sm:text-4xl md:text-5xl font-black uppercase tracking-tight etched-text leading-tight mb-4 text-[#1D1D1F] px-2 break-words font-display">
+                <h2 class="text-3xl sm:text-4xl md:text-5xl font-black uppercase tracking-tight text-3d leading-tight mb-4 text-[#000000] px-2 break-words font-display">
                     Interact.<br />Test our autonomous agent.
                 </h2>
-                <p class="text-[#86868B] font-semibold uppercase tracking-widest text-[10px] sm:text-xs embossed-text font-tech">Live Terminal Simulation</p>
+                <p class="text-[#555555] font-bold uppercase tracking-widest text-[10px] sm:text-xs text-3d font-tech">Live Terminal Simulation</p>
             </div>
             
             <!-- Physical Terminal UI -->
-            <div class="w-full max-w-3xl mx-auto physical-panel bg-[#FFFFFF] p-2 sm:p-4 reveal shadow-md" id="terminal-container">
+            <div class="w-full max-w-3xl mx-auto physical-panel bg-[#FFFFFF] p-2 sm:p-4 reveal shadow-2xl" id="terminal-container">
                 <div class="screw screw-tl"></div>
                 <div class="screw screw-tr"></div>
                 <div class="screw screw-bl"></div>
                 <div class="screw screw-br"></div>
 
                 <!-- Screen Bezel -->
-                <div class="bg-[#0A0A0A] p-1.5 sm:p-2 rounded-2xl relative overflow-hidden w-full shadow-xl">
+                <div class="bg-[#0A0A0A] p-1.5 sm:p-2 rounded-2xl relative overflow-hidden w-full shadow-2xl">
                     <!-- LCD Screen -->
                     <div class="lcd-screen rounded-xl p-4 sm:p-6 h-[320px] sm:h-[400px] flex flex-col relative z-10 w-full overflow-hidden">
                         
                         <!-- Chat header (Terminal style) -->
                         <div class="border-b border-[#333333] pb-3 mb-4 flex items-center justify-between opacity-80 relative z-20">
                             <div class="flex items-center gap-3">
-                                <i data-lucide="terminal" class="w-4 h-4 sm:w-5 sm:h-5 text-[#86868B] shrink-0"></i>
+                                <i data-lucide="terminal" class="w-4 h-4 sm:w-5 sm:h-5 text-[#86868B] shrink-0 icon-3d"></i>
                                 <div>
-                                    <h4 class="font-bold tracking-widest uppercase text-xs sm:text-sm text-[#F5F5F7]">Forge AI Node</h4>
+                                    <h4 class="font-bold tracking-widest uppercase text-xs sm:text-sm text-[#FFFFFF] text-3d">Forge AI Node</h4>
                                     <p class="text-[8px] sm:text-[10px] uppercase tracking-widest font-bold text-[#34C759]">Status: Active_</p>
                                 </div>
                             </div>
-                            <div class="text-[10px] font-bold hidden sm:block text-[#86868B]">SYS_TIME: <span id="sys-time" class="text-[#F5F5F7]">--:--:--</span></div>
+                            <div class="text-[10px] font-bold hidden sm:block text-[#86868B]">SYS_TIME: <span id="sys-time" class="text-[#FFFFFF]">--:--:--</span></div>
                         </div>
                         
                         <!-- Messages -->
-                        <div class="flex-1 overflow-y-auto custom-scrollbar pr-2 space-y-4 text-sm sm:text-base relative z-20 text-[#F5F5F7]" id="terminal-output">
+                        <div class="flex-1 overflow-y-auto custom-scrollbar pr-2 space-y-4 text-sm sm:text-base relative z-20 text-[#FFFFFF]" id="terminal-output">
                             <!-- Content will be injected by JavaScript typing simulator -->
                         </div>
                         
                         <!-- Input area -->
                         <div class="mt-4 pt-3 border-t border-[#333333] flex gap-2 relative z-20 items-center">
                             <div class="font-bold shrink-0 text-[#0066CC]">></div>
-                            <input type="text" placeholder="SYSTEM LOCKED. AWAITING OVERRIDE..." class="w-full bg-transparent border-none text-[#F5F5F7] font-inherit focus:outline-none placeholder-[#555555] uppercase text-[10px] sm:text-sm font-bold tracking-wide" disabled="disabled">
+                            <input type="text" placeholder="SYSTEM LOCKED. AWAITING OVERRIDE..." class="w-full bg-transparent border-none text-[#FFFFFF] font-inherit focus:outline-none placeholder-[#888888] uppercase text-[10px] sm:text-sm font-bold tracking-wide" disabled="disabled">
                         </div>
                     </div>
                 </div>
@@ -655,59 +742,59 @@
                     <div class="flex gap-6">
                         <div class="flex flex-col items-center gap-1.5">
                             <div class="led-indicator led-purple shrink-0"></div>
-                            <span class="text-[8px] font-bold uppercase text-[#86868B] etched-text">PWR</span>
+                            <span class="text-[8px] font-bold uppercase text-[#555555] text-3d">PWR</span>
                         </div>
                         <div class="flex flex-col items-center gap-1.5">
                             <div class="led-indicator led-green animate-pulse shrink-0"></div>
-                            <span class="text-[8px] font-bold uppercase text-[#86868B] etched-text">NET</span>
+                            <span class="text-[8px] font-bold uppercase text-[#555555] text-3d">NET</span>
                         </div>
                         <div class="flex flex-col items-center gap-1.5">
                             <div class="led-indicator led-guava shrink-0" id="data-led"></div>
-                            <span class="text-[8px] font-bold uppercase text-[#86868B] etched-text">DAT</span>
+                            <span class="text-[8px] font-bold uppercase text-[#555555] text-3d">DAT</span>
                         </div>
                     </div>
                     
-                    <button class="physical-btn w-full sm:w-auto px-6 py-2 sm:py-2.5 text-[10px] font-bold uppercase tracking-widest flex items-center justify-center gap-2 border-[#E5E5EA] bg-[#FAFAFA]" onclick="openEnquiryModal()">
-                        <i data-lucide="power" class="w-3 h-3 shrink-0"></i> System Override
+                    <button class="physical-btn w-full sm:w-auto px-6 py-2 sm:py-2.5 text-[10px] font-bold uppercase tracking-widest flex items-center justify-center gap-2 border-[#E5E5EA] bg-[#FAFAFA] shadow-md icon-3d text-3d" onclick="openEnquiryModal()">
+                        <i data-lucide="power" class="w-3 h-3 shrink-0 icon-3d"></i> System Override
                     </button>
                 </div>
             </div>
         </section>
 
-        <!-- NEW: Case Study / Before & After Section -->
+        <!-- Case Study / Before & After Section -->
         <section class="py-16 md:py-24 px-4 md:px-16 border-b border-[#E5E5EA] bg-[#FFFFFF] w-full">
             <div class="w-full max-w-6xl mx-auto">
                 <div class="mb-12 text-center reveal">
-                    <span class="text-[9px] sm:text-[10px] font-semibold text-[#86868B] tracking-widest uppercase etched-text font-tech">System Infrastructure</span>
-                    <h2 class="text-3xl sm:text-4xl md:text-5xl font-black uppercase mt-2 leading-[1.1] text-[#1D1D1F] tracking-tight font-display">Architecture Shift</h2>
+                    <span class="text-[9px] sm:text-[10px] font-bold text-[#555555] tracking-widest uppercase text-3d font-tech">System Infrastructure</span>
+                    <h2 class="text-3xl sm:text-4xl md:text-5xl font-black uppercase mt-2 leading-[1.1] text-[#000000] tracking-tight font-display text-3d">Architecture Shift</h2>
                 </div>
                 
                 <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 reveal w-full">
                     <!-- Before Panel -->
-                    <div class="physical-panel p-6 sm:p-8 flex flex-col bg-[#FAFAFA] border border-[#E5E5EA] shadow-sm w-full hover:shadow-md">
+                    <div class="physical-panel p-6 sm:p-8 flex flex-col bg-[#FAFAFA] border border-[#E5E5EA] shadow-lg w-full hover:shadow-xl">
                         <div class="screw screw-tl"></div><div class="screw screw-br"></div>
                         <div class="flex items-center gap-3 mb-6 border-b border-[#E5E5EA] pb-4">
-                            <div class="physical-recessed bg-[#FFFFFF] p-2 border border-[#E5E5EA]"><i data-lucide="x-circle" class="w-5 h-5 text-[#FF9500] shrink-0"></i></div>
-                            <h3 class="text-lg sm:text-xl font-bold uppercase text-[#1D1D1F] tracking-tight font-display">Legacy Systems</h3>
+                            <div class="physical-recessed bg-[#FFFFFF] p-2 border border-[#E5E5EA] shadow-md"><i data-lucide="x-circle" class="w-5 h-5 text-[#FF9500] shrink-0 icon-3d"></i></div>
+                            <h3 class="text-lg sm:text-xl font-black uppercase text-[#000000] tracking-tight font-display text-3d">Legacy Systems</h3>
                         </div>
-                        <ul class="space-y-4 font-normal text-sm text-[#86868B]">
-                            <li class="flex items-start gap-3"><i data-lucide="clock" class="w-5 h-5 text-[#FF9500] shrink-0 mt-0.5"></i> <span class="break-words">Delayed responses lead to high prospect attrition.</span></li>
-                            <li class="flex items-start gap-3"><i data-lucide="smartphone" class="w-5 h-5 text-[#FF9500] shrink-0 mt-0.5"></i> <span class="break-words">Suboptimal mobile UI increases bounce rates.</span></li>
-                            <li class="flex items-start gap-3"><i data-lucide="search" class="w-5 h-5 text-[#FF9500] shrink-0 mt-0.5"></i> <span class="break-words">Zero search visibility limits organic discovery.</span></li>
+                        <ul class="space-y-4 font-medium text-sm text-[#555555]">
+                            <li class="flex items-start gap-3"><i data-lucide="clock" class="w-5 h-5 text-[#FF9500] shrink-0 mt-0.5 icon-3d"></i> <span class="break-words">Delayed responses lead to high prospect attrition.</span></li>
+                            <li class="flex items-start gap-3"><i data-lucide="smartphone" class="w-5 h-5 text-[#FF9500] shrink-0 mt-0.5 icon-3d"></i> <span class="break-words">Suboptimal mobile UI increases bounce rates.</span></li>
+                            <li class="flex items-start gap-3"><i data-lucide="search" class="w-5 h-5 text-[#FF9500] shrink-0 mt-0.5 icon-3d"></i> <span class="break-words">Zero search visibility limits organic discovery.</span></li>
                         </ul>
                     </div>
 
                     <!-- After Panel -->
-                    <div class="physical-panel p-6 sm:p-8 flex flex-col bg-[#FFFFFF] border-[#34C759]/20 shadow-[0_8px_30px_rgba(52,199,89,0.06)] hover:shadow-[0_12px_40px_rgba(52,199,89,0.1)] w-full transform lg:scale-105 z-10">
+                    <div class="physical-panel p-6 sm:p-8 flex flex-col bg-[#FFFFFF] border-[#34C759]/40 shadow-[0_10px_40px_rgba(52,199,89,0.15)] hover:shadow-[0_15px_50px_rgba(52,199,89,0.25)] w-full transform lg:scale-105 z-10">
                         <div class="screw screw-tl"></div><div class="screw screw-br"></div>
                         <div class="flex items-center gap-3 mb-6 border-b border-[#E5E5EA] pb-4">
-                            <div class="physical-recessed bg-[#FAFAFA] p-2 border border-[#E5E5EA]"><i data-lucide="check-circle-2" class="w-5 h-5 text-[#34C759] shrink-0"></i></div>
-                            <h3 class="text-lg sm:text-xl font-bold uppercase text-[#1D1D1F] tracking-tight font-display">Forge Protocol</h3>
+                            <div class="physical-recessed bg-[#FAFAFA] p-2 border border-[#E5E5EA] shadow-md"><i data-lucide="check-circle-2" class="w-5 h-5 text-[#34C759] shrink-0 icon-3d"></i></div>
+                            <h3 class="text-lg sm:text-xl font-black uppercase text-[#000000] tracking-tight font-display text-3d">Forge Protocol</h3>
                         </div>
-                        <ul class="space-y-4 font-medium text-sm text-[#1D1D1F]">
-                            <li class="flex items-start gap-3"><i data-lucide="zap" class="w-5 h-5 text-[#34C759] shrink-0 mt-0.5"></i> <span class="break-words">AI agents process inquiries and book meetings instantly.</span></li>
-                            <li class="flex items-start gap-3"><i data-lucide="layout" class="w-5 h-5 text-[#34C759] shrink-0 mt-0.5"></i> <span class="break-words">Fluid, mobile-native interfaces built for conversion.</span></li>
-                            <li class="flex items-start gap-3"><i data-lucide="trending-up" class="w-5 h-5 text-[#34C759] shrink-0 mt-0.5"></i> <span class="break-words">Technical SEO infrastructure captures high-intent traffic.</span></li>
+                        <ul class="space-y-4 font-bold text-sm text-[#000000]">
+                            <li class="flex items-start gap-3"><i data-lucide="zap" class="w-5 h-5 text-[#34C759] shrink-0 mt-0.5 icon-3d"></i> <span class="break-words">AI agents process inquiries and book meetings instantly.</span></li>
+                            <li class="flex items-start gap-3"><i data-lucide="layout" class="w-5 h-5 text-[#34C759] shrink-0 mt-0.5 icon-3d"></i> <span class="break-words">Fluid, mobile-native interfaces built for conversion.</span></li>
+                            <li class="flex items-start gap-3"><i data-lucide="trending-up" class="w-5 h-5 text-[#34C759] shrink-0 mt-0.5 icon-3d"></i> <span class="break-words">Technical SEO infrastructure captures high-intent traffic.</span></li>
                         </ul>
                     </div>
                 </div>
@@ -718,34 +805,34 @@
         <section id="what-we-do" class="py-16 md:py-28 px-4 sm:px-6 md:px-16 relative bg-[#FAFAFA] w-full">
             <div class="w-full max-w-5xl mx-auto">
                 <div class="mb-10 reveal text-center">
-                    <span class="text-[9px] sm:text-[10px] md:text-xs font-semibold text-[#86868B] tracking-widest uppercase etched-text font-tech">Infrastructure</span>
-                    <h2 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black uppercase mt-2 mb-6 leading-[1] tracking-tight text-[#1D1D1F] break-words font-display">Core Focus</h2>
+                    <span class="text-[9px] sm:text-[10px] md:text-xs font-bold text-[#555555] tracking-widest uppercase text-3d font-tech">Infrastructure</span>
+                    <h2 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black uppercase mt-2 mb-6 leading-[1] tracking-tight text-[#000000] break-words font-display text-3d">Core Focus</h2>
                 </div>
-                <div class="physical-panel bg-[#FFFFFF] p-6 sm:p-8 md:p-12 reveal relative z-0 border border-[#E5E5EA] w-full shadow-md hover:shadow-lg">
+                <div class="physical-panel bg-[#FFFFFF] p-6 sm:p-8 md:p-12 reveal relative z-0 border border-[#E5E5EA] w-full shadow-2xl hover:shadow-[0_20px_60px_rgba(0,0,0,0.1)] transition-shadow">
                     <div class="screw screw-tl"></div>
                     <div class="screw screw-tr"></div>
                     <div class="screw screw-bl"></div>
                     <div class="screw screw-br"></div>
-                    <div class="physical-recessed bg-[#FAFAFA] p-5 sm:p-6 md:p-8 border border-[#E5E5EA] w-full">
-                        <!-- Made Text Minimal -->
-                        <p class="text-[#1D1D1F] text-sm md:text-base font-light leading-relaxed tracking-wide embossed-text mb-6">
-                            Forge Softwares operates as the central infrastructure for our specialized subsidiaries, <strong class="font-semibold">Cobra</strong> and <strong class="font-semibold">Runo</strong>. We architect custom web platforms, SaaS products, and autonomous business tools designed for scale. Our focus is on speed, security, and measurable conversion.
+                    <div class="physical-recessed bg-[#FAFAFA] p-5 sm:p-6 md:p-8 border border-[#E5E5EA] w-full shadow-inner">
+                        <!-- Made Text Bold for visibility -->
+                        <p class="text-[#000000] text-sm md:text-base font-medium leading-relaxed tracking-wide text-3d mb-6">
+                            Forge Softwares operates as the central infrastructure for our specialized subsidiaries, <strong class="font-black">Cobra</strong> and <strong class="font-black">Runo</strong>. We architect custom web platforms, SaaS products, and autonomous business tools designed for scale. Our focus is on speed, security, and measurable conversion.
                         </p>
-                        <p class="text-[#1D1D1F] text-sm md:text-base font-light leading-relaxed tracking-wide embossed-text">
+                        <p class="text-[#000000] text-sm md:text-base font-medium leading-relaxed tracking-wide text-3d">
                             We deliver comprehensive digital ecosystems—from interface design to CRM integration. By bridging advanced technology with practical utility, we enable businesses to streamline operations and accelerate growth in complex markets.
                         </p>
 
                         <!-- Sub-Brand Badges -->
                         <div class="mt-8 pt-6 border-t border-[#E5E5EA] flex flex-col sm:flex-row items-center justify-center gap-6 relative w-full">
-                            <span class="text-[10px] font-semibold uppercase tracking-widest text-[#86868B] etched-text text-center font-tech">Official Subsidiaries</span>
+                            <span class="text-[10px] font-bold uppercase tracking-widest text-[#555555] text-3d text-center font-tech">Official Subsidiaries</span>
                             <div class="flex flex-col sm:flex-row flex-wrap justify-center gap-4 w-full sm:w-auto">
-                                <div class="physical-panel bg-[#FFFFFF] px-5 py-2.5 flex items-center justify-center gap-3 border border-[#E5E5EA] shadow-sm w-full sm:w-auto hover:shadow-md">
+                                <div class="physical-panel bg-[#FFFFFF] px-5 py-2.5 flex items-center justify-center gap-3 border border-[#E5E5EA] shadow-md w-full sm:w-auto hover:shadow-lg">
                                     <div class="led-indicator led-purple animate-pulse shrink-0"></div>
-                                    <span class="font-bold text-base uppercase tracking-widest text-[#1D1D1F] etched-text font-display">Cobra</span>
+                                    <span class="font-black text-base uppercase tracking-widest text-[#000000] text-3d font-display">Cobra</span>
                                 </div>
-                                <div class="physical-panel bg-[#FFFFFF] px-5 py-2.5 flex items-center justify-center gap-3 border border-[#E5E5EA] shadow-sm w-full sm:w-auto hover:shadow-md">
+                                <div class="physical-panel bg-[#FFFFFF] px-5 py-2.5 flex items-center justify-center gap-3 border border-[#E5E5EA] shadow-md w-full sm:w-auto hover:shadow-lg">
                                     <div class="led-indicator led-guava animate-pulse shrink-0"></div>
-                                    <span class="font-bold text-base uppercase tracking-widest text-[#1D1D1F] etched-text font-display">Runo</span>
+                                    <span class="font-black text-base uppercase tracking-widest text-[#000000] text-3d font-display">Runo</span>
                                 </div>
                             </div>
                         </div>
@@ -759,27 +846,27 @@
         <section id="process" class="py-16 md:py-24 px-4 md:px-16 border-y border-[#E5E5EA] bg-[#FFFFFF] w-full">
             <div class="w-full max-w-7xl mx-auto">
                 <div class="text-center mb-12 reveal">
-                    <h2 class="text-3xl sm:text-4xl md:text-5xl font-black uppercase tracking-tight leading-[1] text-[#1D1D1F] font-display">Deployment Protocol</h2>
-                    <p class="text-[#86868B] font-semibold mt-4 uppercase tracking-widest text-[10px] sm:text-xs font-tech">Standardized execution pipeline.</p>
+                    <h2 class="text-3xl sm:text-4xl md:text-5xl font-black uppercase tracking-tight leading-[1] text-[#000000] font-display text-3d">Deployment Protocol</h2>
+                    <p class="text-[#555555] font-bold mt-4 uppercase tracking-widest text-[10px] sm:text-xs font-tech text-3d">Standardized execution pipeline.</p>
                 </div>
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 w-full">
-                    <div class="physical-panel reveal p-8 text-center flex flex-col items-center bg-[#FAFAFA] border border-[#E5E5EA] w-full shadow-sm hover:shadow-md">
+                    <div class="physical-panel reveal p-8 text-center flex flex-col items-center bg-[#FAFAFA] border border-[#E5E5EA] w-full shadow-lg hover:shadow-xl">
                         <div class="screw screw-tl"></div>
-                        <div class="physical-recessed bg-[#FFFFFF] w-14 h-14 rounded-full flex items-center justify-center mb-6 border border-[#E5E5EA]"><span class="text-xl font-black text-[#0066CC] font-tech">1</span></div>
-                        <h3 class="text-lg font-bold uppercase tracking-tight mb-3 text-[#1D1D1F] font-display">Audit & Architect</h3>
-                        <p class="text-sm font-light text-[#86868B] leading-relaxed break-words">Map business logic, identify constraints, and architect a custom technical blueprint.</p>
+                        <div class="physical-recessed bg-[#FFFFFF] w-14 h-14 rounded-full flex items-center justify-center mb-6 border border-[#E5E5EA] shadow-md"><span class="text-xl font-black text-[#0066CC] font-tech text-3d">1</span></div>
+                        <h3 class="text-lg font-black uppercase tracking-tight mb-3 text-[#000000] font-display text-3d">Audit & Architect</h3>
+                        <p class="text-sm font-medium text-[#555555] leading-relaxed break-words">Map business logic, identify constraints, and architect a custom technical blueprint.</p>
                     </div>
-                    <div class="physical-panel reveal p-8 text-center flex flex-col items-center bg-[#FAFAFA] border border-[#E5E5EA] w-full shadow-sm hover:shadow-md" style="transition-delay: 100ms;">
+                    <div class="physical-panel reveal p-8 text-center flex flex-col items-center bg-[#FAFAFA] border border-[#E5E5EA] w-full shadow-lg hover:shadow-xl" style="transition-delay: 100ms;">
                         <div class="screw screw-tr"></div>
-                        <div class="physical-recessed bg-[#FFFFFF] w-14 h-14 rounded-full flex items-center justify-center mb-6 border border-[#E5E5EA]"><span class="text-xl font-black text-[#0066CC] font-tech">2</span></div>
-                        <h3 class="text-lg font-bold uppercase tracking-tight mb-3 text-[#1D1D1F] font-display">Build & Automate</h3>
-                        <p class="text-sm font-light text-[#86868B] leading-relaxed break-words">Engineer the frontend and integrate autonomous AI agents to automate acquisition.</p>
+                        <div class="physical-recessed bg-[#FFFFFF] w-14 h-14 rounded-full flex items-center justify-center mb-6 border border-[#E5E5EA] shadow-md"><span class="text-xl font-black text-[#0066CC] font-tech text-3d">2</span></div>
+                        <h3 class="text-lg font-black uppercase tracking-tight mb-3 text-[#000000] font-display text-3d">Build & Automate</h3>
+                        <p class="text-sm font-medium text-[#555555] leading-relaxed break-words">Engineer the frontend and integrate autonomous AI agents to automate acquisition.</p>
                     </div>
-                    <div class="physical-panel reveal p-8 text-center flex flex-col items-center bg-[#FAFAFA] border border-[#E5E5EA] w-full shadow-sm hover:shadow-md" style="transition-delay: 200ms;">
+                    <div class="physical-panel reveal p-8 text-center flex flex-col items-center bg-[#FAFAFA] border border-[#E5E5EA] w-full shadow-lg hover:shadow-xl" style="transition-delay: 200ms;">
                         <div class="screw screw-br"></div>
-                        <div class="physical-recessed bg-[#FFFFFF] w-14 h-14 rounded-full flex items-center justify-center mb-6 border border-[#E5E5EA]"><span class="text-xl font-black text-[#0066CC] font-tech">3</span></div>
-                        <h3 class="text-lg font-bold uppercase tracking-tight mb-3 text-[#1D1D1F] font-display">Launch & Scale</h3>
-                        <p class="text-sm font-light text-[#86868B] leading-relaxed break-words">Live deployment. Systems operate continuously, converting traffic into booked meetings.</p>
+                        <div class="physical-recessed bg-[#FFFFFF] w-14 h-14 rounded-full flex items-center justify-center mb-6 border border-[#E5E5EA] shadow-md"><span class="text-xl font-black text-[#0066CC] font-tech text-3d">3</span></div>
+                        <h3 class="text-lg font-black uppercase tracking-tight mb-3 text-[#000000] font-display text-3d">Launch & Scale</h3>
+                        <p class="text-sm font-medium text-[#555555] leading-relaxed break-words">Live deployment. Systems operate continuously, converting traffic into booked meetings.</p>
                     </div>
                 </div>
             </div>
@@ -790,55 +877,54 @@
             <div class="w-full max-w-7xl mx-auto">
                 <div class="mb-12 md:mb-20 reveal flex flex-col lg:flex-row lg:items-end justify-between gap-6 lg:gap-8 w-full">
                     <div class="w-full lg:w-auto text-center lg:text-left">
-                        <h2 class="text-4xl sm:text-5xl md:text-6xl font-black uppercase tracking-tighter leading-[1] mb-2 text-[#1D1D1F] font-display">Core <br class="hidden lg:block"/> Systems</h2>
+                        <h2 class="text-4xl sm:text-5xl md:text-6xl font-black uppercase tracking-tighter leading-[1] mb-2 text-[#000000] font-display text-3d">Core <br class="hidden lg:block"/> Systems</h2>
                     </div>
-                    <!-- Minimal font treatment -->
-                    <p class="text-[#86868B] text-sm md:text-base w-full max-w-md mx-auto lg:mx-0 text-center lg:text-right border-t-2 lg:border-t-0 lg:border-l-0 lg:border-r border-[#E5E5EA] pt-4 lg:pt-0 lg:pr-6 font-light leading-relaxed embossed-text break-words">
+                    <p class="text-[#555555] text-sm md:text-base w-full max-w-md mx-auto lg:mx-0 text-center lg:text-right border-t-2 lg:border-t-0 lg:border-l-0 lg:border-r border-[#E5E5EA] pt-4 lg:pt-0 lg:pr-6 font-medium leading-relaxed text-3d break-words">
                         Engineered for conversion. Replace manual workflows with intelligent automation.
                     </p>
                 </div>
                 
                 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 w-full">
                     <!-- Card 1 -->
-                    <article class="physical-panel bg-[#FFFFFF] border border-[#E5E5EA] p-8 lg:p-10 reveal flex flex-col relative z-0 shadow-sm hover:shadow-md w-full">
+                    <article class="physical-panel bg-[#FFFFFF] border border-[#E5E5EA] p-8 lg:p-10 reveal flex flex-col relative z-0 shadow-xl hover:shadow-2xl w-full">
                         <div class="screw screw-tl"></div>
                         <div class="screw screw-br"></div>
                         <div class="flex justify-between items-start mb-8">
-                            <div class="physical-recessed bg-[#FAFAFA] p-3 inline-block border border-[#E5E5EA]">
-                                <i data-lucide="layout" class="w-6 h-6 text-[#0066CC] shrink-0"></i>
+                            <div class="physical-recessed bg-[#FAFAFA] p-3 inline-block border border-[#E5E5EA] shadow-sm">
+                                <i data-lucide="layout" class="w-6 h-6 text-[#0066CC] shrink-0 icon-3d"></i>
                             </div>
-                            <span class="text-2xl font-black text-[#86868B] opacity-50 etched-text font-tech">01</span>
+                            <span class="text-2xl font-black text-[#86868B] opacity-60 text-3d font-tech">01</span>
                         </div>
-                        <h3 class="text-xl font-black mb-3 text-[#1D1D1F] uppercase tracking-tight etched-text font-display">Premium Websites</h3>
-                        <p class="text-[#86868B] text-sm leading-relaxed font-light mt-auto break-words">High-fidelity web applications designed to capture intent and establish authority.</p>
+                        <h3 class="text-xl font-black mb-3 text-[#000000] uppercase tracking-tight text-3d font-display">Premium Websites</h3>
+                        <p class="text-[#555555] text-sm leading-relaxed font-medium mt-auto break-words">High-fidelity web applications designed to capture intent and establish authority.</p>
                     </article>
 
                     <!-- Card 2 -->
-                    <article class="physical-panel bg-[#FFFFFF] border border-[#E5E5EA] p-8 lg:p-10 reveal flex flex-col relative z-0 shadow-sm hover:shadow-md w-full" style="transition-delay: 100ms;">
+                    <article class="physical-panel bg-[#FFFFFF] border border-[#E5E5EA] p-8 lg:p-10 reveal flex flex-col relative z-0 shadow-xl hover:shadow-2xl w-full" style="transition-delay: 100ms;">
                         <div class="screw screw-tl"></div>
                         <div class="screw screw-br"></div>
                         <div class="flex justify-between items-start mb-8">
-                            <div class="physical-recessed bg-[#FAFAFA] p-3 inline-block border border-[#E5E5EA]">
-                                <i data-lucide="bot" class="w-6 h-6 text-[#0066CC] shrink-0"></i>
+                            <div class="physical-recessed bg-[#FAFAFA] p-3 inline-block border border-[#E5E5EA] shadow-sm">
+                                <i data-lucide="bot" class="w-6 h-6 text-[#0066CC] shrink-0 icon-3d"></i>
                             </div>
-                            <span class="text-2xl font-black text-[#86868B] opacity-50 etched-text font-tech">02</span>
+                            <span class="text-2xl font-black text-[#86868B] opacity-60 text-3d font-tech">02</span>
                         </div>
-                        <h3 class="text-xl font-black mb-3 text-[#1D1D1F] uppercase tracking-tight etched-text font-display">AI Sales Agents</h3>
-                        <p class="text-[#86868B] text-sm leading-relaxed font-light mt-auto break-words">Custom LLMs that qualify leads, resolve queries, and secure meetings autonomously.</p>
+                        <h3 class="text-xl font-black mb-3 text-[#000000] uppercase tracking-tight text-3d font-display">AI Sales Agents</h3>
+                        <p class="text-[#555555] text-sm leading-relaxed font-medium mt-auto break-words">Custom LLMs that qualify leads, resolve queries, and secure meetings autonomously.</p>
                     </article>
 
                     <!-- Card 3 -->
-                    <article class="physical-panel bg-[#FFFFFF] border border-[#E5E5EA] p-8 lg:p-10 reveal flex flex-col relative z-0 shadow-sm hover:shadow-md w-full sm:col-span-2 lg:col-span-1" style="transition-delay: 200ms;">
+                    <article class="physical-panel bg-[#FFFFFF] border border-[#E5E5EA] p-8 lg:p-10 reveal flex flex-col relative z-0 shadow-xl hover:shadow-2xl w-full sm:col-span-2 lg:col-span-1" style="transition-delay: 200ms;">
                         <div class="screw screw-tl"></div>
                         <div class="screw screw-br"></div>
                         <div class="flex justify-between items-start mb-8">
-                            <div class="physical-recessed bg-[#FAFAFA] p-3 inline-block border border-[#E5E5EA]">
-                                <i data-lucide="cpu" class="w-6 h-6 text-[#0066CC] shrink-0"></i>
+                            <div class="physical-recessed bg-[#FAFAFA] p-3 inline-block border border-[#E5E5EA] shadow-sm">
+                                <i data-lucide="cpu" class="w-6 h-6 text-[#0066CC] shrink-0 icon-3d"></i>
                             </div>
-                            <span class="text-2xl font-black text-[#86868B] opacity-50 etched-text font-tech">03</span>
+                            <span class="text-2xl font-black text-[#86868B] opacity-60 text-3d font-tech">03</span>
                         </div>
-                        <h3 class="text-xl font-black mb-3 text-[#1D1D1F] uppercase tracking-tight etched-text font-display">Automated Pipelines</h3>
-                        <p class="text-[#86868B] text-sm leading-relaxed font-light mt-auto break-words">End-to-end CRM integration. Scale operations without scaling human headcount.</p>
+                        <h3 class="text-xl font-black mb-3 text-[#000000] uppercase tracking-tight text-3d font-display">Automated Pipelines</h3>
+                        <p class="text-[#555555] text-sm leading-relaxed font-medium mt-auto break-words">End-to-end CRM integration. Scale operations without scaling human headcount.</p>
                     </article>
                 </div>
             </div>
@@ -848,30 +934,30 @@
         <section id="portfolio" class="py-16 md:py-28 px-4 sm:px-6 md:px-16 relative bg-[#FFFFFF] w-full">
             <div class="w-full max-w-7xl mx-auto">
                 <div class="mb-12 md:mb-16 reveal flex flex-col items-center justify-center text-center w-full">
-                    <span class="text-[9px] sm:text-[10px] font-semibold text-[#86868B] tracking-widest mb-2 uppercase etched-text font-tech">Client Deployment</span>
-                    <h2 class="text-3xl sm:text-4xl md:text-5xl font-black uppercase tracking-tight etched-text leading-[1] mb-2 text-[#1D1D1F] font-display">Live Environments</h2>
-                    <p class="text-[#86868B] text-xs sm:text-sm max-w-2xl font-light leading-relaxed embossed-text mt-3 px-2 break-words">
+                    <span class="text-[9px] sm:text-[10px] font-bold text-[#555555] tracking-widest mb-2 uppercase text-3d font-tech">Client Deployment</span>
+                    <h2 class="text-3xl sm:text-4xl md:text-5xl font-black uppercase tracking-tight text-3d leading-[1] mb-2 text-[#000000] font-display">Live Environments</h2>
+                    <p class="text-[#555555] text-xs sm:text-sm max-w-2xl font-medium leading-relaxed text-3d mt-3 px-2 break-words">
                         Inspect active infrastructure in production.
                     </p>
                 </div>
 
-                <div class="w-full max-w-4xl mx-auto physical-panel bg-[#FAFAFA] border border-[#E5E5EA] p-4 sm:p-6 md:p-8 reveal relative z-0 shadow-md hover:shadow-lg">
+                <div class="w-full max-w-4xl mx-auto physical-panel bg-[#FAFAFA] border border-[#E5E5EA] p-4 sm:p-6 md:p-8 reveal relative z-0 shadow-2xl hover:shadow-[0_20px_50px_rgba(0,0,0,0.1)]">
                     <div class="screw screw-tl"></div>
                     <div class="screw screw-tr"></div>
                     <div class="screw screw-bl"></div>
                     <div class="screw screw-br"></div>
 
-                    <div class="bg-[#1D1D1F] p-2 sm:p-3 rounded-2xl relative overflow-hidden w-full">
+                    <div class="bg-[#1D1D1F] p-2 sm:p-3 rounded-2xl relative overflow-hidden w-full shadow-inner">
                         <div class="lcd-screen rounded-xl p-6 md:p-10 flex flex-col items-center justify-center text-center relative z-10 min-h-[250px] border border-gray-800 w-full">
                             <div class="absolute top-4 left-4 flex items-center gap-2">
                                 <div class="led-indicator led-green animate-pulse w-2 h-2 sm:w-3 sm:h-3 shrink-0"></div>
-                                <span class="text-[8px] sm:text-[10px] font-bold uppercase tracking-widest text-[#86868B] font-tech">Status: Live</span>
+                                <span class="text-[8px] sm:text-[10px] font-bold uppercase tracking-widest text-[#FFFFFF] font-tech text-3d">Status: Live</span>
                             </div>
-                            <h3 class="text-3xl md:text-5xl font-black uppercase tracking-widest mb-4 mt-8 break-words text-[#FFFFFF] w-full font-display">VIZORRA</h3>
-                            <p class="text-[10px] sm:text-xs font-bold tracking-widest uppercase mb-8 opacity-80 break-words text-[#86868B] px-2 font-tech">Premium Web Architecture</p>
+                            <h3 class="text-3xl md:text-5xl font-black uppercase tracking-widest mb-4 mt-8 break-words text-[#FFFFFF] w-full font-display text-3d">VIZORRA</h3>
+                            <p class="text-[10px] sm:text-xs font-bold tracking-widest uppercase mb-8 opacity-90 break-words text-[#FFFFFF] px-2 font-tech text-3d">Premium Web Architecture</p>
                             
-                            <a href="https://farmanshafi2007-hub.github.io/VIZORRA/" target="_blank" rel="noopener noreferrer" class="physical-btn-primary px-8 py-4 text-[10px] sm:text-xs font-bold uppercase tracking-widest flex items-center justify-center gap-2 no-underline text-white w-full sm:w-auto font-tech">
-                                <i data-lucide="external-link" class="w-3 h-3 sm:w-4 sm:h-4 shrink-0"></i> Access System
+                            <a href="https://farmanshafi2007-hub.github.io/VIZORRA/" target="_blank" rel="noopener noreferrer" class="physical-btn-primary px-8 py-4 text-[10px] sm:text-xs font-black uppercase tracking-widest flex items-center justify-center gap-2 no-underline text-white w-full sm:w-auto font-tech shadow-lg icon-3d">
+                                <i data-lucide="external-link" class="w-3 h-3 sm:w-4 sm:h-4 shrink-0 icon-3d"></i> Access System
                             </a>
                         </div>
                     </div>
@@ -883,41 +969,41 @@
         <section id="testimonials" class="py-16 md:py-24 px-4 md:px-16 border-y border-[#E5E5EA] bg-[#FAFAFA] w-full">
             <div class="w-full max-w-7xl mx-auto">
                 <div class="text-center mb-12 reveal">
-                    <h2 class="text-3xl sm:text-4xl md:text-5xl font-black uppercase tracking-tight etched-text leading-[1] text-[#1D1D1F] font-display">Telemetry</h2>
-                    <p class="text-[#86868B] font-semibold mt-4 uppercase tracking-widest text-[10px] sm:text-xs font-tech">Operator Feedback</p>
+                    <h2 class="text-3xl sm:text-4xl md:text-5xl font-black uppercase tracking-tight text-3d leading-[1] text-[#000000] font-display">Telemetry</h2>
+                    <p class="text-[#555555] font-bold mt-4 uppercase tracking-widest text-[10px] sm:text-xs font-tech text-3d">Operator Feedback</p>
                 </div>
                 
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 w-full">
-                    <div class="physical-panel reveal bg-[#FFFFFF] border border-[#E5E5EA] p-6 sm:p-8 relative shadow-sm hover:shadow-md w-full">
+                    <div class="physical-panel reveal bg-[#FFFFFF] border border-[#E5E5EA] p-6 sm:p-8 relative shadow-xl hover:shadow-2xl w-full">
                         <div class="screw screw-tl"></div>
                         <div class="flex flex-col sm:flex-row items-center sm:items-start gap-4 mb-6 text-center sm:text-left">
-                            <div class="physical-recessed bg-[#FAFAFA] border border-[#E5E5EA] w-12 h-12 rounded-full flex items-center justify-center shrink-0">
-                                <i data-lucide="user" class="w-5 h-5 text-[#0066CC] shrink-0"></i>
+                            <div class="physical-recessed bg-[#FAFAFA] border border-[#E5E5EA] w-12 h-12 rounded-full flex items-center justify-center shrink-0 shadow-sm">
+                                <i data-lucide="user" class="w-5 h-5 text-[#0066CC] shrink-0 icon-3d"></i>
                             </div>
                             <div>
-                                <h4 class="font-bold uppercase text-[#1D1D1F] tracking-tight text-sm sm:text-base font-display">Sarah J.</h4>
-                                <p class="text-[9px] sm:text-[10px] font-semibold uppercase tracking-widest text-[#86868B] font-tech">Clinic Director</p>
+                                <h4 class="font-bold uppercase text-[#000000] tracking-tight text-sm sm:text-base font-display text-3d">Sarah J.</h4>
+                                <p class="text-[9px] sm:text-[10px] font-bold uppercase tracking-widest text-[#555555] font-tech text-3d">Clinic Director</p>
                             </div>
                         </div>
-                        <div class="physical-recessed bg-[#FFFFFF] border border-transparent p-2 text-center sm:text-left break-words">
+                        <div class="physical-recessed bg-[#FFFFFF] border border-[#E5E5EA] p-4 text-center sm:text-left break-words shadow-sm">
                             <p class="font-calligraphy calligraphy-gradient-1">
                                 "The AI agent handles 90% of our inquiries and books appointments autonomously. It fundamentally shifted our operational efficiency."
                             </p>
                         </div>
                     </div>
 
-                    <div class="physical-panel reveal bg-[#FFFFFF] border border-[#E5E5EA] p-6 sm:p-8 relative shadow-sm hover:shadow-md w-full" style="transition-delay: 100ms;">
+                    <div class="physical-panel reveal bg-[#FFFFFF] border border-[#E5E5EA] p-6 sm:p-8 relative shadow-xl hover:shadow-2xl w-full" style="transition-delay: 100ms;">
                         <div class="screw screw-tr"></div>
                         <div class="flex flex-col sm:flex-row items-center sm:items-start gap-4 mb-6 text-center sm:text-left">
-                            <div class="physical-recessed bg-[#FAFAFA] border border-[#E5E5EA] w-12 h-12 rounded-full flex items-center justify-center shrink-0">
-                                <i data-lucide="user" class="w-5 h-5 text-[#0066CC] shrink-0"></i>
+                            <div class="physical-recessed bg-[#FAFAFA] border border-[#E5E5EA] w-12 h-12 rounded-full flex items-center justify-center shrink-0 shadow-sm">
+                                <i data-lucide="user" class="w-5 h-5 text-[#0066CC] shrink-0 icon-3d"></i>
                             </div>
                             <div>
-                                <h4 class="font-bold uppercase text-[#1D1D1F] tracking-tight text-sm sm:text-base font-display">Riyaz A.</h4>
-                                <p class="text-[9px] sm:text-[10px] font-semibold uppercase tracking-widest text-[#86868B] font-tech">E-com Founder</p>
+                                <h4 class="font-bold uppercase text-[#000000] tracking-tight text-sm sm:text-base font-display text-3d">Riyaz A.</h4>
+                                <p class="text-[9px] sm:text-[10px] font-bold uppercase tracking-widest text-[#555555] font-tech text-3d">E-com Founder</p>
                             </div>
                         </div>
-                        <div class="physical-recessed bg-[#FFFFFF] border border-transparent p-2 text-center sm:text-left break-words">
+                        <div class="physical-recessed bg-[#FFFFFF] border border-[#E5E5EA] p-4 text-center sm:text-left break-words shadow-sm">
                             <p class="font-calligraphy calligraphy-gradient-2">
                                 "The minimal aesthetic elevated our brand authority instantly. Combined with system optimizations, our conversion velocity accelerated."
                             </p>
@@ -931,9 +1017,9 @@
         <section id="guarantee" class="py-12 px-4 bg-[#1D1D1F] text-[#FFFFFF] text-center relative overflow-hidden w-full">
             <div class="absolute inset-0 bg-grid opacity-10 z-0"></div>
             <div class="w-full max-w-4xl mx-auto relative z-10">
-                <i data-lucide="shield-check" class="w-10 h-10 text-[#FF9500] mx-auto mb-4 shrink-0"></i>
-                <h2 class="text-xl sm:text-2xl font-black uppercase tracking-widest mb-4 break-words font-display">System Guarantee</h2>
-                <p class="text-sm font-light text-[#A1A1A6] leading-relaxed mb-2 px-4 break-words">
+                <i data-lucide="shield-check" class="w-10 h-10 text-[#FF9500] mx-auto mb-4 shrink-0 icon-3d"></i>
+                <h2 class="text-xl sm:text-2xl font-black uppercase tracking-widest mb-4 break-words font-display text-3d">System Guarantee</h2>
+                <p class="text-sm font-medium text-[#FFFFFF] leading-relaxed mb-2 px-4 break-words text-3d opacity-90">
                     If our systems fail to operate as scoped, we resolve it at no cost. Lifetime bug support. Zero hidden retainers. Complete code transparency.
                 </p>
             </div>
@@ -943,11 +1029,11 @@
         <section id="pricing" class="py-16 md:py-24 lg:py-32 px-4 md:px-8 bg-[#FFFFFF] border-b border-[#E5E5EA] w-full">
             <div class="w-full max-w-7xl mx-auto">
                 <div class="text-center mb-16 md:mb-24 space-y-4 reveal px-2">
-                    <div class="inline-flex items-center gap-2 text-[10px] font-semibold text-[#86868B] tracking-widest uppercase bg-[#FAFAFA] px-4 py-2 rounded-full border border-[#E5E5EA] font-tech">
-                        <i data-lucide="zap" class="w-3 h-3 text-[#FF9500] shrink-0"></i> Clear Investment
+                    <div class="inline-flex items-center gap-2 text-[10px] font-bold text-[#000000] tracking-widest uppercase bg-[#FAFAFA] px-4 py-2 rounded-full border border-[#E5E5EA] font-tech shadow-sm text-3d">
+                        <i data-lucide="zap" class="w-3 h-3 text-[#FF9500] shrink-0 icon-3d"></i> Clear Investment
                     </div>
                     
-                    <h2 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black leading-[1.1] w-full max-w-4xl mx-auto tracking-tighter uppercase etched-text text-[#1D1D1F] break-words font-display">
+                    <h2 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black leading-[1.1] w-full max-w-4xl mx-auto tracking-tighter uppercase text-3d text-[#000000] break-words font-display">
                         Scalable infrastructure.
                     </h2>
                 </div>
@@ -956,39 +1042,40 @@
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 items-stretch lg:py-6 w-full">
                     
                     <!-- Starter Tier -->
-                    <article class="physical-panel reveal bg-[#FAFAFA] border border-[#E5E5EA] p-6 md:p-8 flex flex-col h-full relative z-10 w-full hover:shadow-lg transition-all shadow-sm">
+                    <article class="physical-panel reveal bg-[#FAFAFA] border border-[#E5E5EA] p-6 md:p-8 flex flex-col h-full relative z-10 w-full hover:shadow-2xl transition-all shadow-xl">
                         <div class="screw screw-tl"></div>
                         <div class="screw screw-br"></div>
-                        <div class="mb-8 text-[#1D1D1F]">
-                            <div class="physical-recessed bg-[#FFFFFF] border border-[#E5E5EA] inline-block p-3 mb-4"><i data-lucide="layout" class="w-5 h-5 text-[#0066CC] shrink-0"></i></div>
-                            <h3 class="text-2xl font-black uppercase tracking-tight mb-2 etched-text font-display">Starter</h3>
-                            <p class="text-[#86868B] text-xs font-normal break-words">Foundational digital presence.</p>
+                        <div class="mb-8 text-[#000000]">
+                            <div class="physical-recessed bg-[#FFFFFF] border border-[#E5E5EA] inline-block p-3 mb-4 shadow-sm"><i data-lucide="layout" class="w-5 h-5 text-[#0066CC] shrink-0 icon-3d"></i></div>
+                            <h3 class="text-2xl font-black uppercase tracking-tight mb-2 text-3d font-display">Starter</h3>
+                            <p class="text-[#555555] text-xs font-medium break-words text-3d">Foundational digital presence.</p>
                         </div>
                         
-                        <div class="mb-10 text-4xl font-black text-[#1D1D1F] tracking-tighter etched-text font-tech">₹2,500</div>
+                        <div class="mb-10 text-4xl font-black text-[#000000] tracking-tighter text-3d font-tech">₹2,500</div>
                         
-                        <button onclick="openEnquiryModal()" class="physical-btn w-full py-4 text-[10px] font-bold uppercase tracking-widest mb-10 border-[#E5E5EA] bg-[#FFFFFF] font-tech" aria-label="Request Quote for Starter Plan">
-                            Request Quote
+                        <!-- UPDATED TEXT -->
+                        <button onclick="openEnquiryModal()" class="physical-btn w-full py-4 text-[10px] font-black uppercase tracking-widest mb-10 border-[#E5E5EA] bg-[#FFFFFF] font-tech shadow-md text-3d icon-3d" aria-label="Request Quote for Starter Plan">
+                            Book Your Website
                         </button>
                         
                         <!-- Features List -->
                         <div class="physical-recessed bg-[#FFFFFF] border border-[#E5E5EA] p-5 flex-1 mt-auto shadow-sm">
-                            <p class="text-[9px] font-bold tracking-widest uppercase mb-4 text-[#86868B] font-tech">CORE FUNCTIONALITY</p>
+                            <p class="text-[9px] font-black tracking-widest uppercase mb-4 text-[#000000] font-tech text-3d">CORE FUNCTIONALITY</p>
                             <ul class="space-y-4">
-                                <li class="flex items-start gap-3 text-xs text-[#1D1D1F] font-normal">
-                                    <i data-lucide="check" class="w-4 h-4 mt-0.5 text-[#34C759] shrink-0"></i>
+                                <li class="flex items-start gap-3 text-xs text-[#000000] font-medium">
+                                    <i data-lucide="check" class="w-4 h-4 mt-0.5 text-[#34C759] shrink-0 icon-3d"></i>
                                     <span class="break-words leading-tight">Single-Page Architecture</span>
                                 </li>
-                                <li class="flex items-start gap-3 text-xs text-[#1D1D1F] font-normal">
-                                    <i data-lucide="check" class="w-4 h-4 mt-0.5 text-[#34C759] shrink-0"></i>
+                                <li class="flex items-start gap-3 text-xs text-[#000000] font-medium">
+                                    <i data-lucide="check" class="w-4 h-4 mt-0.5 text-[#34C759] shrink-0 icon-3d"></i>
                                     <span class="break-words leading-tight">Basic Lead Capture Form</span>
                                 </li>
-                                <li class="flex items-start gap-3 text-xs text-[#1D1D1F] font-normal">
-                                    <i data-lucide="check" class="w-4 h-4 mt-0.5 text-[#34C759] shrink-0"></i>
+                                <li class="flex items-start gap-3 text-xs text-[#000000] font-medium">
+                                    <i data-lucide="check" class="w-4 h-4 mt-0.5 text-[#34C759] shrink-0 icon-3d"></i>
                                     <span class="break-words leading-tight">Mobile-Native Design</span>
                                 </li>
-                                <li class="flex items-start gap-3 text-xs text-[#1D1D1F] font-normal">
-                                    <i data-lucide="check" class="w-4 h-4 mt-0.5 text-[#34C759] shrink-0"></i>
+                                <li class="flex items-start gap-3 text-xs text-[#000000] font-medium">
+                                    <i data-lucide="check" class="w-4 h-4 mt-0.5 text-[#34C759] shrink-0 icon-3d"></i>
                                     <span class="break-words leading-tight">Foundational SEO Setup</span>
                                 </li>
                             </ul>
@@ -996,52 +1083,53 @@
                     </article>
 
                     <!-- Pro Tier (Highlighted) -->
-                    <article class="physical-panel reveal bg-[#FFFFFF] border border-[#0066CC]/30 p-6 md:p-10 flex flex-col h-full relative z-20 shadow-[0_15px_30px_rgba(0,102,204,0.08)] transform lg:scale-105 w-full" style="transition-delay: 100ms;">
+                    <article class="physical-panel reveal bg-[#FFFFFF] border border-[#0066CC]/40 p-6 md:p-10 flex flex-col h-full relative z-20 shadow-[0_20px_50px_rgba(0,102,204,0.15)] transform lg:scale-105 w-full" style="transition-delay: 100ms;">
                         <div class="screw screw-tl"></div>
                         <div class="screw screw-tr"></div>
                         <div class="screw screw-bl"></div>
                         <div class="screw screw-br"></div>
 
                         <!-- Most Popular Badge -->
-                        <div class="mx-auto lg:absolute lg:-top-4 lg:right-6 lg:mx-0 flex w-max items-center gap-1.5 physical-recessed bg-[#FFFFFF] px-3 py-1.5 rounded-full mb-6 lg:mb-0 shadow-sm border border-[#E5E5EA]">
+                        <div class="mx-auto lg:absolute lg:-top-4 lg:right-6 lg:mx-0 flex w-max items-center gap-1.5 physical-recessed bg-[#FFFFFF] px-3 py-1.5 rounded-full mb-6 lg:mb-0 shadow-md border border-[#E5E5EA]">
                             <div class="led-indicator led-green animate-pulse w-2 h-2 shrink-0"></div>
-                            <span class="text-[9px] font-bold text-[#0066CC] uppercase tracking-widest etched-text font-tech">Most Popular</span>
+                            <span class="text-[9px] font-black text-[#0066CC] uppercase tracking-widest text-3d font-tech">Most Popular</span>
                         </div>
 
-                        <div class="mb-8 text-[#1D1D1F]">
-                            <div class="physical-recessed bg-[#FAFAFA] border border-[#E5E5EA] inline-block p-3 mb-4"><i data-lucide="bot" class="w-6 h-6 text-[#0066CC] shrink-0"></i></div>
-                            <h3 class="text-3xl text-[#1D1D1F] font-black uppercase tracking-tight mb-2 etched-text font-display">Business Pro</h3>
-                            <p class="text-[#86868B] text-xs font-normal break-words">Autonomous sales architecture.</p>
+                        <div class="mb-8 text-[#000000]">
+                            <div class="physical-recessed bg-[#FAFAFA] border border-[#E5E5EA] inline-block p-3 mb-4 shadow-sm"><i data-lucide="bot" class="w-6 h-6 text-[#0066CC] shrink-0 icon-3d"></i></div>
+                            <h3 class="text-3xl text-[#000000] font-black uppercase tracking-tight mb-2 text-3d font-display">Business Pro</h3>
+                            <p class="text-[#555555] text-xs font-medium break-words text-3d">Autonomous sales architecture.</p>
                         </div>
                         
-                        <div class="mb-10 text-4xl lg:text-5xl font-black text-[#1D1D1F] tracking-tighter etched-text font-tech">₹5,100</div>
+                        <div class="mb-10 text-4xl lg:text-5xl font-black text-[#000000] tracking-tighter text-3d font-tech">₹5,100</div>
                         
-                        <button onclick="openEnquiryModal()" class="physical-btn-primary w-full py-4 text-[10px] font-bold uppercase tracking-widest mb-10 shadow-md font-tech" aria-label="Start Business Pro Project">
-                            Start Project
+                        <!-- UPDATED TEXT -->
+                        <button onclick="openEnquiryModal()" class="physical-btn-primary w-full py-4 text-[10px] font-black uppercase tracking-widest mb-10 shadow-xl font-tech icon-3d" aria-label="Start Business Pro Project">
+                            Book Your Website
                         </button>
                         
                         <!-- Features List -->
                         <div class="physical-recessed bg-[#FAFAFA] border border-[#E5E5EA] p-5 flex-1 mt-auto shadow-sm"> 
-                            <p class="text-[9px] font-bold tracking-widest uppercase mb-4 text-[#86868B] font-tech">FULL AUTOMATION:</p>
+                            <p class="text-[9px] font-black tracking-widest uppercase mb-4 text-[#000000] font-tech text-3d">FULL AUTOMATION:</p>
                             <ul class="space-y-4">
-                                <li class="flex items-start gap-3 text-xs text-[#1D1D1F] font-normal">
-                                    <i data-lucide="check" class="w-4 h-4 mt-0.5 text-[#34C759] shrink-0"></i>
+                                <li class="flex items-start gap-3 text-xs text-[#000000] font-medium">
+                                    <i data-lucide="check" class="w-4 h-4 mt-0.5 text-[#34C759] shrink-0 icon-3d"></i>
                                     <span class="break-words leading-tight">Multi-Page Architecture</span>
                                 </li>
-                                <li class="flex items-start gap-3 text-xs text-[#1D1D1F] font-normal">
-                                    <i data-lucide="check" class="w-4 h-4 mt-0.5 text-[#34C759] shrink-0"></i>
+                                <li class="flex items-start gap-3 text-xs text-[#000000] font-medium">
+                                    <i data-lucide="check" class="w-4 h-4 mt-0.5 text-[#34C759] shrink-0 icon-3d"></i>
                                     <span class="break-words leading-tight">Autonomous AI Agent</span>
                                 </li>
-                                <li class="flex items-start gap-3 text-xs text-[#1D1D1F] font-normal">
-                                    <i data-lucide="check" class="w-4 h-4 mt-0.5 text-[#34C759] shrink-0"></i>
+                                <li class="flex items-start gap-3 text-xs text-[#000000] font-medium">
+                                    <i data-lucide="check" class="w-4 h-4 mt-0.5 text-[#34C759] shrink-0 icon-3d"></i>
                                     <span class="break-words leading-tight">Continuous Deal Processing</span>
                                 </li>
-                                <li class="flex items-start gap-3 text-xs text-[#1D1D1F] font-normal">
-                                    <i data-lucide="check" class="w-4 h-4 mt-0.5 text-[#34C759] shrink-0"></i>
+                                <li class="flex items-start gap-3 text-xs text-[#000000] font-medium">
+                                    <i data-lucide="check" class="w-4 h-4 mt-0.5 text-[#34C759] shrink-0 icon-3d"></i>
                                     <span class="break-words leading-tight">Ongoing System Iteration</span>
                                 </li>
-                                <li class="flex items-start gap-3 text-xs text-[#1D1D1F] font-normal">
-                                    <i data-lucide="check" class="w-4 h-4 mt-0.5 text-[#34C759] shrink-0"></i>
+                                <li class="flex items-start gap-3 text-xs text-[#000000] font-medium">
+                                    <i data-lucide="check" class="w-4 h-4 mt-0.5 text-[#34C759] shrink-0 icon-3d"></i>
                                     <span class="break-words leading-tight">Free Domain Included</span>
                                 </li>
                             </ul>
@@ -1049,39 +1137,40 @@
                     </article>
 
                     <!-- Enterprise Tier -->
-                    <article class="physical-panel reveal bg-[#FAFAFA] border border-[#E5E5EA] p-6 md:p-8 flex flex-col h-full relative z-10 w-full hover:shadow-lg transition-all sm:col-span-2 lg:col-span-1 shadow-sm" style="transition-delay: 200ms;">
+                    <article class="physical-panel reveal bg-[#FAFAFA] border border-[#E5E5EA] p-6 md:p-8 flex flex-col h-full relative z-10 w-full hover:shadow-2xl transition-all sm:col-span-2 lg:col-span-1 shadow-xl" style="transition-delay: 200ms;">
                         <div class="screw screw-tl"></div>
                         <div class="screw screw-br"></div>
-                        <div class="mb-8 text-[#1D1D1F]">
-                            <div class="physical-recessed bg-[#FFFFFF] border border-[#E5E5EA] inline-block p-3 mb-4"><i data-lucide="cpu" class="w-5 h-5 text-[#0066CC] shrink-0"></i></div>
-                            <h3 class="text-2xl font-black uppercase tracking-tight text-[#1D1D1F] mb-2 etched-text font-display">Custom Build</h3>
-                            <p class="text-[#86868B] text-xs font-normal break-words">Customized enterprise logic.</p>
+                        <div class="mb-8 text-[#000000]">
+                            <div class="physical-recessed bg-[#FFFFFF] border border-[#E5E5EA] inline-block p-3 mb-4 shadow-sm"><i data-lucide="cpu" class="w-5 h-5 text-[#0066CC] shrink-0 icon-3d"></i></div>
+                            <h3 class="text-2xl font-black uppercase tracking-tight text-[#000000] mb-2 text-3d font-display">Custom Build</h3>
+                            <p class="text-[#555555] text-xs font-medium break-words text-3d">Customized enterprise logic.</p>
                         </div>
                         
-                        <div class="mb-10 text-4xl font-black text-[#1D1D1F] tracking-tighter etched-text font-tech">₹11,000+</div>
+                        <div class="mb-10 text-4xl font-black text-[#000000] tracking-tighter text-3d font-tech">₹11,000+</div>
                         
-                        <button onclick="openEnquiryModal()" class="physical-btn w-full py-4 text-[10px] font-bold uppercase tracking-widest mb-10 border-[#E5E5EA] bg-[#FFFFFF] font-tech" aria-label="Request Quote for Custom Build">
-                            Request Quote
+                        <!-- UPDATED TEXT -->
+                        <button onclick="openEnquiryModal()" class="physical-btn w-full py-4 text-[10px] font-black uppercase tracking-widest mb-10 border-[#E5E5EA] bg-[#FFFFFF] font-tech shadow-md text-3d icon-3d" aria-label="Request Quote for Custom Build">
+                            Book Your Website
                         </button>
                         
                         <!-- Features List -->
                         <div class="physical-recessed bg-[#FFFFFF] border border-[#E5E5EA] p-5 flex-1 mt-auto shadow-sm">
-                            <p class="text-[9px] font-bold tracking-widest uppercase mb-4 text-[#86868B] font-tech">EVERYTHING IN PRO, PLUS:</p>
+                            <p class="text-[9px] font-black tracking-widest uppercase mb-4 text-[#000000] font-tech text-3d">EVERYTHING IN PRO, PLUS:</p>
                             <ul class="space-y-4">
-                                <li class="flex items-start gap-3 text-xs text-[#1D1D1F] font-normal">
-                                    <i data-lucide="check" class="w-4 h-4 mt-0.5 text-[#34C759] shrink-0"></i>
+                                <li class="flex items-start gap-3 text-xs text-[#000000] font-medium">
+                                    <i data-lucide="check" class="w-4 h-4 mt-0.5 text-[#34C759] shrink-0 icon-3d"></i>
                                     <span class="break-words leading-tight">Expanded Architecture</span>
                                 </li>
-                                <li class="flex items-start gap-3 text-xs text-[#1D1D1F] font-normal">
-                                    <i data-lucide="check" class="w-4 h-4 mt-0.5 text-[#34C759] shrink-0"></i>
+                                <li class="flex items-start gap-3 text-xs text-[#000000] font-medium">
+                                    <i data-lucide="check" class="w-4 h-4 mt-0.5 text-[#34C759] shrink-0 icon-3d"></i>
                                     <span class="break-words leading-tight">Voice & Text AI Sales Agents</span>
                                 </li>
-                                <li class="flex items-start gap-3 text-xs text-[#1D1D1F] font-normal">
-                                    <i data-lucide="check" class="w-4 h-4 mt-0.5 text-[#34C759] shrink-0"></i>
+                                <li class="flex items-start gap-3 text-xs text-[#000000] font-medium">
+                                    <i data-lucide="check" class="w-4 h-4 mt-0.5 text-[#34C759] shrink-0 icon-3d"></i>
                                     <span class="break-words leading-tight">Advanced Workflow Logic</span>
                                 </li>
-                                <li class="flex items-start gap-3 text-xs text-[#1D1D1F] font-normal">
-                                    <i data-lucide="check" class="w-4 h-4 mt-0.5 text-[#34C759] shrink-0"></i>
+                                <li class="flex items-start gap-3 text-xs text-[#000000] font-medium">
+                                    <i data-lucide="check" class="w-4 h-4 mt-0.5 text-[#34C759] shrink-0 icon-3d"></i>
                                     <span class="break-words leading-tight">Custom API Integrations</span>
                                 </li>
                             </ul>
@@ -1095,46 +1184,46 @@
         <section id="faq" class="py-16 md:py-24 px-4 bg-[#FAFAFA] border-b border-[#E5E5EA] w-full">
             <div class="w-full max-w-3xl mx-auto">
                 <div class="text-center mb-12 reveal px-2">
-                    <h2 class="text-3xl sm:text-4xl font-black uppercase tracking-tight etched-text leading-[1] text-[#1D1D1F] break-words font-display">Knowledge Base</h2>
-                    <p class="text-[#86868B] font-semibold mt-4 uppercase tracking-widest text-[10px] sm:text-xs font-tech">System Protocols</p>
+                    <h2 class="text-3xl sm:text-4xl font-black uppercase tracking-tight text-3d leading-[1] text-[#000000] break-words font-display">Knowledge Base</h2>
+                    <p class="text-[#555555] font-bold mt-4 uppercase tracking-widest text-[10px] sm:text-xs font-tech text-3d">System Protocols</p>
                 </div>
                 
                 <div class="space-y-4 reveal w-full" role="tablist">
                     <!-- FAQ 1 -->
-                    <div class="physical-panel bg-[#FFFFFF] border border-[#E5E5EA] p-4 cursor-pointer w-full hover:shadow-sm shadow-sm" onclick="toggleJobDetails(this)" role="button" aria-expanded="false" tabindex="0">
+                    <div class="physical-panel bg-[#FFFFFF] border border-[#E5E5EA] p-4 cursor-pointer w-full hover:shadow-md shadow-sm" onclick="toggleJobDetails(this)" role="button" aria-expanded="false" tabindex="0">
                         <div class="flex justify-between items-center">
-                            <h4 class="font-bold text-[#1D1D1F] uppercase tracking-tight text-sm md:text-base pr-4 break-words">What is the standard deployment timeline?</h4>
-                            <i data-lucide="plus" class="w-5 h-5 transition-transform duration-300 text-[#0066CC] shrink-0"></i>
+                            <h4 class="font-bold text-[#000000] uppercase tracking-tight text-sm md:text-base pr-4 break-words text-3d">What is the standard deployment timeline?</h4>
+                            <i data-lucide="plus" class="w-5 h-5 transition-transform duration-300 text-[#0066CC] shrink-0 icon-3d"></i>
                         </div>
                     </div>
                     <div class="accordion-content bg-[#FFFFFF] border-x border-b border-[#E5E5EA] rounded-b-xl -mt-4 mx-2 relative -z-10 shadow-sm" role="region">
-                        <div class="p-6 pt-8 text-xs md:text-sm font-light text-[#86868B] leading-relaxed break-words">
+                        <div class="p-6 pt-8 text-xs md:text-sm font-medium text-[#555555] leading-relaxed break-words">
                             Core infrastructure is deployed within 7-14 days. Complex AI integrations require 3-4 weeks.
                         </div>
                     </div>
 
                     <!-- FAQ 2 -->
-                    <div class="physical-panel bg-[#FFFFFF] border border-[#E5E5EA] p-4 cursor-pointer w-full hover:shadow-sm shadow-sm" onclick="toggleJobDetails(this)" role="button" aria-expanded="false" tabindex="0">
+                    <div class="physical-panel bg-[#FFFFFF] border border-[#E5E5EA] p-4 cursor-pointer w-full hover:shadow-md shadow-sm" onclick="toggleJobDetails(this)" role="button" aria-expanded="false" tabindex="0">
                         <div class="flex justify-between items-center">
-                            <h4 class="font-bold text-[#1D1D1F] uppercase tracking-tight text-sm md:text-base pr-4 break-words">Who retains asset ownership?</h4>
-                            <i data-lucide="plus" class="w-5 h-5 transition-transform duration-300 text-[#0066CC] shrink-0"></i>
+                            <h4 class="font-bold text-[#000000] uppercase tracking-tight text-sm md:text-base pr-4 break-words text-3d">Who retains asset ownership?</h4>
+                            <i data-lucide="plus" class="w-5 h-5 transition-transform duration-300 text-[#0066CC] shrink-0 icon-3d"></i>
                         </div>
                     </div>
                     <div class="accordion-content bg-[#FFFFFF] border-x border-b border-[#E5E5EA] rounded-b-xl -mt-4 mx-2 relative -z-10 shadow-sm" role="region">
-                        <div class="p-6 pt-8 text-xs md:text-sm font-light text-[#86868B] leading-relaxed break-words">
+                        <div class="p-6 pt-8 text-xs md:text-sm font-medium text-[#555555] leading-relaxed break-words">
                             You retain 100% ownership of the domain and frontend assets post-payment. Zero restrictive contracts.
                         </div>
                     </div>
 
                     <!-- FAQ 3 -->
-                    <div class="physical-panel bg-[#FFFFFF] border border-[#E5E5EA] p-4 cursor-pointer w-full hover:shadow-sm shadow-sm" onclick="toggleJobDetails(this)" role="button" aria-expanded="false" tabindex="0">
+                    <div class="physical-panel bg-[#FFFFFF] border border-[#E5E5EA] p-4 cursor-pointer w-full hover:shadow-md shadow-sm" onclick="toggleJobDetails(this)" role="button" aria-expanded="false" tabindex="0">
                         <div class="flex justify-between items-center">
-                            <h4 class="font-bold text-[#1D1D1F] uppercase tracking-tight text-sm md:text-base pr-4 break-words">How is AI accuracy maintained?</h4>
-                            <i data-lucide="plus" class="w-5 h-5 transition-transform duration-300 text-[#0066CC] shrink-0"></i>
+                            <h4 class="font-bold text-[#000000] uppercase tracking-tight text-sm md:text-base pr-4 break-words text-3d">How is AI accuracy maintained?</h4>
+                            <i data-lucide="plus" class="w-5 h-5 transition-transform duration-300 text-[#0066CC] shrink-0 icon-3d"></i>
                         </div>
                     </div>
                     <div class="accordion-content bg-[#FFFFFF] border-x border-b border-[#E5E5EA] rounded-b-xl -mt-4 mx-2 relative -z-10 shadow-sm" role="region">
-                        <div class="p-6 pt-8 text-xs md:text-sm font-light text-[#86868B] leading-relaxed break-words">
+                        <div class="p-6 pt-8 text-xs md:text-sm font-medium text-[#555555] leading-relaxed break-words">
                             Agents are strictly constrained to your knowledge base. Queries exceeding operational parameters are routed to human operators.
                         </div>
                     </div>
@@ -1146,19 +1235,19 @@
         <section id="team" class="py-16 md:py-24 px-4 bg-[#FFFFFF] border-b border-[#E5E5EA] w-full">
             <div class="w-full max-w-5xl mx-auto text-center reveal">
                 <div class="mb-12 text-center px-2">
-                    <span class="text-[9px] sm:text-[10px] font-semibold text-[#86868B] tracking-widest uppercase etched-text font-tech">System Architects</span>
-                    <h2 class="text-3xl sm:text-4xl md:text-5xl font-black uppercase tracking-tight mt-2 leading-[1] text-[#1D1D1F] break-words font-display">Engineered in Kashmir</h2>
-                    <p class="text-[#86868B] font-light mt-4 text-sm max-w-2xl mx-auto break-words leading-relaxed">A specialized team of systems engineers treating your infrastructure as our own.</p>
+                    <span class="text-[9px] sm:text-[10px] font-bold text-[#555555] tracking-widest uppercase text-3d font-tech">System Architects</span>
+                    <h2 class="text-3xl sm:text-4xl md:text-5xl font-black uppercase tracking-tight mt-2 leading-[1] text-[#000000] break-words font-display text-3d">Engineered in Kashmir</h2>
+                    <p class="text-[#555555] font-medium mt-4 text-sm max-w-2xl mx-auto break-words leading-relaxed text-3d">A specialized team of systems engineers treating your infrastructure as our own.</p>
                 </div>
                 
                 <div class="flex justify-center w-full px-2">
-                    <div class="physical-panel bg-[#FAFAFA] border border-[#E5E5EA] p-8 max-w-sm w-full shadow-sm hover:shadow-md transition-shadow">
+                    <div class="physical-panel bg-[#FAFAFA] border border-[#E5E5EA] p-8 max-w-sm w-full shadow-xl hover:shadow-2xl transition-shadow">
                         <div class="screw screw-tl"></div><div class="screw screw-br"></div>
-                        <div class="physical-recessed bg-[#FFFFFF] border border-[#E5E5EA] w-20 h-20 mx-auto rounded-full mb-4 flex items-center justify-center shadow-sm">
-                             <i data-lucide="terminal-square" class="w-10 h-10 text-[#0066CC] shrink-0"></i>
+                        <div class="physical-recessed bg-[#FFFFFF] border border-[#E5E5EA] w-20 h-20 mx-auto rounded-full mb-4 flex items-center justify-center shadow-md">
+                             <i data-lucide="terminal-square" class="w-10 h-10 text-[#0066CC] shrink-0 icon-3d"></i>
                         </div>
-                        <h3 class="text-xl font-black uppercase tracking-widest etched-text text-[#1D1D1F] font-display">Farman Shafi</h3>
-                        <p class="text-[10px] font-bold text-[#86868B] uppercase tracking-widest mb-4 font-tech">Lead Systems Engineer</p>
+                        <h3 class="text-xl font-black uppercase tracking-widest text-3d text-[#000000] font-display">Farman Shafi</h3>
+                        <p class="text-[10px] font-black text-[#555555] uppercase tracking-widest mb-4 font-tech text-3d">Lead Systems Engineer</p>
                         <div class="px-2">
                             <p class="font-calligraphy calligraphy-gradient-3 break-words">"We replace outdated marketing with autonomous systems engineered for revenue."</p>
                         </div>
@@ -1169,22 +1258,23 @@
 
         <!-- About / Ready to Start Section -->
         <section id="about" class="py-20 md:py-32 px-4 relative bg-[#FAFAFA] w-full">
-            <div class="w-full max-w-3xl mx-auto physical-panel bg-[#FFFFFF] border border-[#E5E5EA] p-8 md:p-16 text-center reveal relative z-10 shadow-lg hover:shadow-xl transition-shadow">
+            <div class="w-full max-w-3xl mx-auto physical-panel bg-[#FFFFFF] border border-[#E5E5EA] p-8 md:p-16 text-center reveal relative z-10 shadow-2xl hover:shadow-[0_20px_60px_rgba(0,0,0,0.1)] transition-shadow">
                 <div class="screw screw-tl"></div>
                 <div class="screw screw-tr"></div>
                 <div class="screw screw-bl"></div>
                 <div class="screw screw-br"></div>
                 
-                <div class="physical-recessed bg-[#FAFAFA] border border-[#E5E5EA] w-20 h-20 flex items-center justify-center mx-auto mb-8 rounded-full shadow-sm">
-                    <i data-lucide="rocket" class="w-10 h-10 text-[#0066CC] shrink-0"></i>
+                <div class="physical-recessed bg-[#FAFAFA] border border-[#E5E5EA] w-20 h-20 flex items-center justify-center mx-auto mb-8 rounded-full shadow-md">
+                    <i data-lucide="rocket" class="w-10 h-10 text-[#0066CC] shrink-0 icon-3d"></i>
                 </div>
-                <h2 class="text-3xl md:text-5xl font-black mb-4 uppercase tracking-tight etched-text leading-[1.1] text-[#1D1D1F] break-words font-display">Initialize Protocol.</h2>
-                <p class="text-[#86868B] mb-10 text-sm md:text-base max-w-xl mx-auto font-light leading-relaxed px-2 break-words">
+                <h2 class="text-3xl md:text-5xl font-black mb-4 uppercase tracking-tight text-3d leading-[1.1] text-[#000000] break-words font-display">Initialize Protocol.</h2>
+                <p class="text-[#555555] mb-10 text-sm md:text-base max-w-xl mx-auto font-medium leading-relaxed px-2 break-words text-3d">
                     We build scalable infrastructure that actively acquires and converts.
                 </p>
                 
-                <button onclick="openEnquiryModal()" class="physical-btn-primary px-10 py-5 font-bold text-xs uppercase tracking-[0.2em] inline-flex items-center gap-2 shadow-md font-tech">
-                    <i data-lucide="arrow-right" class="w-4 h-4 text-white shrink-0"></i> Initialize System
+                <!-- UPDATED TEXT -->
+                <button onclick="openEnquiryModal()" class="physical-btn-primary px-10 py-5 font-black text-xs uppercase tracking-[0.2em] inline-flex items-center gap-2 shadow-xl font-tech icon-3d">
+                    <i data-lucide="arrow-right" class="w-4 h-4 text-white shrink-0 icon-3d"></i> Book Your Website
                 </button>
             </div>
         </section>
@@ -1194,20 +1284,20 @@
     <!-- Footer -->
     <footer class="py-12 md:py-20 px-4 bg-[#FFFFFF] text-center relative border-t border-[#E5E5EA] w-full max-w-[100vw]">
         <div class="w-full max-w-7xl mx-auto">
-            <div class="text-xl md:text-3xl font-black tracking-tighter text-[#1D1D1F] flex items-center justify-center gap-3 mb-8 cursor-pointer etched-text break-words">
-                <div class="physical-recessed bg-[#FAFAFA] border border-[#E5E5EA] p-2 md:p-3 rounded-xl inline-flex items-center justify-center shadow-sm">
-                    <i data-lucide="hexagon" class="text-[#0066CC] w-6 h-6 md:w-8 md:h-8 shrink-0"></i>
+            <div class="text-xl md:text-3xl font-black tracking-tighter text-[#000000] flex items-center justify-center gap-3 mb-8 cursor-pointer text-3d break-words">
+                <div class="physical-recessed bg-[#FAFAFA] border border-[#E5E5EA] p-2 md:p-3 rounded-xl inline-flex items-center justify-center shadow-md">
+                    <i data-lucide="hexagon" class="text-[#0066CC] w-6 h-6 md:w-8 md:h-8 shrink-0 icon-3d"></i>
                 </div>
-                <span class="uppercase font-display">FORGE<span class="text-[#86868B]">SOFTWARE</span></span>
+                <span class="uppercase font-display">FORGE<span class="text-[#555555]">SOFTWARE</span></span>
             </div>
             
             <div class="flex justify-center items-center gap-5 mb-8">
-                <a href="https://www.facebook.com/share/1DL2d9EcCZ/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer" class="social-btn social-btn-fb" title="Facebook" aria-label="Visit Facebook Page">
+                <a href="https://www.facebook.com/share/1DL2d9EcCZ/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer" class="social-btn social-btn-fb shadow-sm icon-3d" title="Facebook" aria-label="Visit Facebook Page">
                     <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" class="shrink-0">
                         <path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z"/>
                     </svg>
                 </a>
-                <a href="https://x.com/pellixperfumes?s=21" target="_blank" rel="noopener noreferrer" class="social-btn social-btn-x" title="X (Twitter)" aria-label="Visit Twitter Page">
+                <a href="https://x.com/pellixperfumes?s=21" target="_blank" rel="noopener noreferrer" class="social-btn social-btn-x shadow-sm icon-3d" title="X (Twitter)" aria-label="Visit Twitter Page">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" class="shrink-0">
                         <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.007 4.126H5.078z"/>
                     </svg>
@@ -1215,57 +1305,183 @@
             </div>
 
             <div class="h-[1px] w-24 bg-[#E5E5EA] mx-auto mb-8 rounded-full"></div>
-            <p class="text-[#86868B] text-[9px] md:text-[10px] uppercase tracking-widest font-semibold leading-loose break-words font-tech">
+            <p class="text-[#555555] text-[9px] md:text-[10px] uppercase tracking-widest font-bold leading-loose break-words font-tech text-3d">
                 Premium B2B Agency &copy; 2026. All rights reserved. <br class="sm:hidden block mt-2" /> <span class="hidden sm:inline">&nbsp;|&nbsp;</span> 
                 Parent Group of Cobra & Runo
                 <span class="hidden sm:inline">&nbsp;|&nbsp;</span>
                 <span class="sm:hidden inline-block px-2">|</span>
-                <button onclick="openTerms()" class="hover:text-[#0066CC] transition-colors underline underline-offset-4 decoration-transparent hover:decoration-[#0066CC] mt-2 sm:mt-0 inline-block focus:outline-none focus-visible:ring-2 focus-visible:ring-[#0066CC] rounded-sm">Terms & Conditions</button>
+                <button onclick="openTerms()" class="hover:text-[#0066CC] transition-colors underline underline-offset-4 decoration-transparent hover:decoration-[#0066CC] mt-2 sm:mt-0 inline-block focus:outline-none focus-visible:ring-2 focus-visible:ring-[#0066CC] rounded-sm text-3d">Terms & Conditions</button>
                 <span class="hidden sm:inline">&nbsp;|&nbsp;</span>
                 <span class="sm:hidden inline-block px-2">|</span>
-                <button onclick="openPrivacy()" class="hover:text-[#0066CC] transition-colors underline underline-offset-4 decoration-transparent hover:decoration-[#0066CC] mt-2 sm:mt-0 inline-block focus:outline-none focus-visible:ring-2 focus-visible:ring-[#0066CC] rounded-sm">Privacy Policy</button>
+                <button onclick="openPrivacy()" class="hover:text-[#0066CC] transition-colors underline underline-offset-4 decoration-transparent hover:decoration-[#0066CC] mt-2 sm:mt-0 inline-block focus:outline-none focus-visible:ring-2 focus-visible:ring-[#0066CC] rounded-sm text-3d">Privacy Policy</button>
             </p>
         </div>
     </footer>
 
-    <!-- Enquiry Modal -->
-    <div id="enquiryModal" class="fixed inset-0 bg-black/40 z-[150] hidden items-center justify-center p-4 sm:p-6 backdrop-blur-xl transition-opacity duration-300 opacity-0 w-full" role="dialog" aria-modal="true" aria-labelledby="enquiryTitle">
-        <div class="physical-panel bg-[#FFFFFF] max-w-md w-full max-h-[90vh] overflow-y-auto overscroll-contain custom-scrollbar p-6 md:p-8 text-center transform scale-95 transition-transform duration-300 relative border border-[#E5E5EA] shadow-2xl" id="enquiryContent">
+    <!-- PRO ENQUIRY MODAL (Fixed Scrolling & Enhanced Layout) -->
+    <!-- Swapped to strict w-screen and overflow-hidden to prevent body displacement -->
+    <div id="enquiryModal" class="fixed top-0 left-0 w-screen h-[100dvh] bg-black/60 z-[9999] hidden flex-col items-center justify-center p-4 backdrop-blur-xl transition-opacity duration-300 opacity-0 overflow-hidden" role="dialog" aria-modal="true" aria-labelledby="enquiryTitle">
+        <!-- Internal m-auto and max-h logic guarantees it stays in center without breaking viewport -->
+        <div class="physical-panel bg-[#FFFFFF] max-w-md w-full max-h-[90dvh] flex flex-col relative border border-[#E5E5EA] shadow-2xl transform scale-95 transition-transform duration-300 m-auto" id="enquiryContent">
             
             <div class="screw screw-tl"></div>
             <div class="screw screw-tr"></div>
             <div class="screw screw-bl"></div>
             <div class="screw screw-br"></div>
             
-            <button onclick="closeEnquiryModal()" class="absolute top-4 right-4 physical-btn bg-[#FAFAFA] border-transparent w-8 h-8 flex items-center justify-center rounded-full z-20 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#0066CC]" aria-label="Close Modal">
-                <i data-lucide="x" class="w-4 h-4 text-[#1D1D1F] shrink-0"></i>
+            <button onclick="closeEnquiryModal()" class="absolute top-3 right-3 physical-btn bg-[#FAFAFA] border-transparent w-8 h-8 flex items-center justify-center rounded-full z-[100] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#0066CC] icon-3d" aria-label="Close Modal">
+                <i data-lucide="x" class="w-4 h-4 text-[#000000] shrink-0"></i>
             </button>
             
-            <div class="mb-8 text-left pr-8 w-full">
-                <h3 id="enquiryTitle" class="text-2xl font-black text-[#1D1D1F] uppercase tracking-tight etched-text mb-2 break-words font-display">System Init</h3>
-                <p class="text-[#86868B] text-[10px] font-bold tracking-widest uppercase break-words font-tech">Input project parameters. Fast response protocol active.</p>
+            <!-- Graphic Header Area -->
+            <div class="pt-6 px-6 sm:px-8 pb-4 shrink-0 border-b border-[#E5E5EA] relative overflow-hidden rounded-t-[24px]">
+                <div class="absolute inset-0 bg-grid opacity-30 z-0"></div>
+                <div class="absolute -top-10 -right-10 w-32 h-32 bg-[#0066CC]/10 rounded-full blur-2xl z-0 pointer-events-none"></div>
+                <div class="relative z-10 text-left pr-8 w-full">
+                    <div class="flex items-center gap-2 mb-1">
+                        <h3 id="enquiryTitle" class="text-xl sm:text-2xl font-black text-[#000000] uppercase tracking-tight text-3d break-words font-display">System Init</h3>
+                        <div class="w-2 h-2 rounded-full bg-[#34C759] animate-pulse shadow-[0_0_8px_#34C759]"></div>
+                    </div>
+                    <p class="text-[#555555] text-[9px] sm:text-[10px] font-bold tracking-widest uppercase break-words font-tech text-3d">Input project parameters. Fast response active.</p>
+                </div>
             </div>
             
-            <form onsubmit="handleEnquirySubmit(event)" class="space-y-5 text-left relative z-10 w-full">
-                <div class="w-full">
-                    <label class="text-[10px] font-bold text-[#86868B] uppercase tracking-widest ml-1 mb-1 block font-tech">Operator Name</label>
-                    <input type="text" name="name" required class="w-full physical-recessed bg-[#FAFAFA] border border-[#E5E5EA] px-4 py-3 text-sm font-medium focus:outline-none focus:ring-2 focus:ring-[#0066CC]/30 focus:border-[#0066CC] placeholder-[#A1A1A6] text-[#1D1D1F] transition-all" placeholder="Enter name">
-                </div>
-                
-                <div class="w-full">
-                    <label class="text-[10px] font-bold text-[#86868B] uppercase tracking-widest ml-1 mb-1 block font-tech">Comm Channel (WhatsApp)</label>
-                    <input type="tel" name="phone" required class="w-full physical-recessed bg-[#FAFAFA] border border-[#E5E5EA] px-4 py-3 text-sm font-medium focus:outline-none focus:ring-2 focus:ring-[#0066CC]/30 focus:border-[#0066CC] placeholder-[#A1A1A6] text-[#1D1D1F] transition-all" placeholder="Enter contact">
-                </div>
+            <!-- Scrollable Form Container -->
+            <div class="overflow-y-auto custom-scrollbar p-6 sm:p-8 flex-1">
+                <form onsubmit="handleEnquirySubmit(event)" class="space-y-4 text-left relative z-10 w-full pb-2">
+                    
+                    <!-- Pro Input 1 -->
+                    <div class="w-full animate-field delay-100">
+                        <label class="text-[9px] font-black text-[#555555] uppercase tracking-widest ml-1 mb-1 block font-tech text-3d">Company / Person Name</label>
+                        <div class="relative group input-focus-effect rounded-xl overflow-hidden bg-[#FAFAFA] border border-[#E5E5EA]">
+                            <div class="absolute left-3 top-1/2 -translate-y-1/2 text-[#0066CC]">
+                                <i data-lucide="user" class="w-4 h-4"></i>
+                            </div>
+                            <input type="text" name="name" required="required" class="w-full bg-transparent pl-9 pr-4 py-3 text-sm font-bold focus:outline-none placeholder-[#A1A1A6] text-[#000000]" placeholder="Enter full name" />
+                        </div>
+                    </div>
+                    
+                    <!-- Pro Input 2 -->
+                    <div class="w-full animate-field delay-200">
+                        <label class="text-[9px] font-black text-[#555555] uppercase tracking-widest ml-1 mb-1 block font-tech text-3d">Phone Number (WhatsApp)</label>
+                        <div class="relative group input-focus-effect rounded-xl overflow-hidden bg-[#FAFAFA] border border-[#E5E5EA]">
+                            <div class="absolute left-3 top-1/2 -translate-y-1/2 text-[#34C759]">
+                                <i data-lucide="phone" class="w-4 h-4"></i>
+                            </div>
+                            <input type="tel" name="phone" required="required" class="w-full bg-transparent pl-9 pr-4 py-3 text-sm font-bold focus:outline-none placeholder-[#A1A1A6] text-[#000000]" placeholder="Enter contact number" />
+                        </div>
+                    </div>
 
-                <div class="w-full">
-                    <label class="text-[10px] font-bold text-[#86868B] uppercase tracking-widest ml-1 mb-1 block font-tech">Current Domain (Optional)</label>
-                    <input type="url" name="website" class="w-full physical-recessed bg-[#FAFAFA] border border-[#E5E5EA] px-4 py-3 text-sm font-medium focus:outline-none focus:ring-2 focus:ring-[#0066CC]/30 focus:border-[#0066CC] placeholder-[#A1A1A6] text-[#1D1D1F] transition-all" placeholder="https://">
-                </div>
-                
-                <button type="submit" class="w-full physical-btn-primary py-4 font-bold text-[10px] sm:text-xs uppercase tracking-widest mt-4 text-white disabled:bg-[#A1A1A6] shadow-md font-tech">
-                    Transmit Data
-                </button>
-            </form>
+                    <!-- Pro Dropdown 3 (Massive Global Country List without Israel, Pakistan, Saudi Arabia) -->
+                    <div class="w-full animate-field delay-300">
+                        <label class="text-[9px] font-black text-[#555555] uppercase tracking-widest ml-1 mb-1 block font-tech text-3d">Country / State Location</label>
+                        <div class="relative group input-focus-effect rounded-xl overflow-hidden bg-[#FAFAFA] border border-[#E5E5EA]">
+                            <div class="absolute left-3 top-1/2 -translate-y-1/2 text-[#AF52DE]">
+                                <i data-lucide="globe-2" class="w-4 h-4"></i>
+                            </div>
+                            <select name="country" required="required" class="w-full bg-transparent pl-9 pr-10 py-3 text-sm font-bold focus:outline-none text-[#000000] appearance-none cursor-pointer">
+                                <option value="" disabled selected class="text-[#A1A1A6]">Select country or state...</option>
+                                <option value="United States">United States</option>
+                                <option value="United Kingdom">United Kingdom</option>
+                                <option value="Canada">Canada</option>
+                                <option value="Australia">Australia</option>
+                                <option value="India">India</option>
+                                <option value="Germany">Germany</option>
+                                <option value="France">France</option>
+                                <option value="Italy">Italy</option>
+                                <option value="Spain">Spain</option>
+                                <option value="Japan">Japan</option>
+                                <option value="Brazil">Brazil</option>
+                                <option value="Mexico">Mexico</option>
+                                <option value="South Africa">South Africa</option>
+                                <option value="Argentina">Argentina</option>
+                                <option value="Colombia">Colombia</option>
+                                <option value="Chile">Chile</option>
+                                <option value="Peru">Peru</option>
+                                <option value="Ecuador">Ecuador</option>
+                                <option value="Venezuela">Venezuela</option>
+                                <option value="Uruguay">Uruguay</option>
+                                <option value="China">China</option>
+                                <option value="South Korea">South Korea</option>
+                                <option value="Indonesia">Indonesia</option>
+                                <option value="Malaysia">Malaysia</option>
+                                <option value="Singapore">Singapore</option>
+                                <option value="Thailand">Thailand</option>
+                                <option value="Philippines">Philippines</option>
+                                <option value="Vietnam">Vietnam</option>
+                                <option value="New Zealand">New Zealand</option>
+                                <option value="Russia">Russia</option>
+                                <option value="Turkey">Turkey</option>
+                                <option value="Egypt">Egypt</option>
+                                <option value="United Arab Emirates">United Arab Emirates</option>
+                                <option value="Nigeria">Nigeria</option>
+                                <option value="Kenya">Kenya</option>
+                                <option value="Ghana">Ghana</option>
+                                <option value="Morocco">Morocco</option>
+                                <option value="Netherlands">Netherlands</option>
+                                <option value="Belgium">Belgium</option>
+                                <option value="Sweden">Sweden</option>
+                                <option value="Switzerland">Switzerland</option>
+                                <option value="Austria">Austria</option>
+                                <option value="Norway">Norway</option>
+                                <option value="Denmark">Denmark</option>
+                                <option value="Finland">Finland</option>
+                                <option value="Ireland">Ireland</option>
+                                <option value="Portugal">Portugal</option>
+                                <option value="Greece">Greece</option>
+                                <option value="Poland">Poland</option>
+                                <option value="Czech Republic">Czech Republic</option>
+                                <option value="Hungary">Hungary</option>
+                                <option value="Romania">Romania</option>
+                                <option value="Slovakia">Slovakia</option>
+                                <option value="Bulgaria">Bulgaria</option>
+                                <option value="Croatia">Croatia</option>
+                                <option value="Serbia">Serbia</option>
+                                <option value="Slovenia">Slovenia</option>
+                                <option value="Lithuania">Lithuania</option>
+                                <option value="Latvia">Latvia</option>
+                                <option value="Estonia">Estonia</option>
+                                <option value="Iceland">Iceland</option>
+                                <option value="Luxembourg">Luxembourg</option>
+                                <option value="Cyprus">Cyprus</option>
+                                <option value="Malta">Malta</option>
+                            </select>
+                            <div class="absolute right-3 top-1/2 -translate-y-1/2 text-[#86868B] pointer-events-none">
+                                <i data-lucide="chevron-down" class="w-4 h-4"></i>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <button type="submit" class="w-full physical-btn-primary py-4 font-black text-[10px] sm:text-xs uppercase tracking-widest mt-6 text-white disabled:bg-[#A1A1A6] shadow-xl font-tech icon-3d animate-field delay-400">
+                        Book Your Website
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- NEW: Premium Success Modal (100% Mobile Safe Constraints) -->
+    <div id="successModal" class="fixed top-0 left-0 w-screen h-[100dvh] bg-black/60 z-[9999] hidden flex-col items-center justify-center p-4 backdrop-blur-xl transition-opacity duration-300 opacity-0 overflow-hidden" role="dialog" aria-modal="true" aria-labelledby="successTitle">
+        <div class="physical-panel bg-[#FFFFFF] max-w-md w-full max-h-[90dvh] overflow-y-auto custom-scrollbar p-8 md:p-12 text-center transform scale-95 transition-transform duration-300 relative border border-[#E5E5EA] shadow-2xl m-auto" id="successContent">
+            
+            <div class="screw screw-tl"></div>
+            <div class="screw screw-tr"></div>
+            <div class="screw screw-bl"></div>
+            <div class="screw screw-br"></div>
+            
+            <div class="physical-recessed bg-[#FAFAFA] border border-[#34C759]/30 w-24 h-24 flex items-center justify-center mx-auto mb-8 rounded-full shadow-[0_0_30px_rgba(52,199,89,0.2)]">
+                <i data-lucide="check-circle" class="w-12 h-12 text-[#34C759] shrink-0 icon-3d"></i>
+            </div>
+            
+            <h3 id="successTitle" class="text-2xl sm:text-3xl font-black text-[#000000] uppercase tracking-tight text-3d mb-4 font-display">Priority Access Confirmed</h3>
+            
+            <p class="text-[#555555] text-sm md:text-base font-bold leading-relaxed mb-8 break-words text-3d">
+                Your response is securely recorded. Our senior team will call you shortly to outline the next steps. Welcome to the new standard.
+            </p>
+            
+            <button onclick="closeSuccessModal()" class="physical-btn-primary w-full py-4 font-black text-[10px] sm:text-xs uppercase tracking-widest shadow-xl font-tech icon-3d">
+                Return to Main Page
+            </button>
         </div>
     </div>
 
@@ -1273,42 +1489,42 @@
     <div id="termsModal" class="fixed inset-0 bg-black/40 z-[110] hidden items-center justify-center p-4 sm:p-6 backdrop-blur-xl transition-opacity duration-300 opacity-0 w-full" role="dialog" aria-modal="true" aria-labelledby="termsTitle">
         <div class="physical-panel bg-[#FFFFFF] max-w-4xl w-full max-h-[85vh] h-[85vh] p-6 md:p-10 flex flex-col relative border border-[#E5E5EA] shadow-2xl transform scale-95 transition-transform duration-300 overscroll-contain" id="termsContent">
             
-            <button onclick="closeTerms()" class="absolute top-4 right-4 lg:top-6 lg:right-6 physical-btn bg-[#FAFAFA] border-transparent w-10 h-10 flex items-center justify-center rounded-full z-20 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#0066CC]" aria-label="Close Terms">
-                <i data-lucide="x" class="w-5 h-5 text-[#1D1D1F] shrink-0"></i>
+            <button onclick="closeTerms()" class="absolute top-4 right-4 lg:top-6 lg:right-6 physical-btn bg-[#FAFAFA] border-transparent w-10 h-10 flex items-center justify-center rounded-full z-20 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#0066CC] icon-3d" aria-label="Close Terms">
+                <i data-lucide="x" class="w-5 h-5 text-[#000000] shrink-0"></i>
             </button>
             
             <div class="text-center mb-6 shrink-0 border-b border-[#E5E5EA] pr-12 lg:pr-0 w-full pb-4">
-                <h3 id="termsTitle" class="text-xl md:text-3xl font-black mb-1 text-[#1D1D1F] uppercase tracking-tight etched-text break-words font-display">Terms & Conditions</h3>
-                <p class="text-[#86868B] text-[10px] font-bold tracking-widest uppercase font-tech">Forge Softwares</p>
+                <h3 id="termsTitle" class="text-xl md:text-3xl font-black mb-1 text-[#000000] uppercase tracking-tight text-3d break-words font-display">Terms & Conditions</h3>
+                <p class="text-[#555555] text-[10px] font-black tracking-widest uppercase font-tech text-3d">Forge Softwares</p>
             </div>
             
-            <div class="physical-recessed bg-[#FAFAFA] border border-[#E5E5EA] flex-1 overflow-y-auto p-4 md:p-8 text-xs md:text-sm text-[#1D1D1F] font-light custom-scrollbar break-words w-full shadow-inner">
-                <p class="italic text-[#86868B] font-semibold mb-4">Last Updated: 8:00 pm, 2 June 2026<br><br>These Terms govern service utilization. Engaging Forge Softwares or our subsidiaries implies strict agreement with these parameters.</p>
+            <div class="physical-recessed bg-[#FAFAFA] border border-[#E5E5EA] flex-1 overflow-y-auto p-4 md:p-8 text-xs md:text-sm text-[#000000] font-medium custom-scrollbar break-words w-full shadow-inner">
+                <p class="italic text-[#555555] font-black mb-4">Last Updated: 8:00 pm, 2 June 2026<br><br>These Terms govern service utilization. Engaging Forge Softwares or our subsidiaries implies strict agreement with these parameters.</p>
                 
-                <h4 class="font-bold text-[#1D1D1F] text-sm md:text-base mt-6 mb-2 uppercase tracking-wide border-l-4 border-[#0066CC] pl-3 etched-text font-display">1. Core Operations</h4>
+                <h4 class="font-black text-[#000000] text-sm md:text-base mt-6 mb-2 uppercase tracking-wide border-l-4 border-[#0066CC] pl-3 text-3d font-display">1. Core Operations</h4>
                 <p class="mb-2">Forge Softwares executes custom digital architecture:</p>
-                <ul class="list-disc pl-5 space-y-1 mb-4 text-[#86868B]">
+                <ul class="list-disc pl-5 space-y-1 mb-4 text-[#555555]">
                     <li>Web infrastructure development</li>
                     <li>AI automation deployment</li>
                     <li>SaaS and custom software logic</li>
                 </ul>
 
-                <h4 class="font-bold text-[#1D1D1F] text-sm md:text-base mt-6 mb-2 uppercase tracking-wide border-l-4 border-[#0066CC] pl-3 etched-text font-display">2. Eligibility</h4>
-                <p class="mb-4 text-[#86868B]">Services are accessible to verified organizations and individuals. We reserve operational discretion for project acceptance.</p>
+                <h4 class="font-black text-[#000000] text-sm md:text-base mt-6 mb-2 uppercase tracking-wide border-l-4 border-[#0066CC] pl-3 text-3d font-display">2. Eligibility</h4>
+                <p class="mb-4 text-[#555555]">Services are accessible to verified organizations and individuals. We reserve operational discretion for project acceptance.</p>
 
-                <h4 class="font-bold text-[#1D1D1F] text-sm md:text-base mt-6 mb-2 uppercase tracking-wide border-l-4 border-[#0066CC] pl-3 etched-text font-display">3. Financial Protocol</h4>
-                <p class="mb-4 text-[#86868B]">A 10% initiation retainer is mandatory. Final balance is required prior to deployment. Accepted modalities include standard digital transfer protocols.</p>
+                <h4 class="font-black text-[#000000] text-sm md:text-base mt-6 mb-2 uppercase tracking-wide border-l-4 border-[#0066CC] pl-3 text-3d font-display">3. Financial Protocol</h4>
+                <p class="mb-4 text-[#555555]">A 10% initiation retainer is mandatory. Final balance is required prior to deployment. Accepted modalities include standard digital transfer protocols.</p>
 
-                <h4 class="font-bold text-[#1D1D1F] text-sm md:text-base mt-6 mb-2 uppercase tracking-wide border-l-4 border-[#0066CC] pl-3 etched-text font-display">4. Refund Parameters</h4>
-                <p class="mb-4 text-[#86868B]">Custom engineering negates refunds post-initiation. Advance retainers remain non-refundable.</p>
+                <h4 class="font-black text-[#000000] text-sm md:text-base mt-6 mb-2 uppercase tracking-wide border-l-4 border-[#0066CC] pl-3 text-3d font-display">4. Refund Parameters</h4>
+                <p class="mb-4 text-[#555555]">Custom engineering negates refunds post-initiation. Advance retainers remain non-refundable.</p>
 
-                <h4 class="font-bold text-[#1D1D1F] text-sm md:text-base mt-6 mb-2 uppercase tracking-wide border-l-4 border-[#0066CC] pl-3 etched-text font-display">5. Delivery Specifications</h4>
-                <p class="mb-4 text-[#86868B]">Deployment constitutes functional implementation on client architecture. Source code retention remains with Forge unless contractually specified.</p>
+                <h4 class="font-bold text-[#000000] text-sm md:text-base mt-6 mb-2 uppercase tracking-wide border-l-4 border-[#0066CC] pl-3 text-3d font-display">5. Delivery Specifications</h4>
+                <p class="mb-4 text-[#555555]">Deployment constitutes functional implementation on client architecture. Source code retention remains with Forge unless contractually specified.</p>
 
-                <h4 class="font-bold text-[#1D1D1F] text-sm md:text-base mt-6 mb-2 uppercase tracking-wide border-l-4 border-[#0066CC] pl-3 etched-text font-display">6. Intellectual Property</h4>
-                <p class="mb-4 text-[#86868B]">Clients retain domain and operational output. Forge retains proprietary internal architecture and framework rights.</p>
+                <h4 class="font-black text-[#000000] text-sm md:text-base mt-6 mb-2 uppercase tracking-wide border-l-4 border-[#0066CC] pl-3 text-3d font-display">6. Intellectual Property</h4>
+                <p class="mb-4 text-[#555555]">Clients retain domain and operational output. Forge retains proprietary internal architecture and framework rights.</p>
                 
-                <div class="pt-4 mt-8 border-t border-[#E5E5EA] text-center text-[10px] font-bold uppercase tracking-widest text-[#86868B] font-tech">
+                <div class="pt-4 mt-8 border-t border-[#E5E5EA] text-center text-[10px] font-black uppercase tracking-widest text-[#555555] font-tech">
                     Utilization of Forge Softwares indicates explicit agreement with these protocols.
                 </div>
             </div>
@@ -1319,31 +1535,31 @@
     <div id="privacyModal" class="fixed inset-0 bg-black/40 z-[110] hidden items-center justify-center p-4 sm:p-6 backdrop-blur-xl transition-opacity duration-300 opacity-0 w-full" role="dialog" aria-modal="true" aria-labelledby="privacyTitle">
         <div class="physical-panel bg-[#FFFFFF] max-w-4xl w-full max-h-[85vh] h-[85vh] p-6 md:p-10 flex flex-col relative border border-[#E5E5EA] shadow-2xl transform scale-95 transition-transform duration-300 overscroll-contain" id="privacyContent">
             
-            <button onclick="closePrivacy()" class="absolute top-4 right-4 lg:top-6 lg:right-6 physical-btn bg-[#FAFAFA] border-transparent w-10 h-10 flex items-center justify-center rounded-full z-20 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#0066CC]" aria-label="Close Privacy Policy">
-                <i data-lucide="x" class="w-5 h-5 text-[#1D1D1F] shrink-0"></i>
+            <button onclick="closePrivacy()" class="absolute top-4 right-4 lg:top-6 lg:right-6 physical-btn bg-[#FAFAFA] border-transparent w-10 h-10 flex items-center justify-center rounded-full z-20 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#0066CC] icon-3d" aria-label="Close Privacy Policy">
+                <i data-lucide="x" class="w-5 h-5 text-[#000000] shrink-0"></i>
             </button>
             
             <div class="text-center mb-6 shrink-0 border-b border-[#E5E5EA] pr-12 lg:pr-0 w-full pb-4">
-                <h3 id="privacyTitle" class="text-xl md:text-3xl font-black mb-1 text-[#1D1D1F] uppercase tracking-tight etched-text break-words font-display">Privacy Policy</h3>
-                <p class="text-[#86868B] text-[10px] font-bold tracking-widest uppercase font-tech">Forge Softwares</p>
+                <h3 id="privacyTitle" class="text-xl md:text-3xl font-black mb-1 text-[#000000] uppercase tracking-tight text-3d break-words font-display">Privacy Policy</h3>
+                <p class="text-[#555555] text-[10px] font-black tracking-widest uppercase font-tech text-3d">Forge Softwares</p>
             </div>
             
-            <div class="physical-recessed bg-[#FAFAFA] border border-[#E5E5EA] flex-1 overflow-y-auto p-4 md:p-8 text-xs md:text-sm text-[#1D1D1F] font-light custom-scrollbar break-words w-full shadow-inner">
-                <p class="italic text-[#86868B] font-semibold mb-4">Last Updated: 12:35 pm, 3 June 2026<br><br>We enforce strict data protocol. This document outlines information processing parameters.</p>
+            <div class="physical-recessed bg-[#FAFAFA] border border-[#E5E5EA] flex-1 overflow-y-auto p-4 md:p-8 text-xs md:text-sm text-[#000000] font-medium custom-scrollbar break-words w-full shadow-inner">
+                <p class="italic text-[#555555] font-black mb-4">Last Updated: 12:35 pm, 3 June 2026<br><br>We enforce strict data protocol. This document outlines information processing parameters.</p>
                 
-                <h4 class="font-bold text-[#1D1D1F] text-sm md:text-base mt-6 mb-2 uppercase tracking-wide border-l-4 border-[#0066CC] pl-3 etched-text font-display">1. Data Acquisition</h4>
-                <p class="mb-4 text-[#86868B]">We collect precise operational data required for deployment: identification, contact channels, and system specifications.</p>
+                <h4 class="font-black text-[#000000] text-sm md:text-base mt-6 mb-2 uppercase tracking-wide border-l-4 border-[#0066CC] pl-3 text-3d font-display">1. Data Acquisition</h4>
+                <p class="mb-4 text-[#555555]">We collect precise operational data required for deployment: identification, contact channels, and system specifications.</p>
 
-                <h4 class="font-bold text-[#1D1D1F] text-sm md:text-base mt-6 mb-2 uppercase tracking-wide border-l-4 border-[#0066CC] pl-3 etched-text font-display">2. Processing Protocol</h4>
-                <p class="mb-4 text-[#86868B]">Data is utilized strictly for service execution, system architecture, and operational communication.</p>
+                <h4 class="font-black text-[#000000] text-sm md:text-base mt-6 mb-2 uppercase tracking-wide border-l-4 border-[#0066CC] pl-3 text-3d font-display">2. Processing Protocol</h4>
+                <p class="mb-4 text-[#555555]">Data is utilized strictly for service execution, system architecture, and operational communication.</p>
 
-                <h4 class="font-bold text-[#1D1D1F] text-sm md:text-base mt-6 mb-2 uppercase tracking-wide border-l-4 border-[#0066CC] pl-3 etched-text font-display">3. Security Infrastructure</h4>
-                <p class="mb-4 text-[#86868B]">We implement robust storage security. Data distribution to third parties is explicitly denied unless legally mandated.</p>
+                <h4 class="font-black text-[#000000] text-sm md:text-base mt-6 mb-2 uppercase tracking-wide border-l-4 border-[#0066CC] pl-3 text-3d font-display">3. Security Infrastructure</h4>
+                <p class="mb-4 text-[#555555]">We implement robust storage security. Data distribution to third parties is explicitly denied unless legally mandated.</p>
 
-                <h4 class="font-bold text-[#1D1D1F] text-sm md:text-base mt-6 mb-2 uppercase tracking-wide border-l-4 border-[#0066CC] pl-3 etched-text font-display">4. Telemetry & Tracking</h4>
-                <p class="mb-4 text-[#86868B]">Standard analytic cookies are utilized to optimize system performance and traffic flow.</p>
+                <h4 class="font-black text-[#000000] text-sm md:text-base mt-6 mb-2 uppercase tracking-wide border-l-4 border-[#0066CC] pl-3 text-3d font-display">4. Telemetry & Tracking</h4>
+                <p class="mb-4 text-[#555555]">Standard analytic cookies are utilized to optimize system performance and traffic flow.</p>
                 
-                <div class="pt-4 mt-8 border-t border-[#E5E5EA] text-center text-[10px] font-bold uppercase tracking-widest text-[#86868B] font-tech">
+                <div class="pt-4 mt-8 border-t border-[#E5E5EA] text-center text-[10px] font-black uppercase tracking-widest text-[#555555] font-tech text-3d">
                     System interaction constitutes consent to this policy.
                 </div>
             </div>
@@ -1413,11 +1629,11 @@
                     block.className = 'flex gap-3 mb-5 w-full opacity-0 transform translate-y-2 transition-all duration-300';
                     
                     const sender = document.createElement('div');
-                    sender.className = 'font-bold shrink-0 text-xs sm:text-sm font-tech';
+                    sender.className = 'font-bold shrink-0 text-xs sm:text-sm font-tech text-3d';
                     sender.textContent = msg.type === 'user' ? '> USER:' : '> AGENT:';
                     
                     const content = document.createElement('div');
-                    content.className = 'leading-relaxed font-bold break-words text-xs sm:text-sm w-full font-tech';
+                    content.className = 'leading-relaxed font-bold break-words text-xs sm:text-sm w-full font-tech text-3d';
                     
                     if (msg.type === 'agent') {
                         const initialCursor = document.createElement('span');
@@ -1461,12 +1677,12 @@
             if (isMenuOpen) {
                 mobileMenu.classList.remove('hidden');
                 mobileMenu.classList.add('flex');
-                mobileMenuBtn.innerHTML = '<i data-lucide="x" class="w-4 h-4 sm:w-5 sm:h-5 text-[#1D1D1F] shrink-0"></i>';
+                mobileMenuBtn.innerHTML = '<i data-lucide="x" class="w-4 h-4 sm:w-5 sm:h-5 text-[#000000] shrink-0 icon-3d"></i>';
                 document.body.style.overflow = 'hidden';
             } else {
                 mobileMenu.classList.add('hidden');
                 mobileMenu.classList.remove('flex');
-                mobileMenuBtn.innerHTML = '<i data-lucide="menu" class="w-4 h-4 sm:w-5 sm:h-5 text-[#1D1D1F] shrink-0"></i>';
+                mobileMenuBtn.innerHTML = '<i data-lucide="menu" class="w-4 h-4 sm:w-5 sm:h-5 text-[#000000] shrink-0 icon-3d"></i>';
                 document.body.style.overflow = '';
             }
             lucide.createIcons();
@@ -1511,32 +1727,32 @@
             }, 300);
         }
 
-        // Enquiry Form Submission Logic
+        // Enquiry Form & Success Modal Logic
         const enquiryModal = document.getElementById('enquiryModal');
         const enquiryContent = document.getElementById('enquiryContent');
+        const successModal = document.getElementById('successModal');
+        const successContent = document.getElementById('successContent');
+
         function openEnquiryModal() { openGenericModal(enquiryModal, enquiryContent); }
         function closeEnquiryModal() { closeGenericModal(enquiryModal, enquiryContent); }
+        function openSuccessModal() { openGenericModal(successModal, successContent); }
+        function closeSuccessModal() { closeGenericModal(successModal, successContent); }
         
-        // Close modal when clicking outside
-        enquiryModal.addEventListener('click', function(e) { 
-            if (e.target === enquiryModal) closeEnquiryModal(); 
-        });
+        // Close modals when clicking outside
+        enquiryModal.addEventListener('click', function(e) { if (e.target === enquiryModal) closeEnquiryModal(); });
+        successModal.addEventListener('click', function(e) { if (e.target === successModal) closeSuccessModal(); });
 
         async function handleEnquirySubmit(e) {
             e.preventDefault();
-            const btn = e.target.querySelector('button[type="submit"]');
+            const form = e.target;
+            const btn = form.querySelector('button[type="submit"]');
             const originalText = btn.innerHTML;
             
             // Visual feedback + Disable button
             btn.innerHTML = 'PROCESSING DATA...';
             btn.disabled = true;
 
-            const formData = new FormData(e.target);
-            const data = {
-                name: formData.get('name'),
-                phone: formData.get('phone'),
-                website: formData.get('website') || ''
-            };
+            const formData = new FormData(form);
 
             const url = "https://script.google.com/macros/s/AKfycbzK0V8AbooKYaBoVOqOe1iDgHXB5XOo8pGV0xPRuGmEMfzueVA3fBCTeEGFBZ8dlpHqzg/exec";
 
@@ -1544,20 +1760,24 @@
                 await fetch(url, {
                     method: "POST",
                     mode: "no-cors",
-                    headers: { "Content-Type": "application/x-www-form-urlencoded" },
-                    body: new URLSearchParams(data)
+                    body: formData // Sends raw form data
                 });
 
                 btn.innerHTML = 'DATA TRANSMITTED';
                 btn.classList.replace('physical-btn-primary', 'physical-btn');
 
+                // Close Enquiry Modal and Pop Success Modal
                 setTimeout(() => {
                     closeEnquiryModal();
-                    e.target.reset();
+                    form.reset();
                     btn.innerHTML = originalText;
                     btn.disabled = false;
                     btn.classList.replace('physical-btn', 'physical-btn-primary');
-                }, 1500);
+                    
+                    setTimeout(() => {
+                        openSuccessModal();
+                    }, 300); // Slight delay for smooth transition between modals
+                }, 500);
 
             } catch (error) {
                 console.error("Failed to Send", error);

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth" style="scroll-padding-top: 6rem;">
+<html lang="en" class="scroll-smooth overflow-x-hidden" style="scroll-padding-top: 6rem;">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
@@ -150,9 +150,9 @@
             word-wrap: break-word;
         }
 
-        /* Explicitly boosted brightness and contrast for entire document components */
-        /* Fixed bug: Applying filter on body broke fixed positioning for modals/nav */
-        body > *:not(script):not(style) {
+        /* Explicitly boosted brightness and contrast for main document components */
+        /* Fixed bug: Applying filter on body or all children breaks fixed positioning for modals/nav */
+        main, footer {
             filter: brightness(1.08) contrast(1.15);
         }
 
@@ -254,6 +254,7 @@
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
+            will-change: filter;
         }
 
         /* --- Fast Hardware-Accelerated Animations --- */
@@ -543,6 +544,21 @@
             word-break: break-all;
             overflow-wrap: break-word;
         }
+
+        /* -- MOBILE PERFORMANCE & RESPONSIVE TWEAKS -- */
+        @media (max-width: 768px) {
+            main, footer {
+                filter: none; /* Removed heavy filtering to fix mobile scroll lag / loading time */
+            }
+            .ai-glow {
+                filter: blur(40px); /* Lowered blur radius on mobile to drastically improve GPU render time */
+                width: 150vw;
+                height: 400px;
+            }
+            .icon-3d {
+                filter: drop-shadow(0px 2px 4px rgba(0, 102, 204, 0.2)) drop-shadow(0px 4px 8px rgba(0,0,0,0.15)); /* Lessen shadow stack for mobile perf */
+            }
+        }
     </style>
 </head>
 <body class="selection:bg-[#0066CC] selection:text-white w-full max-w-full overflow-x-hidden">
@@ -617,7 +633,7 @@
     </div>
 
     <!-- Main Content Wrapper -->
-    <main class="w-full overflow-hidden">
+    <main class="w-full overflow-x-hidden">
 
         <!-- Hero Section -->
         <section id="home" class="relative min-h-[100dvh] w-full flex flex-col items-center justify-center text-center px-4 pt-32 pb-12 bg-[#FFFFFF]">
@@ -665,7 +681,7 @@
 
         <!-- Client Trust Logos Section -->
         <section id="trust-logos" class="py-16 border-y border-[#E5E5EA] bg-[#FAFAFA] w-full relative overflow-hidden">
-            <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-[800px] h-[300px] bg-gradient-to-r from-[#0066CC]/10 via-[#AF52DE]/10 to-[#FF9500]/10 blur-3xl pointer-events-none rounded-full"></div>
+            <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-[200px] md:h-[300px] bg-gradient-to-r from-[#0066CC]/10 via-[#AF52DE]/10 to-[#FF9500]/10 blur-3xl pointer-events-none rounded-full"></div>
             
             <div class="w-full mx-auto text-center reveal relative z-10 overflow-hidden">
                 <p class="text-[9px] sm:text-[10px] font-bold uppercase tracking-[0.3em] text-[#555555] mb-2 text-3d font-tech">Deployed by forward-thinking organizations</p>
@@ -1362,7 +1378,7 @@
 
     <!-- PRO ENQUIRY MODAL -->
     <div id="enquiryModal" class="fixed top-0 left-0 w-full h-[100dvh] bg-black/60 z-[9999] hidden flex-col items-center justify-center p-4 backdrop-blur-xl transition-opacity duration-300 opacity-0 overflow-hidden" role="dialog" aria-modal="true" aria-labelledby="enquiryTitle">
-        <div class="physical-panel bg-[#FFFFFF] max-w-md w-full max-h-[90dvh] flex flex-col relative border border-[#E5E5EA] shadow-2xl transform scale-95 transition-transform duration-300 m-auto box-border" id="enquiryContent">
+        <div class="physical-panel bg-[#FFFFFF] max-w-md w-[calc(100%-2rem)] sm:w-full max-h-[90dvh] flex flex-col relative border border-[#E5E5EA] shadow-2xl transform scale-95 transition-transform duration-300 m-auto mx-4 sm:mx-auto box-border" id="enquiryContent">
             
             <div class="screw screw-tl"></div>
             <div class="screw screw-tr"></div>
@@ -1373,7 +1389,7 @@
                 <i data-lucide="x" class="w-4 h-4 text-[#000000] shrink-0"></i>
             </button>
             
-            <div class="pt-6 px-6 sm:px-8 pb-4 shrink-0 border-b border-[#E5E5EA] relative overflow-hidden rounded-t-[24px] box-border">
+            <div class="pt-6 px-5 sm:px-8 pb-4 shrink-0 border-b border-[#E5E5EA] relative overflow-hidden rounded-t-[24px] box-border">
                 <div class="absolute inset-0 bg-grid opacity-30 z-0"></div>
                 <div class="absolute -top-10 -right-10 w-32 h-32 bg-[#0066CC]/10 rounded-full blur-2xl z-0 pointer-events-none"></div>
                 <div class="relative z-10 text-left pr-8 w-full box-border">
@@ -1385,7 +1401,7 @@
                 </div>
             </div>
             
-            <div class="overflow-y-auto custom-scrollbar p-6 sm:p-8 flex-1 box-border">
+            <div class="overflow-y-auto custom-scrollbar p-5 sm:p-8 flex-1 box-border">
                 <form onsubmit="handleEnquirySubmit(event)" class="space-y-4 text-left relative z-10 w-full pb-2 box-border">
                     
                     <div class="w-full animate-field delay-100 box-border">
@@ -1394,7 +1410,7 @@
                             <div class="absolute left-3 top-1/2 -translate-y-1/2 text-[#0066CC] pointer-events-none">
                                 <i data-lucide="user" class="w-4 h-4"></i>
                             </div>
-                            <input type="text" id="name" name="name" required="required" autocomplete="name" class="w-full bg-transparent pl-9 pr-4 py-3 text-sm font-bold focus:outline-none placeholder-[#A1A1A6] text-[#000000]" placeholder="Enter full name" />
+                            <input type="text" id="name" name="name" required="required" autocomplete="name" class="w-full bg-transparent pl-9 pr-4 py-3 text-base sm:text-sm font-bold focus:outline-none placeholder-[#A1A1A6] text-[#000000]" placeholder="Enter full name" />
                         </div>
                     </div>
                     
@@ -1404,7 +1420,7 @@
                             <div class="absolute left-3 top-1/2 -translate-y-1/2 text-[#34C759] pointer-events-none">
                                 <i data-lucide="phone" class="w-4 h-4"></i>
                             </div>
-                            <input type="tel" id="phone" name="phone" required="required" autocomplete="tel" class="w-full bg-transparent pl-9 pr-4 py-3 text-sm font-bold focus:outline-none placeholder-[#A1A1A6] text-[#000000]" placeholder="Enter contact number" />
+                            <input type="tel" id="phone" name="phone" required="required" autocomplete="tel" class="w-full bg-transparent pl-9 pr-4 py-3 text-base sm:text-sm font-bold focus:outline-none placeholder-[#A1A1A6] text-[#000000]" placeholder="Enter contact number" />
                         </div>
                     </div>
 
@@ -1414,7 +1430,7 @@
                             <div class="absolute left-3 top-1/2 -translate-y-1/2 text-[#AF52DE] pointer-events-none">
                                 <i data-lucide="globe-2" class="w-4 h-4"></i>
                             </div>
-                            <select id="country" name="country" required="required" autocomplete="country" class="w-full bg-transparent pl-9 pr-10 py-3 text-sm font-bold focus:outline-none text-[#000000] appearance-none cursor-pointer relative z-10">
+                            <select id="country" name="country" required="required" autocomplete="country" class="w-full bg-transparent pl-9 pr-10 py-3 text-base sm:text-sm font-bold focus:outline-none text-[#000000] appearance-none cursor-pointer relative z-10">
                                 <option value="" disabled selected class="text-[#A1A1A6]">Select country or state...</option>
                                 <option value="United States">United States</option>
                                 <option value="United Kingdom">United Kingdom</option>
@@ -1497,7 +1513,7 @@
 
     <!-- Premium Success Modal -->
     <div id="successModal" class="fixed top-0 left-0 w-full h-[100dvh] bg-black/60 z-[9999] hidden flex-col items-center justify-center p-4 backdrop-blur-xl transition-opacity duration-300 opacity-0 overflow-hidden" role="dialog" aria-modal="true" aria-labelledby="successTitle">
-        <div class="physical-panel bg-[#FFFFFF] max-w-md w-full max-h-[90dvh] overflow-y-auto custom-scrollbar p-8 md:p-12 text-center transform scale-95 transition-transform duration-300 relative border border-[#E5E5EA] shadow-2xl m-auto box-border" id="successContent">
+        <div class="physical-panel bg-[#FFFFFF] max-w-md w-[calc(100%-2rem)] sm:w-full max-h-[90dvh] overflow-y-auto custom-scrollbar p-5 sm:p-12 text-center transform scale-95 transition-transform duration-300 relative border border-[#E5E5EA] shadow-2xl m-auto mx-4 sm:mx-auto box-border" id="successContent">
             
             <div class="screw screw-tl"></div>
             <div class="screw screw-tr"></div>
@@ -1522,7 +1538,7 @@
 
     <!-- Terms Modal -->
     <div id="termsModal" class="fixed top-0 left-0 w-full h-[100dvh] bg-black/60 z-[9999] hidden flex-col items-center justify-center p-4 backdrop-blur-xl transition-opacity duration-300 opacity-0 overflow-hidden" role="dialog" aria-modal="true" aria-labelledby="termsTitle">
-        <div class="physical-panel bg-[#FFFFFF] max-w-4xl w-full max-h-[90dvh] p-4 sm:p-6 md:p-10 flex flex-col relative border border-[#E5E5EA] shadow-2xl transform scale-95 transition-transform duration-300 m-auto overflow-hidden box-border" id="termsContent">
+        <div class="physical-panel bg-[#FFFFFF] max-w-4xl w-[calc(100%-2rem)] sm:w-full max-h-[90dvh] p-4 sm:p-6 md:p-10 flex flex-col relative border border-[#E5E5EA] shadow-2xl transform scale-95 transition-transform duration-300 m-auto mx-4 sm:mx-auto overflow-hidden box-border" id="termsContent">
             
             <button onclick="closeTerms()" class="absolute top-4 right-4 lg:top-6 lg:right-6 physical-btn bg-[#FAFAFA] border-transparent w-10 h-10 flex items-center justify-center rounded-full z-20 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#0066CC] icon-3d" aria-label="Close Terms">
                 <i data-lucide="x" class="w-5 h-5 text-[#000000] shrink-0"></i>
@@ -1568,7 +1584,7 @@
 
     <!-- Privacy Policy Modal -->
     <div id="privacyModal" class="fixed top-0 left-0 w-full h-[100dvh] bg-black/60 z-[9999] hidden flex-col items-center justify-center p-4 backdrop-blur-xl transition-opacity duration-300 opacity-0 overflow-hidden" role="dialog" aria-modal="true" aria-labelledby="privacyTitle">
-        <div class="physical-panel bg-[#FFFFFF] max-w-4xl w-full max-h-[90dvh] p-4 sm:p-6 md:p-10 flex flex-col relative border border-[#E5E5EA] shadow-2xl transform scale-95 transition-transform duration-300 m-auto overflow-hidden box-border" id="privacyContent">
+        <div class="physical-panel bg-[#FFFFFF] max-w-4xl w-[calc(100%-2rem)] sm:w-full max-h-[90dvh] p-4 sm:p-6 md:p-10 flex flex-col relative border border-[#E5E5EA] shadow-2xl transform scale-95 transition-transform duration-300 m-auto mx-4 sm:mx-auto overflow-hidden box-border" id="privacyContent">
             
             <button onclick="closePrivacy()" class="absolute top-4 right-4 lg:top-6 lg:right-6 physical-btn bg-[#FAFAFA] border-transparent w-10 h-10 flex items-center justify-center rounded-full z-20 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#0066CC] icon-3d" aria-label="Close Privacy Policy">
                 <i data-lucide="x" class="w-5 h-5 text-[#000000] shrink-0"></i>

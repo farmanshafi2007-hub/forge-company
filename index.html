@@ -1378,7 +1378,7 @@
 
     <!-- PRO ENQUIRY MODAL -->
     <div id="enquiryModal" class="fixed top-0 left-0 w-full h-[100dvh] bg-black/60 z-[9999] hidden flex-col items-center justify-center p-4 backdrop-blur-xl transition-opacity duration-300 opacity-0 overflow-hidden" role="dialog" aria-modal="true" aria-labelledby="enquiryTitle">
-        <div class="physical-panel bg-[#FFFFFF] max-w-md w-[calc(100%-2rem)] sm:w-full max-h-[90dvh] flex flex-col relative border border-[#E5E5EA] shadow-2xl transform scale-95 transition-transform duration-300 m-auto mx-4 sm:mx-auto box-border" id="enquiryContent">
+        <div class="physical-panel bg-[#FFFFFF] max-w-md w-[92%] sm:w-full max-h-[90dvh] flex flex-col relative border border-[#E5E5EA] shadow-2xl transform scale-95 transition-transform duration-300 mx-auto box-border" id="enquiryContent">
             
             <div class="screw screw-tl"></div>
             <div class="screw screw-tr"></div>
@@ -1404,7 +1404,7 @@
             <div class="overflow-y-auto custom-scrollbar p-5 sm:p-8 flex-1 box-border">
                 <form onsubmit="handleEnquirySubmit(event)" class="space-y-4 text-left relative z-10 w-full pb-2 box-border">
                     
-                    <div class="w-full animate-field delay-100 box-border">
+                    <div class="w-full box-border">
                         <label for="name" class="text-[9px] font-black text-[#555555] uppercase tracking-widest ml-1 mb-1 block font-tech text-3d">Company / Person Name</label>
                         <div class="relative group input-focus-effect rounded-xl overflow-hidden bg-[#FAFAFA] border border-[#E5E5EA]">
                             <div class="absolute left-3 top-1/2 -translate-y-1/2 text-[#0066CC] pointer-events-none">
@@ -1414,7 +1414,7 @@
                         </div>
                     </div>
                     
-                    <div class="w-full animate-field delay-200 box-border">
+                    <div class="w-full box-border">
                         <label for="phone" class="text-[9px] font-black text-[#555555] uppercase tracking-widest ml-1 mb-1 block font-tech text-3d">Phone Number (WhatsApp)</label>
                         <div class="relative group input-focus-effect rounded-xl overflow-hidden bg-[#FAFAFA] border border-[#E5E5EA]">
                             <div class="absolute left-3 top-1/2 -translate-y-1/2 text-[#34C759] pointer-events-none">
@@ -1424,7 +1424,7 @@
                         </div>
                     </div>
 
-                    <div class="w-full animate-field delay-300 box-border">
+                    <div class="w-full box-border">
                         <label for="country" class="text-[9px] font-black text-[#555555] uppercase tracking-widest ml-1 mb-1 block font-tech text-3d">Country / State Location</label>
                         <div class="relative group input-focus-effect rounded-xl overflow-hidden bg-[#FAFAFA] border border-[#E5E5EA]">
                             <div class="absolute left-3 top-1/2 -translate-y-1/2 text-[#AF52DE] pointer-events-none">
@@ -1503,7 +1503,7 @@
                         </div>
                     </div>
                     
-                    <button type="submit" class="w-full physical-btn-primary py-4 font-black text-[10px] sm:text-xs uppercase tracking-widest mt-6 text-white disabled:bg-[#A1A1A6] shadow-xl font-tech icon-3d animate-field delay-400 whitespace-nowrap box-border">
+                    <button type="submit" class="w-full physical-btn-primary py-4 font-black text-[10px] sm:text-xs uppercase tracking-widest mt-6 text-white disabled:bg-[#A1A1A6] shadow-xl font-tech icon-3d whitespace-nowrap box-border">
                         Book Your Website
                     </button>
                 </form>
@@ -1513,7 +1513,7 @@
 
     <!-- Premium Success Modal -->
     <div id="successModal" class="fixed top-0 left-0 w-full h-[100dvh] bg-black/60 z-[9999] hidden flex-col items-center justify-center p-4 backdrop-blur-xl transition-opacity duration-300 opacity-0 overflow-hidden" role="dialog" aria-modal="true" aria-labelledby="successTitle">
-        <div class="physical-panel bg-[#FFFFFF] max-w-md w-[calc(100%-2rem)] sm:w-full max-h-[90dvh] overflow-y-auto custom-scrollbar p-5 sm:p-12 text-center transform scale-95 transition-transform duration-300 relative border border-[#E5E5EA] shadow-2xl m-auto mx-4 sm:mx-auto box-border" id="successContent">
+        <div class="physical-panel bg-[#FFFFFF] max-w-md w-[92%] sm:w-full max-h-[90dvh] overflow-y-auto custom-scrollbar p-5 sm:p-12 text-center transform scale-95 transition-transform duration-300 relative border border-[#E5E5EA] shadow-2xl mx-auto box-border" id="successContent">
             
             <div class="screw screw-tl"></div>
             <div class="screw screw-tr"></div>
@@ -1538,7 +1538,7 @@
 
     <!-- Terms Modal -->
     <div id="termsModal" class="fixed top-0 left-0 w-full h-[100dvh] bg-black/60 z-[9999] hidden flex-col items-center justify-center p-4 backdrop-blur-xl transition-opacity duration-300 opacity-0 overflow-hidden" role="dialog" aria-modal="true" aria-labelledby="termsTitle">
-        <div class="physical-panel bg-[#FFFFFF] max-w-4xl w-[calc(100%-2rem)] sm:w-full max-h-[90dvh] p-4 sm:p-6 md:p-10 flex flex-col relative border border-[#E5E5EA] shadow-2xl transform scale-95 transition-transform duration-300 m-auto mx-4 sm:mx-auto overflow-hidden box-border" id="termsContent">
+        <div class="physical-panel bg-[#FFFFFF] max-w-4xl w-[92%] sm:w-full max-h-[90dvh] p-4 sm:p-6 md:p-10 flex flex-col relative border border-[#E5E5EA] shadow-2xl transform scale-95 transition-transform duration-300 mx-auto overflow-hidden box-border" id="termsContent">
             
             <button onclick="closeTerms()" class="absolute top-4 right-4 lg:top-6 lg:right-6 physical-btn bg-[#FAFAFA] border-transparent w-10 h-10 flex items-center justify-center rounded-full z-20 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#0066CC] icon-3d" aria-label="Close Terms">
                 <i data-lucide="x" class="w-5 h-5 text-[#000000] shrink-0"></i>
@@ -1584,7 +1584,7 @@
 
     <!-- Privacy Policy Modal -->
     <div id="privacyModal" class="fixed top-0 left-0 w-full h-[100dvh] bg-black/60 z-[9999] hidden flex-col items-center justify-center p-4 backdrop-blur-xl transition-opacity duration-300 opacity-0 overflow-hidden" role="dialog" aria-modal="true" aria-labelledby="privacyTitle">
-        <div class="physical-panel bg-[#FFFFFF] max-w-4xl w-[calc(100%-2rem)] sm:w-full max-h-[90dvh] p-4 sm:p-6 md:p-10 flex flex-col relative border border-[#E5E5EA] shadow-2xl transform scale-95 transition-transform duration-300 m-auto mx-4 sm:mx-auto overflow-hidden box-border" id="privacyContent">
+        <div class="physical-panel bg-[#FFFFFF] max-w-4xl w-[92%] sm:w-full max-h-[90dvh] p-4 sm:p-6 md:p-10 flex flex-col relative border border-[#E5E5EA] shadow-2xl transform scale-95 transition-transform duration-300 m-auto mx-4 sm:mx-auto overflow-hidden box-border" id="privacyContent">
             
             <button onclick="closePrivacy()" class="absolute top-4 right-4 lg:top-6 lg:right-6 physical-btn bg-[#FAFAFA] border-transparent w-10 h-10 flex items-center justify-center rounded-full z-20 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#0066CC] icon-3d" aria-label="Close Privacy Policy">
                 <i data-lucide="x" class="w-5 h-5 text-[#000000] shrink-0"></i>

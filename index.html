@@ -2,7 +2,7 @@
 <html lang="en" class="scroll-smooth" style="scroll-padding-top: 6rem;">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <!-- Core Web Vitals & Performance Preconnects / DNS Prefetching -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -115,11 +115,11 @@
     </script>
     
     <!-- Deferring Ad Scripts to not block critical rendering path -->
-    <script src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6651904672008274" crossorigin="anonymous"></script>
+    <script src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6651904672008274" crossorigin="anonymous" defer></script>
 
     <!-- Defer loading of non-critical JS for faster DOM rendering -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="https://cdn.tailwindcss.com" defer></script>
+    <script src="https://unpkg.com/lucide@latest" defer></script>
 
     <style>
         :root {
@@ -142,14 +142,17 @@
             background-color: var(--apple-bg); 
             color: var(--space-grey);
             overflow-x: hidden;
-            width: 100vw;
-            max-width: 100vw;
+            width: 100%;
             -webkit-font-smoothing: antialiased;
             text-rendering: optimizeLegibility;
             -webkit-overflow-scrolling: touch; 
             overflow-wrap: break-word; 
             word-wrap: break-word;
-            /* Explicitly boosted brightness and contrast for entire document */
+        }
+
+        /* Explicitly boosted brightness and contrast for entire document components */
+        /* Fixed bug: Applying filter on body broke fixed positioning for modals/nav */
+        body > *:not(script):not(style) {
             filter: brightness(1.08) contrast(1.15);
         }
 
@@ -240,7 +243,7 @@
         
         .ai-glow {
             position: absolute;
-            width: 100vw;
+            width: 100%;
             max-width: 900px;
             height: 700px;
             background: radial-gradient(circle, rgba(0,102,204,0.08) 0%, rgba(175,82,222,0.06) 40%, rgba(255,255,255,0) 70%);
@@ -305,6 +308,34 @@
             box-shadow: inset 0 2px 4px rgba(0,0,0,0.05), 0 0 0 4px rgba(0, 102, 204, 0.15);
             border-color: #0066CC;
             transform: translateY(-2px) translateZ(0);
+        }
+
+        /* --- PREMIUM PRICING ANIMATIONS --- */
+        @keyframes premium-shine {
+            0% { left: -100%; top: -100%; }
+            20% { left: 200%; top: 200%; }
+            100% { left: 200%; top: 200%; }
+        }
+        .shine-effect::after {
+            content: '';
+            position: absolute;
+            top: -100%;
+            left: -100%;
+            width: 50%;
+            height: 300%;
+            background: linear-gradient(to right, rgba(255,255,255,0) 0%, rgba(255,255,255,0.7) 50%, rgba(255,255,255,0) 100%);
+            transform: rotate(30deg);
+            animation: premium-shine 6s cubic-bezier(0.19, 1, 0.22, 1) infinite;
+            pointer-events: none;
+            z-index: 10;
+        }
+        @keyframes pulse-red {
+            0% { box-shadow: 0 0 0 0 rgba(255, 59, 48, 0.5); }
+            70% { box-shadow: 0 0 0 18px rgba(255, 59, 48, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(255, 59, 48, 0); }
+        }
+        .border-pulse-red {
+            animation: pulse-red 2.5s infinite;
         }
 
         /* --- APPLE-LIKE CLEAN UI COMPONENTS --- */
@@ -510,7 +541,7 @@
         }
     </style>
 </head>
-<body class="selection:bg-[#0066CC] selection:text-white w-full max-w-[100vw] overflow-x-hidden">
+<body class="selection:bg-[#0066CC] selection:text-white w-full max-w-full overflow-x-hidden">
 
     <!-- Fixed Hardware Texture (Hidden via CSS but kept in code) -->
     <div class="texture-overlay"></div>
@@ -560,8 +591,8 @@
         </div>
     </nav>
 
-    <!-- Mobile Menu Overlay (FIXED: Scroll bleed & Blank layout issues) -->
-    <div id="mobileMenu" class="fixed top-0 left-0 w-screen h-[100dvh] pt-[100px] bg-[#FFFFFF]/95 backdrop-blur-xl z-[45] hidden flex-col items-center justify-start space-y-4 px-4 overflow-y-auto overscroll-contain pb-8" role="dialog" aria-modal="true">
+    <!-- Mobile Menu Overlay -->
+    <div id="mobileMenu" class="fixed top-0 left-0 w-full h-[100dvh] pt-[100px] bg-[#FFFFFF]/95 backdrop-blur-xl z-[45] hidden flex-col items-center justify-start space-y-4 px-4 overflow-y-auto overscroll-contain pb-8" role="dialog" aria-modal="true" aria-label="Mobile Navigation Menu">
         <a href="#home" class="mobile-link physical-btn w-full max-w-[280px] py-3 text-center text-sm font-bold uppercase tracking-wider shadow-none border-transparent hover:bg-[#FAFAFA]">Home</a>
         <a href="#what-we-do" class="mobile-link physical-btn w-full max-w-[280px] py-3 text-center text-sm font-bold uppercase tracking-wider shadow-none border-transparent hover:bg-[#FAFAFA]">Infrastructure</a>
         <a href="#services" class="mobile-link physical-btn w-full max-w-[280px] py-3 text-center text-sm font-bold uppercase tracking-wider shadow-none border-transparent hover:bg-[#FAFAFA]">Systems</a>
@@ -576,16 +607,15 @@
             <span class="bg-gradient-to-br from-[#FF9500] to-[#FF3B30] text-white text-[7px] px-1 py-[1.5px] rounded-[3px] shadow-sm leading-none tracking-widest font-tech">BETA</span>
         </a>
         
-        <!-- UPDATED TEXT -->
         <button onclick="document.getElementById('mobileMenuBtn').click(); openEnquiryModal();" class="mobile-link physical-btn-primary w-full max-w-[280px] py-4 text-center text-sm font-black uppercase tracking-wider text-white mt-4 icon-3d">
             Book Your Website
         </button>
     </div>
 
-    <!-- Main Content Wrapper for SEO/Semantic structure -->
-    <main class="w-full max-w-[100vw] overflow-hidden">
+    <!-- Main Content Wrapper -->
+    <main class="w-full overflow-hidden">
 
-        <!-- Hero Section (CRO Optimized Copy) -->
+        <!-- Hero Section -->
         <section id="home" class="relative min-h-[100dvh] w-full flex flex-col items-center justify-center text-center px-4 pt-32 pb-12 bg-[#FFFFFF]">
             <div class="absolute inset-0 bg-grid z-0"></div>
             <div class="ai-glow"></div>
@@ -1052,7 +1082,7 @@
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 items-stretch lg:py-6 w-full">
                     
                     <!-- Starter Tier -->
-                    <article class="physical-panel reveal bg-[#FAFAFA] border border-[#E5E5EA] p-6 md:p-8 flex flex-col h-full relative z-10 w-full hover:shadow-2xl transition-all shadow-xl">
+                    <article class="physical-panel reveal bg-[#FAFAFA] border-2 border-[#FF3B30]/50 hover:border-[#FF3B30] p-6 md:p-8 flex flex-col h-full relative z-10 w-full hover:shadow-2xl transition-all shadow-xl">
                         <div class="screw screw-tl"></div>
                         <div class="screw screw-br"></div>
                         <div class="mb-8 text-[#000000]">
@@ -1061,7 +1091,7 @@
                             <p class="text-[#555555] text-xs font-medium break-words text-3d">Foundational digital presence.</p>
                         </div>
                         
-                        <div class="mb-10 text-4xl font-black text-[#000000] tracking-tighter text-3d font-tech">₹2,500</div>
+                        <div class="mb-10 text-4xl font-black text-[#000000] tracking-tighter text-3d font-tech">₹3,000</div>
                         
                         <button onclick="openEnquiryModal()" class="physical-btn w-full py-4 text-[10px] font-black uppercase tracking-widest mb-10 border-[#E5E5EA] bg-[#FFFFFF] font-tech shadow-md text-3d icon-3d" aria-label="Request Quote for Starter Plan">
                             Book Your Website
@@ -1092,16 +1122,16 @@
                     </article>
 
                     <!-- Pro Tier (Highlighted) -->
-                    <article class="physical-panel reveal bg-[#FFFFFF] border border-[#0066CC]/40 p-6 md:p-10 flex flex-col h-full relative z-20 shadow-[0_20px_50px_rgba(0,102,204,0.15)] transform lg:scale-105 w-full" style="transition-delay: 100ms;">
+                    <article class="physical-panel reveal bg-[#FFFFFF] border-2 border-[#FF3B30] border-pulse-red overflow-hidden shine-effect p-6 md:p-10 flex flex-col h-full relative z-20 shadow-[0_20px_50px_rgba(255,59,48,0.25)] transform lg:scale-105 w-full" style="transition-delay: 100ms;">
                         <div class="screw screw-tl"></div>
                         <div class="screw screw-tr"></div>
                         <div class="screw screw-bl"></div>
                         <div class="screw screw-br"></div>
 
-                        <!-- Most Popular Badge -->
-                        <div class="mx-auto lg:absolute lg:-top-4 lg:right-6 lg:mx-0 flex w-max items-center gap-1.5 physical-recessed bg-[#FFFFFF] px-3 py-1.5 rounded-full mb-6 lg:mb-0 shadow-md border border-[#E5E5EA]">
-                            <div class="led-indicator led-green animate-pulse w-2 h-2 shrink-0"></div>
-                            <span class="text-[9px] font-black text-[#0066CC] uppercase tracking-widest text-3d font-tech">Most Popular</span>
+                        <!-- Urgency Badge -->
+                        <div class="mx-auto lg:absolute lg:-top-4 lg:right-6 lg:mx-0 flex w-max items-center gap-1.5 physical-recessed bg-[#FFF0F0] px-3 py-1.5 rounded-full mb-6 lg:mb-0 shadow-[0_4px_15px_rgba(255,59,48,0.3)] border border-[#FF3B30]">
+                            <div class="led-indicator led-red animate-pulse w-2 h-2 shrink-0" style="background-color: #FF3B30; box-shadow: 0 0 8px #FF3B30;"></div>
+                            <span class="text-[9px] font-black text-[#FF3B30] uppercase tracking-widest text-3d font-tech">High Demand - Act Fast</span>
                         </div>
 
                         <div class="mb-8 text-[#000000]">
@@ -1110,9 +1140,9 @@
                             <p class="text-[#555555] text-xs font-medium break-words text-3d">Autonomous sales architecture.</p>
                         </div>
                         
-                        <div class="mb-10 text-4xl lg:text-5xl font-black text-[#000000] tracking-tighter text-3d font-tech">₹5,100</div>
+                        <div class="mb-10 text-4xl lg:text-5xl font-black text-[#000000] tracking-tighter text-3d font-tech">₹7,000</div>
                         
-                        <button onclick="openEnquiryModal()" class="physical-btn-primary w-full py-4 text-[10px] font-black uppercase tracking-widest mb-10 shadow-xl font-tech icon-3d" aria-label="Start Business Pro Project">
+                        <button onclick="openEnquiryModal()" class="physical-btn-primary animate-pulse w-full py-4 text-[10px] font-black uppercase tracking-widest mb-10 shadow-xl font-tech icon-3d" aria-label="Start Business Pro Project">
                             Book Your Website
                         </button>
                         
@@ -1145,7 +1175,7 @@
                     </article>
 
                     <!-- Enterprise Tier -->
-                    <article class="physical-panel reveal bg-[#FAFAFA] border border-[#E5E5EA] p-6 md:p-8 flex flex-col h-full relative z-10 w-full hover:shadow-2xl transition-all sm:col-span-2 lg:col-span-1 shadow-xl" style="transition-delay: 200ms;">
+                    <article class="physical-panel reveal bg-[#FAFAFA] border-2 border-[#FF3B30]/50 hover:border-[#FF3B30] p-6 md:p-8 flex flex-col h-full relative z-10 w-full hover:shadow-2xl transition-all sm:col-span-2 lg:col-span-1 shadow-xl" style="transition-delay: 200ms;">
                         <div class="screw screw-tl"></div>
                         <div class="screw screw-br"></div>
                         <div class="mb-8 text-[#000000]">
@@ -1154,7 +1184,7 @@
                             <p class="text-[#555555] text-xs font-medium break-words text-3d">Customized enterprise logic.</p>
                         </div>
                         
-                        <div class="mb-10 text-4xl font-black text-[#000000] tracking-tighter text-3d font-tech">₹11,000+</div>
+                        <div class="mb-10 text-4xl font-black text-[#000000] tracking-tighter text-3d font-tech">₹15,000</div>
                         
                         <button onclick="openEnquiryModal()" class="physical-btn w-full py-4 text-[10px] font-black uppercase tracking-widest mb-10 border-[#E5E5EA] bg-[#FFFFFF] font-tech shadow-md text-3d icon-3d" aria-label="Request Quote for Custom Build">
                             Book Your Website
@@ -1288,7 +1318,7 @@
     </main>
 
     <!-- Footer -->
-    <footer class="py-12 md:py-20 px-4 bg-[#FFFFFF] text-center relative border-t border-[#E5E5EA] w-full max-w-[100vw]">
+    <footer class="py-12 md:py-20 px-4 bg-[#FFFFFF] text-center relative border-t border-[#E5E5EA] w-full">
         <div class="w-full max-w-7xl mx-auto">
             <div class="text-xl md:text-3xl font-black tracking-tighter text-[#000000] flex items-center justify-center gap-3 mb-8 cursor-pointer text-3d break-words">
                 <div class="physical-recessed bg-[#FAFAFA] border border-[#E5E5EA] p-2 md:p-3 rounded-xl inline-flex items-center justify-center shadow-md">
@@ -1325,7 +1355,7 @@
     </footer>
 
     <!-- PRO ENQUIRY MODAL -->
-    <div id="enquiryModal" class="fixed top-0 left-0 w-screen h-[100dvh] bg-black/60 z-[9999] hidden flex-col items-center justify-center p-4 backdrop-blur-xl transition-opacity duration-300 opacity-0 overflow-hidden" role="dialog" aria-modal="true" aria-labelledby="enquiryTitle">
+    <div id="enquiryModal" class="fixed top-0 left-0 w-full h-[100dvh] bg-black/60 z-[9999] hidden flex-col items-center justify-center p-4 backdrop-blur-xl transition-opacity duration-300 opacity-0 overflow-hidden" role="dialog" aria-modal="true" aria-labelledby="enquiryTitle">
         <div class="physical-panel bg-[#FFFFFF] max-w-md w-full max-h-[90dvh] flex flex-col relative border border-[#E5E5EA] shadow-2xl transform scale-95 transition-transform duration-300 m-auto" id="enquiryContent">
             
             <div class="screw screw-tl"></div>
@@ -1460,7 +1490,7 @@
     </div>
 
     <!-- Premium Success Modal -->
-    <div id="successModal" class="fixed top-0 left-0 w-screen h-[100dvh] bg-black/60 z-[9999] hidden flex-col items-center justify-center p-4 backdrop-blur-xl transition-opacity duration-300 opacity-0 overflow-hidden" role="dialog" aria-modal="true" aria-labelledby="successTitle">
+    <div id="successModal" class="fixed top-0 left-0 w-full h-[100dvh] bg-black/60 z-[9999] hidden flex-col items-center justify-center p-4 backdrop-blur-xl transition-opacity duration-300 opacity-0 overflow-hidden" role="dialog" aria-modal="true" aria-labelledby="successTitle">
         <div class="physical-panel bg-[#FFFFFF] max-w-md w-full max-h-[90dvh] overflow-y-auto custom-scrollbar p-8 md:p-12 text-center transform scale-95 transition-transform duration-300 relative border border-[#E5E5EA] shadow-2xl m-auto" id="successContent">
             
             <div class="screw screw-tl"></div>
@@ -1484,8 +1514,8 @@
         </div>
     </div>
 
-    <!-- Terms Modal (Fixed Scrolling & Enhanced Layout) -->
-    <div id="termsModal" class="fixed top-0 left-0 w-screen h-[100dvh] bg-black/60 z-[9999] hidden flex-col items-center justify-center p-4 backdrop-blur-xl transition-opacity duration-300 opacity-0 overflow-hidden" role="dialog" aria-modal="true" aria-labelledby="termsTitle">
+    <!-- Terms Modal -->
+    <div id="termsModal" class="fixed top-0 left-0 w-full h-[100dvh] bg-black/60 z-[9999] hidden flex-col items-center justify-center p-4 backdrop-blur-xl transition-opacity duration-300 opacity-0 overflow-hidden" role="dialog" aria-modal="true" aria-labelledby="termsTitle">
         <div class="physical-panel bg-[#FFFFFF] max-w-4xl w-full max-h-[90dvh] p-4 sm:p-6 md:p-10 flex flex-col relative border border-[#E5E5EA] shadow-2xl transform scale-95 transition-transform duration-300 m-auto overflow-hidden" id="termsContent">
             
             <button onclick="closeTerms()" class="absolute top-4 right-4 lg:top-6 lg:right-6 physical-btn bg-[#FAFAFA] border-transparent w-10 h-10 flex items-center justify-center rounded-full z-20 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#0066CC] icon-3d" aria-label="Close Terms">
@@ -1530,8 +1560,8 @@
         </div>
     </div>
 
-    <!-- Privacy Policy Modal (Fixed Scrolling & Enhanced Layout) -->
-    <div id="privacyModal" class="fixed top-0 left-0 w-screen h-[100dvh] bg-black/60 z-[9999] hidden flex-col items-center justify-center p-4 backdrop-blur-xl transition-opacity duration-300 opacity-0 overflow-hidden" role="dialog" aria-modal="true" aria-labelledby="privacyTitle">
+    <!-- Privacy Policy Modal -->
+    <div id="privacyModal" class="fixed top-0 left-0 w-full h-[100dvh] bg-black/60 z-[9999] hidden flex-col items-center justify-center p-4 backdrop-blur-xl transition-opacity duration-300 opacity-0 overflow-hidden" role="dialog" aria-modal="true" aria-labelledby="privacyTitle">
         <div class="physical-panel bg-[#FFFFFF] max-w-4xl w-full max-h-[90dvh] p-4 sm:p-6 md:p-10 flex flex-col relative border border-[#E5E5EA] shadow-2xl transform scale-95 transition-transform duration-300 m-auto overflow-hidden" id="privacyContent">
             
             <button onclick="closePrivacy()" class="absolute top-4 right-4 lg:top-6 lg:right-6 physical-btn bg-[#FAFAFA] border-transparent w-10 h-10 flex items-center justify-center rounded-full z-20 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#0066CC] icon-3d" aria-label="Close Privacy Policy">
@@ -1598,11 +1628,11 @@
             let i = 0;
             dataLed.classList.add('animate-pulse'); 
             
+            element.innerHTML = ''; 
             const textNode = document.createTextNode('');
             const cursor = document.createElement('span');
             cursor.className = 'cursor-blink';
             
-            element.innerHTML = ''; 
             element.appendChild(textNode);
             element.appendChild(cursor);
 
@@ -1610,7 +1640,10 @@
                 if (i < text.length) {
                     textNode.nodeValue += text.charAt(i); 
                     i++;
-                    terminalOutput.scrollTop = terminalOutput.scrollHeight;
+                    // Bugfix: Prevents layout thrashing on rapid reflows
+                    requestAnimationFrame(() => {
+                        terminalOutput.scrollTop = terminalOutput.scrollHeight;
+                    });
                     setTimeout(type, speed);
                 } else {
                     dataLed.classList.remove('animate-pulse');
@@ -1638,12 +1671,6 @@
                     const content = document.createElement('div');
                     content.className = 'leading-relaxed font-bold break-words text-xs sm:text-sm w-full font-tech text-3d';
                     
-                    if (msg.type === 'agent') {
-                        const initialCursor = document.createElement('span');
-                        initialCursor.className = 'cursor-blink';
-                        content.appendChild(initialCursor);
-                    }
-
                     block.appendChild(sender);
                     block.appendChild(content);
                     terminalOutput.appendChild(block);
@@ -1848,19 +1875,20 @@
         function toggleJobDetails(element) {
             const isExpanded = element.getAttribute('aria-expanded') === 'true';
             const details = element.nextElementSibling;
-            const iconPlus = element.querySelector('[data-lucide="plus"]');
+            // Bugfix: Targets generated SVG robustly without relying on transient attribute properties
+            const icon = element.querySelector('.transition-transform');
             
             element.setAttribute('aria-expanded', !isExpanded);
             
             if (!isExpanded && details) {
                 details.classList.add('expanded');
-                if(iconPlus) {
-                    iconPlus.classList.replace('rotate-0', 'rotate-45');
+                if(icon) {
+                    icon.classList.add('rotate-45');
                 }
             } else if (details) {
                 details.classList.remove('expanded');
-                if(iconPlus) {
-                    iconPlus.classList.replace('rotate-45', 'rotate-0');
+                if(icon) {
+                    icon.classList.remove('rotate-45');
                 }
             }
         }

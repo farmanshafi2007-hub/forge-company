@@ -16,11 +16,11 @@
     <link rel="preload" href="https://cdn.tailwindcss.com" as="script">
     <link rel="preload" href="https://unpkg.com/lucide@latest" as="script">
 
-    <!-- Multi-Font Import (Calligraphy, Serif Display, and Monospace) -->
-    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&family=JetBrains+Mono:wght@400;700;800&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <!-- Mixed Typography System: Geist/Silkscreen for Hero, Inter/JetBrains for Rest -->
+    <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=Silkscreen:wght@400;700&family=Caveat:wght@400..700&family=JetBrains+Mono:wght@400;700;800&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 
     <!-- SEO & Search Engine Optimization Tags -->
-    <title>Forge Softwares | Intelligent Web Architecture & AI Systems</title>
+    <title>Forge Softwares</title>
     <meta name="description" content="Forge Softwares provides custom web architecture, autonomous AI agents, and SaaS solutions designed to scale operations and automate acquisition.">
     <meta name="keywords" content="Web Architecture, Software Development, AI Automation, AI Agents, SaaS, Systems Engineering, Srinagar, Kashmir">
     <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
@@ -117,20 +117,55 @@
     <!-- Deferring Ad Scripts to not block critical rendering path -->
     <script src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6651904672008274" crossorigin="anonymous" defer></script>
 
-    <!-- Defer loading of non-critical JS for faster DOM rendering -->
-    <script src="https://cdn.tailwindcss.com" defer></script>
+    <!-- Tailwind Config & Scripts -->
+    <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/lucide@latest" defer></script>
 
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', '-apple-system', 'BlinkMacSystemFont', 'sans-serif'],
+                        geist: ['Geist', '-apple-system', 'BlinkMacSystemFont', 'sans-serif'],
+                        silkscreen: ['Silkscreen', 'cursive'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                        display: ['Playfair Display', 'serif'], 
+                        tech: ['JetBrains Mono', 'monospace']
+                    },
+                    colors: {
+                        brand: {
+                            bg: '#0a0a0a',
+                            panel: 'rgba(255, 255, 255, 0.05)',
+                            border: 'rgba(255, 255, 255, 0.1)'
+                        }
+                    },
+                    animation: {
+                        'marquee-ltr': 'marqueeLtr 40s linear infinite',
+                        'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                    },
+                    keyframes: {
+                        marqueeLtr: {
+                            '0%': { transform: 'translateX(0%)' },
+                            '100%': { transform: 'translateX(-50%)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
     <style>
+        /* --- STREAMING_CHUNK:Global CSS Variables and Resets --- */
         :root {
-            /* The Minimalist Canvas - Ultra Brightness & High Contrast */
+            /* The Minimalist Canvas - Ultra Brightness & High Contrast for rest of site */
             --apple-bg: #FFFFFF;
             --surface-grey: #FCFCFD; 
-            --space-grey: #000000; /* Pure black for maximum 10000% contrast readability */
-            --subtle-grey: #555555; /* Darkened gray so text never vanishes */
-            --apple-border: rgba(0, 0, 0, 0.08); /* Slightly stronger border for depth */
+            --space-grey: #000000; 
+            --subtle-grey: #555555; 
+            --apple-border: rgba(0, 0, 0, 0.08); 
             
-            /* Accent Colors (Vibrant Pops) */
+            /* Accent Colors */
             --store-blue: #0066CC;
             --electric-green: #34C759;
             --vivid-purple: #AF52DE;
@@ -150,18 +185,20 @@
             word-wrap: break-word;
         }
 
-        /* --- HIGH PERFORMANCE OVERRIDES (LIGHTHOUSE 100 OPTIMIZATIONS) --- */
+        /* Selection styling */
+        ::selection {
+            background-color: #0066CC;
+            color: #fff;
+        }
+
+        /* --- HIGH PERFORMANCE OVERRIDES --- */
         section:not(#home) {
-            /* Tells the browser to skip rendering elements until scrolled into view. Massive performance boost. */
             content-visibility: auto;
             contain-intrinsic-size: auto 800px;
         }
 
-        /* Explicitly boosted brightness and contrast for main document components */
-        /* Fixed bug: Applying filter on body or all children breaks fixed positioning for modals/nav */
         main, footer {
             filter: brightness(1.08) contrast(1.15);
-            /* Hardware Accelerate the heavy CSS filters to the GPU to stop UI lag */
             transform: translate3d(0, 0, 0);
             backface-visibility: hidden;
             perspective: 1000px;
@@ -184,13 +221,22 @@
             background: var(--subtle-grey); 
         }
 
-        /* --- Font Classes for Variety & 3D Depth --- */
-        .font-display {
-            font-family: 'Playfair Display', serif;
+        /* --- STREAMING_CHUNK:Hero Specific Styles (Liquid Glass Forge) --- */
+        .nexum-btn-gradient {
+            background: linear-gradient(to bottom, #2B2B2B, #101010);
+            border: 1px solid rgba(255,255,255,0.1);
         }
-        .font-tech {
-            font-family: 'JetBrains Mono', 'SF Mono', monospace;
+
+        /* Enhanced Liquid Glassmorphism for readability */
+        .liquid-glass-panel {
+            background: rgba(10, 10, 10, 0.45); /* Darker tint for text contrast */
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.1);
         }
+
+        /* --- STREAMING_CHUNK:Apple Clean UI Styles --- */
         .font-calligraphy {
             font-family: 'Caveat', cursive;
             font-size: 1.8rem;
@@ -203,25 +249,22 @@
             .font-calligraphy { font-size: 1.5rem; }
         }
         
-        /* High-Fidelity 3D Text and Icon Textures for Maximum Crispness */
         svg {
             shape-rendering: geometricPrecision;
-            transform: translateZ(0); /* Hardware accelerate icons */
+            transform: translateZ(0); 
             backface-visibility: hidden;
         }
         .text-3d {
             text-shadow: 0px 2px 4px rgba(0,0,0,0.15), 0px 4px 10px rgba(0,0,0,0.05);
         }
         .icon-3d {
-            /* Enhanced textured drop shadow for icons: deep ambient shadow + sharp beveled top-light */
             filter: drop-shadow(0px 4px 6px rgba(0, 102, 204, 0.3)) drop-shadow(0px 8px 15px rgba(0,0,0,0.2)) drop-shadow(0px -1px 2px rgba(255,255,255,0.4));
             transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
-            transform: translate3d(0, 0, 0); /* GPU acceleration */
-            will-change: transform; /* Optimized will-change */
+            transform: translate3d(0, 0, 0); 
+            will-change: transform; 
             backface-visibility: hidden;
         }
 
-        /* CSS Errors Fixed: Added standard compliance properties to gradients */
         .calligraphy-gradient-1 {
             background: linear-gradient(to right, #AF52DE, #FF9500);
             -webkit-background-clip: text;
@@ -244,7 +287,6 @@
             color: transparent;
         }
 
-        /* --- MODERN AI BACKGROUND EFFECTS --- */
         .bg-grid {
             background-size: 40px 40px;
             background-image: linear-gradient(to right, rgba(0, 0, 0, 0.03) 1px, transparent 1px), 
@@ -265,11 +307,10 @@
             pointer-events: none;
             top: 50%;
             left: 50%;
-            transform: translate3d(-50%, -50%, 0); /* Optimized 3D transform */
-            will-change: transform; /* Optimized will-change */
+            transform: translate3d(-50%, -50%, 0); 
+            will-change: transform; 
         }
 
-        /* --- Fast Hardware-Accelerated Animations --- */
         @keyframes float-gentle {
             0% { transform: translateY(0px) translateZ(0); }
             50% { transform: translateY(-8px) translateZ(0); }
@@ -277,28 +318,23 @@
         }
         .animate-float {
             animation: float-gentle 4s ease-in-out infinite;
-            will-change: transform; /* Hint browser to optimize */
+            will-change: transform; 
         }
         .animate-delay-1 { animation-delay: 0.5s; }
         .animate-delay-2 { animation-delay: 1.0s; }
         .animate-delay-3 { animation-delay: 1.5s; }
 
-        @keyframes marquee-ltr {
-            0% { transform: translateX(-50%) translateZ(0); }
-            100% { transform: translateX(0%) translateZ(0); }
-        }
         .animate-marquee-ltr {
             display: flex;
             width: max-content;
-            animation: marquee-ltr 35s linear infinite;
+            animation: marqueeLtr 35s linear infinite;
             will-change: transform;
-            contain: paint; /* Massive rendering optimization */
+            contain: paint; 
         }
         .animate-marquee-ltr:hover {
             animation-play-state: paused;
         }
 
-        /* --- PRO FORM ANIMATIONS & GRAPHICS --- */
         @keyframes slideUpFade {
             from { opacity: 0; transform: translateY(25px) translateZ(0); }
             to { opacity: 1; transform: translateY(0) translateZ(0); }
@@ -308,10 +344,6 @@
             opacity: 0;
             will-change: opacity, transform;
         }
-        .delay-100 { animation-delay: 100ms; }
-        .delay-200 { animation-delay: 200ms; }
-        .delay-300 { animation-delay: 300ms; }
-        .delay-400 { animation-delay: 400ms; }
 
         .input-focus-effect {
             transition: all 0.3s ease;
@@ -324,60 +356,27 @@
             transform: translateY(-2px) translateZ(0);
         }
 
-        /* --- PREMIUM PRICING ANIMATIONS --- */
-        @keyframes premium-shine {
-            0% { left: -100%; top: -100%; }
-            20% { left: 200%; top: 200%; }
-            100% { left: 200%; top: 200%; }
-        }
-        .shine-effect::after {
-            content: '';
-            position: absolute;
-            top: -100%;
-            left: -100%;
-            width: 50%;
-            height: 300%;
-            background: linear-gradient(to right, rgba(255,255,255,0) 0%, rgba(255,255,255,0.7) 50%, rgba(255,255,255,0) 100%);
-            transform: rotate(30deg);
-            animation: premium-shine 6s cubic-bezier(0.19, 1, 0.22, 1) infinite;
-            pointer-events: none;
-            z-index: 10;
-        }
-        @keyframes pulse-red {
-            0% { box-shadow: 0 0 0 0 rgba(255, 59, 48, 0.5); }
-            70% { box-shadow: 0 0 0 18px rgba(255, 59, 48, 0); }
-            100% { box-shadow: 0 0 0 0 rgba(255, 59, 48, 0); }
-        }
-        .border-pulse-red {
-            animation: pulse-red 2.5s infinite;
-        }
-
-        /* --- APPLE-LIKE CLEAN UI COMPONENTS --- */
-
-        /* Smooth Floating Panels - Brightened & Minimalist */
+        /* --- STREAMING_CHUNK:Component UI Styles --- */
         .physical-panel {
             background-color: rgba(255, 255, 255, 0.98); 
             border-radius: 24px;
             border: 1px solid var(--apple-border);
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.05), 0 2px 10px rgba(0,0,0,0.02); /* Amplified depth */
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.05), 0 2px 10px rgba(0,0,0,0.02);
             position: relative;
             max-width: 100%;
             transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
             backdrop-filter: blur(12px);
         }
 
-        /* Elements hidden strictly via CSS to preserve HTML structure */
         .screw, .hardware-vent, .texture-overlay {
             display: none !important;
         }
 
-        /* Remove old 3D text effects, keep it clean */
         .etched-text, .embossed-text {
             text-shadow: none !important;
             color: inherit; 
         }
 
-        /* Primary Minimalist Button (Pill shape) */
         .physical-btn {
             background: rgba(255, 255, 255, 0.9);
             backdrop-filter: blur(12px);
@@ -409,40 +408,34 @@
             outline-offset: 2px;
         }
 
-        /* Store Blue Primary Action Button (Pill shape) */
-        .physical-btn-primary {
-            background: var(--store-blue);
+        /* Apple Blue Button Override */
+        .physical-btn-primary, .apple-blue-btn {
+            background: #0071E3; /* Apple Blue */
             border-radius: 980px;
-            border: 1px solid rgba(0,0,0,0.1);
-            box-shadow: 0 4px 15px rgba(0, 102, 204, 0.3), inset 0 2px 4px rgba(255,255,255,0.2); 
+            border: none;
+            box-shadow: 0 4px 15px rgba(0, 113, 227, 0.3); 
             color: #ffffff;
-            font-weight: 700;
+            font-weight: 600;
             transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
             cursor: pointer;
             max-width: 100%;
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            text-shadow: 0px 1px 2px rgba(0,0,0,0.2);
+            text-shadow: none;
             will-change: transform, box-shadow;
             text-align: center;
             white-space: nowrap;
         }
-        .physical-btn-primary:hover {
-            background: #005bb5;
+        .physical-btn-primary:hover, .apple-blue-btn:hover {
+            background: #0077ED;
             transform: translateY(-2px) translateZ(0);
-            box-shadow: 0 8px 25px rgba(0, 102, 204, 0.4), inset 0 2px 4px rgba(255,255,255,0.2);
+            box-shadow: 0 8px 25px rgba(0, 113, 227, 0.4);
         }
-        .physical-btn-primary:active {
+        .physical-btn-primary:active, .apple-blue-btn:active {
             transform: scale(0.96);
         }
-        .physical-btn-primary:disabled {
-            opacity: 0.7;
-            cursor: not-allowed;
-            transform: none;
-        }
 
-        /* Clean Social Pill Buttons */
         .social-btn {
             width: 44px;
             height: 44px;
@@ -467,7 +460,6 @@
             fill: var(--space-grey);
         }
 
-        /* Recessed areas -> Soft Light Grey Panels */
         .physical-recessed {
             background-color: var(--surface-grey);
             border-radius: 16px;
@@ -477,7 +469,6 @@
             max-width: 100%;
         }
 
-        /* Flat Apple-like Status Indicators */
         .led-indicator {
             width: 10px;
             height: 10px;
@@ -490,7 +481,6 @@
         .led-purple { background-color: var(--vivid-purple); color: var(--vivid-purple); }
         .led-off { background-color: #d2d2d7; color: transparent; box-shadow: none; }
 
-        /* macOS Style Terminal Window */
         .lcd-screen {
             background-color: #050505;
             border: 1px solid rgba(255,255,255,0.1);
@@ -504,7 +494,6 @@
             word-break: break-word;
         }
 
-        /* Blinking Cursor for Terminal */
         .cursor-blink {
             display: inline-block;
             width: 8px;
@@ -516,9 +505,7 @@
             border-radius: 1px;
             box-shadow: 0 0 5px #ffffff;
         }
-        @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
 
-        /* Custom Scrollbar for Recessed areas */
         .custom-scrollbar::-webkit-scrollbar { width: 6px; }
         .custom-scrollbar::-webkit-scrollbar-track { background: transparent; }
         .custom-scrollbar::-webkit-scrollbar-thumb { 
@@ -527,7 +514,6 @@
             border: 2px solid var(--surface-grey);
         }
 
-        /* Layout & Animation */
         .reveal {
             opacity: 0;
             transform: translate3d(0, 20px, 0); 
@@ -553,147 +539,156 @@
             margin-top: 0.5rem;
         }
 
-        .break-all-links a {
-            word-break: break-all;
-            overflow-wrap: break-word;
+        /* Specific Apple-style clean pricing styles */
+        .pricing-card-standard {
+            background-color: #F5F5F7;
+            border-radius: 24px;
+            border: 1px solid rgba(0,0,0,0.03);
+            transition: all 0.3s ease;
+        }
+        .pricing-card-pro {
+            background-color: #1D1D1F;
+            border-radius: 24px;
+            border: 1px solid rgba(255,255,255,0.05);
+            color: #FFFFFF;
+            transition: all 0.3s ease;
         }
 
-        /* -- MOBILE PERFORMANCE & RESPONSIVE TWEAKS -- */
         @media (max-width: 768px) {
             main, footer {
-                filter: none; /* Removed heavy filtering to fix mobile scroll lag / loading time */
+                filter: none; 
             }
             .ai-glow {
-                filter: blur(40px); /* Lowered blur radius on mobile to drastically improve GPU render time */
+                filter: blur(40px); 
                 width: 150vw;
                 height: 400px;
             }
             .icon-3d {
-                filter: drop-shadow(0px 2px 4px rgba(0, 102, 204, 0.2)) drop-shadow(0px 4px 8px rgba(0,0,0,0.15)); /* Lessen shadow stack for mobile perf */
+                filter: drop-shadow(0px 2px 4px rgba(0, 102, 204, 0.2)) drop-shadow(0px 4px 8px rgba(0,0,0,0.15)); 
             }
         }
     </style>
 </head>
 <body class="selection:bg-[#0066CC] selection:text-white w-full max-w-full overflow-x-hidden">
 
-    <!-- Fixed Hardware Texture (Hidden via CSS but kept in code) -->
     <div class="texture-overlay"></div>
 
-    <!-- Apple-style Blurred Glass Navigation Bar -->
-    <header class="fixed top-0 left-0 w-full z-[60] bg-[#FFFFFF]/80 backdrop-blur-xl border-b border-[#E5E5EA] py-1.5 flex items-center justify-center transition-all">
-        <span class="text-[9px] sm:text-[10px] font-bold uppercase tracking-widest text-[#555555] etched-text text-center px-2">
-            Operated by <span class="text-[#000000] font-black">farman.co</span> | Parent Group of Cobra & Runo
-        </span>
-    </header>
-
-    <!-- Navigation -->
-    <nav class="fixed top-8 left-0 w-full z-[55] px-3 sm:px-6 md:px-10 pt-4 flex items-center justify-between gap-2 sm:gap-4 pointer-events-none" aria-label="Main Navigation">
-        <!-- Logo Plate -->
-        <div class="physical-panel shadow-md border border-[#E5E5EA] px-4 py-2 sm:px-5 sm:py-2.5 flex items-center gap-2 sm:gap-3 pointer-events-auto bg-[#FFFFFF]/90 backdrop-blur-xl shrink-0">
-            <div class="led-indicator led-green animate-pulse"></div>
-            <span class="text-[#000000] text-[10px] sm:text-xs font-black tracking-widest uppercase text-3d font-display italic">FORGESOFTWARE</span>
-        </div>
-
-        <!-- Desktop Menu -->
-        <div class="hidden lg:flex items-center gap-2 physical-panel shadow-md border border-[#E5E5EA] px-4 py-1.5 pointer-events-auto bg-[#FFFFFF]/90 backdrop-blur-xl overflow-hidden">
-            <a href="#home" class="physical-btn px-3.5 py-1.5 text-[11px] font-semibold uppercase tracking-wide border-transparent hover:border-[#E5E5EA] shadow-none hover:shadow-sm bg-transparent hover:bg-[#FAFAFA]">Home</a>
-            <a href="#what-we-do" class="physical-btn px-3.5 py-1.5 text-[11px] font-semibold uppercase tracking-wide border-transparent hover:border-[#E5E5EA] shadow-none hover:shadow-sm bg-transparent hover:bg-[#FAFAFA]">Infrastructure</a>
-            <a href="#services" class="physical-btn px-3.5 py-1.5 text-[11px] font-semibold uppercase tracking-wide border-transparent hover:border-[#E5E5EA] shadow-none hover:shadow-sm bg-transparent hover:bg-[#FAFAFA]">Systems</a>
-            <a href="#portfolio" class="physical-btn px-3.5 py-1.5 text-[11px] font-semibold uppercase tracking-wide border-transparent hover:border-[#E5E5EA] shadow-none hover:shadow-sm bg-transparent hover:bg-[#FAFAFA]">Deployment</a>
-            <a href="#pricing" class="physical-btn px-3.5 py-1.5 text-[11px] font-semibold uppercase tracking-wide border-transparent hover:border-[#E5E5EA] shadow-none hover:shadow-sm bg-transparent hover:bg-[#FAFAFA]">Pricing</a>
-            <a href="#about" class="physical-btn px-3.5 py-1.5 text-[11px] font-semibold uppercase tracking-wide border-transparent hover:border-[#E5E5EA] shadow-none hover:shadow-sm bg-transparent hover:bg-[#FAFAFA]">About</a>
-            
-            <div class="w-[1px] h-4 bg-[#E5E5EA] mx-1"></div>
-
-            <!-- Premium Wood Menu Button -->
-            <a href="https://farmanshafi2007-hub.github.io/cobra/" target="_blank" rel="noopener noreferrer" class="physical-btn px-4 py-1.5 text-[11px] font-bold uppercase tracking-wide flex items-center gap-1.5 border border-[#E5E5EA] shadow-sm hover:border-[#0066CC]/30 transition-all bg-[#FFFFFF]">
-                <span class="bg-gradient-to-r from-[#0066CC] to-[#AF52DE] text-transparent bg-clip-text">Wood Fitness</span>
-                <span class="bg-gradient-to-br from-[#FF9500] to-[#FF3B30] text-white text-[7px] px-1 py-[1.5px] rounded-[3px] shadow-sm leading-none tracking-widest font-tech">BETA</span>
-            </a>
-        </div>
-
-        <!-- CTA & Mobile Toggle -->
-        <div class="flex items-center gap-2 sm:gap-3 pointer-events-auto shrink-0">
-            <button onclick="openEnquiryModal()" class="hidden md:flex physical-btn-primary px-5 py-2.5 text-[11px] font-black tracking-widest uppercase icon-3d whitespace-nowrap" aria-label="Open Project Inquiry Modal">
-                Book Your Website
-            </button>
-            
-            <button id="mobileMenuBtn" class="lg:hidden physical-btn p-2.5 flex items-center justify-center border border-[#E5E5EA] shadow-md" aria-label="Toggle Mobile Menu">
-                <i data-lucide="menu" class="w-4 h-4 sm:w-5 sm:h-5 text-[#000000] shrink-0 icon-3d"></i>
-            </button>
-        </div>
-    </nav>
-
-    <!-- Mobile Menu Overlay -->
-    <div id="mobileMenu" class="fixed top-0 left-0 w-full h-[100dvh] pt-[100px] bg-[#FFFFFF]/95 backdrop-blur-xl z-[45] hidden flex-col items-center justify-start space-y-4 px-4 overflow-y-auto overscroll-contain pb-8" role="dialog" aria-modal="true" aria-label="Mobile Navigation Menu">
-        <a href="#home" class="mobile-link physical-btn w-full max-w-[280px] py-3 text-center text-sm font-bold uppercase tracking-wider shadow-none border-transparent hover:bg-[#FAFAFA]">Home</a>
-        <a href="#what-we-do" class="mobile-link physical-btn w-full max-w-[280px] py-3 text-center text-sm font-bold uppercase tracking-wider shadow-none border-transparent hover:bg-[#FAFAFA]">Infrastructure</a>
-        <a href="#services" class="mobile-link physical-btn w-full max-w-[280px] py-3 text-center text-sm font-bold uppercase tracking-wider shadow-none border-transparent hover:bg-[#FAFAFA]">Systems</a>
-        <a href="#portfolio" class="mobile-link physical-btn w-full max-w-[280px] py-3 text-center text-sm font-bold uppercase tracking-wider shadow-none border-transparent hover:bg-[#FAFAFA]">Deployment</a>
-        <a href="#pricing" class="mobile-link physical-btn w-full max-w-[280px] py-3 text-center text-sm font-bold uppercase tracking-wider shadow-none border-transparent hover:bg-[#FAFAFA]">Pricing</a>
-        <a href="#about" class="mobile-link physical-btn w-full max-w-[280px] py-3 text-center text-sm font-bold uppercase tracking-wider shadow-none border-transparent hover:bg-[#FAFAFA]">About</a>
+    <main class="w-full overflow-x-hidden flex flex-col">
         
-        <div class="w-12 h-[1px] bg-[#E5E5EA] my-2"></div>
+        <!-- --- STREAMING_CHUNK:Hero Section (Liquid Glass Cinematic) --- -->
+        <!-- Explicitly setting hero text to white globally to ensure readbility against dark video -->
+        <section id="home" class="relative h-[100dvh] w-full overflow-hidden flex flex-col font-geist text-white">
+            <!-- Full-bleed background video -->
+            <video class="absolute inset-0 h-full w-full object-cover z-0" autoplay loop muted playsinline src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260803_192301_9231ed6b-c55c-4a48-909c-4ebe11cf2e11.mp4"></video>
+            
+            <!-- Video Overlay tint for perfect text contrast (Darkened to 40% for better readability) -->
+            <div class="absolute inset-0 bg-black/40 z-0 pointer-events-none"></div>
 
-        <a href="https://farmanshafi2007-hub.github.io/cobra/" target="_blank" rel="noopener noreferrer" class="mobile-link physical-btn w-full max-w-[280px] py-3 text-center text-sm font-black uppercase tracking-wider flex items-center justify-center gap-1.5 border border-[#E5E5EA] shadow-md bg-[#FFFFFF]">
-            <span class="bg-gradient-to-r from-[#0066CC] to-[#AF52DE] text-transparent bg-clip-text">Wood Fitness</span>
-            <span class="bg-gradient-to-br from-[#FF9500] to-[#FF3B30] text-white text-[7px] px-1 py-[1.5px] rounded-[3px] shadow-sm leading-none tracking-widest font-tech">BETA</span>
-        </a>
-        
-        <button onclick="document.getElementById('mobileMenuBtn').click(); openEnquiryModal();" class="mobile-link physical-btn-primary w-full max-w-[280px] py-4 text-center text-sm font-black uppercase tracking-wider text-white mt-4 icon-3d whitespace-nowrap">
-            Book Your Website
-        </button>
-    </div>
-
-    <!-- Main Content Wrapper -->
-    <main class="w-full overflow-x-hidden">
-
-        <!-- Hero Section -->
-        <section id="home" class="relative min-h-[100dvh] w-full flex flex-col items-center justify-center text-center px-4 pt-32 pb-12 bg-[#FFFFFF]">
-            <div class="absolute inset-0 bg-grid z-0"></div>
-            <div class="ai-glow"></div>
-
-            <div class="w-full max-w-5xl mx-auto flex flex-col items-center reveal active relative z-10">
-                
-                <div class="physical-panel border border-[#E5E5EA] px-4 py-2 sm:px-5 sm:py-2.5 mb-8 flex items-center gap-3 bg-[#FFFFFF]/90 backdrop-blur-md rounded-full shadow-md">
-                    <div class="led-indicator led-green animate-pulse shrink-0"></div>
-                    <span class="text-[#555555] font-bold tracking-[0.2em] uppercase text-[9px] sm:text-xs etched-text font-tech text-3d break-words">Systems Engineered in Kashmir</span>
-                </div>
-                
-                <h1 class="font-display font-black text-4xl sm:text-5xl md:text-6xl lg:text-[76px] text-[#000000] tracking-tighter leading-[1.1] mb-6 uppercase text-3d break-words w-full px-2">
-                    Deploy <span class="bg-gradient-to-r from-[#0066CC] to-[#AF52DE] text-transparent bg-clip-text">Intelligent Architecture</span> <br class="hidden lg:block" />& Autonomous Agents.
-                </h1>
-
-                <p class="text-[#555555] font-medium text-sm sm:text-base md:text-lg z-10 mb-10 max-w-2xl mx-auto px-2 w-full leading-relaxed text-3d">
-                    We engineer premium web platforms and intelligent AI systems. Automate acquisition. Operate continuously.
-                </p>
-
-                <!-- Trust Indicators -->
-                <div class="flex items-center justify-center gap-4 sm:gap-6 mb-10 flex-wrap w-full">
-                    <span class="text-[10px] sm:text-xs font-bold text-[#000000] uppercase tracking-widest flex items-center gap-1.5 bg-[#FAFAFA] px-3 py-1.5 rounded-md border border-[#E5E5EA] shadow-sm">
-                        <i data-lucide="check-circle" class="w-3 h-3 sm:w-4 sm:h-4 text-[#34C759] shrink-0 icon-3d"></i> Verified Logic
-                    </span>
-                    <span class="text-[10px] sm:text-xs font-bold text-[#000000] uppercase tracking-widest flex items-center gap-1.5 bg-[#FAFAFA] px-3 py-1.5 rounded-md border border-[#E5E5EA] shadow-sm">
-                        <i data-lucide="shield" class="w-3 h-3 sm:w-4 sm:h-4 text-[#0066CC] shrink-0 icon-3d"></i> Secure Infrastructure
-                    </span>
-                    <span class="text-[10px] sm:text-xs font-bold text-[#000000] uppercase tracking-widest flex items-center gap-1.5 bg-[#FAFAFA] px-3 py-1.5 rounded-md border border-[#E5E5EA] shadow-sm">
-                        <i data-lucide="zap" class="w-3 h-3 sm:w-4 sm:h-4 text-[#FF9500] shrink-0 icon-3d"></i> Rapid Deployment
-                    </span>
+            <!-- Top Nav Bar -->
+            <nav class="relative z-20 w-full px-5 py-5 sm:px-8 sm:py-6 lg:px-12 flex items-center justify-between">
+                <!-- Logo Plate -->
+                <div class="flex items-center gap-2 text-white transition-colors duration-300">
+                    <svg viewBox="0 0 256 256" class="w-6 h-6 fill-current drop-shadow-md">
+                        <path d="M 128 128 C 128 198.692 70.692 256 0 256 C 0 185.308 57.308 128 128 128 Z M 128 128 C 198.692 128 256 185.308 256 256 C 185.308 256 128 198.692 128 128 Z M 0 0 C 70.692 0 128 57.308 128 128 C 57.308 128 0 70.692 0 0 Z M 256 0 C 256 70.692 198.692 128 128 128 C 128 57.308 185.308 0 256 0 Z" />
+                    </svg>
+                    <span class="text-lg font-semibold tracking-tight drop-shadow-md">forge</span>
                 </div>
 
-                <div class="flex flex-col sm:flex-row items-center justify-center gap-4 w-full sm:w-auto px-4">
-                    <button onclick="openEnquiryModal()" class="physical-btn-primary w-full sm:w-auto px-8 py-4 sm:px-10 sm:py-4 text-xs sm:text-sm font-black tracking-[0.2em] uppercase text-white shadow-xl font-tech icon-3d whitespace-nowrap" aria-label="Start Project">
-                        Book Your Website
+                <!-- Desktop Nav Menu (Glass Pill) - Professional Names -->
+                <div class="hidden md:flex items-center gap-3">
+                    <div class="flex items-center gap-1 rounded-full bg-white/10 px-1.5 py-1.5 backdrop-blur-lg border border-white/10 shadow-sm">
+                        <a href="#home" class="rounded-full px-4 py-1.5 text-sm font-medium text-white/80 hover:bg-white/10 hover:text-white transition-colors drop-shadow-sm">Home</a>
+                        <a href="#what-we-do" class="rounded-full px-4 py-1.5 text-sm font-medium text-white/80 hover:bg-white/10 hover:text-white transition-colors drop-shadow-sm">Architecture</a>
+                        <a href="#services" class="rounded-full px-4 py-1.5 text-sm font-medium text-white/80 hover:bg-white/10 hover:text-white transition-colors drop-shadow-sm">Systems</a>
+                        <a href="#testimonials" class="rounded-full px-4 py-1.5 text-sm font-medium text-white/80 hover:bg-white/10 hover:text-white transition-colors drop-shadow-sm">Testimonials</a>
+                        <a href="#pricing" class="rounded-full px-4 py-1.5 text-sm font-medium text-white/80 hover:bg-white/10 hover:text-white transition-colors drop-shadow-sm">Pricing</a>
+                    </div>
+                    <button onclick="openEnquiryModal()" class="nexum-btn-gradient rounded-full px-5 py-1.5 text-sm font-medium text-white hover:opacity-90 transition-opacity flex items-center self-stretch shadow-md">
+                        Get started
                     </button>
-                    <a href="#services" class="physical-btn w-full sm:w-auto px-8 py-4 sm:px-10 sm:py-4 text-xs sm:text-sm font-bold tracking-[0.2em] uppercase flex items-center justify-center gap-2 border border-[#E5E5EA] bg-[#FAFAFA] shadow-md font-tech text-3d whitespace-nowrap">
-                        <i data-lucide="cpu" class="w-4 h-4 sm:w-5 sm:h-5 shrink-0 icon-3d"></i> View Architecture
-                    </a>
+                </div>
+
+                <!-- Mobile Hamburger -->
+                <button id="nexumMobileMenuBtn" class="md:hidden flex items-center justify-center h-10 w-10 rounded-full bg-white/10 backdrop-blur-lg border border-white/10 text-white relative z-[60] overflow-hidden transition-colors duration-300">
+                    <i data-lucide="menu" id="nexumMenuIcon" class="absolute w-5 h-5 transition-all duration-300 transform scale-100 opacity-100 rotate-0"></i>
+                    <i data-lucide="x" id="nexumXIcon" class="absolute w-5 h-5 transition-all duration-300 transform scale-0 opacity-0 -rotate-90"></i>
+                </button>
+            </nav>
+
+            <!-- Bottom Anchored Main Content -->
+            <div class="relative z-10 mt-auto px-5 pb-8 sm:px-8 sm:pb-12 lg:px-12 lg:pb-16 flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 sm:gap-8 w-full max-w-full">
+                
+                <!-- Left: Headline & Email CTA -->
+                <div class="flex-1 max-w-xl">
+                    <h1 class="text-3xl sm:text-4xl lg:text-[3.5rem] font-semibold leading-[1.1] tracking-tight text-white transition-colors duration-300 drop-shadow-lg text-shadow-md">
+                        Ship AI workers that grind while you rest
+                    </h1>
+                    
+                    <div class="mt-6 sm:mt-8 flex flex-col sm:inline-flex sm:flex-row sm:items-center sm:rounded-full sm:bg-white sm:p-1.5 gap-3 sm:gap-0 shadow-lg w-full sm:w-auto">
+                        <input type="email" placeholder="Type your email" class="w-full rounded-full bg-white px-5 py-3 text-sm text-gray-900 placeholder-gray-400 outline-none sm:w-64 sm:rounded-none sm:bg-transparent sm:px-4 sm:py-2 border sm:border-none border-gray-200" />
+                        <button onclick="openEnquiryModal()" class="w-full nexum-btn-gradient rounded-full px-6 py-3 sm:py-2.5 text-sm font-medium text-white transition-opacity hover:opacity-90 shadow-md whitespace-nowrap">
+                            Get started
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Right: Liquid Glass Cards -->
+                <div class="flex flex-col gap-4 sm:flex-row w-full lg:w-auto lg:gap-5">
+                    
+                    <!-- Stats Card -->
+                    <div class="flex flex-col justify-between rounded-2xl liquid-glass-panel p-5 sm:p-6 w-full sm:w-64">
+                        <div class="font-silkscreen text-3xl sm:text-4xl font-normal tracking-tight text-white drop-shadow-md transition-colors duration-300">
+                            42,500+
+                        </div>
+                        <p class="mt-3 sm:mt-4 text-sm leading-relaxed text-white/90 drop-shadow-sm transition-colors duration-300">
+                            Teams run Forge Softwares to handle recurring ops daily.
+                        </p>
+                    </div>
+
+                    <!-- Testimonial Card (Farman - Text Only) -->
+                    <div class="flex flex-col justify-between rounded-2xl liquid-glass-panel p-5 sm:p-6 w-full sm:w-64">
+                        <div class="mb-3 sm:mb-4 flex items-center gap-2">
+                            <div class="flex h-6 w-6 items-center justify-center rounded bg-white text-[#010101] text-sm font-semibold transition-colors duration-300 shadow-sm">
+                                F
+                            </div>
+                            <span class="text-sm font-semibold text-white drop-shadow-sm transition-colors duration-300">Forge</span>
+                        </div>
+                        <p class="text-sm leading-relaxed text-white/90 drop-shadow-sm transition-colors duration-300 font-medium">
+                            "With Forge Softwares we went from managing tedious operational work to having AI agents that handle everything."
+                        </p>
+                        <div class="mt-4 sm:mt-5 flex items-center gap-3">
+                            <div class="flex flex-col">
+                                <span class="text-sm font-semibold text-white drop-shadow-sm transition-colors duration-300">Farman</span>
+                                <span class="text-xs text-white/80 drop-shadow-sm transition-colors duration-300">CEO, Head of Developer Team</span>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
             </div>
         </section>
 
+        <!-- Mobile Navigation Overlay & Drawer (Hero Specific) -->
+        <div id="nexumMobileOverlay" class="fixed inset-0 z-40 bg-black/80 backdrop-blur-md opacity-0 pointer-events-none transition-opacity duration-300 font-geist"></div>
+        <div id="nexumMobileDrawer" class="fixed right-0 top-0 z-50 h-full w-72 bg-black/90 backdrop-blur-xl translate-x-full transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] flex flex-col pt-24 px-6 pb-10 font-geist">
+            <div class="flex flex-col gap-2">
+                <a href="#home" class="nexum-mob-link rounded-xl px-4 py-3.5 text-base font-medium text-white/80 hover:bg-white/10 hover:text-white transition-colors opacity-0 translate-x-[24px]">Home</a>
+                <a href="#what-we-do" class="nexum-mob-link rounded-xl px-4 py-3.5 text-base font-medium text-white/80 hover:bg-white/10 hover:text-white transition-colors opacity-0 translate-x-[24px]">Architecture</a>
+                <a href="#services" class="nexum-mob-link rounded-xl px-4 py-3.5 text-base font-medium text-white/80 hover:bg-white/10 hover:text-white transition-colors opacity-0 translate-x-[24px]">Systems</a>
+                <a href="#testimonials" class="nexum-mob-link rounded-xl px-4 py-3.5 text-base font-medium text-white/80 hover:bg-white/10 hover:text-white transition-colors opacity-0 translate-x-[24px]">Testimonials</a>
+                <a href="#pricing" class="nexum-mob-link rounded-xl px-4 py-3.5 text-base font-medium text-white/80 hover:bg-white/10 hover:text-white transition-colors opacity-0 translate-x-[24px]">Pricing</a>
+            </div>
+            
+            <button onclick="document.getElementById('nexumMobileMenuBtn').click(); openEnquiryModal();" id="nexumMobCta" class="nexum-btn-gradient mt-auto rounded-full w-full py-3.5 text-base font-medium text-white hover:opacity-90 transition-all duration-400 opacity-0 translate-y-[16px] shadow-lg">
+                Get started
+            </button>
+        </div>
+
+
+        <!-- --- STREAMING_CHUNK:Main Website Content (Apple Clean UI) --- -->
+        
         <!-- Client Trust Logos Section -->
-        <section id="trust-logos" class="py-16 border-y border-[#E5E5EA] bg-[#FAFAFA] w-full relative overflow-hidden">
+        <section id="trust-logos" class="py-16 border-y border-[rgba(0,0,0,0.08)] bg-[#FAFAFA] w-full relative overflow-hidden">
             <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-[200px] md:h-[300px] bg-gradient-to-r from-[#0066CC]/10 via-[#AF52DE]/10 to-[#FF9500]/10 blur-3xl pointer-events-none rounded-full"></div>
             
             <div class="w-full mx-auto text-center reveal relative z-10 overflow-hidden">
@@ -754,19 +749,16 @@
         <!-- Success Metrics Section -->
         <section id="metrics" class="py-16 md:py-24 px-4 sm:px-6 relative bg-[#FFFFFF] w-full">
             <div class="w-full max-w-6xl mx-auto">
-                <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
-                    <div class="physical-panel reveal p-8 text-center flex flex-col items-center bg-[#FAFAFA] w-full border border-[#E5E5EA] shadow-lg hover:shadow-xl">
-                        <div class="screw screw-tl"></div><div class="screw screw-br"></div>
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 w-full">
+                    <div class="physical-panel reveal p-8 text-center flex flex-col items-center bg-[#FAFAFA] w-full shadow-lg hover:shadow-xl box-border">
                         <h4 class="text-4xl sm:text-5xl font-black text-[#000000] text-3d mb-2 tracking-tighter font-display">350%</h4>
                         <p class="text-[10px] sm:text-xs font-bold uppercase tracking-widest text-[#555555] font-tech text-3d break-words">Lead Velocity</p>
                     </div>
-                    <div class="physical-panel reveal p-8 text-center flex flex-col items-center bg-[#FAFAFA] w-full border border-[#E5E5EA] shadow-lg hover:shadow-xl" style="transition-delay: 100ms;">
-                        <div class="screw screw-tl"></div><div class="screw screw-br"></div>
+                    <div class="physical-panel reveal p-8 text-center flex flex-col items-center bg-[#FAFAFA] w-full shadow-lg hover:shadow-xl box-border" style="transition-delay: 100ms;">
                         <h4 class="text-4xl sm:text-5xl font-black text-[#000000] text-3d mb-2 tracking-tighter font-display">24/7</h4>
                         <p class="text-[10px] sm:text-xs font-bold uppercase tracking-widest text-[#555555] font-tech text-3d break-words">Autonomous Operations</p>
                     </div>
-                    <div class="physical-panel reveal p-8 text-center flex flex-col items-center bg-[#FAFAFA] w-full border border-[#E5E5EA] shadow-lg hover:shadow-xl" style="transition-delay: 200ms;">
-                        <div class="screw screw-tl"></div><div class="screw screw-br"></div>
+                    <div class="physical-panel reveal p-8 text-center flex flex-col items-center bg-[#FAFAFA] w-full shadow-lg hover:shadow-xl box-border" style="transition-delay: 200ms;">
                         <h4 class="text-4xl sm:text-5xl font-black text-[#000000] text-3d mb-2 tracking-tighter font-display">99.9%</h4>
                         <p class="text-[10px] sm:text-xs font-bold uppercase tracking-widest text-[#555555] font-tech text-3d break-words">System Reliability</p>
                     </div>
@@ -775,7 +767,7 @@
         </section>
 
         <!-- Playground / Chat Section -->
-        <section id="ai-playground" class="py-16 md:py-28 px-4 sm:px-6 relative border-y border-[#E5E5EA] bg-[#FAFAFA] w-full">
+        <section id="ai-playground" class="py-16 md:py-28 px-4 sm:px-6 relative border-y border-[rgba(0,0,0,0.08)] bg-[#FAFAFA] w-full">
             <div class="w-full max-w-4xl mx-auto text-center mb-12 reveal">
                 <h2 class="text-3xl sm:text-4xl md:text-5xl font-black uppercase tracking-tight text-3d leading-tight mb-4 text-[#000000] px-2 break-words font-display">
                     Interact.<br />Test our autonomous agent.
@@ -784,10 +776,6 @@
             </div>
             
             <div class="w-full max-w-3xl mx-auto physical-panel bg-[#FFFFFF] p-2 sm:p-4 reveal shadow-2xl box-border" id="terminal-container">
-                <div class="screw screw-tl"></div>
-                <div class="screw screw-tr"></div>
-                <div class="screw screw-bl"></div>
-                <div class="screw screw-br"></div>
 
                 <div class="bg-[#0A0A0A] p-1.5 sm:p-2 rounded-2xl relative overflow-hidden w-full shadow-2xl">
                     <div class="lcd-screen rounded-xl p-4 sm:p-6 h-[320px] sm:h-[400px] flex flex-col relative z-10 w-full overflow-hidden">
@@ -830,7 +818,7 @@
                         </div>
                     </div>
                     
-                    <button class="physical-btn w-full sm:w-auto px-6 py-2 sm:py-2.5 text-[10px] font-bold uppercase tracking-widest flex items-center justify-center gap-2 border-[#E5E5EA] bg-[#FAFAFA] shadow-md icon-3d text-3d whitespace-nowrap" onclick="openEnquiryModal()">
+                    <button class="physical-btn w-full sm:w-auto px-6 py-2 sm:py-2.5 text-[10px] font-bold uppercase tracking-widest flex items-center justify-center gap-2 shadow-md icon-3d text-3d whitespace-nowrap" onclick="openEnquiryModal()">
                         <i data-lucide="power" class="w-3 h-3 shrink-0 icon-3d"></i> System Override
                     </button>
                 </div>
@@ -838,7 +826,7 @@
         </section>
 
         <!-- Case Study / Before & After Section -->
-        <section class="py-16 md:py-24 px-4 sm:px-6 md:px-16 border-b border-[#E5E5EA] bg-[#FFFFFF] w-full">
+        <section class="py-16 md:py-24 px-4 sm:px-6 md:px-16 border-b border-[rgba(0,0,0,0.08)] bg-[#FFFFFF] w-full">
             <div class="w-full max-w-6xl mx-auto">
                 <div class="mb-12 text-center reveal">
                     <span class="text-[9px] sm:text-[10px] font-bold text-[#555555] tracking-widest uppercase text-3d font-tech break-words">System Infrastructure</span>
@@ -846,10 +834,9 @@
                 </div>
                 
                 <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 reveal w-full box-border">
-                    <div class="physical-panel p-6 sm:p-8 flex flex-col bg-[#FAFAFA] border border-[#E5E5EA] shadow-lg w-full hover:shadow-xl box-border">
-                        <div class="screw screw-tl"></div><div class="screw screw-br"></div>
-                        <div class="flex items-center gap-3 mb-6 border-b border-[#E5E5EA] pb-4">
-                            <div class="physical-recessed bg-[#FFFFFF] p-2 border border-[#E5E5EA] shadow-md"><i data-lucide="x-circle" class="w-5 h-5 text-[#FF9500] shrink-0 icon-3d"></i></div>
+                    <div class="physical-panel p-6 sm:p-8 flex flex-col bg-[#FAFAFA] shadow-lg w-full hover:shadow-xl box-border">
+                        <div class="flex items-center gap-3 mb-6 border-b border-[rgba(0,0,0,0.08)] pb-4">
+                            <div class="physical-recessed bg-[#FFFFFF] p-2 shadow-md"><i data-lucide="x-circle" class="w-5 h-5 text-[#FF9500] shrink-0 icon-3d"></i></div>
                             <h3 class="text-lg sm:text-xl font-black uppercase text-[#000000] tracking-tight font-display text-3d break-words">Legacy Systems</h3>
                         </div>
                         <ul class="space-y-4 font-medium text-sm text-[#555555]">
@@ -860,9 +847,8 @@
                     </div>
 
                     <div class="physical-panel p-6 sm:p-8 flex flex-col bg-[#FFFFFF] border-[#34C759]/40 shadow-[0_10px_40px_rgba(52,199,89,0.15)] hover:shadow-[0_15px_50px_rgba(52,199,89,0.25)] w-full transform lg:scale-105 z-10 box-border">
-                        <div class="screw screw-tl"></div><div class="screw screw-br"></div>
-                        <div class="flex items-center gap-3 mb-6 border-b border-[#E5E5EA] pb-4">
-                            <div class="physical-recessed bg-[#FAFAFA] p-2 border border-[#E5E5EA] shadow-md"><i data-lucide="check-circle-2" class="w-5 h-5 text-[#34C759] shrink-0 icon-3d"></i></div>
+                        <div class="flex items-center gap-3 mb-6 border-b border-[rgba(0,0,0,0.08)] pb-4">
+                            <div class="physical-recessed bg-[#FAFAFA] p-2 shadow-md"><i data-lucide="check-circle-2" class="w-5 h-5 text-[#34C759] shrink-0 icon-3d"></i></div>
                             <h3 class="text-lg sm:text-xl font-black uppercase text-[#000000] tracking-tight font-display text-3d break-words">Forge Protocol</h3>
                         </div>
                         <ul class="space-y-4 font-bold text-sm text-[#000000]">
@@ -880,14 +866,10 @@
             <div class="w-full max-w-5xl mx-auto">
                 <div class="mb-10 reveal text-center">
                     <span class="text-[9px] sm:text-[10px] md:text-xs font-bold text-[#555555] tracking-widest uppercase text-3d font-tech break-words">Infrastructure</span>
-                    <h2 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black uppercase mt-2 mb-6 leading-[1] tracking-tight text-[#000000] break-words font-display text-3d">Core Focus</h2>
+                    <h2 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black uppercase mt-2 mb-6 leading-[1] tracking-tight text-[#000000] break-words font-display text-3d">Architecture</h2>
                 </div>
-                <div class="physical-panel bg-[#FFFFFF] p-6 sm:p-8 md:p-12 reveal relative z-0 border border-[#E5E5EA] w-full shadow-2xl hover:shadow-[0_20px_60px_rgba(0,0,0,0.1)] transition-shadow box-border">
-                    <div class="screw screw-tl"></div>
-                    <div class="screw screw-tr"></div>
-                    <div class="screw screw-bl"></div>
-                    <div class="screw screw-br"></div>
-                    <div class="physical-recessed bg-[#FAFAFA] p-5 sm:p-6 md:p-8 border border-[#E5E5EA] w-full shadow-inner box-border">
+                <div class="physical-panel bg-[#FFFFFF] p-6 sm:p-8 md:p-12 reveal relative z-0 w-full shadow-2xl hover:shadow-[0_20px_60px_rgba(0,0,0,0.1)] transition-shadow box-border">
+                    <div class="physical-recessed bg-[#FAFAFA] p-5 sm:p-6 md:p-8 w-full shadow-inner box-border">
                         <p class="text-[#000000] text-sm md:text-base font-medium leading-relaxed tracking-wide text-3d mb-6 break-words">
                             Forge Softwares operates as the central infrastructure for our specialized subsidiaries, <strong class="font-black">Cobra</strong> and <strong class="font-black">Runo</strong>. We architect custom web platforms, SaaS products, and autonomous business tools designed for scale. Our focus is on speed, security, and measurable conversion.
                         </p>
@@ -896,14 +878,14 @@
                         </p>
 
                         <!-- Sub-Brand Badges -->
-                        <div class="mt-8 pt-6 border-t border-[#E5E5EA] flex flex-col sm:flex-row items-center justify-center gap-6 relative w-full box-border">
+                        <div class="mt-8 pt-6 border-t border-[rgba(0,0,0,0.08)] flex flex-col sm:flex-row items-center justify-center gap-6 relative w-full box-border">
                             <span class="text-[10px] font-bold uppercase tracking-widest text-[#555555] text-3d text-center font-tech break-words">Official Subsidiaries</span>
                             <div class="flex flex-col sm:flex-row flex-wrap justify-center gap-4 w-full sm:w-auto box-border">
-                                <div class="physical-panel bg-[#FFFFFF] px-5 py-2.5 flex items-center justify-center gap-3 border border-[#E5E5EA] shadow-md w-full sm:w-auto hover:shadow-lg">
+                                <div class="physical-panel bg-[#FFFFFF] px-5 py-2.5 flex items-center justify-center gap-3 shadow-md w-full sm:w-auto hover:shadow-lg">
                                     <div class="led-indicator led-purple animate-pulse shrink-0"></div>
                                     <span class="font-black text-base uppercase tracking-widest text-[#000000] text-3d font-display">Cobra</span>
                                 </div>
-                                <div class="physical-panel bg-[#FFFFFF] px-5 py-2.5 flex items-center justify-center gap-3 border border-[#E5E5EA] shadow-md w-full sm:w-auto hover:shadow-lg">
+                                <div class="physical-panel bg-[#FFFFFF] px-5 py-2.5 flex items-center justify-center gap-3 shadow-md w-full sm:w-auto hover:shadow-lg">
                                     <div class="led-indicator led-guava animate-pulse shrink-0"></div>
                                     <span class="font-black text-base uppercase tracking-widest text-[#000000] text-3d font-display">Runo</span>
                                 </div>
@@ -916,28 +898,25 @@
         </section>
 
         <!-- Process Section -->
-        <section id="process" class="py-16 md:py-24 px-4 sm:px-6 md:px-16 border-y border-[#E5E5EA] bg-[#FFFFFF] w-full">
+        <section id="process" class="py-16 md:py-24 px-4 sm:px-6 md:px-16 border-y border-[rgba(0,0,0,0.08)] bg-[#FFFFFF] w-full">
             <div class="w-full max-w-7xl mx-auto">
                 <div class="text-center mb-12 reveal">
                     <h2 class="text-3xl sm:text-4xl md:text-5xl font-black uppercase tracking-tight leading-[1] text-[#000000] font-display text-3d break-words">Deployment Protocol</h2>
                     <p class="text-[#555555] font-bold mt-4 uppercase tracking-widest text-[10px] sm:text-xs font-tech text-3d break-words">Standardized execution pipeline.</p>
                 </div>
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 w-full box-border">
-                    <div class="physical-panel reveal p-8 text-center flex flex-col items-center bg-[#FAFAFA] border border-[#E5E5EA] w-full shadow-lg hover:shadow-xl box-border">
-                        <div class="screw screw-tl"></div>
-                        <div class="physical-recessed bg-[#FFFFFF] w-14 h-14 rounded-full flex items-center justify-center mb-6 border border-[#E5E5EA] shadow-md shrink-0"><span class="text-xl font-black text-[#0066CC] font-tech text-3d">1</span></div>
+                    <div class="physical-panel reveal p-8 text-center flex flex-col items-center bg-[#FAFAFA] w-full shadow-lg hover:shadow-xl box-border">
+                        <div class="physical-recessed bg-[#FFFFFF] w-14 h-14 rounded-full flex items-center justify-center mb-6 shadow-md shrink-0"><span class="text-xl font-black text-[#0066CC] font-tech text-3d">1</span></div>
                         <h3 class="text-lg font-black uppercase tracking-tight mb-3 text-[#000000] font-display text-3d break-words">Audit & Architect</h3>
                         <p class="text-sm font-medium text-[#555555] leading-relaxed break-words">Map business logic, identify constraints, and architect a custom technical blueprint.</p>
                     </div>
-                    <div class="physical-panel reveal p-8 text-center flex flex-col items-center bg-[#FAFAFA] border border-[#E5E5EA] w-full shadow-lg hover:shadow-xl box-border" style="transition-delay: 100ms;">
-                        <div class="screw screw-tr"></div>
-                        <div class="physical-recessed bg-[#FFFFFF] w-14 h-14 rounded-full flex items-center justify-center mb-6 border border-[#E5E5EA] shadow-md shrink-0"><span class="text-xl font-black text-[#0066CC] font-tech text-3d">2</span></div>
+                    <div class="physical-panel reveal p-8 text-center flex flex-col items-center bg-[#FAFAFA] w-full shadow-lg hover:shadow-xl box-border" style="transition-delay: 100ms;">
+                        <div class="physical-recessed bg-[#FFFFFF] w-14 h-14 rounded-full flex items-center justify-center mb-6 shadow-md shrink-0"><span class="text-xl font-black text-[#0066CC] font-tech text-3d">2</span></div>
                         <h3 class="text-lg font-black uppercase tracking-tight mb-3 text-[#000000] font-display text-3d break-words">Build & Automate</h3>
                         <p class="text-sm font-medium text-[#555555] leading-relaxed break-words">Engineer the frontend and integrate autonomous AI agents to automate acquisition.</p>
                     </div>
-                    <div class="physical-panel reveal p-8 text-center flex flex-col items-center bg-[#FAFAFA] border border-[#E5E5EA] w-full shadow-lg hover:shadow-xl box-border" style="transition-delay: 200ms;">
-                        <div class="screw screw-br"></div>
-                        <div class="physical-recessed bg-[#FFFFFF] w-14 h-14 rounded-full flex items-center justify-center mb-6 border border-[#E5E5EA] shadow-md shrink-0"><span class="text-xl font-black text-[#0066CC] font-tech text-3d">3</span></div>
+                    <div class="physical-panel reveal p-8 text-center flex flex-col items-center bg-[#FAFAFA] w-full shadow-lg hover:shadow-xl box-border" style="transition-delay: 200ms;">
+                        <div class="physical-recessed bg-[#FFFFFF] w-14 h-14 rounded-full flex items-center justify-center mb-6 shadow-md shrink-0"><span class="text-xl font-black text-[#0066CC] font-tech text-3d">3</span></div>
                         <h3 class="text-lg font-black uppercase tracking-tight mb-3 text-[#000000] font-display text-3d break-words">Launch & Scale</h3>
                         <p class="text-sm font-medium text-[#555555] leading-relaxed break-words">Live deployment. Systems operate continuously, converting traffic into booked meetings.</p>
                     </div>
@@ -946,24 +925,22 @@
         </section>
 
         <!-- Services Section -->
-        <section id="services" class="py-16 md:py-28 px-4 sm:px-6 md:px-16 border-b border-[#E5E5EA] bg-[#FAFAFA] w-full">
+        <section id="services" class="py-16 md:py-28 px-4 sm:px-6 md:px-16 border-b border-[rgba(0,0,0,0.08)] bg-[#FAFAFA] w-full">
             <div class="w-full max-w-7xl mx-auto">
                 <div class="mb-12 md:mb-20 reveal flex flex-col lg:flex-row lg:items-end justify-between gap-6 lg:gap-8 w-full box-border">
                     <div class="w-full lg:w-auto text-center lg:text-left shrink-0">
-                        <h2 class="text-4xl sm:text-5xl md:text-6xl font-black uppercase tracking-tighter leading-[1] mb-2 text-[#000000] font-display text-3d break-words">Core <br class="hidden lg:block"/> Systems</h2>
+                        <h2 class="text-4xl sm:text-5xl md:text-6xl font-black uppercase tracking-tighter leading-[1] mb-2 text-[#000000] font-display text-3d break-words">Systems</h2>
                     </div>
-                    <p class="text-[#555555] text-sm md:text-base w-full max-w-md mx-auto lg:mx-0 text-center lg:text-right border-t-2 lg:border-t-0 lg:border-l-0 lg:border-r border-[#E5E5EA] pt-4 lg:pt-0 lg:pr-6 font-medium leading-relaxed text-3d break-words">
+                    <p class="text-[#555555] text-sm md:text-base w-full max-w-md mx-auto lg:mx-0 text-center lg:text-right border-t-2 lg:border-t-0 lg:border-l-0 lg:border-r border-[rgba(0,0,0,0.08)] pt-4 lg:pt-0 lg:pr-6 font-medium leading-relaxed text-3d break-words">
                         Engineered for conversion. Replace manual workflows with intelligent automation.
                     </p>
                 </div>
                 
                 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 w-full box-border">
                     <!-- Card 1 -->
-                    <article class="physical-panel bg-[#FFFFFF] border border-[#E5E5EA] p-8 lg:p-10 reveal flex flex-col relative z-0 shadow-xl hover:shadow-2xl w-full box-border">
-                        <div class="screw screw-tl"></div>
-                        <div class="screw screw-br"></div>
+                    <article class="physical-panel bg-[#FFFFFF] p-8 lg:p-10 reveal flex flex-col relative z-0 shadow-xl hover:shadow-2xl w-full box-border">
                         <div class="flex justify-between items-start mb-8">
-                            <div class="physical-recessed bg-[#FAFAFA] p-3 inline-block border border-[#E5E5EA] shadow-sm">
+                            <div class="physical-recessed bg-[#FAFAFA] p-3 inline-block shadow-sm">
                                 <i data-lucide="layout" class="w-6 h-6 text-[#0066CC] shrink-0 icon-3d"></i>
                             </div>
                             <span class="text-2xl font-black text-[#86868B] opacity-60 text-3d font-tech shrink-0">01</span>
@@ -973,11 +950,9 @@
                     </article>
 
                     <!-- Card 2 -->
-                    <article class="physical-panel bg-[#FFFFFF] border border-[#E5E5EA] p-8 lg:p-10 reveal flex flex-col relative z-0 shadow-xl hover:shadow-2xl w-full box-border" style="transition-delay: 100ms;">
-                        <div class="screw screw-tl"></div>
-                        <div class="screw screw-br"></div>
+                    <article class="physical-panel bg-[#FFFFFF] p-8 lg:p-10 reveal flex flex-col relative z-0 shadow-xl hover:shadow-2xl w-full box-border" style="transition-delay: 100ms;">
                         <div class="flex justify-between items-start mb-8">
-                            <div class="physical-recessed bg-[#FAFAFA] p-3 inline-block border border-[#E5E5EA] shadow-sm">
+                            <div class="physical-recessed bg-[#FAFAFA] p-3 inline-block shadow-sm">
                                 <i data-lucide="bot" class="w-6 h-6 text-[#0066CC] shrink-0 icon-3d"></i>
                             </div>
                             <span class="text-2xl font-black text-[#86868B] opacity-60 text-3d font-tech shrink-0">02</span>
@@ -987,11 +962,9 @@
                     </article>
 
                     <!-- Card 3 -->
-                    <article class="physical-panel bg-[#FFFFFF] border border-[#E5E5EA] p-8 lg:p-10 reveal flex flex-col relative z-0 shadow-xl hover:shadow-2xl w-full sm:col-span-2 lg:col-span-1 box-border" style="transition-delay: 200ms;">
-                        <div class="screw screw-tl"></div>
-                        <div class="screw screw-br"></div>
+                    <article class="physical-panel bg-[#FFFFFF] p-8 lg:p-10 reveal flex flex-col relative z-0 shadow-xl hover:shadow-2xl w-full sm:col-span-2 lg:col-span-1 box-border" style="transition-delay: 200ms;">
                         <div class="flex justify-between items-start mb-8">
-                            <div class="physical-recessed bg-[#FAFAFA] p-3 inline-block border border-[#E5E5EA] shadow-sm">
+                            <div class="physical-recessed bg-[#FAFAFA] p-3 inline-block shadow-sm">
                                 <i data-lucide="cpu" class="w-6 h-6 text-[#0066CC] shrink-0 icon-3d"></i>
                             </div>
                             <span class="text-2xl font-black text-[#86868B] opacity-60 text-3d font-tech shrink-0">03</span>
@@ -1014,11 +987,7 @@
                     </p>
                 </div>
 
-                <div class="w-full max-w-4xl mx-auto physical-panel bg-[#FAFAFA] border border-[#E5E5EA] p-4 sm:p-6 md:p-8 reveal relative z-0 shadow-2xl hover:shadow-[0_20px_50px_rgba(0,0,0,0.1)] box-border">
-                    <div class="screw screw-tl"></div>
-                    <div class="screw screw-tr"></div>
-                    <div class="screw screw-bl"></div>
-                    <div class="screw screw-br"></div>
+                <div class="w-full max-w-4xl mx-auto physical-panel bg-[#FAFAFA] p-4 sm:p-6 md:p-8 reveal relative z-0 shadow-2xl hover:shadow-[0_20px_50px_rgba(0,0,0,0.1)] box-border">
 
                     <div class="bg-[#1D1D1F] p-2 sm:p-3 rounded-2xl relative overflow-hidden w-full shadow-inner box-border">
                         <div class="lcd-screen rounded-xl p-6 md:p-10 flex flex-col items-center justify-center text-center relative z-10 min-h-[250px] border border-gray-800 w-full box-border">
@@ -1029,7 +998,7 @@
                             <h3 class="text-3xl md:text-5xl font-black uppercase tracking-widest mb-4 mt-8 break-words text-[#FFFFFF] w-full font-display text-3d">VIZORRA</h3>
                             <p class="text-[10px] sm:text-xs font-bold tracking-widest uppercase mb-8 opacity-90 break-words text-[#FFFFFF] px-2 font-tech text-3d">Premium Web Architecture</p>
                             
-                            <a href="https://farmanshafi2007-hub.github.io/VIZORRA/" target="_blank" rel="noopener noreferrer" class="physical-btn-primary px-8 py-4 text-[10px] sm:text-xs font-black uppercase tracking-widest flex items-center justify-center gap-2 no-underline text-white w-full sm:w-auto font-tech shadow-lg icon-3d whitespace-nowrap">
+                            <a href="https://farmanshafi2007-hub.github.io/VIZORRA/" target="_blank" rel="noopener noreferrer" class="apple-blue-btn px-8 py-4 text-[10px] sm:text-xs font-black uppercase tracking-widest flex items-center justify-center gap-2 no-underline text-white w-full sm:w-auto font-tech shadow-lg icon-3d whitespace-nowrap">
                                 <i data-lucide="external-link" class="w-3 h-3 sm:w-4 sm:h-4 shrink-0 icon-3d"></i> Access System
                             </a>
                         </div>
@@ -1039,18 +1008,17 @@
         </section>
 
         <!-- Social Proof / Testimonials -->
-        <section id="testimonials" class="py-16 md:py-24 px-4 sm:px-6 md:px-16 border-y border-[#E5E5EA] bg-[#FAFAFA] w-full">
+        <section id="testimonials" class="py-16 md:py-24 px-4 sm:px-6 md:px-16 border-y border-[rgba(0,0,0,0.08)] bg-[#FAFAFA] w-full">
             <div class="w-full max-w-7xl mx-auto">
                 <div class="text-center mb-12 reveal">
-                    <h2 class="text-3xl sm:text-4xl md:text-5xl font-black uppercase tracking-tight text-3d leading-[1] text-[#000000] font-display break-words">Telemetry</h2>
+                    <h2 class="text-3xl sm:text-4xl md:text-5xl font-black uppercase tracking-tight text-3d leading-[1] text-[#000000] font-display break-words">Testimonials</h2>
                     <p class="text-[#555555] font-bold mt-4 uppercase tracking-widest text-[10px] sm:text-xs font-tech text-3d break-words">Operator Feedback</p>
                 </div>
                 
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 w-full box-border">
-                    <div class="physical-panel reveal bg-[#FFFFFF] border border-[#E5E5EA] p-6 sm:p-8 relative shadow-xl hover:shadow-2xl w-full box-border">
-                        <div class="screw screw-tl"></div>
+                    <div class="physical-panel reveal bg-[#FFFFFF] p-6 sm:p-8 relative shadow-xl hover:shadow-2xl w-full box-border">
                         <div class="flex flex-col sm:flex-row items-center sm:items-start gap-4 mb-6 text-center sm:text-left box-border">
-                            <div class="physical-recessed bg-[#FAFAFA] border border-[#E5E5EA] w-12 h-12 rounded-full flex items-center justify-center shrink-0 shadow-sm">
+                            <div class="physical-recessed bg-[#FAFAFA] w-12 h-12 rounded-full flex items-center justify-center shrink-0 shadow-sm">
                                 <i data-lucide="user" class="w-5 h-5 text-[#0066CC] shrink-0 icon-3d"></i>
                             </div>
                             <div>
@@ -1058,17 +1026,16 @@
                                 <p class="text-[9px] sm:text-[10px] font-bold uppercase tracking-widest text-[#555555] font-tech text-3d break-words">Clinic Director</p>
                             </div>
                         </div>
-                        <div class="physical-recessed bg-[#FFFFFF] border border-[#E5E5EA] p-4 text-center sm:text-left break-words shadow-sm box-border">
+                        <div class="physical-recessed bg-[#FFFFFF] p-4 text-center sm:text-left break-words shadow-sm box-border">
                             <p class="font-calligraphy calligraphy-gradient-1">
                                 "The AI agent handles 90% of our inquiries and books appointments autonomously. It fundamentally shifted our operational efficiency."
                             </p>
                         </div>
                     </div>
 
-                    <div class="physical-panel reveal bg-[#FFFFFF] border border-[#E5E5EA] p-6 sm:p-8 relative shadow-xl hover:shadow-2xl w-full box-border" style="transition-delay: 100ms;">
-                        <div class="screw screw-tr"></div>
+                    <div class="physical-panel reveal bg-[#FFFFFF] p-6 sm:p-8 relative shadow-xl hover:shadow-2xl w-full box-border" style="transition-delay: 100ms;">
                         <div class="flex flex-col sm:flex-row items-center sm:items-start gap-4 mb-6 text-center sm:text-left box-border">
-                            <div class="physical-recessed bg-[#FAFAFA] border border-[#E5E5EA] w-12 h-12 rounded-full flex items-center justify-center shrink-0 shadow-sm">
+                            <div class="physical-recessed bg-[#FAFAFA] w-12 h-12 rounded-full flex items-center justify-center shrink-0 shadow-sm">
                                 <i data-lucide="user" class="w-5 h-5 text-[#0066CC] shrink-0 icon-3d"></i>
                             </div>
                             <div>
@@ -1076,7 +1043,7 @@
                                 <p class="text-[9px] sm:text-[10px] font-bold uppercase tracking-widest text-[#555555] font-tech text-3d break-words">E-com Founder</p>
                             </div>
                         </div>
-                        <div class="physical-recessed bg-[#FFFFFF] border border-[#E5E5EA] p-4 text-center sm:text-left break-words shadow-sm box-border">
+                        <div class="physical-recessed bg-[#FFFFFF] p-4 text-center sm:text-left break-words shadow-sm box-border">
                             <p class="font-calligraphy calligraphy-gradient-2">
                                 "The minimal aesthetic elevated our brand authority instantly. Combined with system optimizations, our conversion velocity accelerated."
                             </p>
@@ -1098,16 +1065,16 @@
             </div>
         </section>
 
-        <!-- Pricing Section -->
-        <section id="pricing" class="py-16 md:py-24 lg:py-32 px-4 sm:px-6 md:px-8 bg-[#FFFFFF] border-b border-[#E5E5EA] w-full">
+        <!-- Pricing Section (Apple Premium Style) -->
+        <section id="pricing" class="py-16 md:py-24 lg:py-32 px-4 sm:px-6 md:px-8 bg-[#FFFFFF] border-b border-[rgba(0,0,0,0.08)] w-full">
             <div class="w-full max-w-7xl mx-auto">
                 <div class="text-center mb-16 md:mb-24 space-y-4 reveal px-2 box-border">
-                    <div class="inline-flex items-center gap-2 text-[10px] font-bold text-[#000000] tracking-widest uppercase bg-[#FAFAFA] px-4 py-2 rounded-full border border-[#E5E5EA] font-tech shadow-sm text-3d">
-                        <i data-lucide="zap" class="w-3 h-3 text-[#FF9500] shrink-0 icon-3d"></i> Clear Investment
+                    <div class="inline-flex items-center gap-2 text-[10px] font-bold text-[#000000] tracking-widest uppercase bg-[#F5F5F7] px-4 py-2 rounded-full font-tech shadow-sm text-3d">
+                        <i data-lucide="zap" class="w-3 h-3 text-[#0071E3] shrink-0 icon-3d"></i> Clear Investment
                     </div>
                     
                     <h2 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black leading-[1.1] w-full max-w-4xl mx-auto tracking-tighter uppercase text-3d text-[#000000] break-words font-display">
-                        Scalable infrastructure.
+                        Pricing
                     </h2>
                 </div>
 
@@ -1115,92 +1082,83 @@
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 items-stretch lg:py-6 w-full box-border">
                     
                     <!-- Starter Tier -->
-                    <article class="physical-panel reveal bg-[#FAFAFA] border-2 border-[#FF3B30]/50 hover:border-[#FF3B30] p-6 md:p-8 flex flex-col h-full relative z-10 w-full hover:shadow-2xl transition-all shadow-xl box-border">
-                        <div class="screw screw-tl"></div>
-                        <div class="screw screw-br"></div>
-                        <div class="mb-8 text-[#000000]">
-                            <div class="physical-recessed bg-[#FFFFFF] border border-[#E5E5EA] inline-block p-3 mb-4 shadow-sm"><i data-lucide="layout" class="w-5 h-5 text-[#0066CC] shrink-0 icon-3d"></i></div>
-                            <h3 class="text-2xl font-black uppercase tracking-tight mb-2 text-3d font-display break-words">Starter</h3>
-                            <p class="text-[#555555] text-xs font-medium break-words text-3d">Foundational digital presence.</p>
+                    <article class="pricing-card-standard reveal p-8 md:p-10 flex flex-col h-full relative z-10 w-full hover:shadow-lg box-border">
+                        <div class="mb-8 text-[#1D1D1F]">
+                            <h3 class="text-2xl font-black uppercase tracking-tight mb-2 font-display break-words">Starter</h3>
+                            <p class="text-[#86868B] text-xs font-medium break-words">Foundational digital presence.</p>
                         </div>
                         
-                        <div class="mb-10 text-4xl font-black text-[#000000] tracking-tighter text-3d font-tech break-words">₹3,000</div>
+                        <div class="mb-10 text-4xl font-black text-[#1D1D1F] tracking-tighter font-tech break-words">₹3,000</div>
                         
-                        <button onclick="openEnquiryModal()" class="physical-btn w-full py-4 text-[10px] font-black uppercase tracking-widest mb-10 border-[#E5E5EA] bg-[#FFFFFF] font-tech shadow-md text-3d icon-3d whitespace-nowrap" aria-label="Request Quote for Starter Plan">
+                        <button onclick="openEnquiryModal()" class="w-full py-4 text-[11px] font-bold uppercase tracking-widest mb-10 bg-[#E8E8ED] hover:bg-[#D1D1D6] text-[#1D1D1F] rounded-full transition-colors whitespace-nowrap" aria-label="Request Quote for Starter Plan">
                             Book Your Website
                         </button>
                         
                         <!-- Features List -->
-                        <div class="physical-recessed bg-[#FFFFFF] border border-[#E5E5EA] p-5 flex-1 mt-auto shadow-sm box-border">
-                            <p class="text-[9px] font-black tracking-widest uppercase mb-4 text-[#000000] font-tech text-3d break-words">CORE FUNCTIONALITY</p>
+                        <div class="flex-1 mt-auto box-border">
+                            <p class="text-[10px] font-bold tracking-widest uppercase mb-4 text-[#86868B] font-tech break-words">CORE FUNCTIONALITY</p>
                             <ul class="space-y-4">
-                                <li class="flex items-start gap-3 text-xs text-[#000000] font-medium">
-                                    <i data-lucide="check" class="w-4 h-4 mt-0.5 text-[#34C759] shrink-0 icon-3d"></i>
+                                <li class="flex items-start gap-3 text-sm text-[#1D1D1F] font-medium">
+                                    <i data-lucide="check" class="w-4 h-4 mt-0.5 text-[#0071E3] shrink-0"></i>
                                     <span class="break-words leading-tight">Single-Page Architecture</span>
                                 </li>
-                                <li class="flex items-start gap-3 text-xs text-[#000000] font-medium">
-                                    <i data-lucide="check" class="w-4 h-4 mt-0.5 text-[#34C759] shrink-0 icon-3d"></i>
+                                <li class="flex items-start gap-3 text-sm text-[#1D1D1F] font-medium">
+                                    <i data-lucide="check" class="w-4 h-4 mt-0.5 text-[#0071E3] shrink-0"></i>
                                     <span class="break-words leading-tight">Basic Lead Capture Form</span>
                                 </li>
-                                <li class="flex items-start gap-3 text-xs text-[#000000] font-medium">
-                                    <i data-lucide="check" class="w-4 h-4 mt-0.5 text-[#34C759] shrink-0 icon-3d"></i>
+                                <li class="flex items-start gap-3 text-sm text-[#1D1D1F] font-medium">
+                                    <i data-lucide="check" class="w-4 h-4 mt-0.5 text-[#0071E3] shrink-0"></i>
                                     <span class="break-words leading-tight">Mobile-Native Design</span>
                                 </li>
-                                <li class="flex items-start gap-3 text-xs text-[#000000] font-medium">
-                                    <i data-lucide="check" class="w-4 h-4 mt-0.5 text-[#34C759] shrink-0 icon-3d"></i>
+                                <li class="flex items-start gap-3 text-sm text-[#1D1D1F] font-medium">
+                                    <i data-lucide="check" class="w-4 h-4 mt-0.5 text-[#0071E3] shrink-0"></i>
                                     <span class="break-words leading-tight">Foundational SEO Setup</span>
                                 </li>
                             </ul>
                         </div>
                     </article>
 
-                    <!-- Pro Tier (Highlighted) -->
-                    <article class="physical-panel reveal bg-[#FFFFFF] border-2 border-[#FF3B30] border-pulse-red overflow-hidden shine-effect p-6 md:p-10 flex flex-col h-full relative z-20 shadow-[0_20px_50px_rgba(255,59,48,0.25)] transform lg:scale-105 w-full box-border" style="transition-delay: 100ms;">
-                        <div class="screw screw-tl"></div>
-                        <div class="screw screw-tr"></div>
-                        <div class="screw screw-bl"></div>
-                        <div class="screw screw-br"></div>
-
+                    <!-- Pro Tier (Apple Dark Mode Style) -->
+                    <article class="pricing-card-pro reveal p-8 md:p-10 flex flex-col h-full relative z-20 shadow-2xl transform lg:scale-105 w-full box-border" style="transition-delay: 100ms;">
                         <!-- Urgency Badge -->
-                        <div class="mx-auto lg:absolute lg:-top-4 lg:right-6 lg:mx-0 flex w-max items-center gap-1.5 physical-recessed bg-[#FFF0F0] px-3 py-1.5 rounded-full mb-6 lg:mb-0 shadow-[0_4px_15px_rgba(255,59,48,0.3)] border border-[#FF3B30] box-border">
-                            <div class="led-indicator led-red animate-pulse w-2 h-2 shrink-0" style="background-color: #FF3B30; box-shadow: 0 0 8px #FF3B30;"></div>
-                            <span class="text-[9px] font-black text-[#FF3B30] uppercase tracking-widest text-3d font-tech whitespace-nowrap">High Demand - Act Fast</span>
+                        <div class="mx-auto lg:absolute lg:-top-4 lg:right-6 lg:mx-0 flex w-max items-center gap-2 bg-[#333336] px-3 py-1.5 rounded-full mb-6 lg:mb-0 border border-[rgba(255,255,255,0.1)] box-border">
+                            <div class="w-2 h-2 rounded-full bg-[#34C759] animate-pulse shrink-0"></div>
+                            <span class="text-[9px] font-bold text-[#FFFFFF] uppercase tracking-widest font-tech whitespace-nowrap">High Demand - Act Fast</span>
                         </div>
 
-                        <div class="mb-8 text-[#000000]">
-                            <div class="physical-recessed bg-[#FAFAFA] border border-[#E5E5EA] inline-block p-3 mb-4 shadow-sm"><i data-lucide="bot" class="w-6 h-6 text-[#0066CC] shrink-0 icon-3d"></i></div>
-                            <h3 class="text-3xl text-[#000000] font-black uppercase tracking-tight mb-2 text-3d font-display break-words">Business Pro</h3>
-                            <p class="text-[#555555] text-xs font-medium break-words text-3d">Autonomous sales architecture.</p>
+                        <div class="mb-8 text-[#FFFFFF]">
+                            <h3 class="text-3xl font-black uppercase tracking-tight mb-2 font-display break-words">Business Pro</h3>
+                            <p class="text-[#A1A1A6] text-xs font-medium break-words">Autonomous sales architecture.</p>
                         </div>
                         
-                        <div class="mb-10 text-4xl lg:text-5xl font-black text-[#000000] tracking-tighter text-3d font-tech break-words">₹7,000</div>
+                        <div class="mb-10 text-4xl lg:text-5xl font-black text-[#FFFFFF] tracking-tighter font-tech break-words">₹7,000</div>
                         
-                        <button onclick="openEnquiryModal()" class="physical-btn-primary animate-pulse w-full py-4 text-[10px] font-black uppercase tracking-widest mb-10 shadow-xl font-tech icon-3d whitespace-nowrap" aria-label="Start Business Pro Project">
+                        <button onclick="openEnquiryModal()" class="apple-blue-btn w-full py-4 text-[11px] font-bold uppercase tracking-widest mb-10 whitespace-nowrap" aria-label="Start Business Pro Project">
                             Book Your Website
                         </button>
                         
                         <!-- Features List -->
-                        <div class="physical-recessed bg-[#FAFAFA] border border-[#E5E5EA] p-5 flex-1 mt-auto shadow-sm box-border"> 
-                            <p class="text-[9px] font-black tracking-widest uppercase mb-4 text-[#000000] font-tech text-3d break-words">FULL AUTOMATION:</p>
+                        <div class="flex-1 mt-auto box-border"> 
+                            <p class="text-[10px] font-bold tracking-widest uppercase mb-4 text-[#A1A1A6] font-tech break-words">FULL AUTOMATION:</p>
                             <ul class="space-y-4">
-                                <li class="flex items-start gap-3 text-xs text-[#000000] font-medium">
-                                    <i data-lucide="check" class="w-4 h-4 mt-0.5 text-[#34C759] shrink-0 icon-3d"></i>
+                                <li class="flex items-start gap-3 text-sm text-[#F5F5F7] font-medium">
+                                    <i data-lucide="check" class="w-4 h-4 mt-0.5 text-[#0071E3] shrink-0"></i>
                                     <span class="break-words leading-tight">Multi-Page Architecture</span>
                                 </li>
-                                <li class="flex items-start gap-3 text-xs text-[#000000] font-medium">
-                                    <i data-lucide="check" class="w-4 h-4 mt-0.5 text-[#34C759] shrink-0 icon-3d"></i>
+                                <li class="flex items-start gap-3 text-sm text-[#F5F5F7] font-medium">
+                                    <i data-lucide="check" class="w-4 h-4 mt-0.5 text-[#0071E3] shrink-0"></i>
                                     <span class="break-words leading-tight">Autonomous AI Agent</span>
                                 </li>
-                                <li class="flex items-start gap-3 text-xs text-[#000000] font-medium">
-                                    <i data-lucide="check" class="w-4 h-4 mt-0.5 text-[#34C759] shrink-0 icon-3d"></i>
+                                <li class="flex items-start gap-3 text-sm text-[#F5F5F7] font-medium">
+                                    <i data-lucide="check" class="w-4 h-4 mt-0.5 text-[#0071E3] shrink-0"></i>
                                     <span class="break-words leading-tight">Continuous Deal Processing</span>
                                 </li>
-                                <li class="flex items-start gap-3 text-xs text-[#000000] font-medium">
-                                    <i data-lucide="check" class="w-4 h-4 mt-0.5 text-[#34C759] shrink-0 icon-3d"></i>
+                                <li class="flex items-start gap-3 text-sm text-[#F5F5F7] font-medium">
+                                    <i data-lucide="check" class="w-4 h-4 mt-0.5 text-[#0071E3] shrink-0"></i>
                                     <span class="break-words leading-tight">Ongoing System Iteration</span>
                                 </li>
-                                <li class="flex items-start gap-3 text-xs text-[#000000] font-medium">
-                                    <i data-lucide="check" class="w-4 h-4 mt-0.5 text-[#34C759] shrink-0 icon-3d"></i>
+                                <li class="flex items-start gap-3 text-sm text-[#F5F5F7] font-medium">
+                                    <i data-lucide="check" class="w-4 h-4 mt-0.5 text-[#0071E3] shrink-0"></i>
                                     <span class="break-words leading-tight">Free Domain Included</span>
                                 </li>
                             </ul>
@@ -1208,39 +1166,36 @@
                     </article>
 
                     <!-- Enterprise Tier -->
-                    <article class="physical-panel reveal bg-[#FAFAFA] border-2 border-[#FF3B30]/50 hover:border-[#FF3B30] p-6 md:p-8 flex flex-col h-full relative z-10 w-full hover:shadow-2xl transition-all sm:col-span-2 lg:col-span-1 shadow-xl box-border" style="transition-delay: 200ms;">
-                        <div class="screw screw-tl"></div>
-                        <div class="screw screw-br"></div>
-                        <div class="mb-8 text-[#000000]">
-                            <div class="physical-recessed bg-[#FFFFFF] border border-[#E5E5EA] inline-block p-3 mb-4 shadow-sm"><i data-lucide="cpu" class="w-5 h-5 text-[#0066CC] shrink-0 icon-3d"></i></div>
-                            <h3 class="text-2xl font-black uppercase tracking-tight text-[#000000] mb-2 text-3d font-display break-words">Custom Build</h3>
-                            <p class="text-[#555555] text-xs font-medium break-words text-3d">Customized enterprise logic.</p>
+                    <article class="pricing-card-standard reveal p-8 md:p-10 flex flex-col h-full relative z-10 w-full hover:shadow-lg transition-all sm:col-span-2 lg:col-span-1 box-border" style="transition-delay: 200ms;">
+                        <div class="mb-8 text-[#1D1D1F]">
+                            <h3 class="text-2xl font-black uppercase tracking-tight mb-2 font-display break-words">Custom Build</h3>
+                            <p class="text-[#86868B] text-xs font-medium break-words">Customized enterprise logic.</p>
                         </div>
                         
-                        <div class="mb-10 text-4xl font-black text-[#000000] tracking-tighter text-3d font-tech break-words">₹15,000</div>
+                        <div class="mb-10 text-4xl font-black text-[#1D1D1F] tracking-tighter font-tech break-words">₹15,000</div>
                         
-                        <button onclick="openEnquiryModal()" class="physical-btn w-full py-4 text-[10px] font-black uppercase tracking-widest mb-10 border-[#E5E5EA] bg-[#FFFFFF] font-tech shadow-md text-3d icon-3d whitespace-nowrap" aria-label="Request Quote for Custom Build">
+                        <button onclick="openEnquiryModal()" class="w-full py-4 text-[11px] font-bold uppercase tracking-widest mb-10 bg-[#E8E8ED] hover:bg-[#D1D1D6] text-[#1D1D1F] rounded-full transition-colors whitespace-nowrap" aria-label="Request Quote for Custom Build">
                             Book Your Website
                         </button>
                         
                         <!-- Features List -->
-                        <div class="physical-recessed bg-[#FFFFFF] border border-[#E5E5EA] p-5 flex-1 mt-auto shadow-sm box-border">
-                            <p class="text-[9px] font-black tracking-widest uppercase mb-4 text-[#000000] font-tech text-3d break-words">EVERYTHING IN PRO, PLUS:</p>
+                        <div class="flex-1 mt-auto box-border">
+                            <p class="text-[10px] font-bold tracking-widest uppercase mb-4 text-[#86868B] font-tech break-words">EVERYTHING IN PRO, PLUS:</p>
                             <ul class="space-y-4">
-                                <li class="flex items-start gap-3 text-xs text-[#000000] font-medium">
-                                    <i data-lucide="check" class="w-4 h-4 mt-0.5 text-[#34C759] shrink-0 icon-3d"></i>
+                                <li class="flex items-start gap-3 text-sm text-[#1D1D1F] font-medium">
+                                    <i data-lucide="check" class="w-4 h-4 mt-0.5 text-[#0071E3] shrink-0"></i>
                                     <span class="break-words leading-tight">Expanded Architecture</span>
                                 </li>
-                                <li class="flex items-start gap-3 text-xs text-[#000000] font-medium">
-                                    <i data-lucide="check" class="w-4 h-4 mt-0.5 text-[#34C759] shrink-0 icon-3d"></i>
+                                <li class="flex items-start gap-3 text-sm text-[#1D1D1F] font-medium">
+                                    <i data-lucide="check" class="w-4 h-4 mt-0.5 text-[#0071E3] shrink-0"></i>
                                     <span class="break-words leading-tight">Voice & Text AI Sales Agents</span>
                                 </li>
-                                <li class="flex items-start gap-3 text-xs text-[#000000] font-medium">
-                                    <i data-lucide="check" class="w-4 h-4 mt-0.5 text-[#34C759] shrink-0 icon-3d"></i>
+                                <li class="flex items-start gap-3 text-sm text-[#1D1D1F] font-medium">
+                                    <i data-lucide="check" class="w-4 h-4 mt-0.5 text-[#0071E3] shrink-0"></i>
                                     <span class="break-words leading-tight">Advanced Workflow Logic</span>
                                 </li>
-                                <li class="flex items-start gap-3 text-xs text-[#000000] font-medium">
-                                    <i data-lucide="check" class="w-4 h-4 mt-0.5 text-[#34C759] shrink-0 icon-3d"></i>
+                                <li class="flex items-start gap-3 text-sm text-[#1D1D1F] font-medium">
+                                    <i data-lucide="check" class="w-4 h-4 mt-0.5 text-[#0071E3] shrink-0"></i>
                                     <span class="break-words leading-tight">Custom API Integrations</span>
                                 </li>
                             </ul>
@@ -1251,7 +1206,7 @@
         </section>
 
         <!-- FAQ Section -->
-        <section id="faq" class="py-16 md:py-24 px-4 sm:px-6 bg-[#FAFAFA] border-b border-[#E5E5EA] w-full">
+        <section id="faq" class="py-16 md:py-24 px-4 sm:px-6 bg-[#FAFAFA] border-b border-[rgba(0,0,0,0.08)] w-full">
             <div class="w-full max-w-3xl mx-auto box-border">
                 <div class="text-center mb-12 reveal px-2 box-border">
                     <h2 class="text-3xl sm:text-4xl font-black uppercase tracking-tight text-3d leading-[1] text-[#000000] break-words font-display">Knowledge Base</h2>
@@ -1260,39 +1215,39 @@
                 
                 <div class="space-y-4 reveal w-full box-border" role="tablist">
                     <!-- FAQ 1 -->
-                    <div class="physical-panel bg-[#FFFFFF] border border-[#E5E5EA] p-4 cursor-pointer w-full hover:shadow-md shadow-sm box-border" onclick="toggleJobDetails(this)" role="button" aria-expanded="false" aria-controls="faq-content-1" tabindex="0">
+                    <div class="physical-panel bg-[#FFFFFF] p-4 cursor-pointer w-full hover:shadow-md shadow-sm box-border" onclick="toggleJobDetails(this)" role="button" aria-expanded="false" aria-controls="faq-content-1" tabindex="0">
                         <div class="flex justify-between items-center w-full box-border">
                             <h4 class="font-bold text-[#000000] uppercase tracking-tight text-sm md:text-base pr-4 break-words text-3d">What is the standard deployment timeline?</h4>
                             <i data-lucide="plus" class="w-5 h-5 transition-transform duration-300 text-[#0066CC] shrink-0 icon-3d"></i>
                         </div>
                     </div>
-                    <div id="faq-content-1" class="accordion-content bg-[#FFFFFF] border-x border-b border-[#E5E5EA] rounded-b-xl -mt-4 mx-2 relative -z-10 shadow-sm box-border" role="region">
+                    <div id="faq-content-1" class="accordion-content bg-[#FFFFFF] border-x border-b border-[rgba(0,0,0,0.08)] rounded-b-xl -mt-4 mx-2 relative -z-10 shadow-sm box-border" role="region">
                         <div class="p-6 pt-8 text-xs md:text-sm font-medium text-[#555555] leading-relaxed break-words">
                             Core infrastructure is deployed within 7-14 days. Complex AI integrations require 3-4 weeks.
                         </div>
                     </div>
 
                     <!-- FAQ 2 -->
-                    <div class="physical-panel bg-[#FFFFFF] border border-[#E5E5EA] p-4 cursor-pointer w-full hover:shadow-md shadow-sm box-border" onclick="toggleJobDetails(this)" role="button" aria-expanded="false" aria-controls="faq-content-2" tabindex="0">
+                    <div class="physical-panel bg-[#FFFFFF] p-4 cursor-pointer w-full hover:shadow-md shadow-sm box-border" onclick="toggleJobDetails(this)" role="button" aria-expanded="false" aria-controls="faq-content-2" tabindex="0">
                         <div class="flex justify-between items-center w-full box-border">
                             <h4 class="font-bold text-[#000000] uppercase tracking-tight text-sm md:text-base pr-4 break-words text-3d">Who retains asset ownership?</h4>
                             <i data-lucide="plus" class="w-5 h-5 transition-transform duration-300 text-[#0066CC] shrink-0 icon-3d"></i>
                         </div>
                     </div>
-                    <div id="faq-content-2" class="accordion-content bg-[#FFFFFF] border-x border-b border-[#E5E5EA] rounded-b-xl -mt-4 mx-2 relative -z-10 shadow-sm box-border" role="region">
+                    <div id="faq-content-2" class="accordion-content bg-[#FFFFFF] border-x border-b border-[rgba(0,0,0,0.08)] rounded-b-xl -mt-4 mx-2 relative -z-10 shadow-sm box-border" role="region">
                         <div class="p-6 pt-8 text-xs md:text-sm font-medium text-[#555555] leading-relaxed break-words">
                             You retain 100% ownership of the domain and frontend assets post-payment. Zero restrictive contracts.
                         </div>
                     </div>
 
                     <!-- FAQ 3 -->
-                    <div class="physical-panel bg-[#FFFFFF] border border-[#E5E5EA] p-4 cursor-pointer w-full hover:shadow-md shadow-sm box-border" onclick="toggleJobDetails(this)" role="button" aria-expanded="false" aria-controls="faq-content-3" tabindex="0">
+                    <div class="physical-panel bg-[#FFFFFF] p-4 cursor-pointer w-full hover:shadow-md shadow-sm box-border" onclick="toggleJobDetails(this)" role="button" aria-expanded="false" aria-controls="faq-content-3" tabindex="0">
                         <div class="flex justify-between items-center w-full box-border">
                             <h4 class="font-bold text-[#000000] uppercase tracking-tight text-sm md:text-base pr-4 break-words text-3d">How is AI accuracy maintained?</h4>
                             <i data-lucide="plus" class="w-5 h-5 transition-transform duration-300 text-[#0066CC] shrink-0 icon-3d"></i>
                         </div>
                     </div>
-                    <div id="faq-content-3" class="accordion-content bg-[#FFFFFF] border-x border-b border-[#E5E5EA] rounded-b-xl -mt-4 mx-2 relative -z-10 shadow-sm box-border" role="region">
+                    <div id="faq-content-3" class="accordion-content bg-[#FFFFFF] border-x border-b border-[rgba(0,0,0,0.08)] rounded-b-xl -mt-4 mx-2 relative -z-10 shadow-sm box-border" role="region">
                         <div class="p-6 pt-8 text-xs md:text-sm font-medium text-[#555555] leading-relaxed break-words">
                             Agents are strictly constrained to your knowledge base. Queries exceeding operational parameters are routed to human operators.
                         </div>
@@ -1302,7 +1257,7 @@
         </section>
 
         <!-- Meet the Engineers (Team/Trust) -->
-        <section id="team" class="py-16 md:py-24 px-4 sm:px-6 bg-[#FFFFFF] border-b border-[#E5E5EA] w-full">
+        <section id="team" class="py-16 md:py-24 px-4 sm:px-6 bg-[#FFFFFF] border-b border-[rgba(0,0,0,0.08)] w-full">
             <div class="w-full max-w-5xl mx-auto text-center reveal box-border">
                 <div class="mb-12 text-center px-2 box-border">
                     <span class="text-[9px] sm:text-[10px] font-bold text-[#555555] tracking-widest uppercase text-3d font-tech break-words">System Architects</span>
@@ -1311,9 +1266,8 @@
                 </div>
                 
                 <div class="flex justify-center w-full px-2 box-border">
-                    <div class="physical-panel bg-[#FAFAFA] border border-[#E5E5EA] p-8 max-w-sm w-full shadow-xl hover:shadow-2xl transition-shadow box-border">
-                        <div class="screw screw-tl"></div><div class="screw screw-br"></div>
-                        <div class="physical-recessed bg-[#FFFFFF] border border-[#E5E5EA] w-20 h-20 mx-auto rounded-full mb-4 flex items-center justify-center shadow-md">
+                    <div class="physical-panel bg-[#FAFAFA] p-8 max-w-sm w-full shadow-xl hover:shadow-2xl transition-shadow box-border">
+                        <div class="physical-recessed bg-[#FFFFFF] w-20 h-20 mx-auto rounded-full mb-4 flex items-center justify-center shadow-md">
                              <i data-lucide="terminal-square" class="w-10 h-10 text-[#0066CC] shrink-0 icon-3d"></i>
                         </div>
                         <h3 class="text-xl font-black uppercase tracking-widest text-3d text-[#000000] font-display break-words">Farman Shafi</h3>
@@ -1328,13 +1282,8 @@
 
         <!-- About / Ready to Start Section -->
         <section id="about" class="py-20 md:py-32 px-4 sm:px-6 relative bg-[#FAFAFA] w-full">
-            <div class="w-full max-w-3xl mx-auto physical-panel bg-[#FFFFFF] border border-[#E5E5EA] p-8 md:p-16 text-center reveal relative z-10 shadow-2xl hover:shadow-[0_20px_60px_rgba(0,0,0,0.1)] transition-shadow box-border">
-                <div class="screw screw-tl"></div>
-                <div class="screw screw-tr"></div>
-                <div class="screw screw-bl"></div>
-                <div class="screw screw-br"></div>
-                
-                <div class="physical-recessed bg-[#FAFAFA] border border-[#E5E5EA] w-20 h-20 flex items-center justify-center mx-auto mb-8 rounded-full shadow-md">
+            <div class="w-full max-w-3xl mx-auto physical-panel bg-[#FFFFFF] p-8 md:p-16 text-center reveal relative z-10 shadow-2xl hover:shadow-[0_20px_60px_rgba(0,0,0,0.1)] transition-shadow box-border">
+                <div class="physical-recessed bg-[#FAFAFA] w-20 h-20 flex items-center justify-center mx-auto mb-8 rounded-full shadow-md">
                     <i data-lucide="rocket" class="w-10 h-10 text-[#0066CC] shrink-0 icon-3d"></i>
                 </div>
                 <h2 class="text-3xl md:text-5xl font-black mb-4 uppercase tracking-tight text-3d leading-[1.1] text-[#000000] break-words font-display">Initialize Protocol.</h2>
@@ -1342,7 +1291,7 @@
                     We build scalable infrastructure that actively acquires and converts.
                 </p>
                 
-                <button onclick="openEnquiryModal()" class="physical-btn-primary px-10 py-5 font-black text-xs uppercase tracking-[0.2em] inline-flex items-center gap-2 shadow-xl font-tech icon-3d whitespace-nowrap">
+                <button onclick="openEnquiryModal()" class="apple-blue-btn px-10 py-5 font-black text-xs uppercase tracking-[0.2em] inline-flex items-center gap-2 shadow-xl font-tech whitespace-nowrap">
                     <i data-lucide="arrow-right" class="w-4 h-4 text-white shrink-0 icon-3d"></i> Book Your Website
                 </button>
             </div>
@@ -1351,10 +1300,10 @@
     </main>
 
     <!-- Footer -->
-    <footer class="py-12 md:py-20 px-4 sm:px-6 bg-[#FFFFFF] text-center relative border-t border-[#E5E5EA] w-full">
+    <footer class="py-12 md:py-20 px-4 sm:px-6 bg-[#FFFFFF] text-center relative border-t border-[rgba(0,0,0,0.08)] w-full">
         <div class="w-full max-w-7xl mx-auto box-border">
             <div class="text-xl md:text-3xl font-black tracking-tighter text-[#000000] flex items-center justify-center gap-3 mb-8 cursor-pointer text-3d break-words">
-                <div class="physical-recessed bg-[#FAFAFA] border border-[#E5E5EA] p-2 md:p-3 rounded-xl inline-flex items-center justify-center shadow-md">
+                <div class="physical-recessed bg-[#FAFAFA] p-2 md:p-3 rounded-xl inline-flex items-center justify-center shadow-md">
                     <i data-lucide="hexagon" class="text-[#0066CC] w-6 h-6 md:w-8 md:h-8 shrink-0 icon-3d"></i>
                 </div>
                 <span class="uppercase font-display">FORGE<span class="text-[#555555]">SOFTWARE</span></span>
@@ -1375,7 +1324,7 @@
                 </a>
             </div>
 
-            <div class="h-[1px] w-24 bg-[#E5E5EA] mx-auto mb-8 rounded-full"></div>
+            <div class="h-[1px] w-24 bg-[rgba(0,0,0,0.08)] mx-auto mb-8 rounded-full"></div>
             <p class="text-[#555555] text-[9px] md:text-[10px] uppercase tracking-widest font-bold leading-loose break-words font-tech text-3d w-full box-border">
                 Premium B2B Agency &copy; 2026. All rights reserved. <br class="sm:hidden block mt-2" /> <span class="hidden sm:inline">&nbsp;|&nbsp;</span> 
                 Parent Group of Cobra & Runo
@@ -1391,18 +1340,13 @@
 
     <!-- PRO ENQUIRY MODAL -->
     <div id="enquiryModal" class="fixed top-0 left-0 w-full h-[100dvh] bg-black/60 z-[9999] hidden flex-col items-center justify-center p-4 backdrop-blur-xl transition-opacity duration-300 opacity-0 overflow-hidden" role="dialog" aria-modal="true" aria-labelledby="enquiryTitle">
-        <div class="physical-panel bg-[#FFFFFF] max-w-md w-[92%] sm:w-full max-h-[90dvh] flex flex-col relative border border-[#E5E5EA] shadow-2xl transform scale-95 transition-transform duration-300 mx-auto box-border" id="enquiryContent">
-            
-            <div class="screw screw-tl"></div>
-            <div class="screw screw-tr"></div>
-            <div class="screw screw-bl"></div>
-            <div class="screw screw-br"></div>
+        <div class="physical-panel bg-[#FFFFFF] max-w-md w-[92%] sm:w-full max-h-[90dvh] flex flex-col relative shadow-2xl transform scale-95 transition-transform duration-300 mx-auto box-border" id="enquiryContent">
             
             <button onclick="closeEnquiryModal()" class="absolute top-3 right-3 physical-btn bg-[#FAFAFA] border-transparent w-8 h-8 flex items-center justify-center rounded-full z-[100] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#0066CC] icon-3d" aria-label="Close Modal">
                 <i data-lucide="x" class="w-4 h-4 text-[#000000] shrink-0"></i>
             </button>
             
-            <div class="pt-6 px-5 sm:px-8 pb-4 shrink-0 border-b border-[#E5E5EA] relative overflow-hidden rounded-t-[24px] box-border">
+            <div class="pt-6 px-5 sm:px-8 pb-4 shrink-0 border-b border-[rgba(0,0,0,0.08)] relative overflow-hidden rounded-t-[24px] box-border">
                 <div class="absolute inset-0 bg-grid opacity-30 z-0"></div>
                 <div class="absolute -top-10 -right-10 w-32 h-32 bg-[#0066CC]/10 rounded-full blur-2xl z-0 pointer-events-none"></div>
                 <div class="relative z-10 text-left pr-8 w-full box-border">
@@ -1419,7 +1363,7 @@
                     
                     <div class="w-full box-border">
                         <label for="name" class="text-[9px] font-black text-[#555555] uppercase tracking-widest ml-1 mb-1 block font-tech text-3d">Company / Person Name</label>
-                        <div class="relative group input-focus-effect rounded-xl overflow-hidden bg-[#FAFAFA] border border-[#E5E5EA]">
+                        <div class="relative group input-focus-effect rounded-xl overflow-hidden bg-[#FAFAFA] border border-[rgba(0,0,0,0.08)]">
                             <div class="absolute left-3 top-1/2 -translate-y-1/2 text-[#0066CC] pointer-events-none">
                                 <i data-lucide="user" class="w-4 h-4"></i>
                             </div>
@@ -1429,7 +1373,7 @@
                     
                     <div class="w-full box-border">
                         <label for="phone" class="text-[9px] font-black text-[#555555] uppercase tracking-widest ml-1 mb-1 block font-tech text-3d">Phone Number (WhatsApp)</label>
-                        <div class="relative group input-focus-effect rounded-xl overflow-hidden bg-[#FAFAFA] border border-[#E5E5EA]">
+                        <div class="relative group input-focus-effect rounded-xl overflow-hidden bg-[#FAFAFA] border border-[rgba(0,0,0,0.08)]">
                             <div class="absolute left-3 top-1/2 -translate-y-1/2 text-[#34C759] pointer-events-none">
                                 <i data-lucide="phone" class="w-4 h-4"></i>
                             </div>
@@ -1439,11 +1383,11 @@
 
                     <div class="w-full box-border">
                         <label for="country" class="text-[9px] font-black text-[#555555] uppercase tracking-widest ml-1 mb-1 block font-tech text-3d">Country / State Location</label>
-                        <div class="relative group input-focus-effect rounded-xl overflow-hidden bg-[#FAFAFA] border border-[#E5E5EA]">
+                        <div class="relative group input-focus-effect rounded-xl overflow-hidden bg-[#FAFAFA] border border-[rgba(0,0,0,0.08)]">
                             <div class="absolute left-3 top-1/2 -translate-y-1/2 text-[#AF52DE] pointer-events-none">
                                 <i data-lucide="globe-2" class="w-4 h-4"></i>
                             </div>
-                            <select id="country" name="country" required="required" autocomplete="country" class="w-full bg-transparent pl-9 pr-10 py-3 text-base sm:text-sm font-bold focus:outline-none text-[#000000] appearance-none cursor-pointer relative z-10">
+                            <select id="country" name="country" required="required" autocomplete="country" class="w-full bg-transparent pl-9 pr-10 py-3 text-base sm:text-sm font-bold focus:outline-none text-[#000000] appearance-none cursor-pointer relative z-10 rounded-none">
                                 <option value="" disabled selected class="text-[#A1A1A6]">Select country or state...</option>
                                 <option value="United States">United States</option>
                                 <option value="United Kingdom">United Kingdom</option>
@@ -1516,7 +1460,7 @@
                         </div>
                     </div>
                     
-                    <button type="submit" class="w-full physical-btn-primary py-4 font-black text-[10px] sm:text-xs uppercase tracking-widest mt-6 text-white disabled:bg-[#A1A1A6] shadow-xl font-tech icon-3d whitespace-nowrap box-border">
+                    <button type="submit" class="w-full apple-blue-btn py-4 font-black text-[10px] sm:text-xs uppercase tracking-widest mt-6 text-white disabled:bg-[#A1A1A6] shadow-xl font-tech icon-3d whitespace-nowrap box-border">
                         Book Your Website
                     </button>
                 </form>
@@ -1526,12 +1470,7 @@
 
     <!-- Premium Success Modal -->
     <div id="successModal" class="fixed top-0 left-0 w-full h-[100dvh] bg-black/60 z-[9999] hidden flex-col items-center justify-center p-4 backdrop-blur-xl transition-opacity duration-300 opacity-0 overflow-hidden" role="dialog" aria-modal="true" aria-labelledby="successTitle">
-        <div class="physical-panel bg-[#FFFFFF] max-w-md w-[92%] sm:w-full max-h-[90dvh] overflow-y-auto custom-scrollbar p-5 sm:p-12 text-center transform scale-95 transition-transform duration-300 relative border border-[#E5E5EA] shadow-2xl mx-auto box-border" id="successContent">
-            
-            <div class="screw screw-tl"></div>
-            <div class="screw screw-tr"></div>
-            <div class="screw screw-bl"></div>
-            <div class="screw screw-br"></div>
+        <div class="physical-panel bg-[#FFFFFF] max-w-md w-[92%] sm:w-full max-h-[90dvh] overflow-y-auto custom-scrollbar p-5 sm:p-12 text-center transform scale-95 transition-transform duration-300 relative shadow-2xl mx-auto box-border" id="successContent">
             
             <div class="physical-recessed bg-[#FAFAFA] border border-[#34C759]/30 w-24 h-24 flex items-center justify-center mx-auto mb-8 rounded-full shadow-[0_0_30px_rgba(52,199,89,0.2)]">
                 <i data-lucide="check-circle" class="w-12 h-12 text-[#34C759] shrink-0 icon-3d"></i>
@@ -1543,7 +1482,7 @@
                 Your response is securely recorded. Our senior team will call you shortly to outline the next steps. Welcome to the new standard.
             </p>
             
-            <button onclick="closeSuccessModal()" class="physical-btn-primary w-full py-4 font-black text-[10px] sm:text-xs uppercase tracking-widest shadow-xl font-tech icon-3d whitespace-nowrap">
+            <button onclick="closeSuccessModal()" class="apple-blue-btn w-full py-4 font-black text-[10px] sm:text-xs uppercase tracking-widest shadow-xl font-tech icon-3d whitespace-nowrap">
                 Return to Main Page
             </button>
         </div>
@@ -1551,18 +1490,18 @@
 
     <!-- Terms Modal -->
     <div id="termsModal" class="fixed top-0 left-0 w-full h-[100dvh] bg-black/60 z-[9999] hidden flex-col items-center justify-center p-4 backdrop-blur-xl transition-opacity duration-300 opacity-0 overflow-hidden" role="dialog" aria-modal="true" aria-labelledby="termsTitle">
-        <div class="physical-panel bg-[#FFFFFF] max-w-4xl w-[92%] sm:w-full max-h-[90dvh] p-4 sm:p-6 md:p-10 flex flex-col relative border border-[#E5E5EA] shadow-2xl transform scale-95 transition-transform duration-300 mx-auto overflow-hidden box-border" id="termsContent">
+        <div class="physical-panel bg-[#FFFFFF] max-w-4xl w-[92%] sm:w-full max-h-[90dvh] p-4 sm:p-6 md:p-10 flex flex-col relative shadow-2xl transform scale-95 transition-transform duration-300 mx-auto overflow-hidden box-border" id="termsContent">
             
             <button onclick="closeTerms()" class="absolute top-4 right-4 lg:top-6 lg:right-6 physical-btn bg-[#FAFAFA] border-transparent w-10 h-10 flex items-center justify-center rounded-full z-20 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#0066CC] icon-3d" aria-label="Close Terms">
                 <i data-lucide="x" class="w-5 h-5 text-[#000000] shrink-0"></i>
             </button>
             
-            <div class="text-center mb-6 shrink-0 border-b border-[#E5E5EA] pr-12 lg:pr-0 w-full pb-4 box-border">
+            <div class="text-center mb-6 shrink-0 border-b border-[rgba(0,0,0,0.08)] pr-12 lg:pr-0 w-full pb-4 box-border">
                 <h3 id="termsTitle" class="text-xl md:text-3xl font-black mb-1 text-[#000000] uppercase tracking-tight text-3d break-words font-display">Terms & Conditions</h3>
                 <p class="text-[#555555] text-[10px] font-black tracking-widest uppercase font-tech text-3d break-words">Forge Softwares</p>
             </div>
             
-            <div class="physical-recessed bg-[#FAFAFA] border border-[#E5E5EA] flex-1 overflow-y-auto p-4 md:p-8 text-xs md:text-sm text-[#000000] font-medium custom-scrollbar break-words w-full shadow-inner box-border">
+            <div class="physical-recessed bg-[#FAFAFA] flex-1 overflow-y-auto p-4 md:p-8 text-xs md:text-sm text-[#000000] font-medium custom-scrollbar break-words w-full shadow-inner box-border">
                 <p class="italic text-[#555555] font-black mb-4">Last Updated: 8:00 pm, 2 June 2026<br><br>These Terms govern service utilization. Engaging Forge Softwares or our subsidiaries implies strict agreement with these parameters.</p>
                 
                 <h4 class="font-black text-[#000000] text-sm md:text-base mt-6 mb-2 uppercase tracking-wide border-l-4 border-[#0066CC] pl-3 text-3d font-display break-words">1. Core Operations</h4>
@@ -1588,7 +1527,7 @@
                 <h4 class="font-black text-[#000000] text-sm md:text-base mt-6 mb-2 uppercase tracking-wide border-l-4 border-[#0066CC] pl-3 text-3d font-display break-words">6. Intellectual Property</h4>
                 <p class="mb-4 text-[#555555] break-words">Clients retain domain and operational output. Forge retains proprietary internal architecture and framework rights.</p>
                 
-                <div class="pt-4 mt-8 border-t border-[#E5E5EA] text-center text-[10px] font-black uppercase tracking-widest text-[#555555] font-tech break-words">
+                <div class="pt-4 mt-8 border-t border-[rgba(0,0,0,0.08)] text-center text-[10px] font-black uppercase tracking-widest text-[#555555] font-tech break-words">
                     Utilization of Forge Softwares indicates explicit agreement with these protocols.
                 </div>
             </div>
@@ -1597,18 +1536,18 @@
 
     <!-- Privacy Policy Modal -->
     <div id="privacyModal" class="fixed top-0 left-0 w-full h-[100dvh] bg-black/60 z-[9999] hidden flex-col items-center justify-center p-4 backdrop-blur-xl transition-opacity duration-300 opacity-0 overflow-hidden" role="dialog" aria-modal="true" aria-labelledby="privacyTitle">
-        <div class="physical-panel bg-[#FFFFFF] max-w-4xl w-[92%] sm:w-full max-h-[90dvh] p-4 sm:p-6 md:p-10 flex flex-col relative border border-[#E5E5EA] shadow-2xl transform scale-95 transition-transform duration-300 m-auto mx-4 sm:mx-auto overflow-hidden box-border" id="privacyContent">
+        <div class="physical-panel bg-[#FFFFFF] max-w-4xl w-[92%] sm:w-full max-h-[90dvh] p-4 sm:p-6 md:p-10 flex flex-col relative shadow-2xl transform scale-95 transition-transform duration-300 m-auto mx-4 sm:mx-auto overflow-hidden box-border" id="privacyContent">
             
             <button onclick="closePrivacy()" class="absolute top-4 right-4 lg:top-6 lg:right-6 physical-btn bg-[#FAFAFA] border-transparent w-10 h-10 flex items-center justify-center rounded-full z-20 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#0066CC] icon-3d" aria-label="Close Privacy Policy">
                 <i data-lucide="x" class="w-5 h-5 text-[#000000] shrink-0"></i>
             </button>
             
-            <div class="text-center mb-6 shrink-0 border-b border-[#E5E5EA] pr-12 lg:pr-0 w-full pb-4 box-border">
+            <div class="text-center mb-6 shrink-0 border-b border-[rgba(0,0,0,0.08)] pr-12 lg:pr-0 w-full pb-4 box-border">
                 <h3 id="privacyTitle" class="text-xl md:text-3xl font-black mb-1 text-[#000000] uppercase tracking-tight text-3d break-words font-display">Privacy Policy</h3>
                 <p class="text-[#555555] text-[10px] font-black tracking-widest uppercase font-tech text-3d break-words">Forge Softwares</p>
             </div>
             
-            <div class="physical-recessed bg-[#FAFAFA] border border-[#E5E5EA] flex-1 overflow-y-auto p-4 md:p-8 text-xs md:text-sm text-[#000000] font-medium custom-scrollbar break-words w-full shadow-inner box-border">
+            <div class="physical-recessed bg-[#FAFAFA] flex-1 overflow-y-auto p-4 md:p-8 text-xs md:text-sm text-[#000000] font-medium custom-scrollbar break-words w-full shadow-inner box-border">
                 <p class="italic text-[#555555] font-black mb-4">Last Updated: 12:35 pm, 3 June 2026<br><br>We enforce strict data protocol. This document outlines information processing parameters.</p>
                 
                 <h4 class="font-black text-[#000000] text-sm md:text-base mt-6 mb-2 uppercase tracking-wide border-l-4 border-[#0066CC] pl-3 text-3d font-display break-words">1. Data Acquisition</h4>
@@ -1623,32 +1562,119 @@
                 <h4 class="font-black text-[#000000] text-sm md:text-base mt-6 mb-2 uppercase tracking-wide border-l-4 border-[#0066CC] pl-3 text-3d font-display break-words">4. Telemetry & Tracking</h4>
                 <p class="mb-4 text-[#555555] break-words">Standard analytic cookies are utilized to optimize system performance and traffic flow.</p>
                 
-                <div class="pt-4 mt-8 border-t border-[#E5E5EA] text-center text-[10px] font-black uppercase tracking-widest text-[#555555] font-tech text-3d break-words">
+                <div class="pt-4 mt-8 border-t border-[rgba(0,0,0,0.08)] text-center text-[10px] font-black uppercase tracking-widest text-[#555555] font-tech text-3d break-words">
                     System interaction constitutes consent to this policy.
                 </div>
             </div>
         </div>
     </div>
 
+    <!-- --- STREAMING_CHUNK:Javascript Application Logic --- -->
     <script>
         // Init Lucide Icons safely & efficiently via requestAnimationFrame
         document.addEventListener('DOMContentLoaded', () => {
-            // Delay icon parsing to free up Main Thread for Lighthouse FCP/LCP metrics
             setTimeout(() => {
                 requestAnimationFrame(() => {
                     lucide.createIcons();
                 });
             }, 150);
         });
+
+        // --- NEXUM MOBILE MENU LOGIC (Hero specific) ---
+        const nexumMobileMenuBtn = document.getElementById('nexumMobileMenuBtn');
+        const nexumMenuIcon = document.getElementById('nexumMenuIcon');
+        const nexumXIcon = document.getElementById('nexumXIcon');
+        const nexumMobileOverlay = document.getElementById('nexumMobileOverlay');
+        const nexumMobileDrawer = document.getElementById('nexumMobileDrawer');
+        const nexumMobLinks = document.querySelectorAll('.nexum-mob-link');
+        const nexumMobCta = document.getElementById('nexumMobCta');
+        let isNexumMenuOpen = false;
+
+        function toggleNexumMenu() {
+            isNexumMenuOpen = !isNexumMenuOpen;
+            
+            if (isNexumMenuOpen) {
+                document.body.style.overflow = 'hidden';
+                
+                // Icon Animation
+                nexumMenuIcon.classList.replace('scale-100', 'scale-0');
+                nexumMenuIcon.classList.replace('opacity-100', 'opacity-0');
+                nexumMenuIcon.classList.replace('rotate-0', 'rotate-90');
+                
+                nexumXIcon.classList.replace('scale-0', 'scale-100');
+                nexumXIcon.classList.replace('opacity-0', 'opacity-100');
+                nexumXIcon.classList.replace('-rotate-90', 'rotate-0');
+                
+                // Overlay & Drawer
+                nexumMobileOverlay.classList.remove('opacity-0', 'pointer-events-none');
+                nexumMobileOverlay.classList.add('opacity-100', 'pointer-events-auto');
+                nexumMobileDrawer.classList.replace('translate-x-full', 'translate-x-0');
+                
+                // Stagger Links
+                nexumMobLinks.forEach((link, idx) => {
+                    setTimeout(() => {
+                        link.style.transition = 'all 400ms cubic-bezier(0.16, 1, 0.3, 1)';
+                        link.classList.remove('opacity-0', 'translate-x-[24px]');
+                    }, (idx + 1) * 60);
+                });
+                
+                // Bottom CTA
+                setTimeout(() => {
+                    nexumMobCta.classList.remove('opacity-0', 'translate-y-[16px]');
+                }, 300);
+                
+            } else {
+                document.body.style.overflow = '';
+                
+                // Icon Animation
+                nexumMenuIcon.classList.replace('scale-0', 'scale-100');
+                nexumMenuIcon.classList.replace('opacity-0', 'opacity-100');
+                nexumMenuIcon.classList.replace('rotate-90', 'rotate-0');
+                
+                nexumXIcon.classList.replace('scale-100', 'scale-0');
+                nexumXIcon.classList.replace('opacity-100', 'opacity-0');
+                nexumXIcon.classList.replace('rotate-0', '-rotate-90');
+                
+                // Overlay & Drawer
+                nexumMobileOverlay.classList.replace('opacity-100', 'opacity-0');
+                nexumMobileOverlay.classList.replace('pointer-events-auto', 'pointer-events-none');
+                nexumMobileDrawer.classList.replace('translate-x-0', 'translate-x-full');
+                
+                // Reset Animations
+                nexumMobLinks.forEach((link) => {
+                    link.style.transition = 'none';
+                    link.classList.add('opacity-0', 'translate-x-[24px]');
+                });
+                nexumMobCta.classList.add('opacity-0', 'translate-y-[16px]');
+            }
+        }
+
+        if(nexumMobileMenuBtn) {
+            nexumMobileMenuBtn.addEventListener('click', toggleNexumMenu);
+        }
+        
+        nexumMobLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                if(isNexumMenuOpen) toggleNexumMenu();
+            });
+        });
+        
+        if (nexumMobileOverlay) {
+            nexumMobileOverlay.addEventListener('click', () => {
+                if(isNexumMenuOpen) toggleNexumMenu();
+            });
+        }
         
         // Accurate Local Time Sync
         setInterval(() => {
             requestAnimationFrame(() => {
-                const timeEl = document.getElementById('sys-time');
-                if(timeEl) {
-                    const now = new Date();
-                    timeEl.textContent = now.toLocaleTimeString('en-US', { hour12: false });
-                }
+                const timeEls = document.querySelectorAll('#sys-time');
+                timeEls.forEach(timeEl => {
+                    if(timeEl) {
+                        const now = new Date();
+                        timeEl.textContent = now.toLocaleTimeString('en-US', { hour12: false });
+                    }
+                })
             });
         }, 1000);
 
@@ -1666,7 +1692,7 @@
 
         function typeText(element, text, speed, callback) {
             let i = 0;
-            dataLed.classList.add('animate-pulse'); 
+            if(dataLed) dataLed.classList.add('animate-pulse'); 
             
             element.innerHTML = ''; 
             const textNode = document.createTextNode('');
@@ -1680,13 +1706,12 @@
                 if (i < text.length) {
                     textNode.nodeValue += text.charAt(i); 
                     i++;
-                    // Bugfix: Prevents layout thrashing on rapid reflows
                     requestAnimationFrame(() => {
                         terminalOutput.scrollTop = terminalOutput.scrollHeight;
                     });
                     setTimeout(type, speed);
                 } else {
-                    dataLed.classList.remove('animate-pulse');
+                    if(dataLed) dataLed.classList.remove('animate-pulse');
                     if(callback) callback();
                 }
             }
@@ -1715,7 +1740,6 @@
                     block.appendChild(content);
                     terminalOutput.appendChild(block);
 
-                    // Fade in the new block smoothly
                     setTimeout(() => {
                         block.classList.remove('opacity-0', 'translate-y-2');
                     }, 50);
@@ -1736,51 +1760,14 @@
             });
         }
 
-        // Mobile Menu Accessibility Logic
-        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-        const mobileMenu = document.getElementById('mobileMenu');
-        const mobileLinks = document.querySelectorAll('.mobile-link');
-        let isMenuOpen = false;
-
-        function toggleMobileMenu() {
-            isMenuOpen = !isMenuOpen;
-            if (isMenuOpen) {
-                mobileMenu.classList.remove('hidden');
-                mobileMenu.classList.add('flex');
-                mobileMenuBtn.innerHTML = '<i data-lucide="x" class="w-4 h-4 sm:w-5 sm:h-5 text-[#000000] shrink-0 icon-3d"></i>';
-                
-                // Double Lock for iOS Safari
-                document.body.style.overflow = 'hidden';
-                document.documentElement.style.overflow = 'hidden';
-            } else {
-                mobileMenu.classList.add('hidden');
-                mobileMenu.classList.remove('flex');
-                mobileMenuBtn.innerHTML = '<i data-lucide="menu" class="w-4 h-4 sm:w-5 sm:h-5 text-[#000000] shrink-0 icon-3d"></i>';
-                
-                document.body.style.overflow = '';
-                document.documentElement.style.overflow = '';
-            }
-            lucide.createIcons();
-        }
-
-        mobileMenuBtn.addEventListener('click', toggleMobileMenu);
-
-        mobileLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                if(isMenuOpen) toggleMobileMenu();
-            });
-        });
-
         // Universal Modals Logic
         function openGenericModal(modalElement, contentElement) {
             modalElement.classList.remove('hidden');
             modalElement.classList.add('flex');
             
-            // Double Lock Background Scrolling
             document.body.style.overflow = 'hidden'; 
             document.documentElement.style.overflow = 'hidden'; 
             
-            // Allow display block to register before fading in
             requestAnimationFrame(() => {
                 modalElement.classList.remove('opacity-0');
                 if (contentElement) {
@@ -1797,11 +1784,9 @@
                 contentElement.classList.add('scale-95');
             }
             
-            // Unlock Background Scrolling
             document.body.style.overflow = '';
             document.documentElement.style.overflow = '';
             
-            // Wait for fade out animation before setting display hidden
             setTimeout(() => {
                 modalElement.classList.add('hidden');
                 modalElement.classList.remove('flex');
@@ -1819,9 +1804,8 @@
         function openSuccessModal() { openGenericModal(successModal, successContent); }
         function closeSuccessModal() { closeGenericModal(successModal, successContent); }
         
-        // Close modals when clicking outside
-        enquiryModal.addEventListener('click', function(e) { if (e.target === enquiryModal) closeEnquiryModal(); });
-        successModal.addEventListener('click', function(e) { if (e.target === successModal) closeSuccessModal(); });
+        if (enquiryModal) enquiryModal.addEventListener('click', function(e) { if (e.target === enquiryModal) closeEnquiryModal(); });
+        if (successModal) successModal.addEventListener('click', function(e) { if (e.target === successModal) closeSuccessModal(); });
 
         async function handleEnquirySubmit(e) {
             e.preventDefault();
@@ -1829,7 +1813,6 @@
             const btn = form.querySelector('button[type="submit"]');
             const originalText = btn.innerHTML;
             
-            // Visual feedback + Disable button
             btn.innerHTML = 'PROCESSING DATA...';
             btn.disabled = true;
 
@@ -1845,19 +1828,19 @@
                 });
 
                 btn.innerHTML = 'DATA TRANSMITTED';
-                btn.classList.replace('physical-btn-primary', 'physical-btn');
+                if(btn.classList.contains('apple-blue-btn')){
+                   // no op - wait for modal close
+                }
 
-                // Close Enquiry Modal and Pop Success Modal
                 setTimeout(() => {
                     closeEnquiryModal();
                     form.reset();
                     btn.innerHTML = originalText;
                     btn.disabled = false;
-                    btn.classList.replace('physical-btn', 'physical-btn-primary');
                     
                     setTimeout(() => {
                         openSuccessModal();
-                    }, 300); // Slight delay for smooth transition between modals
+                    }, 300); 
                 }, 500);
 
             } catch (error) {
@@ -1875,13 +1858,13 @@
         const termsContent = document.getElementById('termsContent');
         function openTerms() { openGenericModal(termsModal, termsContent); }
         function closeTerms() { closeGenericModal(termsModal, termsContent); }
-        termsModal.addEventListener('click', function(e) { if (e.target === termsModal) closeTerms(); });
+        if (termsModal) termsModal.addEventListener('click', function(e) { if (e.target === termsModal) closeTerms(); });
 
         const privacyModal = document.getElementById('privacyModal');
         const privacyContent = document.getElementById('privacyContent');
         function openPrivacy() { openGenericModal(privacyModal, privacyContent); }
         function closePrivacy() { closeGenericModal(privacyModal, privacyContent); }
-        privacyModal.addEventListener('click', function(e) { if (e.target === privacyModal) closePrivacy(); });
+        if (privacyModal) privacyModal.addEventListener('click', function(e) { if (e.target === privacyModal) closePrivacy(); });
 
         // Scroll Intersection Observer Optimization
         document.addEventListener('DOMContentLoaded', () => {
@@ -1889,14 +1872,13 @@
             const terminalContainer = document.getElementById('terminal-container');
             
             const revealOptions = { 
-                threshold: 0.05, /* Reduced threshold for faster trigger and less compute */
-                rootMargin: "50px 0px 50px 0px" /* Trigger slightly before view */
+                threshold: 0.05, 
+                rootMargin: "50px 0px 50px 0px" 
             };
             
             const revealOnScroll = new IntersectionObserver((entries, observer) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
-                        // Use requestAnimationFrame for smooth class addition without layout thrashing
                         requestAnimationFrame(() => {
                             entry.target.classList.add("active");
                         });
@@ -1905,7 +1887,6 @@
                             setTimeout(runTerminalSequence, 400);
                         }
                         
-                        // Stop observing once revealed to save performance
                         observer.unobserve(entry.target);
                     }
                 });
@@ -1917,11 +1898,9 @@
         // Semantic FAQ Accordion Logic
         function toggleJobDetails(element) {
             const isExpanded = element.getAttribute('aria-expanded') === 'true';
-            // Getting nextElement via Aria-controls allows robust pairing
             const contentId = element.getAttribute('aria-controls');
             const details = document.getElementById(contentId);
             
-            // Bugfix: Targets generated SVG robustly
             const icon = element.querySelector('.transition-transform');
             
             element.setAttribute('aria-expanded', !isExpanded);

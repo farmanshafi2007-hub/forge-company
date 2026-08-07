@@ -161,7 +161,6 @@
     </script>
 
     <style>
-        /* --- STREAMING_CHUNK:Global CSS Variables and Resets --- */
         :root {
             /* The Minimalist Canvas - Ultra Brightness & High Contrast for rest of site */
             --apple-bg: #FFFFFF;
@@ -188,6 +187,7 @@
             -webkit-overflow-scrolling: touch; 
             overflow-wrap: break-word; 
             word-wrap: break-word;
+            scroll-behavior: smooth;
         }
 
         /* Selection styling */
@@ -196,42 +196,76 @@
             color: #fff;
         }
 
-        /* --- HIGH PERFORMANCE OVERRIDES --- */
-        section:not(#home) {
-            content-visibility: auto;
-            contain-intrinsic-size: auto 800px;
+        /* --- HIGH PERFORMANCE OVERRIDES (Optimized to fix mobile lag) --- */
+        @media (min-width: 769px) {
+            section:not(#home) {
+                content-visibility: auto;
+                contain-intrinsic-size: auto 800px;
+            }
+            main, footer {
+                filter: brightness(1.08) contrast(1.15);
+                transform: translate3d(0, 0, 0);
+                backface-visibility: hidden;
+                perspective: 1000px;
+            }
         }
-
-        main, footer {
-            filter: brightness(1.08) contrast(1.15);
-            transform: translate3d(0, 0, 0);
-            backface-visibility: hidden;
-            perspective: 1000px;
+        @media (max-width: 768px) {
+            section:not(#home) {
+                content-visibility: visible; 
+            }
+            main, footer {
+                filter: none; 
+                transform: none;
+                backface-visibility: visible;
+                perspective: none;
+            }
         }
 
         /* --- SLEEK MINIMAL SCROLLBARS --- */
         ::-webkit-scrollbar {
-            width: 6px; 
-            height: 6px;
+            width: 8px; 
+            height: 8px;
         }
         ::-webkit-scrollbar-track { 
-            background: transparent; 
+            background: rgba(0,0,0,0.02); 
+            border-radius: 10px;
         }
         ::-webkit-scrollbar-thumb { 
-            background: #d2d2d7; 
+            background: rgba(0,0,0,0.2); 
             border-radius: 10px; 
             border: 2px solid var(--apple-bg);
+            background-clip: padding-box;
         }
         ::-webkit-scrollbar-thumb:hover { 
-            background: var(--subtle-grey); 
+            background: rgba(0,0,0,0.4); 
         }
 
-        /* --- STREAMING_CHUNK:Hero Specific Styles (Liquid Glass Forge) --- */
+        /* Video Hardware Acceleration to prevent scroll freeze */
+        video {
+            will-change: transform;
+            transform: translateZ(0);
+            backface-visibility: hidden;
+        }
+
+        /* --- STREAMING_CHUNK:Hero & UI Components Specific Styles --- */
+        /* Hero Specific Styles (Liquid Glass Forge) */
         .nexum-btn-gradient {
             background: linear-gradient(to bottom, #2B2B2B, #101010);
             border: 1px solid rgba(255,255,255,0.1);
             position: relative;
             overflow: hidden;
+            min-height: 48px !important;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.1);
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .nexum-btn-gradient:hover {
+            transform: translateY(-2px) translateZ(0);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.2);
+        }
+        .nexum-btn-gradient:active {
+            transform: scale(0.97) translateY(0) translateZ(0);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.4);
+            transition: all 0.1s cubic-bezier(0.4, 0, 0.2, 1);
         }
         .nexum-btn-gradient::after {
             content: '';
@@ -247,10 +281,10 @@
 
         /* Enhanced Liquid Glassmorphism for readability - INCREASED TRANSPARENCY */
         .liquid-glass-panel {
-            background: rgba(10, 10, 10, 0.25); /* More transparent background */
-            backdrop-filter: blur(16px); /* Slightly reduced blur for more clarity */
+            background: rgba(10, 10, 10, 0.25); 
+            backdrop-filter: blur(16px); 
             -webkit-backdrop-filter: blur(16px);
-            border: 1px solid rgba(255, 255, 255, 0.1); /* Subtler border */
+            border: 1px solid rgba(255, 255, 255, 0.1); 
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.05);
             transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
         }
@@ -263,7 +297,7 @@
              box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.1);
         }
 
-        /* --- STREAMING_CHUNK:Apple Clean UI Styles --- */
+        /* Apple Clean UI Styles */
         .font-calligraphy {
             font-family: 'Caveat', cursive;
             font-size: 1.8rem;
@@ -335,7 +369,7 @@
             top: 50%;
             left: 50%;
             transform: translate3d(-50%, -50%, 0); 
-            will-change: transform; 
+            will-change: transform, opacity; 
         }
 
         @keyframes float-gentle {
@@ -356,7 +390,7 @@
             width: max-content;
             animation: marqueeLtr 35s linear infinite;
             will-change: transform;
-            contain: paint; 
+            contain: paint layout; /* Optimized container for bug-free graphic rendering */
         }
         .animate-marquee-ltr:hover {
             animation-play-state: paused;
@@ -383,7 +417,7 @@
             transform: translateY(-2px) translateZ(0);
         }
 
-        /* --- STREAMING_CHUNK:Component UI Styles --- */
+        /* Component UI Styles */
         .physical-panel {
             background-color: rgba(255, 255, 255, 0.98); 
             border-radius: 24px;
@@ -393,6 +427,7 @@
             max-width: 100%;
             transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
             backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
         }
 
         .screw, .hardware-vent, .texture-overlay {
@@ -409,10 +444,10 @@
             backdrop-filter: blur(12px);
             border-radius: 980px;
             border: 1px solid rgba(0,0,0,0.08);
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04), 0 1px 2px rgba(0,0,0,0.02);
             color: var(--space-grey);
             font-weight: 600; 
-            transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
             cursor: pointer;
             position: relative;
             max-width: 100%;
@@ -421,14 +456,18 @@
             justify-content: center;
             text-align: center;
             white-space: nowrap;
+            min-height: 48px !important;
+            padding: 0 24px;
         }
         .physical-btn:hover {
             background: #FFFFFF;
             transform: translateY(-2px) translateZ(0);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08); 
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.08), 0 4px 8px rgba(0,0,0,0.04); 
         }
         .physical-btn:active {
-            transform: scale(0.98);
+            transform: scale(0.97) translateY(0) translateZ(0);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
+            transition: all 0.1s cubic-bezier(0.4, 0, 0.2, 1);
         }
         .physical-btn:focus-visible {
             outline: 2px solid var(--store-blue);
@@ -440,10 +479,10 @@
             background: #0071E3; /* Apple Blue */
             border-radius: 980px;
             border: none;
-            box-shadow: 0 4px 15px rgba(0, 113, 227, 0.3); 
+            box-shadow: 0 4px 15px rgba(0, 113, 227, 0.3), inset 0 1px 0 rgba(255,255,255,0.2); 
             color: #ffffff;
             font-weight: 600;
-            transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
             cursor: pointer;
             max-width: 100%;
             display: inline-flex;
@@ -455,6 +494,9 @@
             white-space: nowrap;
             position: relative;
             overflow: hidden;
+            min-height: 48px !important;
+            padding: 0 24px;
+            letter-spacing: 0.3px;
         }
         .physical-btn-primary::after, .apple-blue-btn::after {
             content: '';
@@ -470,10 +512,12 @@
         .physical-btn-primary:hover, .apple-blue-btn:hover {
             background: #0077ED;
             transform: translateY(-2px) translateZ(0);
-            box-shadow: 0 8px 25px rgba(0, 113, 227, 0.4);
+            box-shadow: 0 12px 25px rgba(0, 113, 227, 0.4), inset 0 1px 0 rgba(255,255,255,0.3);
         }
         .physical-btn-primary:active, .apple-blue-btn:active {
-            transform: scale(0.96);
+            transform: scale(0.97) translateY(0) translateZ(0);
+            box-shadow: 0 4px 10px rgba(0, 113, 227, 0.3);
+            transition: all 0.1s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         .social-btn {
@@ -496,6 +540,9 @@
             box-shadow: 0 6px 16px rgba(0,0,0,0.1);
             transform: scale(1.08) translateY(-2px) translateZ(0);
         }
+        .social-btn:active {
+            transform: scale(0.95);
+        }
         .social-btn-fb svg, .social-btn-x svg {
             fill: var(--space-grey);
         }
@@ -509,6 +556,7 @@
             max-width: 100%;
         }
 
+        /* --- STREAMING_CHUNK:Additional Styling Blocks --- */
         .led-indicator {
             width: 10px;
             height: 10px;
@@ -588,12 +636,16 @@
             transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
             position: relative;
             overflow: hidden;
+            transform: translateZ(0);
+            backface-visibility: hidden;
+            will-change: transform, box-shadow;
         }
         .pricing-card-standard:hover {
-            transform: translateY(-8px) scale(1.02);
+            transform: translateY(-8px) scale(1.02) translateZ(0);
             box-shadow: 0 20px 40px rgba(0,0,0,0.08);
             background-color: rgba(255, 255, 255, 0.95);
             border: 1px solid rgba(0, 102, 204, 0.1);
+            z-index: 30;
         }
         .pricing-card-pro {
             background: linear-gradient(145deg, #1D1D1F 0%, #0A0A0A 100%);
@@ -604,6 +656,10 @@
             position: relative;
             overflow: hidden;
             box-shadow: 0 20px 50px rgba(0,0,0,0.2);
+            transform: translateZ(0);
+            backface-visibility: hidden;
+            will-change: transform, box-shadow;
+            z-index: 20;
         }
         .pricing-card-pro::before {
             content: '';
@@ -615,12 +671,17 @@
             transition: opacity 0.5s ease;
         }
         .pricing-card-pro:hover {
-            transform: translateY(-12px) scale(1.03);
+            transform: translateY(-12px) scale(1.03) translateZ(0);
             box-shadow: 0 30px 60px rgba(0, 102, 204, 0.25);
             border: 1px solid rgba(0, 102, 204, 0.3);
+            z-index: 40;
         }
         .pricing-card-pro:hover::before {
             opacity: 1;
+        }
+
+        .icon-live {
+            animation: pulse-slow 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
         }
 
         .pricing-feature-item {
@@ -638,14 +699,13 @@
             background-color: rgba(255, 255, 255, 0.05);
         }
 
+        /* --- STREAMING_CHUNK:Responsive Design Fixes --- */
         @media (max-width: 768px) {
-            main, footer {
-                filter: none; 
-            }
             .ai-glow {
-                filter: blur(40px); 
+                filter: blur(30px); /* Lower blur to fix mobile lag */
                 width: 150vw;
                 height: 400px;
+                opacity: 0.5; /* Fade slightly so it remains subtle */
             }
             .icon-3d {
                 filter: drop-shadow(0px 2px 4px rgba(0, 102, 204, 0.2)) drop-shadow(0px 4px 8px rgba(0,0,0,0.15)); 
@@ -665,13 +725,13 @@
             <!-- Full-bleed background video -->
             <video class="absolute inset-0 h-full w-full object-cover z-0" autoplay loop muted playsinline src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260803_192301_9231ed6b-c55c-4a48-909c-4ebe11cf2e11.mp4"></video>
             
-            <!-- Video Overlay tint for perfect text contrast (Darkened to 60% for better readability) -->
-            <div class="absolute inset-0 bg-black/60 z-0 pointer-events-none transition-colors duration-500"></div>
+            <!-- Video Overlay tint for perfect text contrast (Lightened for full video visibility) -->
+            <div class="absolute inset-0 bg-gradient-to-b from-black/40 via-black/10 to-black/30 z-0 pointer-events-none transition-colors duration-500"></div>
 
             <!-- Top Nav Bar -->
             <nav class="relative z-20 w-full px-5 py-5 sm:px-8 sm:py-6 lg:px-12 flex items-center justify-between">
                 <!-- Logo Plate -->
-                <div class="flex items-center gap-2 text-white transition-colors duration-300 cursor-pointer hover:opacity-80">
+                <div class="flex items-center gap-2 text-white transition-colors duration-300 cursor-pointer hover:opacity-80 active:scale-95">
                     <svg viewBox="0 0 256 256" class="w-6 h-6 fill-current drop-shadow-md">
                         <path d="M 128 128 C 128 198.692 70.692 256 0 256 C 0 185.308 57.308 128 128 128 Z M 128 128 C 198.692 128 256 185.308 256 256 C 185.308 256 128 198.692 128 128 Z M 0 0 C 70.692 0 128 57.308 128 128 C 57.308 128 0 70.692 0 0 Z M 256 0 C 256 70.692 198.692 128 128 128 C 128 57.308 185.308 0 256 0 Z" />
                     </svg>
@@ -686,7 +746,7 @@
                         <a href="#services" class="rounded-full px-4 py-1.5 text-sm font-medium text-white/80 hover:bg-white/20 hover:text-white transition-all duration-300 drop-shadow-sm">Systems</a>
                         <a href="#testimonials" class="rounded-full px-4 py-1.5 text-sm font-medium text-white/80 hover:bg-white/20 hover:text-white transition-all duration-300 drop-shadow-sm">Testimonials</a>
                         <a href="#pricing" class="rounded-full px-4 py-1.5 text-sm font-medium text-white/80 hover:bg-white/20 hover:text-white transition-all duration-300 drop-shadow-sm">Pricing</a>
-                        <a href="#blog" class="rounded-full px-4 py-1.5 text-sm font-medium text-white/80 hover:bg-white/20 hover:text-white transition-all duration-300 drop-shadow-sm">Blog</a>
+                        <a href="#" onclick="openBlogModal(); return false;" class="rounded-full px-4 py-1.5 text-sm font-medium text-white/80 hover:bg-white/20 hover:text-white transition-all duration-300 drop-shadow-sm">Blog</a>
                     </div>
                     <button onclick="openEnquiryModal()" class="nexum-btn-gradient min-h-[44px] rounded-full px-6 py-1.5 text-sm font-medium text-white hover:scale-105 hover:shadow-lg transition-all duration-300 flex items-center self-stretch shadow-md">
                         Get started
@@ -694,17 +754,18 @@
                 </div>
 
                 <!-- Mobile Hamburger -->
-                <button id="nexumMobileMenuBtn" class="md:hidden flex items-center justify-center h-9 w-9 rounded-full bg-white/10 backdrop-blur-lg border border-white/10 text-white relative z-[60] overflow-hidden transition-colors duration-300 hover:bg-white/20 focus:outline-none min-h-[44px] min-w-[44px]">
+                <button id="nexumMobileMenuBtn" class="md:hidden flex items-center justify-center h-9 w-9 rounded-full bg-white/10 backdrop-blur-lg border border-white/10 text-white relative z-[60] overflow-hidden transition-colors duration-300 hover:bg-white/20 focus:outline-none min-h-[44px] min-w-[44px] active:scale-95">
                     <i data-lucide="menu" id="nexumMenuIcon" class="absolute w-5 h-5 transition-all duration-300 transform scale-100 opacity-100 rotate-0"></i>
                     <i data-lucide="x" id="nexumXIcon" class="absolute w-5 h-5 transition-all duration-300 transform scale-0 opacity-0 -rotate-90"></i>
                 </button>
             </nav>
 
             <!-- Bottom Anchored Main Content -->
-            <div class="relative z-10 mt-auto px-5 pb-10 sm:px-8 sm:pb-16 lg:px-12 lg:pb-20 flex flex-col lg:flex-row lg:items-end lg:justify-between gap-8 sm:gap-12 w-full max-w-full">
+            <!-- *FIX APPLIED: Added flex-grow to ensure spacing remains intact across viewports -->
+            <div class="relative z-10 mt-auto flex-grow px-5 pt-12 pb-10 sm:px-8 sm:pb-16 lg:px-12 lg:pb-20 flex flex-col lg:flex-row lg:items-end lg:justify-between gap-8 sm:gap-12 w-full max-w-full">
                 
                 <!-- Left: Headline & Email CTA -->
-                <div class="flex-1 max-w-2xl">
+                <div class="flex-1 max-w-2xl w-full">
                     <h1 class="text-3xl sm:text-4xl lg:text-[4rem] font-semibold leading-[1.05] tracking-tight text-white transition-colors duration-300 drop-shadow-xl text-shadow-md animate-field mb-6">
                         Ship AI workers that grind while you rest
                     </h1>
@@ -714,19 +775,21 @@
                         Architecting scalable web platforms and autonomous AI agents to automate your acquisition, operations, and growth 24/7.
                     </p>
                     
+                    <!-- *FIX APPLIED: Wrap flex container perfectly on small screens -->
                     <div class="mt-8 sm:mt-12 flex flex-col sm:inline-flex sm:flex-row sm:items-center sm:rounded-full sm:bg-white/10 sm:backdrop-blur-md sm:border sm:border-white/20 sm:p-1.5 gap-3 sm:gap-0 shadow-2xl w-full sm:w-auto animate-field animate-delay-2 transition-all hover:shadow-[0_8px_30px_rgba(255,255,255,0.1)]">
                         <input type="email" placeholder="Enter your work email" class="w-full rounded-full bg-white sm:bg-transparent px-5 py-3.5 text-sm text-gray-900 sm:text-white placeholder-gray-500 sm:placeholder-white/60 outline-none sm:w-72 sm:rounded-none sm:px-5 sm:py-2.5 border sm:border-none border-gray-200 transition-all focus:bg-white focus:text-gray-900" />
-                        <button onclick="openEnquiryModal()" class="w-full min-h-[44px] nexum-btn-gradient rounded-full px-8 py-3.5 sm:py-3 text-sm font-medium text-white transition-all hover:scale-[1.02] hover:shadow-xl shadow-md whitespace-nowrap">
+                        <button onclick="openEnquiryModal()" class="w-full sm:w-auto min-h-[44px] nexum-btn-gradient rounded-full px-8 py-3.5 sm:py-3 text-sm font-medium text-white transition-all hover:scale-[1.02] active:scale-95 hover:shadow-xl shadow-md whitespace-nowrap">
                             Get started
                         </button>
                     </div>
                 </div>
 
                 <!-- Right: Liquid Glass Cards -->
-                <div class="flex flex-col gap-4 sm:flex-row w-full lg:w-auto lg:gap-5 animate-field animate-delay-3">
+                <!-- *FIX APPLIED: Ensured responsive wrapping and spacing on smaller views -->
+                <div class="flex flex-col gap-4 sm:flex-row flex-wrap w-full lg:w-auto lg:gap-5 animate-field animate-delay-3">
                     
                     <!-- Stats Card -->
-                    <div class="flex flex-col justify-between rounded-2xl liquid-glass-panel p-5 sm:p-6 w-full sm:w-64 hover:bg-black/50 transition-colors duration-300 cursor-default group">
+                    <div class="flex flex-col justify-between rounded-2xl liquid-glass-panel p-5 sm:p-6 w-full sm:flex-1 lg:w-64 hover:bg-black/50 transition-colors duration-300 cursor-default group">
                         <span class="text-[10px] uppercase tracking-widest text-[#0066CC] font-bold mb-1 block drop-shadow-md">Active Deployments</span>
                         <div class="font-silkscreen text-3xl sm:text-4xl font-normal tracking-tight text-white drop-shadow-md transition-transform duration-300 group-hover:scale-105 origin-left">
                             42,500+
@@ -740,7 +803,7 @@
                     <div class="flex flex-col justify-between rounded-2xl liquid-glass-panel p-5 sm:p-6 w-full sm:w-72 hover:bg-black/50 transition-colors duration-300 cursor-default">
                         <div class="mb-3 sm:mb-4 flex items-center gap-2">
                             <div class="flex h-6 w-6 items-center justify-center rounded-full bg-gradient-to-br from-[#0066CC] to-[#AF52DE] text-white text-xs font-bold transition-colors duration-300 shadow-sm">
-                                T
+                                F
                             </div>
                             <span class="text-sm font-semibold text-white drop-shadow-sm transition-colors duration-300">TechFlow</span>
                         </div>
@@ -749,8 +812,8 @@
                         </p>
                         <div class="mt-4 sm:mt-5 flex items-center gap-3 border-t border-white/10 pt-3">
                             <div class="flex flex-col">
-                                <span class="text-sm font-semibold text-white drop-shadow-sm transition-colors duration-300">David Chen</span>
-                                <span class="text-xs text-white/70 drop-shadow-sm transition-colors duration-300">Operations Director</span>
+                                <span class="text-sm font-semibold text-white drop-shadow-sm transition-colors duration-300">Farman</span>
+                                <span class="text-xs text-white/70 drop-shadow-sm transition-colors duration-300">CEO & Head of Developers Team</span>
                             </div>
                         </div>
                     </div>
@@ -762,25 +825,30 @@
         <!-- Mobile Navigation Overlay & Drawer (Hero Specific) -->
         <div id="nexumMobileOverlay" class="fixed inset-0 z-40 bg-black/40 backdrop-blur-sm opacity-0 pointer-events-none transition-opacity duration-400 font-geist"></div>
         <div id="nexumMobileDrawer" class="fixed right-4 top-4 z-50 h-[calc(100vh-32px)] w-[calc(100vw-32px)] sm:w-80 bg-white/95 backdrop-blur-2xl rounded-3xl translate-x-[120%] transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] flex flex-col pt-20 px-6 pb-8 font-geist border border-white/20 shadow-2xl">
-            <div class="flex flex-col gap-1.5">
+            
+            <!-- Explicit Close Button -->
+            <button onclick="toggleNexumMenu()" class="absolute top-5 right-5 flex items-center justify-center w-8 h-8 rounded-full bg-gray-100/80 text-gray-700 hover:bg-gray-200 hover:text-black transition-all active:scale-95 z-[60]" aria-label="Close Menu">
+                <i data-lucide="x" class="w-4 h-4"></i>
+            </button>
+
+            <div class="flex flex-col gap-1.5 mt-2">
                 <a href="#home" class="nexum-mob-link rounded-2xl px-5 py-4 text-base font-semibold text-gray-800 hover:bg-gray-100/80 hover:text-[#0066CC] transition-colors opacity-0 translate-x-[24px]">Home</a>
                 <a href="#what-we-do" class="nexum-mob-link rounded-2xl px-5 py-4 text-base font-semibold text-gray-800 hover:bg-gray-100/80 hover:text-[#0066CC] transition-colors opacity-0 translate-x-[24px]">Architecture</a>
                 <a href="#services" class="nexum-mob-link rounded-2xl px-5 py-4 text-base font-semibold text-gray-800 hover:bg-gray-100/80 hover:text-[#0066CC] transition-colors opacity-0 translate-x-[24px]">Systems</a>
                 <a href="#testimonials" class="nexum-mob-link rounded-2xl px-5 py-4 text-base font-semibold text-gray-800 hover:bg-gray-100/80 hover:text-[#0066CC] transition-colors opacity-0 translate-x-[24px]">Testimonials</a>
                 <a href="#pricing" class="nexum-mob-link rounded-2xl px-5 py-4 text-base font-semibold text-gray-800 hover:bg-gray-100/80 hover:text-[#0066CC] transition-colors opacity-0 translate-x-[24px]">Pricing</a>
-                <a href="#blogs" class="nexum-mob-link rounded-2xl px-5 py-4 text-base font-semibold text-gray-800 hover:bg-gray-100/80 hover:text-[#0066CC] transition-colors opacity-0 translate-x-[24px]">Blog</a>
+                <a href="#" onclick="toggleNexumMenu(); setTimeout(openBlogModal, 300); return false;" class="nexum-mob-link rounded-2xl px-5 py-4 text-base font-semibold text-gray-800 hover:bg-gray-100/80 hover:text-[#0066CC] transition-colors opacity-0 translate-x-[24px]">Blog</a>
             </div>
             
             <div class="mt-auto opacity-0 translate-y-[16px] transition-all duration-500 flex flex-col gap-4" id="nexumMobFooter">
                 <div class="w-full h-px bg-gray-200"></div>
-                <button onclick="document.getElementById('nexumMobileMenuBtn').click(); openEnquiryModal();" class="apple-blue-btn rounded-full w-full py-4 text-sm font-semibold text-white hover:scale-105 transition-transform shadow-lg shadow-blue-500/20">
+                <button onclick="document.getElementById('nexumMobileMenuBtn').click(); openEnquiryModal();" class="apple-blue-btn rounded-full w-full py-4 text-sm font-semibold text-white hover:scale-105 active:scale-95 transition-transform shadow-lg shadow-blue-500/20">
                     Get started
                 </button>
             </div>
         </div>
 
-
-        <!-- --- STREAMING_CHUNK:Services Preview Section --- -->
+        <!-- Services Preview Section -->
         <section id="services-preview" class="py-12 md:py-16 px-4 sm:px-6 md:px-16 border-b border-[rgba(0,0,0,0.08)] bg-[#FAFAFA] w-full relative z-20">
             <div class="w-full max-w-7xl mx-auto">
                 <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 w-full">
@@ -812,9 +880,7 @@
             </div>
         </section>
 
-
-        <!-- --- STREAMING_CHUNK:Main Website Content (Apple Clean UI) --- -->
-        
+        <!-- --- STREAMING_CHUNK:Client Trust Logos & Marquee Fix --- -->
         <!-- Client Trust Logos Section -->
         <section id="trust-logos" class="py-16 border-b border-[rgba(0,0,0,0.08)] bg-[#FAFAFA] w-full relative overflow-hidden">
             <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-[200px] md:h-[300px] bg-gradient-to-r from-[#0066CC]/10 via-[#AF52DE]/10 to-[#FF9500]/10 blur-3xl pointer-events-none rounded-full"></div>
@@ -874,6 +940,7 @@
             </div>
         </section>
 
+        <!-- --- STREAMING_CHUNK:Metrics & Interactive Playground --- -->
         <!-- Success Metrics Section -->
         <section id="metrics" class="py-16 md:py-24 px-4 sm:px-6 relative bg-[#FFFFFF] w-full">
             <div class="w-full max-w-6xl mx-auto">
@@ -951,13 +1018,14 @@
                         </div>
                     </div>
                     
-                    <button class="physical-btn w-full sm:w-auto px-6 py-2 sm:py-2.5 text-[10px] font-bold uppercase tracking-widest flex items-center justify-center gap-2 shadow-md icon-3d text-3d whitespace-nowrap hover:scale-105" onclick="openEnquiryModal()">
+                    <button class="physical-btn w-full sm:w-auto px-6 py-2 sm:py-2.5 text-[10px] font-bold uppercase tracking-widest flex items-center justify-center gap-2 shadow-md icon-3d text-3d whitespace-nowrap hover:scale-105 active:scale-95 transition-all" onclick="openEnquiryModal()">
                         <i data-lucide="power" class="w-3 h-3 shrink-0 icon-3d"></i> System Override
                     </button>
                 </div>
             </div>
         </section>
 
+        <!-- --- STREAMING_CHUNK:Case Studies & Architectural Strategy --- -->
         <!-- Case Study / Before & After Section -->
         <section class="py-16 md:py-24 px-4 sm:px-6 md:px-16 border-b border-[rgba(0,0,0,0.08)] bg-[#FFFFFF] w-full">
             <div class="w-full max-w-6xl mx-auto">
@@ -1030,6 +1098,7 @@
             </div>
         </section>
 
+        <!-- --- STREAMING_CHUNK:Process, Systems & Portfolio Flow --- -->
         <!-- Process Section -->
         <section id="process" class="py-16 md:py-24 px-4 sm:px-6 md:px-16 border-y border-[rgba(0,0,0,0.08)] bg-[#FFFFFF] w-full">
             <div class="w-full max-w-7xl mx-auto">
@@ -1132,7 +1201,7 @@
                             <h3 class="text-3xl md:text-5xl font-black uppercase tracking-widest mb-4 mt-8 break-words text-[#FFFFFF] w-full font-display text-3d">VIZORRA</h3>
                             <p class="text-[10px] sm:text-xs font-bold tracking-widest uppercase mb-8 opacity-90 break-words text-[#FFFFFF] px-2 font-tech text-3d">Premium Web Architecture</p>
                             
-                            <a href="https://farmanshafi2007-hub.github.io/VIZORRA/" target="_blank" rel="noopener noreferrer" class="apple-blue-btn min-h-[44px] px-8 py-4 text-[10px] sm:text-xs font-black uppercase tracking-widest flex items-center justify-center gap-2 no-underline text-white w-full sm:w-auto font-tech shadow-lg icon-3d whitespace-nowrap hover:scale-[1.02]">
+                            <a href="https://farmanshafi2007-hub.github.io/VIZORRA/" target="_blank" rel="noopener noreferrer" class="apple-blue-btn min-h-[44px] px-8 py-4 text-[10px] sm:text-xs font-black uppercase tracking-widest flex items-center justify-center gap-2 no-underline text-white w-full sm:w-auto font-tech shadow-lg icon-3d whitespace-nowrap hover:scale-[1.02] active:scale-95 transition-all duration-300">
                                 <i data-lucide="external-link" class="w-3 h-3 sm:w-4 sm:h-4 shrink-0 icon-3d"></i> Access System
                             </a>
                         </div>
@@ -1141,6 +1210,7 @@
             </div>
         </section>
 
+        <!-- --- STREAMING_CHUNK:Testimonials & Pricing Grid --- -->
         <!-- Social Proof / Testimonials -->
         <section id="testimonials" class="py-16 md:py-24 px-4 sm:px-6 md:px-16 border-y border-[rgba(0,0,0,0.08)] bg-[#FAFAFA] w-full">
             <div class="w-full max-w-7xl mx-auto">
@@ -1213,7 +1283,7 @@
                 </div>
 
                 <!-- Pricing Cards Grid -->
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10 items-stretch lg:py-6 w-full box-border relative z-10">
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10 items-stretch py-4 lg:py-10 w-full box-border relative z-10 px-2 lg:px-4">
                     
                     <!-- Starter Tier -->
                     <article class="pricing-card-standard reveal p-8 md:p-10 flex flex-col h-full w-full box-border">
@@ -1267,7 +1337,7 @@
                         
                         <div class="mb-10 text-5xl lg:text-6xl font-black text-white tracking-tighter font-tech drop-shadow-md">₹7,000</div>
                         
-                        <button onclick="openEnquiryModal()" class="apple-blue-btn min-h-[48px] w-full py-4 text-[11px] font-bold uppercase tracking-widest mb-10 whitespace-nowrap shadow-lg shadow-blue-500/30">
+                        <button onclick="openEnquiryModal()" class="apple-blue-btn min-h-[48px] w-full py-4 text-[11px] font-bold uppercase tracking-widest mb-10 whitespace-nowrap shadow-lg shadow-blue-500/30 active:scale-95 transition-all">
                             Book Your Website
                         </button>
                         
@@ -1339,6 +1409,7 @@
             </div>
         </section>
 
+        <!-- --- STREAMING_CHUNK:Knowledge Base & Bottom CTA --- -->
         <!-- FAQ Section -->
         <section id="faq" class="py-16 md:py-24 px-4 sm:px-6 bg-[#FAFAFA] border-b border-[rgba(0,0,0,0.08)] w-full">
             <div class="w-full max-w-3xl mx-auto box-border">
@@ -1390,8 +1461,8 @@
             </div>
         </section>
 
-        <!-- Blog Section -->
-        <section id="blog" class="py-20 md:py-32 px-4 sm:px-6 md:px-16 border-b border-[rgba(0,0,0,0.08)] bg-[#FAFAFA] w-full relative overflow-hidden">
+        <!-- Blog Section (Hidden on main scroll, accessible via Modal now) -->
+        <section id="blog" class="hidden py-20 md:py-32 px-4 sm:px-6 md:px-16 border-b border-[rgba(0,0,0,0.08)] bg-[#FAFAFA] w-full relative overflow-hidden">
             <!-- Subtle background elements for premium feel -->
             <div class="absolute top-0 left-0 w-full h-[500px] bg-gradient-to-b from-[#FFFFFF] to-transparent z-0 pointer-events-none"></div>
             <div class="absolute -right-40 top-20 w-96 h-96 bg-[#0066CC]/5 rounded-full blur-3xl z-0 pointer-events-none"></div>
@@ -1403,7 +1474,7 @@
                         <h2 class="text-4xl sm:text-5xl md:text-6xl font-black uppercase tracking-tighter text-3d leading-[1.05] text-[#000000] break-words font-display">Insights &<br/>Strategy</h2>
                     </div>
                     <div class="pb-2">
-                        <button class="flex items-center gap-2 text-[10px] sm:text-xs font-bold uppercase tracking-widest text-[#0066CC] hover:text-[#000000] transition-colors font-tech group">
+                        <button class="flex items-center gap-2 text-[10px] sm:text-xs font-bold uppercase tracking-widest text-[#0066CC] hover:text-[#000000] transition-colors font-tech group active:scale-95">
                             View all articles <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
                         </button>
                     </div>
@@ -1500,7 +1571,7 @@
                     We build scalable infrastructure that actively acquires and converts.
                 </p>
                 
-                <button onclick="openEnquiryModal()" class="apple-blue-btn min-h-[44px] px-10 py-5 font-black text-xs uppercase tracking-[0.2em] inline-flex items-center gap-2 shadow-xl font-tech whitespace-nowrap hover:scale-105">
+                <button onclick="openEnquiryModal()" class="apple-blue-btn min-h-[44px] px-10 py-5 font-black text-xs uppercase tracking-[0.2em] inline-flex items-center gap-2 shadow-xl font-tech whitespace-nowrap active:scale-95 hover:scale-[1.02] transition-all">
                     <i data-lucide="arrow-right" class="w-4 h-4 text-white shrink-0 icon-3d"></i> Book Your Website
                 </button>
             </div>
@@ -1511,7 +1582,7 @@
     <!-- Footer -->
     <footer class="py-12 md:py-20 px-4 sm:px-6 bg-[#FFFFFF] text-center relative border-t border-[rgba(0,0,0,0.08)] w-full">
         <div class="w-full max-w-7xl mx-auto box-border">
-            <div class="text-xl md:text-3xl font-black tracking-tighter text-[#000000] flex items-center justify-center gap-3 mb-8 cursor-pointer text-3d break-words hover:opacity-80 transition-opacity">
+            <div class="text-xl md:text-3xl font-black tracking-tighter text-[#000000] flex items-center justify-center gap-3 mb-8 cursor-pointer text-3d break-words hover:opacity-80 active:scale-95 transition-all">
                 <div class="physical-recessed bg-[#FAFAFA] p-2 md:p-3 rounded-xl inline-flex items-center justify-center shadow-md">
                     <i data-lucide="hexagon" class="text-[#0066CC] w-6 h-6 md:w-8 md:h-8 shrink-0 icon-3d"></i>
                 </div>
@@ -1519,13 +1590,13 @@
             </div>
             
             <div class="flex justify-center items-center gap-5 mb-8 w-full box-border">
-                <a href="https://www.facebook.com/share/1DL2d9EcCZ/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer" class="social-btn social-btn-fb shadow-sm icon-3d hover:shadow-lg" title="Facebook" aria-label="Visit Facebook Page">
+                <a href="https://www.facebook.com/share/1DL2d9EcCZ/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer" class="social-btn social-btn-fb shadow-sm icon-3d hover:shadow-lg active:scale-95 transition-all" title="Facebook" aria-label="Visit Facebook Page">
                     <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" class="shrink-0" role="img" aria-labelledby="fbIconTitle">
                         <title id="fbIconTitle">Facebook</title>
                         <path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z"/>
                     </svg>
                 </a>
-                <a href="https://x.com/pellixperfumes?s=21" target="_blank" rel="noopener noreferrer" class="social-btn social-btn-x shadow-sm icon-3d hover:shadow-lg" title="X (Twitter)" aria-label="Visit Twitter Page">
+                <a href="https://x.com/pellixperfumes?s=21" target="_blank" rel="noopener noreferrer" class="social-btn social-btn-x shadow-sm icon-3d hover:shadow-lg active:scale-95 transition-all" title="X (Twitter)" aria-label="Visit Twitter Page">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" class="shrink-0" role="img" aria-labelledby="twitterIconTitle">
                         <title id="twitterIconTitle">Twitter</title>
                         <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.007 4.126H5.078z"/>
@@ -1547,11 +1618,12 @@
         </div>
     </footer>
 
+    <!-- --- STREAMING_CHUNK:Modals & Overlays --- -->
     <!-- PRO ENQUIRY MODAL -->
     <div id="enquiryModal" class="fixed top-0 left-0 w-full h-[100dvh] bg-black/60 z-[9999] hidden flex-col items-center justify-center p-4 backdrop-blur-xl transition-opacity duration-300 opacity-0 overflow-hidden" role="dialog" aria-modal="true" aria-labelledby="enquiryTitle">
         <div class="physical-panel bg-[#FFFFFF] max-w-md w-[92%] sm:w-full max-h-[90dvh] flex flex-col relative shadow-2xl transform scale-95 transition-transform duration-300 mx-auto box-border" id="enquiryContent">
             
-            <button onclick="closeEnquiryModal()" class="absolute top-3 right-3 physical-btn bg-[#FAFAFA] border-transparent min-w-[32px] min-h-[32px] w-8 h-8 flex items-center justify-center rounded-full z-[100] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#0066CC] hover:rotate-90 transition-transform duration-300 icon-3d" aria-label="Close Modal">
+            <button onclick="closeEnquiryModal()" class="absolute top-3 right-3 physical-btn bg-[#FAFAFA] border-transparent min-w-[32px] min-h-[32px] w-8 h-8 flex items-center justify-center rounded-full z-[100] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#0066CC] hover:rotate-90 active:scale-95 transition-all duration-300 icon-3d" aria-label="Close Modal">
                 <i data-lucide="x" class="w-4 h-4 text-[#000000] shrink-0"></i>
             </button>
             
@@ -1669,7 +1741,7 @@
                         </div>
                     </div>
                     
-                    <button type="submit" class="w-full apple-blue-btn py-4 min-h-[44px] font-black text-[10px] sm:text-xs uppercase tracking-widest mt-6 text-white disabled:bg-[#A1A1A6] shadow-xl font-tech icon-3d whitespace-nowrap box-border hover:scale-[1.02]">
+                    <button type="submit" class="w-full apple-blue-btn py-4 min-h-[44px] font-black text-[10px] sm:text-xs uppercase tracking-widest mt-6 text-white disabled:bg-[#A1A1A6] shadow-xl font-tech icon-3d whitespace-nowrap box-border hover:scale-[1.02] active:scale-95 transition-all">
                         Book Your Website
                     </button>
                 </form>
@@ -1691,7 +1763,7 @@
                 Your response is securely recorded. Our senior team will call you shortly to outline the next steps. Welcome to the new standard.
             </p>
             
-            <button onclick="closeSuccessModal()" class="apple-blue-btn min-h-[44px] w-full py-4 font-black text-[10px] sm:text-xs uppercase tracking-widest shadow-xl font-tech icon-3d whitespace-nowrap hover:scale-[1.02]">
+            <button onclick="closeSuccessModal()" class="apple-blue-btn min-h-[44px] w-full py-4 font-black text-[10px] sm:text-xs uppercase tracking-widest shadow-xl font-tech icon-3d whitespace-nowrap hover:scale-[1.02] active:scale-95 transition-all">
                 Return to Main Page
             </button>
         </div>
@@ -1701,7 +1773,7 @@
     <div id="termsModal" class="fixed top-0 left-0 w-full h-[100dvh] bg-black/60 z-[9999] hidden flex-col items-center justify-center p-4 backdrop-blur-xl transition-opacity duration-300 opacity-0 overflow-hidden" role="dialog" aria-modal="true" aria-labelledby="termsTitle">
         <div class="physical-panel bg-[#FFFFFF] max-w-4xl w-[92%] sm:w-full max-h-[90dvh] p-4 sm:p-6 md:p-10 flex flex-col relative shadow-2xl transform scale-95 transition-transform duration-300 mx-auto overflow-hidden box-border" id="termsContent">
             
-            <button onclick="closeTerms()" class="absolute top-4 right-4 lg:top-6 lg:right-6 physical-btn bg-[#FAFAFA] border-transparent min-w-[40px] min-h-[40px] w-10 h-10 flex items-center justify-center rounded-full z-20 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#0066CC] hover:rotate-90 transition-transform duration-300 icon-3d" aria-label="Close Terms">
+            <button onclick="closeTerms()" class="absolute top-4 right-4 lg:top-6 lg:right-6 physical-btn bg-[#FAFAFA] border-transparent min-w-[40px] min-h-[40px] w-10 h-10 flex items-center justify-center rounded-full z-20 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#0066CC] hover:rotate-90 active:scale-95 transition-all duration-300 icon-3d" aria-label="Close Terms">
                 <i data-lucide="x" class="w-5 h-5 text-[#000000] shrink-0"></i>
             </button>
             
@@ -1747,7 +1819,7 @@
     <div id="privacyModal" class="fixed top-0 left-0 w-full h-[100dvh] bg-black/60 z-[9999] hidden flex-col items-center justify-center p-4 backdrop-blur-xl transition-opacity duration-300 opacity-0 overflow-hidden" role="dialog" aria-modal="true" aria-labelledby="privacyTitle">
         <div class="physical-panel bg-[#FFFFFF] max-w-4xl w-[92%] sm:w-full max-h-[90dvh] p-4 sm:p-6 md:p-10 flex flex-col relative shadow-2xl transform scale-95 transition-transform duration-300 m-auto mx-4 sm:mx-auto overflow-hidden box-border" id="privacyContent">
             
-            <button onclick="closePrivacy()" class="absolute top-4 right-4 lg:top-6 lg:right-6 physical-btn bg-[#FAFAFA] border-transparent min-w-[40px] min-h-[40px] w-10 h-10 flex items-center justify-center rounded-full z-20 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#0066CC] hover:rotate-90 transition-transform duration-300 icon-3d" aria-label="Close Privacy Policy">
+            <button onclick="closePrivacy()" class="absolute top-4 right-4 lg:top-6 lg:right-6 physical-btn bg-[#FAFAFA] border-transparent min-w-[40px] min-h-[40px] w-10 h-10 flex items-center justify-center rounded-full z-20 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#0066CC] hover:rotate-90 active:scale-95 transition-all duration-300 icon-3d" aria-label="Close Privacy Policy">
                 <i data-lucide="x" class="w-5 h-5 text-[#000000] shrink-0"></i>
             </button>
             
@@ -1778,18 +1850,89 @@
         </div>
     </div>
 
+    <!-- Blog Page Modal (Minimal, Clean Grid) -->
+    <div id="blogModal" class="fixed top-0 left-0 w-full max-w-full h-[100dvh] bg-[#FAFAFA] z-[9999] hidden flex-col overflow-y-auto overflow-x-hidden custom-scrollbar transition-opacity duration-300 opacity-0" role="dialog" aria-modal="true">
+        <!-- Minimal Header -->
+        <div class="w-full bg-[#FFFFFF]/90 backdrop-blur-xl border-b border-[rgba(0,0,0,0.08)] px-4 sm:px-6 py-4 flex items-center justify-between sticky top-0 z-50 shadow-sm transition-all duration-300 box-border">
+            <div class="flex items-center gap-2 sm:gap-3">
+                <div class="bg-[#0066CC]/10 p-1.5 sm:p-2 rounded-xl shrink-0">
+                    <i data-lucide="book-open" class="w-4 h-4 sm:w-5 sm:h-5 text-[#0066CC] icon-live"></i>
+                </div>
+                <h2 class="text-lg sm:text-xl font-black uppercase tracking-tight text-[#000000] font-display truncate">Knowledge Hub</h2>
+            </div>
+            <button onclick="closeBlogModal()" class="physical-btn bg-[#FFFFFF] border border-[rgba(0,0,0,0.08)] px-4 sm:px-5 py-2 sm:py-2.5 rounded-full flex items-center gap-2 text-[10px] sm:text-xs font-bold uppercase tracking-widest text-[#000000] hover:bg-[#E8E8ED] hover:shadow-md active:scale-95 transition-all duration-300 group shrink-0">
+                <span class="group-hover:opacity-80 hidden sm:inline-block">Close</span> <i data-lucide="x" class="w-3.5 h-3.5 group-hover:rotate-90 transition-transform duration-300"></i>
+            </button>
+        </div>
+
+        <!-- Minimal Grid Layout for Blogs -->
+        <div class="p-4 sm:p-8 md:p-16 max-w-7xl mx-auto w-full max-w-full flex-1 box-border">
+            <div class="text-center max-w-2xl mx-auto mb-10 sm:mb-16 px-2 box-border">
+                <h3 class="text-2xl sm:text-3xl md:text-5xl font-black uppercase tracking-tight text-[#000000] font-display mb-3 sm:mb-4 break-words text-3d">Latest Insights</h3>
+                <p class="text-[#555555] font-medium leading-relaxed text-xs sm:text-sm md:text-base break-words">Explore strategic architecture, automation workflows, and insights engineered to scale operations.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 w-full max-w-full box-border">
+                <!-- Premium Blog Card 1 -->
+                <article class="physical-panel bg-[#FFFFFF] flex flex-col hover:-translate-y-2 hover:shadow-[0_20px_40px_rgba(0,0,0,0.08)] transition-all duration-500 group border border-[rgba(0,0,0,0.05)] overflow-hidden rounded-[2rem] w-full max-w-full box-border">
+                    <div class="h-40 sm:h-48 bg-gradient-to-br from-[#0066CC]/5 to-[#0066CC]/20 w-full flex items-center justify-center relative overflow-hidden group-hover:from-[#0066CC]/10 group-hover:to-[#0066CC]/30 transition-colors duration-500 shrink-0">
+                        <i data-lucide="globe-2" class="w-12 h-12 sm:w-16 sm:h-16 text-[#0066CC] opacity-50 group-hover:scale-110 transition-transform duration-500 icon-live"></i>
+                    </div>
+                    <div class="p-6 sm:p-8 flex flex-col flex-1 relative z-10 bg-white box-border w-full">
+                        <div class="flex items-center justify-between mb-4 sm:mb-5">
+                            <span class="bg-[#0066CC]/10 text-[#0066CC] px-3 py-1.5 rounded-full text-[9px] font-black uppercase tracking-widest font-tech">Digital Strategy</span>
+                            <span class="text-[9px] sm:text-[10px] text-[#86868B] font-bold tracking-wider uppercase">Aug 2026</span>
+                        </div>
+                        <h3 class="text-lg sm:text-xl font-black mb-3 sm:mb-4 text-[#1D1D1F] leading-snug font-display break-words">Why Every Business Needs a Website in 2026</h3>
+                        <p class="text-[#555555] text-xs sm:text-sm leading-relaxed font-medium flex-1 break-words">In 2026, a website is no longer optional—it's the foundation of a business's online presence. Customers expect to find information, verify credibility, and contact a business within seconds. A professional website builds trust, works 24/7 to generate leads, showcases products or services, improves visibility on search engines, and gives businesses full control over their brand. Whether you're a local shop or a growing company, a modern website helps turn visitors into customers and keeps you competitive in a digital-first world.</p>
+                    </div>
+                </article>
+
+                <!-- Premium Blog Card 2 -->
+                <article class="physical-panel bg-[#FFFFFF] flex flex-col hover:-translate-y-2 hover:shadow-[0_20px_40px_rgba(0,0,0,0.08)] transition-all duration-500 group border border-[rgba(0,0,0,0.05)] overflow-hidden rounded-[2rem] w-full max-w-full box-border" style="transition-delay: 100ms;">
+                    <div class="h-40 sm:h-48 bg-gradient-to-br from-[#AF52DE]/5 to-[#AF52DE]/20 w-full flex items-center justify-center relative overflow-hidden group-hover:from-[#AF52DE]/10 group-hover:to-[#AF52DE]/30 transition-colors duration-500 shrink-0">
+                        <i data-lucide="layout-template" class="w-12 h-12 sm:w-16 sm:h-16 text-[#AF52DE] opacity-50 group-hover:scale-110 transition-transform duration-500 icon-live"></i>
+                    </div>
+                    <div class="p-6 sm:p-8 flex flex-col flex-1 relative z-10 bg-white box-border w-full">
+                        <div class="flex items-center justify-between mb-4 sm:mb-5">
+                            <span class="bg-[#AF52DE]/10 text-[#AF52DE] px-3 py-1.5 rounded-full text-[9px] font-black uppercase tracking-widest font-tech">Architecture</span>
+                            <span class="text-[9px] sm:text-[10px] text-[#86868B] font-bold tracking-wider uppercase">Aug 2026</span>
+                        </div>
+                        <h3 class="text-lg sm:text-xl font-black mb-3 sm:mb-4 text-[#1D1D1F] leading-snug font-display break-words">7 Signs Your Business Needs a New Website</h3>
+                        <p class="text-[#555555] text-xs sm:text-sm leading-relaxed font-medium flex-1 break-words">If your website looks outdated, loads slowly, isn't mobile-friendly, gets few inquiries, ranks poorly on Google, is difficult to update, or no longer reflects your brand, it's holding your business back. At Forge Softwares, we build fast, modern, SEO-friendly websites that improve your online presence, build customer trust, and help turn more visitors into paying customers.</p>
+                    </div>
+                </article>
+                
+                <!-- Premium Blog Card 3 -->
+                <article class="physical-panel bg-[#FFFFFF] flex flex-col hover:-translate-y-2 hover:shadow-[0_20px_40px_rgba(0,0,0,0.08)] transition-all duration-500 group border border-[rgba(0,0,0,0.05)] overflow-hidden rounded-[2rem] w-full max-w-full box-border" style="transition-delay: 200ms;">
+                    <div class="h-40 sm:h-48 bg-gradient-to-br from-[#34C759]/5 to-[#34C759]/20 w-full flex items-center justify-center relative overflow-hidden group-hover:from-[#34C759]/10 group-hover:to-[#34C759]/30 transition-colors duration-500 shrink-0">
+                        <i data-lucide="bot" class="w-12 h-12 sm:w-16 sm:h-16 text-[#34C759] opacity-50 group-hover:scale-110 transition-transform duration-500 icon-live"></i>
+                    </div>
+                    <div class="p-6 sm:p-8 flex flex-col flex-1 relative z-10 bg-white box-border w-full">
+                        <div class="flex items-center justify-between mb-4 sm:mb-5">
+                            <span class="bg-[#34C759]/10 text-[#34C759] px-3 py-1.5 rounded-full text-[9px] font-black uppercase tracking-widest font-tech">AI Agents</span>
+                            <span class="text-[9px] sm:text-[10px] text-[#86868B] font-bold tracking-wider uppercase">Jul 2026</span>
+                        </div>
+                        <h3 class="text-lg sm:text-xl font-black mb-3 sm:mb-4 text-[#1D1D1F] leading-snug font-display break-words">Automating Lead Capture with AI</h3>
+                        <p class="text-[#555555] text-xs sm:text-sm leading-relaxed font-medium flex-1 break-words">Learn how intelligent chatbots process inquiries and book meetings instantly, giving your human operators time to focus on complex deal closures instead of top-of-funnel filtering. By automating the initial touchpoints, you ensure a 24/7 response system that never sleeps, never misses a lead, and perfectly qualifies prospects before they even reach your calendar.</p>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </div>
+
     <!-- --- STREAMING_CHUNK:Javascript Application Logic --- -->
     <script>
         // Init Lucide Icons safely & efficiently via requestAnimationFrame
         document.addEventListener('DOMContentLoaded', () => {
-            setTimeout(() => {
-                requestAnimationFrame(() => {
-                    lucide.createIcons();
-                });
-            }, 150);
+            const initIcons = () => lucide.createIcons();
+            if ('requestIdleCallback' in window) {
+                requestIdleCallback(initIcons);
+            } else {
+                setTimeout(() => requestAnimationFrame(initIcons), 150);
+            }
         });
 
-        // --- STREAMING_CHUNK:Mobile Menu Logic ---
         // --- NEXUM MOBILE MENU LOGIC (Hero specific) ---
         const nexumMobileMenuBtn = document.getElementById('nexumMobileMenuBtn');
         const nexumMenuIcon = document.getElementById('nexumMenuIcon');
@@ -2007,6 +2150,26 @@
             }, 300);
         }
 
+        // Dedicated Blog Modal Logic
+        const blogModal = document.getElementById('blogModal');
+        function openBlogModal() {
+            blogModal.classList.remove('hidden');
+            blogModal.classList.add('flex');
+            document.body.style.overflow = 'hidden';
+            requestAnimationFrame(() => {
+                blogModal.classList.remove('opacity-0');
+                lucide.createIcons(); // Guarantee icons populate in the modal
+            });
+        }
+        function closeBlogModal() {
+            blogModal.classList.add('opacity-0');
+            document.body.style.overflow = '';
+            setTimeout(() => {
+                blogModal.classList.add('hidden');
+                blogModal.classList.remove('flex');
+            }, 300);
+        }
+
         // Enquiry Form & Success Modal Logic
         const enquiryModal = document.getElementById('enquiryModal');
         const enquiryContent = document.getElementById('enquiryContent');
@@ -2094,12 +2257,17 @@
             const revealOnScroll = new IntersectionObserver((entries, observer) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
-                        requestAnimationFrame(() => {
+                        const triggerReveal = () => {
                             entry.target.classList.add("active");
-                        });
+                            if(entry.target === terminalContainer) {
+                                setTimeout(runTerminalSequence, 400);
+                            }
+                        };
                         
-                        if(entry.target === terminalContainer) {
-                            setTimeout(runTerminalSequence, 400);
+                        if ('requestIdleCallback' in window) {
+                            requestIdleCallback(triggerReveal);
+                        } else {
+                            requestAnimationFrame(triggerReveal);
                         }
                         
                         observer.unobserve(entry.target);

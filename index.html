@@ -50,6 +50,8 @@
             --apple-text-muted: #86868B;
             --apple-accent: #0066CC;
             --apple-accent-bright: #2997FF;
+            --apple-gold: #D4AF37;
+            --apple-red: #E53E3E;
             --apple-border: #D2D2D7;
             --apple-nav-bg: rgba(255, 255, 255, 0.82);
             --ease-apple: cubic-bezier(0.25, 0.1, 0.25, 1.0);
@@ -165,7 +167,7 @@
             );
         }
 
-        /* Deep Woods Contrast Mode - Fixed for WCAG AA Contrast Compliance */
+        /* Deep Woods Contrast Mode */
         .deep-woods-mode .hero-adaptive-text {
             color: #FFFFFF !important;
             transition: color 0.7s ease;
@@ -215,6 +217,47 @@
             box-shadow: 0 14px 35px rgba(0, 102, 204, 0.12);
         }
 
+        /* Specialized Apple Tier Card Styles */
+        .apple-card-pro {
+            background: #FFFFFF;
+            border: 2px solid #E53E3E;
+            border-radius: 22px;
+            transition: all 0.35s var(--ease-apple);
+            box-shadow: 0 8px 30px rgba(229, 62, 62, 0.12);
+            position: relative;
+            overflow: hidden;
+        }
+        .apple-card-pro:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 18px 40px rgba(229, 62, 62, 0.2);
+        }
+
+        .apple-card-gold {
+            background: linear-gradient(180deg, #FFFFFF 0%, #FFFDF5 100%);
+            border: 2px solid #D4AF37;
+            border-radius: 22px;
+            transition: all 0.35s var(--ease-apple);
+            box-shadow: 0 10px 35px rgba(212, 175, 55, 0.18);
+            position: relative;
+            overflow: hidden;
+        }
+        .apple-card-gold:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 45px rgba(212, 175, 55, 0.28);
+        }
+
+        .gold-text-gradient {
+            background: linear-gradient(135deg, #B8860B 0%, #D4AF37 50%, #AA7C11 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .red-text-gradient {
+            background: linear-gradient(135deg, #C53030 0%, #E53E3E 50%, #9B2C2C 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
         .apple-card-grey {
             background: #F5F5F7;
             border: 1px solid var(--apple-border);
@@ -230,7 +273,7 @@
             box-shadow: 0 12px 30px rgba(0, 102, 204, 0.1);
         }
 
-        /* Apple Buttons with Enhanced Micro-Interactions */
+        /* Apple Buttons */
         .apple-btn-primary {
             background: linear-gradient(135deg, #0066CC 0%, #004b9e 100%);
             color: #FFFFFF;
@@ -261,18 +304,60 @@
             transition: left 0.6s ease;
         }
 
-        .apple-btn-primary:hover::before {
-            left: 100%;
-        }
+        .apple-btn-primary:hover::before { left: 100%; }
 
         .apple-btn-primary:hover {
             background: linear-gradient(135deg, #0077ED 0%, #005bb5 100%);
             transform: translateY(-2px) scale(1.02);
-            box-shadow: 0 8px 25px rgba(0, 102, 204, 0.5), inset 0 1px 2px rgba(255, 255, 255, 0.3);
+            box-shadow: 0 8px 25px rgba(0, 102, 204, 0.5);
             border: 1px solid rgba(255,255,255,0.3);
         }
 
-        .apple-btn-primary:active { transform: translateY(1px) scale(0.98); box-shadow: 0 2px 10px rgba(0, 102, 204, 0.3); }
+        .apple-btn-primary:active { transform: translateY(1px) scale(0.98); }
+
+        .apple-btn-pro {
+            background: linear-gradient(135deg, #E53E3E 0%, #9B2C2C 100%);
+            color: #FFFFFF;
+            border-radius: 999px;
+            font-weight: 600;
+            padding: 12px 24px;
+            font-size: 13px;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 44px;
+            cursor: pointer;
+            border: 1px solid rgba(255,255,255,0.25);
+            box-shadow: 0 4px 15px rgba(229, 62, 62, 0.35);
+        }
+        .apple-btn-pro:hover {
+            background: linear-gradient(135deg, #F56565 0%, #C53030 100%);
+            transform: translateY(-2px) scale(1.02);
+            box-shadow: 0 8px 25px rgba(229, 62, 62, 0.5);
+        }
+
+        .apple-btn-gold {
+            background: linear-gradient(135deg, #D4AF37 0%, #9A7B1C 100%);
+            color: #FFFFFF;
+            border-radius: 999px;
+            font-weight: 700;
+            padding: 12px 24px;
+            font-size: 13px;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 44px;
+            cursor: pointer;
+            border: 1px solid rgba(255,255,255,0.4);
+            box-shadow: 0 4px 18px rgba(212, 175, 55, 0.4);
+        }
+        .apple-btn-gold:hover {
+            background: linear-gradient(135deg, #E5C158 0%, #B8860B 100%);
+            transform: translateY(-2px) scale(1.02);
+            box-shadow: 0 8px 28px rgba(212, 175, 55, 0.6);
+        }
 
         .apple-btn-secondary {
             background: linear-gradient(180deg, #FFFFFF 0%, #F5F5F7 100%);
@@ -288,7 +373,7 @@
             min-height: 44px;
             cursor: pointer;
             border: 1px solid rgba(0,0,0,0.12);
-            box-shadow: 0 4px 12px rgba(0,0,0,0.04), inset 0 -2px 5px rgba(0,0,0,0.02);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.04);
         }
 
         .apple-btn-secondary:hover {
@@ -296,21 +381,10 @@
             color: #0066CC;
             border-color: rgba(0, 102, 204, 0.5);
             transform: translateY(-2px) scale(1.02);
-            box-shadow: 0 8px 22px rgba(0, 102, 204, 0.18), inset 0 0 0 1px rgba(0, 102, 204, 0.1);
+            box-shadow: 0 8px 22px rgba(0, 102, 204, 0.18);
         }
 
         .apple-btn-secondary:active { transform: translateY(1px) scale(0.98); }
-
-        .apple-link {
-            border-radius: 50%;
-            padding: 3px;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            transition: transform 0.35s ease;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
-            flex-shrink: 0;
-        }
 
         .trust-avatar-ring .inner-circle {
             width: 100%;
@@ -356,19 +430,7 @@
             transform: translate3d(0, 0, 0);
         }
 
-        /* Hardware Accelerated CSS Grid Accordion */
-        .accordion-wrapper {
-            display: grid;
-            grid-template-rows: 0fr;
-            transition: grid-template-rows 0.35s var(--ease-apple);
-        }
-        .accordion-wrapper.expanded {
-            grid-template-rows: 1fr;
-        }
-        .accordion-inner {
-            overflow: hidden;
-        }
-
+        /* Help Item Card Styling */
         .help-item-card {
             background: #FFFFFF;
             color: #1D1D1F;
@@ -383,7 +445,7 @@
             background: #F5F5F7;
         }
 
-        /* Pricing Table Movable Touch Container & Sticky Alignment Fix */
+        /* Pricing Table Scroll Container */
         .table-scroll-container {
             position: relative;
             overflow-x: auto;
@@ -392,13 +454,12 @@
             touch-action: pan-x;
         }
 
-        /* Fix sticky border shearing in iOS Safari & Chrome */
         .pricing-matrix-table {
             border-collapse: separate !important;
             border-spacing: 0 !important;
         }
 
-        /* Tactical Black Texture for Empty Spacing & Contact Cards */
+        /* Tactical Dark Cards */
         .tactical-dark-card {
             background: radial-gradient(circle at 50% 0%, #151d2a 0%, #080d16 100%);
             border: 1px solid rgba(255, 255, 255, 0.12);
@@ -428,6 +489,8 @@
                     colors: {
                         emerald: { 400: '#34D399', 500: '#10B981', 600: '#059669' },
                         appleblue: { DEFAULT: '#0066CC', bright: '#2997FF' },
+                        applegold: '#D4AF37',
+                        applered: '#E53E3E',
                         darkbg: '#000000',
                         lightbg: '#FFFFFF',
                         greybg: '#F5F5F7'
@@ -438,8 +501,8 @@
     </script>
 
     <!-- SEO & Metadata -->
-    <title>Forge Softwares | Enterprise AI Systems & Scalable Web Architecture Pricing</title>
-    <meta name="description" content="Forge Softwares pricing architecture: Starter (₹1,999), Professional (₹7,999), Pro Plus (₹9,999), and Premium (₹14,999). Transparent engineering tiers for high-performance websites and autonomous AI agents.">
+    <title>Forge Softwares | Enterprise Web Systems & AI Automation Pricing</title>
+    <meta name="description" content="Forge Softwares pricing architecture: Basic (₹1,999), Pro ⭐ Best Selling (₹7,999), and Premium 👑 Value for Money (₹14,999). Transparent engineering tiers for high-performance websites and autonomous AI agents.">
     <meta name="keywords" content="Web Architecture Pricing, Enterprise AI Automation, Autonomous AI Agents, Systems Engineering, SaaS, Srinagar, Kashmir, Web Design Packages India">
     <meta name="robots" content="index, follow, max-image-preview:large">
     <meta name="author" content="Forge Softwares">
@@ -481,7 +544,7 @@
                 "@type": "Offer",
                 "itemOffered": {
                   "@type": "Service",
-                  "name": "Starter Web Architecture Plan",
+                  "name": "Basic Web Architecture Plan",
                   "description": "1–3 Pages static site with 3 days support."
                 },
                 "price": "1999",
@@ -491,8 +554,8 @@
                 "@type": "Offer",
                 "itemOffered": {
                   "@type": "Service",
-                  "name": "Professional Web Architecture Plan",
-                  "description": "5–7 Pages high-converting site with mobile responsiveness and 15 days support."
+                  "name": "Pro Best Selling Web Architecture Plan",
+                  "description": "Up to 8 Pages high-converting site with mobile responsiveness and 15 days support."
                 },
                 "price": "7999",
                 "priceCurrency": "INR"
@@ -501,18 +564,8 @@
                 "@type": "Offer",
                 "itemOffered": {
                   "@type": "Service",
-                  "name": "Pro Plus Scaling Plan",
-                  "description": "8–12 Pages advanced site with technical SEO, blog, and 30 days support."
-                },
-                "price": "9999",
-                "priceCurrency": "INR"
-              },
-              {
-                "@type": "Offer",
-                "itemOffered": {
-                  "@type": "Service",
-                  "name": "Premium Enterprise AI Plan",
-                  "description": "12–20 Pages platform with AI agents, CRM integration, free domain, and 45 days support."
+                  "name": "Premium Value For Money Enterprise AI Plan",
+                  "description": "Unlimited Pages platform with custom AI agents, free domain, and 30 days priority support."
                 },
                 "price": "14999",
                 "priceCurrency": "INR"
@@ -544,15 +597,17 @@
         <nav class="relative z-20 w-full max-w-7xl mx-auto px-4 sm:px-8 lg:px-12 flex items-center justify-between h-full">
             <a href="#home" class="flex items-center gap-2 text-[#1D1D1F] transition-opacity duration-300 hover:opacity-80 active:scale-95 shrink-0 focus:outline-none" aria-label="Forge Softwares Home">
                 <div class="w-6 h-6 rounded-full border border-black/20 bg-black/5 flex items-center justify-center font-mono text-[10px] font-bold text-[#1D1D1F] backdrop-blur-md shadow-inner shrink-0">
-                    (F)
+                    <i data-lucide="code-2" class="w-3 h-3 text-[#0066CC]"></i>
                 </div>
-                <span class="text-base sm:text-lg font-podium tracking-widest uppercase">Forge Softwares</span>
+                <span class="text-base sm:text-lg font-podium tracking-widest uppercase flex items-center gap-1.5">
+                    Forge Softwares
+                </span>
             </a>
 
             <!-- Desktop Links -->
             <div class="hidden md:flex items-center gap-8 text-[12px] tracking-normal text-[#1D1D1F]/80 font-sans">
                 <a href="#home" class="nav-link-item hover:text-[#0066CC] transition-opacity duration-200 py-1 focus:outline-none">Home</a>
-                <a href="#pricing" class="nav-link-item hover:text-[#0066CC] transition-opacity duration-200 py-1 focus:outline-none font-semibold text-[#0066CC]">Pricing</a>
+                <a href="#pricing" class="nav-link-item hover:text-[#0066CC] transition-opacity duration-200 py-1 focus:outline-none font-semibold text-[#0066CC]">Pricing & Plans</a>
                 <a href="#testimonials" class="nav-link-item hover:text-[#0066CC] transition-opacity duration-200 py-1 focus:outline-none">Testimonials</a>
                 <a href="#contact" class="nav-link-item hover:text-[#0066CC] font-semibold transition-opacity duration-200 py-1 focus:outline-none">Contact & HQ</a>
                 <button type="button" id="navHelpBtn" class="hover:text-[#0066CC] text-[#0066CC] font-semibold transition-colors focus:outline-none flex items-center gap-1 cursor-pointer">
@@ -578,7 +633,7 @@
 
     <main class="w-full flex flex-col overflow-x-hidden">
 
-        <!-- Cinematic Hero Engine (Main First Section - Retains Dark Theme) -->
+        <!-- Cinematic Hero Engine (Main First Section) -->
         <section id="home" class="relative min-h-[100svh] min-h-[100dvh] w-full overflow-hidden flex flex-col font-geist text-white hero-video-container pt-12 sm:pt-16 pb-8 sm:pb-12">
             <!-- Background Media Layer -->
             <div id="heroVideoContainer" class="absolute inset-0 w-full h-full z-0 overflow-hidden pointer-events-none">
@@ -612,25 +667,24 @@
 
                 <div class="hero-adaptive-badge inline-flex items-center gap-2 border border-white/25 bg-black/50 backdrop-blur-md px-3.5 py-1.5 rounded-full text-white/90 text-[10px] sm:text-xs font-mono tracking-widest uppercase mb-4 sm:mb-6 shadow-lg max-w-full truncate">
                     <span class="led-emerald-blink"></span>
-                    <span class="truncate">Systems_Engineering_Collective</span>
+                    <span class="truncate flex items-center gap-1.5"><i data-lucide="sparkles" class="w-3.5 h-3.5 text-amber-400"></i> Premium Web & AI Engineering Collective</span>
                 </div>
 
+                <!-- Simplified, Premium English Heading & Subheading -->
                 <h1 class="hero-adaptive-text font-podium text-[2.15rem] xs:text-4xl sm:text-6xl lg:text-[5.25rem] text-white uppercase leading-[0.98] tracking-tight mb-4 sm:mb-6 max-w-3xl animate-fade-up">
-                    SHIP AI WORKERS<br class="hidden xs:inline" />
-                    THAT GRIND<br class="hidden xs:inline" />
-                    WHILE YOU REST.
+                    WE BUILD HIGH-SPEED WEBSITES & AI WORKERS THAT GROW YOUR BUSINESS 24/7.
                 </h1>
 
                 <p class="hero-adaptive-subtext text-xs sm:text-base text-white/90 max-w-md sm:max-w-xl leading-relaxed mb-6 sm:mb-8 font-sans animate-fade-up" style="animation-delay: 0.15s;">
-                    Architecting scalable web platforms and autonomous AI agents to automate your lead acquisition, customer operations, and digital growth 24/7.
+                    Forge Softwares crafts custom, ultra-fast websites and smart AI assistants. We automate your customer support, collect qualified leads, and give your brand an instant competitive advantage.
                 </p>
 
                 <form id="heroEmailForm" class="flex flex-col sm:flex-row items-stretch sm:items-center gap-2.5 sm:gap-3 w-full max-w-md sm:max-w-lg mb-6 sm:mb-8 animate-fade-up" style="animation-delay: 0.25s;">
                     <div class="relative flex-1 w-full shrink-0">
-                        <input type="email" id="heroEmailInput" required placeholder="Enter work email..." class="hero-adaptive-input w-full rounded-full bg-black/60 backdrop-blur-md border border-white/40 px-4 sm:px-5 py-3 text-xs sm:text-sm text-white placeholder-white/70 outline-none focus:border-emerald-400 focus:ring-2 focus:ring-emerald-400/30 transition-all font-mono shadow-inner min-h-[44px] sm:min-h-[48px]" />
+                        <input type="email" id="heroEmailInput" required placeholder="Enter your business email..." class="hero-adaptive-input w-full rounded-full bg-black/60 backdrop-blur-md border border-white/40 px-4 sm:px-5 py-3 text-xs sm:text-sm text-white placeholder-white/70 outline-none focus:border-emerald-400 focus:ring-2 focus:ring-emerald-400/30 transition-all font-mono shadow-inner min-h-[44px] sm:min-h-[48px]" />
                     </div>
                     <button type="submit" class="apple-btn-primary shrink-0 px-6 sm:px-8 py-3 text-xs font-bold uppercase tracking-wider whitespace-nowrap shadow-xl focus:outline-none min-h-[44px] sm:min-h-[48px] cursor-pointer">
-                        Get Started
+                        Get Started <i data-lucide="arrow-right" class="w-4 h-4 ml-1.5 inline-block"></i>
                     </button>
                 </form>
 
@@ -647,17 +701,23 @@
                 <!-- KPI Group -->
                 <div class="flex flex-wrap items-center justify-center sm:justify-start gap-4 sm:gap-8 lg:gap-12 pt-4 sm:pt-6 border-t border-white/15 font-mono w-full animate-fade-up" style="animation-delay: 0.4s;">
                     <div class="text-center sm:text-left">
-                        <div class="text-lg sm:text-2xl lg:text-3xl font-bold text-white tracking-tight">42,500+</div>
+                        <div class="text-lg sm:text-2xl lg:text-3xl font-bold text-white tracking-tight flex items-center justify-center sm:justify-start gap-1">
+                            <i data-lucide="rocket" class="w-5 h-5 text-emerald-400 inline-block"></i> 42,500+
+                        </div>
                         <div class="text-white/70 text-[9px] sm:text-[10px] lg:text-xs tracking-wider uppercase mt-0.5">Deployments</div>
                     </div>
                     <div class="w-px h-8 bg-white/15 hidden xs:block"></div>
                     <div class="text-center sm:text-left">
-                        <div class="text-lg sm:text-2xl lg:text-3xl font-bold text-white tracking-tight">99.9%</div>
+                        <div class="text-lg sm:text-2xl lg:text-3xl font-bold text-white tracking-tight flex items-center justify-center sm:justify-start gap-1">
+                            <i data-lucide="shield-check" class="w-5 h-5 text-blue-400 inline-block"></i> 99.9%
+                        </div>
                         <div class="text-white/70 text-[9px] sm:text-[10px] lg:text-xs tracking-wider uppercase mt-0.5">Reliability</div>
                     </div>
                     <div class="w-px h-8 bg-white/15 hidden xs:block"></div>
                     <div class="text-center sm:text-left">
-                        <div class="text-lg sm:text-2xl lg:text-3xl font-bold text-white tracking-tight">24/7</div>
+                        <div class="text-lg sm:text-2xl lg:text-3xl font-bold text-white tracking-tight flex items-center justify-center sm:justify-start gap-1">
+                            <i data-lucide="bot" class="w-5 h-5 text-amber-400 inline-block"></i> 24/7
+                        </div>
                         <div class="text-white/70 text-[9px] sm:text-[10px] lg:text-xs tracking-wider uppercase mt-0.5">Autonomous</div>
                     </div>
                 </div>
@@ -703,7 +763,9 @@
                         <div class="bg-[#0066CC]/10 w-12 h-12 rounded-full flex items-center justify-center mb-6 group-hover:bg-[#0066CC] group-hover:text-white transition-colors border border-[#0066CC]/20 text-[#0066CC]">
                             <i data-lucide="cpu" class="w-5 h-5"></i>
                         </div>
-                        <h4 class="text-xl font-semibold text-[#1D1D1F] tracking-tight mb-2">Automation</h4>
+                        <h3 class="text-xl font-semibold text-[#1D1D1F] tracking-tight mb-2 flex items-center gap-2">
+                            <span>Automation</span>
+                        </h3>
                         <p class="text-xs sm:text-sm text-[#86868B] leading-relaxed font-sans">Streamlined workflows and autonomous business logic engineered for continuous execution.</p>
                     </div>
 
@@ -711,7 +773,9 @@
                         <div class="bg-[#0066CC]/10 w-12 h-12 rounded-full flex items-center justify-center mb-6 group-hover:bg-[#0066CC] group-hover:text-white transition-colors border border-[#0066CC]/20 text-[#0066CC]">
                             <i data-lucide="layout-template" class="w-5 h-5"></i>
                         </div>
-                        <h4 class="text-xl font-semibold text-[#1D1D1F] tracking-tight mb-2">Web Platforms</h4>
+                        <h3 class="text-xl font-semibold text-[#1D1D1F] tracking-tight mb-2 flex items-center gap-2">
+                            <span>Web Platforms</span>
+                        </h3>
                         <p class="text-xs sm:text-sm text-[#86868B] leading-relaxed font-sans">High-converting digital architecture with ultra-fast static speed and responsive motion.</p>
                     </div>
 
@@ -719,7 +783,9 @@
                         <div class="bg-[#0066CC]/10 w-12 h-12 rounded-full flex items-center justify-center mb-6 group-hover:bg-[#0066CC] group-hover:text-white transition-colors border border-[#0066CC]/20 text-[#0066CC]">
                             <i data-lucide="message-square-dashed" class="w-5 h-5"></i>
                         </div>
-                        <h4 class="text-xl font-semibold text-[#1D1D1F] tracking-tight mb-2">AI Chatbots</h4>
+                        <h3 class="text-xl font-semibold text-[#1D1D1F] tracking-tight mb-2 flex items-center gap-2">
+                            <span>AI Chatbots</span>
+                        </h3>
                         <p class="text-xs sm:text-sm text-[#86868B] leading-relaxed font-sans">24/7 intelligent customer support and lead qualification systems with zero human lag.</p>
                     </div>
                 </div>
@@ -821,7 +887,7 @@
             </div>
         </section>
 
-        <!-- Pricing Architecture Section (Updated & Expanded Tiers) -->
+        <!-- Pricing Architecture Section (Updated 3 Tiers: Basic, Pro ⭐, Premium 👑) -->
         <section id="pricing" class="py-24 md:py-32 px-4 sm:px-8 lg:px-12 bg-[#F5F5F7] w-full border-b border-[#D2D2D7]">
             <div class="w-full max-w-7xl mx-auto">
                 <div class="text-center mb-12 sm:mb-16 reveal px-2">
@@ -834,340 +900,405 @@
                     </p>
                 </div>
 
-                <!-- 4 Pricing Cards Overview Grid -->
-                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 items-stretch w-full mb-12 sm:mb-16 relative z-10">
+                <!-- 3 Pricing Cards Overview Grid -->
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 sm:gap-8 items-stretch w-full mb-12 sm:mb-16 relative z-10">
 
-                    <!-- STARTER Tier (₹1,999) -->
-                    <article class="apple-card-light reveal p-5 sm:p-6 md:p-8 flex flex-col h-full w-full group">
-                        <!-- Forge Logo Treatment -->
-                        <div class="flex items-center justify-between mb-3 border-b border-[#D2D2D7]/60 pb-2.5">
-                            <div class="flex items-center gap-1.5 text-[10px] font-mono text-[#86868B] uppercase font-bold tracking-wider">
-                                <span class="w-4 h-4 rounded-full border border-black/20 bg-black/5 flex items-center justify-center text-[8px] font-bold text-[#1D1D1F]">(F)</span> FORGE
+                    <!-- BASIC Tier (₹1,999) -->
+                    <article class="apple-card-light reveal p-6 sm:p-8 flex flex-col h-full w-full group">
+                        <div class="flex items-center justify-between mb-4 border-b border-[#D2D2D7]/60 pb-3">
+                            <div class="flex items-center gap-2 text-xs font-mono text-[#86868B] uppercase font-bold tracking-wider">
+                                <span class="w-5 h-5 rounded-full border border-black/20 bg-black/5 flex items-center justify-center text-[9px] font-bold text-[#1D1D1F]">(F)</span> FORGE
                             </div>
-                            <span class="text-[9px] font-mono bg-[#1D1D1F]/5 border border-[#1D1D1F]/15 px-2 py-0.5 rounded-md font-semibold text-[#86868B]">TIER 01</span>
+                            <span class="text-[10px] font-mono bg-[#1D1D1F]/5 border border-[#1D1D1F]/15 px-2.5 py-1 rounded-md font-semibold text-[#86868B]">TIER 01</span>
                         </div>
-                        <div class="mb-4 sm:mb-6">
-                            <span class="text-[10px] sm:text-xs font-mono uppercase tracking-widest text-[#86868B] block mb-1">Entry Level</span>
-                            <h3 class="text-lg sm:text-xl font-bold uppercase tracking-widest font-bubbledot text-[#1D1D1F]">STARTER</h3>
-                            <p class="text-[#86868B] text-xs mt-1.5 sm:mt-2">Individuals & small local businesses</p>
+                        <div class="mb-4">
+                            <span class="text-xs font-mono uppercase tracking-widest text-[#86868B] block mb-1">Entry Level</span>
+                            <h3 class="text-2xl font-bold uppercase tracking-widest font-bubbledot text-[#1D1D1F] flex items-center gap-2">
+                                <i data-lucide="feather" class="w-5 h-5 text-slate-500"></i> Basic
+                            </h3>
+                            <p class="text-[#86868B] text-xs mt-2">New businesses & low budget owners</p>
                         </div>
-                        <div class="mb-6 sm:mb-8 text-2xl sm:text-3xl lg:text-4xl font-bold text-[#1D1D1F] tracking-tight font-mono flex items-baseline flex-wrap gap-1">
-                            <span class="font-bold">₹1,999</span>
-                            <span class="text-[10px] sm:text-xs text-[#86868B] font-sans font-normal ml-1">/ one-time</span>
+                        <div class="mb-6 text-3xl sm:text-4xl font-bold text-[#1D1D1F] tracking-tight font-mono flex items-baseline flex-wrap gap-1">
+                            <span>₹1,999</span>
+                            <span class="text-xs text-[#86868B] font-sans font-normal ml-1">(One-Time)</span>
                         </div>
-                        <button type="button" class="pricingBookBtn apple-btn-secondary w-full uppercase tracking-wider mb-6 sm:mb-8 cursor-pointer group-hover:border-[#0066CC] group-hover:text-[#0066CC]">
-                            <span>Select Starter</span>
+                        <button type="button" class="pricingBookBtn apple-btn-secondary w-full uppercase tracking-wider mb-6 cursor-pointer group-hover:border-[#0066CC] group-hover:text-[#0066CC]">
+                            <span>Select Basic</span>
                             <i data-lucide="arrow-right" class="w-3.5 h-3.5 ml-1.5 transition-transform group-hover:translate-x-1"></i>
                         </button>
-                        <ul class="space-y-2.5 sm:space-y-3 border-t border-[#D2D2D7] pt-5 sm:pt-6 text-[11px] sm:text-xs text-[#1D1D1F]">
-                            <li class="flex items-start gap-2"><i data-lucide="check" class="w-3.5 h-3.5 sm:w-4 sm:h-4 mt-0.5 text-[#0066CC] shrink-0"></i> <span>1–3 Pages Static Architecture</span></li>
-                            <li class="flex items-start gap-2 text-[#86868B]"><i data-lucide="x" class="w-3.5 h-3.5 sm:w-4 sm:h-4 mt-0.5 text-red-400 shrink-0"></i> <span class="line-through">Mobile Responsive</span> (Basic Layout)</li>
-                            <li class="flex items-start gap-2"><i data-lucide="check" class="w-3.5 h-3.5 sm:w-4 sm:h-4 mt-0.5 text-[#0066CC] shrink-0"></i> <span>WhatsApp & Maps Integrations</span></li>
-                            <li class="flex items-start gap-2"><i data-lucide="check" class="w-3.5 h-3.5 sm:w-4 sm:h-4 mt-0.5 text-[#0066CC] shrink-0"></i> <span>3 Days Support & Maintenance</span></li>
-                            <!-- Expanded Features -->
-                            <li class="flex items-start gap-2"><i data-lucide="check" class="w-3.5 h-3.5 sm:w-4 sm:h-4 mt-0.5 text-[#0066CC] shrink-0"></i> <span>Standard SSL Security Certificate</span></li>
-                            <li class="flex items-start gap-2"><i data-lucide="check" class="w-3.5 h-3.5 sm:w-4 sm:h-4 mt-0.5 text-[#0066CC] shrink-0"></i> <span>Free GitHub Hosting Deployment</span></li>
-                            <li class="flex items-start gap-2"><i data-lucide="check" class="w-3.5 h-3.5 sm:w-4 sm:h-4 mt-0.5 text-[#0066CC] shrink-0"></i> <span>Basic Meta Tags & Page Title SEO</span></li>
-                            <li class="flex items-start gap-2"><i data-lucide="check" class="w-3.5 h-3.5 sm:w-4 sm:h-4 mt-0.5 text-[#0066CC] shrink-0"></i> <span>Static Contact Form Setup</span></li>
+                        <ul class="space-y-3 border-t border-[#D2D2D7] pt-6 text-xs text-[#1D1D1F] flex-1">
+                            <li class="flex items-start gap-2.5"><i data-lucide="file-text" class="w-4 h-4 text-[#0066CC] shrink-0 mt-0.5"></i> <span><strong>1–3 Pages</strong> Simple Business Layout</span></li>
+                            <li class="flex items-start gap-2.5"><i data-lucide="layout" class="w-4 h-4 text-slate-600 shrink-0 mt-0.5"></i> <span>Simple Business Design</span></li>
+                            <li class="flex items-start gap-2.5 text-[#86868B]"><i data-lucide="smartphone-off" class="w-4 h-4 text-red-400 shrink-0 mt-0.5"></i> <span>Mobile Responsive (❌)</span></li>
+                            <li class="flex items-start gap-2.5"><i data-lucide="message-circle" class="w-4 h-4 text-emerald-500 shrink-0 mt-0.5"></i> <span>WhatsApp Chat Button Included</span></li>
+                            <li class="flex items-start gap-2.5"><i data-lucide="mail" class="w-4 h-4 text-[#0066CC] shrink-0 mt-0.5"></i> <span>Simple Contact Form</span></li>
+                            <li class="flex items-start gap-2.5"><i data-lucide="share-2" class="w-4 h-4 text-[#0066CC] shrink-0 mt-0.5"></i> <span>Social Media Links Included</span></li>
+                            <li class="flex items-start gap-2.5"><i data-lucide="search" class="w-4 h-4 text-[#0066CC] shrink-0 mt-0.5"></i> <span>Basic SEO Setup</span></li>
+                            <li class="flex items-start gap-2.5"><i data-lucide="zap" class="w-4 h-4 text-amber-500 shrink-0 mt-0.5"></i> <span>Basic Speed Optimization</span></li>
+                            <li class="flex items-start gap-2.5"><i data-lucide="server" class="w-4 h-4 text-[#0066CC] shrink-0 mt-0.5"></i> <span>Free Deployment & SSL Security</span></li>
+                            <li class="flex items-start gap-2.5"><i data-lucide="rotate-ccw" class="w-4 h-4 text-[#0066CC] shrink-0 mt-0.5"></i> <span>1 Free Revision</span></li>
+                            <li class="flex items-start gap-2.5"><i data-lucide="clock" class="w-4 h-4 text-[#0066CC] shrink-0 mt-0.5"></i> <span>3 Days Support & Maintenance</span></li>
                         </ul>
                     </article>
 
-                    <!-- PROFESSIONAL Tier (₹7,999 - MOST POPULAR) -->
-                    <article class="apple-card-light reveal p-5 sm:p-6 md:p-8 flex flex-col h-full w-full relative !border-[#0066CC] shadow-md group" style="transition-delay: 100ms;">
-                        <div class="absolute -top-3 left-1/2 -translate-x-1/2 bg-[#0066CC] text-white font-mono text-[9px] sm:text-[10px] font-bold uppercase tracking-widest px-3 py-0.5 sm:px-4 sm:py-1 rounded-full shadow-lg whitespace-nowrap">
-                            MOST POPULAR
+                    <!-- PRO ⭐ Tier (₹7,999) - BEST SELLING / RED ACCENT -->
+                    <article class="apple-card-pro reveal p-6 sm:p-8 flex flex-col h-full w-full relative group" style="transition-delay: 100ms;">
+                        <div class="absolute -top-3.5 left-1/2 -translate-x-1/2 bg-[#E53E3E] text-white font-mono text-[10px] font-bold uppercase tracking-widest px-4 py-1 rounded-full shadow-lg whitespace-nowrap flex items-center gap-1.5">
+                            <i data-lucide="star" class="w-3 h-3 text-amber-300 fill-amber-300"></i> BEST SELLING ⭐
                         </div>
-                        <!-- Forge Logo Treatment -->
-                        <div class="flex items-center justify-between mb-3 border-b border-[#0066CC]/20 pb-2.5 mt-2">
-                            <div class="flex items-center gap-1.5 text-[10px] font-mono text-[#0066CC] uppercase font-bold tracking-wider">
-                                <span class="w-4 h-4 rounded-full border border-[#0066CC]/30 bg-[#0066CC]/10 flex items-center justify-center text-[8px] font-bold text-[#0066CC]">(F)</span> FORGE
+                        <div class="flex items-center justify-between mb-4 border-b border-[#E53E3E]/20 pb-3 mt-2">
+                            <div class="flex items-center gap-2 text-xs font-mono text-[#E53E3E] uppercase font-bold tracking-wider">
+                                <span class="w-5 h-5 rounded-full border border-[#E53E3E]/30 bg-[#E53E3E]/10 flex items-center justify-center text-[9px] font-bold text-[#E53E3E]">(F)</span> FORGE
                             </div>
-                            <span class="text-[9px] font-mono bg-[#0066CC]/10 border border-[#0066CC]/30 px-2 py-0.5 rounded-md font-bold text-[#0066CC]">TIER 02</span>
+                            <span class="text-[10px] font-mono bg-[#E53E3E]/10 border border-[#E53E3E]/30 px-2.5 py-1 rounded-md font-bold text-[#E53E3E]">TIER 02</span>
                         </div>
-                        <div class="mb-4 sm:mb-6">
-                            <span class="text-[10px] sm:text-xs font-mono uppercase tracking-widest text-[#0066CC] block mb-1">Growth Tier</span>
-                            <h3 class="text-xl sm:text-2xl font-bold uppercase tracking-widest font-bubbledot text-[#1D1D1F]">PROFESSIONAL</h3>
-                            <p class="text-[#86868B] text-xs mt-1.5 sm:mt-2">Growing businesses requiring conversions</p>
+                        <div class="mb-4">
+                            <span class="text-xs font-mono uppercase tracking-widest text-[#E53E3E] font-bold block mb-1">Growth & Conversion Tier</span>
+                            <h3 class="text-2xl font-bold uppercase tracking-widest font-bubbledot red-text-gradient flex items-center gap-2">
+                                <i data-lucide="sparkles" class="w-5 h-5 text-[#E53E3E]"></i> Pro ⭐
+                            </h3>
+                            <p class="text-[#86868B] text-xs mt-2">Growing businesses & startups</p>
                         </div>
-                        <div class="mb-6 sm:mb-8 text-3xl sm:text-4xl lg:text-5xl font-bold text-[#1D1D1F] tracking-tight font-mono flex items-baseline flex-wrap gap-1">
-                            <span class="font-bold">₹7,999</span>
-                            <span class="text-[10px] sm:text-xs text-[#86868B] font-sans font-normal ml-1">/ one-time</span>
+                        <div class="mb-6 text-3xl sm:text-4xl font-bold text-[#1D1D1F] tracking-tight font-mono flex items-baseline flex-wrap gap-1">
+                            <span class="text-[#E53E3E]">₹7,999</span>
+                            <span class="text-xs text-[#86868B] font-sans font-normal ml-1">(One-Time)</span>
                         </div>
-                        <button type="button" class="pricingBookBtn apple-btn-primary w-full uppercase tracking-wider mb-6 sm:mb-8 cursor-pointer shadow-lg hover:shadow-xl">
-                            <span>Select Professional</span>
+                        <button type="button" class="pricingBookBtn apple-btn-pro w-full uppercase tracking-wider mb-6 cursor-pointer shadow-lg hover:shadow-xl">
+                            <span>Select Pro ⭐</span>
                             <i data-lucide="arrow-right" class="w-3.5 h-3.5 ml-1.5 transition-transform group-hover:translate-x-1"></i>
                         </button>
-                        <ul class="space-y-2.5 sm:space-y-3 border-t border-[#D2D2D7] pt-5 sm:pt-6 text-[11px] sm:text-xs text-[#1D1D1F]">
-                            <li class="flex items-start gap-2"><i data-lucide="check" class="w-3.5 h-3.5 sm:w-4 sm:h-4 mt-0.5 text-[#0066CC] shrink-0"></i> <span>5–7 Pages Professional Web App</span></li>
-                            <li class="flex items-start gap-2"><i data-lucide="check" class="w-3.5 h-3.5 sm:w-4 sm:h-4 mt-0.5 text-[#0066CC] shrink-0"></i> <span>Mobile & Tablet Responsive (ON)</span></li>
-                            <li class="flex items-start gap-2 text-[#86868B]"><i data-lucide="x" class="w-3.5 h-3.5 sm:w-4 sm:h-4 mt-0.5 text-red-400 shrink-0"></i> <span class="line-through">Custom Tailored Design</span> (Standard Template)</li>
-                            <li class="flex items-start gap-2"><i data-lucide="check" class="w-3.5 h-3.5 sm:w-4 sm:h-4 mt-0.5 text-[#0066CC] shrink-0"></i> <span>Advanced On-Page SEO</span></li>
-                            <li class="flex items-start gap-2"><i data-lucide="check" class="w-3.5 h-3.5 sm:w-4 sm:h-4 mt-0.5 text-[#0066CC] shrink-0"></i> <span>15 Days Maintenance Support</span></li>
-                            <!-- Expanded Features -->
-                            <li class="flex items-start gap-2"><i data-lucide="check" class="w-3.5 h-3.5 sm:w-4 sm:h-4 mt-0.5 text-[#0066CC] shrink-0"></i> <span>Free 1st Year Custom Domain</span></li>
-                            <li class="flex items-start gap-2"><i data-lucide="check" class="w-3.5 h-3.5 sm:w-4 sm:h-4 mt-0.5 text-[#0066CC] shrink-0"></i> <span>Google Analytics Integration</span></li>
-                            <li class="flex items-start gap-2"><i data-lucide="check" class="w-3.5 h-3.5 sm:w-4 sm:h-4 mt-0.5 text-[#0066CC] shrink-0"></i> <span>High-Speed Static Cache Tuning</span></li>
-                            <li class="flex items-start gap-2"><i data-lucide="check" class="w-3.5 h-3.5 sm:w-4 sm:h-4 mt-0.5 text-[#0066CC] shrink-0"></i> <span>Instant Email Lead Notifications</span></li>
+                        <ul class="space-y-3 border-t border-[#D2D2D7] pt-6 text-xs text-[#1D1D1F] flex-1">
+                            <li class="flex items-start gap-2.5"><i data-lucide="layers" class="w-4 h-4 text-[#E53E3E] shrink-0 mt-0.5"></i> <span><strong>Up to 8 Pages</strong> Modern Architecture</span></li>
+                            <li class="flex items-start gap-2.5"><i data-lucide="palette" class="w-4 h-4 text-[#E53E3E] shrink-0 mt-0.5"></i> <span>Modern Professional Design (Basic Custom)</span></li>
+                            <li class="flex items-start gap-2.5"><i data-lucide="smartphone" class="w-4 h-4 text-emerald-500 shrink-0 mt-0.5"></i> <span><strong>✅ Mobile & Tablet Responsive</strong></span></li>
+                            <li class="flex items-start gap-2.5"><i data-lucide="map-pin" class="w-4 h-4 text-[#E53E3E] shrink-0 mt-0.5"></i> <span>Google Maps Integration</span></li>
+                            <li class="flex items-start gap-2.5"><i data-lucide="mail-check" class="w-4 h-4 text-[#E53E3E] shrink-0 mt-0.5"></i> <span>Professional Form + Email Alerts</span></li>
+                            <li class="flex items-start gap-2.5"><i data-lucide="image" class="w-4 h-4 text-[#E53E3E] shrink-0 mt-0.5"></i> <span>Portfolio & Photo Gallery</span></li>
+                            <li class="flex items-start gap-2.5"><i data-lucide="newspaper" class="w-4 h-4 text-[#E53E3E] shrink-0 mt-0.5"></i> <span>Blog / News Engine Included</span></li>
+                            <li class="flex items-start gap-2.5"><i data-lucide="search-check" class="w-4 h-4 text-[#E53E3E] shrink-0 mt-0.5"></i> <span>Advanced On-Page SEO Setup</span></li>
+                            <li class="flex items-start gap-2.5"><i data-lucide="bar-chart-2" class="w-4 h-4 text-[#E53E3E] shrink-0 mt-0.5"></i> <span>Google Analytics Integration</span></li>
+                            <li class="flex items-start gap-2.5"><i data-lucide="gauge" class="w-4 h-4 text-emerald-500 shrink-0 mt-0.5"></i> <span>Fast Loading Website Tuning</span></li>
+                            <li class="flex items-start gap-2.5"><i data-lucide="bell" class="w-4 h-4 text-[#E53E3E] shrink-0 mt-0.5"></i> <span>Instant Email Lead Notifications</span></li>
+                            <li class="flex items-start gap-2.5"><i data-lucide="rotate-ccw" class="w-4 h-4 text-[#E53E3E] shrink-0 mt-0.5"></i> <span>3 Free Revisions</span></li>
+                            <li class="flex items-start gap-2.5"><i data-lucide="clock" class="w-4 h-4 text-[#E53E3E] shrink-0 mt-0.5"></i> <span>15 Days Maintenance Support</span></li>
                         </ul>
                     </article>
 
-                    <!-- PRO PLUS Tier (₹9,999) -->
-                    <article class="apple-card-light reveal p-5 sm:p-6 md:p-8 flex flex-col h-full w-full group" style="transition-delay: 200ms;">
-                        <!-- Forge Logo Treatment -->
-                        <div class="flex items-center justify-between mb-3 border-b border-[#D2D2D7]/60 pb-2.5">
-                            <div class="flex items-center gap-1.5 text-[10px] font-mono text-[#86868B] uppercase font-bold tracking-wider">
-                                <span class="w-4 h-4 rounded-full border border-black/20 bg-black/5 flex items-center justify-center text-[8px] font-bold text-[#1D1D1F]">(F)</span> FORGE
+                    <!-- PREMIUM 👑 Tier (₹14,999) - VALUE FOR MONEY / GOLD ACCENT -->
+                    <article class="apple-card-gold reveal p-6 sm:p-8 flex flex-col h-full w-full relative group" style="transition-delay: 200ms;">
+                        <div class="absolute -top-3.5 left-1/2 -translate-x-1/2 bg-gradient-to-r from-[#D4AF37] via-[#FFD700] to-[#B8860B] text-black font-mono text-[10px] font-bold uppercase tracking-widest px-4 py-1 rounded-full shadow-lg whitespace-nowrap flex items-center gap-1.5">
+                            <i data-lucide="crown" class="w-3.5 h-3.5 text-black"></i> VALUE FOR MONEY 👑
+                        </div>
+                        <div class="flex items-center justify-between mb-4 border-b border-[#D4AF37]/30 pb-3 mt-2">
+                            <div class="flex items-center gap-2 text-xs font-mono text-[#D4AF37] uppercase font-bold tracking-wider">
+                                <span class="w-5 h-5 rounded-full border border-[#D4AF37]/40 bg-[#D4AF37]/15 flex items-center justify-center text-[9px] font-bold text-[#D4AF37]">(F)</span> FORGE
                             </div>
-                            <span class="text-[9px] font-mono bg-[#1D1D1F]/5 border border-[#1D1D1F]/15 px-2 py-0.5 rounded-md font-semibold text-[#86868B]">TIER 03</span>
+                            <span class="text-[10px] font-mono bg-[#D4AF37]/15 border border-[#D4AF37]/40 px-2.5 py-1 rounded-md font-bold text-[#B8860B]">ENTERPRISE AI</span>
                         </div>
-                        <div class="mb-4 sm:mb-6">
-                            <span class="text-[10px] sm:text-xs font-mono uppercase tracking-widest text-[#86868B] block mb-1">Established</span>
-                            <h3 class="text-lg sm:text-xl font-bold uppercase tracking-widest font-bubbledot text-[#1D1D1F]">PRO PLUS</h3>
-                            <p class="text-[#86868B] text-xs mt-1.5 sm:mt-2">Established businesses scaling up</p>
+                        <div class="mb-4">
+                            <span class="text-xs font-mono uppercase tracking-widest text-[#B8860B] font-bold block mb-1">Enterprise Ecosystem Plan</span>
+                            <h3 class="text-2xl font-bold uppercase tracking-widest font-bubbledot gold-text-gradient flex items-center gap-2">
+                                <i data-lucide="crown" class="w-6 h-6 text-[#D4AF37]"></i> Premium 👑
+                            </h3>
+                            <p class="text-[#86868B] text-xs mt-2">Established businesses & premium brands</p>
                         </div>
-                        <div class="mb-6 sm:mb-8 text-2xl sm:text-3xl lg:text-4xl font-bold text-[#1D1D1F] tracking-tight font-mono flex items-baseline flex-wrap gap-1">
-                            <span class="font-bold">₹9,999</span>
-                            <span class="text-[10px] sm:text-xs text-[#86868B] font-sans font-normal ml-1">/ one-time</span>
+                        <div class="mb-6 text-3xl sm:text-4xl font-bold tracking-tight font-mono flex items-baseline flex-wrap gap-1">
+                            <span class="gold-text-gradient font-black">₹14,999</span>
+                            <span class="text-xs text-[#86868B] font-sans font-normal ml-1">(One-Time)</span>
                         </div>
-                        <button type="button" class="pricingBookBtn apple-btn-secondary w-full uppercase tracking-wider mb-6 sm:mb-8 cursor-pointer group-hover:border-[#0066CC] group-hover:text-[#0066CC]">
-                            <span>Select Pro Plus</span>
+                        <button type="button" class="pricingBookBtn apple-btn-gold w-full uppercase tracking-wider mb-6 cursor-pointer shadow-lg hover:shadow-xl">
+                            <span>Select Premium 👑</span>
                             <i data-lucide="arrow-right" class="w-3.5 h-3.5 ml-1.5 transition-transform group-hover:translate-x-1"></i>
                         </button>
-                        <ul class="space-y-2.5 sm:space-y-3 border-t border-[#D2D2D7] pt-5 sm:pt-6 text-[11px] sm:text-xs text-[#1D1D1F]">
-                            <li class="flex items-start gap-2"><i data-lucide="check" class="w-3.5 h-3.5 sm:w-4 sm:h-4 mt-0.5 text-[#0066CC] shrink-0"></i> <span>8–12 Pages Advanced Architecture</span></li>
-                            <li class="flex items-start gap-2"><i data-lucide="check" class="w-3.5 h-3.5 sm:w-4 sm:h-4 mt-0.5 text-[#0066CC] shrink-0"></i> <span>Technical SEO & Dynamic Blog Engine</span></li>
-                            <li class="flex items-start gap-2"><i data-lucide="check" class="w-3.5 h-3.5 sm:w-4 sm:h-4 mt-0.5 text-[#0066CC] shrink-0"></i> <span>Basic AI Chatbot Features Enabled</span></li>
-                            <li class="flex items-start gap-2"><i data-lucide="check" class="w-3.5 h-3.5 sm:w-4 sm:h-4 mt-0.5 text-[#0066CC] shrink-0"></i> <span>30 Days / 1 Month Support</span></li>
-                            <!-- Expanded Features -->
-                            <li class="flex items-start gap-2"><i data-lucide="check" class="w-3.5 h-3.5 sm:w-4 sm:h-4 mt-0.5 text-[#0066CC] shrink-0"></i> <span>Free 1st Year Domain + DNS Setup</span></li>
-                            <li class="flex items-start gap-2"><i data-lucide="check" class="w-3.5 h-3.5 sm:w-4 sm:h-4 mt-0.5 text-[#0066CC] shrink-0"></i> <span>Unlimited Content Revision Engine</span></li>
-                            <li class="flex items-start gap-2"><i data-lucide="check" class="w-3.5 h-3.5 sm:w-4 sm:h-4 mt-0.5 text-[#0066CC] shrink-0"></i> <span>Schema.org Microdata & OpenGraph</span></li>
-                            <li class="flex items-start gap-2"><i data-lucide="check" class="w-3.5 h-3.5 sm:w-4 sm:h-4 mt-0.5 text-[#0066CC] shrink-0"></i> <span>Core Web Vitals 95+ Performance Audit</span></li>
+                        <ul class="space-y-3 border-t border-[#D4AF37]/30 pt-6 text-xs text-[#1D1D1F] flex-1">
+                            <li class="flex items-start gap-2.5"><i data-lucide="infinity" class="w-4 h-4 text-[#D4AF37] shrink-0 mt-0.5"></i> <span><strong>Unlimited Pages</strong> Custom Architecture</span></li>
+                            <li class="flex items-start gap-2.5"><i data-lucide="wand2" class="w-4 h-4 text-[#D4AF37] shrink-0 mt-0.5"></i> <span>100% Custom Premium Tailored Design</span></li>
+                            <li class="flex items-start gap-2.5"><i data-lucide="bot" class="w-4 h-4 text-[#D4AF37] shrink-0 mt-0.5"></i> <span><strong>✅ Autonomous AI Chatbot Integrated</strong></span></li>
+                            <li class="flex items-start gap-2.5"><i data-lucide="globe" class="w-4 h-4 text-emerald-600 shrink-0 mt-0.5"></i> <span><strong>Free Custom Domain (1st Year)</strong></span></li>
+                            <li class="flex items-start gap-2.5"><i data-lucide="shield-check" class="w-4 h-4 text-emerald-600 shrink-0 mt-0.5"></i> <span>Enterprise SSL & Premium Hosting Setup</span></li>
+                            <li class="flex items-start gap-2.5"><i data-lucide="search-code" class="w-4 h-4 text-[#D4AF37] shrink-0 mt-0.5"></i> <span>Advanced SEO + Technical Schema.org</span></li>
+                            <li class="flex items-start gap-2.5"><i data-lucide="zap" class="w-4 h-4 text-amber-500 shrink-0 mt-0.5"></i> <span>Maximum Speed & Core Web Vitals Optimization</span></li>
+                            <li class="flex items-start gap-2.5"><i data-lucide="filter" class="w-4 h-4 text-[#D4AF37] shrink-0 mt-0.5"></i> <span>Advanced Lead Capture System & Pipeline</span></li>
+                            <li class="flex items-start gap-2.5"><i data-lucide="sparkles" class="w-4 h-4 text-[#D4AF37] shrink-0 mt-0.5"></i> <span>Premium Animations & Interactive Effects</span></li>
+                            <li class="flex items-start gap-2.5"><i data-lucide="user-check" class="w-4 h-4 text-[#D4AF37] shrink-0 mt-0.5"></i> <span>Complete Content Upload Assistance</span></li>
+                            <li class="flex items-start gap-2.5"><i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-600 shrink-0 mt-0.5"></i> <span><strong>Unlimited Revisions</strong></span></li>
+                            <li class="flex items-start gap-2.5"><i data-lucide="headphones" class="w-4 h-4 text-[#D4AF37] shrink-0 mt-0.5"></i> <span><strong>30 Days Priority Dedicated Support</strong></span></li>
+                            <li class="flex items-start gap-2.5"><i data-lucide="award" class="w-4 h-4 text-[#D4AF37] shrink-0 mt-0.5"></i> <span>Highest Delivery Priority</span></li>
                         </ul>
                     </article>
 
-                    <!-- PREMIUM Tier (₹14,999) -->
-                    <article class="apple-card-light reveal p-5 sm:p-6 md:p-8 flex flex-col h-full w-full group" style="transition-delay: 300ms;">
-                        <!-- Forge Logo Treatment -->
-                        <div class="flex items-center justify-between mb-3 border-b border-[#D2D2D7]/60 pb-2.5">
-                            <div class="flex items-center gap-1.5 text-[10px] font-mono text-[#0066CC] uppercase font-bold tracking-wider">
-                                <span class="w-4 h-4 rounded-full border border-[#0066CC]/30 bg-[#0066CC]/10 flex items-center justify-center text-[8px] font-bold text-[#0066CC]">(F)</span> FORGE
-                            </div>
-                            <span class="text-[9px] font-mono bg-[#0066CC]/10 border border-[#0066CC]/30 px-2 py-0.5 rounded-md font-bold text-[#0066CC]">ENTERPRISE</span>
-                        </div>
-                        <div class="mb-4 sm:mb-6">
-                            <span class="text-[10px] sm:text-xs font-mono uppercase tracking-widest text-[#0066CC] block mb-1">Enterprise</span>
-                            <h3 class="text-lg sm:text-xl font-bold uppercase tracking-widest font-bubbledot text-[#1D1D1F]">PREMIUM</h3>
-                            <p class="text-[#86868B] text-xs mt-1.5 sm:mt-2">Large businesses requiring AI</p>
-                        </div>
-                        <div class="mb-6 sm:mb-8 text-2xl sm:text-3xl lg:text-4xl font-bold text-[#1D1D1F] tracking-tight font-mono flex items-baseline flex-wrap gap-1">
-                            <span class="font-bold">₹14,999</span>
-                            <span class="text-[10px] sm:text-xs text-[#86868B] font-sans font-normal ml-1">/ one-time</span>
-                        </div>
-                        <button type="button" class="pricingBookBtn apple-btn-secondary w-full uppercase tracking-wider mb-6 sm:mb-8 cursor-pointer group-hover:border-[#0066CC] group-hover:text-[#0066CC]">
-                            <span>Select Premium</span>
-                            <i data-lucide="arrow-right" class="w-3.5 h-3.5 ml-1.5 transition-transform group-hover:translate-x-1"></i>
-                        </button>
-                        <ul class="space-y-2.5 sm:space-y-3 border-t border-[#D2D2D7] pt-5 sm:pt-6 text-[11px] sm:text-xs text-[#1D1D1F]">
-                            <li class="flex items-start gap-2"><i data-lucide="check" class="w-3.5 h-3.5 sm:w-4 sm:h-4 mt-0.5 text-[#0066CC] shrink-0"></i> <span>12–20 Premium Ecosystem Pages</span></li>
-                            <li class="flex items-start gap-2"><i data-lucide="check" class="w-3.5 h-3.5 sm:w-4 sm:h-4 mt-0.5 text-[#0066CC] shrink-0"></i> <span>Autonomous AI Agent & Bot Integration</span></li>
-                            <li class="flex items-start gap-2"><i data-lucide="check" class="w-3.5 h-3.5 sm:w-4 sm:h-4 mt-0.5 text-[#0066CC] shrink-0"></i> <span>Custom CRM & API Infrastructure</span></li>
-                            <li class="flex items-start gap-2"><i data-lucide="check" class="w-3.5 h-3.5 sm:w-4 sm:h-4 mt-0.5 text-[#0066CC] shrink-0"></i> <span>45 Days Dedicated Priority Support</span></li>
-                            <!-- Explicitly Required Items -->
-                            <li class="flex items-start gap-2"><i data-lucide="check" class="w-3.5 h-3.5 sm:w-4 sm:h-4 mt-0.5 text-[#0066CC] shrink-0"></i> <span>Free 1st Year Managed Custom Domain</span></li>
-                            <li class="flex items-start gap-2"><i data-lucide="check" class="w-3.5 h-3.5 sm:w-4 sm:h-4 mt-0.5 text-[#0066CC] shrink-0"></i> <span>7-Day Technical Refund Guarantee</span></li>
-                            <!-- Expanded Features -->
-                            <li class="flex items-start gap-2"><i data-lucide="check" class="w-3.5 h-3.5 sm:w-4 sm:h-4 mt-0.5 text-[#0066CC] shrink-0"></i> <span>Unlimited Design Revisions</span></li>
-                            <li class="flex items-start gap-2"><i data-lucide="check" class="w-3.5 h-3.5 sm:w-4 sm:h-4 mt-0.5 text-[#0066CC] shrink-0"></i> <span>Dedicated Account Manager & Meetings</span></li>
-                        </ul>
-                    </article>
                 </div>
 
-                <!-- Complete Feature Comparison Table -->
+                <!-- Complete Feature Comparison Table (Full List of 27 Parameters) -->
                 <div class="w-full bg-white rounded-2xl sm:rounded-3xl p-3 sm:p-6 md:p-8 reveal border border-[#D2D2D7] shadow-sm relative mb-16 sm:mb-8">
                     <div class="flex flex-col sm:flex-row items-center justify-between gap-3 mb-4 sm:mb-6 px-1">
                         <div>
-                            <h3 class="text-base sm:text-xl font-bold font-bubbledot uppercase tracking-widest text-[#1D1D1F] text-center sm:text-left">
-                                Complete Feature Comparison Matrix</h3>
+                            <h3 class="text-base sm:text-xl font-bold font-bubbledot uppercase tracking-widest text-[#1D1D1F] text-center sm:text-left flex items-center justify-center sm:justify-start gap-2">
+                                <i data-lucide="table" class="w-5 h-5 text-[#0066CC]"></i> Complete Feature Comparison Matrix
+                            </h3>
                             <p class="text-[11px] sm:text-xs font-mono text-[#86868B] mt-0.5 text-center sm:text-left">
                                 Fixed Feature Column &bull; Swipe Plan Columns Horizontally
                             </p>
                         </div>
                         <div class="text-[10px] sm:text-xs font-mono text-[#0066CC] flex items-center gap-1.5 bg-[#0066CC]/10 border border-[#0066CC]/20 px-3 py-1.5 rounded-full shrink-0 font-semibold">
-                            <i data-lucide="arrow-left-right" class="w-3.5 h-3.5 text-[#0066CC]"></i> Swipe / Scroll Horizontally
+                            <i data-lucide="arrow-left-right" class="w-3.5 h-3.5 text-[#0066CC]"></i> Swipe Horizontally
                         </div>
                     </div>
 
                     <!-- Scroll Wrapper for Matrix -->
                     <div class="table-scroll-container w-full overflow-x-auto overscroll-x-contain touch-pan-x custom-scrollbar pb-6 rounded-xl border border-[#D2D2D7]/80 bg-[#FFFFFF]">
-                        <table class="pricing-matrix-table w-full text-left font-mono text-[11px] sm:text-xs text-[#1D1D1F] min-w-[620px] sm:min-w-[720px]">
+                        <table class="pricing-matrix-table w-full text-left font-mono text-[11px] sm:text-xs text-[#1D1D1F] min-w-[680px] sm:min-w-[780px]">
                             <thead>
                                 <tr class="border-b border-[#D2D2D7] bg-[#F5F5F7]">
-                                    <th scope="col" class="py-3 sm:py-4 px-2 sm:px-4 font-bold text-xs sm:text-sm text-[#1D1D1F] sticky left-0 z-30 bg-[#F5F5F7] border-r-2 border-[#D2D2D7] shadow-[3px_0_8px_-2px_rgba(0,0,0,0.08)] min-w-[125px] w-[125px] sm:min-w-[180px] sm:w-[180px]">
+                                    <th scope="col" class="py-3.5 sm:py-4 px-3 sm:px-4 font-bold text-xs sm:text-sm text-[#1D1D1F] sticky left-0 z-30 bg-[#F5F5F7] border-r-2 border-[#D2D2D7] shadow-[3px_0_8px_-2px_rgba(0,0,0,0.08)] min-w-[140px] w-[140px] sm:min-w-[200px] sm:w-[200px]">
                                         Feature
                                     </th>
-                                    <th scope="col" class="py-3 sm:py-4 px-2 sm:px-3 text-center min-w-[115px] sm:min-w-[150px]">
-                                        <span class="font-bold text-xs sm:text-sm text-[#1D1D1F]">STARTER</span><br>
-                                        <span class="text-[#0066CC] font-bold text-xs sm:text-sm">₹1,999</span>
+                                    <th scope="col" class="py-3.5 sm:py-4 px-2 sm:px-3 text-center min-w-[130px] sm:min-w-[170px]">
+                                        <div class="flex flex-col items-center">
+                                            <span class="font-bold text-xs sm:text-sm text-[#1D1D1F]">Basic</span>
+                                            <span class="text-[#0066CC] font-bold text-xs sm:text-sm">₹1,999</span>
+                                        </div>
                                     </th>
-                                    <th scope="col" class="py-3 sm:py-4 px-2 sm:px-3 text-center bg-[#0066CC]/5 text-[#0066CC] min-w-[125px] sm:min-w-[160px] border-x border-[#0066CC]/20">
-                                        <span class="font-bold text-xs sm:text-sm text-[#0066CC]">PROFESSIONAL</span><br>
-                                        <span class="text-[#1D1D1F] font-bold text-xs sm:text-sm">₹7,999</span>
+                                    <th scope="col" class="py-3.5 sm:py-4 px-2 sm:px-3 text-center bg-red-50/60 text-[#E53E3E] min-w-[140px] sm:min-w-[180px] border-x-2 border-[#E53E3E]/30">
+                                        <div class="flex flex-col items-center">
+                                            <span class="font-bold text-xs sm:text-sm text-[#E53E3E] flex items-center gap-1">Pro ⭐</span>
+                                            <span class="text-[9px] bg-[#E53E3E] text-white px-2 py-0.5 rounded-full font-sans uppercase font-bold my-0.5">Best Selling</span>
+                                            <span class="text-[#E53E3E] font-bold text-xs sm:text-sm">₹7,999</span>
+                                        </div>
                                     </th>
-                                    <th scope="col" class="py-3 sm:py-4 px-2 sm:px-3 text-center min-w-[115px] sm:min-w-[150px]">
-                                        <span class="font-bold text-xs sm:text-sm text-[#1D1D1F]">PRO PLUS</span><br>
-                                        <span class="text-[#0066CC] font-bold text-xs sm:text-sm">₹9,999</span>
-                                    </th>
-                                    <th scope="col" class="py-3 sm:py-4 px-2 sm:px-3 text-center min-w-[115px] sm:min-w-[150px]">
-                                        <span class="font-bold text-xs sm:text-sm text-[#1D1D1F]">PREMIUM</span><br>
-                                        <span class="text-[#0066CC] font-bold text-xs sm:text-sm">₹14,999</span>
+                                    <th scope="col" class="py-3.5 sm:py-4 px-2 sm:px-3 text-center bg-amber-50/60 min-w-[140px] sm:min-w-[180px] border-r border-amber-200">
+                                        <div class="flex flex-col items-center">
+                                            <span class="font-bold text-xs sm:text-sm gold-text-gradient flex items-center gap-1">Premium 👑</span>
+                                            <span class="text-[9px] bg-gradient-to-r from-[#D4AF37] to-[#B8860B] text-black px-2 py-0.5 rounded-full font-sans uppercase font-bold my-0.5">Value for Money</span>
+                                            <span class="gold-text-gradient font-extrabold text-xs sm:text-sm">₹14,999</span>
+                                        </div>
                                     </th>
                                 </tr>
                             </thead>
                             <tbody class="divide-y divide-[#D2D2D7] bg-white text-[#1D1D1F]">
                                 <tr>
-                                    <th scope="row" class="py-2.5 sm:py-3 px-2 sm:px-4 font-bold text-[#1D1D1F] sticky left-0 z-20 bg-white border-r-2 border-[#D2D2D7] shadow-[3px_0_8px_-2px_rgba(0,0,0,0.06)] leading-snug whitespace-normal break-words min-w-[125px] w-[125px] sm:min-w-[180px] sm:w-[180px] text-left">
-                                        Best for
+                                    <th scope="row" class="py-3 px-3 sm:px-4 font-bold text-[#1D1D1F] sticky left-0 z-20 bg-white border-r-2 border-[#D2D2D7] shadow-[3px_0_8px_-2px_rgba(0,0,0,0.06)] leading-snug whitespace-normal break-words min-w-[140px] w-[140px] sm:min-w-[200px] sm:w-[200px] text-left">
+                                        <span class="flex items-center gap-1.5"><i data-lucide="target" class="w-3.5 h-3.5 text-[#0066CC]"></i> Best For</span>
                                     </th>
-                                    <td class="py-2.5 sm:py-3 px-2 sm:px-3 text-center text-[#86868B] whitespace-normal break-words leading-snug">Small / Starter biz</td>
-                                    <td class="py-2.5 sm:py-3 px-2 sm:px-3 text-center bg-[#0066CC]/5 border-x border-[#0066CC]/20 font-semibold text-[#1D1D1F] whitespace-normal break-words leading-snug">Growing biz</td>
-                                    <td class="py-2.5 sm:py-3 px-2 sm:px-3 text-center text-[#86868B] whitespace-normal break-words leading-snug">Established biz</td>
-                                    <td class="py-2.5 sm:py-3 px-2 sm:px-3 text-center text-[#86868B] whitespace-normal break-words leading-snug">Large enterprise</td>
+                                    <td class="py-3 px-2 sm:px-3 text-center text-[#86868B] whitespace-normal break-words leading-snug">New businesses & low budget owners</td>
+                                    <td class="py-3 px-2 sm:px-3 text-center bg-red-50/30 border-x-2 border-[#E53E3E]/30 font-semibold text-[#1D1D1F] whitespace-normal break-words leading-snug">Growing businesses & startups</td>
+                                    <td class="py-3 px-2 sm:px-3 text-center bg-amber-50/30 font-semibold text-[#B8860B] whitespace-normal break-words leading-snug">Established businesses & premium brands</td>
                                 </tr>
                                 <tr>
-                                    <th scope="row" class="py-2.5 sm:py-3 px-2 sm:px-4 font-bold text-[#1D1D1F] sticky left-0 z-20 bg-white border-r-2 border-[#D2D2D7] shadow-[3px_0_8px_-2px_rgba(0,0,0,0.06)] leading-snug whitespace-normal break-words min-w-[125px] w-[125px] sm:min-w-[180px] sm:w-[180px] text-left">
-                                        Website Type
+                                    <th scope="row" class="py-3 px-3 sm:px-4 font-bold text-[#1D1D1F] sticky left-0 z-20 bg-white border-r-2 border-[#D2D2D7] shadow-[3px_0_8px_-2px_rgba(0,0,0,0.06)] leading-snug whitespace-normal break-words min-w-[140px] w-[140px] sm:min-w-[200px] sm:w-[200px] text-left">
+                                        <span class="flex items-center gap-1.5"><i data-lucide="tag" class="w-3.5 h-3.5 text-[#0066CC]"></i> Price</span>
                                     </th>
-                                    <td class="py-2.5 sm:py-3 px-2 sm:px-3 text-center whitespace-normal break-words leading-snug">Basic Site</td>
-                                    <td class="py-2.5 sm:py-3 px-2 sm:px-3 text-center bg-[#0066CC]/5 border-x border-[#0066CC]/20 font-semibold text-[#0066CC] whitespace-normal break-words leading-snug">Professional</td>
-                                    <td class="py-2.5 sm:py-3 px-2 sm:px-3 text-center whitespace-normal break-words leading-snug">Advanced</td>
-                                    <td class="py-2.5 sm:py-3 px-2 sm:px-3 text-center whitespace-normal break-words leading-snug">Premium Enterprise</td>
+                                    <td class="py-3 px-2 sm:px-3 text-center font-bold text-[#1D1D1F]">₹1,999 (One-Time)</td>
+                                    <td class="py-3 px-2 sm:px-3 text-center bg-red-50/30 border-x-2 border-[#E53E3E]/30 font-bold text-[#E53E3E]">₹7,999 (One-Time)</td>
+                                    <td class="py-3 px-2 sm:px-3 text-center bg-amber-50/30 font-extrabold gold-text-gradient">₹14,999 (One-Time)</td>
                                 </tr>
                                 <tr>
-                                    <th scope="row" class="py-2.5 sm:py-3 px-2 sm:px-4 font-bold text-[#1D1D1F] sticky left-0 z-20 bg-white border-r-2 border-[#D2D2D7] shadow-[3px_0_8px_-2px_rgba(0,0,0,0.06)] leading-snug whitespace-normal break-words min-w-[125px] w-[125px] sm:min-w-[180px] sm:w-[180px] text-left">
-                                        Pages Included
+                                    <th scope="row" class="py-3 px-3 sm:px-4 font-bold text-[#1D1D1F] sticky left-0 z-20 bg-white border-r-2 border-[#D2D2D7] shadow-[3px_0_8px_-2px_rgba(0,0,0,0.06)] leading-snug whitespace-normal break-words min-w-[140px] w-[140px] sm:min-w-[200px] sm:w-[200px] text-left">
+                                        <span class="flex items-center gap-1.5"><i data-lucide="files" class="w-3.5 h-3.5 text-[#0066CC]"></i> Website Pages</span>
                                     </th>
-                                    <td class="py-2.5 sm:py-3 px-2 sm:px-3 text-center whitespace-normal break-words leading-snug">1–3</td>
-                                    <td class="py-2.5 sm:py-3 px-2 sm:px-3 text-center bg-[#0066CC]/5 border-x border-[#0066CC]/20 font-semibold text-[#1D1D1F] whitespace-normal break-words leading-snug">5–7</td>
-                                    <td class="py-2.5 sm:py-3 px-2 sm:px-3 text-center whitespace-normal break-words leading-snug">8–12</td>
-                                    <td class="py-2.5 sm:py-3 px-2 sm:px-3 text-center whitespace-normal break-words leading-snug">12–20</td>
+                                    <td class="py-3 px-2 sm:px-3 text-center">1–3 Pages</td>
+                                    <td class="py-3 px-2 sm:px-3 text-center bg-red-50/30 border-x-2 border-[#E53E3E]/30 font-semibold text-[#E53E3E]">Up to 8 Pages</td>
+                                    <td class="py-3 px-2 sm:px-3 text-center bg-amber-50/30 font-bold text-[#D4AF37]">Unlimited Pages</td>
                                 </tr>
                                 <tr>
-                                    <th scope="row" class="py-2.5 sm:py-3 px-2 sm:px-4 font-bold text-[#1D1D1F] sticky left-0 z-20 bg-white border-r-2 border-[#D2D2D7] shadow-[3px_0_8px_-2px_rgba(0,0,0,0.06)] leading-snug whitespace-normal break-words min-w-[125px] w-[125px] sm:min-w-[180px] sm:w-[180px] text-left">
-                                        Mobile Responsive
+                                    <th scope="row" class="py-3 px-3 sm:px-4 font-bold text-[#1D1D1F] sticky left-0 z-20 bg-white border-r-2 border-[#D2D2D7] shadow-[3px_0_8px_-2px_rgba(0,0,0,0.06)] leading-snug whitespace-normal break-words min-w-[140px] w-[140px] sm:min-w-[200px] sm:w-[200px] text-left">
+                                        <span class="flex items-center gap-1.5"><i data-lucide="layout" class="w-3.5 h-3.5 text-[#0066CC]"></i> Website Design</span>
                                     </th>
-                                    <td class="py-2.5 sm:py-3 px-2 sm:px-3 text-center text-red-500 font-bold whitespace-normal break-words leading-snug">✕ (Basic Only)</td>
-                                    <td class="py-2.5 sm:py-3 px-2 sm:px-3 text-center bg-[#0066CC]/5 border-x border-[#0066CC]/20 text-[#0066CC] font-bold whitespace-normal break-words leading-snug">✓ Included</td>
-                                    <td class="py-2.5 sm:py-3 px-2 sm:px-3 text-center text-[#0066CC] font-bold whitespace-normal break-words leading-snug">✓ Included</td>
-                                    <td class="py-2.5 sm:py-3 px-2 sm:px-3 text-center text-[#0066CC] font-bold whitespace-normal break-words leading-snug">✓ Included</td>
+                                    <td class="py-3 px-2 sm:px-3 text-center text-[#86868B]">Simple Business Design</td>
+                                    <td class="py-3 px-2 sm:px-3 text-center bg-red-50/30 border-x-2 border-[#E53E3E]/30 font-semibold text-[#1D1D1F]">Modern Professional Design</td>
+                                    <td class="py-3 px-2 sm:px-3 text-center bg-amber-50/30 font-bold text-[#B8860B]">100% Custom Premium Design</td>
                                 </tr>
                                 <tr>
-                                    <th scope="row" class="py-2.5 sm:py-3 px-2 sm:px-4 font-bold text-[#1D1D1F] sticky left-0 z-20 bg-white border-r-2 border-[#D2D2D7] shadow-[3px_0_8px_-2px_rgba(0,0,0,0.06)] leading-snug whitespace-normal break-words min-w-[125px] w-[125px] sm:min-w-[180px] sm:w-[180px] text-left">
-                                        Custom Design
+                                    <th scope="row" class="py-3 px-3 sm:px-4 font-bold text-[#1D1D1F] sticky left-0 z-20 bg-white border-r-2 border-[#D2D2D7] shadow-[3px_0_8px_-2px_rgba(0,0,0,0.06)] leading-snug whitespace-normal break-words min-w-[140px] w-[140px] sm:min-w-[200px] sm:w-[200px] text-left">
+                                        <span class="flex items-center gap-1.5"><i data-lucide="pen-tool" class="w-3.5 h-3.5 text-[#0066CC]"></i> Custom Design</span>
                                     </th>
-                                    <td class="py-2.5 sm:py-3 px-2 sm:px-3 text-center opacity-40 whitespace-normal break-words leading-snug">—</td>
-                                    <td class="py-2.5 sm:py-3 px-2 sm:px-3 text-center bg-[#0066CC]/5 border-x border-[#0066CC]/20 text-red-500 font-semibold whitespace-normal break-words leading-snug">✕ (Standard Temp)</td>
-                                    <td class="py-2.5 sm:py-3 px-2 sm:px-3 text-center text-[#0066CC] font-bold whitespace-normal break-words leading-snug">✓ Included</td>
-                                    <td class="py-2.5 sm:py-3 px-2 sm:px-3 text-center text-[#0066CC] font-bold whitespace-normal break-words leading-snug">✓ Premium Tailored</td>
+                                    <td class="py-3 px-2 sm:px-3 text-center text-red-500 font-bold">❌</td>
+                                    <td class="py-3 px-2 sm:px-3 text-center bg-red-50/30 border-x-2 border-[#E53E3E]/30 font-semibold text-[#1D1D1F]">Basic Custom Design</td>
+                                    <td class="py-3 px-2 sm:px-3 text-center bg-amber-50/30 text-emerald-600 font-bold">✅ Fully Custom Design</td>
                                 </tr>
                                 <tr>
-                                    <th scope="row" class="py-2.5 sm:py-3 px-2 sm:px-4 font-bold text-[#1D1D1F] sticky left-0 z-20 bg-white border-r-2 border-[#D2D2D7] shadow-[3px_0_8px_-2px_rgba(0,0,0,0.06)] leading-snug whitespace-normal break-words min-w-[125px] w-[125px] sm:min-w-[180px] sm:w-[180px] text-left">
-                                        Free Domain (1st Year)
+                                    <th scope="row" class="py-3 px-3 sm:px-4 font-bold text-[#1D1D1F] sticky left-0 z-20 bg-white border-r-2 border-[#D2D2D7] shadow-[3px_0_8px_-2px_rgba(0,0,0,0.06)] leading-snug whitespace-normal break-words min-w-[140px] w-[140px] sm:min-w-[200px] sm:w-[200px] text-left">
+                                        <span class="flex items-center gap-1.5"><i data-lucide="smartphone" class="w-3.5 h-3.5 text-[#0066CC]"></i> Mobile Responsive</span>
                                     </th>
-                                    <td class="py-2.5 sm:py-3 px-2 sm:px-3 text-center text-[#86868B] whitespace-normal break-words leading-snug">Add-on</td>
-                                    <td class="py-2.5 sm:py-3 px-2 sm:px-3 text-center bg-[#0066CC]/5 border-x border-[#0066CC]/20 text-[#0066CC] font-bold whitespace-normal break-words leading-snug">✓ Included</td>
-                                    <td class="py-2.5 sm:py-3 px-2 sm:px-3 text-center text-[#0066CC] font-bold whitespace-normal break-words leading-snug">✓ Included</td>
-                                    <td class="py-2.5 sm:py-3 px-2 sm:px-3 text-center text-[#0066CC] font-bold whitespace-normal break-words leading-snug">✓ Included + Managed</td>
+                                    <td class="py-3 px-2 sm:px-3 text-center text-red-500 font-bold">❌</td>
+                                    <td class="py-3 px-2 sm:px-3 text-center bg-red-50/30 border-x-2 border-[#E53E3E]/30 text-emerald-600 font-bold">✅ Mobile Responsive</td>
+                                    <td class="py-3 px-2 sm:px-3 text-center bg-amber-50/30 text-emerald-600 font-bold">✅ Fully Responsive</td>
                                 </tr>
                                 <tr>
-                                    <th scope="row" class="py-2.5 sm:py-3 px-2 sm:px-4 font-bold text-[#1D1D1F] sticky left-0 z-20 bg-white border-r-2 border-[#D2D2D7] shadow-[3px_0_8px_-2px_rgba(0,0,0,0.06)] leading-snug whitespace-normal break-words min-w-[125px] w-[125px] sm:min-w-[180px] sm:w-[180px] text-left">
-                                        Refund Availability
+                                    <th scope="row" class="py-3 px-3 sm:px-4 font-bold text-[#1D1D1F] sticky left-0 z-20 bg-white border-r-2 border-[#D2D2D7] shadow-[3px_0_8px_-2px_rgba(0,0,0,0.06)] leading-snug whitespace-normal break-words min-w-[140px] w-[140px] sm:min-w-[200px] sm:w-[200px] text-left">
+                                        <span class="flex items-center gap-1.5"><i data-lucide="tablet" class="w-3.5 h-3.5 text-[#0066CC]"></i> Tablet Responsive</span>
                                     </th>
-                                    <td class="py-2.5 sm:py-3 px-2 sm:px-3 text-center text-[#86868B] whitespace-normal break-words leading-snug">Pre-Start Only</td>
-                                    <td class="py-2.5 sm:py-3 px-2 sm:px-3 text-center bg-[#0066CC]/5 border-x border-[#0066CC]/20 text-[#86868B] whitespace-normal break-words leading-snug">Pre-Start Only</td>
-                                    <td class="py-2.5 sm:py-3 px-2 sm:px-3 text-center text-[#86868B] whitespace-normal break-words leading-snug">Pre-Start Only</td>
-                                    <td class="py-2.5 sm:py-3 px-2 sm:px-3 text-center text-[#0066CC] font-bold whitespace-normal break-words leading-snug">✓ 7-Day Guarantee</td>
+                                    <td class="py-3 px-2 sm:px-3 text-center text-red-500 font-bold">❌</td>
+                                    <td class="py-3 px-2 sm:px-3 text-center bg-red-50/30 border-x-2 border-[#E53E3E]/30 font-semibold text-[#1D1D1F]">Basic Tablet Support</td>
+                                    <td class="py-3 px-2 sm:px-3 text-center bg-amber-50/30 text-emerald-600 font-bold">Full Tablet Responsive</td>
                                 </tr>
                                 <tr>
-                                    <th scope="row" class="py-2.5 sm:py-3 px-2 sm:px-4 font-bold text-[#1D1D1F] sticky left-0 z-20 bg-white border-r-2 border-[#D2D2D7] shadow-[3px_0_8px_-2px_rgba(0,0,0,0.06)] leading-snug whitespace-normal break-words min-w-[125px] w-[125px] sm:min-w-[180px] sm:w-[180px] text-left">
-                                        SEO Capabilities
+                                    <th scope="row" class="py-3 px-3 sm:px-4 font-bold text-[#1D1D1F] sticky left-0 z-20 bg-white border-r-2 border-[#D2D2D7] shadow-[3px_0_8px_-2px_rgba(0,0,0,0.06)] leading-snug whitespace-normal break-words min-w-[140px] w-[140px] sm:min-w-[200px] sm:w-[200px] text-left">
+                                        <span class="flex items-center gap-1.5"><i data-lucide="monitor" class="w-3.5 h-3.5 text-[#0066CC]"></i> Desktop Responsive</span>
                                     </th>
-                                    <td class="py-2.5 sm:py-3 px-2 sm:px-3 text-center whitespace-normal break-words leading-snug">Basic Meta Tags</td>
-                                    <td class="py-2.5 sm:py-3 px-2 sm:px-3 text-center bg-[#0066CC]/5 border-x border-[#0066CC]/20 text-[#0066CC] font-semibold whitespace-normal break-words leading-snug">Advanced On-Page</td>
-                                    <td class="py-2.5 sm:py-3 px-2 sm:px-3 text-center whitespace-normal break-words leading-snug">Technical + Schema</td>
-                                    <td class="py-2.5 sm:py-3 px-2 sm:px-3 text-center whitespace-normal break-words leading-snug">Full Enterprise SEO</td>
+                                    <td class="py-3 px-2 sm:px-3 text-center text-red-500 font-bold">❌</td>
+                                    <td class="py-3 px-2 sm:px-3 text-center bg-red-50/30 border-x-2 border-[#E53E3E]/30 font-semibold text-[#1D1D1F]">Basic Desktop Support</td>
+                                    <td class="py-3 px-2 sm:px-3 text-center bg-amber-50/30 text-emerald-600 font-bold">Full Laptop & Desktop Responsive</td>
                                 </tr>
                                 <tr>
-                                    <th scope="row" class="py-2.5 sm:py-3 px-2 sm:px-4 font-bold text-[#1D1D1F] sticky left-0 z-20 bg-white border-r-2 border-[#D2D2D7] shadow-[3px_0_8px_-2px_rgba(0,0,0,0.06)] leading-snug whitespace-normal break-words min-w-[125px] w-[125px] sm:min-w-[180px] sm:w-[180px] text-left">
-                                        SSL & Security
+                                    <th scope="row" class="py-3 px-3 sm:px-4 font-bold text-[#1D1D1F] sticky left-0 z-20 bg-white border-r-2 border-[#D2D2D7] shadow-[3px_0_8px_-2px_rgba(0,0,0,0.06)] leading-snug whitespace-normal break-words min-w-[140px] w-[140px] sm:min-w-[200px] sm:w-[200px] text-left">
+                                        <span class="flex items-center gap-1.5"><i data-lucide="message-circle" class="w-3.5 h-3.5 text-emerald-500"></i> WhatsApp Chat Button</span>
                                     </th>
-                                    <td class="py-2.5 sm:py-3 px-2 sm:px-3 text-center text-[#0066CC] font-bold whitespace-normal break-words leading-snug">✓ Standard</td>
-                                    <td class="py-2.5 sm:py-3 px-2 sm:px-3 text-center bg-[#0066CC]/5 border-x border-[#0066CC]/20 text-[#0066CC] font-bold whitespace-normal break-words leading-snug">✓ Standard</td>
-                                    <td class="py-2.5 sm:py-3 px-2 sm:px-3 text-center text-[#0066CC] font-bold whitespace-normal break-words leading-snug">✓ Enhanced SSL</td>
-                                    <td class="py-2.5 sm:py-3 px-2 sm:px-3 text-center text-[#0066CC] font-bold whitespace-normal break-words leading-snug">✓ Enterprise Grade</td>
+                                    <td class="py-3 px-2 sm:px-3 text-center text-emerald-600 font-bold">Included</td>
+                                    <td class="py-3 px-2 sm:px-3 text-center bg-red-50/30 border-x-2 border-[#E53E3E]/30 text-emerald-600 font-bold">Included</td>
+                                    <td class="py-3 px-2 sm:px-3 text-center bg-amber-50/30 text-emerald-600 font-bold">Included</td>
                                 </tr>
                                 <tr>
-                                    <th scope="row" class="py-2.5 sm:py-3 px-2 sm:px-4 font-bold text-[#1D1D1F] sticky left-0 z-20 bg-white border-r-2 border-[#D2D2D7] shadow-[3px_0_8px_-2px_rgba(0,0,0,0.06)] leading-snug whitespace-normal break-words min-w-[125px] w-[125px] sm:min-w-[180px] sm:w-[180px] text-left">
-                                        Google Analytics
+                                    <th scope="row" class="py-3 px-3 sm:px-4 font-bold text-[#1D1D1F] sticky left-0 z-20 bg-white border-r-2 border-[#D2D2D7] shadow-[3px_0_8px_-2px_rgba(0,0,0,0.06)] leading-snug whitespace-normal break-words min-w-[140px] w-[140px] sm:min-w-[200px] sm:w-[200px] text-left">
+                                        <span class="flex items-center gap-1.5"><i data-lucide="mail" class="w-3.5 h-3.5 text-[#0066CC]"></i> Contact Form</span>
                                     </th>
-                                    <td class="py-2.5 sm:py-3 px-2 sm:px-3 text-center opacity-40 whitespace-normal break-words leading-snug">—</td>
-                                    <td class="py-2.5 sm:py-3 px-2 sm:px-3 text-center bg-[#0066CC]/5 border-x border-[#0066CC]/20 text-[#0066CC] font-bold whitespace-normal break-words leading-snug">✓ Included</td>
-                                    <td class="py-2.5 sm:py-3 px-2 sm:px-3 text-center text-[#0066CC] font-bold whitespace-normal break-words leading-snug">✓ Included</td>
-                                    <td class="py-2.5 sm:py-3 px-2 sm:px-3 text-center text-[#0066CC] font-bold whitespace-normal break-words leading-snug">✓ Advanced Dashboard</td>
+                                    <td class="py-3 px-2 sm:px-3 text-center">Simple Contact Form</td>
+                                    <td class="py-3 px-2 sm:px-3 text-center bg-red-50/30 border-x-2 border-[#E53E3E]/30 font-semibold text-[#1D1D1F]">Professional Form + Email Alerts</td>
+                                    <td class="py-3 px-2 sm:px-3 text-center bg-amber-50/30 font-bold text-[#B8860B]">Premium Lead Form + Email Alerts</td>
                                 </tr>
                                 <tr>
-                                    <th scope="row" class="py-2.5 sm:py-3 px-2 sm:px-4 font-bold text-[#1D1D1F] sticky left-0 z-20 bg-white border-r-2 border-[#D2D2D7] shadow-[3px_0_8px_-2px_rgba(0,0,0,0.06)] leading-snug whitespace-normal break-words min-w-[125px] w-[125px] sm:min-w-[180px] sm:w-[180px] text-left">
-                                        Lead Capture System
+                                    <th scope="row" class="py-3 px-3 sm:px-4 font-bold text-[#1D1D1F] sticky left-0 z-20 bg-white border-r-2 border-[#D2D2D7] shadow-[3px_0_8px_-2px_rgba(0,0,0,0.06)] leading-snug whitespace-normal break-words min-w-[140px] w-[140px] sm:min-w-[200px] sm:w-[200px] text-left">
+                                        <span class="flex items-center gap-1.5"><i data-lucide="map-pin" class="w-3.5 h-3.5 text-[#0066CC]"></i> Google Maps</span>
                                     </th>
-                                    <td class="py-2.5 sm:py-3 px-2 sm:px-3 text-center whitespace-normal break-words leading-snug">Basic Form</td>
-                                    <td class="py-2.5 sm:py-3 px-2 sm:px-3 text-center bg-[#0066CC]/5 border-x border-[#0066CC]/20 text-[#0066CC] font-semibold whitespace-normal break-words leading-snug">✓ Email Alerts</td>
-                                    <td class="py-2.5 sm:py-3 px-2 sm:px-3 text-center whitespace-normal break-words leading-snug">✓ Advanced Capture</td>
-                                    <td class="py-2.5 sm:py-3 px-2 sm:px-3 text-center whitespace-normal break-words leading-snug">✓ Automated Pipeline</td>
+                                    <td class="py-3 px-2 sm:px-3 text-center text-red-500 font-bold">❌</td>
+                                    <td class="py-3 px-2 sm:px-3 text-center bg-red-50/30 border-x-2 border-[#E53E3E]/30 text-emerald-600 font-bold">Included</td>
+                                    <td class="py-3 px-2 sm:px-3 text-center bg-amber-50/30 text-emerald-600 font-bold">Included</td>
                                 </tr>
                                 <tr>
-                                    <th scope="row" class="py-2.5 sm:py-3 px-2 sm:px-4 font-bold text-[#1D1D1F] sticky left-0 z-20 bg-white border-r-2 border-[#D2D2D7] shadow-[3px_0_8px_-2px_rgba(0,0,0,0.06)] leading-snug whitespace-normal break-words min-w-[125px] w-[125px] sm:min-w-[180px] sm:w-[180px] text-left">
-                                        Revisions Allowed
+                                    <th scope="row" class="py-3 px-3 sm:px-4 font-bold text-[#1D1D1F] sticky left-0 z-20 bg-white border-r-2 border-[#D2D2D7] shadow-[3px_0_8px_-2px_rgba(0,0,0,0.06)] leading-snug whitespace-normal break-words min-w-[140px] w-[140px] sm:min-w-[200px] sm:w-[200px] text-left">
+                                        <span class="flex items-center gap-1.5"><i data-lucide="share-2" class="w-3.5 h-3.5 text-[#0066CC]"></i> Social Media Links</span>
                                     </th>
-                                    <td class="py-2.5 sm:py-3 px-2 sm:px-3 text-center whitespace-normal break-words leading-snug">1 Standard</td>
-                                    <td class="py-2.5 sm:py-3 px-2 sm:px-3 text-center bg-[#0066CC]/5 border-x border-[#0066CC]/20 text-[#1D1D1F] font-semibold whitespace-normal break-words leading-snug">3 Standard</td>
-                                    <td class="py-2.5 sm:py-3 px-2 sm:px-3 text-center whitespace-normal break-words leading-snug">Unlimited*</td>
-                                    <td class="py-2.5 sm:py-3 px-2 sm:px-3 text-center font-bold text-[#0066CC] whitespace-normal break-words leading-snug">Unlimited Dedicated</td>
+                                    <td class="py-3 px-2 sm:px-3 text-center text-emerald-600 font-bold">Included</td>
+                                    <td class="py-3 px-2 sm:px-3 text-center bg-red-50/30 border-x-2 border-[#E53E3E]/30 text-emerald-600 font-bold">Included</td>
+                                    <td class="py-3 px-2 sm:px-3 text-center bg-amber-50/30 text-emerald-600 font-bold">Included</td>
                                 </tr>
                                 <tr>
-                                    <th scope="row" class="py-2.5 sm:py-3 px-2 sm:px-4 font-bold text-[#1D1D1F] sticky left-0 z-20 bg-white border-r-2 border-[#D2D2D7] shadow-[3px_0_8px_-2px_rgba(0,0,0,0.06)] leading-snug whitespace-normal break-words min-w-[125px] w-[125px] sm:min-w-[180px] sm:w-[180px] text-left">
-                                        Blog / News Engine
+                                    <th scope="row" class="py-3 px-3 sm:px-4 font-bold text-[#1D1D1F] sticky left-0 z-20 bg-white border-r-2 border-[#D2D2D7] shadow-[3px_0_8px_-2px_rgba(0,0,0,0.06)] leading-snug whitespace-normal break-words min-w-[140px] w-[140px] sm:min-w-[200px] sm:w-[200px] text-left">
+                                        <span class="flex items-center gap-1.5"><i data-lucide="image" class="w-3.5 h-3.5 text-[#0066CC]"></i> Portfolio / Gallery</span>
                                     </th>
-                                    <td class="py-2.5 sm:py-3 px-2 sm:px-3 text-center opacity-40 whitespace-normal break-words leading-snug">—</td>
-                                    <td class="py-2.5 sm:py-3 px-2 sm:px-3 text-center bg-[#0066CC]/5 border-x border-[#0066CC]/20 opacity-40 whitespace-normal break-words leading-snug">—</td>
-                                    <td class="py-2.5 sm:py-3 px-2 sm:px-3 text-center text-[#0066CC] font-bold whitespace-normal break-words leading-snug">✓ Included</td>
-                                    <td class="py-2.5 sm:py-3 px-2 sm:px-3 text-center text-[#0066CC] font-bold whitespace-normal break-words leading-snug">✓ Advanced Dynamic</td>
+                                    <td class="py-3 px-2 sm:px-3 text-center text-red-500 font-bold">❌</td>
+                                    <td class="py-3 px-2 sm:px-3 text-center bg-red-50/30 border-x-2 border-[#E53E3E]/30 text-emerald-600 font-bold">Included</td>
+                                    <td class="py-3 px-2 sm:px-3 text-center bg-amber-50/30 font-bold text-[#B8860B]">Advanced Gallery</td>
                                 </tr>
                                 <tr>
-                                    <th scope="row" class="py-2.5 sm:py-3 px-2 sm:px-4 font-bold text-[#1D1D1F] sticky left-0 z-20 bg-white border-r-2 border-[#D2D2D7] shadow-[3px_0_8px_-2px_rgba(0,0,0,0.06)] leading-snug whitespace-normal break-words min-w-[125px] w-[125px] sm:min-w-[180px] sm:w-[180px] text-left">
-                                        AI Agents & Automation
+                                    <th scope="row" class="py-3 px-3 sm:px-4 font-bold text-[#1D1D1F] sticky left-0 z-20 bg-white border-r-2 border-[#D2D2D7] shadow-[3px_0_8px_-2px_rgba(0,0,0,0.06)] leading-snug whitespace-normal break-words min-w-[140px] w-[140px] sm:min-w-[200px] sm:w-[200px] text-left">
+                                        <span class="flex items-center gap-1.5"><i data-lucide="newspaper" class="w-3.5 h-3.5 text-[#0066CC]"></i> Blog / News Section</span>
                                     </th>
-                                    <td class="py-2.5 sm:py-3 px-2 sm:px-3 text-center opacity-40 whitespace-normal break-words leading-snug">—</td>
-                                    <td class="py-2.5 sm:py-3 px-2 sm:px-3 text-center bg-[#0066CC]/5 border-x border-[#0066CC]/20 text-[#86868B] whitespace-normal break-words leading-snug">Optional Add-on</td>
-                                    <td class="py-2.5 sm:py-3 px-2 sm:px-3 text-center text-[#0066CC] whitespace-normal break-words leading-snug">✓ Basic Integration</td>
-                                    <td class="py-2.5 sm:py-3 px-2 sm:px-3 text-center font-bold text-[#0066CC] whitespace-normal break-words leading-snug">✓ Full Custom Agent</td>
+                                    <td class="py-3 px-2 sm:px-3 text-center text-red-500 font-bold">❌</td>
+                                    <td class="py-3 px-2 sm:px-3 text-center bg-red-50/30 border-x-2 border-[#E53E3E]/30 text-emerald-600 font-bold">Included</td>
+                                    <td class="py-3 px-2 sm:px-3 text-center bg-amber-50/30 text-emerald-600 font-bold">Included</td>
                                 </tr>
                                 <tr>
-                                    <th scope="row" class="py-2.5 sm:py-3 px-2 sm:px-4 font-bold text-[#1D1D1F] sticky left-0 z-20 bg-white border-r-2 border-[#D2D2D7] shadow-[3px_0_8px_-2px_rgba(0,0,0,0.06)] leading-snug whitespace-normal break-words min-w-[125px] w-[125px] sm:min-w-[180px] sm:w-[180px] text-left">
-                                        CRM & Custom APIs
+                                    <th scope="row" class="py-3 px-3 sm:px-4 font-bold text-[#1D1D1F] sticky left-0 z-20 bg-white border-r-2 border-[#D2D2D7] shadow-[3px_0_8px_-2px_rgba(0,0,0,0.06)] leading-snug whitespace-normal break-words min-w-[140px] w-[140px] sm:min-w-[200px] sm:w-[200px] text-left">
+                                        <span class="flex items-center gap-1.5"><i data-lucide="bot" class="w-3.5 h-3.5 text-[#D4AF37]"></i> AI Chatbot</span>
                                     </th>
-                                    <td class="py-2.5 sm:py-3 px-2 sm:px-3 text-center opacity-40 whitespace-normal break-words leading-snug">—</td>
-                                    <td class="py-2.5 sm:py-3 px-2 sm:px-3 text-center bg-[#0066CC]/5 border-x border-[#0066CC]/20 opacity-40 whitespace-normal break-words leading-snug">—</td>
-                                    <td class="py-2.5 sm:py-3 px-2 sm:px-3 text-center text-[#86868B] whitespace-normal break-words leading-snug">Optional Add-on</td>
-                                    <td class="py-2.5 sm:py-3 px-2 sm:px-3 text-center text-[#0066CC] font-bold whitespace-normal break-words leading-snug">✓ Native Included</td>
+                                    <td class="py-3 px-2 sm:px-3 text-center text-red-500 font-bold">❌</td>
+                                    <td class="py-3 px-2 sm:px-3 text-center bg-red-50/30 border-x-2 border-[#E53E3E]/30 text-red-500 font-bold">❌</td>
+                                    <td class="py-3 px-2 sm:px-3 text-center bg-amber-50/30 text-emerald-600 font-bold">Included (Custom AI Agent)</td>
                                 </tr>
                                 <tr>
-                                    <th scope="row" class="py-2.5 sm:py-3 px-2 sm:px-4 font-bold text-[#1D1D1F] sticky left-0 z-20 bg-white border-r-2 border-[#D2D2D7] shadow-[3px_0_8px_-2px_rgba(0,0,0,0.06)] leading-snug whitespace-normal break-words min-w-[125px] w-[125px] sm:min-w-[180px] sm:w-[180px] text-left">
-                                        Support Duration
+                                    <th scope="row" class="py-3 px-3 sm:px-4 font-bold text-[#1D1D1F] sticky left-0 z-20 bg-white border-r-2 border-[#D2D2D7] shadow-[3px_0_8px_-2px_rgba(0,0,0,0.06)] leading-snug whitespace-normal break-words min-w-[140px] w-[140px] sm:min-w-[200px] sm:w-[200px] text-left">
+                                        <span class="flex items-center gap-1.5"><i data-lucide="search" class="w-3.5 h-3.5 text-[#0066CC]"></i> SEO Setup</span>
                                     </th>
-                                    <td class="py-2.5 sm:py-3 px-2 sm:px-3 text-center font-bold text-[#1D1D1F] whitespace-normal break-words leading-snug">3 Days</td>
-                                    <td class="py-2.5 sm:py-3 px-2 sm:px-3 text-center bg-[#0066CC]/5 border-x border-[#0066CC]/20 font-bold text-[#0066CC] whitespace-normal break-words leading-snug">15 Days</td>
-                                    <td class="py-2.5 sm:py-3 px-2 sm:px-3 text-center font-bold text-[#1D1D1F] whitespace-normal break-words leading-snug">30 Days / 1 Month</td>
-                                    <td class="py-2.5 sm:py-3 px-2 sm:px-3 text-center font-bold text-[#0066CC] whitespace-normal break-words leading-snug">45 Days Dedicated</td>
+                                    <td class="py-3 px-2 sm:px-3 text-center">Basic SEO</td>
+                                    <td class="py-3 px-2 sm:px-3 text-center bg-red-50/30 border-x-2 border-[#E53E3E]/30 font-semibold text-[#1D1D1F]">Advanced SEO</td>
+                                    <td class="py-3 px-2 sm:px-3 text-center bg-amber-50/30 font-bold text-[#B8860B]">Advanced SEO + Technical SEO</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row" class="py-3 px-3 sm:px-4 font-bold text-[#1D1D1F] sticky left-0 z-20 bg-white border-r-2 border-[#D2D2D7] shadow-[3px_0_8px_-2px_rgba(0,0,0,0.06)] leading-snug whitespace-normal break-words min-w-[140px] w-[140px] sm:min-w-[200px] sm:w-[200px] text-left">
+                                        <span class="flex items-center gap-1.5"><i data-lucide="bar-chart-3" class="w-3.5 h-3.5 text-[#0066CC]"></i> Google Analytics</span>
+                                    </th>
+                                    <td class="py-3 px-2 sm:px-3 text-center text-red-500 font-bold">❌</td>
+                                    <td class="py-3 px-2 sm:px-3 text-center bg-red-50/30 border-x-2 border-[#E53E3E]/30 text-emerald-600 font-bold">Included</td>
+                                    <td class="py-3 px-2 sm:px-3 text-center bg-amber-50/30 font-bold text-[#B8860B]">Advanced Analytics Setup</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row" class="py-3 px-3 sm:px-4 font-bold text-[#1D1D1F] sticky left-0 z-20 bg-white border-r-2 border-[#D2D2D7] shadow-[3px_0_8px_-2px_rgba(0,0,0,0.06)] leading-snug whitespace-normal break-words min-w-[140px] w-[140px] sm:min-w-[200px] sm:w-[200px] text-left">
+                                        <span class="flex items-center gap-1.5"><i data-lucide="gauge" class="w-3.5 h-3.5 text-amber-500"></i> Speed Optimization</span>
+                                    </th>
+                                    <td class="py-3 px-2 sm:px-3 text-center">Basic Speed</td>
+                                    <td class="py-3 px-2 sm:px-3 text-center bg-red-50/30 border-x-2 border-[#E53E3E]/30 font-semibold text-emerald-600">Fast Loading Website</td>
+                                    <td class="py-3 px-2 sm:px-3 text-center bg-amber-50/30 font-bold text-emerald-600">Maximum Speed Optimization</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row" class="py-3 px-3 sm:px-4 font-bold text-[#1D1D1F] sticky left-0 z-20 bg-white border-r-2 border-[#D2D2D7] shadow-[3px_0_8px_-2px_rgba(0,0,0,0.06)] leading-snug whitespace-normal break-words min-w-[140px] w-[140px] sm:min-w-[200px] sm:w-[200px] text-left">
+                                        <span class="flex items-center gap-1.5"><i data-lucide="server" class="w-3.5 h-3.5 text-[#0066CC]"></i> Hosting Setup</span>
+                                    </th>
+                                    <td class="py-3 px-2 sm:px-3 text-center">Free Deployment</td>
+                                    <td class="py-3 px-2 sm:px-3 text-center bg-red-50/30 border-x-2 border-[#E53E3E]/30 font-semibold text-[#1D1D1F]">Free Hosting Setup</td>
+                                    <td class="py-3 px-2 sm:px-3 text-center bg-amber-50/30 font-bold text-[#B8860B]">Premium Hosting Setup</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row" class="py-3 px-3 sm:px-4 font-bold text-[#1D1D1F] sticky left-0 z-20 bg-white border-r-2 border-[#D2D2D7] shadow-[3px_0_8px_-2px_rgba(0,0,0,0.06)] leading-snug whitespace-normal break-words min-w-[140px] w-[140px] sm:min-w-[200px] sm:w-[200px] text-left">
+                                        <span class="flex items-center gap-1.5"><i data-lucide="globe" class="w-3.5 h-3.5 text-[#0066CC]"></i> Free Domain (1st Year)</span>
+                                    </th>
+                                    <td class="py-3 px-2 sm:px-3 text-center text-red-500 font-bold">❌ Not Included</td>
+                                    <td class="py-3 px-2 sm:px-3 text-center bg-red-50/30 border-x-2 border-[#E53E3E]/30 text-red-500 font-bold">❌ Not Included</td>
+                                    <td class="py-3 px-2 sm:px-3 text-center bg-amber-50/30 text-emerald-600 font-bold">Included (1st Year)</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row" class="py-3 px-3 sm:px-4 font-bold text-[#1D1D1F] sticky left-0 z-20 bg-white border-r-2 border-[#D2D2D7] shadow-[3px_0_8px_-2px_rgba(0,0,0,0.06)] leading-snug whitespace-normal break-words min-w-[140px] w-[140px] sm:min-w-[200px] sm:w-[200px] text-left">
+                                        <span class="flex items-center gap-1.5"><i data-lucide="bell" class="w-3.5 h-3.5 text-[#0066CC]"></i> Email Notifications</span>
+                                    </th>
+                                    <td class="py-3 px-2 sm:px-3 text-center text-red-500 font-bold">❌</td>
+                                    <td class="py-3 px-2 sm:px-3 text-center bg-red-50/30 border-x-2 border-[#E53E3E]/30 text-emerald-600 font-bold">Included</td>
+                                    <td class="py-3 px-2 sm:px-3 text-center bg-amber-50/30 text-emerald-600 font-bold">Included</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row" class="py-3 px-3 sm:px-4 font-bold text-[#1D1D1F] sticky left-0 z-20 bg-white border-r-2 border-[#D2D2D7] shadow-[3px_0_8px_-2px_rgba(0,0,0,0.06)] leading-snug whitespace-normal break-words min-w-[140px] w-[140px] sm:min-w-[200px] sm:w-[200px] text-left">
+                                        <span class="flex items-center gap-1.5"><i data-lucide="filter" class="w-3.5 h-3.5 text-[#0066CC]"></i> Lead Capture System</span>
+                                    </th>
+                                    <td class="py-3 px-2 sm:px-3 text-center">Basic Contact Form</td>
+                                    <td class="py-3 px-2 sm:px-3 text-center bg-red-50/30 border-x-2 border-[#E53E3E]/30 font-semibold text-[#1D1D1F]">Lead Form + Email Collection</td>
+                                    <td class="py-3 px-2 sm:px-3 text-center bg-amber-50/30 font-bold text-[#B8860B]">Advanced Lead Capture System</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row" class="py-3 px-3 sm:px-4 font-bold text-[#1D1D1F] sticky left-0 z-20 bg-white border-r-2 border-[#D2D2D7] shadow-[3px_0_8px_-2px_rgba(0,0,0,0.06)] leading-snug whitespace-normal break-words min-w-[140px] w-[140px] sm:min-w-[200px] sm:w-[200px] text-left">
+                                        <span class="flex items-center gap-1.5"><i data-lucide="sparkles" class="w-3.5 h-3.5 text-[#0066CC]"></i> Animations & Effects</span>
+                                    </th>
+                                    <td class="py-3 px-2 sm:px-3 text-center">Basic Animations</td>
+                                    <td class="py-3 px-2 sm:px-3 text-center bg-red-50/30 border-x-2 border-[#E53E3E]/30 font-semibold text-[#1D1D1F]">Smooth Modern Animations</td>
+                                    <td class="py-3 px-2 sm:px-3 text-center bg-amber-50/30 font-bold text-[#B8860B]">Premium Animations & Interactive Effects</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row" class="py-3 px-3 sm:px-4 font-bold text-[#1D1D1F] sticky left-0 z-20 bg-white border-r-2 border-[#D2D2D7] shadow-[3px_0_8px_-2px_rgba(0,0,0,0.06)] leading-snug whitespace-normal break-words min-w-[140px] w-[140px] sm:min-w-[200px] sm:w-[200px] text-left">
+                                        <span class="flex items-center gap-1.5"><i data-lucide="upload" class="w-3.5 h-3.5 text-[#0066CC]"></i> Content Upload Help</span>
+                                    </th>
+                                    <td class="py-3 px-2 sm:px-3 text-center text-red-500 font-bold">❌</td>
+                                    <td class="py-3 px-2 sm:px-3 text-center bg-red-50/30 border-x-2 border-[#E53E3E]/30 font-semibold text-[#1D1D1F]">Basic Assistance</td>
+                                    <td class="py-3 px-2 sm:px-3 text-center bg-amber-50/30 text-emerald-600 font-bold">Complete Assistance</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row" class="py-3 px-3 sm:px-4 font-bold text-[#1D1D1F] sticky left-0 z-20 bg-white border-r-2 border-[#D2D2D7] shadow-[3px_0_8px_-2px_rgba(0,0,0,0.06)] leading-snug whitespace-normal break-words min-w-[140px] w-[140px] sm:min-w-[200px] sm:w-[200px] text-left">
+                                        <span class="flex items-center gap-1.5"><i data-lucide="rotate-ccw" class="w-3.5 h-3.5 text-[#0066CC]"></i> Free Revisions</span>
+                                    </th>
+                                    <td class="py-3 px-2 sm:px-3 text-center">1 Revision</td>
+                                    <td class="py-3 px-2 sm:px-3 text-center bg-red-50/30 border-x-2 border-[#E53E3E]/30 font-semibold text-[#E53E3E]">3 Revisions</td>
+                                    <td class="py-3 px-2 sm:px-3 text-center bg-amber-50/30 font-bold text-emerald-600">Unlimited Revisions</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row" class="py-3 px-3 sm:px-4 font-bold text-[#1D1D1F] sticky left-0 z-20 bg-white border-r-2 border-[#D2D2D7] shadow-[3px_0_8px_-2px_rgba(0,0,0,0.06)] leading-snug whitespace-normal break-words min-w-[140px] w-[140px] sm:min-w-[200px] sm:w-[200px] text-left">
+                                        <span class="flex items-center gap-1.5"><i data-lucide="headphones" class="w-3.5 h-3.5 text-[#0066CC]"></i> Support & Maintenance</span>
+                                    </th>
+                                    <td class="py-3 px-2 sm:px-3 text-center font-bold text-[#1D1D1F]">3 Days</td>
+                                    <td class="py-3 px-2 sm:px-3 text-center bg-red-50/30 border-x-2 border-[#E53E3E]/30 font-bold text-[#E53E3E]">15 Days</td>
+                                    <td class="py-3 px-2 sm:px-3 text-center bg-amber-50/30 font-extrabold text-[#B8860B]">30 Days Priority Support</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row" class="py-3 px-3 sm:px-4 font-bold text-[#1D1D1F] sticky left-0 z-20 bg-white border-r-2 border-[#D2D2D7] shadow-[3px_0_8px_-2px_rgba(0,0,0,0.06)] leading-snug whitespace-normal break-words min-w-[140px] w-[140px] sm:min-w-[200px] sm:w-[200px] text-left">
+                                        <span class="flex items-center gap-1.5"><i data-lucide="truck" class="w-3.5 h-3.5 text-[#0066CC]"></i> Delivery Priority</span>
+                                    </th>
+                                    <td class="py-3 px-2 sm:px-3 text-center text-[#86868B]">Standard</td>
+                                    <td class="py-3 px-2 sm:px-3 text-center bg-red-50/30 border-x-2 border-[#E53E3E]/30 font-semibold text-[#E53E3E]">Priority Delivery</td>
+                                    <td class="py-3 px-2 sm:px-3 text-center bg-amber-50/30 font-bold text-[#B8860B]">Highest Priority Delivery</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row" class="py-3 px-3 sm:px-4 font-bold text-[#1D1D1F] sticky left-0 z-20 bg-white border-r-2 border-[#D2D2D7] shadow-[3px_0_8px_-2px_rgba(0,0,0,0.06)] leading-snug whitespace-normal break-words min-w-[140px] w-[140px] sm:min-w-[200px] sm:w-[200px] text-left">
+                                        <span class="flex items-center gap-1.5"><i data-lucide="arrow-up-circle" class="w-3.5 h-3.5 text-[#0066CC]"></i> Future Upgrade</span>
+                                    </th>
+                                    <td class="py-3 px-2 sm:px-3 text-center text-[#86868B]">Paid Upgrade</td>
+                                    <td class="py-3 px-2 sm:px-3 text-center bg-red-50/30 border-x-2 border-[#E53E3E]/30 font-semibold text-[#1D1D1F]">Paid Upgrade</td>
+                                    <td class="py-3 px-2 sm:px-3 text-center bg-amber-50/30 font-bold text-[#B8860B]">Priority Upgrade Support</td>
                                 </tr>
                             </tbody>
                         </table>
@@ -1385,7 +1516,7 @@
         <!-- Messages Area -->
         <div id="aiChatMessages" class="flex-1 overflow-y-auto p-4 space-y-4 custom-scrollbar text-sm font-sans flex flex-col bg-white">
             <div class="bg-[#F5F5F7] text-[#1D1D1F] p-3.5 rounded-2xl rounded-tl-sm self-start max-w-[85%] border border-[#D2D2D7] shadow-sm">
-                System initialized. I am the Forge Softwares autonomous agent. Ask me about pricing (Starter ₹1,999, Professional ₹7,999, Pro Plus ₹9,999, Premium ₹14,999), support durations, domain inclusion, HQ address, office location, or INEXTERIOR partner site!
+                System initialized. I am the Forge Softwares autonomous agent. Ask me about pricing (Basic ₹1,999, Pro ⭐ ₹7,999, Premium 👑 ₹14,999), support durations, domain inclusion, HQ address, office location, or INEXTERIOR partner site!
             </div>
         </div>
         <!-- Input Area -->
@@ -1525,7 +1656,7 @@
                 <h3 class="text-xl sm:text-2xl font-bubbledot text-[#1D1D1F] uppercase tracking-widest">Terms & Conditions</h3>
             </div>
             <div class="overflow-y-auto custom-scrollbar pr-2 sm:pr-4 text-xs md:text-sm text-[#1D1D1F] leading-relaxed space-y-4 sm:space-y-6 font-sans">
-                <p>Full refund available within 7 days of initiation if technical work has not started. Premium Tier includes a 7-day technical refund guarantee. All deployments are backed by included maintenance support (Starter 3 days, Professional 15 days, Pro Plus 30 days, Premium 45 days) and zero hidden fees.</p>
+                <p>Full refund available within 7 days of initiation if technical work has not started. Premium Tier includes a 7-day technical refund guarantee. All deployments are backed by included maintenance support (Basic 3 days, Pro ⭐ 15 days, Premium 👑 30 days priority) and zero hidden fees.</p>
             </div>
         </div>
     </div>
@@ -1699,15 +1830,15 @@
                 catId: "1",
                 catName: "1. PRICE & PAYMENT",
                 items: [
-                    { q: "Is the price shown the final price?", a: "Yes. The price agreed when you order is the price for your project: Starter is ₹1,999, Professional is ₹7,999, Pro Plus is ₹9,999, and Premium is ₹14,999." },
+                    { q: "Is the price shown the final price?", a: "Yes. The price agreed when you order is the exact final price for your project: Basic is ₹1,999, Pro ⭐ Best Selling is ₹7,999, and Premium 👑 Value for Money is ₹14,999." },
                     { q: "Do I pay everything at once?", a: "No. You pay 40% in advance and the remaining 60% after the project is completed." },
                     { q: "How can I pay?", a: "We accept PayPal, UPI, Google Pay (GPay), MobiKwik, FamPay, and QR payments." },
-                    { q: "Is the domain included?", a: "Professional, Pro Plus, and Premium plans include a free custom domain for the 1st year. For Starter, a custom domain is available as an add-on." },
-                    { q: "Do I have to pay for hosting?", a: "No. Forge hosts your website on GitHub infrastructure, so static hosting is free forever." },
+                    { q: "Is the domain included?", a: "Premium 👑 plan (₹14,999) includes a free custom domain for the 1st year. For Basic and Pro plans, custom domains can be configured upon request." },
+                    { q: "Do I have to pay for hosting?", a: "No. Forge hosts your website on GitHub edge infrastructure, so hosting deployment is free for life." },
                     { q: "Is GST included?", a: "GST will be included in the bill starting after December." },
-                    { q: "Can I pay in installments?", a: "Our standard payment plan is 40% in advance and 60% after the project is completed." },
+                    { q: "Can I pay in installments?", a: "Our standard payment plan is 40% in advance and 60% after project completion." },
                     { q: "Do I get a bill or payment receipt?", a: "Yes. We provide an official digital payment record for your project." },
-                    { q: "What if my payment fails but money is deducted?", a: "The amount is normally returned by the payment provider. The exact time depends on your bank or payment provider." },
+                    { q: "What if my payment fails but money is deducted?", a: "The amount is normally returned by your payment provider. The exact time depends on your bank." },
                     { q: "Can I get a refund after paying the 40% advance?", a: "No. The 40% advance is non-refundable once technical work begins. Premium tier includes a 7-day technical refund guarantee." }
                 ]
             },
@@ -1721,9 +1852,9 @@
                     { q: "What do I need to give Forge?", a: "Your business details, logo, photos, content, contact details, and any design ideas you have." },
                     { q: "I don't have a logo, photos, or content. What can I do?", a: "No problem. Forge helps with your logo, photos, and website content for free on all plans." },
                     { q: "Can I see the progress of my website?", a: "Yes. We send you pictures and videos showing the progress." },
-                    { q: "Can I have a call or video call?", a: "Yes. We offer calls and video calls. We call them Meetings." },
+                    { q: "Can I have a call or video call?", a: "Yes. We offer calls and video calls for project synchronization." },
                     { q: "Do you work on weekends and holidays?", a: "Yes. Forge works 7 days a week." },
-                    { q: "What if I don't reply during the project?", a: "We wait for 24 hours. After that, we send a warning notice. If there is still no reply, the project is cancelled." }
+                    { q: "What if I don't reply during the project?", a: "We wait for 24 hours. After that, we send a warning notice. If there is still no reply, the project is paused." }
                 ]
             },
             {
@@ -1731,11 +1862,11 @@
                 catName: "3. WEBSITE OWNERSHIP & TECH",
                 items: [
                     { q: "Who owns my website?", a: "Your website is 100% yours after the project is completed and final payment is made." },
-                    { q: "Who owns my domain?", a: "You own your domain. Forge provides free domain registration for the 1st year on Professional, Pro Plus, and Premium plans." },
+                    { q: "Who owns my domain?", a: "You own your domain. Forge provides free 1st year domain registration on the Premium plan." },
                     { q: "Can I move my website to another company later?", a: "Yes. We can provide you with the complete website code and files." },
                     { q: "What happens after Forge gives me the code?", a: "After the code is handed over, Forge removes your sensitive credentials from our active end." },
-                    { q: "Can I edit my website myself?", a: "No. Website technical changes are handled directly by Forge." },
-                    { q: "How many changes do I get?", a: "It depends on your plan.\n• STARTER: 1 standard revision.\n• PROFESSIONAL: 3 standard revisions.\n• PRO PLUS: Unlimited revisions.\n• PREMIUM: Unlimited dedicated revisions." },
+                    { q: "Can I edit my website myself?", a: "No. Technical website changes are handled directly by Forge." },
+                    { q: "How many changes do I get?", a: "It depends on your plan:\n• BASIC (₹1,999): 1 Revision.\n• PRO ⭐ (₹7,999): 3 Revisions.\n• PREMIUM 👑 (₹14,999): Unlimited Revisions." },
                     { q: "Can I request a new page or feature later?", a: "Yes. It follows your plan's available changes or upgrade path." },
                     { q: "What happens when I use all my changes?", a: "You can request additional work from Forge at a nominal fee or upgrade your plan." },
                     { q: "Will I get the full website code?", a: "Yes. Forge provides the complete HTML/CSS/JS codebase upon request." }
@@ -1745,8 +1876,8 @@
                 catId: "4",
                 catName: "4. SUPPORT & HELP",
                 items: [
-                    { q: "What support duration do I get?", a: "Support duration is aligned by plan:\n• STARTER (₹1,999): 3 Days Support.\n• PROFESSIONAL (₹7,999): 15 Days Support.\n• PRO PLUS (₹9,999): 30 Days / 1 Month Support.\n• PREMIUM (₹14,999): 45 Days Dedicated Priority Support." },
-                    { q: "Does Forge support end after delivery?", a: "Free maintenance is active during your plan's support window (3 to 45 days). Technical help and bug fixes are always available." },
+                    { q: "What support duration do I get?", a: "Support duration is aligned by plan:\n• BASIC (₹1,999): 3 Days Support.\n• PRO ⭐ (₹7,999): 15 Days Support.\n• PREMIUM 👑 (₹14,999): 30 Days Priority Dedicated Support." },
+                    { q: "Does Forge support end after delivery?", a: "Free maintenance is active during your plan's support window (3 to 30 days). Technical help and bug fixes are always available." },
                     { q: "What if something breaks after my website is delivered?", a: "Contact Forge support and we will inspect and repair technical bugs promptly." },
                     { q: "What if I change something myself and break the website?", a: "Problems caused by external code modification are not covered under free support." },
                     { q: "What is a bug fix?", a: "A bug fix means repairing a functional feature that is not working as specified." },
@@ -1760,9 +1891,9 @@
                 catName: "5. AI CHATBOT",
                 items: [
                     { q: "What is the Forge AI chatbot?", a: "It is an autonomous AI agent integrated into your website that understands your business context and qualifies leads 24/7." },
-                    { q: "Is the AI chatbot included with the website?", a: "Basic AI is included in Pro Plus and full custom AI agent integration is included in Premium (₹14,999). It is available as an add-on for Professional." },
+                    { q: "Is the AI chatbot included with the website?", a: "The AI Chatbot is natively included in the Premium 👑 plan (₹14,999)." },
                     { q: "Where does the AI chatbot work?", a: "The AI agent operates natively on your website built by Forge." },
-                    { q: "Does the AI chatbot work on WhatsApp?", a: "The current agent works directly on your website. WhatsApp automation can be integrated via Custom API on Premium tier." },
+                    { q: "Does the AI chatbot work on WhatsApp?", a: "The current agent works directly on your website. WhatsApp automation can be integrated as an add-on." },
                     { q: "What languages can the AI chatbot use?", a: "The AI agent supports English, Urdu, and multiple global languages dynamically." },
                     { q: "What does the AI chatbot know?", a: "It is trained on your exact business services, pricing, FAQ data, and HQ contact details." },
                     { q: "What if the AI does not know an answer?", a: "The AI agent seamlessly directs customer inquiries to your team's phone or email (+91-9697430658)." }
@@ -1773,9 +1904,9 @@
                 catName: "6. DESIGN & CHANGES",
                 items: [
                     { q: "Can I choose my website design?", a: "Yes. Forge provides multiple design options aligned with your industry needs." },
-                    { q: "Is Professional tier custom designed?", a: "Professional tier (₹7,999) uses a high-converting standard template architecture. Custom tailored designs are included in Pro Plus and Premium." },
-                    { q: "Is Mobile Responsive included in Starter?", a: "Starter (₹1,999) features a basic layout. Mobile Responsiveness (ON) starts from Professional tier (₹7,999) upwards." },
-                    { q: "Will my website work on mobile?", a: "Professional, Pro Plus, and Premium websites are 100% mobile and tablet responsive." },
+                    { q: "Is Pro ⭐ tier custom designed?", a: "Pro ⭐ tier (₹7,999) uses a Modern Professional Design with basic custom tweaks. 100% Custom Premium Design is included in Premium 👑." },
+                    { q: "Is Mobile Responsive included in Basic?", a: "Basic (₹1,999) features a simple business layout. Mobile Responsiveness is included in Pro ⭐ (₹7,999) and Premium 👑 (₹14,999)." },
+                    { q: "Will my website work on mobile?", a: "Pro ⭐ and Premium 👑 websites are 100% mobile and tablet responsive." },
                     { q: "Can I choose my colors and fonts?", a: "Yes. You can select your preferred branding colors and typography." },
                     { q: "Can I change my website after delivery?", a: "Yes. Revisions follow your plan's included scope." }
                 ]
@@ -1784,7 +1915,7 @@
                 catId: "7",
                 catName: "7. REFUND & CANCELLATION",
                 items: [
-                    { q: "Can I get a refund if I change my mind?", a: "Full refund is available prior to technical work start. The Premium tier includes a 7-day technical refund guarantee." },
+                    { q: "Can I get a refund if I change my mind?", a: "Full refund is available prior to technical work start. The Premium 👑 tier includes a 7-day technical refund guarantee." },
                     { q: "When does work officially start?", a: "Work starts immediately after the 40% advance payment is received and requirements are confirmed." },
                     { q: "Can I cancel after work has started?", a: "Yes, you can cancel, but advance payments cover labor already invested." },
                     { q: "What if I want changes during build?", a: "We review your feedback during milestone previews and apply revisions per your tier." }
@@ -1817,7 +1948,7 @@
                 catName: "10. ABOUT FORGE SOFTWARES",
                 items: [
                     { q: "What does Forge Softwares do?", a: "Forge engineers high-performance web platforms, autonomous AI agents, and custom enterprise automation." },
-                    { q: "How much experience does Forge have?", a: "Forge has over 1+ year of active high-velocity deployment experience with 42,500+ systems shipped." },
+                    { q: "How much experience does Forge have?", a: "Forge has high-velocity deployment experience with 42,500+ systems shipped." },
                     { q: "Who is on the Forge team?", a: "Systems engineers, full-stack architects, AI specialists, and UI engineers." },
                     { q: "Is INEXTERIOR an official partner?", a: "Yes! INEXTERIOR is a featured golden industry partner of Forge Softwares." }
                 ]
@@ -2269,7 +2400,7 @@
                 }, 180));
             }
 
-            // Help Center Dynamic Generator with Valid DOM Hierarchy
+            // Help Center Dynamic Generator
             const helpContentList = document.getElementById('helpContentList');
             const helpSearchInput = document.getElementById('helpSearchInput');
             const helpCatFilterBtns = document.querySelectorAll('.helpCatFilterBtn');
@@ -2648,7 +2779,7 @@
 
             counters.forEach(counter => counterObserver.observe(counter));
 
-            // AI Chatbot Logic & Knowledge Base Synchronized Context
+            // AI Chatbot Logic
             const aiChatToggleBtn = document.getElementById('aiChatToggleBtn');
             const aiChatWindow = document.getElementById('aiChatWindow');
             const closeAiChatBtn = document.getElementById('closeAiChatBtn');
@@ -2669,12 +2800,11 @@
             HEADQUARTERS (HQ): Pandith Pore Rainawari, Srinagar 190003
             OFFICE LOCATION: Rainawari Jogilanker, Srinagar, Jammu & Kashmir
             CONTACT: Phone / WhatsApp +91-9697430658 | Email: farmanshafi2007@gmail.com
-            TAGLINE: "Ship AI workers that grind while you rest."
-            OFFICIAL PRICING TIERS:
-            1. STARTER: ₹1,999 (1–3 Static Pages, Mobile Responsive: OFF, 3 Days Support, SSL & GitHub Hosting Included)
-            2. PROFESSIONAL: ₹7,999 [Most Popular] (5–7 Pages, Mobile Responsive: ON, Custom Design: OFF Standard Template, 15 Days Support, Free 1st Year Domain)
-            3. PRO PLUS: ₹9,999 (8–12 Pages, Technical SEO & Blog Engine, Basic AI Features, 30 Days / 1 Month Support)
-            4. PREMIUM: ₹14,999 (12–20 Pages, AI Chatbot & Automation, CRM & Custom APIs, 45 Days Dedicated Support, 7-Day Technical Refund Guarantee, Free 1st Year Managed Domain)
+            WHAT WE DO: Simple, premium English statement - "We build high-speed websites & AI workers that grow your business 24/7."
+            OFFICIAL UPDATED PRICING TIERS:
+            1. BASIC: ₹1,999 (1–3 Pages, Simple Business Design, Mobile Responsive: ❌, 3 Days Support, Free Deployment)
+            2. PRO ⭐ [Best Selling]: ₹7,999 (Up to 8 Pages, Modern Professional Design, Mobile & Tablet Responsive: ✅, Blog Engine, Google Maps & Analytics, 15 Days Support, 3 Revisions)
+            3. PREMIUM 👑 [Value for Money]: ₹14,999 (Unlimited Pages, 100% Custom Premium Design, Autonomous AI Chatbot: ✅, Free 1st Year Custom Domain, Advanced SEO, 30 Days Priority Support, Unlimited Revisions)
             
             PARTNERS / TRUSTED BY: INEXTERIOR (Golden Featured Partner: https://farmanshafi2007-hub.github.io/INEXTERIOR/), Microsoft, Amazon, Google, NexaCore, Lumina, Horizon, Elevate, Quantum, Vertex.
             `;
@@ -2689,11 +2819,11 @@ ${fullWebsiteContext}
 ${knowledgeBaseContext}
 
 Guidelines:
-1. Address pricing accurately: STARTER is ₹1,999, PROFESSIONAL is ₹7,999, PRO PLUS is ₹9,999, and PREMIUM is ₹14,999.
-2. Support durations are: Starter (3 Days), Professional (15 Days), Pro Plus (30 Days / 1 Month), Premium (45 Days Dedicated).
+1. Address pricing accurately: BASIC is ₹1,999, PRO ⭐ (Best Selling) is ₹7,999, and PREMIUM 👑 (Value for Money) is ₹14,999.
+2. Support durations are: Basic (3 Days), Pro ⭐ (15 Days), Premium 👑 (30 Days Priority Support).
 3. Payment terms are 40% advance and 60% upon completion.
-4. Professional, Pro Plus, and Premium include a free domain for 1st year.
-5. Highlighting HQ at Pandith Pore Rainawari, Srinagar 190003 and partner site INEXTERIOR (https://farmanshafi2007-hub.github.io/INEXTERIOR/).
+4. Premium 👑 includes a free domain for 1st year.
+5. Highlight HQ at Pandith Pore Rainawari, Srinagar 190003 and partner site INEXTERIOR (https://farmanshafi2007-hub.github.io/INEXTERIOR/).
 6. Use clear HTML formatting like <strong> where appropriate.`;
 
             function toggleAiChat() {
@@ -2761,20 +2891,19 @@ Guidelines:
                 }
 
                 if (q.includes('price') || q.includes('cost') || q.includes('plan') || q.includes('rate') || q.includes('how much') || q.includes('package')) {
-                    return "Here is the official updated <strong>Forge Softwares</strong> pricing architecture:<br/><br/>" +
-                           "• <strong>STARTER:</strong> ₹1,999 (1–3 Pages, 3 Days Support, SSL & Free GitHub Hosting)<br/>" +
-                           "• <strong>PROFESSIONAL:</strong> ₹7,999 [Most Popular] (5–7 Pages, Mobile Responsive: ON, 15 Days Support, Free 1st Year Domain)<br/>" +
-                           "• <strong>PRO PLUS:</strong> ₹9,999 (8–12 Pages, Technical SEO, Blog Engine, 30 Days / 1 Month Support)<br/>" +
-                           "• <strong>PREMIUM:</strong> ₹14,999 (12–20 Pages, AI Agents, CRM Integrations, 45 Days Support, 7-Day Refund Guarantee)<br/><br/>" +
+                    return "Here is the official updated <strong>Forge Softwares</strong> 3-tier pricing architecture:<br/><br/>" +
+                           "• <strong>BASIC:</strong> ₹1,999 (1–3 Pages, 3 Days Support, SSL & Free Deployment)<br/>" +
+                           "• <strong>PRO ⭐ [Best Selling]:</strong> ₹7,999 (Up to 8 Pages, Mobile & Tablet Responsive, Blog Engine, 15 Days Support)<br/>" +
+                           "• <strong>PREMIUM 👑 [Value for Money]:</strong> ₹14,999 (Unlimited Pages, Custom AI Chatbot, Free 1st Year Domain, 30 Days Priority Support)<br/><br/>" +
                            "Payment terms are <strong>40% advance</strong> and 60% upon completion.";
                 }
 
                 if (q.includes('support') || q.includes('duration') || q.includes('days')) {
-                    return "Our support duration varies by plan:<br/>• Starter: <strong>3 Days Support</strong><br/>• Professional: <strong>15 Days Support</strong><br/>• Pro Plus: <strong>30 Days / 1 Month Support</strong><br/>• Premium: <strong>45 Days Dedicated Support</strong>";
+                    return "Our support duration varies by plan:<br/>• Basic: <strong>3 Days Support</strong><br/>• Pro ⭐: <strong>15 Days Support</strong><br/>• Premium 👑: <strong>30 Days Priority Support</strong>";
                 }
 
                 if (q.includes('domain') || q.includes('hosting')) {
-                    return "A free 1st year domain is <strong>included in Professional, Pro Plus, and Premium plans</strong>. Hosting on GitHub infrastructure is <strong>free for life</strong> across all tiers!";
+                    return "A free 1st year custom domain is <strong>included in the Premium 👑 plan</strong>. Free deployment hosting on GitHub infrastructure is <strong>included across all tiers</strong>!";
                 }
 
                 if (q.includes('contact') || q.includes('phone') || q.includes('call') || q.includes('number') || q.includes('email')) {
@@ -2782,7 +2911,7 @@ Guidelines:
                 }
 
                 if (q.includes('refund') || q.includes('cancel')) {
-                    return "Full refund is available before technical development starts. Our <strong>PREMIUM Tier (₹14,999)</strong> includes an explicit <strong>7-Day Technical Refund Guarantee</strong>.";
+                    return "Full refund is available before technical development starts. Our <strong>PREMIUM 👑 Tier (₹14,999)</strong> includes an explicit <strong>7-Day Technical Refund Guarantee</strong>.";
                 }
 
                 let bestMatch = null;
@@ -2807,7 +2936,7 @@ Guidelines:
                     return `<strong>${bestMatch.q}</strong><br/><br/>${bestMatch.a.replace(/\n/g, '<br/>')}`;
                 }
 
-                return "Welcome to Forge Softwares! We build high-performance web platforms and autonomous AI workers. Plans start at ₹1,999. Contact us at <strong>+91-9697430658</strong> or <strong>farmanshafi2007@gmail.com</strong>.";
+                return "Welcome to Forge Softwares! We build high-speed websites & AI workers that grow your business 24/7. Plans start at ₹1,999. Contact us at <strong>+91-9697430658</strong> or <strong>farmanshafi2007@gmail.com</strong>.";
             }
 
             aiChatForm?.addEventListener('submit', async (e) => {

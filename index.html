@@ -45,23 +45,30 @@
     <meta name="twitter:image"
         content="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260827_202133_508c64b8-a31e-4290-bdfc-1187df70e0a6.png">
 
-    <!-- Core Performance Preconnects & Preloads -->
+    <!-- Core Performance Preconnects & High-Speed Edge Handshakes -->
+    <link rel="preconnect" href="https://d8j0ntlcm91z4.cloudfront.net" crossorigin>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+    <link rel="preconnect" href="https://db.onlinewebfonts.com" crossorigin>
+    <link rel="dns-prefetch" href="https://d8j0ntlcm91z4.cloudfront.net">
     <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+    <link rel="dns-prefetch" href="https://fonts.gstatic.com">
     <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
     <link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
-    <link rel="dns-prefetch" href="https://d8j0ntlcm91z4.cloudfront.net">
+    <link rel="dns-prefetch" href="https://db.onlinewebfonts.com">
 
-    <!-- Preload Hero Planetary Assets -->
+    <!-- Preload Critical Hero LCP Asset (fetchpriority="high" for Sub-1.8s LCP) -->
+    <link rel="preload" as="image"
+        href="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260827_202133_508c64b8-a31e-4290-bdfc-1187df70e0a6.png"
+        fetchpriority="high">
     <link rel="preload" as="image"
         href="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260827_202012_640b239a-d08a-4200-adb2-741bbe129ac8.png">
     <link rel="preload" as="image"
         href="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260827_202018_3d559490-f613-4ed7-a3bb-3b7e9fc90fb8.png">
-    <link rel="preload" as="image"
-        href="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260827_202133_508c64b8-a31e-4290-bdfc-1187df70e0a6.png">
 
-    <!-- Blocking Inline Entrance Init Script -->
+    <!-- Non-Blocking Inline Entrance Init Script -->
     <script>
         (function () {
             try {
@@ -75,33 +82,43 @@
     <!-- Tailwind CSS CDN Engine -->
     <script src="https://cdn.tailwindcss.com"></script>
 
-    <!-- Lucide Icons Library v0.344.0 -->
+    <!-- Lucide Icons Library v0.344.0 (Deferred Non-blocking) -->
     <script src="https://cdn.jsdelivr.net/npm/lucide@0.344.0/dist/umd/lucide.min.js" defer></script>
 
-    <!-- Font Awesome 6.5.2 CDN -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    <!-- Font Awesome 6.5.2 (High-Speed Non-blocking Async CSS Loading) -->
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" as="style"
         integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
+        crossorigin="anonymous" referrerpolicy="no-referrer" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+            integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+            crossorigin="anonymous" referrerpolicy="no-referrer" />
+    </noscript>
 
-    <!-- Typography System: Newsreader (Claude Serif), Plus Jakarta Sans (Claude Sans), Prata, Hanken Grotesk, Poppins, Geist, JetBrains Mono, Inter -->
-    <link
-        href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700;800;900&family=Hanken+Grotesk:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700;800&family=Newsreader:ital,opsz,wght@0,6..72,400..700;1,6..72,400..700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Poppins:wght@500;600;700&family=Prata&display=swap"
-        rel="stylesheet">
+    <!-- Typography System: High-Speed Non-blocking Font Loading (FCP < 1.0s) -->
+    <link rel="preload"
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Geist:wght@300;400;500;600;700;800;900&family=Hanken+Grotesk:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700;800&family=Newsreader:ital,opsz,wght@0,6..72,400..700;1,6..72,400..700&family=Orbitron:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Poppins:wght@300;400;500;600;700&family=Prata&display=swap"
+        as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript>
+        <link
+            href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Geist:wght@300;400;500;600;700;800;900&family=Hanken+Grotesk:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700;800&family=Newsreader:ital,opsz,wght@0,6..72,400..700;1,6..72,400..700&family=Orbitron:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Poppins:wght@300;400;500;600;700&family=Prata&display=swap"
+            rel="stylesheet">
+    </noscript>
 
-    <!-- BubbledotICG-FinePos Font -->
-    <link href="https://db.onlinewebfonts.com/c/8cb707a9b8a73f8a7403336b861c3074?family=BubbledotICG-FinePos"
-        rel="stylesheet" type="text/css" />
+    <!-- WebFonts: Bubbledot & Orbitron-Medium -->
+    <link rel="preload" href="https://db.onlinewebfonts.com/c/8cb707a9b8a73f8a7403336b861c3074?family=BubbledotICG-FinePos"
+        as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript>
+        <link href="https://db.onlinewebfonts.com/c/8cb707a9b8a73f8a7403336b861c3074?family=BubbledotICG-FinePos"
+            rel="stylesheet" type="text/css" />
+    </noscript>
 
-    <!-- Heritage Grove Footer Theme Fonts: Cormorant Garamond & Poppins -->
-    <link
-        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Poppins:wght@300;400;500;600&display=swap"
-        rel="stylesheet">
-
-    <!-- Cyber Ronin // Neural Edges Theme Fonts: Orbitron -->
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&display=swap"
-        rel="stylesheet">
-    <link href="https://db.onlinewebfonts.com/c/b1314443e183d1cdd77049077c46facc?family=Orbitron-Medium"
-        rel="stylesheet" type="text/css">
+    <link rel="preload" href="https://db.onlinewebfonts.com/c/b1314443e183d1cdd77049077c46facc?family=Orbitron-Medium"
+        as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript>
+        <link href="https://db.onlinewebfonts.com/c/b1314443e183d1cdd77049077c46facc?family=Orbitron-Medium"
+            rel="stylesheet" type="text/css" />
+    </noscript>
 
     <!-- Comprehensive Structured Data (JSON-LD) for Search Engines -->
     <script type="application/ld+json">
@@ -3732,6 +3749,38 @@
             .site-footer .socials a:hover {
                 transform: none;
             }
+        }
+
+        /* ─── APPLE-GRADE HIGH-SPEED RENDERING & COMPOSITING (CORE WEB VITALS) ─── */
+        #services-preview,
+        #stats-counter-bar,
+        #pricing,
+        #roi-calculator,
+        #testimonials,
+        #contact,
+        footer.site-footer {
+            content-visibility: auto;
+            contain-intrinsic-size: 1px 700px;
+        }
+
+        .stage,
+        .sky,
+        .hero-ui,
+        .hero-image-animate,
+        .testimonial-card,
+        .pricingBookBtn,
+        #backToTopBtn,
+        #scrollProgressBar {
+            transform: translateZ(0);
+            backface-visibility: hidden;
+            -webkit-backface-visibility: hidden;
+            will-change: auto;
+        }
+
+        body {
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            text-rendering: optimizeLegibility;
         }
     </style>
 </head>
@@ -7902,20 +7951,36 @@
             let isTestimonialHovered = false;
 
             testimonialCards.forEach(card => {
+                let isCardMoving = false;
                 card.addEventListener('mousemove', (e) => {
-                    const rect = card.getBoundingClientRect();
-                    card.style.setProperty('--mouse-x', `${e.clientX - rect.left}px`);
-                    card.style.setProperty('--mouse-y', `${e.clientY - rect.top}px`);
-                });
+                    if (isCardMoving) return;
+                    isCardMoving = true;
+                    const clientX = e.clientX;
+                    const clientY = e.clientY;
+                    requestAnimationFrame(() => {
+                        const rect = card.getBoundingClientRect();
+                        card.style.setProperty('--mouse-x', `${clientX - rect.left}px`);
+                        card.style.setProperty('--mouse-y', `${clientY - rect.top}px`);
+                        isCardMoving = false;
+                    });
+                }, { passive: true });
             });
 
             // Interactive card spotlight for all light/dark cards
             document.querySelectorAll('.card-light-contrast, .card-dark-contrast').forEach(card => {
+                let isContrastMoving = false;
                 card.addEventListener('mousemove', (e) => {
-                    const rect = card.getBoundingClientRect();
-                    card.style.setProperty('--mouse-x', `${e.clientX - rect.left}px`);
-                    card.style.setProperty('--mouse-y', `${e.clientY - rect.top}px`);
-                });
+                    if (isContrastMoving) return;
+                    isContrastMoving = true;
+                    const clientX = e.clientX;
+                    const clientY = e.clientY;
+                    requestAnimationFrame(() => {
+                        const rect = card.getBoundingClientRect();
+                        card.style.setProperty('--mouse-x', `${clientX - rect.left}px`);
+                        card.style.setProperty('--mouse-y', `${clientY - rect.top}px`);
+                        isContrastMoving = false;
+                    });
+                }, { passive: true });
             });
 
             function updateTestimonialUI(index) {
@@ -7947,10 +8012,14 @@
                 const revealImg = document.getElementById('testimonial-reveal-img');
                 if (!section || !revealImg) return;
 
-                function updateSpotlight(clientX, clientY) {
+                let spotlightTicking = false;
+                let lastClientX = 0;
+                let lastClientY = 0;
+
+                function applySpotlight() {
                     const rect = revealImg.getBoundingClientRect();
-                    const x = clientX - rect.left;
-                    const y = clientY - rect.top;
+                    const x = lastClientX - rect.left;
+                    const y = lastClientY - rect.top;
 
                     const width = window.innerWidth;
                     let radius = 260;
@@ -7964,21 +8033,31 @@
 
                     revealImg.style.webkitMaskImage = maskGradient;
                     revealImg.style.maskImage = maskGradient;
+                    spotlightTicking = false;
+                }
+
+                function queueSpotlight(clientX, clientY) {
+                    lastClientX = clientX;
+                    lastClientY = clientY;
+                    if (!spotlightTicking) {
+                        spotlightTicking = true;
+                        requestAnimationFrame(applySpotlight);
+                    }
                 }
 
                 section.addEventListener('mousemove', function (e) {
-                    updateSpotlight(e.clientX, e.clientY);
-                });
+                    queueSpotlight(e.clientX, e.clientY);
+                }, { passive: true });
 
                 section.addEventListener('touchmove', function (e) {
                     if (e.touches && e.touches.length > 0) {
-                        updateSpotlight(e.touches[0].clientX, e.touches[0].clientY);
+                        queueSpotlight(e.touches[0].clientX, e.touches[0].clientY);
                     }
                 }, { passive: true });
 
                 // Initial spotlight centered in section
                 const rect = section.getBoundingClientRect();
-                updateSpotlight(rect.left + rect.width * 0.5, rect.top + rect.height * 0.4);
+                queueSpotlight(rect.left + rect.width * 0.5, rect.top + rect.height * 0.4);
             })();
 
             nextTestimonialBtn?.addEventListener('click', () => updateTestimonialUI((currentTestimonialIndex + 1) % testimonialCards.length));
@@ -8028,8 +8107,9 @@
             // Real-Time Scroll Progress Indicator & Back-To-Top Button
             const scrollProgressBar = document.getElementById('scrollProgressBar');
             const backToTopBtn = document.getElementById('backToTopBtn');
+            let scrollTicking = false;
 
-            function handleScrollProgress() {
+            function updateScrollProgress() {
                 const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
                 const docHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
                 const scrollPercent = docHeight > 0 ? Math.min(100, Math.max(0, (scrollTop / docHeight) * 100)) : 0;
@@ -8045,6 +8125,14 @@
                     } else {
                         backToTopBtn.classList.remove('is-visible');
                     }
+                }
+                scrollTicking = false;
+            }
+
+            function handleScrollProgress() {
+                if (!scrollTicking) {
+                    scrollTicking = true;
+                    requestAnimationFrame(updateScrollProgress);
                 }
             }
 

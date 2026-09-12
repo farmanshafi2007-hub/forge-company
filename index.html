@@ -92,6 +92,11 @@
     <link href="https://db.onlinewebfonts.com/c/8cb707a9b8a73f8a7403336b861c3074?family=BubbledotICG-FinePos"
         rel="stylesheet" type="text/css" />
 
+    <!-- Heritage Grove Footer Theme Fonts: Cormorant Garamond & Poppins -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Poppins:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
+
     <!-- Comprehensive Structured Data (JSON-LD) for Search Engines -->
     <script type="application/ld+json">
     {
@@ -2540,6 +2545,7 @@
                 scroll-behavior: auto !important;
             }
         }
+
         /* ═══════════════════════════════════════════════════════════════
            PREMIUM FORM & BUTTON ENHANCEMENTS
         ═══════════════════════════════════════════════════════════════ */
@@ -2570,15 +2576,15 @@
         /* Captcha panel elevated glass effect */
         #enquiryForm .bg-white.border-2.border-black.rounded-2xl {
             background: linear-gradient(145deg, #ffffff 0%, #f8f9ff 100%) !important;
-            box-shadow: inset 0 1px 0 rgba(255,255,255,0.8), 0 2px 8px rgba(0,0,0,0.04) !important;
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.8), 0 2px 8px rgba(0, 0, 0, 0.04) !important;
         }
 
         /* Modal header premium gradient overlay */
-        #enquiryContent > div:first-child {
+        #enquiryContent>div:first-child {
             background: linear-gradient(135deg, #000000 0%, #0a1628 40%, #0d1f3c 70%, #000000 100%) !important;
         }
 
-        #enquiryContent > div:first-child::before {
+        #enquiryContent>div:first-child::before {
             content: '';
             position: absolute;
             inset: 0;
@@ -2665,23 +2671,32 @@
         }
 
         /* All interactive buttons — universal click safety */
-        button, a[onclick], [role="button"] {
+        button,
+        a[onclick],
+        [role="button"] {
             cursor: pointer;
             touch-action: manipulation;
         }
 
         /* Click-through children for CTA and pricing buttons only */
-        .pricingBookBtn > *,
-        .hero-cta-btn > *,
-        .apple-btn-primary > *,
-        .apple-btn-dark > * {
+        .pricingBookBtn>*,
+        .hero-cta-btn>*,
+        .apple-btn-primary>*,
+        .apple-btn-dark>* {
             pointer-events: none;
         }
 
         /* Hero CTA button pulse animation on idle */
         @keyframes ctaPulse {
-            0%, 100% { box-shadow: 0 10px 30px rgba(0,0,0,0.4), 0 0 0 0 rgba(103, 232, 249, 0.4); }
-            50% { box-shadow: 0 10px 30px rgba(0,0,0,0.4), 0 0 0 8px rgba(103, 232, 249, 0); }
+
+            0%,
+            100% {
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4), 0 0 0 0 rgba(103, 232, 249, 0.4);
+            }
+
+            50% {
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4), 0 0 0 8px rgba(103, 232, 249, 0);
+            }
         }
 
         .hero-cta-btn {
@@ -2741,6 +2756,719 @@
             background: linear-gradient(90deg, #020a15 0%, #0a1628 50%, #020a15 100%) !important;
         }
 
+        /* ═══════════════════════════════════════════════════════════════
+           HERITAGE GROVE FOOTER DESIGN SYSTEM (8K BRIGHT & SPACIOUS)
+        ═══════════════════════════════════════════════════════════════ */
+        footer.site-footer {
+            --ink: #0d3b45;
+            --ink-soft: #1a5c69;
+            --cream: #faf7f2;
+            --cream-card: #ffffff;
+            --max: 1400px;
+            --fs-nav: clamp(0.92rem, 0.45vw + 0.8rem, 1.05rem);
+            --btn-hover: #07262d;
+
+            position: relative;
+            isolation: isolate;
+            display: flex;
+            flex-direction: column;
+            min-height: auto;
+            overflow: hidden;
+            overflow-wrap: break-word;
+            background-color: var(--cream);
+            color: var(--ink);
+            font-family: 'Poppins', 'Helvetica Neue', Arial, sans-serif;
+            padding:
+                clamp(3.5rem, 6.5vh, 5.5rem) max(clamp(1.5rem, 4.5vw, 5rem), env(safe-area-inset-right)) max(clamp(2rem, 4vh, 3.5rem), env(safe-area-inset-bottom)) max(clamp(1.5rem, 4.5vw, 5rem), env(safe-area-inset-left));
+            border-top: 1px solid rgba(13, 59, 69, 0.15);
+            text-align: left;
+        }
+
+        /* 8K Ultra-Bright Luminous Ambient Layer */
+        footer.site-footer::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.65) 0%, rgba(255, 255, 255, 0.2) 45%, rgba(255, 255, 255, 0.55) 100%);
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        footer.site-footer *,
+        footer.site-footer *::before,
+        footer.site-footer *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        footer.site-footer a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .site-footer .footer-media {
+            position: absolute;
+            inset: 0;
+            z-index: -2;
+            pointer-events: none;
+            overflow: hidden;
+        }
+
+        /* 8K Enhanced Video: High Vibrancy, Crystal Clarity & Full Brightness */
+        .site-footer .footer-bg {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center bottom;
+            pointer-events: none;
+            filter: brightness(1.22) contrast(1.1) saturate(1.22);
+            image-rendering: -webkit-optimize-contrast;
+            transform: translateZ(0);
+            backface-visibility: hidden;
+            animation: footer-fade-in 1.2s ease both;
+        }
+
+        .site-footer .footer-inner {
+            position: relative;
+            width: 100%;
+            max-width: var(--max);
+            margin: 0 auto;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Enhanced Spacious 4-Column Grid (Architecture removed) */
+        .site-footer .footer-grid {
+            display: grid;
+            align-items: start;
+            gap: clamp(2rem, 3.5vw, 4.25rem);
+            grid-template-columns: minmax(280px, 1.45fr) minmax(140px, 0.85fr) minmax(160px, 0.95fr) minmax(290px, 1.35fr);
+        }
+
+        .site-footer .brand-lockup {
+            display: flex;
+            align-items: center;
+            gap: clamp(0.75rem, 1.2vw, 1.15rem);
+        }
+
+        .site-footer .brand-mark {
+            width: clamp(54px, 4.5vw, 72px);
+            height: auto;
+            flex-shrink: 0;
+            filter: drop-shadow(0 2px 8px rgba(13, 59, 69, 0.12));
+        }
+
+        .site-footer .brand-name {
+            font-family: 'Cormorant Garamond', Georgia, serif;
+            font-weight: 600;
+            font-size: clamp(2rem, 2.6vw, 2.85rem);
+            line-height: 1.05;
+            margin: 0;
+            color: var(--ink);
+            letter-spacing: -0.01em;
+        }
+
+        .site-footer .brand-blurb {
+            margin-top: clamp(1.15rem, 2vh, 1.6rem);
+            max-width: 32ch;
+            line-height: 1.68;
+            font-size: var(--fs-nav);
+            font-weight: 400;
+            color: var(--ink);
+            opacity: 0.92;
+        }
+
+        .site-footer .contact-list {
+            list-style: none;
+            margin-top: clamp(1.25rem, 2.2vh, 1.75rem);
+            display: flex;
+            flex-direction: column;
+            gap: clamp(0.75rem, 1.3vh, 1.05rem);
+            font-size: var(--fs-nav);
+            color: var(--ink);
+        }
+
+        .site-footer .contact-list li {
+            display: flex;
+            align-items: center;
+            gap: 0.85rem;
+            line-height: 1.4;
+        }
+
+        .site-footer .contact-list svg {
+            width: 20px;
+            height: 20px;
+            flex-shrink: 0;
+            stroke: currentColor;
+            opacity: 0.85;
+        }
+
+        .site-footer .contact-list a {
+            text-decoration: none;
+            transition: color 0.2s ease, text-decoration 0.2s ease;
+            color: var(--ink);
+            font-weight: 400;
+        }
+
+        .site-footer .contact-list a:hover {
+            color: var(--btn-hover);
+            text-decoration: underline;
+            text-underline-offset: 3px;
+        }
+
+        .site-footer .col-title {
+            margin: 0 0 clamp(1.2rem, 2.2vh, 1.65rem);
+            font-size: clamp(0.92rem, 0.45vw + 0.8rem, 1.08rem);
+            font-weight: 600;
+            letter-spacing: 0.07em;
+            text-transform: uppercase;
+            line-height: 1.3;
+            color: var(--ink);
+        }
+
+        .site-footer .link-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: clamp(0.7rem, 1.4vh, 1.05rem);
+            font-size: var(--fs-nav);
+        }
+
+        .site-footer .link-list a,
+        .site-footer .link-list button {
+            display: inline-block;
+            text-decoration: none;
+            transition: opacity 0.2s ease, transform 0.2s ease, color 0.2s ease;
+            color: var(--ink);
+            background: transparent;
+            border: none;
+            font-family: inherit;
+            font-size: inherit;
+            font-weight: 400;
+            text-align: left;
+            cursor: pointer;
+            padding: 0;
+            line-height: 1.4;
+        }
+
+        .site-footer .link-list a:hover,
+        .site-footer .link-list button:hover {
+            color: var(--btn-hover);
+            opacity: 0.75;
+            transform: translateX(3px);
+        }
+
+        .site-footer .newsletter p {
+            margin: 0 0 clamp(1.1rem, 2vh, 1.5rem);
+            max-width: 32ch;
+            line-height: 1.68;
+            font-size: var(--fs-nav);
+            font-weight: 400;
+            color: var(--ink);
+            opacity: 0.92;
+        }
+
+        /* Pristine 8K Ultra-Clean White Glass Subscribe Bar */
+        .site-footer .subscribe {
+            display: flex;
+            flex-direction: row;
+            width: 100%;
+            max-width: 390px;
+            border: 1.5px solid var(--ink);
+            background: rgba(255, 255, 255, 0.92);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            box-shadow: 0 4px 18px rgba(13, 59, 69, 0.08);
+            transition: box-shadow 0.25s ease, border-color 0.25s ease;
+        }
+
+        .site-footer .subscribe:focus-within {
+            border-color: var(--btn-hover);
+            box-shadow: 0 6px 24px rgba(13, 59, 69, 0.16);
+        }
+
+        .site-footer .subscribe input {
+            flex: 1;
+            min-width: 0;
+            border: 0;
+            outline: 0;
+            background: transparent;
+            padding: 0.95rem 1.15rem;
+            font-family: inherit;
+            font-size: var(--fs-nav);
+            color: var(--ink);
+            font-weight: 400;
+        }
+
+        .site-footer .subscribe input::placeholder {
+            color: var(--ink-soft);
+            opacity: 0.75;
+        }
+
+        .site-footer .subscribe button {
+            width: clamp(56px, 4vw, 66px);
+            border: 0;
+            background: var(--ink);
+            color: #ffffff;
+            display: grid;
+            place-items: center;
+            cursor: pointer;
+            transition: background 0.2s ease, transform 0.15s ease;
+        }
+
+        .site-footer .subscribe button:hover {
+            background: var(--btn-hover);
+        }
+
+        .site-footer .subscribe button:active {
+            transform: scale(0.96);
+        }
+
+        .site-footer .subscribe button svg {
+            width: 22px;
+            height: 22px;
+        }
+
+        /* Spacious Luminous Bottom Row */
+        .site-footer .footer-bottom {
+            margin-top: clamp(3rem, 5.5vh, 4.5rem);
+            padding-top: clamp(2rem, 3.5vh, 2.75rem);
+            border-top: 1px solid rgba(13, 59, 69, 0.15);
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1.5rem 2.5rem;
+            flex-wrap: wrap;
+            width: 100%;
+        }
+
+        .site-footer .socials {
+            display: flex;
+            flex-direction: row;
+            gap: clamp(1rem, 1.8vw, 1.65rem);
+            align-items: center;
+        }
+
+        .site-footer .socials a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--ink);
+            transition: opacity 0.2s ease, transform 0.2s ease, color 0.2s ease;
+        }
+
+        .site-footer .socials a:hover {
+            color: var(--btn-hover);
+            opacity: 0.7;
+            transform: translateY(-2.5px);
+        }
+
+        .site-footer .socials svg {
+            width: 26px;
+            height: 26px;
+        }
+
+        .site-footer .legal {
+            display: flex;
+            flex-direction: row;
+            gap: clamp(1.25rem, 2.8vw, 3rem);
+            flex-wrap: wrap;
+            font-size: var(--fs-nav);
+            color: var(--ink);
+            align-items: center;
+        }
+
+        .site-footer .legal span {
+            font-weight: 400;
+        }
+
+        .site-footer .legal a,
+        .site-footer .legal button {
+            color: var(--ink);
+            background: transparent;
+            border: none;
+            font-family: inherit;
+            font-size: inherit;
+            font-weight: 400;
+            text-decoration: none;
+            transition: text-decoration 0.2s ease, color 0.2s ease;
+            cursor: pointer;
+            padding: 0;
+        }
+
+        .site-footer .legal a:hover,
+        .site-footer .legal button:hover {
+            color: var(--btn-hover);
+            text-decoration: underline;
+            text-underline-offset: 3px;
+        }
+
+        @keyframes footer-fade-in {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes footer-rise-in {
+            from {
+                opacity: 0;
+                transform: translate3d(0, 14px, 0);
+            }
+
+            to {
+                opacity: 1;
+                transform: translate3d(0, 0, 0);
+            }
+        }
+
+        .site-footer .brand-lockup,
+        .site-footer .brand-blurb,
+        .site-footer .contact-list li,
+        .site-footer .col .col-title,
+        .site-footer .col .link-list li,
+        .site-footer .newsletter .col-title,
+        .site-footer .newsletter p,
+        .site-footer .subscribe,
+        .site-footer .socials a,
+        .site-footer .legal a,
+        .site-footer .legal button,
+        .site-footer .legal span {
+            animation: footer-rise-in .72s cubic-bezier(.22, 1, .36, 1) both;
+        }
+
+        .site-footer .brand-lockup {
+            animation-delay: 0.04s;
+        }
+
+        .site-footer .brand-blurb {
+            animation-delay: 0.12s;
+        }
+
+        .site-footer .contact-list li:nth-child(1) {
+            animation-delay: 0.2s;
+        }
+
+        .site-footer .contact-list li:nth-child(2) {
+            animation-delay: 0.28s;
+        }
+
+        .site-footer .contact-list li:nth-child(3) {
+            animation-delay: 0.36s;
+        }
+
+        .site-footer .footer-grid>.col:nth-child(2) {
+            --col-stagger: .16s;
+        }
+
+        .site-footer .footer-grid>.col:nth-child(3) {
+            --col-stagger: .26s;
+        }
+
+        .site-footer .col .col-title {
+            animation-delay: var(--col-stagger, .2s);
+        }
+
+        .site-footer .col .link-list li:nth-child(1) {
+            animation-delay: calc(var(--col-stagger, .2s) + .08s);
+        }
+
+        .site-footer .col .link-list li:nth-child(2) {
+            animation-delay: calc(var(--col-stagger, .2s) + .16s);
+        }
+
+        .site-footer .col .link-list li:nth-child(3) {
+            animation-delay: calc(var(--col-stagger, .2s) + .24s);
+        }
+
+        .site-footer .col .link-list li:nth-child(4) {
+            animation-delay: calc(var(--col-stagger, .2s) + .32s);
+        }
+
+        .site-footer .col .link-list li:nth-child(5) {
+            animation-delay: calc(var(--col-stagger, .2s) + .40s);
+        }
+
+        .site-footer .col .link-list li:nth-child(6) {
+            animation-delay: calc(var(--col-stagger, .2s) + .48s);
+        }
+
+        .site-footer .newsletter .col-title {
+            animation-delay: 0.36s;
+        }
+
+        .site-footer .newsletter p {
+            animation-delay: 0.44s;
+        }
+
+        .site-footer .subscribe {
+            animation-delay: 0.52s;
+        }
+
+        .site-footer .socials a:nth-child(1) {
+            animation-delay: 0.6s;
+        }
+
+        .site-footer .socials a:nth-child(2) {
+            animation-delay: 0.66s;
+        }
+
+        .site-footer .socials a:nth-child(3) {
+            animation-delay: 0.72s;
+        }
+
+        .site-footer .socials a:nth-child(4) {
+            animation-delay: 0.78s;
+        }
+
+        .site-footer .legal a:nth-child(1),
+        .site-footer .legal button:nth-child(1) {
+            animation-delay: 0.66s;
+        }
+
+        .site-footer .legal a:nth-child(2),
+        .site-footer .legal button:nth-child(2) {
+            animation-delay: 0.74s;
+        }
+
+        .site-footer .legal a:nth-child(3),
+        .site-footer .legal button:nth-child(3) {
+            animation-delay: 0.82s;
+        }
+
+        @media (max-width: 1100px) {
+            .site-footer .footer-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: clamp(2.25rem, 4.5vh, 3.25rem);
+            }
+
+            .site-footer .brand {
+                grid-column: 1 / -1;
+            }
+
+            .site-footer .brand-blurb {
+                max-width: 48ch;
+            }
+
+            .site-footer .newsletter {
+                grid-column: 1 / -1;
+            }
+
+            .site-footer .newsletter p {
+                max-width: 48ch;
+            }
+
+            .site-footer .footer-media::after {
+                content: "";
+                position: absolute;
+                left: 0;
+                right: 0;
+                top: 0;
+                height: clamp(56px, 18vw, 130px);
+                pointer-events: none;
+                z-index: 1;
+                background: linear-gradient(to bottom, #FAF7F2 0%, rgba(250, 247, 242, 0.75) 42%, rgba(250, 247, 242, 0) 100%);
+            }
+        }
+
+        @media (max-width: 720px) {
+            footer.site-footer {
+                padding-right: 0;
+                padding-bottom: 0;
+                padding-left: 0;
+                overflow-x: hidden;
+                overflow-y: visible;
+            }
+
+            .site-footer .footer-inner {
+                order: 0;
+                padding-right: max(clamp(1.25rem, 4.5vw, 4.5rem), env(safe-area-inset-right));
+                padding-left: max(clamp(1.25rem, 4.5vw, 4.5rem), env(safe-area-inset-left));
+                padding-bottom: clamp(1.5rem, 3vh, 2.25rem);
+            }
+
+            .site-footer .footer-media {
+                position: relative;
+                inset: auto;
+                order: 1;
+                flex-shrink: 0;
+                width: 100%;
+                height: auto;
+                margin-top: 1rem;
+                z-index: 0;
+            }
+
+            .site-footer .footer-bg {
+                position: relative;
+                inset: auto;
+                width: 100%;
+                height: auto;
+                max-width: 100%;
+                object-fit: contain;
+                object-position: center bottom;
+                transform: none;
+                display: block;
+            }
+
+            .site-footer .footer-grid {
+                grid-template-columns: 1fr;
+                gap: clamp(2rem, 5vw, 2.5rem);
+            }
+
+            .site-footer .brand-blurb {
+                max-width: 100%;
+            }
+
+            .site-footer .footer-bottom {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 1.5rem;
+                padding-top: 2rem;
+                padding-bottom: clamp(1.25rem, 3vh, 2rem);
+            }
+
+            .site-footer .legal {
+                gap: 1.1rem 1.6rem;
+            }
+
+            .site-footer .link-list {
+                gap: 0.4rem;
+            }
+
+            .site-footer .link-list a,
+            .site-footer .link-list button {
+                padding: 0.45rem 0;
+            }
+
+            .site-footer .contact-list {
+                gap: 0.45rem;
+            }
+
+            .site-footer .contact-list a,
+            .site-footer .contact-list span {
+                padding: 0.35rem 0;
+            }
+
+            .site-footer .legal a,
+            .site-footer .legal button {
+                padding: 0.4rem 0;
+            }
+
+            .site-footer .socials a {
+                padding: 0.35rem;
+                margin: -0.35rem;
+            }
+
+            .site-footer .socials svg {
+                width: 28px;
+                height: 28px;
+            }
+
+            .site-footer .subscribe input {
+                font-size: 16px;
+                padding: 1rem 1.1rem;
+            }
+        }
+
+        @media (max-width: 440px) {
+            footer.site-footer {
+                --fs-nav: 0.94rem;
+            }
+
+            .site-footer .col-title {
+                margin-bottom: 0.95rem;
+            }
+
+            .site-footer .brand-blurb,
+            .site-footer .newsletter p {
+                max-width: none;
+            }
+
+            .site-footer .subscribe {
+                max-width: 100%;
+            }
+        }
+
+        @media (min-width: 721px) and (max-width: 1100px) {
+            footer.site-footer {
+                padding-right: 0;
+                padding-bottom: 0;
+                padding-left: 0;
+                overflow-x: hidden;
+                overflow-y: visible;
+            }
+
+            .site-footer .footer-inner {
+                order: 0;
+                padding-right: max(clamp(1.5rem, 4vw, 4.5rem), env(safe-area-inset-right));
+                padding-left: max(clamp(1.5rem, 4vw, 4.5rem), env(safe-area-inset-left));
+                padding-bottom: clamp(1.5rem, 3vh, 2.25rem);
+            }
+
+            .site-footer .footer-media {
+                position: relative;
+                inset: auto;
+                order: 1;
+                flex-shrink: 0;
+                width: 100%;
+                height: auto;
+                margin-top: 1.5rem;
+                z-index: 0;
+            }
+
+            .site-footer .footer-bg {
+                position: relative;
+                inset: auto;
+                width: 100%;
+                height: auto;
+                max-width: 100%;
+                object-fit: contain;
+                object-position: center bottom;
+                transform: none;
+                display: block;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .site-footer .footer-bg {
+                display: none;
+                animation: none;
+            }
+
+            footer.site-footer {
+                background-color: #FAF7F2;
+                background-image: url('https://d2ol7oe51mr4n9.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/4f690bd1-881a-4192-82f2-d714d34c8fb9.png');
+                background-position: center bottom;
+                background-size: cover;
+                background-repeat: no-repeat;
+            }
+
+            @media (max-width: 1100px) {
+                footer.site-footer {
+                    background-size: 100% auto;
+                }
+            }
+
+            .site-footer .footer-media::after {
+                content: none;
+            }
+
+            .site-footer .socials a {
+                animation: none;
+            }
+
+            .site-footer .socials a:hover {
+                transform: none;
+            }
+        }
     </style>
 </head>
 
@@ -3157,7 +3885,8 @@
                                 <div class="flex items-baseline flex-wrap gap-2">
                                     <span
                                         class="text-3xl sm:text-4xl font-extrabold text-black tracking-tight">₹2,999</span>
-                                    <span class="text-xs sm:text-sm text-black/70 font-mono font-bold tracking-tight">~ $40 USD</span>
+                                    <span class="text-xs sm:text-sm text-black/70 font-mono font-bold tracking-tight">~
+                                        $40 USD</span>
                                     <span class="text-xs text-black font-sans font-bold ml-auto">(One-Time)</span>
                                 </div>
                                 <span class="text-[10px] text-black font-mono block mt-1 font-extrabold">Complete
@@ -3247,7 +3976,8 @@
                                 <div class="flex items-baseline flex-wrap gap-2">
                                     <span
                                         class="text-3xl sm:text-4xl font-extrabold text-black tracking-tight">₹11,999</span>
-                                    <span class="text-xs sm:text-sm text-black/70 font-mono font-bold tracking-tight">~ $150 USD</span>
+                                    <span class="text-xs sm:text-sm text-black/70 font-mono font-bold tracking-tight">~
+                                        $150 USD</span>
                                     <span class="text-xs text-black font-sans font-bold ml-auto">(One-Time)</span>
                                 </div>
                                 <span class="text-[10px] text-black font-mono block mt-1 font-extrabold">Complete
@@ -3343,7 +4073,8 @@
                                 <div class="flex items-baseline flex-wrap gap-2">
                                     <span
                                         class="text-3xl sm:text-4xl font-extrabold text-black tracking-tight">₹25,000</span>
-                                    <span class="text-xs sm:text-sm text-black/70 font-mono font-bold tracking-tight">~ $400 USD</span>
+                                    <span class="text-xs sm:text-sm text-black/70 font-mono font-bold tracking-tight">~
+                                        $400 USD</span>
                                     <span class="text-xs text-black font-sans font-bold ml-auto">(One-Time)</span>
                                 </div>
                                 <span class="text-[10px] text-black font-mono block mt-1 font-extrabold">Autonomous AI &
@@ -3460,11 +4191,13 @@
                                     <th scope="row"
                                         class="py-3.5 px-4 font-bold sticky left-0 z-20 bg-white border-r-2 border-black">
                                         2. Standard Pricing</th>
-                                    <td class="py-3.5 px-3 text-center font-extrabold">₹2,999 <span class="text-[10px] text-black/70 block">(~ $40 USD)</span></td>
+                                    <td class="py-3.5 px-3 text-center font-extrabold">₹2,999 <span
+                                            class="text-[10px] text-black/70 block">(~ $40 USD)</span></td>
                                     <td
                                         class="py-3.5 px-3 text-center bg-black/5 border-x-2 border-black font-black text-base">
                                         ₹11,999 <span class="text-[10px] text-black/70 block">(~ $150 USD)</span></td>
-                                    <td class="py-3.5 px-3 text-center font-black text-base">₹25,000 <span class="text-[10px] text-black/70 block">(~ $400 USD)</span></td>
+                                    <td class="py-3.5 px-3 text-center font-black text-base">₹25,000 <span
+                                            class="text-[10px] text-black/70 block">(~ $400 USD)</span></td>
                                 </tr>
                                 <tr>
                                     <th scope="row"
@@ -4215,110 +4948,153 @@
 
     </main>
 
-    <!-- SECTION 10: FOOTER REBUILD (CLEAN, MINIMAL, 5-SECTION STRUCTURE) -->
-    <footer
-        class="py-12 sm:py-16 px-4 sm:px-8 bg-black text-white text-center border-t-2 border-white w-full bg-grid-dark">
-        <div class="w-full max-w-5xl mx-auto flex flex-col items-center space-y-8 sm:space-y-10">
-
-            <!-- Section 1: Brand & One-line Description -->
-            <div class="flex flex-col items-center text-center max-w-xl">
-                <div
-                    class="text-xl sm:text-2xl font-bubbledot uppercase tracking-widest text-white flex items-center justify-center gap-3 mb-2.5 font-extrabold">
-                    <div class="bg-white text-black p-2 rounded-xl border-2 border-white shadow-lg">
-                        <i data-lucide="hexagon" class="w-5 h-5"></i>
-                    </div>
-                    <span>Forge Softwares</span>
-                </div>
-                <p class="text-xs sm:text-sm text-white/80 font-sans leading-relaxed font-medium">
-                    High-speed web platforms, planetary-scale digital infrastructure, and autonomous systems.
-                </p>
-            </div>
-
-            <!-- Section 2: Centered Social Icons Row -->
-            <div class="flex justify-center items-center gap-4 w-full">
-                <!-- Instagram -->
-                <a href="https://www.instagram.com/forgesoftwares?utm_source=ig_web_button_share_sheet&igsi=ZDNlZDc0MzIxNw=="
-                    target="_blank" rel="noopener noreferrer"
-                    class="footer-social-btn bg-white text-black border-2 border-white hover:bg-black hover:text-white"
-                    title="Follow us on Instagram" aria-label="Follow Forge Softwares on Instagram">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
-                        fill="currentColor">
-                        <path
-                            d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
-                    </svg>
-                </a>
-
-                <!-- Facebook -->
-                <a href="https://www.facebook.com/share/1DL2d9EcCZ/?mibextid=wwXIfr" target="_blank"
-                    rel="noopener noreferrer"
-                    class="footer-social-btn bg-white text-black border-2 border-white hover:bg-black hover:text-white"
-                    title="Visit us on Facebook" aria-label="Visit Facebook Page">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
-                        fill="currentColor">
-                        <path
-                            d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z" />
-                    </svg>
-                </a>
-
-                <!-- X / Twitter -->
-                <a href="https://x.com/pellixperfumes?s=21" target="_blank" rel="noopener noreferrer"
-                    class="footer-social-btn bg-white text-black border-2 border-white hover:bg-black hover:text-white"
-                    title="Follow us on X (Twitter)" aria-label="Visit Twitter Page">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24"
-                        fill="currentColor">
-                        <path
-                            d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.007 4.126H5.078z" />
-                    </svg>
-                </a>
-            </div>
-
-            <!-- Section 3: Contact Information with Icons -->
-            <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-6 w-full max-w-3xl text-xs font-mono font-bold">
-                <a href="tel:+919697430658"
-                    class="flex items-center justify-center gap-2 p-3 rounded-2xl border-2 border-white/20 bg-white/5 hover:bg-white hover:text-black transition-colors min-h-[44px]">
-                    <i data-lucide="phone" class="w-4 h-4 shrink-0"></i>
-                    <span>+91-9697430658</span>
-                </a>
-                <a href="mailto:farmanshafi2007@gmail.com"
-                    class="flex items-center justify-center gap-2 p-3 rounded-2xl border-2 border-white/20 bg-white/5 hover:bg-white hover:text-black transition-colors min-h-[44px] break-all">
-                    <i data-lucide="mail" class="w-4 h-4 shrink-0"></i>
-                    <span>farmanshafi2007@gmail.com</span>
-                </a>
-                <div
-                    class="flex items-center justify-center gap-2 p-3 rounded-2xl border-2 border-white/20 bg-white/5 min-h-[44px]">
-                    <i data-lucide="map-pin" class="w-4 h-4 shrink-0"></i>
-                    <span>Rainawari, Srinagar 190003</span>
-                </div>
-            </div>
-
-            <!-- Section 4: Quick Links -->
-            <div
-                class="flex flex-wrap items-center justify-center gap-x-6 gap-y-2.5 text-xs font-mono uppercase tracking-wider font-extrabold text-white/90">
-                <button type="button" onclick="openHelpModal()"
-                    class="hover:text-cyan-300 transition-colors cursor-pointer py-1">Help & Support</button>
-                <span class="text-white/30 hidden sm:inline">•</span>
-                <button type="button" onclick="openTerms()"
-                    class="hover:text-cyan-300 transition-colors cursor-pointer py-1">Terms & Conditions</button>
-                <span class="text-white/30 hidden sm:inline">•</span>
-                <button type="button" onclick="openPrivacy()"
-                    class="hover:text-cyan-300 transition-colors cursor-pointer py-1">Privacy Policy</button>
-                <span class="text-white/30 hidden sm:inline">•</span>
-                <a href="#contact" class="hover:text-cyan-300 transition-colors py-1">Contact</a>
-                <span class="text-white/30 hidden sm:inline">•</span>
-                <a href="#pricing" class="hover:text-cyan-300 transition-colors py-1">Pricing</a>
-            </div>
-
-            <div class="h-0.5 w-24 bg-white/30 rounded-full"></div>
-
-            <!-- Section 5: Bottom Copyright -->
-            <div class="text-[11px] font-mono text-white/80 uppercase tracking-widest leading-relaxed">
-                <p class="font-extrabold text-white">&copy; <span id="copyrightYear">2026</span> Forge Softwares •
-                    Premium B2B Engineering Agency</p>
-                <p class="text-[10px] text-white/60 mt-1 font-bold">Parent Group: Cobra • RUNO</p>
-            </div>
-
+    <!-- SECTION 10: SITE FOOTER (HERITAGE GROVE THEME) -->
+    <footer class="site-footer">
+        <div class="footer-media" aria-hidden="true">
+            <video class="footer-bg" autoplay muted loop playsinline preload="auto"
+                poster="https://d2ol7oe51mr4n9.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/4f690bd1-881a-4192-82f2-d714d34c8fb9.png">
+                <source
+                    src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260901_122529_931c22c8-8d2d-47c0-ad51-b97f56a91e42.mp4"
+                    type="video/mp4">
+            </video>
         </div>
-        <div style="height: var(--sai-bottom)"></div>
+
+        <div class="footer-inner">
+            <div class="footer-grid">
+                <!-- Column 1: Brand & Direct Contact -->
+                <div class="brand">
+                    <div class="brand-lockup">
+                        <div class="brand-mark">
+                            <svg viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg"
+                                class="w-full h-auto">
+                                <polygon points="30,4 54,18 54,42 30,56 6,42 6,18" stroke="var(--ink)"
+                                    stroke-width="2.5" fill="rgba(23, 90, 103, 0.08)" />
+                                <polygon points="30,13 46,22 46,38 30,47 14,38 14,22" stroke="var(--ink)"
+                                    stroke-width="2" />
+                                <circle cx="30" cy="30" r="4" fill="var(--ink)" />
+                            </svg>
+                        </div>
+                        <h3 class="brand-name">Forge Softwares</h3>
+                    </div>
+
+                    <p class="brand-blurb">
+                        Fast, modern websites and smart AI tools built to grow your business.
+                    </p>
+
+                    <ul class="contact-list">
+                        <li>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                <path
+                                    d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
+                            </svg>
+                            <a href="tel:+919697430658">+91-9697430658</a>
+                        </li>
+                        <li>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+                                <polyline points="22,6 12,13 2,6" />
+                            </svg>
+                            <a href="mailto:farmanshafi2007@gmail.com">farmanshafi2007@gmail.com</a>
+                        </li>
+                        <li>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+                                <circle cx="12" cy="10" r="3" />
+                            </svg>
+                            <span>Rainawari, Srinagar 190003</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Column 2: Navigation -->
+                <div class="col">
+                    <h4 class="col-title">Pages</h4>
+                    <ul class="link-list">
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#services-preview">Services</a></li>
+                        <li><a href="#pricing">Pricing</a></li>
+                        <li><a href="#testimonials">Reviews</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+
+                <!-- Column 3: Support & Legal -->
+                <div class="col">
+                    <h4 class="col-title">Support & Legal</h4>
+                    <ul class="link-list">
+                        <li><button type="button" onclick="openHelpModal()">Help Center</button></li>
+                        <li><button type="button" onclick="openTerms()">Terms of Service</button></li>
+                        <li><button type="button" onclick="openPrivacy()">Privacy Policy</button></li>
+                        <li><button type="button" onclick="openEnquiryModal('pro')">Book a Website</button></li>
+                        <li><button type="button" onclick="openBlogModal()">Articles & News</button></li>
+                    </ul>
+                </div>
+
+                <!-- Column 4: Stay Updated / Newsletter -->
+                <div class="newsletter">
+                    <h4 class="col-title">Stay Updated</h4>
+                    <p>
+                        Get our latest news, special offers, and helpful tips straight to your inbox.
+                    </p>
+                    <form class="subscribe"
+                        onsubmit="event.preventDefault(); const inp = this.querySelector('input'); if(inp && inp.value){ if(window.showGlobalToast){ window.showGlobalToast('✓ Subscribed with ' + inp.value); } inp.value=''; }">
+                        <input type="email" placeholder="Your email address" required
+                            aria-label="Email address for updates">
+                        <button type="submit" aria-label="Subscribe to updates">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+                                stroke-linecap="round" stroke-linejoin="round">
+                                <line x1="5" y1="12" x2="19" y2="12"></line>
+                                <polyline points="12 5 19 12 12 19"></polyline>
+                            </svg>
+                        </button>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Footer Bottom: Socials & Legal/Copyright -->
+            <div class="footer-bottom">
+                <div class="socials">
+                    <a href="https://www.facebook.com/share/1DL2d9EcCZ/?mibextid=wwXIfr" target="_blank"
+                        rel="noopener noreferrer" aria-label="Facebook">
+                        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                            <path
+                                d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8V15H8v-3h2V9.5C10 7.57 11.57 6 13.5 6H16v3h-2c-.55 0-1 .45-1 1v2h3v3h-3v6.95C18.05 21.45 22 17.19 22 12z" />
+                        </svg>
+                    </a>
+                    <a href="https://x.com/pellixperfumes?s=21" target="_blank" rel="noopener noreferrer"
+                        aria-label="Twitter">
+                        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                            <path
+                                d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+                        </svg>
+                    </a>
+                    <a href="https://www.instagram.com/forgesoftwares?utm_source=ig_web_button_share_sheet&igsi=ZDNlZDc0MzIxNw=="
+                        target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+                        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                            <path
+                                d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.79-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+                        </svg>
+                    </a>
+                    <a href="https://www.linkedin.com" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                            <path
+                                d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 8.76c.92 0 1.66-.74 1.66-1.66 0-.91-.74-1.65-1.66-1.65-.92 0-1.66.74-1.66 1.65 0 .92.74 1.66 1.66 1.66m1.39 9.74v-8.37H5.07v8.37h2.78z" />
+                        </svg>
+                    </a>
+                </div>
+
+                <div class="legal">
+                    <span>&copy; <span id="copyrightYear">2026</span> Forge Softwares. All rights reserved.</span>
+                    <button type="button" onclick="openTerms()">Terms of Service</button>
+                    <button type="button" onclick="openPrivacy()">Privacy Policy</button>
+                    <button type="button" onclick="openHelpModal()">Support</button>
+                </div>
+            </div>
+        </div>
     </footer>
 
     <!-- ENQUIRY MODAL -->
@@ -4382,7 +5158,8 @@
                                 class="absolute inset-0 w-full h-full opacity-0 cursor-pointer z-10 text-base appearance-none"
                                 aria-label="Select Engineering Package">
                                 <option value="Basic (₹2,999)">Basic Tier — ₹2,999 (One-Time)</option>
-                                <option value="Pro ⭐ (₹11,999)" selected>Pro ⭐ Best Selling — ₹11,999 (One-Time)</option>
+                                <option value="Pro ⭐ (₹11,999)" selected>Pro ⭐ Best Selling — ₹11,999 (One-Time)
+                                </option>
                                 <option value="Premium 👑 (₹25,000)">Premium 👑 Enterprise — ₹25,000 (One-Time)</option>
                             </select>
                         </div>

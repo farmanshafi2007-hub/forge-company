@@ -19,7 +19,7 @@
     <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
     <link rel="canonical" href="https://forgesoftwares.in/">
 
-    <!-- Favicon using Earth Cutout Asset -->
+    <!-- Favicon Brand Asset -->
     <link rel="icon" type="image/png"
         href="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260827_202005_3346cc4d-ec3b-44ab-825c-18e49f5021a.png">
 
@@ -45,6 +45,10 @@
     <meta name="twitter:image"
         content="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260827_202133_508c64b8-a31e-4290-bdfc-1187df70e0a6.png">
 
+    <!-- Skiper 52 Asset Preconnects -->
+    <link rel="preconnect" href="https://skiper-ui.com" crossorigin>
+    <link rel="preconnect" href="https://images.unsplash.com" crossorigin>
+
     <!-- Essential Preconnects (Max 2 for Lighthouse Best Practices) -->
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preconnect" href="https://images.higgs.ai" crossorigin>
@@ -53,11 +57,6 @@
     <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
     <link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
     <link rel="dns-prefetch" href="https://db.onlinewebfonts.com">
-
-    <!-- Preload Critical Hero LCP Asset (WebP Next-Gen 180KB with fetchpriority="high") -->
-    <link rel="preload" as="image"
-        href="https://images.higgs.ai/?default=1&output=webp&url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20260827_202133_508c64b8-a31e-4290-bdfc-1187df70e0a6.png&w=1920&q=85"
-        fetchpriority="high" type="image/webp">
 
     <!-- Non-Blocking Inline Entrance Init Script -->
     <script>
@@ -397,34 +396,270 @@
             height: 100%;
         }
 
-        .sky {
-            position: absolute;
-            inset: 0;
-            z-index: 0;
-            background-image: url('https://images.higgs.ai/?default=1&output=webp&url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20260827_202133_508c64b8-a31e-4290-bdfc-1187df70e0a6.png&w=1920&q=85');
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
+        /* ══════════════════════════════════════════════════════════════════
+           SKIPER 52 - HOVER EXPAND CARDS & HERO THEME
+        ══════════════════════════════════════════════════════════════════ */
+        .skiper-hero-stage {
+            background-color: #f5f4f3 !important;
+            position: relative;
+            min-height: auto !important;
+            height: auto !important;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start !important;
+            align-items: center;
+            overflow: hidden;
+            color: #18181b;
+            padding-bottom: 2rem;
         }
 
-        .sky video {
+        .skiper-hero-stage::after,
+        .skiper-hero-stage::before {
+            display: none !important;
+        }
+
+        .skiper-hero-stage .hero-ui {
+            min-height: auto !important;
+            height: auto !important;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start !important;
+            align-items: center;
+            padding-top: calc(72px + var(--sai-top)) !important;
+            padding-bottom: 0 !important;
+            width: 100%;
+            flex: none !important;
+        }
+
+        .skiper-hero-stage .copy {
+            min-height: auto !important;
+            height: auto !important;
+            margin: 0 auto !important;
+            padding: 4px 16px 2px !important;
+            max-width: 860px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start !important;
+        }
+
+        .skiper-hero-stage .title {
+            color: #09090b !important;
+        }
+
+        .skiper-hero-stage .lede {
+            color: #4b5563 !important;
+        }
+
+        .skiper-hero-stage .eyebrow {
+            color: #0284c7 !important;
+        }
+
+        .skiper-hero-stage .rule span {
+            background: rgba(0, 0, 0, 0.12) !important;
+        }
+
+        .skiper-hero-stage .navbar:not(.navbar-scrolled) .logo {
+            color: #09090b !important;
+        }
+
+        @media (min-width: 1024px) {
+
+            .skiper-hero-stage .navbar:not(.navbar-scrolled) .links a,
+            .skiper-hero-stage .navbar:not(.navbar-scrolled) .links button.nav-btn {
+                color: rgba(15, 23, 42, 0.85) !important;
+            }
+
+            .skiper-hero-stage .navbar:not(.navbar-scrolled) .links a:hover,
+            .skiper-hero-stage .navbar:not(.navbar-scrolled) .links button.nav-btn:hover {
+                color: #000000 !important;
+                background: rgba(0, 0, 0, 0.06) !important;
+            }
+
+            .skiper-hero-stage .navbar:not(.navbar-scrolled)::after {
+                background: rgba(0, 0, 0, 0.08) !important;
+            }
+        }
+
+        .skiper-hero-stage .navbar:not(.navbar-scrolled) .burger span {
+            background: #09090b !important;
+        }
+
+        .skiper-hero-stage .scroll svg path {
+            stroke: #09090b !important;
+        }
+
+        .outer-motion,
+        .inner-motion,
+        #cards-container,
+        .card-motion {
+            pointer-events: auto !important;
+        }
+
+        /* Outer entrance animation */
+        .outer-motion {
+            opacity: 0;
+            transform: translate3d(0, 20px, 0);
+            animation: outerEnter 0.55s cubic-bezier(0.16, 1, 0.3, 1) 0.1s forwards;
+            will-change: transform, opacity;
+        }
+
+        @keyframes outerEnter {
+            to {
+                opacity: 1;
+                transform: translate3d(0, 0, 0);
+            }
+        }
+
+        /* Inner entrance animation */
+        .inner-motion {
+            opacity: 0;
+            animation: innerEnter 0.4s ease-out 0.05s forwards;
+        }
+
+        @keyframes innerEnter {
+            to {
+                opacity: 1;
+            }
+        }
+
+        /* Butter-smooth GPU-composited card container */
+        .card-motion {
+            width: 5rem;
+            height: 24rem;
+            flex-shrink: 0;
+            position: relative;
+            overflow: hidden;
+            border-radius: 1.5rem;
+            cursor: pointer;
+            background-color: #e2e0dd;
+            contain: layout paint style;
+            transform: translate3d(0, 0, 0);
+            backface-visibility: hidden;
+            will-change: width;
+            box-shadow: 0 4px 14px -4px rgba(0, 0, 0, 0.06);
+            transition:
+                width 0.52s cubic-bezier(0.22, 1, 0.36, 1),
+                box-shadow 0.52s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+
+        .card-motion.is-active {
+            width: 24rem;
+            box-shadow: 0 22px 44px -12px rgba(0, 0, 0, 0.22);
+        }
+
+        /* Fixed 24rem width inner image prevents browser from recalculating object-fit crop on every frame */
+        .card-img-wrapper {
             position: absolute;
-            inset: 0;
+            top: 0;
+            left: 50%;
+            width: 24rem;
+            height: 24rem;
+            transform: translate3d(-50%, 0, 0) scale(1.06);
+            will-change: transform, filter;
+            backface-visibility: hidden;
+            pointer-events: none;
+            filter: brightness(1.03) contrast(1.1) saturate(1.04);
+            transition:
+                transform 0.58s cubic-bezier(0.22, 1, 0.36, 1),
+                filter 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+
+        .card-motion.is-active .card-img-wrapper {
+            transform: translate3d(-50%, 0, 0) scale(1);
+            filter: brightness(1.12) contrast(1.18) saturate(1.12);
+        }
+
+        .card-img {
             width: 100%;
             height: 100%;
             object-fit: cover;
             display: block;
+            pointer-events: none;
+            user-select: none;
+            -webkit-user-drag: none;
             opacity: 0;
-            transition: opacity 0.22s linear;
+            transition: opacity 0.35s ease-out;
         }
 
-        .sky video.is-active {
+        .card-img.is-loaded {
             opacity: 1;
         }
 
-        @media (prefers-reduced-motion: reduce) {
-            .sky video {
-                display: none !important;
+        /* Smooth AnimatePresence fade + subtle slide for active metadata */
+        .presence-gradient {
+            opacity: 0;
+            transition: opacity 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+            pointer-events: none;
+            will-change: opacity;
+        }
+
+        .card-motion.is-active .presence-gradient {
+            opacity: 1;
+        }
+
+        .presence-code {
+            opacity: 0;
+            transform: translate3d(0, 6px, 0);
+            transition:
+                opacity 0.38s cubic-bezier(0.22, 1, 0.36, 1) 0.06s,
+                transform 0.42s cubic-bezier(0.22, 1, 0.36, 1) 0.06s;
+            pointer-events: none;
+            will-change: opacity, transform;
+        }
+
+        .card-motion.is-active .presence-code {
+            opacity: 1;
+            transform: translate3d(0, 0, 0);
+        }
+
+        /* ─── ULTRA-SMOOTH RESPONSIVE CARD SCALING (LAPTOP, TABLET & MOBILE) ─── */
+        @media (min-width: 901px) and (max-width: 1366px) {
+            .card-motion {
+                width: 3.6rem;
+                height: 21rem;
+            }
+
+            .card-motion.is-active {
+                width: 19.5rem;
+            }
+
+            .card-img-wrapper {
+                width: 19.5rem;
+                height: 21rem;
+            }
+        }
+
+        @media (max-width: 900px) {
+            .card-motion {
+                width: 2.25rem;
+                height: 18.5rem;
+            }
+
+            .card-motion.is-active {
+                width: 15.5rem;
+            }
+
+            .card-img-wrapper {
+                width: 15.5rem;
+                height: 18.5rem;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .card-motion {
+                width: 1.4rem;
+                height: 16rem;
+                border-radius: 0.95rem;
+            }
+
+            .card-motion.is-active {
+                width: 12.8rem;
+            }
+
+            .card-img-wrapper {
+                width: 12.8rem;
+                height: 16rem;
             }
         }
 
@@ -763,58 +998,6 @@
 
         .hero-cta-btn:active {
             transform: scale(0.97);
-        }
-
-        /* Planet Switcher Tabs */
-        .planet-switcher-tabs {
-            display: inline-flex;
-            align-items: center;
-            background: rgba(4, 16, 31, 0.7);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            border-radius: 999px;
-            padding: 3.5px;
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.35);
-            gap: 2px;
-        }
-
-        .planet-tab-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 5px;
-            padding: 6px 14px;
-            border-radius: 999px;
-            font-family: var(--font-mono);
-            font-size: 10.5px;
-            font-weight: 800;
-            letter-spacing: 1.2px;
-            text-transform: uppercase;
-            color: rgba(255, 255, 255, 0.7);
-            background: transparent;
-            border: none;
-            cursor: pointer;
-            transition: all 0.25s ease;
-            min-height: 30px;
-        }
-
-        .planet-tab-btn:hover {
-            color: #ffffff;
-            background: rgba(255, 255, 255, 0.1);
-        }
-
-        .planet-tab-btn.active {
-            color: #04101f;
-            background: #ffffff;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.25);
-            font-weight: 800;
-        }
-
-        .planet-dot {
-            width: 7px;
-            height: 7px;
-            border-radius: 50%;
-            display: inline-block;
         }
 
         .scroll {
@@ -1367,24 +1550,18 @@
                 --vshift: 0px;
             }
 
-            .stage {
-                min-height: 100svh;
-                min-height: 100dvh;
+            .stage,
+            .skiper-hero-stage {
+                min-height: auto !important;
+                height: auto !important;
+                background-color: #f5f4f3 !important;
+                padding-bottom: 2rem !important;
             }
 
-            /* Readability gradient over sky on mobile */
-            .stage::after {
-                content: "";
-                position: absolute;
-                inset: 0;
-                z-index: 1;
-                background: linear-gradient(180deg,
-                        rgba(4, 16, 31, 0.6) 0%,
-                        rgba(4, 16, 31, 0.3) 35%,
-                        rgba(4, 16, 31, 0.2) 55%,
-                        rgba(4, 16, 31, 0.5) 80%,
-                        rgba(4, 16, 31, 0.8) 100%);
-                pointer-events: none;
+            /* Pure bright ambient light on mobile: zero dark overlay */
+            .stage::after,
+            .skiper-hero-stage::after {
+                display: none !important;
             }
 
             .navbar {
@@ -1410,10 +1587,13 @@
                 top: 0;
             }
 
-            .copy {
-                padding: calc(78px + var(--sai-top)) 16px calc(54px + var(--sai-bottom));
-                min-height: 100svh;
-                min-height: 100dvh;
+            .copy,
+            .skiper-hero-stage .copy {
+                padding: 6px 14px 2px !important;
+                min-height: auto !important;
+                height: auto !important;
+                margin: 0 auto !important;
+                justify-content: flex-start !important;
             }
 
             .eyebrow {
@@ -2956,13 +3136,14 @@
         }
 
         /* 8K Ultra-Bright Luminous Ambient Layer */
+        /* Crisp Protective Ambient Layer: text stays 100% legible, bird illustration softly visible at bottom */
         footer.site-footer::before {
             content: "";
             position: absolute;
             inset: 0;
-            background: linear-gradient(180deg, rgba(255, 255, 255, 0.65) 0%, rgba(255, 255, 255, 0.2) 45%, rgba(255, 255, 255, 0.55) 100%);
+            background: linear-gradient(180deg, rgba(250, 247, 242, 0.98) 0%, rgba(250, 247, 242, 0.95) 50%, rgba(250, 247, 242, 0.6) 80%, rgba(250, 247, 242, 0.15) 100%);
             pointer-events: none;
-            z-index: -1;
+            z-index: 0;
         }
 
         footer.site-footer *,
@@ -3010,6 +3191,7 @@
             flex: 1;
             display: flex;
             flex-direction: column;
+            z-index: 2;
         }
 
         /* Enhanced Spacious 4-Column Grid (Architecture removed) */
@@ -3538,23 +3720,28 @@
             }
 
             /* Section 2: Pages (Left Column) */
-            .site-footer .footer-grid>.col:nth-of-type(1) {
+            /* Section 2: Pages (Left Column) */
+            .site-footer .footer-col-pages {
                 grid-column: 1 / 2;
                 display: flex;
                 flex-direction: column;
                 align-items: flex-start;
                 text-align: left;
-                padding-right: 0.35rem;
+                padding-right: 0.5rem;
+                position: relative;
+                z-index: 5;
             }
 
             /* Section 3: Support & Legal (Right Column, Side-by-Side) */
-            .site-footer .footer-grid>.col:nth-of-type(2) {
+            .site-footer .footer-col-support {
                 grid-column: 2 / 3;
                 display: flex;
                 flex-direction: column;
                 align-items: flex-start;
                 text-align: left;
-                padding-left: 0.35rem;
+                padding-left: 0.5rem;
+                position: relative;
+                z-index: 5;
             }
 
             .site-footer .col-title {
@@ -3775,6 +3962,48 @@
             -moz-osx-font-smoothing: grayscale;
             text-rendering: optimizeLegibility;
         }
+
+        /* ══════════════════════════════════════════════════════════════════
+           GLOBAL APPLE-GRADE FLUID SMOOTHNESS & BANNER ANIMATIONS
+        ══════════════════════════════════════════════════════════════════ */
+        html {
+            scroll-behavior: smooth !important;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            text-rendering: optimizeLegibility;
+        }
+
+        #regionBanner {
+            transition: max-height 0.45s cubic-bezier(0.16, 1, 0.3, 1),
+                opacity 0.4s ease-out,
+                transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+                padding 0.4s ease-out,
+                border-color 0.4s ease-out;
+            max-height: 140px;
+            opacity: 1;
+            overflow: hidden;
+            will-change: max-height, opacity, transform;
+        }
+
+        #regionBanner.banner-hidden {
+            max-height: 0 !important;
+            opacity: 0 !important;
+            transform: translateY(-100%);
+            padding-top: 0 !important;
+            padding-bottom: 0 !important;
+            border-bottom: none !important;
+            pointer-events: none;
+        }
+
+        .hero-showroom-btn {
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            transform: translateZ(0);
+        }
+
+        .hero-showroom-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 24px -6px rgba(0, 0, 0, 0.18);
+        }
     </style>
 </head>
 
@@ -3785,39 +4014,55 @@
     <div id="scrollProgressBar" role="progressbar" aria-label="Scroll progress" aria-valuenow="0" aria-valuemin="0"
         aria-valuemax="100"></div>
 
-    <aside aria-label="System status"
-        class="w-full bg-[#030d19] border-b border-white/10 py-1.5 px-3 sm:px-4 text-center z-[60] relative">
+
+
+    <!-- Apple-Style Location & Currency Region Banner -->
+    <aside id="regionBanner" aria-label="Country and Region Selector"
+        class="w-full bg-[#161617] text-[#f5f5f7] border-b border-white/10 py-2.5 px-3 sm:px-6 relative z-[70] transition-all duration-300">
         <div
-            class="max-w-7xl mx-auto flex items-center justify-center flex-wrap gap-x-3 gap-y-0.5 text-[9px] sm:text-[10px] font-mono tracking-widest uppercase text-white/90 font-bold">
-            <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse shrink-0"></span>
-            <span>Sub-100ms Edge Deployments</span>
-            <span class="text-white/30">•</span>
-            <span
-                class="text-cyan-300 hover:text-cyan-100 underline font-extrabold cursor-pointer transition-colors whitespace-nowrap"
-                onclick="openEnquiryModal('basic')">Claim ₹3,499 Deployment &rarr;</span>
+            class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-2.5 text-center md:text-left">
+            <p class="font-sans text-[11.5px] sm:text-[13px] text-[#d2d2d7] leading-tight select-none">
+                Choose another country or region to see price specific to your location and currency.
+            </p>
+            <div class="flex items-center justify-center gap-2 flex-wrap sm:flex-nowrap shrink-0">
+                <div class="relative inline-block">
+                    <select id="regionBannerSelect" onchange="handleRegionSelectChange(this.value)"
+                        class="bg-[#2d2d2f] hover:bg-[#38383a] text-white text-[11.5px] sm:text-[12.5px] font-medium py-1.5 pl-3 pr-8 rounded-lg border border-white/20 focus:outline-none focus:border-cyan-400 cursor-pointer appearance-none shadow-sm transition-colors"
+                        aria-label="Select country or region">
+                        <option value="IN" selected>India (₹ INR)</option>
+                        <option value="US">United States ($ USD)</option>
+                        <option value="UK">United Kingdom / England (£ GBP)</option>
+                        <option value="AU">Australia (A$ AUD)</option>
+                        <option value="EU">Europe (€ EUR)</option>
+                    </select>
+                    <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-white/70">
+                        <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 20 20">
+                            <path
+                                d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" />
+                        </svg>
+                    </div>
+                </div>
+
+                <button type="button" onclick="applySelectedRegion()"
+                    class="bg-white hover:bg-neutral-200 active:scale-95 text-black text-[11.5px] sm:text-[12px] font-bold px-3.5 py-1.5 rounded-lg transition-all cursor-pointer whitespace-nowrap shadow-sm">
+                    Continue
+                </button>
+
+                <button type="button" onclick="dismissRegionBanner()"
+                    class="text-neutral-400 hover:text-white p-1 rounded-md transition-colors cursor-pointer"
+                    aria-label="Dismiss country banner">
+                    <svg class="w-4 h-4 stroke-[2.2]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"></path>
+                    </svg>
+                </button>
+            </div>
         </div>
     </aside>
 
     <main class="w-full flex flex-col overflow-x-hidden">
 
-        <!-- SECTION 1: SPACEEDU / FORGE PLANETARY CINEMATIC HERO -->
-        <section id="home" class="stage" aria-label="Cinematic Planetary Hero">
-            <!-- Sky Background & Video Switcher Layers -->
-            <div class="sky" id="planetSky">
-                <video data-planet="earth" class="is-active" autoplay muted loop playsinline preload="metadata"
-                    poster="https://images.higgs.ai/?default=1&output=webp&url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20260827_202133_508c64b8-a31e-4290-bdfc-1187df70e0a6.png&w=1920&q=85"
-                    src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260827_202422_3ffb4889-c520-432d-8458-038009eb40df.mp4"
-                    aria-hidden="true"></video>
-                <video data-planet="venus" muted loop playsinline preload="none"
-                    poster="https://images.higgs.ai/?default=1&output=webp&url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20260827_202133_cf55d1d8-7b59-4a64-80da-d72052ae974e.png&w=1920&q=85"
-                    data-src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260827_202422_b211cd74-013b-4dd3-bfd0-64491d8696fa.mp4"
-                    aria-hidden="true"></video>
-                <video data-planet="mars" muted loop playsinline preload="none"
-                    poster="https://images.higgs.ai/?default=1&output=webp&url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20260827_202133_0ba6de7c-285d-43dc-b7ab-8c54c73707cb.png&w=1920&q=85"
-                    data-src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260827_202422_51eae59a-2459-4c84-907c-cc5edfe5fea7.mp4"
-                    aria-hidden="true"></video>
-            </div>
-
+        <!-- SECTION 1: SKIPER 52 INTERACTIVE SHOWCASE HERO -->
+        <section id="home" class="stage skiper-hero-stage" aria-label="Skiper 52 Interactive Showcase">
             <!-- UI Overlay -->
             <div class="hero-ui">
                 <!-- Navigation Bar -->
@@ -3832,7 +4077,6 @@
                             <a href="#home" aria-current="page">Home</a>
                             <a href="#services-preview">Services</a>
                             <a href="#pricing">Pricing</a>
-                            <a href="#testimonials">Reviews</a>
                             <a href="#contact">Contact</a>
                             <div class="nav-divider" role="separator" aria-hidden="true"></div>
                             <button type="button" onclick="openHelpModal()" class="nav-btn"
@@ -3854,76 +4098,46 @@
                     </div>
                 </header>
 
-                <!-- Hero Copy Layout -->
-                <div class="copy">
-                    <div class="col eyebrow">
-                        <span class="w-2 h-2 rounded-full bg-cyan-400 animate-pulse"></span>
-                        <span class="ent-mask"><span class="ent-line" id="planetEyebrow">FORGE SOFTWARES • SCALE YOUR
-                                BRAND</span></span>
+                <!-- Hero Copy Layout (Zero Dead Spacing) -->
+                <div class="copy pt-1 pb-0">
+                    <div class="col eyebrow mb-1">
+                        <span class="w-2 h-2 rounded-full bg-cyan-500 animate-pulse"></span>
+                        <span class="ent-mask"><span class="ent-line">FORGE SOFTWARES • SCALE YOUR BRAND</span></span>
                     </div>
-                    <h1 class="col title" id="planetHeadline">
+                    <h1 class="col title mb-1 text-2xl sm:text-4xl lg:text-5xl font-black">
                         <span class="ent-mask"><span class="ent-line">BUILD YOUR WEBSITE NOW.</span></span>
                     </h1>
-                    <div class="col rule"><span></span></div>
-                    <p class="col lede" id="planetLede">
+                    <div class="col rule my-1.5"><span></span></div>
+                    <p class="col lede max-w-xl mx-auto mb-2.5 text-xs sm:text-sm font-medium">
                         We build ultra-fast, modern websites and smart AI assistants that help your business grow.
-                        Transparent pricing starts at ₹3,499. Start your project today!
+                        Transparent pricing starts at ₹7,999. Start your project today!
                     </p>
-                    <div class="col cta">
+                    <div class="col cta flex flex-wrap items-center justify-center gap-3 mb-1">
                         <a href="javascript:void(0)" onclick="openEnquiryModal('pro')" class="hero-cta-btn">
                             <span>START PROJECT</span>
                             <i data-lucide="chevron-right" class="w-4 h-4"></i>
                         </a>
+                        <a href="https://farmanshafi2007-hub.github.io/WEBSITE-SHOWROOM/" target="_blank"
+                            rel="noopener noreferrer"
+                            class="hero-showroom-btn inline-flex items-center gap-2 px-5 py-2.5 rounded-full font-mono text-xs font-black uppercase tracking-wider text-black bg-white border-2 border-black hover:bg-black hover:text-white transition-all shadow-md active:translate-y-0 cursor-pointer">
+                            <i data-lucide="sparkles" class="w-3.5 h-3.5 text-cyan-600"></i>
+                            <span>View Sample Designs</span>
+                            <i data-lucide="arrow-up-right" class="w-3.5 h-3.5 opacity-70"></i>
+                        </a>
+                    </div>
+                </div>
 
-                        <!-- Planet Switcher Tabs Pill -->
-                        <div class="planet-switcher-tabs" id="planetTabs" role="tablist"
-                            aria-label="Select Architecture Planet">
-                            <button type="button" class="planet-tab-btn active" data-planet="earth" aria-selected="true"
-                                role="tab" aria-label="Earth Architecture">
-                                <span class="planet-dot bg-cyan-400"></span> EARTH
-                            </button>
-                            <button type="button" class="planet-tab-btn" data-planet="venus" aria-selected="false"
-                                role="tab" aria-label="Venus Architecture">
-                                <span class="planet-dot bg-amber-400"></span> VENUS
-                            </button>
-                            <button type="button" class="planet-tab-btn" data-planet="mars" aria-selected="false"
-                                role="tab" aria-label="Mars AI Agents">
-                                <span class="planet-dot bg-rose-500"></span> MARS
-                            </button>
+                <!-- Skiper52 root container / HoverExpand_001 -->
+                <div class="outer-motion relative w-full max-w-6xl px-2 sm:px-6 mt-1 mb-2 flex flex-col items-center">
+                    <div class="inner-motion w-full flex items-center justify-center">
+                        <div id="cards-container"
+                            class="flex w-full items-center justify-center gap-1 sm:gap-1.5 touch-pan-y overflow-x-auto py-1">
                         </div>
                     </div>
                 </div>
             </div>
-
-            <!-- Scroll to Explore Button -->
-            <button class="scroll" id="scrollExploreBtn" type="button"
-                aria-label="Scroll to explore pricing and capabilities">
-                <svg viewBox="0 0 26 33" fill="none" aria-hidden="true">
-                    <path d="M13 1.5 V31.5 M1.9 20.4 L13 31.5 L24.1 20.4" stroke="#ffffff" stroke-width="3"
-                        stroke-linecap="square" stroke-linejoin="miter" />
-                </svg>
-            </button>
         </section>
 
-        <!-- SPEED ADVANTAGE STRIP -->
-        <aside aria-label="Speed advantage notice"
-            class="w-full bg-[#020813] border-y border-white/10 py-3 px-4 sm:px-8 relative z-20">
-            <div
-                class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-3 text-center sm:text-left">
-                <div class="flex items-center justify-center sm:justify-start gap-2.5">
-                    <span class="w-2 h-2 rounded-full bg-cyan-400 animate-pulse shrink-0"></span>
-                    <p class="font-mono text-xs sm:text-sm uppercase tracking-wider text-white/90 font-bold">
-                        <strong class="text-cyan-300">2026 SPEED ADVANTAGE:</strong> Fast-loading websites convert 4.2×
-                        higher.
-                        Outpace your competition.
-                    </p>
-                </div>
-                <button type="button" onclick="openEnquiryModal('pro')"
-                    class="shimmer-btn px-4 sm:px-5 py-2 font-mono text-[10.5px] sm:text-[11px] font-black uppercase tracking-widest bg-cyan-400 text-black rounded-full hover:bg-cyan-300 transition-all cursor-pointer whitespace-nowrap shrink-0 shadow-md shadow-cyan-400/20">
-                    Start Project &rarr;
-                </button>
-            </div>
-        </aside>
 
         <!-- SECTION 2: SERVICES SECTION -->
         <section id="services-preview"
@@ -3941,9 +4155,8 @@
                         Professional web and AI software built to help your business grow reliably.
                     </p>
                 </div>
-
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 w-full">
-                    <!-- 1. Website Development -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 w-full max-w-6xl mx-auto">
+                    <!-- 1. Premium Websites -->
                     <div
                         class="card-light-contrast card-spotlight p-6 sm:p-7 flex flex-col justify-between cursor-default group reveal">
                         <div>
@@ -3953,21 +4166,21 @@
                             </div>
                             <h3
                                 class="text-lg sm:text-xl font-extrabold text-black tracking-tight mb-2 uppercase font-bubbledot">
-                                Website Development</h3>
+                                Premium Websites</h3>
                             <p class="text-xs text-black leading-relaxed font-sans font-medium">
-                                Ultra-fast, responsive websites and landing pages engineered with modern code and
-                                instant loading speeds.
+                                Ultra-fast, responsive custom websites and landing pages engineered with modern
+                                high-craft code, zero bloat, and sub-100ms loading speeds.
                             </p>
                         </div>
                         <div
                             class="mt-5 pt-4 border-t-2 border-black/10 flex items-center justify-between text-[11px] font-mono font-bold">
                             <span class="text-black/70">Performance</span>
-                            <span class="text-black bg-black/5 px-2 py-0.5 rounded font-black">Sub-100ms • 100%
-                                Mobile</span>
+                            <span class="text-black bg-black/5 px-2 py-0.5 rounded font-black">Sub-100ms • 100% Mobile
+                                &amp; Laptop</span>
                         </div>
                     </div>
 
-                    <!-- 2. AI Agents -->
+                    <!-- 2. AI Bots -->
                     <div
                         class="card-light-contrast card-spotlight p-6 sm:p-7 flex flex-col justify-between cursor-default group reveal reveal-delay-100">
                         <div>
@@ -3977,117 +4190,82 @@
                             </div>
                             <h3
                                 class="text-lg sm:text-xl font-extrabold text-black tracking-tight mb-2 uppercase font-bubbledot">
-                                AI Agents</h3>
+                                AI Bots</h3>
                             <p class="text-xs text-black leading-relaxed font-sans font-medium">
-                                Autonomous 24/7 AI assistants trained on your business data to handle customer inquiries
-                                and qualify inbound leads.
+                                Intelligent autonomous 24/7 AI assistants and bots trained on your business data to
+                                handle customer inquiries, capture leads, and automate workflows.
                             </p>
                         </div>
                         <div
                             class="mt-5 pt-4 border-t-2 border-black/10 flex items-center justify-between text-[11px] font-mono font-bold">
                             <span class="text-black/70">Availability</span>
-                            <span class="text-black bg-black/5 px-2 py-0.5 rounded font-black">24/7 Autonomous • Zero
-                                Lag</span>
+                            <span class="text-black bg-black/5 px-2 py-0.5 rounded font-black">24/7 Autonomous • Instant
+                                Response</span>
                         </div>
                     </div>
 
-                    <!-- 3. SaaS Development -->
+                    <!-- 3. Graphics Work & More -->
                     <div
                         class="card-light-contrast card-spotlight p-6 sm:p-7 flex flex-col justify-between cursor-default group reveal reveal-delay-200">
                         <div>
                             <div
                                 class="w-12 h-12 rounded-2xl bg-black text-white border-2 border-black flex items-center justify-center mb-5 font-extrabold group-hover:scale-105 transition-transform shadow-md">
-                                <i data-lucide="layout-grid" class="w-6 h-6"></i>
+                                <i data-lucide="palette" class="w-6 h-6"></i>
                             </div>
                             <h3
                                 class="text-lg sm:text-xl font-extrabold text-black tracking-tight mb-2 uppercase font-bubbledot">
-                                SaaS Development</h3>
+                                Graphics Work &amp; More</h3>
                             <p class="text-xs text-black leading-relaxed font-sans font-medium">
-                                Custom web applications, client dashboards, subscription platforms, and scalable cloud
-                                databases.
+                                Custom brand identity, high-craft logos, modern UI/UX design, marketing assets, and
+                                comprehensive digital creative solutions.
                             </p>
                         </div>
                         <div
                             class="mt-5 pt-4 border-t-2 border-black/10 flex items-center justify-between text-[11px] font-mono font-bold">
-                            <span class="text-black/70">Infrastructure</span>
-                            <span class="text-black bg-black/5 px-2 py-0.5 rounded font-black">Cloud Edge • 99.99%
-                                Uptime</span>
+                            <span class="text-black/70">Creative Craft</span>
+                            <span class="text-black bg-black/5 px-2 py-0.5 rounded font-black">High Craft • Tailored
+                                Brand Identity</span>
                         </div>
                     </div>
+                </div>
 
-                    <!-- 4. Automations -->
+                <!-- Apple-Grade Design Showroom Spotlight Section -->
+                <div
+                    class="mt-12 sm:mt-16 w-full max-w-6xl mx-auto rounded-3xl bg-[#09090b] text-white p-7 sm:p-10 border-2 border-white/10 shadow-2xl relative overflow-hidden group reveal">
                     <div
-                        class="card-light-contrast card-spotlight p-6 sm:p-7 flex flex-col justify-between cursor-default group reveal reveal-delay-300">
-                        <div>
+                        class="absolute -top-24 -right-24 w-80 h-80 rounded-full bg-cyan-500/10 blur-3xl pointer-events-none group-hover:bg-cyan-500/20 transition-all duration-700">
+                    </div>
+                    <div
+                        class="relative z-10 flex flex-col md:flex-row items-center justify-between gap-6 text-center md:text-left">
+                        <div class="max-w-xl">
                             <div
-                                class="w-12 h-12 rounded-2xl bg-black text-white border-2 border-black flex items-center justify-center mb-5 font-extrabold group-hover:scale-105 transition-transform shadow-md">
-                                <i data-lucide="zap" class="w-6 h-6"></i>
+                                class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-500/15 border border-cyan-400/30 text-cyan-300 font-mono text-[10px] sm:text-xs font-extrabold uppercase tracking-widest mb-3">
+                                <i data-lucide="sparkles" class="w-3.5 h-3.5"></i>
+                                100% Apple Design Principles • Live Themes
                             </div>
                             <h3
-                                class="text-lg sm:text-xl font-extrabold text-black tracking-tight mb-2 uppercase font-bubbledot">
-                                Automations</h3>
-                            <p class="text-xs text-black leading-relaxed font-sans font-medium">
-                                End-to-end business workflows connecting your CRM, payment processors, WhatsApp
-                                notifications, and lead funnels.
+                                class="text-xl sm:text-3xl font-black font-bubbledot uppercase tracking-tight text-white mb-2">
+                                Explore Our Design Showroom
+                            </h3>
+                            <p class="text-neutral-400 text-xs sm:text-sm font-sans font-medium leading-relaxed">
+                                Review live curated theme architectures, fluid interactions, responsive typography, and
+                                sub-100ms engineering samples. Choose the exact aesthetic for your business.
                             </p>
                         </div>
-                        <div
-                            class="mt-5 pt-4 border-t-2 border-black/10 flex items-center justify-between text-[11px] font-mono font-bold">
-                            <span class="text-black/70">Efficiency</span>
-                            <span class="text-black bg-black/5 px-2 py-0.5 rounded font-black">100% Automated • Instant
-                                Sync</span>
+                        <div class="flex items-center gap-3 shrink-0 flex-wrap sm:flex-nowrap justify-center">
+                            <a href="https://farmanshafi2007-hub.github.io/WEBSITE-SHOWROOM/" target="_blank"
+                                rel="noopener noreferrer"
+                                class="shimmer-btn inline-flex items-center gap-2.5 px-6 py-3.5 rounded-full bg-white text-black font-mono text-xs sm:text-sm font-black uppercase tracking-wider hover:bg-neutral-200 transition-all shadow-xl cursor-pointer">
+                                <span>View Sample Designs</span>
+                                <i data-lucide="arrow-up-right" class="w-4 h-4"></i>
+                            </a>
                         </div>
                     </div>
                 </div>
+
             </div>
         </section>
 
-        <!-- SECTION 3: STATS COUNTER BAR -->
-        <section id="stats-counter-bar"
-            class="py-12 sm:py-16 px-4 sm:px-8 border-b-2 border-white bg-black text-white w-full bg-grid-dark">
-            <div class="w-full max-w-6xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8 text-center reveal">
-                <div class="flex flex-col items-center">
-                    <span class="font-bubbledot text-2xl text-cyan-300 mb-1">&lt;</span>
-                    <div
-                        class="text-xl sm:text-2xl font-extrabold font-mono text-white tracking-tight flex items-center">
-                        <span class="stat-counter" data-target="120" data-decimals="0">0</span>
-                        <span class="ml-1 text-white">ms</span>
-                    </div>
-                    <span class="text-[10px] font-mono text-white uppercase tracking-wider mt-1 font-extrabold">Loading
-                        Speed</span>
-                </div>
-                <div class="flex flex-col items-center">
-                    <span class="font-bubbledot text-2xl text-cyan-300 mb-1">%</span>
-                    <div
-                        class="text-xl sm:text-2xl font-extrabold font-mono text-white tracking-tight flex items-center">
-                        <span class="stat-counter" data-target="99.99" data-decimals="2">0.00</span>
-                        <span class="ml-1 text-white">%</span>
-                    </div>
-                    <span class="text-[10px] font-mono text-white uppercase tracking-wider mt-1 font-extrabold">Uptime
-                        Guarantee</span>
-                </div>
-                <div class="flex flex-col items-center">
-                    <span class="font-bubbledot text-2xl text-cyan-300 mb-1">*</span>
-                    <div
-                        class="text-xl sm:text-2xl font-extrabold font-mono text-white tracking-tight flex items-center">
-                        <span class="stat-counter" data-target="24" data-decimals="0">0</span>
-                        <span class="ml-1 text-white">/7</span>
-                    </div>
-                    <span class="text-[10px] font-mono text-white uppercase tracking-wider mt-1 font-extrabold">Active
-                        Support</span>
-                </div>
-                <div class="flex flex-col items-center">
-                    <span class="font-bubbledot text-2xl text-cyan-300 mb-1">#</span>
-                    <div
-                        class="text-xl sm:text-2xl font-extrabold font-mono text-white tracking-tight flex items-center">
-                        <span class="stat-counter" data-target="2.4" data-decimals="1">0.0</span>
-                        <span class="ml-1 text-white">M</span>
-                    </div>
-                    <span class="text-[10px] font-mono text-white uppercase tracking-wider mt-1 font-extrabold">Client
-                        Interactions</span>
-                </div>
-            </div>
-        </section>
 
         <!-- SECTION 4: TRUST LOGOS & PARTNERS -->
         <section id="trust-logos"
@@ -4110,8 +4288,7 @@
                                 <i class="fa-brands fa-google"></i>
                             </div>
                         </div>
-                        <span class="text-[10px] sm:text-xs font-mono font-extrabold">Trusted by 2,000+ Global
-                            Enterprises</span>
+                        <span class="text-[10px] sm:text-xs font-mono font-extrabold">Trusted by Work</span>
                     </div>
                 </div>
 
@@ -4203,7 +4380,9 @@
 
         <!-- SECTION 5: PRICING ARCHITECTURE & MATRIX -->
         <section id="pricing"
-            class="py-20 sm:py-24 px-4 sm:px-8 lg:px-12 bg-white text-black w-full border-b-2 border-black bg-grid-light overflow-visible">
+            class="py-14 sm:py-20 px-4 sm:px-8 lg:px-12 bg-white text-black w-full border-b-2 border-black bg-grid-light overflow-visible">
+            class="py-20 sm:py-24 px-4 sm:px-8 lg:px-12 bg-white text-black w-full border-b-2 border-black bg-grid-light
+            overflow-visible">
             <div class="w-full max-w-7xl mx-auto">
                 <div class="text-center mb-16 sm:mb-20 reveal px-2">
                     <div
@@ -4218,1019 +4397,164 @@
                     </p>
                 </div>
 
-                <!-- 3 Pricing Cards Overview Grid -->
-                <div
-                    class="grid grid-cols-1 lg:grid-cols-3 gap-8 sm:gap-10 items-stretch w-full mb-16 sm:mb-20 relative z-10 pt-6">
+                <!-- Apple-Style Ultra-Minimal High-Craft Pricing Box (CRadioGroup17) -->
+                <div class="w-full flex flex-col items-center justify-center mb-14 sm:mb-16 reveal px-2">
+                    <div id="c-radio-group-17"
+                        style="font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', 'Helvetica Neue', Helvetica, Arial, sans-serif;"
+                        class="w-full max-w-[400px] mx-auto bg-white border-[2.75px] border-black rounded-[32px] p-6 sm:p-7 shadow-[0_20px_50px_rgba(0,0,0,0.07),0_1px_3px_rgba(0,0,0,0.05)] transition-all duration-300">
 
-                    <!-- BASIC Tier -->
-                    <article
-                        class="card-light-contrast reveal p-6 sm:p-8 flex flex-col justify-between h-full w-full group relative">
-                        <div>
-                            <div class="flex items-center justify-between mb-4 border-b-2 border-black pb-3">
+                        <!-- Top Bar: Location & Currency Header -->
+                        <div class="flex items-center justify-between pb-5 mb-5 border-b-[2px] border-black/15">
+                            <div class="flex flex-col text-left">
+                                <span
+                                    class="text-[10px] sm:text-[11px] font-extrabold tracking-[0.12em] text-neutral-500 uppercase select-none">
+                                    Location &amp; Currency
+                                </span>
+                                <span id="pricingActiveRegionName"
+                                    class="text-xs sm:text-[13px] font-extrabold text-neutral-900 tracking-tight mt-0.5">
+                                    India (₹ INR)
+                                </span>
+                            </div>
+
+                            <!-- Sleek Inline Region Selector -->
+                            <div class="relative flex items-center">
+                                <select id="pricingCardRegionSelect" onchange="switchRegion(this.value)"
+                                    class="bg-neutral-100 hover:bg-neutral-200 border-[1.5px] border-black/30 text-black text-xs font-bold py-1.5 pl-3 pr-7 rounded-xl transition-all cursor-pointer focus:outline-none appearance-none font-sans"
+                                    aria-label="Change Pricing Location and Currency">
+                                    <option value="IN" selected>🇮🇳 India (INR)</option>
+                                    <option value="US">🇺🇸 USA (USD)</option>
+                                    <option value="UK">🇬🇧 UK (GBP)</option>
+                                    <option value="AU">🇦🇺 Australia (AUD)</option>
+                                    <option value="EU">🇪🇺 Europe (EUR)</option>
+                                </select>
                                 <div
-                                    class="flex items-center gap-2 text-xs font-mono text-black uppercase font-extrabold tracking-wider">
-                                    <span
-                                        class="w-5 h-5 rounded-full border-2 border-black bg-black text-white flex items-center justify-center text-[9px] font-bold">(F)</span>
-                                    FORGE
+                                    class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-black/60">
+                                    <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 20 20">
+                                        <path
+                                            d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" />
+                                    </svg>
                                 </div>
-                                <span
-                                    class="text-[9px] font-mono bg-black text-white border border-black px-2.5 py-1 rounded font-extrabold uppercase">Standard</span>
                             </div>
-                            <div class="mb-4">
-                                <span
-                                    class="text-xs font-mono uppercase tracking-widest text-black font-bold block mb-1">Essential</span>
-                                <h3
-                                    class="text-2xl sm:text-3xl font-extrabold uppercase tracking-widest font-bubbledot text-black flex items-center gap-2">
-                                    <i data-lucide="feather" class="w-5 h-5 text-black"></i> Basic
-                                </h3>
-                                <p class="text-black text-xs mt-2 font-medium">New businesses & low budget owners</p>
-                            </div>
-                            <div class="mb-6 font-mono">
-                                <div class="flex items-baseline flex-wrap gap-2">
-                                    <span
-                                        class="text-3xl sm:text-4xl font-extrabold text-black tracking-tight">₹3,499</span>
-                                    <span class="text-xs sm:text-sm text-black/70 font-mono font-bold tracking-tight">~
-                                        $50 USD</span>
-                                    <span class="text-xs text-black font-sans font-bold ml-auto">(One-Time)</span>
-                                </div>
-                                <span class="text-[10px] text-black font-mono block mt-1 font-extrabold">Complete
-                                    starter
-                                    deployment</span>
-                            </div>
-                            <button type="button" onclick="openEnquiryModal('basic')"
-                                class="pricingBookBtn apple-btn-dark w-full min-h-[48px] uppercase tracking-wider mb-2 cursor-pointer">
-                                <span>Select Basic</span>
-                                <i data-lucide="arrow-right"
-                                    class="w-3.5 h-3.5 ml-1.5 transition-transform group-hover:translate-x-1"></i>
-                            </button>
-                            <p class="text-[10px] font-mono text-center text-black font-bold mb-6">Standard delivery
-                                queue
-                                with 3-day support.</p>
-
-                            <ul class="space-y-3 border-t-2 border-black pt-6 text-xs text-black font-sans font-medium">
-                                <li class="flex items-start gap-2.5"><i data-lucide="file-text"
-                                        class="w-4 h-4 text-black shrink-0 mt-0.5"></i> <span><strong>1–3 Pages</strong>
-                                        Simple Business Layout</span></li>
-                                <li class="flex items-start gap-2.5"><i data-lucide="layout"
-                                        class="w-4 h-4 text-black shrink-0 mt-0.5"></i> <span>Simple Business
-                                        Design</span>
-                                </li>
-                                <li class="flex items-start gap-2.5 text-black"><i data-lucide="smartphone-off"
-                                        class="w-4 h-4 text-black shrink-0 mt-0.5"></i> <span>Desktop Formatted
-                                        Layout</span></li>
-                                <li class="flex items-start gap-2.5"><i data-lucide="message-circle"
-                                        class="w-4 h-4 text-black shrink-0 mt-0.5"></i> <span>WhatsApp Chat Button
-                                        Included</span></li>
-                                <li class="flex items-start gap-2.5"><i data-lucide="mail"
-                                        class="w-4 h-4 text-black shrink-0 mt-0.5"></i> <span>Simple Contact Form</span>
-                                </li>
-                                <li class="flex items-start gap-2.5"><i data-lucide="share-2"
-                                        class="w-4 h-4 text-black shrink-0 mt-0.5"></i> <span>Social Media Links
-                                        Included</span></li>
-                                <li class="flex items-start gap-2.5"><i data-lucide="search"
-                                        class="w-4 h-4 text-black shrink-0 mt-0.5"></i> <span>Basic SEO Setup</span>
-                                </li>
-                                <li class="flex items-start gap-2.5"><i data-lucide="zap"
-                                        class="w-4 h-4 text-black shrink-0 mt-0.5"></i> <span>Basic Speed
-                                        Optimization</span></li>
-                                <li class="flex items-start gap-2.5"><i data-lucide="server"
-                                        class="w-4 h-4 text-black shrink-0 mt-0.5"></i> <span>Free Deployment & SSL
-                                        Security</span></li>
-                                <li class="flex items-start gap-2.5"><i data-lucide="rotate-ccw"
-                                        class="w-4 h-4 text-black shrink-0 mt-0.5"></i> <span>1 Free Revision</span>
-                                </li>
-                                <li class="flex items-start gap-2.5"><i data-lucide="clock"
-                                        class="w-4 h-4 text-black shrink-0 mt-0.5"></i> <span>3 Days Support &
-                                        Maintenance</span></li>
-                            </ul>
                         </div>
-                    </article>
 
-                    <!-- PRO ⭐ Tier -->
-                    <article
-                        class="card-light-contrast pricing-card-pro reveal p-6 sm:p-8 flex flex-col justify-between h-full w-full relative group"
-                        style="transition-delay: 100ms;">
-                        <div
-                            class="absolute -top-4 left-1/2 -translate-x-1/2 bg-black text-white font-mono text-[10px] font-extrabold uppercase tracking-widest px-5 py-1.5 rounded-full shadow-2xl whitespace-nowrap flex items-center gap-1.5 border-2 border-white z-20">
-                            <i data-lucide="star" class="w-3.5 h-3.5 text-amber-400 fill-amber-400"></i> BEST
-                            SELLING ⭐
-                        </div>
-                        <div>
-                            <div class="flex items-center justify-between mb-4 border-b-2 border-black pb-3 mt-2">
+                        <!-- Plan Selection Boxes -->
+                        <div class="space-y-3.5" role="radiogroup" aria-label="Select website plan">
+
+                            <!-- Starter Plan -->
+                            <div id="planBox-starter" onclick="selectPricingPlan('starter')"
+                                class="cursor-pointer flex items-center gap-4 p-4 sm:p-[17px] rounded-2xl transition-all duration-250 ease-out active:scale-[0.985] border-2 border-black/55 hover:border-black hover:bg-black/[0.015]">
                                 <div
-                                    class="flex items-center gap-2 text-xs font-mono text-black uppercase font-extrabold tracking-wider">
-                                    <span
-                                        class="w-5 h-5 rounded-full border-2 border-black bg-black text-white flex items-center justify-center text-[9px] font-bold">(F)</span>
-                                    FORGE
+                                    class="relative flex items-center justify-center aspect-square h-[18px] w-[18px] rounded-full border-[2.2px] border-black/80 transition-all duration-300 ease-out bg-white shrink-0">
+                                    <div id="radioDot-starter"
+                                        class="h-[9px] w-[9px] rounded-full bg-black transition-all duration-200 transform scale-0">
+                                    </div>
                                 </div>
-                                <span
-                                    class="text-[9px] font-mono bg-black text-white px-2.5 py-1 rounded font-extrabold uppercase">Most
-                                    Popular</span>
-                            </div>
-                            <div class="mb-4">
-                                <span
-                                    class="text-xs font-mono uppercase tracking-widest text-black font-extrabold block mb-1">Scale</span>
-                                <h3
-                                    class="text-2xl sm:text-3xl font-extrabold uppercase tracking-widest font-bubbledot text-black flex items-center gap-2">
-                                    <i data-lucide="sparkles" class="w-5 h-5 text-black"></i> Pro ⭐
-                                </h3>
-                                <p class="text-black text-xs mt-2 font-medium">Growing businesses & startups</p>
-                            </div>
-                            <div class="mb-6 font-mono">
-                                <div class="flex items-baseline flex-wrap gap-2">
-                                    <span
-                                        class="text-3xl sm:text-4xl font-extrabold text-black tracking-tight">₹11,999</span>
-                                    <span class="text-xs sm:text-sm text-black/70 font-mono font-bold tracking-tight">~
-                                        $200 USD</span>
-                                    <span class="text-xs text-black font-sans font-bold ml-auto">(One-Time)</span>
+                                <div class="flex-1 space-y-0 leading-tight select-none">
+                                    <div
+                                        class="text-base font-medium text-black tracking-tight w-full flex items-center justify-between">
+                                        <span
+                                            class="text-[15.5px] font-semibold tracking-[-0.015em] text-black">Starter</span>
+                                        <div class="flex items-center gap-1">
+                                            <span id="priceVal-starter"
+                                                class="tabular-nums tracking-tight text-[16px] font-bold text-black transition-colors duration-200">₹7,999</span>
+                                        </div>
+                                    </div>
                                 </div>
-                                <span class="text-[10px] text-black font-mono block mt-1 font-extrabold">Complete
-                                    business
-                                    scale solution</span>
                             </div>
-                            <button type="button" onclick="openEnquiryModal('pro')"
-                                class="pricingBookBtn apple-btn-dark shimmer-btn w-full min-h-[48px] uppercase tracking-wider mb-2 cursor-pointer shadow-xl">
-                                <span>Select Pro ⭐</span>
-                                <i data-lucide="arrow-right"
-                                    class="w-3.5 h-3.5 ml-1.5 transition-transform group-hover:translate-x-1"></i>
-                            </button>
-                            <p class="text-[10px] font-mono text-center text-black font-bold mb-6">Includes 15-day
-                                dedicated
-                                maintenance support.</p>
 
-                            <ul class="space-y-3 border-t-2 border-black pt-6 text-xs text-black font-sans font-medium">
-                                <li class="flex items-start gap-2.5"><i data-lucide="layers"
-                                        class="w-4 h-4 text-black shrink-0 mt-0.5"></i> <span><strong>Up to 8
-                                            Pages</strong>
-                                        Modern Architecture</span></li>
-                                <li class="flex items-start gap-2.5"><i data-lucide="palette"
-                                        class="w-4 h-4 text-black shrink-0 mt-0.5"></i> <span>Modern Professional
-                                        Design</span></li>
-                                <li class="flex items-start gap-2.5"><i data-lucide="smartphone"
-                                        class="w-4 h-4 text-black shrink-0 mt-0.5"></i> <span><strong>✅ Mobile & Tablet
-                                            Responsive</strong></span></li>
-                                <li class="flex items-start gap-2.5"><i data-lucide="map-pin"
-                                        class="w-4 h-4 text-black shrink-0 mt-0.5"></i> <span>Google Maps
-                                        Integration</span>
-                                </li>
-                                <li class="flex items-start gap-2.5"><i data-lucide="mail-check"
-                                        class="w-4 h-4 text-black shrink-0 mt-0.5"></i> <span>Professional Form + Email
-                                        Alerts</span></li>
-                                <li class="flex items-start gap-2.5"><i data-lucide="image"
-                                        class="w-4 h-4 text-black shrink-0 mt-0.5"></i> <span>Portfolio & Photo
-                                        Gallery</span></li>
-                                <li class="flex items-start gap-2.5"><i data-lucide="newspaper"
-                                        class="w-4 h-4 text-black shrink-0 mt-0.5"></i> <span>Blog / News Engine
-                                        Included</span></li>
-                                <li class="flex items-start gap-2.5"><i data-lucide="search-check"
-                                        class="w-4 h-4 text-black shrink-0 mt-0.5"></i> <span>Advanced On-Page SEO
-                                        Setup</span></li>
-                                <li class="flex items-start gap-2.5"><i data-lucide="bar-chart-2"
-                                        class="w-4 h-4 text-black shrink-0 mt-0.5"></i> <span>Google Analytics
-                                        Integration</span></li>
-                                <li class="flex items-start gap-2.5"><i data-lucide="gauge"
-                                        class="w-4 h-4 text-black shrink-0 mt-0.5"></i> <span>Fast Loading Speed
-                                        Tuning</span></li>
-                                <li class="flex items-start gap-2.5"><i data-lucide="bell"
-                                        class="w-4 h-4 text-black shrink-0 mt-0.5"></i> <span>Instant Email Lead
-                                        Notifications</span></li>
-                                <li class="flex items-start gap-2.5"><i data-lucide="rotate-ccw"
-                                        class="w-4 h-4 text-black shrink-0 mt-0.5"></i> <span>3 Free Revisions</span>
-                                </li>
-                                <li class="flex items-start gap-2.5"><i data-lucide="clock"
-                                        class="w-4 h-4 text-black shrink-0 mt-0.5"></i> <span>15 Days Maintenance
-                                        Support</span></li>
-                            </ul>
-                        </div>
-                    </article>
-
-                    <!-- PREMIUM 👑 Tier -->
-                    <article
-                        class="card-light-contrast reveal p-6 sm:p-8 flex flex-col justify-between h-full w-full relative group"
-                        style="transition-delay: 200ms;">
-                        <div
-                            class="absolute -top-4 left-1/2 -translate-x-1/2 bg-black text-white font-mono text-[10px] font-extrabold uppercase tracking-widest px-5 py-1.5 rounded-full shadow-2xl whitespace-nowrap flex items-center gap-1.5 border-2 border-white z-20">
-                            <i data-lucide="crown" class="w-3.5 h-3.5 text-amber-400 fill-amber-400"></i> VALUE FOR
-                            MONEY 👑
-                        </div>
-                        <div>
-                            <div class="flex items-center justify-between mb-4 border-b-2 border-black pb-3 mt-2">
+                            <!-- Pro Plan (Selected by default) with Most Popular badge -->
+                            <div id="planBox-pro" onclick="selectPricingPlan('pro')"
+                                class="cursor-pointer flex items-center gap-4 p-4 sm:p-[17px] rounded-2xl transition-all duration-250 ease-out active:scale-[0.985] border-[2.5px] border-black bg-black/[0.035] shadow-[0_4px_16px_rgba(0,0,0,0.06)]">
                                 <div
-                                    class="flex items-center gap-2 text-xs font-mono text-black uppercase font-extrabold tracking-wider">
-                                    <span
-                                        class="w-5 h-5 rounded-full border-2 border-black bg-black text-white flex items-center justify-center text-[9px] font-bold">(F)</span>
-                                    FORGE
+                                    class="relative flex items-center justify-center aspect-square h-[18px] w-[18px] rounded-full border-[2.2px] border-black transition-all duration-300 ease-out bg-white shrink-0">
+                                    <div id="radioDot-pro"
+                                        class="h-[9px] w-[9px] rounded-full bg-black transition-all duration-200 transform scale-100">
+                                    </div>
                                 </div>
-                                <span
-                                    class="text-[9px] font-mono bg-black text-white px-2.5 py-1 rounded font-extrabold uppercase">Enterprise</span>
-                            </div>
-                            <div class="mb-4">
-                                <span
-                                    class="text-xs font-mono uppercase tracking-widest text-black font-extrabold block mb-1">Enterprise</span>
-                                <h3
-                                    class="text-2xl sm:text-3xl font-extrabold uppercase tracking-widest font-bubbledot text-black flex items-center gap-2">
-                                    <i data-lucide="crown" class="w-6 h-6 text-black"></i> Premium 👑
-                                </h3>
-                                <p class="text-black text-xs mt-2 font-medium">Established businesses & premium brands
-                                </p>
-                            </div>
-                            <div class="mb-6 font-mono">
-                                <div class="flex items-baseline flex-wrap gap-2">
-                                    <span
-                                        class="text-3xl sm:text-4xl font-extrabold text-black tracking-tight">₹25,000</span>
-                                    <span class="text-xs sm:text-sm text-black/70 font-mono font-bold tracking-tight">~
-                                        $400 USD</span>
-                                    <span class="text-xs text-black font-sans font-bold ml-auto">(One-Time)</span>
+                                <div class="flex-1 space-y-0 leading-tight select-none">
+                                    <div
+                                        class="text-base font-medium text-black tracking-tight w-full flex items-center justify-between">
+                                        <div class="flex items-center gap-2">
+                                            <span
+                                                class="text-[15.5px] font-semibold tracking-[-0.015em] text-black">Pro</span>
+                                            <span
+                                                class="text-[9.5px] font-bold uppercase tracking-wider bg-black text-white px-2 py-0.5 rounded-full select-none">Most
+                                                Popular</span>
+                                        </div>
+                                        <div class="flex items-center gap-1">
+                                            <span id="priceVal-pro"
+                                                class="tabular-nums tracking-tight text-[16px] font-bold text-black transition-colors duration-200">₹24,999</span>
+                                        </div>
+                                    </div>
                                 </div>
-                                <span class="text-[10px] text-black font-mono block mt-1 font-extrabold">Autonomous AI &
-                                    enterprise suite</span>
                             </div>
-                            <button type="button" onclick="openEnquiryModal('premium')"
-                                class="pricingBookBtn apple-btn-dark shimmer-btn w-full min-h-[48px] uppercase tracking-wider mb-2 cursor-pointer shadow-xl">
-                                <span>Select Premium 👑</span>
-                                <i data-lucide="arrow-right"
-                                    class="w-3.5 h-3.5 ml-1.5 transition-transform group-hover:translate-x-1"></i>
+
+                            <!-- Premium Plan -->
+                            <div id="planBox-premium" onclick="selectPricingPlan('premium')"
+                                class="cursor-pointer flex items-center gap-4 p-4 sm:p-[17px] rounded-2xl transition-all duration-250 ease-out active:scale-[0.985] border-2 border-black/55 hover:border-black hover:bg-black/[0.015]">
+                                <div
+                                    class="relative flex items-center justify-center aspect-square h-[18px] w-[18px] rounded-full border-[2.2px] border-black/80 transition-all duration-300 ease-out bg-white shrink-0">
+                                    <div id="radioDot-premium"
+                                        class="h-[9px] w-[9px] rounded-full bg-black transition-all duration-200 transform scale-0">
+                                    </div>
+                                </div>
+                                <div class="flex-1 space-y-0 leading-tight select-none">
+                                    <div
+                                        class="text-base font-medium text-black tracking-tight w-full flex items-center justify-between">
+                                        <span
+                                            class="text-[15.5px] font-semibold tracking-[-0.015em] text-black">Premium</span>
+                                        <div class="flex items-center gap-1">
+                                            <span id="priceVal-premium"
+                                                class="tabular-nums tracking-tight text-[16px] font-bold text-black transition-colors duration-200">₹49,999</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Enterprise Plan -->
+                            <div id="planBox-enterprise" onclick="selectPricingPlan('enterprise')"
+                                class="group cursor-pointer flex items-center gap-4 p-4 sm:p-[17px] rounded-2xl transition-all duration-250 ease-out active:scale-[0.985] border-2 border-black/55 hover:border-black hover:bg-black/[0.015]">
+                                <div
+                                    class="relative flex items-center justify-center aspect-square h-[18px] w-[18px] rounded-full border-[2.2px] border-black/80 transition-all duration-300 ease-out bg-white shrink-0">
+                                    <div id="radioDot-enterprise"
+                                        class="h-[9px] w-[9px] rounded-full bg-black transition-all duration-200 transform scale-0">
+                                    </div>
+                                </div>
+                                <div class="flex-1 space-y-0 leading-tight select-none">
+                                    <div
+                                        class="text-base font-medium text-black tracking-tight w-full flex items-center justify-between">
+                                        <span
+                                            class="text-[15.5px] font-semibold tracking-[-0.015em] text-black">Enterprise</span>
+                                        <div class="flex items-center gap-1">
+                                            <span
+                                                class="tabular-nums tracking-tight text-[13px] font-semibold text-neutral-800 transition-colors duration-200">Talk
+                                                to Sales</span>
+                                            <i data-lucide="arrow-up-right"
+                                                class="w-3.5 h-3.5 text-neutral-700 stroke-[2.2] transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <!-- CTA Trigger Button below selector -->
+                        <div class="mt-5 pt-4 border-t border-black/10">
+                            <button type="button" id="pricingActionBtn" onclick="handlePricingPlanAction()"
+                                class="w-full py-3.5 px-5 rounded-2xl bg-black text-white text-xs sm:text-sm font-semibold tracking-tight hover:bg-neutral-800 active:scale-[0.98] transition-all flex items-center justify-center gap-2 cursor-pointer shadow-md">
+                                <span id="pricingActionBtnText">Continue with Pro Plan</span>
+                                <i data-lucide="arrow-right" class="w-4 h-4"></i>
                             </button>
-                            <p class="text-[10px] font-mono text-center text-black font-bold mb-6">Includes 30 days
-                                priority
-                                dedicated support.</p>
-
-                            <ul class="space-y-3 border-t-2 border-black pt-6 text-xs text-black font-sans font-medium">
-                                <li class="flex items-start gap-2.5"><i data-lucide="infinity"
-                                        class="w-4 h-4 text-black shrink-0 mt-0.5"></i> <span><strong>Unlimited
-                                            Pages</strong> Custom Architecture</span></li>
-                                <li class="flex items-start gap-2.5"><i data-lucide="wand-2"
-                                        class="w-4 h-4 text-black shrink-0 mt-0.5"></i> <span>100% Custom Premium
-                                        Tailored
-                                        Design</span></li>
-                                <li class="flex items-start gap-2.5"><i data-lucide="bot"
-                                        class="w-4 h-4 text-black shrink-0 mt-0.5"></i> <span><strong>✅
-                                            Autonomous AI
-                                            Chatbot Integrated</strong></span></li>
-                                <li class="flex items-start gap-2.5"><i data-lucide="globe"
-                                        class="w-4 h-4 text-black shrink-0 mt-0.5"></i> <span><strong>Free Custom Domain
-                                            (1st Year)</strong></span></li>
-                                <li class="flex items-start gap-2.5"><i data-lucide="shield-check"
-                                        class="w-4 h-4 text-black shrink-0 mt-0.5"></i> <span>Enterprise SSL
-                                        & Premium
-                                        Hosting Setup</span></li>
-                                <li class="flex items-start gap-2.5"><i data-lucide="search-code"
-                                        class="w-4 h-4 text-black shrink-0 mt-0.5"></i> <span>Advanced SEO + Technical
-                                        Schema.org</span></li>
-                                <li class="flex items-start gap-2.5"><i data-lucide="zap"
-                                        class="w-4 h-4 text-black shrink-0 mt-0.5"></i> <span>Maximum Speed &
-                                        Core Web
-                                        Vitals Tuning</span></li>
-                                <li class="flex items-start gap-2.5"><i data-lucide="filter"
-                                        class="w-4 h-4 text-black shrink-0 mt-0.5"></i> <span>Advanced Lead Capture
-                                        System</span></li>
-                                <li class="flex items-start gap-2.5"><i data-lucide="sparkles"
-                                        class="w-4 h-4 text-black shrink-0 mt-0.5"></i> <span>Premium Interactive
-                                        Effects</span></li>
-                                <li class="flex items-start gap-2.5"><i data-lucide="user-check"
-                                        class="w-4 h-4 text-black shrink-0 mt-0.5"></i> <span>Complete Content Upload
-                                        Assistance</span></li>
-                                <li class="flex items-start gap-2.5"><i data-lucide="check-circle-2"
-                                        class="w-4 h-4 text-black shrink-0 mt-0.5"></i> <span><strong>Unlimited
-                                            Revisions</strong></span></li>
-                                <li class="flex items-start gap-2.5"><i data-lucide="headphones"
-                                        class="w-4 h-4 text-black shrink-0 mt-0.5"></i> <span><strong>30 Days Priority
-                                            Dedicated Support</strong></span></li>
-                            </ul>
                         </div>
-                    </article>
-                </div>
 
-
-
-                <!--
-                                <span>Select Premium 👑</span>
-                                <i data-lucide="arrow-right"
-                                    class="w-3.5 h-3.5 ml-1.5 transition-transform group-hover:translate-x-1"></i>
-                            </button>
-                            <p class="text-[10px] font-mono text-center text-black font-bold mb-6">Includes 30 days
-                                priority
-                                dedicated support.</p>
-
-                            <ul class="space-y-3 border-t-2 border-black pt-6 text-xs text-black font-sans font-medium">
-                                <li class="flex items-start gap-2.5"><i data-lucide="infinity"
-                                        class="w-4 h-4 text-black shrink-0 mt-0.5"></i> <span><strong>Unlimited
-                                            Pages</strong> Custom Architecture</span></li>
-                                <li class="flex items-start gap-2.5"><i data-lucide="wand-2"
-                                        class="w-4 h-4 text-black shrink-0 mt-0.5"></i> <span>100% Custom Premium
-                                        Tailored
-                                        Design</span></li>
-                                <li class="flex items-start gap-2.5"><i data-lucide="bot"
-                                        class="w-4 h-4 icon-luminous-purple shrink-0 mt-0.5"></i> <span><strong>✅
-                                            Autonomous AI
-                                            Chatbot Integrated</strong></span></li>
-                                <li class="flex items-start gap-2.5"><i data-lucide="globe"
-                                        class="w-4 h-4 text-black shrink-0 mt-0.5"></i> <span><strong>Free Custom Domain
-                                            (1st Year)</strong></span></li>
-                                <li class="flex items-start gap-2.5"><i data-lucide="shield-check"
-                                        class="w-4 h-4 icon-luminous-emerald shrink-0 mt-0.5"></i> <span>Enterprise SSL
-                                        & Premium
-                                        Hosting Setup</span></li>
-                                <li class="flex items-start gap-2.5"><i data-lucide="search-code"
-                                        class="w-4 h-4 text-black shrink-0 mt-0.5"></i> <span>Advanced SEO + Technical
-                                        Schema.org</span></li>
-                                <li class="flex items-start gap-2.5"><i data-lucide="zap"
-                                        class="w-4 h-4 icon-luminous-cyan shrink-0 mt-0.5"></i> <span>Maximum Speed &
-                                        Core Web
-                                        Vitals Tuning</span></li>
-                                <li class="flex items-start gap-2.5"><i data-lucide="filter"
-                                        class="w-4 h-4 text-black shrink-0 mt-0.5"></i> <span>Advanced Lead Capture
-                                        System</span></li>
-                                <li class="flex items-start gap-2.5"><i data-lucide="sparkles"
-                                        class="w-4 h-4 text-black shrink-0 mt-0.5"></i> <span>Premium Interactive
-                                        Effects</span></li>
-                                <li class="flex items-start gap-2.5"><i data-lucide="user-check"
-                                        class="w-4 h-4 text-black shrink-0 mt-0.5"></i> <span>Complete Content Upload
-                                        Assistance</span></li>
-                                <li class="flex items-start gap-2.5"><i data-lucide="check-circle-2"
-                                        class="w-4 h-4 text-black shrink-0 mt-0.5"></i> <span><strong>Unlimited
-                                            Revisions</strong></span></li>
-                                <li class="flex items-start gap-2.5"><i data-lucide="headphones"
-                                        class="w-4 h-4 text-black shrink-0 mt-0.5"></i> <span><strong>30 Days Priority
-                                            Dedicated Support</strong></span></li>
-                            </ul>
-                -->
-
-
-
-                <!-- Complete 27-Parameter Feature Comparison Matrix Table -->
-                <div
-                    class="w-full bg-white rounded-2xl p-4 sm:p-6 reveal border-2 border-black shadow-2xl relative mb-8">
-                    <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 mb-6 px-1">
-                        <div>
-                            <h3
-                                class="text-base sm:text-2xl font-extrabold font-bubbledot uppercase text-black flex items-center gap-2">
-                                <i data-lucide="table" class="w-5 sm:w-6 h-5 sm:h-6 text-black shrink-0"></i> Feature
-                                Comparison Matrix (27 Parameters)
-                            </h3>
-                            <p class="text-[11px] font-mono text-black font-bold mt-1">
-                                Full technical breakdown across all engineering tiers. Swipe horizontally on touch
-                                devices.
-                            </p>
-                        </div>
-                        <div
-                            class="text-[10px] font-mono text-white bg-black border-2 border-black px-3 py-1.5 rounded-full shrink-0 font-extrabold uppercase">
-                            <i data-lucide="arrow-left-right" class="w-3.5 h-3.5 inline-block mr-1"></i> Swipe Matrix
-                        </div>
-                    </div>
-
-                    <div
-                        class="table-scroll-container w-full overflow-x-auto custom-scrollbar pb-4 rounded-xl border-2 border-black bg-white">
-                        <table
-                            class="pricing-matrix-table w-full text-left font-mono text-[11px] sm:text-xs text-black min-w-[720px]">
-                            <thead>
-                                <tr class="border-b-2 border-black bg-black text-white">
-                                    <th scope="col"
-                                        class="py-4 px-4 font-extrabold text-white sticky left-0 z-30 bg-black border-r-2 border-white w-[190px]">
-                                        Feature Parameter</th>
-                                    <th scope="col" class="py-4 px-3 text-center min-w-[140px] font-extrabold">Basic
-                                        Plan</th>
-                                    <th scope="col"
-                                        class="py-4 px-3 text-center bg-white/20 min-w-[160px] border-x-2 border-white font-extrabold">
-                                        Pro ⭐ (Best Selling)</th>
-                                    <th scope="col" class="py-4 px-3 text-center min-w-[160px] font-extrabold">Premium
-                                        👑 (Value)</th>
-                                </tr>
-                            </thead>
-                            <tbody class="divide-y-2 divide-black bg-white text-black font-bold">
-                                <tr>
-                                    <th scope="row"
-                                        class="py-3.5 px-4 font-bold sticky left-0 z-20 bg-white border-r-2 border-black">
-                                        1. Target Audience</th>
-                                    <td class="py-3.5 px-3 text-center text-black/80">New businesses & low budget</td>
-                                    <td
-                                        class="py-3.5 px-3 text-center bg-black/5 border-x-2 border-black font-extrabold">
-                                        Growing startups & SMEs</td>
-                                    <td class="py-3.5 px-3 text-center font-extrabold">Established brands & enterprise
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th scope="row"
-                                        class="py-3.5 px-4 font-bold sticky left-0 z-20 bg-white border-r-2 border-black">
-                                        2. Standard Pricing</th>
-                                    <td class="py-3.5 px-3 text-center font-extrabold">₹3,499 <span
-                                            class="text-[10px] text-black/70 block">(~ $50 USD)</span></td>
-                                    <td
-                                        class="py-3.5 px-3 text-center bg-black/5 border-x-2 border-black font-black text-base">
-                                        ₹11,999 <span class="text-[10px] text-black/70 block">(~ $200 USD)</span></td>
-                                    <td class="py-3.5 px-3 text-center font-black text-base">₹25,000 <span
-                                            class="text-[10px] text-black/70 block">(~ $400 USD)</span></td>
-                                </tr>
-                                <tr>
-                                    <th scope="row"
-                                        class="py-3.5 px-4 font-bold sticky left-0 z-20 bg-white border-r-2 border-black">
-                                        3. Included Pages</th>
-                                    <td class="py-3.5 px-3 text-center">1–3 Pages Layout</td>
-                                    <td
-                                        class="py-3.5 px-3 text-center bg-black/5 border-x-2 border-black font-extrabold">
-                                        Up to 8 Custom Pages</td>
-                                    <td class="py-3.5 px-3 text-center font-black">Unlimited Pages</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row"
-                                        class="py-3.5 px-4 font-bold sticky left-0 z-20 bg-white border-r-2 border-black">
-                                        4. Design Style</th>
-                                    <td class="py-3.5 px-3 text-center">Simple Business Layout</td>
-                                    <td
-                                        class="py-3.5 px-3 text-center bg-black/5 border-x-2 border-black font-extrabold">
-                                        Modern Professional Layout</td>
-                                    <td class="py-3.5 px-3 text-center font-black">100% Tailored Custom Design</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row"
-                                        class="py-3.5 px-4 font-bold sticky left-0 z-20 bg-white border-r-2 border-black">
-                                        5. Mobile Responsive</th>
-                                    <td class="py-3.5 px-3 text-center">Desktop Centric</td>
-                                    <td
-                                        class="py-3.5 px-3 text-center bg-black/5 border-x-2 border-black font-extrabold">
-                                        ✅ Fully Responsive</td>
-                                    <td class="py-3.5 px-3 text-center font-black">✅ Adaptive Fluid Responsive</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row"
-                                        class="py-3.5 px-4 font-bold sticky left-0 z-20 bg-white border-r-2 border-black">
-                                        6. Tablet & Laptop Tuning</th>
-                                    <td class="py-3.5 px-3 text-center">Standard Desktop Only</td>
-                                    <td
-                                        class="py-3.5 px-3 text-center bg-black/5 border-x-2 border-black font-extrabold">
-                                        ✅ Optimized for All Screen Sizes</td>
-                                    <td class="py-3.5 px-3 text-center font-black">✅ Multi-Breakpoint Perfection</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row"
-                                        class="py-3.5 px-4 font-bold sticky left-0 z-20 bg-white border-r-2 border-black">
-                                        7. Autonomous AI Chatbot</th>
-                                    <td class="py-3.5 px-3 text-center">❌ Not Included</td>
-                                    <td class="py-3.5 px-3 text-center bg-black/5 border-x-2 border-black">❌ Not
-                                        Included</td>
-                                    <td class="py-3.5 px-3 text-center font-black">✅ Native AI Assistant Included</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row"
-                                        class="py-3.5 px-4 font-bold sticky left-0 z-20 bg-white border-r-2 border-black">
-                                        8. Free Custom Domain</th>
-                                    <td class="py-3.5 px-3 text-center">❌ Not Included</td>
-                                    <td class="py-3.5 px-3 text-center bg-black/5 border-x-2 border-black">❌ Not
-                                        Included</td>
-                                    <td class="py-3.5 px-3 text-center font-black">✅ Included Free (1st Year)</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row"
-                                        class="py-3.5 px-4 font-bold sticky left-0 z-20 bg-white border-r-2 border-black">
-                                        9. Enterprise SSL & Hosting</th>
-                                    <td class="py-3.5 px-3 text-center font-extrabold">✅ Included Free</td>
-                                    <td
-                                        class="py-3.5 px-3 text-center bg-black/5 border-x-2 border-black font-extrabold">
-                                        ✅ Included Free</td>
-                                    <td class="py-3.5 px-3 text-center font-black">✅ Premium Edge Deployment</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row"
-                                        class="py-3.5 px-4 font-bold sticky left-0 z-20 bg-white border-r-2 border-black">
-                                        10. WhatsApp Button</th>
-                                    <td class="py-3.5 px-3 text-center font-extrabold">✅ Direct Click Button</td>
-                                    <td
-                                        class="py-3.5 px-3 text-center bg-black/5 border-x-2 border-black font-extrabold">
-                                        ✅ Direct Click Button</td>
-                                    <td class="py-3.5 px-3 text-center font-black">✅ Smart Floating Trigger</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row"
-                                        class="py-3.5 px-4 font-bold sticky left-0 z-20 bg-white border-r-2 border-black">
-                                        11. Contact Form Engine</th>
-                                    <td class="py-3.5 px-3 text-center">Basic Contact Form</td>
-                                    <td
-                                        class="py-3.5 px-3 text-center bg-black/5 border-x-2 border-black font-extrabold">
-                                        Professional Form + Email Alerts</td>
-                                    <td class="py-3.5 px-3 text-center font-black">Custom Secured Lead Form</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row"
-                                        class="py-3.5 px-4 font-bold sticky left-0 z-20 bg-white border-r-2 border-black">
-                                        12. Google Maps Embed</th>
-                                    <td class="py-3.5 px-3 text-center">❌ Not Included</td>
-                                    <td
-                                        class="py-3.5 px-3 text-center bg-black/5 border-x-2 border-black font-extrabold">
-                                        ✅ Interactive Map Integration</td>
-                                    <td class="py-3.5 px-3 text-center font-black">✅ Custom Styled Location Map</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row"
-                                        class="py-3.5 px-4 font-bold sticky left-0 z-20 bg-white border-r-2 border-black">
-                                        13. Social Links</th>
-                                    <td class="py-3.5 px-3 text-center font-extrabold">✅ Included</td>
-                                    <td
-                                        class="py-3.5 px-3 text-center bg-black/5 border-x-2 border-black font-extrabold">
-                                        ✅ Included</td>
-                                    <td class="py-3.5 px-3 text-center font-black">✅ Complete Social Network Bar</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row"
-                                        class="py-3.5 px-4 font-bold sticky left-0 z-20 bg-white border-r-2 border-black">
-                                        14. Portfolio / Gallery</th>
-                                    <td class="py-3.5 px-3 text-center">❌ Not Included</td>
-                                    <td
-                                        class="py-3.5 px-3 text-center bg-black/5 border-x-2 border-black font-extrabold">
-                                        ✅ Standard Photo Gallery</td>
-                                    <td class="py-3.5 px-3 text-center font-black">✅ Advanced Interactive Gallery</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row"
-                                        class="py-3.5 px-4 font-bold sticky left-0 z-20 bg-white border-r-2 border-black">
-                                        15. Blog / News Engine</th>
-                                    <td class="py-3.5 px-3 text-center">❌ Not Included</td>
-                                    <td
-                                        class="py-3.5 px-3 text-center bg-black/5 border-x-2 border-black font-extrabold">
-                                        ✅ Blog Engine Included</td>
-                                    <td class="py-3.5 px-3 text-center font-black">✅ Full Article Portal Architecture
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th scope="row"
-                                        class="py-3.5 px-4 font-bold sticky left-0 z-20 bg-white border-r-2 border-black">
-                                        16. On-Page SEO</th>
-                                    <td class="py-3.5 px-3 text-center">Basic Meta Tags</td>
-                                    <td
-                                        class="py-3.5 px-3 text-center bg-black/5 border-x-2 border-black font-extrabold">
-                                        Advanced On-Page Meta Tuning</td>
-                                    <td class="py-3.5 px-3 text-center font-black">Complete SEO Keyword Architecture
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th scope="row"
-                                        class="py-3.5 px-4 font-bold sticky left-0 z-20 bg-white border-r-2 border-black">
-                                        17. Technical Schema.org</th>
-                                    <td class="py-3.5 px-3 text-center">❌ Not Included</td>
-                                    <td class="py-3.5 px-3 text-center bg-black/5 border-x-2 border-black">Basic Schema
-                                    </td>
-                                    <td class="py-3.5 px-3 text-center font-black">✅ Full JSON-LD Enterprise Schema</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row"
-                                        class="py-3.5 px-4 font-bold sticky left-0 z-20 bg-white border-r-2 border-black">
-                                        18. Google Analytics</th>
-                                    <td class="py-3.5 px-3 text-center">❌ Not Included</td>
-                                    <td
-                                        class="py-3.5 px-3 text-center bg-black/5 border-x-2 border-black font-extrabold">
-                                        ✅ GA4 Integration Included</td>
-                                    <td class="py-3.5 px-3 text-center font-black">✅ Full Conversion Tracking Setup</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row"
-                                        class="py-3.5 px-4 font-bold sticky left-0 z-20 bg-white border-r-2 border-black">
-                                        19. Speed & Core Web Vitals</th>
-                                    <td class="py-3.5 px-3 text-center">Standard Optimization</td>
-                                    <td
-                                        class="py-3.5 px-3 text-center bg-black/5 border-x-2 border-black font-extrabold">
-                                        Fast Static Tuning</td>
-                                    <td class="py-3.5 px-3 text-center font-black">Maximum Sub-100ms Ultra Performance
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th scope="row"
-                                        class="py-3.5 px-4 font-bold sticky left-0 z-20 bg-white border-r-2 border-black">
-                                        20. Email Lead Alerts</th>
-                                    <td class="py-3.5 px-3 text-center">Standard Delivery</td>
-                                    <td
-                                        class="py-3.5 px-3 text-center bg-black/5 border-x-2 border-black font-extrabold">
-                                        ✅ Instant Lead Email Alerts</td>
-                                    <td class="py-3.5 px-3 text-center font-black">✅ Instant Priority Email Alerts</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row"
-                                        class="py-3.5 px-4 font-bold sticky left-0 z-20 bg-white border-r-2 border-black">
-                                        21. Lead Pipeline Capture</th>
-                                    <td class="py-3.5 px-3 text-center">Basic Form Entries</td>
-                                    <td
-                                        class="py-3.5 px-3 text-center bg-black/5 border-x-2 border-black font-extrabold">
-                                        Standard Qualification Engine</td>
-                                    <td class="py-3.5 px-3 text-center font-black">✅ Advanced Autonomous Pipeline</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row"
-                                        class="py-3.5 px-4 font-bold sticky left-0 z-20 bg-white border-r-2 border-black">
-                                        22. Interactive Motion</th>
-                                    <td class="py-3.5 px-3 text-center">Standard CSS Transitions</td>
-                                    <td
-                                        class="py-3.5 px-3 text-center bg-black/5 border-x-2 border-black font-extrabold">
-                                        Smooth Motion Effects</td>
-                                    <td class="py-3.5 px-3 text-center font-black">✅ 60 FPS GPU Interactive Effects</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row"
-                                        class="py-3.5 px-4 font-bold sticky left-0 z-20 bg-white border-r-2 border-black">
-                                        23. Content Upload Help</th>
-                                    <td class="py-3.5 px-3 text-center">Self Content Provided</td>
-                                    <td
-                                        class="py-3.5 px-3 text-center bg-black/5 border-x-2 border-black font-extrabold">
-                                        Basic Formatting Help</td>
-                                    <td class="py-3.5 px-3 text-center font-black">✅ 100% Managed Content Upload</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row"
-                                        class="py-3.5 px-4 font-bold sticky left-0 z-20 bg-white border-r-2 border-black">
-                                        24. Included Free Revisions</th>
-                                    <td class="py-3.5 px-3 text-center">1 Free Revision</td>
-                                    <td
-                                        class="py-3.5 px-3 text-center bg-black/5 border-x-2 border-black font-extrabold">
-                                        3 Free Revisions</td>
-                                    <td class="py-3.5 px-3 text-center font-black">✅ Unlimited Revisions</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row"
-                                        class="py-3.5 px-4 font-bold sticky left-0 z-20 bg-white border-r-2 border-black">
-                                        25. Dedicated Support Window</th>
-                                    <td class="py-3.5 px-3 text-center">3 Days Maintenance</td>
-                                    <td
-                                        class="py-3.5 px-3 text-center bg-black/5 border-x-2 border-black font-extrabold">
-                                        15 Days Support</td>
-                                    <td class="py-3.5 px-3 text-center font-black">30 Days Priority Dedicated Support
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th scope="row"
-                                        class="py-3.5 px-4 font-bold sticky left-0 z-20 bg-white border-r-2 border-black">
-                                        26. Delivery Priority</th>
-                                    <td class="py-3.5 px-3 text-center">Standard Delivery Queue</td>
-                                    <td
-                                        class="py-3.5 px-3 text-center bg-black/5 border-x-2 border-black font-extrabold">
-                                        Priority Queue</td>
-                                    <td class="py-3.5 px-3 text-center font-black">Highest First-Class Queue</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row"
-                                        class="py-3.5 px-4 font-bold sticky left-0 z-20 bg-white border-r-2 border-black">
-                                        27. Technical Refund Guarantee</th>
-                                    <td class="py-3.5 px-3 text-center">Standard Policy</td>
-                                    <td
-                                        class="py-3.5 px-3 text-center bg-black/5 border-x-2 border-black font-extrabold">
-                                        Standard Policy</td>
-                                    <td class="py-3.5 px-3 text-center font-black">✅ 7-Day Technical Guarantee</td>
-                                </tr>
-                            </tbody>
-                        </table>
                     </div>
                 </div>
+
             </div>
         </section>
 
 
         <!-- SECTION 7: TESTIMONIALS SECTION (CYBER RONIN // NEURAL EDGES THEME) -->
-        <section id="testimonials"
-            class="py-20 sm:py-24 px-4 sm:px-8 lg:px-16 border-b-2 border-[#E07020]/40 w-full relative overflow-hidden"
-            aria-label="Customer Testimonials">
-
-            <!-- Cyber Ronin Dual-Layer Neural Artwork & Spotlight Target -->
-            <div class="testimonials-media-wrap absolute inset-0 pointer-events-none overflow-hidden z-0"
-                aria-hidden="true">
-                <!-- BASE Cyber Ronin hero image -->
-                <div class="testimonials-base-img hero-image-animate"
-                    style="background-image: url('https://images.higgs.ai/?default=1&output=webp&url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20260831_115955_2a9adb39-5e9b-4ced-96e2-6900eabe3de9.png&w=1920&q=85');">
-                </div>
-
-                <!-- REVEAL Cyber Ronin hero image (neural edges spotlight target) -->
-                <div class="testimonials-reveal-img" id="testimonial-reveal-img"
-                    style="background-image: url('https://images.higgs.ai/?default=1&output=webp&url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20260831_123709_183f0065-efb2-4bb2-a849-13aaa5af2f3f.png&w=1920&q=85');">
-                </div>
-            </div>
-
-            <div class="w-full max-w-7xl mx-auto relative z-10">
-                <div class="text-center mb-12 sm:mb-16 reveal">
-                    <div
-                        class="inline-flex items-center gap-2 text-[10px] sm:text-xs font-bold text-[#FBDBAF] tracking-widest uppercase bg-[#0a0807]/90 px-4 sm:px-5 py-2 rounded-full font-mono border border-[#E07020]/70 mb-4 shadow-[0_0_20px_rgba(224,112,32,0.35)]">
-                        <i data-lucide="message-square-quote" class="w-3.5 h-3.5 text-[#E07020] shrink-0"></i> Verified
-                        Feedback
-                    </div>
-                    <h2
-                        class="text-2xl sm:text-5xl lg:text-6xl font-orbitron uppercase text-[#FBDBAF] font-extrabold tracking-tight drop-shadow-[0_4px_24px_rgba(224,112,32,0.4)]">
-                        Client Testimonials</h2>
-                    <p
-                        class="text-[#FBDBAF] text-xs sm:text-sm font-mono tracking-widest uppercase mt-3 max-w-xl mx-auto font-medium px-2 drop-shadow-[0_1px_3px_rgba(0,0,0,0.9)]">
-                        Real experiences from founders, operators, and business leaders.
-                    </p>
-                </div>
-
-                <!-- Carousel Controls & Status Bar -->
-                <div class="flex items-center justify-between gap-4 mb-6 sm:mb-8 max-w-6xl mx-auto px-2">
-                    <div class="flex items-center gap-2 font-mono text-xs font-extrabold text-[#FBDBAF]">
-                        <span
-                            class="w-2.5 h-2.5 rounded-full bg-[#E07020] shadow-[0_0_10px_rgba(224,112,32,0.9)]"></span>
-                        <span id="testimonialCurrentIdx">01</span>
-                        <span class="text-[#FBDBAF]/40">/</span>
-                        <span class="text-[#FBDBAF]/70">05</span>
-                    </div>
-
-                    <div class="flex items-center gap-2">
-                        <button type="button" id="prevTestimonialBtn"
-                            class="w-11 h-11 rounded-full border border-[#E07020]/60 bg-[#0a0807]/90 text-[#FBDBAF] hover:bg-[#E07020] hover:text-black hover:shadow-[0_0_22px_rgba(224,112,32,0.6)] transition-all duration-300 flex items-center justify-center cursor-pointer focus:outline-none active:scale-95 shadow-md min-h-[44px] min-w-[44px]"
-                            aria-label="Previous Testimonial">
-                            <i data-lucide="arrow-left" class="w-4 h-4"></i>
-                        </button>
-                        <button type="button" id="nextTestimonialBtn"
-                            class="w-11 h-11 rounded-full border border-[#E07020]/60 bg-[#0a0807]/90 text-[#FBDBAF] hover:bg-[#E07020] hover:text-black hover:shadow-[0_0_22px_rgba(224,112,32,0.6)] transition-all duration-300 flex items-center justify-center cursor-pointer focus:outline-none active:scale-95 shadow-md min-h-[44px] min-w-[44px]"
-                            aria-label="Next Testimonial">
-                            <i data-lucide="arrow-right" class="w-4 h-4"></i>
-                        </button>
-                    </div>
-                </div>
-
-                <!-- Testimonial Slider / Track Container -->
-                <div id="testimonialCarouselTrack"
-                    class="flex gap-4 sm:gap-6 overflow-x-auto no-scrollbar scroll-smooth snap-x snap-mandatory py-4 px-2 -mx-2 touch-pan-x cursor-grab active:cursor-grabbing"
-                    role="region" aria-roledescription="carousel" aria-label="Client reviews carousel">
-
-                    <!-- 1. Ashiq Bashir (4.5/5) -->
-                    <article
-                        class="testimonial-card flex-none w-[calc(100vw-2.5rem)] sm:w-[380px] lg:w-[410px] snap-start p-5 sm:p-7 flex flex-col justify-between group relative overflow-hidden"
-                        data-index="0">
-                        <div class="testimonial-glow"></div>
-                        <div class="relative z-10 flex flex-col flex-1">
-                            <!-- Liquid Glass Top Bar (Stars & Rating) -->
-                            <div
-                                class="testimonial-liquid-bar testimonial-bar-top flex items-center justify-between gap-3 mb-5 px-3.5 py-2.5 sm:px-4 sm:py-3 rounded-2xl">
-                                <div class="flex items-center gap-1 text-[#E07020]"
-                                    aria-label="Rating: 4.5 out of 5 stars">
-                                    <i data-lucide="star"
-                                        class="w-4 h-4 fill-[#E07020] text-[#E07020] drop-shadow-[0_0_6px_rgba(224,112,32,0.7)]"></i>
-                                    <i data-lucide="star"
-                                        class="w-4 h-4 fill-[#E07020] text-[#E07020] drop-shadow-[0_0_6px_rgba(224,112,32,0.7)]"></i>
-                                    <i data-lucide="star"
-                                        class="w-4 h-4 fill-[#E07020] text-[#E07020] drop-shadow-[0_0_6px_rgba(224,112,32,0.7)]"></i>
-                                    <i data-lucide="star"
-                                        class="w-4 h-4 fill-[#E07020] text-[#E07020] drop-shadow-[0_0_6px_rgba(224,112,32,0.7)]"></i>
-                                    <i data-lucide="star-half"
-                                        class="w-4 h-4 fill-[#E07020] text-[#E07020] drop-shadow-[0_0_6px_rgba(224,112,32,0.7)]"></i>
-                                    <span
-                                        class="font-mono text-xs font-black ml-1.5 text-[#FBDBAF] drop-shadow-[0_1px_2px_rgba(0,0,0,0.8)]">4.5</span>
-                                </div>
-                                <div
-                                    class="w-8 h-8 rounded-full bg-[#E07020]/20 text-[#FBDBAF] flex items-center justify-center border border-[#E07020]/50 shrink-0 group-hover:bg-[#E07020] group-hover:text-black transition-colors duration-300 shadow-[inset_0_1px_1px_rgba(255,255,255,0.25)]">
-                                    <i data-lucide="quote" class="w-3.5 h-3.5"></i>
-                                </div>
-                            </div>
-                            <p
-                                class="testimonial-quote-text text-sm sm:text-[15px] font-sans text-[#FBDBAF] leading-relaxed font-normal mb-6 px-1">
-                                "Very nice premium website made by Forge Softwares. The entire experience was smooth,
-                                professional, and easy from start to finish. One of the best experiences I've had while
-                                getting a website built."
-                            </p>
-                        </div>
-                        <!-- Liquid Glass Bottom Bar (Avatar & Client Name) -->
-                        <div
-                            class="testimonial-liquid-bar testimonial-bar-bottom flex items-center gap-3.5 p-3 sm:p-3.5 rounded-2xl relative z-10 mt-auto">
-                            <div
-                                class="w-11 h-11 rounded-full bg-[#E07020]/25 text-[#FBDBAF] flex items-center justify-center font-orbitron text-xs font-bold border border-[#E07020] shrink-0 tracking-wider shadow-[0_0_12px_rgba(224,112,32,0.45),inset_0_1px_1px_rgba(255,255,255,0.3)]">
-                                AB
-                            </div>
-                            <div class="flex flex-col">
-                                <h4
-                                    class="font-bold font-orbitron text-xs sm:text-sm text-[#FBDBAF] tracking-wide uppercase drop-shadow-[0_1px_3px_rgba(0,0,0,0.9)]">
-                                    Ashiq Bashir</h4>
-                                <span
-                                    class="text-[10px] font-mono text-[#FBDBAF]/80 font-medium uppercase tracking-wider mt-0.5 drop-shadow-[0_1px_2px_rgba(0,0,0,0.8)]">Verified
-                                    Business Client</span>
-                            </div>
-                        </div>
-                    </article>
-
-                    <!-- 2. Rakesh (5/5) -->
-                    <article
-                        class="testimonial-card flex-none w-[calc(100vw-2.5rem)] sm:w-[380px] lg:w-[410px] snap-start p-5 sm:p-7 flex flex-col justify-between group relative overflow-hidden"
-                        data-index="1">
-                        <div class="testimonial-glow"></div>
-                        <div class="relative z-10 flex flex-col flex-1">
-                            <!-- Liquid Glass Top Bar (Stars & Rating) -->
-                            <div
-                                class="testimonial-liquid-bar testimonial-bar-top flex items-center justify-between gap-3 mb-5 px-3.5 py-2.5 sm:px-4 sm:py-3 rounded-2xl">
-                                <div class="flex items-center gap-1 text-[#E07020]"
-                                    aria-label="Rating: 5 out of 5 stars">
-                                    <i data-lucide="star"
-                                        class="w-4 h-4 fill-[#E07020] text-[#E07020] drop-shadow-[0_0_6px_rgba(224,112,32,0.7)]"></i>
-                                    <i data-lucide="star"
-                                        class="w-4 h-4 fill-[#E07020] text-[#E07020] drop-shadow-[0_0_6px_rgba(224,112,32,0.7)]"></i>
-                                    <i data-lucide="star"
-                                        class="w-4 h-4 fill-[#E07020] text-[#E07020] drop-shadow-[0_0_6px_rgba(224,112,32,0.7)]"></i>
-                                    <i data-lucide="star"
-                                        class="w-4 h-4 fill-[#E07020] text-[#E07020] drop-shadow-[0_0_6px_rgba(224,112,32,0.7)]"></i>
-                                    <i data-lucide="star"
-                                        class="w-4 h-4 fill-[#E07020] text-[#E07020] drop-shadow-[0_0_6px_rgba(224,112,32,0.7)]"></i>
-                                    <span
-                                        class="font-mono text-xs font-black ml-1.5 text-[#FBDBAF] drop-shadow-[0_1px_2px_rgba(0,0,0,0.8)]">5.0</span>
-                                </div>
-                                <div
-                                    class="w-8 h-8 rounded-full bg-[#E07020]/20 text-[#FBDBAF] flex items-center justify-center border border-[#E07020]/50 shrink-0 group-hover:bg-[#E07020] group-hover:text-black transition-colors duration-300 shadow-[inset_0_1px_1px_rgba(255,255,255,0.25)]">
-                                    <i data-lucide="quote" class="w-3.5 h-3.5"></i>
-                                </div>
-                            </div>
-                            <p
-                                class="testimonial-quote-text text-sm sm:text-[15px] font-sans text-[#FBDBAF] leading-relaxed font-normal mb-6 px-1">
-                                "The clean, modern design elevated our business image immediately. With fast loading
-                                speeds, our customer inquiries and sales increased significantly."
-                            </p>
-                        </div>
-                        <!-- Liquid Glass Bottom Bar (Avatar & Client Name) -->
-                        <div
-                            class="testimonial-liquid-bar testimonial-bar-bottom flex items-center gap-3.5 p-3 sm:p-3.5 rounded-2xl relative z-10 mt-auto">
-                            <div
-                                class="w-11 h-11 rounded-full bg-[#E07020]/25 text-[#FBDBAF] flex items-center justify-center font-orbitron text-xs font-bold border border-[#E07020] shrink-0 tracking-wider shadow-[0_0_12px_rgba(224,112,32,0.45),inset_0_1px_1px_rgba(255,255,255,0.3)]">
-                                R
-                            </div>
-                            <div class="flex flex-col">
-                                <h4
-                                    class="font-bold font-orbitron text-xs sm:text-sm text-[#FBDBAF] tracking-wide uppercase drop-shadow-[0_1px_3px_rgba(0,0,0,0.9)]">
-                                    Rakesh</h4>
-                                <span
-                                    class="text-[10px] font-mono text-[#FBDBAF]/80 font-medium uppercase tracking-wider mt-0.5 drop-shadow-[0_1px_2px_rgba(0,0,0,0.8)]">Enterprise
-                                    Client</span>
-                            </div>
-                        </div>
-                    </article>
-
-                    <!-- 3. Balram (5/5) -->
-                    <article
-                        class="testimonial-card flex-none w-[calc(100vw-2.5rem)] sm:w-[380px] lg:w-[410px] snap-start p-5 sm:p-7 flex flex-col justify-between group relative overflow-hidden"
-                        data-index="2">
-                        <div class="testimonial-glow"></div>
-                        <div class="relative z-10 flex flex-col flex-1">
-                            <!-- Liquid Glass Top Bar (Stars & Rating) -->
-                            <div
-                                class="testimonial-liquid-bar testimonial-bar-top flex items-center justify-between gap-3 mb-5 px-3.5 py-2.5 sm:px-4 sm:py-3 rounded-2xl">
-                                <div class="flex items-center gap-1 text-[#E07020]"
-                                    aria-label="Rating: 5 out of 5 stars">
-                                    <i data-lucide="star"
-                                        class="w-4 h-4 fill-[#E07020] text-[#E07020] drop-shadow-[0_0_6px_rgba(224,112,32,0.7)]"></i>
-                                    <i data-lucide="star"
-                                        class="w-4 h-4 fill-[#E07020] text-[#E07020] drop-shadow-[0_0_6px_rgba(224,112,32,0.7)]"></i>
-                                    <i data-lucide="star"
-                                        class="w-4 h-4 fill-[#E07020] text-[#E07020] drop-shadow-[0_0_6px_rgba(224,112,32,0.7)]"></i>
-                                    <i data-lucide="star"
-                                        class="w-4 h-4 fill-[#E07020] text-[#E07020] drop-shadow-[0_0_6px_rgba(224,112,32,0.7)]"></i>
-                                    <i data-lucide="star"
-                                        class="w-4 h-4 fill-[#E07020] text-[#E07020] drop-shadow-[0_0_6px_rgba(224,112,32,0.7)]"></i>
-                                    <span
-                                        class="font-mono text-xs font-black ml-1.5 text-[#FBDBAF] drop-shadow-[0_1px_2px_rgba(0,0,0,0.8)]">5.0</span>
-                                </div>
-                                <div
-                                    class="w-8 h-8 rounded-full bg-[#E07020]/20 text-[#FBDBAF] flex items-center justify-center border border-[#E07020]/50 shrink-0 group-hover:bg-[#E07020] group-hover:text-black transition-colors duration-300 shadow-[inset_0_1px_1px_rgba(255,255,255,0.25)]">
-                                    <i data-lucide="quote" class="w-3.5 h-3.5"></i>
-                                </div>
-                            </div>
-                            <p
-                                class="testimonial-quote-text text-sm sm:text-[15px] font-sans text-[#FBDBAF] leading-relaxed font-normal mb-6 px-1">
-                                "Forge Softwares delivered exactly what we wanted. The website feels fast, clean, and
-                                premium. Our business looks much more professional now."
-                            </p>
-                        </div>
-                        <!-- Liquid Glass Bottom Bar (Avatar & Client Name) -->
-                        <div
-                            class="testimonial-liquid-bar testimonial-bar-bottom flex items-center gap-3.5 p-3 sm:p-3.5 rounded-2xl relative z-10 mt-auto">
-                            <div
-                                class="w-11 h-11 rounded-full bg-[#E07020]/25 text-[#FBDBAF] flex items-center justify-center font-orbitron text-xs font-bold border border-[#E07020] shrink-0 tracking-wider shadow-[0_0_12px_rgba(224,112,32,0.45),inset_0_1px_1px_rgba(255,255,255,0.3)]">
-                                B
-                            </div>
-                            <div class="flex flex-col">
-                                <h4
-                                    class="font-bold font-orbitron text-xs sm:text-sm text-[#FBDBAF] tracking-wide uppercase drop-shadow-[0_1px_3px_rgba(0,0,0,0.9)]">
-                                    Balram</h4>
-                                <span
-                                    class="text-[10px] font-mono text-[#FBDBAF]/80 font-medium uppercase tracking-wider mt-0.5 drop-shadow-[0_1px_2px_rgba(0,0,0,0.8)]">Commercial
-                                    Founder</span>
-                            </div>
-                        </div>
-                    </article>
-
-                    <!-- 4. Sunil (4.5/5) -->
-                    <article
-                        class="testimonial-card flex-none w-[calc(100vw-2.5rem)] sm:w-[380px] lg:w-[410px] snap-start p-5 sm:p-7 flex flex-col justify-between group relative overflow-hidden"
-                        data-index="3">
-                        <div class="testimonial-glow"></div>
-                        <div class="relative z-10 flex flex-col flex-1">
-                            <!-- Liquid Glass Top Bar (Stars & Rating) -->
-                            <div
-                                class="testimonial-liquid-bar testimonial-bar-top flex items-center justify-between gap-3 mb-5 px-3.5 py-2.5 sm:px-4 sm:py-3 rounded-2xl">
-                                <div class="flex items-center gap-1 text-[#E07020]"
-                                    aria-label="Rating: 4.5 out of 5 stars">
-                                    <i data-lucide="star"
-                                        class="w-4 h-4 fill-[#E07020] text-[#E07020] drop-shadow-[0_0_6px_rgba(224,112,32,0.7)]"></i>
-                                    <i data-lucide="star"
-                                        class="w-4 h-4 fill-[#E07020] text-[#E07020] drop-shadow-[0_0_6px_rgba(224,112,32,0.7)]"></i>
-                                    <i data-lucide="star"
-                                        class="w-4 h-4 fill-[#E07020] text-[#E07020] drop-shadow-[0_0_6px_rgba(224,112,32,0.7)]"></i>
-                                    <i data-lucide="star"
-                                        class="w-4 h-4 fill-[#E07020] text-[#E07020] drop-shadow-[0_0_6px_rgba(224,112,32,0.7)]"></i>
-                                    <i data-lucide="star-half"
-                                        class="w-4 h-4 fill-[#E07020] text-[#E07020] drop-shadow-[0_0_6px_rgba(224,112,32,0.7)]"></i>
-                                    <span
-                                        class="font-mono text-xs font-black ml-1.5 text-[#FBDBAF] drop-shadow-[0_1px_2px_rgba(0,0,0,0.8)]">4.5</span>
-                                </div>
-                                <div
-                                    class="w-8 h-8 rounded-full bg-[#E07020]/20 text-[#FBDBAF] flex items-center justify-center border border-[#E07020]/50 shrink-0 group-hover:bg-[#E07020] group-hover:text-black transition-colors duration-300 shadow-[inset_0_1px_1px_rgba(255,255,255,0.25)]">
-                                    <i data-lucide="quote" class="w-3.5 h-3.5"></i>
-                                </div>
-                            </div>
-                            <p
-                                class="testimonial-quote-text text-sm sm:text-[15px] font-sans text-[#FBDBAF] leading-relaxed font-normal mb-6 px-1">
-                                "Simple process, great communication, and a beautiful website. Everything works smoothly
-                                on both mobile and desktop."
-                            </p>
-                        </div>
-                        <!-- Liquid Glass Bottom Bar (Avatar & Client Name) -->
-                        <div
-                            class="testimonial-liquid-bar testimonial-bar-bottom flex items-center gap-3.5 p-3 sm:p-3.5 rounded-2xl relative z-10 mt-auto">
-                            <div
-                                class="w-11 h-11 rounded-full bg-[#E07020]/25 text-[#FBDBAF] flex items-center justify-center font-orbitron text-xs font-bold border border-[#E07020] shrink-0 tracking-wider shadow-[0_0_12px_rgba(224,112,32,0.45),inset_0_1px_1px_rgba(255,255,255,0.3)]">
-                                S
-                            </div>
-                            <div class="flex flex-col">
-                                <h4
-                                    class="font-bold font-orbitron text-xs sm:text-sm text-[#FBDBAF] tracking-wide uppercase drop-shadow-[0_1px_3px_rgba(0,0,0,0.9)]">
-                                    Sunil</h4>
-                                <span
-                                    class="text-[10px] font-mono text-[#FBDBAF]/80 font-medium uppercase tracking-wider mt-0.5 drop-shadow-[0_1px_2px_rgba(0,0,0,0.8)]">Startup
-                                    Operator</span>
-                            </div>
-                        </div>
-                    </article>
-
-                    <!-- 5. Ahmad (5/5) -->
-                    <article
-                        class="testimonial-card flex-none w-[calc(100vw-2.5rem)] sm:w-[380px] lg:w-[410px] snap-start p-5 sm:p-7 flex flex-col justify-between group relative overflow-hidden"
-                        data-index="4">
-                        <div class="testimonial-glow"></div>
-                        <div class="relative z-10 flex flex-col flex-1">
-                            <!-- Liquid Glass Top Bar (Stars & Rating) -->
-                            <div
-                                class="testimonial-liquid-bar testimonial-bar-top flex items-center justify-between gap-3 mb-5 px-3.5 py-2.5 sm:px-4 sm:py-3 rounded-2xl">
-                                <div class="flex items-center gap-1 text-[#E07020]"
-                                    aria-label="Rating: 5 out of 5 stars">
-                                    <i data-lucide="star"
-                                        class="w-4 h-4 fill-[#E07020] text-[#E07020] drop-shadow-[0_0_6px_rgba(224,112,32,0.7)]"></i>
-                                    <i data-lucide="star"
-                                        class="w-4 h-4 fill-[#E07020] text-[#E07020] drop-shadow-[0_0_6px_rgba(224,112,32,0.7)]"></i>
-                                    <i data-lucide="star"
-                                        class="w-4 h-4 fill-[#E07020] text-[#E07020] drop-shadow-[0_0_6px_rgba(224,112,32,0.7)]"></i>
-                                    <i data-lucide="star"
-                                        class="w-4 h-4 fill-[#E07020] text-[#E07020] drop-shadow-[0_0_6px_rgba(224,112,32,0.7)]"></i>
-                                    <i data-lucide="star"
-                                        class="w-4 h-4 fill-[#E07020] text-[#E07020] drop-shadow-[0_0_6px_rgba(224,112,32,0.7)]"></i>
-                                    <span
-                                        class="font-mono text-xs font-black ml-1.5 text-[#FBDBAF] drop-shadow-[0_1px_2px_rgba(0,0,0,0.8)]">5.0</span>
-                                </div>
-                                <div
-                                    class="w-8 h-8 rounded-full bg-[#E07020]/20 text-[#FBDBAF] flex items-center justify-center border border-[#E07020]/50 shrink-0 group-hover:bg-[#E07020] group-hover:text-black transition-colors duration-300 shadow-[inset_0_1px_1px_rgba(255,255,255,0.25)]">
-                                    <i data-lucide="quote" class="w-3.5 h-3.5"></i>
-                                </div>
-                            </div>
-                            <p
-                                class="testimonial-quote-text text-sm sm:text-[15px] font-sans text-[#FBDBAF] leading-relaxed font-normal mb-6 px-1">
-                                "Professional work with a modern minimal design. The performance and overall quality
-                                exceeded my expectations."
-                            </p>
-                        </div>
-                        <!-- Liquid Glass Bottom Bar (Avatar & Client Name) -->
-                        <div
-                            class="testimonial-liquid-bar testimonial-bar-bottom flex items-center gap-3.5 p-3 sm:p-3.5 rounded-2xl relative z-10 mt-auto">
-                            <div
-                                class="w-11 h-11 rounded-full bg-[#E07020]/25 text-[#FBDBAF] flex items-center justify-center font-orbitron text-xs font-bold border border-[#E07020] shrink-0 tracking-wider shadow-[0_0_12px_rgba(224,112,32,0.45),inset_0_1px_1px_rgba(255,255,255,0.3)]">
-                                A
-                            </div>
-                            <div class="flex flex-col">
-                                <h4
-                                    class="font-bold font-orbitron text-xs sm:text-sm text-[#FBDBAF] tracking-wide uppercase drop-shadow-[0_1px_3px_rgba(0,0,0,0.9)]">
-                                    Ahmad</h4>
-                                <span
-                                    class="text-[10px] font-mono text-[#FBDBAF]/80 font-medium uppercase tracking-wider mt-0.5 drop-shadow-[0_1px_2px_rgba(0,0,0,0.8)]">Product
-                                    Director</span>
-                            </div>
-                        </div>
-                    </article>
-                </div>
-
-                <!-- Carousel Dot Indicators -->
-                <div class="flex items-center justify-center gap-2 mt-6 sm:mt-8" id="testimonialDotsContainer">
-                    <button type="button"
-                        class="testimonial-dot active w-7 h-2 rounded-full bg-[#E07020] shadow-[0_0_12px_rgba(224,112,32,0.85)] transition-all duration-300 cursor-pointer focus:outline-none"
-                        data-index="0" aria-label="Go to testimonial 1"></button>
-                    <button type="button"
-                        class="testimonial-dot w-2 h-2 rounded-full bg-[#FBDBAF]/25 hover:bg-[#FBDBAF]/60 transition-all duration-300 cursor-pointer focus:outline-none"
-                        data-index="1" aria-label="Go to testimonial 2"></button>
-                    <button type="button"
-                        class="testimonial-dot w-2 h-2 rounded-full bg-[#FBDBAF]/25 hover:bg-[#FBDBAF]/60 transition-all duration-300 cursor-pointer focus:outline-none"
-                        data-index="2" aria-label="Go to testimonial 3"></button>
-                    <button type="button"
-                        class="testimonial-dot w-2 h-2 rounded-full bg-[#FBDBAF]/25 hover:bg-[#FBDBAF]/60 transition-all duration-300 cursor-pointer focus:outline-none"
-                        data-index="3" aria-label="Go to testimonial 4"></button>
-                    <button type="button"
-                        class="testimonial-dot w-2 h-2 rounded-full bg-[#FBDBAF]/25 hover:bg-[#FBDBAF]/60 transition-all duration-300 cursor-pointer focus:outline-none"
-                        data-index="4" aria-label="Go to testimonial 5"></button>
-                </div>
-            </div>
-        </section>
 
         <!-- SECTION 8: CONTACT & HQ SECTION -->
         <section id="contact"
@@ -5443,20 +4767,19 @@
                 </div>
 
                 <!-- Column 2: Navigation -->
-                <div class="col">
+                <div class="col footer-col-pages">
                     <h4 class="col-title">Pages</h4>
                     <ul class="link-list">
                         <li><a href="#home">Home</a></li>
                         <li><a href="#services-preview">Services</a></li>
                         <li><a href="#pricing">Pricing</a></li>
-                        <li><a href="#testimonials">Reviews</a></li>
                         <li><a href="#about">About</a></li>
                         <li><a href="#contact">Contact</a></li>
                     </ul>
                 </div>
 
                 <!-- Column 3: Support & Legal -->
-                <div class="col">
+                <div class="col footer-col-support">
                     <h4 class="col-title">Support & Legal</h4>
                     <ul class="link-list">
                         <li><button type="button" onclick="openHelpModal()">Help Center</button></li>
@@ -5577,10 +4900,10 @@
                             <select id="preferredPlan" name="preferredPlan"
                                 class="absolute inset-0 w-full h-full opacity-0 cursor-pointer z-10 text-base appearance-none"
                                 aria-label="Select Engineering Package">
-                                <option value="Basic (₹3,499)">Basic Tier — ₹3,499 (One-Time)</option>
-                                <option value="Pro ⭐ (₹11,999)" selected>Pro ⭐ Best Selling — ₹11,999 (One-Time)
+                                <option value="Starter (₹7,999)">Starter Tier — ₹7,999 (One-Time)</option>
+                                <option value="Pro ⭐ (₹24,999)" selected>Pro ⭐ Most Popular — ₹24,999 (One-Time)
                                 </option>
-                                <option value="Premium 👑 (₹25,000)">Premium 👑 Enterprise — ₹25,000 (One-Time)</option>
+                                <option value="Premium 👑 (₹49,999)">Premium 👑 Enterprise — ₹49,999 (One-Time)</option>
                             </select>
                         </div>
                     </div>
@@ -7671,100 +6994,469 @@
         }
 
         /* ══════════════════════════════════════════════════════════════════
-           PLANET SWITCHER & VIDEO ROTATION ENGINE
+        /* ══════════════════════════════════════════════════════════════════
+           SKIPER 52 - HOVER EXPAND CARDS ENGINE
         ══════════════════════════════════════════════════════════════════ */
-        const PLANET_ORDER = ['earth', 'venus', 'mars'];
+        const images = [
+            {
+                src: "https://skiper-ui.com/images/x.com/13.jpeg",
+                fallback: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=800&auto=format&fit=crop&q=80",
+                alt: "Illustrations by my fav AarzooAly",
+                code: "# 23",
+            },
+            {
+                src: "https://skiper-ui.com/images/x.com/32.jpeg",
+                fallback: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&auto=format&fit=crop&q=80",
+                alt: "Illustrations by my fav AarzooAly",
+                code: "# 23",
+            },
+            {
+                src: "https://skiper-ui.com/images/x.com/20.jpeg",
+                fallback: "https://images.unsplash.com/photo-1517841905240-472988babdf9?w=800&auto=format&fit=crop&q=80",
+                alt: "Illustrations by my fav AarzooAly",
+                code: "# 23",
+            },
+            {
+                src: "https://skiper-ui.com/images/x.com/21.jpeg",
+                fallback: "https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?w=800&auto=format&fit=crop&q=80",
+                alt: "Illustrations by my fav AarzooAly",
+                code: "# 23",
+            },
+            {
+                src: "https://skiper-ui.com/images/x.com/19.jpeg",
+                fallback: "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=800&auto=format&fit=crop&q=80",
+                alt: "Illustrations by my fav AarzooAly",
+                code: "# 23",
+            },
+            {
+                src: "https://skiper-ui.com/images/x.com/1.jpeg",
+                fallback: "https://images.unsplash.com/photo-1488161628813-04466f872be2?w=800&auto=format&fit=crop&q=80",
+                alt: "Illustrations by my fav AarzooAly",
+                code: "# 23",
+            },
+            {
+                src: "https://skiper-ui.com/images/x.com/2.jpeg",
+                fallback: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=800&auto=format&fit=crop&q=80",
+                alt: "Illustrations by my fav AarzooAly",
+                code: "# 23",
+            },
+            {
+                src: "https://skiper-ui.com/images/x.com/3.jpeg",
+                fallback: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=800&auto=format&fit=crop&q=80",
+                alt: "Illustrations by my fav AarzooAly",
+                code: "# 23",
+            },
+            {
+                src: "https://skiper-ui.com/images/x.com/4.jpeg",
+                fallback: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=800&auto=format&fit=crop&q=80",
+                alt: "Illustrations by my fav AarzooAly",
+                code: "# 23",
+            },
+        ];
 
-        const PLANET_DATA = {
-            earth: {
-                eyebrow: 'FORGE SOFTWARES • SCALE YOUR BUSINESS',
-                name: 'BUILD YOUR WEBSITE NOW.',
-                label: 'EARTH',
-                cutout: 'https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260827_202005_3346cc4d-ec3b-44ab-825c-18e49f5021a.png',
-                still: 'https://images.higgs.ai/?default=1&output=webp&url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20260827_202133_508c64b8-a31e-4290-bdfc-1187df70e0a6.png&w=1920&q=85',
-                lede: 'We build ultra-fast, modern websites and smart AI assistants that help your business grow. Transparent pricing starts at ₹3,499. Start your project today!'
+        let activeImage = 1;
+        const cards = [];
+        let rafId = null;
+
+        function setActiveImage(nextIndex) {
+            if (activeImage === nextIndex || nextIndex < 0 || nextIndex >= cards.length) return;
+            const prevIndex = activeImage;
+            activeImage = nextIndex;
+
+            if (rafId) cancelAnimationFrame(rafId);
+            rafId = requestAnimationFrame(() => {
+                if (cards[prevIndex]) cards[prevIndex].classList.remove('is-active');
+                if (cards[nextIndex]) cards[nextIndex].classList.add('is-active');
+                rafId = null;
+            });
+        }
+
+        function initSkiperCards() {
+            const container = document.getElementById("cards-container");
+            if (!container) return;
+
+            const fragment = document.createDocumentFragment();
+
+            images.forEach((image, index) => {
+                const card = document.createElement("div");
+                card.dataset.index = index;
+                card.className = "card-motion" + (index === activeImage ? " is-active" : "");
+
+                // Fixed-width centered image wrapper for zero-crop layout recalculation
+                const imgWrapper = document.createElement("div");
+                imgWrapper.className = "card-img-wrapper";
+
+                const img = document.createElement("img");
+                img.decoding = "async";
+                img.loading = "eager";
+                img.fetchPriority = index <= 2 ? "high" : "auto";
+                img.src = image.src;
+                img.alt = image.alt;
+                img.className = "card-img";
+
+                const revealImage = () => {
+                    if (img.decode) {
+                        img.decode().then(() => img.classList.add("is-loaded")).catch(() => img.classList.add("is-loaded"));
+                    } else {
+                        img.classList.add("is-loaded");
+                    }
+                };
+
+                img.onload = revealImage;
+                img.onerror = function () {
+                    if (this.src !== image.fallback) {
+                        this.src = image.fallback;
+                    } else {
+                        this.classList.add("is-loaded");
+                    }
+                };
+
+                imgWrapper.appendChild(img);
+
+                // Gradient overlay
+                const gradientOverlay = document.createElement("div");
+                gradientOverlay.className = "presence-gradient absolute inset-0 h-full w-full bg-gradient-to-t from-black/45 via-black/10 to-transparent z-10";
+
+                // Code text overlay
+                const codeOverlay = document.createElement("div");
+                codeOverlay.className = "presence-code absolute inset-0 flex h-full w-full flex-col items-end justify-end p-4 z-20";
+
+                const codeText = document.createElement("p");
+                codeText.className = "text-left text-xs font-medium tracking-wider text-white/65";
+                codeText.textContent = image.code;
+                codeOverlay.appendChild(codeText);
+
+                card.appendChild(imgWrapper);
+                card.appendChild(gradientOverlay);
+                card.appendChild(codeOverlay);
+
+                card.addEventListener("pointerenter", (e) => {
+                    if (e.pointerType === "mouse" || e.pointerType === "pen") {
+                        setActiveImage(index);
+                    }
+                }, { passive: true });
+
+                card.addEventListener("click", () => setActiveImage(index), { passive: true });
+
+                fragment.appendChild(card);
+                cards.push(card);
+            });
+
+            container.appendChild(fragment);
+
+            // Smoothly scrub across cards with touch slide on mobile/tablet
+            container.addEventListener("touchmove", (e) => {
+                const touch = e.touches[0];
+                if (!touch) return;
+                const target = document.elementFromPoint(touch.clientX, touch.clientY);
+                const cardEl = target && target.closest(".card-motion");
+                if (cardEl && cardEl.dataset.index !== undefined) {
+                    setActiveImage(Number(cardEl.dataset.index));
+                }
+            }, { passive: true });
+
+            // Keyboard arrow navigation
+            window.addEventListener("keydown", (e) => {
+                if (e.key === "ArrowRight") {
+                    setActiveImage((activeImage + 1) % images.length);
+                } else if (e.key === "ArrowLeft") {
+                    setActiveImage((activeImage - 1 + images.length) % images.length);
+                }
+            });
+        }
+
+        /* ══════════════════════════════════════════════════════════════════
+           CRadioGroup17 - APPLE PRICING SELECTOR ENGINE
+        ══════════════════════════════════════════════════════════════════ */
+        /* ══════════════════════════════════════════════════════════════════
+           MULTI-REGION PRICING & LOCALIZATION ARCHITECTURE
+           Supported Regions: India (IN), USA (US), UK/England (UK), Australia (AU), Europe (EU)
+        ══════════════════════════════════════════════════════════════════ */
+        const REGION_CONFIG = {
+            IN: {
+                name: "India",
+                code: "INR",
+                symbol: "₹",
+                flag: "🇮🇳",
+                label: "India (₹ INR)",
+                heroStart: "₹7,999",
+                countryName: "India",
+                prices: {
+                    starter: "₹7,999",
+                    pro: "₹24,999",
+                    premium: "₹49,999",
+                    enterprise: "Talk to Sales"
+                }
             },
-            venus: {
-                eyebrow: 'HIGH SPEED PERFORMANCE • MODERN DESIGN',
-                name: 'FAST MODERN WEBSITES.',
-                label: 'VENUS',
-                cutout: 'https://images.higgs.ai/?default=1&output=webp&url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20260827_202012_640b239a-d08a-4200-adb2-741bbe129ac8.png&w=800&q=85',
-                still: 'https://images.higgs.ai/?default=1&output=webp&url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20260827_202133_cf55d1d8-7b59-4a64-80da-d72052ae974e.png&w=1920&q=85',
-                lede: 'Engineered to turn visitors into real customers. Fully mobile responsive, Google Analytics integration, instant email notifications, and clean professional design.'
+            US: {
+                name: "United States",
+                code: "USD",
+                symbol: "$",
+                flag: "🇺🇸",
+                label: "United States ($ USD)",
+                heroStart: "$99",
+                countryName: "United States",
+                prices: {
+                    starter: "$99",
+                    pro: "$299",
+                    premium: "$599",
+                    enterprise: "Talk to Sales"
+                }
             },
-            mars: {
-                eyebrow: '24/7 SMART AI ASSISTANTS',
-                name: 'AUTONOMOUS AI CHATBOTS.',
-                label: 'MARS',
-                cutout: 'https://images.higgs.ai/?default=1&output=webp&url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20260827_202018_3d559490-f613-4ed7-a3bb-3b7e9fc90fb8.png&w=800&q=85',
-                still: 'https://images.higgs.ai/?default=1&output=webp&url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20260827_202133_0ba6de7c-285d-43dc-b7ab-8c54c73707cb.png&w=1920&q=85',
-                lede: 'Smart AI chatbots trained on your business details. Qualify leads, answer customer questions instantly, and support clients 24/7 with zero waiting time.'
+            UK: {
+                name: "United Kingdom",
+                code: "GBP",
+                symbol: "£",
+                flag: "🇬🇧",
+                label: "United Kingdom (£ GBP)",
+                heroStart: "£79",
+                countryName: "United Kingdom",
+                prices: {
+                    starter: "£79",
+                    pro: "£249",
+                    premium: "£499",
+                    enterprise: "Talk to Sales"
+                }
+            },
+            AU: {
+                name: "Australia",
+                code: "AUD",
+                symbol: "A$",
+                flag: "🇦🇺",
+                label: "Australia (A$ AUD)",
+                heroStart: "A$149",
+                countryName: "Australia",
+                prices: {
+                    starter: "A$149",
+                    pro: "A$449",
+                    premium: "A$899",
+                    enterprise: "Talk to Sales"
+                }
+            },
+            EU: {
+                name: "Europe",
+                code: "EUR",
+                symbol: "€",
+                flag: "🇪🇺",
+                label: "Europe (€ EUR)",
+                heroStart: "€89",
+                countryName: "Germany",
+                prices: {
+                    starter: "€89",
+                    pro: "€279",
+                    premium: "€549",
+                    enterprise: "Talk to Sales"
+                }
             }
         };
 
-        let currentFeaturedPlanet = 'earth';
+        let currentRegion = localStorage.getItem("forge_selected_region") || "IN";
+        let currentSelectedPricingPlan = "pro";
 
-        function warmPlanetClip(planetKey) {
-            const vid = document.querySelector(`.sky video[data-planet="${planetKey}"]`);
-            if (vid && !vid.src && vid.dataset.src) {
-                vid.preload = 'auto';
-                vid.src = vid.dataset.src;
-                vid.load();
+        function switchRegion(regionCode) {
+            if (!REGION_CONFIG[regionCode]) regionCode = "IN";
+            currentRegion = regionCode;
+            try {
+                localStorage.setItem("forge_selected_region", regionCode);
+            } catch (e) { }
+
+            const regData = REGION_CONFIG[regionCode];
+
+            // Update region banner select if present
+            const bannerSelect = document.getElementById("regionBannerSelect");
+            if (bannerSelect && bannerSelect.value !== regionCode) {
+                bannerSelect.value = regionCode;
+            }
+
+            // Update pricing card region select
+            const cardSelect = document.getElementById("pricingCardRegionSelect");
+            if (cardSelect && cardSelect.value !== regionCode) {
+                cardSelect.value = regionCode;
+            }
+
+            // Update pricing card header label
+            const activeRegionNameEl = document.getElementById("pricingActiveRegionName");
+            if (activeRegionNameEl) {
+                activeRegionNameEl.textContent = regData.label;
+            }
+
+            // Update pricing values on card
+            const starterPrice = document.getElementById("priceVal-starter");
+            if (starterPrice) starterPrice.textContent = regData.prices.starter;
+
+            const proPrice = document.getElementById("priceVal-pro");
+            if (proPrice) proPrice.textContent = regData.prices.pro;
+
+            const premiumPrice = document.getElementById("priceVal-premium");
+            if (premiumPrice) premiumPrice.textContent = regData.prices.premium;
+
+            // Update hero starting price text if present
+            const heroStartEl = document.getElementById("heroStartingPrice");
+            if (heroStartEl) heroStartEl.textContent = regData.heroStart;
+
+            // Update modal options & display for current region
+            refreshModalPlanOptions();
+            syncPlanDropdownUI();
+
+            // Also prefill country in enquiry form if available
+            const countryField = document.getElementById("country");
+            if (countryField && !countryField.value) {
+                countryField.value = regData.countryName;
             }
         }
 
-        function showPlanet(nextPlanet) {
-            if (!PLANET_DATA[nextPlanet] || nextPlanet === currentFeaturedPlanet) return;
+        function handleRegionSelectChange(val) {
+            // Optional: immediately switch or wait for continue button
+            switchRegion(val);
+        }
 
-            const targetData = PLANET_DATA[nextPlanet];
+        function applySelectedRegion() {
+            const bannerSelect = document.getElementById("regionBannerSelect");
+            if (bannerSelect) {
+                switchRegion(bannerSelect.value);
+            }
+            if (window.showToast) {
+                const regData = REGION_CONFIG[currentRegion];
+                showToast(`Switched region to ${regData.name} (${regData.code})`);
+            }
+            // Vanish region panel smoothly on top
+            dismissRegionBanner();
+        }
 
-            const skyVideos = document.querySelectorAll('.sky video');
-            skyVideos.forEach(vid => {
-                const p = vid.getAttribute('data-planet');
-                if (p === nextPlanet) {
-                    if (!vid.src && vid.dataset.src) {
-                        vid.src = vid.dataset.src;
-                        vid.load();
+        function dismissRegionBanner() {
+            const banner = document.getElementById("regionBanner");
+            if (banner) {
+                banner.classList.add("banner-hidden");
+                setTimeout(() => {
+                    banner.style.display = "none";
+                }, 450);
+                try {
+                    localStorage.setItem("forge_region_banner_dismissed", "true");
+                } catch (e) { }
+            }
+        }
+
+        function syncPlanDropdownUI() {
+            const sel = document.getElementById('preferredPlan');
+            const titleEl = document.getElementById('planDisplayTitle');
+            const priceEl = document.getElementById('planDisplayPrice');
+            if (!sel || !titleEl || !priceEl) return;
+
+            const regData = (typeof REGION_CONFIG !== 'undefined' && REGION_CONFIG[currentRegion]) ? REGION_CONFIG[currentRegion] : { prices: { starter: '₹7,999', pro: '₹24,999', premium: '₹49,999' } };
+            const val = sel.value || '';
+
+            if (val.startsWith('Starter')) {
+                titleEl.textContent = 'Starter Tier';
+                priceEl.textContent = `${regData.prices.starter} One-Time`;
+            } else if (val.startsWith('Premium')) {
+                titleEl.textContent = 'Premium 👑 Enterprise';
+                priceEl.textContent = `${regData.prices.premium} One-Time`;
+            } else {
+                titleEl.textContent = 'Pro ⭐ Most Popular';
+                priceEl.textContent = `${regData.prices.pro} One-Time`;
+            }
+        }
+        window.syncPlanDropdownUI = syncPlanDropdownUI;
+
+        function refreshModalPlanOptions(tierToSelect) {
+            const sel = document.getElementById("preferredPlan");
+            if (!sel) return;
+            const regData = REGION_CONFIG[currentRegion] || REGION_CONFIG["IN"];
+
+            let tier = tierToSelect;
+            if (!tier) {
+                const currentVal = sel.value || "";
+                tier = currentVal.startsWith("Starter") ? "starter" : (currentVal.startsWith("Premium") ? "premium" : "pro");
+            }
+            if (tier === "basic" || tier === "free") tier = "starter";
+
+            const starterVal = `Starter (${regData.prices.starter})`;
+            const proVal = `Pro ⭐ (${regData.prices.pro})`;
+            const premiumVal = `Premium 👑 (${regData.prices.premium})`;
+
+            sel.innerHTML = `
+                <option value="${starterVal}"${tier === 'starter' ? ' selected' : ''}>Starter Tier — ${regData.prices.starter} (One-Time)</option>
+                <option value="${proVal}"${tier === 'pro' ? ' selected' : ''}>Pro ⭐ Most Popular — ${regData.prices.pro} (One-Time)</option>
+                <option value="${premiumVal}"${tier === 'premium' ? ' selected' : ''}>Premium 👑 Enterprise — ${regData.prices.premium} (One-Time)</option>
+            `;
+
+            if (tier === "starter") sel.value = starterVal;
+            else if (tier === "premium") sel.value = premiumVal;
+            else sel.value = proVal;
+        }
+
+        function selectPricingPlan(planVal) {
+            currentSelectedPricingPlan = planVal;
+            const keys = ["starter", "pro", "premium", "enterprise"];
+            const planMapping = { "free": "starter", "starter": "starter", "pro": "pro", "premium": "premium", "enterprise": "enterprise" };
+
+            keys.forEach(k => {
+                const box = document.getElementById(`planBox-${k}`);
+                const dot = document.getElementById(`radioDot-${k}`);
+                const isSelected = planMapping[planVal] === k;
+
+                if (box) {
+                    if (isSelected) {
+                        box.className = "cursor-pointer flex items-center gap-4 p-4 sm:p-[17px] rounded-2xl transition-all duration-250 ease-out active:scale-[0.985] border-[2.5px] border-black bg-black/[0.035] shadow-[0_4px_16px_rgba(0,0,0,0.06)]";
+                    } else {
+                        box.className = "cursor-pointer flex items-center gap-4 p-4 sm:p-[17px] rounded-2xl transition-all duration-250 ease-out active:scale-[0.985] border-2 border-black/55 hover:border-black hover:bg-black/[0.015]";
                     }
-                    vid.classList.add('is-active');
-                    const playPromise = vid.play();
-                    if (playPromise !== undefined) playPromise.catch(() => { });
-                } else {
-                    vid.classList.remove('is-active');
-                    vid.pause();
+                }
+                if (dot) {
+                    dot.style.transform = isSelected ? "scale(1)" : "scale(0)";
                 }
             });
 
-            // Update Fallback Still Background
-            const sky = document.getElementById('planetSky');
-            if (sky) sky.style.backgroundImage = `url('${targetData.still}')`;
+            const actionBtnText = document.getElementById("pricingActionBtnText");
+            if (actionBtnText) {
+                if (planVal === "free" || planVal === "starter") actionBtnText.textContent = "Continue with Starter Plan";
+                else if (planVal === "pro") actionBtnText.textContent = "Continue with Pro Plan";
+                else if (planVal === "premium") actionBtnText.textContent = "Continue with Premium Plan";
+                else if (planVal === "enterprise") actionBtnText.textContent = "Talk to Enterprise Sales";
+            }
 
-            // Update Eyebrow, Headline & Lede
-            const eyebrowEl = document.getElementById('planetEyebrow');
-            if (eyebrowEl) eyebrowEl.textContent = targetData.eyebrow;
-
-            const headlineLine = document.querySelector('#planetHeadline .ent-line');
-            if (headlineLine) headlineLine.textContent = targetData.name;
-
-            const ledeEl = document.getElementById('planetLede');
-            if (ledeEl) ledeEl.innerHTML = targetData.lede;
-
-            // Update Planet Switcher Tabs UI
-            document.querySelectorAll('.planet-tab-btn').forEach(tab => {
-                const isCurrent = tab.getAttribute('data-planet') === nextPlanet;
-                tab.classList.toggle('active', isCurrent);
-                tab.setAttribute('aria-selected', String(isCurrent));
-            });
-
-            currentFeaturedPlanet = nextPlanet;
+            if (planVal === "enterprise") {
+                window.location.href = "mailto:farmanshafi2007@gmail.com?subject=Enterprise%20Plan%20Inquiry&body=Hi%20Farman,%20I%20would%20like%20to%20discuss%20an%20Enterprise%20custom%20build.";
+            }
         }
+
+        function handlePricingPlanAction() {
+            if (currentSelectedPricingPlan === "enterprise") {
+                window.location.href = "mailto:farmanshafi2007@gmail.com?subject=Enterprise%20Plan%20Inquiry&body=Hi%20Farman,%20I%20would%20like%20to%20discuss%20an%20Enterprise%20custom%20build.";
+            } else if (currentSelectedPricingPlan === "free" || currentSelectedPricingPlan === "starter") {
+                if (typeof window.openEnquiryModal === "function") {
+                    window.openEnquiryModal("starter");
+                }
+            } else if (currentSelectedPricingPlan === "premium") {
+                if (typeof window.openEnquiryModal === "function") {
+                    window.openEnquiryModal("premium");
+                }
+            } else {
+                if (typeof window.openEnquiryModal === "function") {
+                    window.openEnquiryModal("pro");
+                }
+            }
+        }
+
+        // Explicitly attach region functions to window for global inline accessibility
+        window.switchRegion = switchRegion;
+        window.handleRegionSelectChange = handleRegionSelectChange;
+        window.applySelectedRegion = applySelectedRegion;
+        window.dismissRegionBanner = dismissRegionBanner;
+        window.selectPricingPlan = selectPricingPlan;
+        window.handlePricingPlanAction = handlePricingPlanAction;
+        window.setPricingCurrency = function (curr) {
+            if (curr === 'USD') switchRegion('US');
+            else switchRegion('IN');
+        };
+
 
         const helpDatabase = [
             {
                 catId: "1",
                 catName: "1. PRICE & PAYMENT",
                 items: [
-                    { q: "Is the price shown the final price?", a: "Yes. The agreed price when you order is exact: Basic is ₹3,499 (~$50 USD), Pro ⭐ Best Selling is ₹11,999 (~$200 USD), and Premium 👑 Value for Money is ₹25,000 (~$400 USD)." },
+                    { q: "Is the price shown the final price?", a: "Yes. The agreed price when you order is exact: Starter is ₹7,999 ($99 USD / £79 GBP), Pro ⭐ Most Popular is ₹24,999 ($299 USD / £249 GBP), and Premium 👑 Enterprise is ₹49,999 ($599 USD / £499 GBP). Complete code ownership with zero hidden fees." },
                     { q: "Do I pay everything at once?", a: "No. You pay 40% in advance and the remaining 60% after the project is completed." },
                     { q: "How can I pay?", a: "We accept PayPal, UPI, Google Pay (GPay), MobiKwik, FamPay, and QR payments." },
                     { q: "Is the domain included?", a: "Premium 👑 plan includes a free custom domain for the 1st year. For Basic and Pro plans, custom domains can be configured upon request." },
@@ -7920,66 +7612,13 @@
                 }
             }
 
-            // Bind Planet Switcher Tabs
-            document.querySelectorAll('.planet-tab-btn').forEach(btn => {
-                btn.addEventListener('click', (e) => {
-                    e.preventDefault();
-                    const target = btn.getAttribute('data-planet');
-                    if (target) {
-                        showPlanet(target);
-                        pauseCarousel();
-                    }
-                });
-                btn.addEventListener('pointerenter', () => {
-                    const target = btn.getAttribute('data-planet');
-                    if (target) warmPlanetClip(target);
-                });
-                btn.addEventListener('focus', () => {
-                    const target = btn.getAttribute('data-planet');
-                    if (target) warmPlanetClip(target);
-                });
-            });
-
-            // Touch Swipe Gesture Support for Hero Planet Cycling
-            const heroStage = document.getElementById('home');
-            let touchStartX = 0;
-            let touchStartY = 0;
-
-            if (heroStage) {
-                heroStage.addEventListener('touchstart', (e) => {
-                    if (e.touches && e.touches[0]) {
-                        touchStartX = e.touches[0].clientX;
-                        touchStartY = e.touches[0].clientY;
-                    }
-                }, { passive: true });
-
-                heroStage.addEventListener('touchend', (e) => {
-                    if (e.changedTouches && e.changedTouches[0]) {
-                        const diffX = e.changedTouches[0].clientX - touchStartX;
-                        const diffY = e.changedTouches[0].clientY - touchStartY;
-                        if (Math.abs(diffX) > 45 && Math.abs(diffX) > Math.abs(diffY) * 1.5) {
-                            const curIdx = PLANET_ORDER.indexOf(currentFeaturedPlanet);
-                            if (diffX < 0) {
-                                const nextP = PLANET_ORDER[(curIdx + 1) % PLANET_ORDER.length];
-                                showPlanet(nextP);
-                            } else {
-                                const prevP = PLANET_ORDER[(curIdx - 1 + PLANET_ORDER.length) % PLANET_ORDER.length];
-                                showPlanet(prevP);
-                            }
-                        }
-                    }
-                }, { passive: true });
-            }
-
-            // Warm clips on idle
-            const warmAll = () => {
-                PLANET_ORDER.forEach(p => warmPlanetClip(p));
-            };
-            if ('requestIdleCallback' in window) {
-                requestIdleCallback(warmAll, { timeout: 4000 });
-            } else {
-                setTimeout(warmAll, 2000);
-            }
+            // Initialize Skiper 52 Interactive Cards Showcase
+            initSkiperCards();
+            // Initialize Apple Pricing Selector
+            const initialRegion = (typeof localStorage !== "undefined" && localStorage.getItem("forge_selected_region")) || "IN";
+            switchRegion(initialRegion);
+            selectPricingPlan("pro");
+            if (window.lucide && typeof lucide.createIcons === "function") lucide.createIcons();
 
             // Scroll explore button
             document.getElementById('scrollExploreBtn')?.addEventListener('click', (e) => {
@@ -8067,46 +7706,6 @@
                 };
                 window.addEventListener('scroll', onScroll, { passive: true });
                 onScroll(); // Check initial state
-            }
-
-            // Hero Carousel Autoplay (Phase 4)
-            let carouselAutoplayTimer = null;
-            let carouselPauseTimer = null;
-            let carouselPaused = false;
-
-            function startCarouselAutoplay() {
-                stopCarouselAutoplay();
-                carouselAutoplayTimer = setInterval(() => {
-                    if (carouselPaused) return;
-                    const curIdx = PLANET_ORDER.indexOf(currentFeaturedPlanet);
-                    const nextP = PLANET_ORDER[(curIdx + 1) % PLANET_ORDER.length];
-                    showPlanet(nextP);
-                }, 6000);
-            }
-
-            function stopCarouselAutoplay() {
-                if (carouselAutoplayTimer) {
-                    clearInterval(carouselAutoplayTimer);
-                    carouselAutoplayTimer = null;
-                }
-            }
-
-            function pauseCarousel() {
-                carouselPaused = true;
-                if (carouselPauseTimer) clearTimeout(carouselPauseTimer);
-                carouselPauseTimer = setTimeout(() => {
-                    carouselPaused = false;
-                }, 8000);
-            }
-
-            // Start autoplay after entrance animation
-            setTimeout(() => startCarouselAutoplay(), 2500);
-
-            // Pause on any hero interaction
-            const heroStageEl = document.getElementById('home');
-            if (heroStageEl) {
-                heroStageEl.addEventListener('touchstart', pauseCarousel, { passive: true });
-                heroStageEl.addEventListener('click', pauseCarousel);
             }
 
             const roiTierSelect = document.getElementById('roiTierSelect');
@@ -8251,31 +7850,15 @@
                 document.getElementById('captchaErrorMsg')?.classList.add('hidden');
             });
 
-            const planDisplayMap = {
-                'Basic (₹3,499)': { title: 'Basic Tier', price: '₹3,499 One-Time' },
-                'Pro ⭐ (₹11,999)': { title: 'Pro ⭐ Best Selling', price: '₹11,999 One-Time' },
-                'Premium 👑 (₹25,000)': { title: 'Premium 👑 Enterprise', price: '₹25,000 One-Time' }
-            };
-
-            function syncPlanDropdownUI() {
-                const sel = document.getElementById('preferredPlan');
-                const titleEl = document.getElementById('planDisplayTitle');
-                const priceEl = document.getElementById('planDisplayPrice');
-                if (!sel || !titleEl || !priceEl) return;
-                const info = planDisplayMap[sel.value] || { title: sel.value, price: 'Deployment Package' };
-                titleEl.textContent = info.title;
-                priceEl.textContent = info.price;
-            }
+            // syncPlanDropdownUI is globally defined in outer scope
 
             document.getElementById('preferredPlan')?.addEventListener('change', syncPlanDropdownUI);
 
             window.openEnquiryModal = (preferredTier) => {
                 generateCaptcha();
-                const sel = document.getElementById('preferredPlan');
-                if (sel) {
-                    if (preferredTier === 'basic') sel.value = "Basic (₹3,499)";
-                    else if (preferredTier === 'premium') sel.value = "Premium 👑 (₹25,000)";
-                    else sel.value = "Pro ⭐ (₹11,999)";
+                const tier = preferredTier || currentSelectedPricingPlan || 'pro';
+                if (typeof refreshModalPlanOptions === 'function') {
+                    refreshModalPlanOptions(tier);
                 }
                 syncPlanDropdownUI();
                 openGenericModal(modalMap['#enquiry'].modal, modalMap['#enquiry'].content, '#enquiry');
@@ -8863,170 +8446,6 @@
             }, { threshold: 0.2 });
             counters.forEach(c => counterObserver.observe(c));
 
-            // Testimonials Slider with Touch-Swipe & Autoplay
-            const testimonialTrack = document.getElementById('testimonialCarouselTrack');
-            const prevTestimonialBtn = document.getElementById('prevTestimonialBtn');
-            const nextTestimonialBtn = document.getElementById('nextTestimonialBtn');
-            const testimonialCards = document.querySelectorAll('.testimonial-card');
-            const testimonialDots = document.querySelectorAll('.testimonial-dot');
-            const testimonialIdxLabel = document.getElementById('testimonialCurrentIdx');
-            let currentTestimonialIndex = 0;
-            let testimonialAutoplayTimer = null;
-            let isTestimonialHovered = false;
-
-            testimonialCards.forEach(card => {
-                let isCardMoving = false;
-                card.addEventListener('mousemove', (e) => {
-                    if (isCardMoving) return;
-                    isCardMoving = true;
-                    const clientX = e.clientX;
-                    const clientY = e.clientY;
-                    requestAnimationFrame(() => {
-                        const rect = card.getBoundingClientRect();
-                        card.style.setProperty('--mouse-x', `${clientX - rect.left}px`);
-                        card.style.setProperty('--mouse-y', `${clientY - rect.top}px`);
-                        isCardMoving = false;
-                    });
-                }, { passive: true });
-            });
-
-            // Interactive card spotlight for all light/dark cards
-            document.querySelectorAll('.card-light-contrast, .card-dark-contrast').forEach(card => {
-                let isContrastMoving = false;
-                card.addEventListener('mousemove', (e) => {
-                    if (isContrastMoving) return;
-                    isContrastMoving = true;
-                    const clientX = e.clientX;
-                    const clientY = e.clientY;
-                    requestAnimationFrame(() => {
-                        const rect = card.getBoundingClientRect();
-                        card.style.setProperty('--mouse-x', `${clientX - rect.left}px`);
-                        card.style.setProperty('--mouse-y', `${clientY - rect.top}px`);
-                        isContrastMoving = false;
-                    });
-                }, { passive: true });
-            });
-
-            function updateTestimonialUI(index) {
-                currentTestimonialIndex = Math.max(0, Math.min(index, testimonialCards.length - 1));
-                if (testimonialIdxLabel) testimonialIdxLabel.textContent = String(currentTestimonialIndex + 1).padStart(2, '0');
-                testimonialDots.forEach((dot, idx) => {
-                    const isActive = idx === currentTestimonialIndex;
-                    dot.classList.toggle('active', isActive);
-                    if (isActive) {
-                        dot.classList.remove('w-2', 'bg-black/20');
-                        dot.classList.add('w-7');
-                    } else {
-                        dot.classList.remove('w-7');
-                        dot.classList.add('w-2');
-                    }
-                });
-                const targetCard = testimonialCards[currentTestimonialIndex];
-                if (targetCard && testimonialTrack) {
-                    testimonialTrack.scrollTo({
-                        left: targetCard.offsetLeft - testimonialTrack.offsetLeft,
-                        behavior: 'smooth'
-                    });
-                }
-            }
-
-            // Cyber Ronin // Neural Edges Spotlight Effect
-            (function initCyberRoninSpotlight() {
-                const section = document.getElementById('testimonials');
-                const revealImg = document.getElementById('testimonial-reveal-img');
-                if (!section || !revealImg) return;
-
-                let spotlightTicking = false;
-                let lastClientX = 0;
-                let lastClientY = 0;
-
-                function applySpotlight() {
-                    const rect = revealImg.getBoundingClientRect();
-                    const x = lastClientX - rect.left;
-                    const y = lastClientY - rect.top;
-
-                    const width = window.innerWidth;
-                    let radius = 260;
-                    if (width < 480) {
-                        radius = 130;
-                    } else if (width < 720) {
-                        radius = 170;
-                    }
-
-                    const maskGradient = `radial-gradient(circle ${radius}px at ${x}px ${y}px, #fff 0%, #fff 40%, rgba(255,255,255,0.75) 60%, rgba(255,255,255,0.4) 75%, rgba(255,255,255,0.12) 88%, transparent 100%)`;
-
-                    revealImg.style.webkitMaskImage = maskGradient;
-                    revealImg.style.maskImage = maskGradient;
-                    spotlightTicking = false;
-                }
-
-                function queueSpotlight(clientX, clientY) {
-                    lastClientX = clientX;
-                    lastClientY = clientY;
-                    if (!spotlightTicking) {
-                        spotlightTicking = true;
-                        requestAnimationFrame(applySpotlight);
-                    }
-                }
-
-                section.addEventListener('mousemove', function (e) {
-                    queueSpotlight(e.clientX, e.clientY);
-                }, { passive: true });
-
-                section.addEventListener('touchmove', function (e) {
-                    if (e.touches && e.touches.length > 0) {
-                        queueSpotlight(e.touches[0].clientX, e.touches[0].clientY);
-                    }
-                }, { passive: true });
-
-                // Initial spotlight centered in section
-                const rect = section.getBoundingClientRect();
-                queueSpotlight(rect.left + rect.width * 0.5, rect.top + rect.height * 0.4);
-            })();
-
-            nextTestimonialBtn?.addEventListener('click', () => updateTestimonialUI((currentTestimonialIndex + 1) % testimonialCards.length));
-            prevTestimonialBtn?.addEventListener('click', () => updateTestimonialUI((currentTestimonialIndex - 1 + testimonialCards.length) % testimonialCards.length));
-            testimonialDots.forEach(dot => {
-                dot.addEventListener('click', () => updateTestimonialUI(parseInt(dot.getAttribute('data-index') || '0', 10)));
-            });
-
-            // Touch Drag / Swipe on Testimonials Track
-            let testTouchStartX = 0;
-            let testTouchStartY = 0;
-            if (testimonialTrack) {
-                testimonialTrack.addEventListener('touchstart', (e) => {
-                    if (e.touches && e.touches[0]) {
-                        testTouchStartX = e.touches[0].clientX;
-                        testTouchStartY = e.touches[0].clientY;
-                    }
-                    isTestimonialHovered = true;
-                }, { passive: true });
-
-                testimonialTrack.addEventListener('touchend', (e) => {
-                    if (e.changedTouches && e.changedTouches[0]) {
-                        const diffX = e.changedTouches[0].clientX - testTouchStartX;
-                        const diffY = e.changedTouches[0].clientY - testTouchStartY;
-                        if (Math.abs(diffX) > 40 && Math.abs(diffX) > Math.abs(diffY)) {
-                            if (diffX < 0) {
-                                updateTestimonialUI((currentTestimonialIndex + 1) % testimonialCards.length);
-                            } else {
-                                updateTestimonialUI((currentTestimonialIndex - 1 + testimonialCards.length) % testimonialCards.length);
-                            }
-                        }
-                    }
-                    setTimeout(() => { isTestimonialHovered = false; }, 2000);
-                }, { passive: true });
-
-                testimonialTrack.addEventListener('mouseenter', () => { isTestimonialHovered = true; });
-                testimonialTrack.addEventListener('mouseleave', () => { isTestimonialHovered = false; });
-            }
-
-            // Smooth Testimonial Auto-Rotation (every 7 seconds when idle)
-            testimonialAutoplayTimer = setInterval(() => {
-                if (!isTestimonialHovered && testimonialCards.length > 1) {
-                    updateTestimonialUI((currentTestimonialIndex + 1) % testimonialCards.length);
-                }
-            }, 7000);
 
             // Real-Time Scroll Progress Indicator & Back-To-Top Button
             const scrollProgressBar = document.getElementById('scrollProgressBar');
